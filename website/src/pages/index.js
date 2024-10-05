@@ -7,67 +7,39 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>My Next.js App</title>
-        <meta name="description" content="A simple Next.js application" />
+        <title>Welcome to My Company</title>
+        <meta name="description" content="A simple Next.js company homepage" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
         <main className={styles.main}>
-          <h1>Welcome to My Next.js App</h1>
+          <h1 className={styles.title}>Welcome to Our Company</h1>
           <Image
-            className={styles.logo}
-            src="https://nextjs.org/icons/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
+            src="/images/tempImage.png" // Path to the image
+            alt="Temp Image"
+            width={300} // Specify the width
+            height={300} // Specify the height
             priority
           />
-          <p>
-            Get started by editing <code>src/pages/index.js</code>.
+          <p className={styles.description}>
+            We provide innovative solutions to help your business grow.
           </p>
-          <div className={styles.ctas}>
-            <a
-              href="https://vercel.com/new"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.primary}
-            >
-              Deploy Now
-            </a>
-            <a
-              href="https://nextjs.org/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.secondary}
-            >
-              Read Documentation
-            </a>
+          <div className={styles.infoBoxes}>
+            <div className={styles.infoBox}>
+              <h2>Our Services</h2>
+              <p>Discover a range of services tailored for your needs.</p>
+            </div>
+            <div className={styles.infoBox}>
+              <h2>Our Mission</h2>
+              <p>Committed to delivering excellence and value to our clients.</p>
+            </div>
+            <div className={styles.infoBox}>
+              <h2>Contact Us</h2>
+              <p>Get in touch to see how we can assist you.</p>
+            </div>
           </div>
         </main>
-        <footer className={styles.footer}>
-          <a
-            href="https://nextjs.org/learn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Next.js
-          </a>
-          <a
-            href="https://vercel.com/templates?framework=next.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Examples
-          </a>
-          <a
-            href="https://nextjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit Next.js
-          </a>
-        </footer>
       </div>
     </>
   );
