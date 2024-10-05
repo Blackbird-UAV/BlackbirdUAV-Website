@@ -1,0 +1,19 @@
+/* src/styles/Navbar.module.css */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 1rem;
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s;
+  }
+  
+  .link:hover {
+    color: #f0a500;
+  }
+  
