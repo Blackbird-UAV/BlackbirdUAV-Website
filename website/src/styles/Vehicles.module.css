@@ -17,9 +17,19 @@
   gap: 20px;
 }
 
+.vehiclesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 0; /* No gap between images */
+}
+
 .vehicle {
+  position: relative; /* For positioning the border */
+  overflow: hidden; /* Ensure the image fills the box */
+  cursor: pointer; /* Change cursor to pointer on hover */
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Stack image and info vertically */
+  align-items: center; /* Center items */
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -43,4 +53,27 @@
 
 .info {
   max-width: 400px;
+}
+
+.vehicle img {
+  width: 100%;
+  height: 100%; /* Fill the entire box */
+  object-fit: cover; /* Maintain aspect ratio */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+}
+
+.vehicle:not(:last-child) {
+  border-right: 1px solid white; /* Thin white line between images */
+}
+
+.textBox {
+  grid-column: span 4; /* Span all columns */
+  background-color: #000; /* Background color for the text box */
+  color: #f8c8c8; /* Text color */
+  padding: 20px;
+  margin-top: 0; /* Remove space above the text box */
+  text-align: center; /* Center the text */
+  border: 2px solid white; /* White outline around the text box */
+  border-radius: 8px; /* Rounded corners */
 }

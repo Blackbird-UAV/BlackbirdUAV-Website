@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react"; // Import useState
 import styles from "@/styles/Vehicles.module.css"; // 
 
 // Sample vehicle data
@@ -30,6 +31,8 @@ const vehicles = [
 ];
 
 export default function Vehicles() {
+  const [selectedVehicle, setSelectedVehicle] = useState(vehicles[0]); // Initialize state with the first vehicle
+
   return (
     <>
       <Head>
@@ -40,19 +43,16 @@ export default function Vehicles() {
       </Head>
       <div className={styles.container}>
         <h1 className={styles.title}>Our Vehicles</h1>
-        <div className={styles.vehiclesList}>
-          {vehicles.map((vehicle, index) => (
-            <div
-              key={vehicle.id}
-              className={`${styles.vehicle} ${index % 2 === 0 ? styles.left : styles.right}`}
-            >
+        <div className={styles.vehiclesGrid}>
+          {vehicles.map((vehicle) => (
+            <div key={vehicle.id} className={styles.vehicle} onClick={() => setSelectedVehicle(vehicle)}>
               <img src={vehicle.image} alt={vehicle.name} className={styles.image} />
-              <div className={styles.info}>
-                <h2>{vehicle.name}</h2>
-                <p>{vehicle.description}</p>
-              </div>
             </div>
           ))}
+        </div>
+        <div className={styles.textBox}>
+          <h2>{selectedVehicle.name}</h2>
+          <p>{selectedVehicle.description}</p>
         </div>
       </div>
     </>
