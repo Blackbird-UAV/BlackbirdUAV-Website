@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome to My Company</title>
-        <meta name="description" content="A simple Next.js company homepage" />
+        <title>BlackBird UAV</title>
+        <meta name="description" content="BlackBird UAV | Carleton University's UAV Design Team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
