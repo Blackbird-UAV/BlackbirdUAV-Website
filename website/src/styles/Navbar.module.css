@@ -3,12 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #1c1c1c;
   padding: 1rem 8rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
 }
 
 .logoContainer {
@@ -30,24 +31,46 @@
   font-size: 16px;
   font-weight: 500;
   padding: 5px 10px;
+  position: relative;
   transition: color 0.3s ease;
 }
 
-.link:hover {
-  color: #00bcd4;
+.link span {
+  position: relative;
 }
 
+/* Underline effect */
+.link span::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e91c23;
+  transition: width 0.5s ease;
+}
+
+.link:hover span::after {
+  width: 100%; /* Underline stretches to the width of the text */
+}
+
+/* Active link styling to keep underline */
+.activeLink .link span::after {
+  width: 100%; /* Keep the line visible for active links */
+}
+
+/* Link wrapper styles */
 .linkWrapper {
   display: inline-block;
+  margin: 0px 6px;
 }
 
 .activeLinkWrapper {
-  border: 2px solid #00bcd4;
-  border-radius: 50px;
   padding: 5px 10px;
 }
 
-.sponsorButton{
+.sponsorButton {
   background-color: red;
   padding: 10px 8px;
   border-radius: 50px;
@@ -55,11 +78,11 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.sponsorButton:hover{
-  background-color: orange;
-} 
+.sponsorButton:hover {
+  background-color: #4169E1;
+}
 
-.sponsorLink{
+.sponsorLink {
   color: white;
   text-decoration: none;
   font-size: 16px;
@@ -68,11 +91,11 @@
 }
 
 /* Tablet - max-width: 900px */
-/* TODO: implement the hamburger menu at this break point */
 @media (max-width: 900px) {
-  .navbar{
+  .navbar {
     padding: 1rem 4rem;
   }
+
   .logoContainer {
     width: 60px;
   }

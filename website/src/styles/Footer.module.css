@@ -1,21 +1,104 @@
+/* General Footer Styles */
 .footer {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+  background-color: #1c1c1c;
+  color: white;
+  padding: 2rem;
+  width: 100%;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.logoSection,
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.logoSection img {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialLinks a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.socialLinks a:hover {
+  color: #4169E1;
+}
+
+/* Add a vertical line separator between sections */
+.footerContent > .logoSection {
+  border-right: 2px solid #444;
+  padding-right: 2rem;
+  height: 90px;
+}
+
+/* Add a vertical line separator between sections */
+.footerContent > .socialLinksSection {
+  border-right: 2px solid #444;
+  padding-right: 2rem;
+  height: 90px;
+}
+
+/* Info section styling */
+.infoSection {
+  text-align: left;
+  line-height: 1.2;
+}
+
+.infoSection h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.infoSection p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  text-align: left;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    gap: 1rem;
   }
-  
-  .footer nav {
-    margin-top: 1rem;
+
+  .footerContent > .logoSection {
+    border-right: none;
+    padding-right: 0;
   }
-  
-  .footer nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 1rem;
+
+  .logoSection img {
+    width: 100px;
   }
-  
-  .footer nav a:hover {
-    text-decoration: underline;
+
+  .socialLinks {
+    justify-content: center;
   }
-  
+}

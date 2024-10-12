@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router'; // Importing useRouter
+import { useRouter } from 'next/router';
 import styles from "@/styles/Navbar.module.css";
 
 export default function Navbar() {
-  const router = useRouter(); // Using useRouter to get current route
+  const router = useRouter();
 
   return (
     <nav className={styles.navbar}>
@@ -21,24 +21,24 @@ export default function Navbar() {
       </Link>
 
       <div className={styles.linksContainer}>
-        <div className={`${styles.linkWrapper} ${router.pathname === '/' ? styles.activeLinkWrapper : ''}`}>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/' ? styles.activeLink : ''}`}>
           <Link href="/" className={styles.link}>
-            Home
+            <span>Home</span>
           </Link>
         </div>
-        <div className={`${styles.linkWrapper} ${router.pathname === '/vehicles' ? styles.activeLinkWrapper : ''}`}>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/vehicles' ? styles.activeLink : ''}`}>
           <Link href="/vehicles" className={styles.link}>
-            Vehicles
+            <span>Vehicles</span>
           </Link>
         </div>
-        <div className={`${styles.linkWrapper} ${router.pathname === '/meetTeam' ? styles.activeLinkWrapper : ''}`}>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/meetTeam' ? styles.activeLink : ''}`}>
           <Link href="/meetTeam" className={styles.link}>
-            Meet the Team
+            <span>Team</span>
           </Link>
         </div>
-        <div className={`${styles.linkWrapper} ${router.pathname === '/joinTheTeam' ? styles.activeLinkWrapper : ''}`}>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/joinTheTeam' ? styles.activeLink : ''}`}>
           <Link href="/joinTheTeam" className={styles.link}>
-            Join the Team
+            <span>Join</span>
           </Link>
         </div>
         <div className={`${styles.linkWrapper} ${styles.sponsorButton}`}>
