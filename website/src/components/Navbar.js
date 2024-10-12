@@ -1,50 +1,52 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router'; // Importing useRouter
+import styles from "@/styles/Navbar.module.css";
 
 export default function Navbar() {
+  const router = useRouter(); // Using useRouter to get current route
+
   return (
-    <nav style={navStyle}>
-      {/* Update the logo path to the public directory */}
-      <Image src="/images/blackbirdLogo.jpg" alt="Logo" width={40} height={40} style={logoStyle} />
-      <div style={linksContainer}>
-        <Link href="/" style={linkStyle}>
-          Home
-        </Link>
-        <Link href="/vehicles" style={linkStyle}>
-          Vehicles
-        </Link>
-        <Link href="/meetTeam" style={linkStyle}>
-          Meet the Team
-        </Link>
-        <Link href="/joinTeam" style={linkStyle}>
-          Join the Team
-        </Link>
-        <Link href="/sponsor" style={linkStyle}>
-          Sponsor
-        </Link>
+    <nav className={styles.navbar}>
+      <Link href="/">
+        <div className={styles.logoContainer}>
+          <Image
+            src="/logos/BirdLogo.png" 
+            alt="Logo"
+            fill
+            className={styles.logo}
+            sizes="(max-width: 768px) 50px, 100px"
+          />
+        </div>
+      </Link>
+
+      <div className={styles.linksContainer}>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/' ? styles.activeLinkWrapper : ''}`}>
+          <Link href="/" className={styles.link}>
+            Home
+          </Link>
+        </div>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/vehicles' ? styles.activeLinkWrapper : ''}`}>
+          <Link href="/vehicles" className={styles.link}>
+            Vehicles
+          </Link>
+        </div>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/meetTeam' ? styles.activeLinkWrapper : ''}`}>
+          <Link href="/meetTeam" className={styles.link}>
+            Meet the Team
+          </Link>
+        </div>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/joinTheTeam' ? styles.activeLinkWrapper : ''}`}>
+          <Link href="/joinTheTeam" className={styles.link}>
+            Join the Team
+          </Link>
+        </div>
+        <div className={`${styles.linkWrapper} ${styles.sponsorButton}`}>
+          <Link href="/sponsor" className={styles.sponsorLink}>
+            Sponsor Us
+          </Link>
+        </div>
       </div>
     </nav>
   );
 }
-
-const navStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  background: '#333',
-  padding: '1rem',
-};
-
-const logoStyle = {
-  marginRight: '1rem', // Space between the logo and links
-};
-
-const linksContainer = {
-  display: 'flex',
-  gap: '1rem',
-};
-
-const linkStyle = {
-  color: '#fff',
-  textDecoration: 'none',
-};

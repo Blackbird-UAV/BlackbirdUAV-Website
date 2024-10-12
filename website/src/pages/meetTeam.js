@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/Team.module.css"; // Import CSS for styling
+import styles from "@/styles/Team.module.css";
 
 // Sample team member data
 const teamMembers = [

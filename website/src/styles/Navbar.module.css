@@ -1,19 +1,108 @@
-/* src/styles/Navbar.module.css */
+/* General Navbar Styles */
 .navbar {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-    padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem 8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logoContainer {
+  position: relative;
+  height: 40px;
+  width: 160px;
+  transition: width 0.3s ease-in-out;
+}
+
+.logo {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Link Buttons */
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #00bcd4;
+}
+
+.linkWrapper {
+  display: inline-block;
+}
+
+.activeLinkWrapper {
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
+  padding: 5px 10px;
+}
+
+.sponsorButton{
+  background-color: red;
+  padding: 10px 8px;
+  border-radius: 50px;
+  margin-left: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sponsorButton:hover{
+  background-color: orange;
+} 
+
+.sponsorLink{
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+/* Tablet - max-width: 900px */
+/* TODO: implement the hamburger menu at this break point */
+@media (max-width: 900px) {
+  .navbar{
+    padding: 1rem 4rem;
   }
-  
+  .logoContainer {
+    width: 60px;
+  }
+
+  .linksContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
   .link {
-    color: white;
-    text-decoration: none;
-    margin: 0 1rem;
-    transition: color 0.3s;
+    font-size: 14px;
   }
-  
-  .link:hover {
-    color: #f0a500;
+}
+
+/* Mobile - max-width: 480px */
+@media (max-width: 480px) {
+  .logoContainer {
+    width: 50px;
   }
-  
+
+  .linksContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .link {
+    font-size: 12px;
+  }
+}
