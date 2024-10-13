@@ -19,21 +19,19 @@
 
 .vehiclesGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 0; /* No gap between images */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
 }
 
 .vehicle {
-  position: relative; /* For positioning the border */
-  overflow: hidden; /* Ensure the image fills the box */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  display: flex;
-  flex-direction: column; /* Stack image and info vertically */
-  align-items: center; /* Center items */
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
 }
 
 .left {
@@ -56,24 +54,47 @@
 }
 
 .vehicle img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%; /* Fill the entire box */
-  object-fit: cover; /* Maintain aspect ratio */
-  margin: 0; /* Remove any margin */
-  padding: 0; /* Remove any padding */
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.vehicle img.blur {
+  filter: blur(5px);
+  opacity: 0.5;
 }
 
 .vehicle:not(:last-child) {
-  border-right: 1px solid white; /* Thin white line between images */
+  border-right: 1px solid white;
 }
 
 .textBox {
-  grid-column: span 4; /* Span all columns */
-  background-color: #000; /* Background color for the text box */
-  color: #f8c8c8; /* Text color */
+  grid-column: span 4;
+  height: 300px;
+  background-color: #000;
+  color: #f8c8c8;
   padding: 20px;
-  margin-top: 0; /* Remove space above the text box */
-  text-align: center; /* Center the text */
-  border: 2px solid white; /* White outline around the text box */
-  border-radius: 8px; /* Rounded corners */
+  margin-top: 0;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 8px;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 15px);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid white;
 }
