@@ -1,0 +1,6 @@
+.container {
+    height: 56px; /* Height of the navbar */
+    width: 100%;
+    background-color: #171717; /* Background color of the spacer */
+    position: relative; /* Keeps it in the flow, not fixed to the viewport */
+  }

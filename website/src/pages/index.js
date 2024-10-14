@@ -41,6 +41,9 @@ export default function Home() {
           </div>
         </main>
       </div>
+      <div id="secondDiv" className={styles.aboutContainer}>
+          hi
+      </div>
     </>
   );
 }

@@ -3,13 +3,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1c1c1c;
+  background-color: rgba(28, 28, 28, 0.90); /* Slightly opaque background */
+  backdrop-filter: blur(10px); /* Adds a blur effect */
   padding: 1rem 8rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
+  transform: translateY(-100%); /* Initially hidden above the screen */
+  transition: transform 0.5s ease; /* Smooth transition when shown */
+}
+
+.navbar.show {
+  transform: translateY(0); /* Moves down when scrolled past the second div */
 }
 
 .logoContainer {
@@ -26,7 +33,7 @@
 
 /* Link Buttons */
 .link {
-  color: white;
+  color: #F5F5F5;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;

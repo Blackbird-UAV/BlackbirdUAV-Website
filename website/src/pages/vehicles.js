@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState, useRef, useEffect } from "react"; // Import useRef and useEffect
-import styles from "@/styles/Vehicles.module.css"; // 
+import styles from "@/styles/Vehicles.module.css";
 
 // Sample vehicle data
 const vehicles = [

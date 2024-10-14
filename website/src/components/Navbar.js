@@ -1,13 +1,42 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 import styles from "@/styles/Navbar.module.css";
 
 export default function Navbar() {
   const router = useRouter();
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  useEffect(() => {
+    // Only add scroll event listener for the home page
+    if (router.pathname === '/') {
+      const handleScroll = () => {
+        const secondDiv = document.getElementById('secondDiv');
+        if (secondDiv && window.scrollY >= secondDiv.offsetTop) {
+          setShowNavbar(true);
+        } else {
+          setShowNavbar(false);
+        }
+      };
+
+      // Attach scroll event listener
+      window.addEventListener('scroll', handleScroll);
+
+      // Cleanup on unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [router.pathname]);
+
+  // If not on the home page, ensure navbar is always visible
+  const navbarClass = router.pathname === '/' 
+    ? `${styles.navbar} ${showNavbar ? styles.show : ''}`
+    : `${styles.navbar} ${styles.show}`;
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={navbarClass}>
       <Link href="/">
         <div className={styles.logoContainer}>
           <Image
