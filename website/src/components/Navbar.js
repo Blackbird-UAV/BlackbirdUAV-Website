@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import styles from "@/styles/Navbar.module.css";
 import dropdownStyles from "../styles/Dropdown.module.css";
 import { Menu, Center } from '@mantine/core';
-import { IconChevronDown } from '@tabler/icons-react';
+// import { IconChevronDown } from '@tabler/icons-react';
 export default function Navbar() {
   const router = useRouter();
   const [showNavbar, setShowNavbar] = useState(false);
@@ -79,7 +79,7 @@ export default function Navbar() {
                 <Center className={styles.link}>
                   <span>
                     Team
-                    <IconChevronDown size="0.9rem" stroke={1.5} color="#f9fafb" className={styles.chevron} />
+                    {/* <IconChevronDown size="0.9rem" stroke={1.5} color="#f9fafb" className={styles.chevron} /> */}
                   </span>
                 </Center>
               </div>
