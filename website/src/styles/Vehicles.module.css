@@ -1,26 +1,26 @@
 .container {
-  max-width: 800px;
+  max-width: 1200px; /* Increase max-width for a wider layout */
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   min-height: 100vh;
 }
 
 .title {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
+  margin-bottom: 60px; /* More spacing below title */
+  font-size: 3rem; /* Larger font size */
 }
 
 .vehiclesList {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px; /* More space between vehicle cards */
 }
 
 .vehiclesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 20px; /* Add space between grid items */
 }
 
 .vehicle {
@@ -31,7 +31,7 @@
   margin: 0;
   width: 100%;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: 100%; /* Keeps images square */
 }
 
 .left {
@@ -43,14 +43,14 @@
 }
 
 .image {
-  width: 200px;
-  height: 150px;
+  width: 300px; /* Larger image width */
+  height: 225px; /* Larger image height to maintain aspect ratio */
   object-fit: cover;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .info {
-  max-width: 400px;
+  max-width: 600px; /* Increase width for the info box */
 }
 
 .vehicle img {
@@ -77,10 +77,10 @@
 
 .textBox {
   grid-column: span 4;
-  height: 300px;
+  height: 400px; /* Increase height of text box */
   background-color: #000;
   color: #f8c8c8;
-  padding: 20px;
+  padding: 40px; /* More padding for content */
   margin-top: 0;
   text-align: center;
   border: 2px solid white;
