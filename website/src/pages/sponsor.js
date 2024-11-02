@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Sponsor.module.css"; // Import the CSS module for styling
+import styles from "@/styles/Sponsor.module.css";
 
 const sponsors = [
   {
     name: "Company One",
-    logo: "/images/company1.jpg", // Ensure this image exists in the public/images directory
+    logo: "/images/company1.jpg",
     link: "https://company1.com",
   },
   {

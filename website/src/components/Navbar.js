@@ -38,10 +38,10 @@ export default function Navbar() {
     : `${styles.navbar} ${styles.show}`;
 
     const teamLinks = [
-      { link: '/meetTeam/2023-2024', label: 'Current Team' },
+      { link: '/meetTeam/2024-2025', label: 'Current Team' },
+      { link: '/meetTeam/2023-2024', label: '2023 - 2024' },
       { link: '/meetTeam/2022-2023', label: '2022 - 2023' },
-      { link: '/meetTeam/2021-2022', label: '2021 - 2022' },
-      { link: '/meetTeam/pastExecs', label: 'Past Members' },
+      { link: '/meetTeam/pastMembers', label: 'Past Members' },
     ];
 
   return (
@@ -87,11 +87,11 @@ export default function Navbar() {
 
             <Menu.Dropdown className={dropdownStyles.dropdownMenu}>
               {teamLinks.map((item) => (
-                <Menu.Item key={item.link} className={dropdownStyles.dropdownItem}>
-                  <Link href={item.link}>
-                    {item.label}
-                  </Link>
-                </Menu.Item>
+                <Link href={item.link}>
+                  <Menu.Item key={item.link} className={dropdownStyles.dropdownItem}>
+                      {item.label}
+                  </Menu.Item>
+                </Link>
               ))}
             </Menu.Dropdown>
           </Menu>

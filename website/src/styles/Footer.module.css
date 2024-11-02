@@ -51,21 +51,18 @@
   color: #4169E1;
 }
 
-/* Add a vertical line separator between sections */
 .footerContent > .logoSection {
   border-right: 2px solid #444;
   padding-right: 2rem;
   height: 90px;
 }
 
-/* Add a vertical line separator between sections */
 .footerContent > .socialLinksSection {
   border-right: 2px solid #444;
   padding-right: 2rem;
   height: 90px;
 }
 
-/* Info section styling */
 .infoSection {
   text-align: left;
   line-height: 1.2;
@@ -82,7 +79,6 @@
   text-align: left;
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
   .footerContent {
     flex-direction: column;

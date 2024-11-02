@@ -1,14 +1,13 @@
 import Head from "next/head";
-import { useState, useRef, useEffect } from "react"; // Import useRef and useEffect
+import { useState, useRef, useEffect } from "react";
 import styles from "@/styles/Vehicles.module.css";
 
-// Sample vehicle data
 const vehicles = [
   {
     id: 1,
     name: "Vehicle 1",
     description: "Description for Vehicle 1.",
-    image: "/images/vehicle1.jpg", // Path to the image in public/images
+    image: "/images/vehicle1.jpg",
   },
   {
     id: 2,
@@ -31,22 +30,19 @@ const vehicles = [
 ];
 
 export default function Vehicles() {
-  const [selectedVehicle, setSelectedVehicle] = useState(vehicles[0]); // Initialize state with the first vehicle
-  const [arrowPosition, setArrowPosition] = useState(0); // State for arrow position
-  const vehicleRefs = useRef([]); // Ref to store vehicle image elements
-  const [isPaused, setIsPaused] = useState(false); // State to manage pause status
+  const [selectedVehicle, setSelectedVehicle] = useState(vehicles[0]);
+  const [arrowPosition, setArrowPosition] = useState(0);
+  const vehicleRefs = useRef([]);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const index = vehicles.findIndex(v => v.id === selectedVehicle.id);
     if (vehicleRefs.current[index]) {
       const rect = vehicleRefs.current[index].getBoundingClientRect();
       const textBoxRect = document.querySelector(`.${styles.textBox}`).getBoundingClientRect();
-      
-      // Calculate the center of the selected vehicle image
       const centerX = rect.left + rect.width / 2 - 20;
       
-      // Set the arrow position relative to the text box
-      setArrowPosition(centerX - textBoxRect.left); // Center the arrow above the text box
+      setArrowPosition(centerX - textBoxRect.left);
     }
   }, [selectedVehicle]);
 
@@ -61,7 +57,7 @@ export default function Vehicles() {
     };
 
     if (!isPaused) {
-      intervalId = setInterval(changeVehicle, 3000); // Change vehicle every 3 seconds
+      intervalId = setInterval(changeVehicle, 3000);
     }
 
     return () => {
@@ -72,12 +68,11 @@ export default function Vehicles() {
 
   const handleClick = (vehicle) => {
     setSelectedVehicle(vehicle);
-    setIsPaused(true); // Pause the automatic change
+    setIsPaused(true);
 
-    // Set a timeout to resume automatic changes after 20 seconds
     setTimeout(() => {
       setIsPaused(false);
-    }, 20000); // Resume after 20 seconds
+    }, 20000);
   };
 
   return (

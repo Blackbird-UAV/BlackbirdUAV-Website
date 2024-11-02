@@ -1,39 +1,89 @@
 .container {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 20px;
   min-height: 100vh;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .title {
-  text-align: center;
-  margin-bottom: 40px;
   font-size: 2rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.teamList {
-  display: flex;
-  flex-direction: column;
+.message {
+  font-size: 1.2rem;
+  color: #757575;
+}
+
+.grid {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 }
 
-.member {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ddd;
+.card {
+  background-color: white;
+  border: 1px solid #d3d3d3;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: transform 0.2s;
+  text-align: center;
 }
 
-.image {
-  width: 100px; /* Fixed size for the image */
-  height: 100px; /* Fixed size for the image */
-  border-radius: 50%; /* Makes the image circular */
-  margin-right: 20px;
-  object-fit: cover; /* Ensures the image covers the area without distortion */
+.card:hover {
+  transform: scale(1.05);
 }
 
-.info {
-  max-width: 600px;
+.card .name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.card .description {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin: 2px 0;
+  font-size: 0.9rem;
+  margin: 0px 4px;
+}
+
+.tag.Executive {
+  background-color: #e6e6fa;
+  color: #4c4eff;
+}
+
+.tag.Administrative {
+  background-color: #ffebcd;
+  color: #ff8c00;
+}
+
+.tag.Design {
+  background-color: #f0fff0;
+  color: #2ecc71;
+}
+
+.tag.Systems {
+  background-color: #fff0f5;
+  color: #d5006d;
+}
+
+.tag.Manufacturing {
+  background-color: #fff2f0;
+  color: #ff100e;
 }

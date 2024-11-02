@@ -1,7 +1,7 @@
 // src/pages/index.js
 import Head from "next/head";
-import Image from "next/image";
 import styles from "@/styles/Home.module.css";
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -12,38 +12,58 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <h1 className={styles.title}>Welcome to Our Company</h1>
-          <Image
-            src="/images/tempImage.png" // Path to the image
-            alt="Temp Image"
-            width={300} // Specify the width
-            height={300} // Specify the height
-            priority
-          />
-          <p className={styles.description}>
-            We provide innovative solutions to help your business grow.
-          </p>
-          <div className={styles.infoBoxes}>
-            <div className={styles.infoBox}>
-              <h2>Our Services</h2>
-              <p>Discover a range of services tailored for your needs.</p>
+
+      <div className={styles.HomeContainer}>
+            <div className={styles.contentWrapper}>
+                <div className={styles.textSection}>
+                    <h1 className={styles.name}>BLACKBIRD</h1>
+                    <h2 className={styles.subtitle}>Fly Around and Find Out</h2>
+                </div>
+                <div className={styles.buttonSection}>
+                    <Link href="/sponsor" className={styles.sponsorButton}>
+                        Sponsor Us
+                    </Link>
+                </div>
+
             </div>
-            <div className={styles.infoBox}>
-              <h2>Our Mission</h2>
-              <p>Committed to delivering excellence and value to our clients.</p>
-            </div>
-            <div className={styles.infoBox}>
-              <h2>Contact Us</h2>
-              <p>Get in touch to see how we can assist you.</p>
-            </div>
+        </div>
+      
+        <div id="secondDiv" className={styles.aboutContainer}>
+            <h1>About Us</h1>
+            <p>
+                At Blackbird UAV, we specialize in cutting-edge drone technology that empowers businesses and individuals to reach new heights. Our team of experienced engineers and pilots are dedicated to providing innovative aerial solutions for a variety of industries, including agriculture, construction, and surveillance.
+            </p>
+            <img src="/images/about-us.jpg" alt="Blackbird UAV Team" className={styles.aboutImage} />
+        </div>
+
+        <div id="services" className={styles.servicesContainer}>
+          <h2>Our Services</h2>
+          <div className={styles.service}>
+              <h3>Aerial Photography</h3>
+              <p>Capture stunning visuals with our high-resolution drones for marketing and events.</p>
+              <img src="/images/aerial-photography.jpg" alt="Aerial Photography" className={styles.serviceImage} />
           </div>
-        </main>
-      </div>
-      <div id="secondDiv" className={styles.aboutContainer}>
-          hi
-      </div>
+          <div className={styles.service}>
+              <h3>Surveying & Mapping</h3>
+              <p>Utilize advanced mapping solutions for accurate land surveys and data collection.</p>
+              <img src="/images/surveying-mapping.jpg" alt="Surveying & Mapping" className={styles.serviceImage} />
+          </div>
+          <div className={styles.service}>
+              <h3>Inspection Services</h3>
+              <p>Perform thorough inspections of hard-to-reach areas, ensuring safety and efficiency.</p>
+              <img src="/images/inspection-services.jpg" alt="Inspection Services" className={styles.serviceImage} />
+          </div>
+        </div>
+
+        <div id="gallery" className={styles.galleryContainer}>
+          <h2>Gallery</h2>
+          <div className={styles.imageGrid}>
+              <img src="/images/gallery1.jpg" alt="Drone in Action" className={styles.galleryImage} />
+              <img src="/images/gallery2.jpg" alt="Aerial View of Landscape" className={styles.galleryImage} />
+              <img src="/images/gallery3.jpg" alt="Team at Work" className={styles.galleryImage} />
+              <img src="/images/gallery4.jpg" alt="Drone Technology" className={styles.galleryImage} />
+          </div>
+        </div>
     </>
   );
 }
