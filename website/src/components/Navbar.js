@@ -3,7 +3,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import styles from "@/styles/Navbar.module.css";
-
+import dropdownStyles from "../styles/Dropdown.module.css";
+import { Menu, Center } from '@mantine/core';
+import { IconChevronDown } from '@tabler/icons-react';
 export default function Navbar() {
   const router = useRouter();
   const [showNavbar, setShowNavbar] = useState(false);
@@ -35,6 +37,13 @@ export default function Navbar() {
     ? `${styles.navbar} ${showNavbar ? styles.show : ''}`
     : `${styles.navbar} ${styles.show}`;
 
+    const teamLinks = [
+      { link: '/meetTeam/2023-2024', label: 'Current Team' },
+      { link: '/meetTeam/2022-2023', label: '2022 - 2023' },
+      { link: '/meetTeam/2021-2022', label: '2021 - 2022' },
+      { link: '/meetTeam/pastExecs', label: 'Past Members' },
+    ];
+
   return (
     <nav className={navbarClass}>
       <Link href="/">
@@ -60,11 +69,33 @@ export default function Navbar() {
             <span>Vehicles</span>
           </Link>
         </div>
-        <div className={`${styles.linkWrapper} ${router.pathname === '/meetTeam' ? styles.activeLink : ''}`}>
-          <Link href="/meetTeam" className={styles.link}>
-            <span>Team</span>
-          </Link>
-        </div>
+
+          <Menu trigger="hover" transitionProps={{ exitDuration: 0 }}>
+            <Menu.Target>
+              <div
+                className={`${styles.linkWrapper} ${router.pathname.startsWith('/meetTeam') ? styles.activeLink : ''}`}
+                style={{ position: 'relative' }}
+              >
+                <Center className={styles.link}>
+                  <span>
+                    Team
+                    <IconChevronDown size="0.9rem" stroke={1.5} color="#f9fafb" className={styles.chevron} />
+                  </span>
+                </Center>
+              </div>
+            </Menu.Target>
+
+            <Menu.Dropdown className={dropdownStyles.dropdownMenu}>
+              {teamLinks.map((item) => (
+                <Menu.Item key={item.link} className={dropdownStyles.dropdownItem}>
+                  <Link href={item.link}>
+                    {item.label}
+                  </Link>
+                </Menu.Item>
+              ))}
+            </Menu.Dropdown>
+          </Menu>
+
         <div className={`${styles.linkWrapper} ${router.pathname === '/joinTheTeam' ? styles.activeLink : ''}`}>
           <Link href="/joinTheTeam" className={styles.link}>
             <span>Join</span>
