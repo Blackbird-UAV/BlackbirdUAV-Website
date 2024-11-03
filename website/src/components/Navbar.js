@@ -64,8 +64,8 @@ export default function Navbar() {
             <span>Home</span>
           </Link>
         </div>
-        <div className={`${styles.linkWrapper} ${router.pathname === '/vehicles' ? styles.activeLink : ''}`}>
-          <Link href="/vehicles" className={styles.link}>
+        <div className={`${styles.linkWrapper} ${router.pathname === '/vehicles2' ? styles.activeLink : ''}`}>
+          <Link href="/vehicles2" className={styles.link}>
             <span>Vehicles</span>
           </Link>
         </div>

@@ -1,3 +1,85 @@
+/* VehiclesDraft.module.css */
+
+.container {
+  padding: 20px 60px; /* Increased padding on left and right */
+  background-color: #171717;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #ffffff;
+  font-size: 4rem;
+}
+
+.vehiclesList {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.vehicleCard {
+  display: flex;
+  align-items: center;
+  background-color: #171717;
+  padding: 20px;
+  flex-direction: row;
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.vehicleCard.right {
+  flex-direction: row-reverse;
+  margin-left: 40px;
+}
+
+.squareImage {
+  width: 550px;
+  height: 550px;
+  object-fit: cover;
+  margin-right: 0 40px;
+  border-radius: 8px;
+}
+
+.textBox {
+  flex: 1;
+  color: #DBF5F5; /* Light blue text color for readability */
+  padding: 40px;
+  border-radius: 8px;
+  background-color: rgba(23, 23, 23, 0.8); /* Semi-transparent background to blend */
+  max-width: 700px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 250px; /* Adjust the height value as needed */
+}
+
+.vehicleCard.right .textBox {
+  margin-left: 20px;
+}
+
+.textBox h2 {
+  margin: 0;
+  color: #e68787; /* Heading color */
+  font-size: 2rem;
+}
+
+.textBox p {
+  margin: 20px 0 0;
+  color: #DBF5F5;
+  font-size: 1.2rem;
+}
+
+/* Animation Classes */
+.vehicleCard.visible.left {
+  opacity: 1;
+  animation: slideInLeft 0.8s forwards;
+}
+
+.vehicleCard.visible.right {
+  opacity: 1;
+  animation: slideInRight 0.8s forwards;
+}
+
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -18,86 +100,4 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.container {
-  padding: 20px;
-  background-color: #171717;
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #ffffff;
-  font-size: 4rem; /* Increased font size for better visibility */
-}
-
-.vehiclesList {
-  display: flex;
-  flex-direction: column;
-  gap: 60px; /* Increased space between cards */
-}
-
-.vehicleCard {
-  display: flex;
-  align-items: center;
-  background-color: #171717;
-  border: none;
-  padding: 20px;
-  flex-direction: row;
-  opacity: 0; /* Initially hidden */
-  transform: translateX(0);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.vehicleCard.right {
-  flex-direction: row-reverse;
-}
-
-.circleImage {
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  z-index: 1;
-  object-fit: cover; /* Ensure the image covers the circle */
-}
-
-.textBox {
-  flex: 1;
-  margin-left: -45px;
-  color: #171717;
-  padding: 60px;
-  border-radius: 16px;
-  background-color: #f5f5f5;
-  border: 6px solid red; /* Red outline */
-  max-width: 700px; /* Reduced width of text boxes */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.vehicleCard.right .textBox {
-  margin-left: 0;
-  margin-right: -45px;
-}
-
-.textBox h2 {
-  margin: 0;
-  color: #171717;
-  font-size: 2rem; /* Optional: Adjust heading size */
-}
-
-.textBox p {
-  margin: 10px 0 0;
-  color: #171717;
-  font-size: 1.2rem; /* Optional: Adjust paragraph size */
-}
-
-/* Animation Classes */
-.vehicleCard.visible.left {
-  opacity: 1;
-  animation: slideInLeft 0.8s forwards;
-}
-
-.vehicleCard.visible.right {
-  opacity: 1;
-  animation: slideInRight 0.8s forwards;
 }

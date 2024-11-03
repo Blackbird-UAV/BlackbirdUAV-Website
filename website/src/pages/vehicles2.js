@@ -13,35 +13,25 @@ export default function Vehicles() {
   const vehiclesRef = useRef([]);
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-    };
-
+    const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const element = entry.target;
-          if (element.classList.contains(styles.right)) {
-            element.classList.add(`${styles.visible}`, `${styles.right}`);
-          } else {
-            element.classList.add(`${styles.visible}`, `${styles.left}`);
-          }
+          element.classList.add(
+            styles.visible,
+            element.classList.contains(styles.right) ? styles.right : styles.left
+          );
           observer.unobserve(element);
         }
       });
     }, observerOptions);
 
     vehiclesRef.current.forEach((ref) => {
-      if (ref) {
-        observer.observe(ref);
-      }
+      if (ref) observer.observe(ref);
     });
 
-    return () => {
-      if (observer) {
-        observer.disconnect();
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -64,7 +54,7 @@ export default function Vehicles() {
               <img 
                 src={vehicle.image} 
                 alt={vehicle.name} 
-                className={styles.circleImage} 
+                className={styles.squareImage} 
               />
               <div className={styles.textBox}>
                 <h2>{vehicle.name}</h2>
