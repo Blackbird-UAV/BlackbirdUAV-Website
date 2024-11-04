@@ -29,7 +29,7 @@ export default function Join() {
           <p className={styles.contentText}>
             Work on cutting-edge projects, gain practical skills, and be part of a community that thrives on innovation. We offer a space where everyone can contribute—regardless of experience level. Stay informed on our open-door meetings and collaborative efforts by joining us on Discord.
           </p>
-          <a href="https://discord.com/invite/H886nu95" target="_blank" rel="noreferrer" className={styles.discordButton}>
+          <a href="https://discord.gg/Spw3F6KrCn" target="_blank" rel="noreferrer" className={styles.discordButton}>
             <FontAwesomeIcon icon={faDiscord} width={24} height={24} />
             <span>Join Us on Discord</span>
           </a>

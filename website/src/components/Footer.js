@@ -23,7 +23,7 @@ export default function Footer() {
             <a href="https://www.youtube.com/@BlackbirdUAV" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faYoutube} />
             </a>
-            <a href="https://discord.gg/H886nu95" target="_blank" rel="noopener noreferrer">
+            <a href="https://discord.gg/Spw3F6KrCn" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faDiscord} />
             </a>
           </div>
@@ -33,7 +33,7 @@ export default function Footer() {
         <div className={styles.infoSection}>
           <p>Canal Building, Library Rd, Ottawa, ON</p>
           <p>Carleton University, Ottawa, ON K1S 5B6</p>
-          <p>© Copyright 2022, BlackBird UAV</p>
+          <p>© Copyright, BlackBird UAV</p>
         </div>
 
       </div>
