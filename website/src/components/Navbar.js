@@ -38,10 +38,10 @@ export default function Navbar() {
     : `${styles.navbar} ${styles.show}`;
 
     const teamLinks = [
-      { link: '/meetTeam/2024-2025', label: 'Current Team' },
-      { link: '/meetTeam/2023-2024', label: '2023 - 2024' },
-      { link: '/meetTeam/2022-2023', label: '2022 - 2023' },
-      { link: '/meetTeam/pastMembers', label: 'Past Members' },
+      { link: '/MeetTheTeam/2024-2025', label: 'Current Team' },
+      { link: '/MeetTheTeam/2023-2024', label: '2023 - 2024' },
+      { link: '/MeetTheTeam/2022-2023', label: '2022 - 2023' },
+      { link: '/MeetTheTeam/pastMembers', label: 'Past Members' },
     ];
 
   return (
