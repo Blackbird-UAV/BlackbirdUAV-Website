@@ -1,43 +1,183 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    min-height: 100vh;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .description {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-  }
-  
-  .sponsors {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .sponsor {
-    margin: 15px;
-    text-align: center;
-  }
-  
-  .logo {
-    border-radius: 8px; /* Rounded corners for the logo */
-    transition: transform 0.3s;
-  }
-  
-  .logo:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-  }
-  
-  .sponsorName {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
+/* Header styling */
+.header {
+  background-image: url("/images/company1.jpg"); /* Replace with your header image path */
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  position: relative;
+  color: #fff;
+  object-fit: cover;
+  transition: background-position 0.2s ease-out;
+  /* background-attachment: fixed; */
+}
+
+.headerOverlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.headerTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Introduction Section */
+.introSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 60px;
+  background: #000;
+  color: #fff;
+  position: relative;
+}
+
+.introText {
+  flex: 1;
+  padding: 20px;
+  max-width: 50%;
+}
+
+.introText h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.introText p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.introText a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.introText a:hover {
+  color: #0056b3;
+}
+
+.introImage {
+  flex: 1;
+  max-width: 50%;
+  text-align: center;
+}
+
+/* Wavy Divider */
+.custom-shape-divider-bottom-1730849865 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1730849865 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+.custom-shape-divider-bottom-1730849865 .shape-fill {
+  fill: #ffffff;
+}
+
+/* Sponsors Section */
+.sponsorsSection {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.sponsorsSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+/* Sponsor tiers */
+.tierSection {
+  margin-top: 40px;
+  text-align: center;
+
+  opacity: 0; /* Start hidden */
+  transform: translateY(50%); /* Start off-screen (bottom) */
+  transition: opacity 1s ease, transform 1s ease; /* Fade and slide animation */
+  will-change: opacity, transform; /* Optimize for smooth animation */
+}
+
+.tierSection.visible {
+  opacity: 1;
+  transform: translateY(0%); /* Slide to the original position */
+}
+
+.tierSection h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.platinumText {
+  color: #85ced9;
+}
+
+.goldText {
+  color: #f4a300;
+}
+
+.silverText {
+  color: #c0c0c0;
+}
+
+.bronzeText {
+  color: #cd7f32;
+}
+
+.sponsorGrid {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: center; /* Centers the grid content */
+  gap: 20px; /* Consistent 20px gap between items */
+}
+
+.sponsor {
+  flex: 1 1 150px; /* Ensures items have a minimum width and grow to fill space */
+  max-width: 150px; /* Restricts max width */
+  margin: 10px; /* Creates a consistent space around each image */
+  text-align: center;
+}
+
+.logo {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sponsorName {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Parallax effect */
+.header {
+  position: relative;
+  background-attachment: fixed;
+}
