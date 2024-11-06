@@ -13,7 +13,7 @@
   font-weight: bold;
   color: #4a4a4a;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .message {
@@ -21,69 +21,260 @@
   color: #757575;
 }
 
+.subteam {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 150px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-align: center;
+  transform: rotate(180deg);
+}
+
+.sidebarText {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
 .grid {
   max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  width: calc(100% - 20px);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  flex-grow: 1;
+  margin-left: 10px;
+  justify-content: center;
 }
 
+/* Card styles */
 .card {
-  background-color: white;
-  border: 1px solid #d3d3d3;
+  position: relative;
+  width: 100%;
+  height: 400px;  /* Fixed height */
+  perspective: 1000px;
+  display: flex;
+  align-items: center;  /* Ensure contents are centered */
+  justify-content: center;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 8px;
-  padding: 16px;
-  transition: transform 0.2s;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: block;
   text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.cardBack {
+  background-color: #f8f8f8; /* Lighter background for contrast */
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column; /* Align content vertically */
+  align-items: center; /* Center content */
+  justify-content: center; /* Center content */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow for better depth */
 }
 
-.card .name {
+.cardBack .name {
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 10px 0;
+  color: #333; /* Darker color for the name */
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.card .description {
+.cardBack .extendedDescription {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 15px;
+  text-align: center;
+  line-height: 1.5;
+  padding: 0 10px; /* Padding for readability */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardBack .linkButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.cardBack .linkButton:hover {
+  background-color: #0056b3; /* Darken the button on hover */
+}
+
+.cardBack .executiveTag {
+  background-color: #ffd700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.cardFront {
+  background-color: white;
+  border: 1px solid #d3d3d3;
+}
+
+.cardFront .name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardFront .description {
   font-size: 0.9rem;
   color: #666;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.tag {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin: 2px 0;
+.extendedDescription {
   font-size: 0.9rem;
-  margin: 0px 4px;
+  color: #666;
+  margin-top: 10px;
 }
 
-.tag.Executive {
-  background-color: #e6e6fa;
-  color: #4c4eff;
+.executiveTag {
+  background-color: #ffd700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 4%;
 }
 
-.tag.Administrative {
-  background-color: #ffebcd;
-  color: #ff8c00;
+.linkButton {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
-.tag.Design {
-  background-color: #f0fff0;
-  color: #2ecc71;
+/* Team specific styles */
+.design {
+  background-color: #4a90e2;
 }
 
-.tag.Systems {
-  background-color: #fff0f5;
-  color: #d5006d;
+.manufacturing {
+  background-color: #e94e77;
 }
 
-.tag.Manufacturing {
-  background-color: #fff2f0;
-  color: #ff100e;
+.systems {
+  background-color: #f6b93b;
+}
+
+.administrative {
+  background-color: #6cc644;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+
+  .subteam {
+    margin: 0 auto 30px;
+  }
+
+  .grid {
+    width: 90%;
+    padding: 0 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .subteam {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .sidebar {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: inherit;
+    margin-bottom: 10px;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  /* Background colors for different teams */
+  .sidebar.design {
+    background-color: #4a90e2;
+  }
+
+  .sidebar.manufacturing {
+    background-color: #e94e77;
+  }
+
+  .sidebar.systems {
+    background-color: #f6b93b;
+  }
+
+  .sidebar.administrative {
+    background-color: #6cc644;
+  }
+
+  .grid {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
