@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import teamData from '../../data/teamData';
-import { Avatar, Text, Paper, Grid } from '@mantine/core';
+import { Avatar, Text, Paper } from '@mantine/core';
 import styles from '../../styles/Team.module.css';
 
 const MeetTeam = () => {
@@ -34,18 +34,36 @@ const MeetTeam = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{teamTitle}</h1>
-      <div className={styles.grid}>
-        {team.map((member) => (
-          <Paper key={member.name} className={styles.card}>
-            <Avatar src={member.image} size={80} radius={40} mx="auto" />
-            <Text className={styles.name}>{member.name}</Text>
-            {member.tags.map((tag, index) => (
-              <span key={index} className={`${styles.tag} ${styles[tag]}`}>{tag}</span>
+      {Object.keys(team).map((subteam) => (
+        <div className={styles.subteam} key={subteam}>
+          <div className={`${styles.sidebar} ${styles[subteam]}`}>
+            <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
+          </div>
+          <div className={styles.grid}>
+            {team[subteam].map((member) => (
+              <div key={member.name} className={styles.card}>
+                <div className={styles.cardInner}>
+                  {/* Front Side */}
+                  <div className={styles.cardFront}>
+                    <Avatar src={member.image} radius="xs" size="sm" />
+                    <Text className={styles.name}>{member.name}</Text>
+                    {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
+                    <Text className={styles.description}>{member.description}</Text>
+                  </div>
+                  {/* Back Side */}
+                  <div className={styles.cardBack}>
+                    <Text className={styles.name}>{member.name}</Text>
+                    <Text className={styles.extendedDescription}>{member.extendedDescription}</Text>
+                    <a href={member.link} className={styles.linkButton} target="_blank" rel="noopener noreferrer">
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
             ))}
-            <Text className={styles.description}>{member.description}</Text>
-          </Paper>
-        ))}
-      </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
