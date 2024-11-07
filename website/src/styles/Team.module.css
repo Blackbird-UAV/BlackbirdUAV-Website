@@ -221,6 +221,9 @@
   font-size: 24px;
   cursor: pointer;
   color: #ffffff;
+  z-index: 4;
+  width: 25px;
+  height: 25px;
 }
 
 .cardFront .executiveTag {
