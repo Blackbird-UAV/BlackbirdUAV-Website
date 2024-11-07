@@ -185,15 +185,6 @@
   background-color: #0056b3;
 }
 
-.turnOverIcon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #ffffff;
-}
-
 /* CardFront elements */
 .cardFront::before {
   content: '';
@@ -221,6 +212,15 @@
   align-items: flex-start;
   padding: 8%;
   text-align: left;
+}
+
+.cardFront .turnOverIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 .cardFront .executiveTag {
