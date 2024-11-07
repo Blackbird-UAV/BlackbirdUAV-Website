@@ -8,8 +8,8 @@ const teamData = {
         isExecutive: true,
         image: '/assets/TeamHeadshots/Headshot_Felix.jpg',
         description: 'Felix is the club president and does club president things and such.',
-        extendedDescription: 'Felix is the club president and does club president things and such. Felix is the club president and does club president things and such. Felix is the club president and does club president things and such.',
-        link: 'https://linkedin.com/in/felixchenier',
+        extendedDescription: 'Felix is the club president and does club president things and such. Felix is the club president and does club president things and such. Felix is the club president and does club president things yup.',
+        link: 'https://www.linkedin.com/in/',
       },
       {
         id: 2,

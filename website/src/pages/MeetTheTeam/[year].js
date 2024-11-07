@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import teamData from '../../data/teamData';
 import { Text } from '@mantine/core';
 import styles from '../../styles/Team.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
 const MeetTeam = () => {
   const router = useRouter();
@@ -47,6 +49,9 @@ const MeetTeam = () => {
                 <div className={styles.cardInner}>
                   {/* Front Side */}
                   <div className={styles.cardFront} style={{ backgroundImage: `url(${member.image})` }}>
+                    <div className={styles.turnOverIcon}>
+                      <FontAwesomeIcon icon={faAnglesRight} />
+                    </div>
                     {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
                     <Text className={styles.firstName}>{member.firstName}</Text>
                     <Text className={styles.lastName}>{member.lastName}</Text>
@@ -61,8 +66,13 @@ const MeetTeam = () => {
                     </div>
 
                     <Text className={styles.extendedDescription}>{member.extendedDescription}</Text>
-                    <a href={member.link} className={styles.linkButton} target="_blank" rel="noopener noreferrer">
-                      LinkedIn
+                    <a
+                      href={member.link}
+                      className={styles.linkButton}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      See LinkedIn
                     </a>
                   </div>
                 </div>
