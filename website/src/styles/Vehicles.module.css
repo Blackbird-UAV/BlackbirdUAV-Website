@@ -1,100 +1,152 @@
+/* Add to your current styles file */
 .container {
-  max-width: 1200px; /* Increase max-width for a wider layout */
-  margin: 0 auto;
-  padding: 40px;
-  min-height: 100vh;
+  padding: 20px 0;
+  background-color: #171717;
 }
 
 .title {
   text-align: center;
-  margin-bottom: 60px; /* More spacing below title */
-  font-size: 3rem; /* Larger font size */
+  margin-bottom: 60px;
+  color: #E68787;
+  font-size: 4rem;
 }
 
 .vehiclesList {
   display: flex;
   flex-direction: column;
-  gap: 40px; /* More space between vehicle cards */
+  gap: 80px;
 }
 
-.vehiclesGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px; /* Add space between grid items */
+.vehicleCard {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.vehicle {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%; /* Keeps images square */
-}
-
-.left {
-  flex-direction: row;
-}
-
-.right {
+.vehicleCard.right {
   flex-direction: row-reverse;
 }
 
-.image {
-  width: 300px; /* Larger image width */
-  height: 225px; /* Larger image height to maintain aspect ratio */
-  object-fit: cover;
-  margin-right: 30px;
+.carousel {
+  width: 66.66%;
 }
 
-.info {
-  max-width: 600px; /* Increase width for the info box */
-}
-
-.vehicle img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.vehicleImage {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
-  margin: 0;
-  padding: 0;
-  display: block;
-  transition: filter 0.3s ease;
-}
-
-.vehicle img.blur {
-  filter: blur(5px);
-  opacity: 0.5;
-}
-
-.vehicle:not(:last-child) {
-  border-right: 1px solid white;
+  border-radius: 8px;
 }
 
 .textBox {
-  grid-column: span 4;
-  height: 400px; /* Increase height of text box */
-  background-color: #000;
-  color: #f8c8c8;
-  padding: 40px; /* More padding for content */
-  margin-top: 0;
+  width: 33.33%;
+  padding: 40px;
+  color: #DBF5F5;
+  background-color: rgba(23, 23, 23, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0.5, 0.5, 0.1);
+  position: relative;
+  margin: 20px auto;
   text-align: center;
-  border: 2px solid white;
+}
+
+.vehicleTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #E68787;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(23, 23, 23, 0.9);
+  padding: 5px 15px;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.textBox p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.specsList {
+  margin-top: 30px;
+  font-size: 1rem;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.specsList li {
+  margin-bottom: 12px;
+  padding-left: 20px;
   position: relative;
 }
 
-.arrow {
+.specsList li::before {
+  content: '•';
   position: absolute;
-  top: -20px;
-  left: calc(50% - 15px);
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 20px solid white;
+  left: 0;
+  color: #E68787;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Animation */
+.vehicleCard.visible.left {
+  opacity: 1;
+  animation: slideInLeft 0.8s forwards;
+}
+
+.vehicleCard.visible.right {
+  opacity: 1;
+  animation: slideInRight 0.8s forwards;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Circle animation */
+.circle {
+  position: absolute;
+  top: -50px; /* Start position at the top */
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #E68787; /* Circle color */
+  border-radius: 50%;
+  animation: sMotion 10s infinite linear;
+  pointer-events: none; /* Ensure it doesn't interfere with other elements */
+}
+
+@keyframes sMotion {
+  0% {
+    top: -50px;
+    left: 50%;
+  }
+  25% {
+    top: 20%;
+    left: 60%;
+  }
+  50% {
+    top: 40%;
+    left: 70%;
+  }
+  75% {
+    top: 60%;
+    left: 60%;
+  }
+  100% {
+    top: 80%;
+    left: 50%;
+  }
 }
