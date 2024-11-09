@@ -3,27 +3,28 @@ import styles from "@/styles/Join.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useEffect, useState } from "react";
+import { Accordion } from '@mantine/core';
+
+const accordionItems = [
+  { value: 'Design', emoji: '🟢', description: 'Focus on creative and innovative UAV designs.', image: '/images/vehicle1.jpg' },
+  { value: 'Structures', emoji: '🔴', description: 'Engineering robust and reliable structures.', image: '/images/vehicle2.jpg' },
+  { value: 'Systems', emoji: '🟣', description: 'Developing advanced UAV systems and software.', image: '/images/vehicle3.jpg' },
+  { value: 'Administration', emoji: '🟡', description: 'Managing team operations and logistics.', image: '/images/vehicle4.jpg' },
+  { value: 'Operations', emoji: '🔵', description: 'Overseeing UAV operations and missions.', image: '/images/vehicle2.jpg' },
+];
 
 export default function Join() {
-  const [isBottomVisible, setIsBottomVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(accordionItems[0].image);
+  const [currentAccordionValue, setCurrentAccordionValue] = useState("Design");
+  const [borderClass, setBorderClass] = useState("border-green");
 
-  // Scroll event listener to detect when the user reaches the bottom of the page
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const header = document.querySelector(`.${styles.parallaxBackground}`);
-      const speed = 0.5;
-      header.style.backgroundPositionY = `-${scrollPosition * speed}px`;
-
-      const scrolledToBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 80;
-      console.log(scrolledToBottom);
-      setIsBottomVisible(scrolledToBottom);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const emojiToBorderClass = {
+    '🟢': 'border-green',
+    '🔴': 'border-red',
+    '🟣': 'border-purple',
+    '🟡': 'border-yellow',
+    '🔵': 'border-blue',
+  };
 
   return (
     <>
@@ -36,51 +37,72 @@ export default function Join() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* Parallax Background Section */}
-      <div className={styles.parallaxBackground}>
-        <div className={styles.contentContainer}>
-          <div className={styles.textContainer}>
-            <h1 className={styles.bigHeader}>
-              <strong>Soar Higher with Black Bird UAV</strong>
-            </h1>
-            <p className={styles.flavourTextTop}>
-              Explore the future of UAV technology with a community that pushes
-              boundaries.
+      <div className={styles.contentContainer}>
+        <div className={styles.banner}>
+          <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
+        </div>
+
+        <div className={styles.gradientTextContainer}>
+          <h1 className={styles.bigHeader}>
+            <strong>Fly around and find out</strong>
+          </h1>
+        </div>
+
+        <div className={styles.aboutUs}>
+          <div className={styles.leftContent}>
+            <img src="/images/JoinUsMedia.jpg" alt="Join Us" className={styles.aboutUsImage} />
+          </div>
+          <div className={styles.rightContent}>
+            <h3>About Us</h3>
+            <p>
+              Be part of a team that is at the forefront of UAV technology. Collaborate, innovate, and soar to new heights with us.
             </p>
-            <p className={styles.flavourText}>
-              Take your passion for technology to new heights. Whether you're a
-              seasoned engineer or just curious about UAVs, Black Bird UAV
-              offers hands-on experience in aerial robotics. All Carleton
-              students are welcome to be part of something bigger.
-            </p>
-            <p className={styles.contentText}>
-              Work on cutting-edge projects, gain practical skills, and be part
-              of a community that thrives on innovation. We offer a space where
-              everyone can contribute—regardless of experience level. Stay
-              informed on our open-door meetings and collaborative efforts by
-              joining us on Discord.
-            </p>
+            <a
+              href="https://discord.gg/Spw3F6KrCn"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.discordButton}
+            >
+              <FontAwesomeIcon icon={faDiscord} width={24} height={24} />
+              <span>Join us on Discord!</span>
+            </a>
           </div>
         </div>
-      </div>
 
-      {/* Scroll-Up Section */}
-      <div
-        className={`${styles.scrollUpSection} ${
-          isBottomVisible ? styles.visible : ""
-        }`}
-      >
-        <div class="content">
-          <h2>Interested in joining?</h2>
-          <a
-            href="https://discord.gg/Spw3F6KrCn"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.discordButton}
-          >
-            <FontAwesomeIcon icon={faDiscord} width={24} height={24} />
-            <span>Join us on Discord!</span>
-          </a>
+        <div className={styles.accordionSection}>
+          <div className={styles.leftContent}>
+            <img src={selectedImage} alt="Selected" className={`${styles.aboutUsImage} ${styles[borderClass]}`} />
+          </div>
+          <div className={styles.rightContent}>
+            <Accordion
+              chevronPosition="left"
+              defaultValue="Design"
+              onChange={(value) => {
+                if (value !== currentAccordionValue) {
+                  const selectedItem = accordionItems.find(item => item.value === value);
+                  if (selectedItem) {
+                    setSelectedImage(selectedItem.image);
+                    setCurrentAccordionValue(value);
+                    setBorderClass(emojiToBorderClass[selectedItem.emoji]);
+                  }
+                }
+              }}
+            >
+              {accordionItems.map((item) => (
+                <Accordion.Item key={item.value} value={item.value}>
+                  <Accordion.Control 
+                    className={`${styles.accordionControl} ${currentAccordionValue === item.value ? 'selected ' + styles[borderClass] : ''}`} 
+                    icon={item.emoji}
+                  >
+                    {item.value}
+                  </Accordion.Control>
+                  <Accordion.Panel className={`${styles.accordionPanel} ${currentAccordionValue === item.value ? 'selected ' + styles[borderClass] : ''}`}>
+                    {item.description}
+                  </Accordion.Panel>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </div>
     </>

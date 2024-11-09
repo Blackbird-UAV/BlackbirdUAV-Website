@@ -1,45 +1,28 @@
-/* Parallax background with dim overlay */
-.parallaxBackground {
-  background-image: url("/images/JoinUsMedia.jpg");
-  background-attachment: fixed;
-  background-size: auto 120%;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 110vh;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  transition: background-position 0.2s ease-out;
-}
-
-.parallaxBackground::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Dim overlay */
-  z-index: 1;
-}
-
 .contentContainer {
   position: relative;
-  z-index: 2;
-  max-width: 800px;
-  text-align: center;
-  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Main text styling */
 .bigHeader {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #ffffff;
+  background: linear-gradient(90deg, #8B0000, #FF4500, #FF6347);
+  background-clip: text; 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #333; 
+}
+
+.gradientTextContainer {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .flavourTextTop {
@@ -57,72 +40,245 @@
   line-height: 1.6;
 }
 
-/* Dynamic Discord section */
-/* Scroll-Up Section */
-.scrollUpSection {
-  position: fixed;
-  bottom: 0%; /* Start off-screen */
-  left: 0;
+.banner {
   width: 100%;
-  height: 40vh;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
+  height: auto;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.aboutUs {
   display: flex;
-  flex-direction: column;
-  padding: 40px;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  opacity: 0;
-  transform: translateY(50%);
-  z-index: 999;
+  background-color: #444; 
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  color: #fff;
+  flex: 1;
 }
 
-.scrollUpSection.visible {
-  opacity: 1;
-  transform: translateY(0%);
-  /* bottom: 10%; */
+.aboutUs .leftContent,
+.aboutUs .rightContent {
+  flex: 1;
+  padding: 0 10px;
 }
 
-.scrollUpSection .content {
-  display: flex; /* Set to flexbox for horizontal layout */
-  flex-direction: row; /* Arrange items horizontally */
-  justify-content: space-between; /* Space out the content */
-  align-items: center; /* Vertically center items */
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
+.aboutUs .rightContent h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
-.scrollUpSection .content h2 {
-  margin: 5px;
-  font-size: 1.2rem;
-  flex-grow: 1;
+.aboutUs .rightContent p {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-/* Discord button styling */
-.discordButton {
-  margin: 10px;
+.aboutUs .leftContent {
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: #5865f2;
-  color: white;
-  padding: 15px 30px;
+  align-items: center;
+  padding-right: 20px; 
+}
+
+.aboutUsImage {
+  max-width: 100%;
+  height: auto;
   border-radius: 8px;
+}
+
+.discordButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid #007bff; 
+  border-radius: 5px;
+  color: #007bff; 
   text-decoration: none;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .discordButton:hover {
-  background-color: #4752c4;
+  background-color: #007bff; 
+  color: #fff; 
 }
 
-.discordButton span {
-  margin-left: 10px;
-  font-size: 1.2rem;
+.accordionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #444;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  color: #fff;
 }
+
+.accordionSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #333;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  color: #fff;
+  flex: 1;
+  height: auto;
+}
+
+.accordionSection .leftContent,
+.accordionSection .rightContent {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.accordionSection .leftContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  padding-left: 20px;
+}
+
+.border-green {
+  box-shadow: 0 0 5px 2px rgba(0, 255, 0, 0.5);
+}
+
+.border-red {
+  box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0.5);
+}
+
+.border-purple {
+  box-shadow: 0 0 5px 2px rgba(128, 0, 128, 0.5);
+}
+
+.border-yellow {
+  box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.5);
+}
+
+.border-blue {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 255, 0.5);
+}
+
+.accordionControl {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #444;
+  border: none;
+  transition: box-shadow 0.3s ease;
+  flex: 1;
+}
+
+.accordionControl.selected {
+  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.5);
+}
+
+.accordionControl.selected.border-red {
+  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5);
+}
+
+.accordionControl.selected.border-purple {
+  box-shadow: 0 0 15px 5px rgba(128, 0, 128, 0.5);
+}
+
+.accordionControl.selected.border-yellow {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.5);
+}
+
+.accordionControl.selected.border-blue {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.5);
+}
+
+.accordionControl:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.accordionPanel {
+  background-color: #444;
+  padding: 10px;
+  border: none;
+  transition: box-shadow 0.3s ease;
+  height: auto;
+  overflow: hidden;
+}
+
+.accordionPanel.selected {
+  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.5); /* Default to green glow */
+}
+
+.accordionPanel.selected.border-red {
+  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5); /* Red glow */
+}
+
+.accordionPanel.selected.border-purple {
+  box-shadow: 0 0 15px 5px rgba(128, 0, 128, 0.5); /* Purple glow */
+}
+
+.accordionPanel.selected.border-yellow {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.5); /* Yellow glow */
+}
+
+.accordionPanel.selected.border-blue {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.5); /* Blue glow */
+}
+
+.selected {
+  box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.5); /* Increase the spread for a more visible glow */
+  z-index: 4; /* Ensure the selected glow is above other elements */
+}
+
+.selected.border-red {
+  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5); /* Increase the spread for a more visible glow */
+}
+
+.selected.border-purple {
+  box-shadow: 0 0 15px 5px rgba(128, 0, 128, 0.5); /* Increase the spread for a more visible glow */
+}
+
+.selected.border-yellow {
+  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.5); /* Increase the spread for a more visible glow */
+}
+
+.selected.border-blue {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.5); /* Increase the spread for a more visible glow */
+}
+
+.accordionSection .glowWrapper {
+  overflow: visible; /* Ensure the glow is not clipped */
+  position: relative; /* Ensure proper stacking context */
+  z-index: 3; /* Set a higher z-index for the glow wrapper */
+}
+
+@media (max-width: 768px) {
+  .accordionSection {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  .aboutUs {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .aboutUs .leftContent,
+  .aboutUs .rightContent {
+    flex: none; /* Remove flex-grow */
+    width: 100%; /* Full width */
+    padding: 10px 0; /* Add vertical padding */
+  }
+
+  .aboutUs .leftContent {
+    padding-right: 0; /* Remove right padding */
+  }
+}
+
