@@ -10,11 +10,20 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #4a4a4a;
   text-align: center;
-  margin-bottom: 10px;
+  margin: 1% 0;
+}
+
+.headerDesc {
+  font-size: 1.2rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  max-width: 60%;
+  margin: 0 auto 1rem;
+  text-align: center;
 }
 
 .message {
@@ -118,6 +127,19 @@
   text-align: left;
   padding: 4% 8%;
   box-sizing: border-box;
+}
+
+.cardBack .presidentTag {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border-radius: 50px;
+  display: inline-block;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: -1%;
+  z-index: 2;
 }
 
 .cardBack .executiveTag {
@@ -224,6 +246,18 @@
   z-index: 4;
   width: 25px;
   height: 25px;
+}
+
+.cardFront .presidentTag {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 3%;
+  margin-left: -1%;
+  z-index: 2;
 }
 
 .cardFront .executiveTag {

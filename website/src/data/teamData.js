@@ -1,11 +1,13 @@
 const teamData = {
   '2024-2025': {
+    description: 'The 2024-2025 team worked on a pretty cool quadcopter and a fixed wing plane and such. Imagine theres some really well written awesome text here that talks about achivemenets and current tasks. Then they worked on so and so and won stuff. The innovation award happened and they competed in the national competition and stuff and such.',
     administrative: [
       {
         id: 1,
         firstName: 'Félix-Antoine',
         lastName: 'Chénier',
-        isExecutive: true,
+        isPresident: true,
+        isExecutive: false,
         image: '/assets/TeamHeadshots/Headshot_Felix.jpg',
         description: 'Felix is the club president and does club president things and such.',
         extendedDescription: 'Felix is the club president and does club president things and such. Felix is the club president and does club president things and such. Felix is the club president and does club president things yup.',
@@ -250,6 +252,7 @@ const teamData = {
     ],
   },
   '2023-2024': {
+    description: 'The 2023-2022 this text is different. team worked on a pretty cool quadcopter and a fixed wing plane and such. Then they worked on so and so and won stuff. The innovation award happened and they competed in the national competition and stuff and such.',
     design: [
       {
         id: 1,
@@ -500,6 +503,7 @@ const teamData = {
     ],
   },
   '2022-2023': {
+    description: 'The 2022-2023 (just proving this other text si diff and adaptive) team worked on a pretty cool quadcopter and a fixed wing plane and such. Then they worked on so and so and won stuff. The innovation award happened and they competed in the national competition and stuff and such.',
     design: [
       {
         id: 1,
@@ -750,6 +754,7 @@ const teamData = {
     ],
   },
   'pastMembers': {
+    description: 'The past teams were super cool and such and stuff. team worked on a pretty cool quadcopter and a fixed wing plane and such. Then they worked on so and so and won stuff. The innovation award happened and they competed in the national competition and stuff and such.',
     design: [
       {
         name: 'Frank Castle IV',

@@ -24,6 +24,8 @@ const MeetTeam = () => {
     teamTitle = year ? `${year} Team` : 'Team Not Found';
   }
 
+  const teamDescription = team ? team.description : '';
+
   if (!team) {
     return (
       <div className={styles.container}>
@@ -36,7 +38,11 @@ const MeetTeam = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{teamTitle}</h1>
+      <div className={styles.headerDesc}>
+        {teamDescription && <div>{teamDescription}</div>}
+      </div>
       {Object.keys(team).map((subteam) => (
+        subteam !== 'description' && (
         <div className={styles.subteam} key={subteam}>
           <div className={`${styles.sidebar} ${styles[subteam]}`}>
             <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
@@ -52,6 +58,7 @@ const MeetTeam = () => {
                     <div className={styles.turnOverIcon}>
                       <FontAwesomeIcon icon={faAnglesRight} />
                     </div>
+                    {member.isPresident && <span className={styles.presidentTag}>President</span>}
                     {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
                     <Text className={styles.firstName}>{member.firstName}</Text>
                     <Text className={styles.lastName}>{member.lastName}</Text>
@@ -60,6 +67,7 @@ const MeetTeam = () => {
                   {/* Back Side */}
                   <div className={styles.cardBack}>
                     <div className={`${styles.colorTop} ${styles[subteam]}`}>
+                      {member.isPresident && <span className={styles.presidentTag}>President</span>}
                       {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
                       <Text className={styles.firstName}>{member.firstName}</Text>
                       <Text className={styles.lastName}>{member.lastName}</Text>
@@ -80,7 +88,7 @@ const MeetTeam = () => {
             ))}
           </div>
         </div>
-      ))}
+      )))}
     </div>
   );
 };
