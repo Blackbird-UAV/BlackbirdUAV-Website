@@ -1,7 +1,8 @@
-/* Add to your current styles file */
+/* General Layout */
 .container {
-  padding: 20px 0;
+  padding: 20px 8%;
   background-color: #171717;
+  overflow-x: hidden;
 }
 
 .title {
@@ -20,34 +21,106 @@
 .vehicleCard {
   display: flex;
   align-items: center;
-  opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  background-color: #131313;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .vehicleCard.right {
   flex-direction: row-reverse;
 }
 
-.carousel {
+/* Carousel Container Wrapper */
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 66.66%;
 }
 
-.vehicleImage {
+/* Carousel Image Container */
+.carousel {
+  position: relative;
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
 }
 
+/* Image with Full Height and Width */
+.vehicleImage {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Indicator Container (Positioned Below the Image) */
+.indicatorContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px; /* Space between image and indicators */
+}
+
+/* Indicators */
+.indicator {
+  width: 40px;
+  height: 7px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.activeIndicator {
+  background-color: #E68787;
+}
+
+
+/* Image with Full Height and Width */
+.vehicleImage {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Title Overlay (Positioned Directly on the Bottom Corner of Image) */
+.titleOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0; /* Start from the left edge by default */
+  width: 100%; /* Cover full width of the image */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 4.5rem;
+  color: #DBF5F5;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent); /* Dark gradient overlay */
+}
+
+/* Alternate Title Position Based on Image Side */
+.vehicleCard.left .titleOverlay {
+  justify-content: flex-start; /* Left-aligned title */
+}
+
+.vehicleCard.right .titleOverlay {
+  justify-content: flex-end; /* Right-aligned title */
+}
+
+
+
+
+
+/* Text Box */
 .textBox {
   width: 33.33%;
   padding: 40px;
   color: #DBF5F5;
-  background-color: rgba(23, 23, 23, 0.9);
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0.5, 0.5, 0.1);
-  position: relative;
-  margin: 20px auto;
+  margin: 0 20px;
   text-align: center;
 }
 
@@ -55,14 +128,8 @@
   font-size: 2.5rem;
   font-weight: bold;
   color: #E68787;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(23, 23, 23, 0.9);
-  padding: 5px 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .textBox p {
@@ -113,40 +180,4 @@
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(100px); }
   to { opacity: 1; transform: translateX(0); }
-}
-
-/* Circle animation */
-.circle {
-  position: absolute;
-  top: -50px; /* Start position at the top */
-  left: 50%;
-  width: 50px;
-  height: 50px;
-  background-color: #E68787; /* Circle color */
-  border-radius: 50%;
-  animation: sMotion 10s infinite linear;
-  pointer-events: none; /* Ensure it doesn't interfere with other elements */
-}
-
-@keyframes sMotion {
-  0% {
-    top: -50px;
-    left: 50%;
-  }
-  25% {
-    top: 20%;
-    left: 60%;
-  }
-  50% {
-    top: 40%;
-    left: 70%;
-  }
-  75% {
-    top: 60%;
-    left: 60%;
-  }
-  100% {
-    top: 80%;
-    left: 50%;
-  }
 }

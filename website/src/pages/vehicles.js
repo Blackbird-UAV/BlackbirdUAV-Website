@@ -40,7 +40,7 @@ const vehicles = [
       powerSupply: "45v (10s LiPo)",
       payload: "1.5 kg"
     },
-    images: ["/images/vehicle3.jpg", "/images/vehicle3.jpg", "/images/vehicle3.jpg"]
+    images: ["/images/vehicle3.jpg", "/images/vehicle2.jpg", "/images/vehicle1.jpg"]
   },
   {
     id: 4,
@@ -53,10 +53,9 @@ const vehicles = [
       powerSupply: "70v (16s LiPo)",
       payload: "3 kg"
     },
-    images: ["/images/vehicle4.jpg", "/images/vehicle4.jpg", "/images/vehicle4.jpg"]
+    images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle4.jpg"]
   },
 ];
-
 export default function Vehicles() {
   const vehiclesRef = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -91,20 +90,13 @@ export default function Vehicles() {
     return () => observer.disconnect();
   }, []);
 
-  // Carousel interval for cycling images
   useEffect(() => {
     const interval = setInterval(() => {
-      const currentElement = vehiclesRef.current[currentIndex];
-      currentElement.classList.add(styles.fadeOut);
-
-      setTimeout(() => {
-        currentElement.classList.remove(styles.fadeOut);
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % vehicles.length);
-      }, 500); // Match the transition duration in CSS
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % vehicles[0].images.length);
     }, 3000); // Change item every 3 seconds
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, []);
 
   return (
     <>
@@ -123,16 +115,29 @@ export default function Vehicles() {
               className={`${styles.vehicleCard} ${index % 2 === 1 ? styles.right : styles.left}`}
               ref={(el) => (vehiclesRef.current[index] = el)}
             >
-              <div className={styles.carousel}>
-                <img
-                  src={vehicle.images[currentIndex]}
-                  alt={`${vehicle.name} image ${currentIndex + 1}`}
-                  className={styles.vehicleImage}
-                />
+              <div className={styles.carouselContainer}>
+                <div className={styles.carousel}>
+                  <img
+                    src={vehicle.images[currentIndex]}
+                    alt={`${vehicle.name} image ${currentIndex + 1}`}
+                    className={styles.vehicleImage}
+                  />
+                  <div className={styles.titleOverlay}>
+                    <h2 className={styles.imageTitle}>{vehicle.name}</h2>
+                  </div>
+                </div>
+                <div className={styles.indicatorContainer}>
+                  {vehicle.images.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`${styles.indicator} ${currentIndex === idx ? styles.activeIndicator : ""}`}
+                    />
+                  ))}
+                </div>
               </div>
+
               <div className={styles.textBox}>
-                <h2 className={styles.vehicleTitle}>{vehicle.name}</h2>
-                <p><strong>Overview:</strong> {vehicle.description.overview}</p>
+                <p>{vehicle.description.overview}</p>
                 <ul className={styles.specsList}>
                   <li><strong>Weight:</strong> {vehicle.description.weight}</li>
                   <li><strong>Flight Time:</strong> {vehicle.description.flightTime}</li>
