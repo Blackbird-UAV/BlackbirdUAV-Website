@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 /* General Layout */
 .container {
   padding: 20px 8%;
@@ -10,8 +12,10 @@
   margin-bottom: 60px;
   color: #E68787;
   font-size: 4rem;
+  font-family: 'Fahkwang', sans-serif;
 }
 
+/* Vehicle Card with Lighter Background */
 .vehiclesList {
   display: flex;
   flex-direction: column;
@@ -21,11 +25,12 @@
 .vehicleCard {
   display: flex;
   align-items: center;
-  background-color: #131313;
+  background-color: #262626;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  position: relative;
 }
 
 .vehicleCard.right {
@@ -40,13 +45,11 @@
   width: 66.66%;
 }
 
-/* Carousel Image Container */
 .carousel {
   position: relative;
   width: 100%;
 }
 
-/* Image with Full Height and Width */
 .vehicleImage {
   width: 100%;
   height: 500px;
@@ -55,18 +58,19 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Indicator Container (Positioned Below the Image) */
+/* HUD Style Indicator */
 .indicatorContainer {
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 12px; /* Space between image and indicators */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  gap: 8px;
+  z-index: 1;
 }
 
-/* Indicators */
 .indicator {
-  width: 40px;
-  height: 7px;
+  width: 15px;
+  height: 5px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 2px;
   transition: background-color 0.3s;
@@ -76,45 +80,21 @@
   background-color: #E68787;
 }
 
-
-/* Image with Full Height and Width */
-.vehicleImage {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Title Overlay (Positioned Directly on the Bottom Corner of Image) */
 .titleOverlay {
   position: absolute;
   bottom: 0;
-  left: 0; /* Start from the left edge by default */
-  width: 100%; /* Cover full width of the image */
+  left: 0;
+  width: 100%;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   font-weight: bold;
   font-size: 4.5rem;
   color: #DBF5F5;
-  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent); /* Dark gradient overlay */
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
 }
 
-/* Alternate Title Position Based on Image Side */
-.vehicleCard.left .titleOverlay {
-  justify-content: flex-start; /* Left-aligned title */
-}
-
-.vehicleCard.right .titleOverlay {
-  justify-content: flex-end; /* Right-aligned title */
-}
-
-
-
-
-
-/* Text Box */
+/* Text Box with Border for Separation */
 .textBox {
   width: 33.33%;
   padding: 40px;
@@ -122,6 +102,7 @@
   border-radius: 12px;
   margin: 0 20px;
   text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .vehicleTitle {
@@ -158,10 +139,8 @@
   left: 0;
   color: #E68787;
   font-size: 1.2rem;
-  line-height: 1;
 }
 
-/* Animation */
 .vehicleCard.visible.left {
   opacity: 1;
   animation: slideInLeft 0.8s forwards;
@@ -180,4 +159,50 @@
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(100px); }
   to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+  
+  .vehicleCard {
+    flex-direction: column;
+  }
+  
+  .vehicleCard.right {
+    flex-direction: column; /* Ensure right image cards also stack vertically */
+  }
+
+  .carouselContainer, .textBox {
+    width: 100%;
+    margin: 0;
+  }
+
+  .vehicleTitle {
+    font-size: 2rem;
+  }
+  
+  .vehicleImage {
+    height: auto;
+  }
+  
+  /* Mobile Order: Title, Image, Indicator, Description, Specs */
+  .titleOverlay {
+    position: static;
+    font-size: 2rem;
+    background: none;
+    color: #E68787;
+  }
+  
+  .indicatorContainer {
+    position: static;
+    margin-top: 10px;
+  }
+  
+  .textBox {
+    padding: 20px;
+    text-align: left;
+  }
 }

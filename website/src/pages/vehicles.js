@@ -93,7 +93,7 @@ export default function Vehicles() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % vehicles[0].images.length);
-    }, 3000); // Change item every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -105,6 +105,9 @@ export default function Vehicles() {
         <meta name="description" content="Showcase of aircraft" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
       <div className={styles.container}>
         <h1 className={styles.title}>Our Aircraft</h1>
