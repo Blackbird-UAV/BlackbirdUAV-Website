@@ -5,7 +5,7 @@
   padding: 20px 8%;
   background-color: #171717;
   overflow-x: hidden;
-  padding-top: 4rem;
+  padding-top: 5rem;
 }
 
 .title {
@@ -164,6 +164,9 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .container{
+    padding-top: 10rem;
+  }
   .title {
     font-size: 3rem;
   }

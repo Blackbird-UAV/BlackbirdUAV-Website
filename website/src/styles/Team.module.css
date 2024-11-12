@@ -7,7 +7,7 @@
   justify-content: flex-start;
   padding: 1% 0;
   margin: 0 4%;
-  padding-top: 4rem;
+  padding-top: 5rem;
 }
 
 .title {
@@ -339,6 +339,12 @@
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  .container{
+    padding-top: 10rem;
+  }
+  .headerDesc {
+    max-width: 80%;
+  }
   .subteam {
     flex-direction: column;
     align-items: flex-start;
