@@ -66,7 +66,7 @@
   bottom: 10px;
   right: 10px;
   gap: 8px;
-  z-index: 1;
+  z-index: 3; /* Ensure it’s above the image and any overlays */
 }
 
 .indicator {
@@ -103,7 +103,6 @@
   border-radius: 12px;
   margin: 0 20px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .vehicleTitle {
@@ -152,6 +151,12 @@
   animation: slideInRight 0.8s forwards;
 }
 
+.divider {
+  margin: 20px 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 @keyframes slideInLeft {
   from { opacity: 0; transform: translateX(-100px); }
   to { opacity: 1; transform: translateX(0); }
@@ -162,7 +167,6 @@
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .container{
     padding-top: 10rem;
@@ -192,7 +196,7 @@
     height: auto;
   }
   
-  /* Mobile Order: Title, Image, Indicator, Description, Specs */
+  /* Title Overlay for mobile view */
   .titleOverlay {
     position: static;
     font-size: 2rem;
@@ -201,10 +205,15 @@
   }
   
   .indicatorContainer {
-    position: static;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+    flex-direction: row; /* Ensures indicators stay in a row */
   }
-  
+
   .textBox {
     padding: 20px;
     text-align: left;
