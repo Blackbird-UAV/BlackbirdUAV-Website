@@ -6,6 +6,7 @@
   color: #ffffff;
   display: flex;
   flex-direction: column;
+  padding-top: 4rem;
 }
 
 .bigHeader {
