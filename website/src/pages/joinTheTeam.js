@@ -1,17 +1,63 @@
 import Head from "next/head";
 import styles from "@/styles/Join.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faDraftingCompass, faPlane, faCogs, faUsers, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
-import { Accordion } from '@mantine/core';
+import { Accordion, Avatar, Group, Text } from '@mantine/core';
 
 const accordionItems = [
-  { value: 'Design', emoji: '🟢', description: 'Focus on creative and innovative UAV designs.', image: '/images/vehicle1.jpg' },
-  { value: 'Structures', emoji: '🔴', description: 'Engineering robust and reliable structures.', image: '/images/vehicle2.jpg' },
-  { value: 'Systems', emoji: '🟣', description: 'Developing advanced UAV systems and software.', image: '/images/vehicle3.jpg' },
-  { value: 'Administration', emoji: '🟡', description: 'Managing team operations and logistics.', image: '/images/vehicle4.jpg' },
-  { value: 'Operations', emoji: '🔵', description: 'Overseeing UAV operations and missions.', image: '/images/vehicle2.jpg' },
+  {
+    icon: faDraftingCompass,
+    value: 'Design',
+    description: 'Creative UAV designs',
+    content: 'Focus on creative and innovative UAV designs, combining cutting-edge aesthetics with functionality.',
+    image: '/images/vehicle1.jpg'
+  },
+  {
+    icon: faPlane,
+    value: 'Structures',
+    description: 'Engineering robust UAV structures',
+    content: 'Design and construct UAV structures that are strong, reliable, and lightweight for optimal performance.',
+    image: '/images/vehicle2.jpg'
+  },
+  {
+    icon: faCogs,
+    value: 'Systems',
+    description: 'Advanced UAV systems',
+    content: 'Develop sophisticated systems and software that power modern UAV technology.',
+    image: '/images/vehicle3.jpg'
+  },
+  {
+    icon: faUsers,
+    value: 'Administration',
+    description: 'Managing team and logistics',
+    content: 'Handle team operations, ensuring smooth collaboration and efficient resource management.',
+    image: '/images/vehicle4.jpg'
+  },
+  {
+    icon: faClipboard,
+    value: 'Operations',
+    description: 'Overseeing UAV missions',
+    content: 'Coordinate UAV operations, ensuring missions are conducted safely and efficiently.',
+    image: '/images/vehicle5.jpg'
+  }
 ];
+
+// This is the top label that acts as a button to reveal the content
+function AccordionLabel({ icon, value, description }) {
+  return (
+    <Group noWrap>
+      <FontAwesomeIcon icon={icon} size="2x" style={{ marginRight: '10px' }} />
+      <div>
+        <Text>{value}</Text>
+        <Text className={styles.accordionLabelDescription}>
+          {description}
+        </Text>
+      </div>
+    </Group>
+  );
+}
 
 export default function Join() {
   const [selectedImage, setSelectedImage] = useState(accordionItems[0].image);
@@ -61,12 +107,15 @@ export default function Join() {
         </div>
 
         <div className={styles.accordionSection}>
+
           <div className={styles.leftContent}>
             <img src={selectedImage} alt="Selected" className={styles.aboutUsImage} />
           </div>
+
           <div className={styles.rightContent}>
             <Accordion
-              chevronPosition="left"
+              chevronPosition="right" // This positions the chevron to the right
+              variant="contained" // Contained style
               defaultValue="Design"
               onChange={(value) => {
                 if (value !== currentAccordionValue) {
@@ -80,14 +129,21 @@ export default function Join() {
             >
               {accordionItems.map((item) => (
                 <Accordion.Item key={item.value} value={item.value}>
-                  <Accordion.Control 
-                    className={`${styles.accordionControl} ${currentAccordionValue === item.value ? styles.selected : ''}`} 
-                    icon={item.emoji}
+                  <Accordion.Control
+                    className={`
+                      ${styles.accordionControl} 
+                      ${currentAccordionValue === item.value ? styles.selected : ''}
+                      `}
+                    // icon={<FontAwesomeIcon icon={faChevronDown} />}
                   >
-                    {item.value}
+                    <AccordionLabel 
+                      icon={<FontAwesomeIcon icon={item.icon} />}
+                      value={item.value} 
+                      description={item.description}
+                    />
                   </Accordion.Control>
                   <Accordion.Panel className={styles.accordionPanel}>
-                    {item.description}
+                    {item.content}
                   </Accordion.Panel>
                 </Accordion.Item>
               ))}

@@ -110,17 +110,6 @@
   background-color: #4752c4; 
 }
 
-.accordionContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: #444;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-  color: #fff;
-}
-
 .accordionSection {
   display: flex;
   justify-content: space-between;
@@ -129,9 +118,17 @@
   padding: 20px;
   margin: 20px 0;
   border-radius: 8px;
-  color: #fff;
   flex: 1;
   height: auto;
+}
+
+.accordionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
 }
 
 .accordionSection .leftContent,
@@ -148,34 +145,37 @@
 }
 
 .accordionControl {
+  background-color: #ffffff;
+  color: #292929;
   padding: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: #444;
   border: none;
   transition: box-shadow 0.3s ease;
-  flex: 1;
+}
+
+.accordionControl.selected{
+  background-color: #f8f9fa;
 }
 
 .accordionControl:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #f8f9fa;
+}
+
+.accordionLabelDescription{
+  color: #a4aab1;
 }
 
 .accordionPanel {
-  background-color: #444;
+  background-color: #f8f9fa;
+  color: #292929;
   padding: 10px;
   border: none;
   transition: box-shadow 0.3s ease;
   height: auto;
   overflow: hidden;
-}
-
-.accordionSection .glowWrapper {
-  overflow: visible; /* Ensure the glow is not clipped */
-  position: relative; /* Ensure proper stacking context */
-  z-index: 3; /* Set a higher z-index for the glow wrapper */
 }
 
 @media (max-width: 768px) {
