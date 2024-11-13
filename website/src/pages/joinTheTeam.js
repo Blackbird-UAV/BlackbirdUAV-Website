@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faDraftingCompass, faPlane, faCogs, faUsers, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
-import { Accordion, Avatar, Group, Text } from '@mantine/core';
+import { Accordion, Group, Text } from '@mantine/core';
 
 const accordionItems = [
   {
@@ -50,8 +50,8 @@ function AccordionLabel({ icon, value, description }) {
     <Group noWrap>
       <FontAwesomeIcon icon={icon} size="2x" style={{ marginRight: '10px' }} />
       <div>
-        <Text>{value}</Text>
-        <Text className={styles.accordionLabelDescription}>
+        <Text ta="left">{value}</Text>
+        <Text ta="left" className={styles.accordionLabelDescription}>
           {description}
         </Text>
       </div>
@@ -114,8 +114,8 @@ export default function Join() {
 
           <div className={styles.rightContent}>
             <Accordion
-              chevronPosition="right" // This positions the chevron to the right
-              variant="contained" // Contained style
+              chevronPosition="right"
+              radius="md"
               defaultValue="Design"
               onChange={(value) => {
                 if (value !== currentAccordionValue) {
@@ -134,7 +134,7 @@ export default function Join() {
                       ${styles.accordionControl} 
                       ${currentAccordionValue === item.value ? styles.selected : ''}
                       `}
-                    // icon={<FontAwesomeIcon icon={faChevronDown} />}
+                    icon={<FontAwesomeIcon icon={faChevronDown} />}
                   >
                     <AccordionLabel 
                       icon={<FontAwesomeIcon icon={item.icon} />}

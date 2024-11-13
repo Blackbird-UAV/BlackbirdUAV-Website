@@ -149,8 +149,8 @@
   color: #292929;
   padding: 15px;
   cursor: pointer;
+  /* ISSUE: Remove this and chevron reappears */
   display: flex;
-  align-items: center;
   width: 100%;
   border: none;
   transition: box-shadow 0.3s ease;
