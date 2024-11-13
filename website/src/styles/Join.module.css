@@ -149,26 +149,6 @@
   padding-left: 20px;
 }
 
-.border-green {
-  box-shadow: 0 0 5px 2px rgba(0, 255, 0, 0.5);
-}
-
-.border-red {
-  box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0.5);
-}
-
-.border-purple {
-  box-shadow: 0 0 5px 2px rgba(128, 0, 128, 0.5);
-}
-
-.border-yellow {
-  box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.5);
-}
-
-.border-blue {
-  box-shadow: 0 0 5px 2px rgba(0, 0, 255, 0.5);
-}
-
 .accordionControl {
   padding: 15px;
   cursor: pointer;
@@ -179,26 +159,6 @@
   border: none;
   transition: box-shadow 0.3s ease;
   flex: 1;
-}
-
-.accordionControl.selected {
-  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.5);
-}
-
-.accordionControl.selected.border-red {
-  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5);
-}
-
-.accordionControl.selected.border-purple {
-  box-shadow: 0 0 15px 5px rgba(128, 0, 128, 0.5);
-}
-
-.accordionControl.selected.border-yellow {
-  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.5);
-}
-
-.accordionControl.selected.border-blue {
-  box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.5);
 }
 
 .accordionControl:hover {
@@ -212,47 +172,6 @@
   transition: box-shadow 0.3s ease;
   height: auto;
   overflow: hidden;
-}
-
-.accordionPanel.selected {
-  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.5); /* Default to green glow */
-}
-
-.accordionPanel.selected.border-red {
-  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5); /* Red glow */
-}
-
-.accordionPanel.selected.border-purple {
-  box-shadow: 0 0 15px 5px rgba(128, 0, 128, 0.5); /* Purple glow */
-}
-
-.accordionPanel.selected.border-yellow {
-  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.5); /* Yellow glow */
-}
-
-.accordionPanel.selected.border-blue {
-  box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.5); /* Blue glow */
-}
-
-.selected {
-  box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.5); /* Increase the spread for a more visible glow */
-  z-index: 4; /* Ensure the selected glow is above other elements */
-}
-
-.selected.border-red {
-  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5); /* Increase the spread for a more visible glow */
-}
-
-.selected.border-purple {
-  box-shadow: 0 0 15px 5px rgba(128, 0, 128, 0.5); /* Increase the spread for a more visible glow */
-}
-
-.selected.border-yellow {
-  box-shadow: 0 0 15px 5px rgba(255, 255, 0, 0.5); /* Increase the spread for a more visible glow */
-}
-
-.selected.border-blue {
-  box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.5); /* Increase the spread for a more visible glow */
 }
 
 .accordionSection .glowWrapper {

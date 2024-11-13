@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "@/styles/Join.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Accordion } from '@mantine/core';
 
 const accordionItems = [
@@ -16,15 +16,6 @@ const accordionItems = [
 export default function Join() {
   const [selectedImage, setSelectedImage] = useState(accordionItems[0].image);
   const [currentAccordionValue, setCurrentAccordionValue] = useState("Design");
-  const [borderClass, setBorderClass] = useState("border-green");
-
-  const emojiToBorderClass = {
-    '🟢': 'border-green',
-    '🔴': 'border-red',
-    '🟣': 'border-purple',
-    '🟡': 'border-yellow',
-    '🔵': 'border-blue',
-  };
 
   return (
     <>
@@ -71,7 +62,7 @@ export default function Join() {
 
         <div className={styles.accordionSection}>
           <div className={styles.leftContent}>
-            <img src={selectedImage} alt="Selected" className={`${styles.aboutUsImage} ${styles[borderClass]}`} />
+            <img src={selectedImage} alt="Selected" className={styles.aboutUsImage} />
           </div>
           <div className={styles.rightContent}>
             <Accordion
@@ -83,7 +74,6 @@ export default function Join() {
                   if (selectedItem) {
                     setSelectedImage(selectedItem.image);
                     setCurrentAccordionValue(value);
-                    setBorderClass(emojiToBorderClass[selectedItem.emoji]);
                   }
                 }
               }}
@@ -91,12 +81,12 @@ export default function Join() {
               {accordionItems.map((item) => (
                 <Accordion.Item key={item.value} value={item.value}>
                   <Accordion.Control 
-                    className={`${styles.accordionControl} ${currentAccordionValue === item.value ? 'selected ' + styles[borderClass] : ''}`} 
+                    className={`${styles.accordionControl} ${currentAccordionValue === item.value ? styles.selected : ''}`} 
                     icon={item.emoji}
                   >
                     {item.value}
                   </Accordion.Control>
-                  <Accordion.Panel className={`${styles.accordionPanel} ${currentAccordionValue === item.value ? 'selected ' + styles[borderClass] : ''}`}>
+                  <Accordion.Panel className={styles.accordionPanel}>
                     {item.description}
                   </Accordion.Panel>
                 </Accordion.Item>
