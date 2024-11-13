@@ -167,7 +167,7 @@
   to { opacity: 1; transform: translateX(0); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .container{
     padding-top: 10rem;
   }
@@ -206,8 +206,8 @@
   
   .indicatorContainer {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 90px;
+    right: 15px;
     z-index: 2;
     display: flex;
     gap: 8px;
@@ -216,6 +216,10 @@
 
   .textBox {
     padding: 20px;
+    padding-top: 0px;
     text-align: left;
+  }
+  .textBox p {
+    margin-top: 5px;
   }
 }
