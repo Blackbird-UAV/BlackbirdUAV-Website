@@ -99,17 +99,15 @@
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: transparent;
-  border: 2px solid #007bff; 
+  background-color: #5865f2;
   border-radius: 5px;
-  color: #007bff; 
+  color: #f6f7fe; 
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .discordButton:hover {
-  background-color: #007bff; 
-  color: #fff; 
+  background-color: #4752c4; 
 }
 
 .accordionContainer {
