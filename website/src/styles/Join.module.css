@@ -152,12 +152,24 @@
 
 .accordionSection .leftContent {
   flex: 1;
-  margin: 1rem 3rem 1rem 1rem;
+  /* margin: 1rem 3rem 1rem 1rem; */
+  margin: auto 0;
+}
+
+.accordionHeightWrapper{
+  /* issue: Change this height if accordion causes wobbling */
   /* border: 1px solid red; */
-  border: 1px solid #dee2e6;
+  height: 500px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.accordionStyles{
   border-radius: 5px;
   overflow: hidden;
+  border: 1px solid #dee2e6;
+  /* border: 1px solid purple; */
 }
+
 
 .accordionSection .rightContent {
   flex: 1;

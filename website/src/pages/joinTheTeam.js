@@ -125,44 +125,47 @@ export default function Join() {
         <div className={styles.accordionSection}>
 
           <div className={styles.leftContent}>
-          <Accordion
-              chevron={
-                <div className={styles.accordionLabelChevron}>
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </div>
-              }
-              defaultValue="Design"
-              onChange={(value) => {
-                if (value !== currentAccordionValue) {
-                  const selectedItem = accordionItems.find(item => item.value === value);
-                  if (selectedItem) {
-                    setSelectedImage(selectedItem.image);
-                    setCurrentAccordionValue(value);
-                  }
+            <div className={styles.accordionHeightWrapper}>
+            <Accordion
+                className={styles.accordionStyles}
+                chevron={
+                  <div className={styles.accordionLabelChevron}>
+                    <FontAwesomeIcon icon={faChevronDown} />
+                  </div>
                 }
-              }}
-            >
-              {accordionItems.map((item) => (
-                <Accordion.Item key={item.value} value={item.value} className={styles.accordionItem}>
-                  <Accordion.Control
-                    className={`
-                      ${styles.accordionControl} 
-                      ${currentAccordionValue === item.value ? styles.selected : ''}
-                      `}
-                  >
-                    <AccordionLabel 
-                      icon={item.icon}
-                      value={item.value} 
-                      description={item.description}
-                      color={item.color}
-                    />
-                  </Accordion.Control>
-                  <Accordion.Panel className={styles.accordionPanel}>
-                    {item.content}
-                  </Accordion.Panel>
-                </Accordion.Item>
-              ))}
-            </Accordion>
+                defaultValue="Design"
+                onChange={(value) => {
+                  if (value !== currentAccordionValue) {
+                    const selectedItem = accordionItems.find(item => item.value === value);
+                    if (selectedItem) {
+                      setSelectedImage(selectedItem.image);
+                      setCurrentAccordionValue(value);
+                    }
+                  }
+                }}
+              >
+                {accordionItems.map((item) => (
+                  <Accordion.Item key={item.value} value={item.value} className={styles.accordionItem}>
+                    <Accordion.Control
+                      className={`
+                        ${styles.accordionControl} 
+                        ${currentAccordionValue === item.value ? styles.selected : ''}
+                        `}
+                    >
+                      <AccordionLabel 
+                        icon={item.icon}
+                        value={item.value} 
+                        description={item.description}
+                        color={item.color}
+                      />
+                    </Accordion.Control>
+                    <Accordion.Panel className={styles.accordionPanel}>
+                      {item.content}
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                ))}
+              </Accordion>
+          </div>
           </div>
 
           <div className={styles.rightContent}>
