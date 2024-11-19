@@ -50,7 +50,7 @@ function AccordionLabel({ icon, value, description }) {
     <Group noWrap>
       <FontAwesomeIcon icon={icon} size="2x" style={{ marginRight: '10px' }} />
       <div>
-        <Text ta="left">{value}</Text>
+        <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
         <Text ta="left" className={styles.accordionLabelDescription}>
           {description}
         </Text>
@@ -74,25 +74,31 @@ export default function Join() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className={styles.contentContainer}>
-        <div className={styles.banner}>
+      <div className={styles.banner}>
           <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
-        </div>
+      </div>
 
+      <div className={styles.contentContainer}>
+        
+        {/* Top banner */}
         <div className={styles.gradientTextContainer}>
           <h1 className={styles.bigHeader}>
-            <strong>Fly around and find out</strong>
+            Join a team of innovators,
+          </h1>
+          <h1 className={styles.bigHeaderGradient}>
+            <strong>Fly around and find out.</strong>
           </h1>
         </div>
 
+        {/* About us box */}
         <div className={styles.aboutUs}>
           <div className={styles.leftContent}>
             <img src="/images/JoinUsMedia.jpg" alt="Join Us" className={styles.aboutUsImage} />
           </div>
           <div className={styles.rightContent}>
-            <h3>About Us</h3>
+            <h3>Join Us Today!</h3>
             <p>
-              Be part of a team that is at the forefront of UAV technology. Collaborate, innovate, and soar to new heights with us.
+              Be part of a team that is at the forefront of UAV technology. Collaborate, innovate, and soar to new heights with us. Interested in learning more about our subteams? Look below!
             </p>
             <a
               href="https://discord.gg/Spw3F6KrCn"
@@ -101,19 +107,16 @@ export default function Join() {
               className={styles.discordButton}
             >
               <FontAwesomeIcon icon={faDiscord} width={24} height={24} />
-              <span>Join us on Discord!</span>
+              <span>Discord Server</span>
             </a>
           </div>
         </div>
 
+        {/* Accordion subteams */}
         <div className={styles.accordionSection}>
 
           <div className={styles.leftContent}>
-            <img src={selectedImage} alt="Selected" className={styles.aboutUsImage} />
-          </div>
-
-          <div className={styles.rightContent}>
-            <Accordion
+          <Accordion
               chevronPosition="right"
               radius="md"
               defaultValue="Design"
@@ -134,7 +137,7 @@ export default function Join() {
                       ${styles.accordionControl} 
                       ${currentAccordionValue === item.value ? styles.selected : ''}
                       `}
-                    icon={<FontAwesomeIcon icon={faChevronDown} />}
+                    // icon={<FontAwesomeIcon icon={faChevronDown} />}
                   >
                     <AccordionLabel 
                       icon={<FontAwesomeIcon icon={item.icon} />}
@@ -148,6 +151,10 @@ export default function Join() {
                 </Accordion.Item>
               ))}
             </Accordion>
+          </div>
+
+          <div className={styles.rightContent}>
+            <img src={selectedImage} alt="Selected" className={styles.aboutUsImage} />
           </div>
         </div>
       </div>
