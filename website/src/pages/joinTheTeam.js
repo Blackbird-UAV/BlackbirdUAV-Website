@@ -12,48 +12,57 @@ const accordionItems = [
     value: 'Design',
     description: 'Creative UAV designs',
     content: 'Focus on creative and innovative UAV designs, combining cutting-edge aesthetics with functionality.',
-    image: '/images/vehicle1.jpg'
+    image: '/images/vehicle1.jpg',
+    color: '#30b463',
   },
   {
     icon: faPlane,
-    value: 'Structures',
+    value: 'Manufacturing',
     description: 'Engineering robust UAV structures',
     content: 'Design and construct UAV structures that are strong, reliable, and lightweight for optimal performance.',
-    image: '/images/vehicle2.jpg'
+    image: '/images/vehicle2.jpg',
+    color: '#e01d19'
   },
   {
     icon: faCogs,
     value: 'Systems',
     description: 'Advanced UAV systems',
     content: 'Develop sophisticated systems and software that power modern UAV technology.',
-    image: '/images/vehicle3.jpg'
+    image: '/images/vehicle3.jpg',
+    color: '#e94e77',
   },
   {
     icon: faUsers,
     value: 'Administration',
     description: 'Managing team and logistics',
     content: 'Handle team operations, ensuring smooth collaboration and efficient resource management.',
-    image: '/images/vehicle4.jpg'
+    image: '/images/vehicle4.jpg',
+    color: '#f6b93b'
   },
   {
     icon: faClipboard,
     value: 'Operations',
     description: 'Overseeing UAV missions',
     content: 'Coordinate UAV operations, ensuring missions are conducted safely and efficiently.',
-    image: '/images/vehicle5.jpg'
+    image: '/images/vehicle5.jpg',
+    color: '#6553e0'
   }
 ];
 
 // This is the top label that acts as a button to reveal the content
-function AccordionLabel({ icon, value, description }) {
+function AccordionLabel({ icon, value, description, color }) {
   return (
-      <Group noWrap>
-        <FontAwesomeIcon icon={icon} size="2x" style={{ marginRight: '10px' }} />
-        <div>
-          <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
-          <Text ta="left" className={styles.accordionLabelDescription}>
-            {description}
-          </Text>
+      <Group noWrap style={{ justifyContent: 'space-between', width: '100%' }}>
+        <div className={styles.accordionLabelLR}>
+          <div>
+            <FontAwesomeIcon icon={icon} size="2x" className={styles.accordionLabelIcon} style={{ color }} />
+          </div>
+          <div>
+            <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
+            <Text ta="left" className={styles.accordionLabelDescription}>
+              {description}
+            </Text>
+          </div>
         </div>
       </Group>
   );
@@ -117,8 +126,11 @@ export default function Join() {
 
           <div className={styles.leftContent}>
           <Accordion
-              chevronPosition="right"
-              radius="md"
+              chevron={
+                <div className={styles.accordionLabelChevron}>
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </div>
+              }
               defaultValue="Design"
               onChange={(value) => {
                 if (value !== currentAccordionValue) {
@@ -137,12 +149,12 @@ export default function Join() {
                       ${styles.accordionControl} 
                       ${currentAccordionValue === item.value ? styles.selected : ''}
                       `}
-                    // icon={<FontAwesomeIcon icon={faChevronDown} />}
                   >
                     <AccordionLabel 
-                      icon={<FontAwesomeIcon icon={item.icon} />}
+                      icon={item.icon}
                       value={item.value} 
                       description={item.description}
+                      color={item.color}
                     />
                   </Accordion.Control>
                   <Accordion.Panel className={styles.accordionPanel}>
@@ -154,7 +166,7 @@ export default function Join() {
           </div>
 
           <div className={styles.rightContent}>
-            <img src={selectedImage} alt="Selected" className={styles.aboutUsImage} />
+            <img src={selectedImage} alt="Selected" className={styles.accordionImage} />
           </div>
         </div>
       </div>

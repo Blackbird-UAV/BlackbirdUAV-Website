@@ -74,6 +74,8 @@
   border-radius: 16px;
   color: #1d1d1f;
   flex: 1;
+  /* issue */
+  /* box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2); */
 }
 
 .aboutUs .leftContent{
@@ -144,19 +146,23 @@
   border-radius: 8px;
   flex: 1;
   height: auto;
+  /* issue */
+  /* box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2); */
 }
 
 .accordionSection .leftContent {
   flex: 1;
   margin: 1rem 3rem 1rem 1rem;
-  /* ISSUE */
-  border: 1px solid red;
-  /* border: 1px solid #dee2e6; */
+  /* border: 1px solid red; */
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .accordionSection .rightContent {
   flex: 1;
-  margin: 1rem 3rem 1rem 1rem;
+  margin: auto 3rem auto 1rem;
+  /* margin: auto 0; */
 }
 
 .accordionSection .leftContent img {
@@ -171,8 +177,8 @@
   color: #292929;
   padding: 15px;
   cursor: pointer;
-  /* ISSUE: Remove this and chevron reappears */
-  display: flex;
+  /* display: flex; */
+  /* issue */
   width: 100%;
   border: none;
   transition: box-shadow 0.3s ease;
@@ -187,6 +193,17 @@
 }
 
 /* Accordion Labels */
+.accordionLabelLR{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.accordionLabelIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: auto 1rem auto 0.5rem;
+}
 
 .accordionLabelValue{
   font-size: 1.25rem;
@@ -196,12 +213,24 @@
 
 .accordionLabelDescription{
   color: #a4aab1;
+  font-size: 0.875rem;
+}
+
+.accordionLabelChevron {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: -1.5rem;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
 }
 
 .accordionPanel {
   background-color: #f8f9fa;
   color: #292929;
-  padding: 10px;
+  padding: 0 15px 15px 15px;
   border: none;
   transition: box-shadow 0.3s ease;
   height: auto;
@@ -209,10 +238,16 @@
 }
 
 .accordionItem:not(:first-of-type) {
-  border-top: 1px solid red;
-  /* ISSUE */
-  /* border-top: 1px solid #dee2e6; */
+  /* border-top: 1px solid red; */
+  border-top: 1px solid #dee2e6;
   width: 100%;
+}
+
+.accordionImage{
+  max-width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -245,8 +280,12 @@
     margin: 2rem 0 3rem 0;
   }
 
-  .accordionSection .leftContent, 
   .accordionSection .rightContent{
+    margin: 1rem;
+  }
+
+  .accordionSection .leftContent{
+    width: 92%;
     margin: 1rem;
   }
 
