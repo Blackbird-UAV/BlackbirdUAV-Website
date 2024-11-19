@@ -47,15 +47,15 @@ const accordionItems = [
 // This is the top label that acts as a button to reveal the content
 function AccordionLabel({ icon, value, description }) {
   return (
-    <Group noWrap>
-      <FontAwesomeIcon icon={icon} size="2x" style={{ marginRight: '10px' }} />
-      <div>
-        <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
-        <Text ta="left" className={styles.accordionLabelDescription}>
-          {description}
-        </Text>
-      </div>
-    </Group>
+      <Group noWrap>
+        <FontAwesomeIcon icon={icon} size="2x" style={{ marginRight: '10px' }} />
+        <div>
+          <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
+          <Text ta="left" className={styles.accordionLabelDescription}>
+            {description}
+          </Text>
+        </div>
+      </Group>
   );
 }
 
@@ -131,7 +131,7 @@ export default function Join() {
               }}
             >
               {accordionItems.map((item) => (
-                <Accordion.Item key={item.value} value={item.value}>
+                <Accordion.Item key={item.value} value={item.value} className={styles.accordionItem}>
                   <Accordion.Control
                     className={`
                       ${styles.accordionControl} 

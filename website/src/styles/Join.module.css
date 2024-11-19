@@ -138,7 +138,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #333;
+  background-color: #ededed;
   padding: 1.5rem;
   margin: 4rem 0;
   border-radius: 8px;
@@ -149,6 +149,9 @@
 .accordionSection .leftContent {
   flex: 1;
   margin: 1rem 3rem 1rem 1rem;
+  /* ISSUE */
+  border: 1px solid red;
+  /* border: 1px solid #dee2e6; */
 }
 
 .accordionSection .rightContent {
@@ -184,9 +187,11 @@
 }
 
 /* Accordion Labels */
+
 .accordionLabelValue{
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
+  font-weight: bold;
 }
 
 .accordionLabelDescription{
@@ -201,6 +206,13 @@
   transition: box-shadow 0.3s ease;
   height: auto;
   overflow: hidden;
+}
+
+.accordionItem:not(:first-of-type) {
+  border-top: 1px solid red;
+  /* ISSUE */
+  /* border-top: 1px solid #dee2e6; */
+  width: 100%;
 }
 
 @media (max-width: 768px) {
