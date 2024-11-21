@@ -1,267 +1,204 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "@/styles/Sponsor.module.css";
-import { useEffect } from "react";
+import { Grid, GridItem, Stack, Box, Heading, Link, Image, Button, useBreakpointValue } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import FadeInLayout from "@/components/FadeWhenVisible";
+import Sidebar from "@/components/sponsorSidebar";
 
 const sponsors = [
-  {
-    name: "Company One",
-    logo: "/images/company1.jpg",
-    link: "https://company1.com",
-    tier: "platinum",
-  },
-  {
-    name: "Company Two",
-    logo: "/images/company2.jpg",
-    link: "https://company2.com",
-    tier: "gold",
-  },
-  {
-    name: "Company Three",
-    logo: "/images/company3.jpg",
-    link: "https://company3.com",
-    tier: "silver",
-  },
-  {
-    name: "Company Four",
-    logo: "/images/company4.jpg",
-    link: "https://company4.com",
-    tier: "silver",
-  },
-  {
-    name: "Company Five",
-    logo: "/images/company1.jpg",
-    link: "https://company1.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Six",
-    logo: "/images/company2.jpg",
-    link: "https://company2.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Seven",
-    logo: "/images/company3.jpg",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
+  { name: "Company One", logo: "/images/company1.jpg", link: "https://company1.com", tier: "platinum" },
+  { name: "Company Two", logo: "/images/company2.jpg", link: "https://company2.com", tier: "gold" },
+  { name: "Company Three", logo: "/images/company3.jpg", link: "https://company3.com", tier: "silver" },
+  { name: "Company Four", logo: "/images/company4.jpg", link: "https://company4.com", tier: "silver" },
+  { name: "Company Five", logo: "/images/company1.jpg", link: "https://company1.com", tier: "bronze" },
+  { name: "Company Six", logo: "/images/company2.jpg", link: "https://company2.com", tier: "bronze" },
+  { name: "Company Seven", logo: "/images/company3.jpg", link: "https://company3.com", tier: "bronze" },
 ];
 
 export default function Sponsor() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const header = document.querySelector(`.${styles.header}`);
-      const speed = 0.5;
-      header.style.backgroundPositionY = `-${scrollPosition * speed}px`;
-    };
+  const sideBarPadding = useBreakpointValue({ base: "5", md: "8", lg: "14" });
+  const mainContent = useBreakpointValue({
+    base: "5",
+    md: "14",
+    lg: "14",
+    xl: 0,
+  });
+  const paddTop = useBreakpointValue({ base: "20", sm: 20, md: 20 });
 
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible); // Add the visible class when in view
-            observer.unobserve(entry.target); // Stop observing once it's in view
-          }
-        });
-      },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
-    );
+  const [isBronzeVisible, setIsBronzeVisible] = useState(false);
 
-    // Observe each tier section
-    const tierSections = document.querySelectorAll(`.${styles.tierSection}`);
-    tierSections.forEach((section) => observer.observe(section));
+  const renderSponsorsByTier = (tier) => (
+    sponsors
+      .filter((s) => s.tier === tier)
+      .map((sponsor, index) => (
+        <GridItem key={index} as={Link} href={sponsor.link} isExternal>
+          <Image
+            src={sponsor.logo}
+            alt={sponsor.name}
+            boxSize="150px"
+            objectFit="cover"
+            borderRadius="md"
+            boxShadow="md"
+            _hover={{ transform: "scale(1.05)", transition: "0.3s" }}
+          />
+        </GridItem>
+      ))
+  );
 
-    window.addEventListener("scroll", handleScroll);
+  const handleScrollDown = () => {
+    const bronzeSection = document.getElementById("bronzeSection");
+    if (bronzeSection) {
+      bronzeSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
-    };
-  }, []);
+  // also try to make it so the bronze section is false when the bronze section is visible
 
   return (
     <>
-      <Head>
-        <title>Sponsorships</title>
-        <meta
-          name="description"
-          content="Learn more about our sponsors and support"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      {/* Header Section */}
-      <header className={styles.header}>
-        <div className={styles.headerOverlay}>
-          <h1 className={styles.headerTitle}>Sponsorships</h1>
-        </div>
-      </header>
-
-      {/* Introduction Section */}
-      <section className={styles.introSection}>
-        <div className={styles.introText}>
-          <h2>What do sponsors do?</h2>
-          <p>
-            Sponsors play a vital role in helping us achieve our goals. We
-            proudly display our sponsors' logos and brands at competitions, just
-            like we do at any local team event. Their generous contributions
-            enable us to participate in competitions and enhance our resources
-            year by year.
-            <br />
-            <br />
-            There are many ways to support our team. For more information,
-            please read our{" "}
-            <a
-              href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
-              target="_blank"
-            >
-              sponsorship package
-            </a>
-            .
-          </p>
-        </div>
-        <div className={styles.introImage}>
-          <Image
-            src="/images/company4.jpg"
-            alt="Sponsorship Event"
-            width={600}
-            height={400}
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-      </section>
-
-      <div class="custom-shape-divider-bottom-1730849865">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
+      <Grid
+        id="mainGrid"
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          lg: "repeat(5, 1fr)",
+          xl: "repeat(5, 1fr)",
+        }}
+        templateRows={{
+          sm: "repeat(1, 0)",
+          lg: "repeat(2, 1fr)",
+        }}
+        gap={8}
+      >
+        <GridItem
+          padding={sideBarPadding}
+          marginTop={paddTop}
+          marginBottom={20}
+          rowSpan={2}
+          colSpan={{ base: 1, sm: 1, md: 1, lg: 3, xl: 3 }}
+          display="flex"
+          alignContent="center"
+          as="div"
+          flexDirection={"row"}
         >
-          <path
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-            opacity=".25"
-            class="shape-fill"
-          ></path>
-          <path
-            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-            opacity=".5"
-            class="shape-fill"
-          ></path>
-          <path
-            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div>
+          <Sidebar />
+        </GridItem>
+        <GridItem
+          as="main"
+          padding={mainContent}
+          marginTop={40}
+          marginBottom={20}
+          rowSpan={2}
+          colSpan={{ base: 1, sm: 2, md: 2, lg: 2, xl: 2 }}
+          overflow="hidden"
+        >
+          <Stack w="90%" spacing={10}>
+            <Heading as="h2" size="3xl" textAlign="center" mb={4} color={"white"}>
+              Thank you to our generous sponsors!
+            </Heading>
+            <FadeInLayout>
+              <Box
+                bg="gray.900"
+                borderRadius="lg"
+                paddingY={6}
+                paddingX={8}
+                mb={2}
+                shadow="xl"
+              >
+                <Heading as="h3" size="lg" mb={6} color="#e5e4e2">
+                  Platinum Sponsors
+                </Heading>
+                <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={4}>
+                  {renderSponsorsByTier("platinum")}
+                </Grid>
+              </Box>
+            </FadeInLayout>
+            <FadeInLayout>
+              <Box
+                bg="gray.800"
+                borderRadius="lg"
+                paddingY={6}
+                paddingX={8}
+                mb={2}
+                shadow="lg"
+              >
+                <Heading as="h3" size="lg" mb={6} color="#fed807">
+                  Gold Sponsors
+                </Heading>
+                <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={4}>
+                  {renderSponsorsByTier("gold")}
+                </Grid>
+              </Box>
+            </FadeInLayout>
+            <FadeInLayout>
+              <Box
+                bg="gray.700"
+                borderRadius="lg"
+                paddingY={6}
+                paddingX={8}
+                mb={2}
+                shadow="lg"
+              >
+                <Heading as="h3" size="lg" mb={6} color="#c4c4c4">
+                  Silver Sponsors
+                </Heading>
+                <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={4}>
+                  {renderSponsorsByTier("silver")}
+                </Grid>
+              </Box>
+            </FadeInLayout>
+            <FadeInLayout>
+              <Box
+                bg="gray.600"
+                borderRadius="lg"
+                paddingY={6}
+                paddingX={8}
+                mb={2}
+                shadow="lg"
+              >
+                <Heading id="bronzeSection" as="h3" size="lg" mb={6} color="#ce8946">
+                  Bronze Sponsors
+                </Heading>
+                <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={4}>
+                  {renderSponsorsByTier("bronze")}
+                </Grid>
+              </Box>
+            </FadeInLayout>
+          </Stack>
 
-      {/* Sponsor Logos Section */}
-      <section className={styles.sponsorsSection}>
-        <h2>Thank you to our generous sponsors!</h2>
-        {/* Platinum Tier */}
-        <div className={styles.tierSection}>
-          <h3 className={`${styles.platinumText}`}>Platinum Sponsors</h3>
-          <div className={styles.sponsorGrid}>
-            {sponsors
-              .filter((s) => s.tier === "platinum")
-              .map((sponsor, index) => (
-                <div key={index} className={styles.sponsor}>
-                  <a
-                    href={sponsor.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      width={150}
-                      height={150}
-                      className={styles.logo}
-                    />
-                  </a>
-                </div>
-              ))}
-          </div>
-        </div>
-        {/* Gold Tier */}
-        <div className={styles.tierSection}>
-          <h3 className={styles.goldText}>Gold Sponsors</h3>
-          <div className={styles.sponsorGrid}>
-            {sponsors
-              .filter((s) => s.tier === "gold")
-              .map((sponsor, index) => (
-                <div key={index} className={styles.sponsor}>
-                  <a
-                    href={sponsor.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      width={150}
-                      height={150}
-                      className={styles.logo}
-                    />
-                  </a>
-                </div>
-              ))}
-          </div>
-        </div>
-        {/* Silver Tier */}
-        <div className={styles.tierSection}>
-          <h3 className={styles.silverText}>Silver Sponsors</h3>
-          <div className={styles.sponsorGrid}>
-            {sponsors
-              .filter((s) => s.tier === "silver")
-              .map((sponsor, index) => (
-                <div key={index} className={styles.sponsor}>
-                  <a
-                    href={sponsor.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      width={150}
-                      height={150}
-                      className={styles.logo}
-                    />
-                  </a>
-                </div>
-              ))}
-          </div>
-        </div>
-        {/* Bronze Tier */}
-        <div className={styles.tierSection}>
-          <h3 className={styles.bronzeText}>Bronze Sponsors</h3>
-          <div className={styles.sponsorGrid}>
-            {sponsors
-              .filter((s) => s.tier === "bronze")
-              .map((sponsor, index) => (
-                <div key={index} className={styles.sponsor}>
-                  <a
-                    href={sponsor.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Image
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      width={150}
-                      height={150}
-                      className={styles.logo}
-                    />
-                  </a>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
+          {!isBronzeVisible && (
+            <Button
+              onClick={handleScrollDown}
+              position="fixed"
+              bottom="40px"
+              left="50%"
+              transform="translateX(-50%)"
+              borderRadius="full"
+              bg="transparent"
+              border="2px solid white"
+              color="white"
+              _hover={{ bg: "gray.800" }}
+              _active={{ bg: "gray.900" }}
+              size="sm"
+              animation="bounce 1s infinite"
+              boxShadow="md"
+            >
+              <Box as="span" transform="rotate(90deg)" fontSize="lg">
+                {/* Custom SVG Arrow */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  width="24" height="24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </Box>
+            </Button>
+          )}
+        </GridItem>
+      </Grid>
     </>
   );
 }
