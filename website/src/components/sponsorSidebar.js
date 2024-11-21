@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { motion } from "framer-motion";
-import styles from "@/styles/SponsorSidebar.module.css";
+// import styles from "@/styles/SponsorSidebar.module.css"; // this page uses tailwind now
 import { fadeInUp, stagger, scaleUp } from "@/components/animations";
 
 const SponsorSidebar = () => {
@@ -25,7 +25,7 @@ const SponsorSidebar = () => {
 
   const handleContactUsClick = () => {
     window.location.href =
-      "mailto:support@ourcompany.com?subject=Inquiry%20from%20Sponsor&body=Dear%20Team%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20about%20our%20sponsorship.";
+      "mailto:business@cublackbird.ca?subject=Inquiry%20from%20Sponsor&body=Dear%20Team%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20about%20our%20sponsorship.";
   };
 
   return (
@@ -49,7 +49,7 @@ const SponsorSidebar = () => {
       ></motion.div> */}
       <Container
         padding={0}
-        margin={0}
+        mt={4}
         // height={{ xl: "100vh" }}
         display={{ xl: "flex" }}
         alignItems={{ xl: "center" }}
@@ -61,7 +61,7 @@ const SponsorSidebar = () => {
           </MotionHeading>
 
           {/* Content Box */}
-          <Box bg="gray.800" p={6} my={4} borderRadius="md" boxShadow="lg">
+          <Box bg="gray.800" p={6} mt={2} borderRadius="md" boxShadow="lg">
             <Grid templateColumns="repeat(2, 1fr)" gap={6} alignItems="center">
               {/* Text Content */}
               <Box>

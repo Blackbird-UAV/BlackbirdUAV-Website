@@ -105,11 +105,11 @@ export default function Sponsor() {
       platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" }, // Full row
       gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }, // Two per row
       silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Three per row
-      bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Four per row
+      bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Three per row
     };
 
     return (
-      <Grid templateColumns={columnSettings[tier]} gap={4}>
+      <Grid templateColumns={columnSettings[tier]} gap={4} w="100%">
         {sponsors
           .filter((s) => s.tier === tier)
           .map((sponsor, index) => (
@@ -121,12 +121,13 @@ export default function Sponsor() {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              overflow="hidden" // Ensure cropped content is hidden
+              overflow="hidden"
+              width="100%"
             >
               <Box
-                bg="white" // White background for the image container
+                bg="white"
                 margin={2}
-                padding={2} // Optional padding for spacing inside the container
+                padding={2}
                 borderRadius="md"
                 boxShadow="md"
                 _hover={{
@@ -141,7 +142,7 @@ export default function Sponsor() {
                 <Image
                   src={sponsor.logo}
                   alt={sponsor.name}
-                  objectFit="contain" // Ensure the entire logo fits within the box
+                  objectFit="contain"
                   height="100px"
                   width="100%"
                 />
@@ -161,15 +162,14 @@ export default function Sponsor() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      const scrollThreshold = 200; // You can make this configurable
+      const scrollThreshold = 200;
       setIsButtonVisible(window.scrollY < scrollThreshold);
     };
 
-    // Optimize with requestAnimationFrame
     const handleScroll = () => requestAnimationFrame(toggleVisibility);
 
     window.addEventListener("scroll", handleScroll);
-    toggleVisibility(); // Ensure visibility is updated on mount
+    toggleVisibility();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -257,12 +257,13 @@ export default function Sponsor() {
                 padding={5}
                 mb={2}
                 ml={4}
-                shadow="lg"
-                boxShadow="0 0 0px 0px #fddc5b"
-                _hover={{
-                  boxShadow: "0 0 8px 4px #fddc5b",
-                  transition: "0.3s ease",
-                }}
+                // Optional glow
+                // shadow="lg"
+                // boxShadow="0 0 0px 0px #fddc5b"
+                // _hover={{
+                //   boxShadow: "0 0 8px 4px #fddc5b",
+                //   transition: "0.3s ease",
+                // }}
                 display="flex"
                 alignItems="center"
               >
@@ -286,12 +287,13 @@ export default function Sponsor() {
                 padding={5}
                 mb={2}
                 ml={4}
-                shadow="lg"
-                boxShadow="0 0 0px 0px #c4c4c4"
-                _hover={{
-                  boxShadow: "0 0 8px 4px #c4c4c4",
-                  transition: "0.3s ease",
-                }}
+                // Optional glow
+                // shadow="lg"
+                // boxShadow="0 0 0px 0px #c4c4c4"
+                // _hover={{
+                //   boxShadow: "0 0 8px 4px #c4c4c4",
+                //   transition: "0.3s ease",
+                // }}
                 display="flex"
                 alignItems="center"
               >
@@ -316,12 +318,13 @@ export default function Sponsor() {
                 padding={5}
                 mb={2}
                 ml={4}
-                shadow="lg"
-                boxShadow="0 0 0px 0px #de965d"
-                _hover={{
-                  boxShadow: "0 0 8px 4px #de965d",
-                  transition: "0.3s ease",
-                }}
+                // Optional glow
+                // shadow="lg"
+                // boxShadow="0 0 0px 0px #de965d"
+                // _hover={{
+                //   boxShadow: "0 0 8px 4px #de965d",
+                //   transition: "0.3s ease",
+                // }}
                 display="flex"
                 alignItems="center"
               >
