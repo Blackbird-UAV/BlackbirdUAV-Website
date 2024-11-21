@@ -310,6 +310,7 @@ export default function Sponsor() {
             </FadeInLayout>
             <FadeInLayout>
               <Box
+                id="bronzeSection"
                 bg="rgba(222, 151, 93, 1)"
                 borderRadius="lg"
                 padding={5}
