@@ -1,6 +1,21 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
+
+.banner {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  max-height: 18rem;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .contentContainer {
   position: relative;
-  max-width: 100%;
+  max-width: 85%;
   margin: 0 auto;
   padding: 0;
   color: #ffffff;
@@ -12,12 +27,20 @@
 .bigHeader {
   font-size: 3rem;
   font-weight: bold;
+  color: #000000;
+  /* font-family: 'Fahkwang', sans-serif; */
+}
+
+.bigHeaderGradient {
+  font-size: 3rem;
+  font-weight: bold;
   margin-bottom: 20px;
   background: linear-gradient(90deg, #8B0000, #FF4500, #FF6347);
   background-clip: text; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #333; 
+  /* font-family: 'Fahkwang', sans-serif; */
 }
 
 .gradientTextContainer {
@@ -41,58 +64,61 @@
   line-height: 1.6;
 }
 
-.banner {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-.banner img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
 .aboutUs {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #444; 
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-  color: #fff;
+  align-items: stretch;
+  background-color: #ededed;
+  padding: 1.5rem;
+  margin: 1rem 0 0 0;
+  border-radius: 16px;
+  color: #1d1d1f;
   flex: 1;
+  /* issue */
+  /* box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2); */
 }
 
-.aboutUs .leftContent,
-.aboutUs .rightContent {
+.aboutUs .leftContent{
   flex: 1;
-  padding: 0 10px;
-}
-
-.aboutUs .rightContent h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.aboutUs .rightContent p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.aboutUs .leftContent {
-  flex: 1;
+  margin: 1rem 3rem 1rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 20px; 
 }
 
 .aboutUsImage {
   max-width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 8px;
+  object-fit: cover;
+}
+
+.aboutUs .rightContent{
+  flex: 1;
+  margin: 1rem 1rem 1rem 3rem;
+}
+
+.aboutUs .rightContent h3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.aboutUs .rightContent p {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-right: 4rem;
+}
+
+/* The discord button */
+.aboutUs .rightContent a {
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+  margin-top: 2rem;
 }
 
 .discordButton {
@@ -114,27 +140,41 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #333;
-  padding: 20px;
-  margin: 20px 0;
+  background-color: #ededed;
+  padding: 1.5rem;
+  margin: 4rem 0;
   border-radius: 8px;
   flex: 1;
   height: auto;
+  /* issue */
+  /* box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2); */
 }
 
-.accordionContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
+.accordionSection .leftContent {
+  flex: 1;
+  /* margin: 1rem 3rem 1rem 1rem; */
+  margin: auto 0;
 }
 
-.accordionSection .leftContent,
+.accordionHeightWrapper{
+  /* issue: Change this height if accordion causes wobbling */
+  /* border: 1px solid red; */
+  height: 500px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.accordionStyles{
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+  /* border: 1px solid purple; */
+}
+
+
 .accordionSection .rightContent {
   flex: 1;
-  padding: 0 10px;
+  margin: auto 3rem auto 1rem;
+  /* margin: auto 0; */
 }
 
 .accordionSection .leftContent img {
@@ -149,8 +189,8 @@
   color: #292929;
   padding: 15px;
   cursor: pointer;
-  /* ISSUE: Remove this and chevron reappears */
-  display: flex;
+  /* display: flex; */
+  /* issue */
   width: 100%;
   border: none;
   transition: box-shadow 0.3s ease;
@@ -164,25 +204,67 @@
   background-color: #f8f9fa;
 }
 
+/* Accordion Labels */
+.accordionLabelLR{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.accordionLabelIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: auto 1rem auto 0.5rem;
+}
+
+.accordionLabelValue{
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
 .accordionLabelDescription{
   color: #a4aab1;
+  font-size: 0.875rem;
+}
+
+.accordionLabelChevron {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: -1.5rem;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
 }
 
 .accordionPanel {
   background-color: #f8f9fa;
   color: #292929;
-  padding: 10px;
+  padding: 0 15px 15px 15px;
   border: none;
   transition: box-shadow 0.3s ease;
   height: auto;
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .accordionSection {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-  }
+.accordionItem:not(:first-of-type) {
+  /* border-top: 1px solid red; */
+  border-top: 1px solid #dee2e6;
+  width: 100%;
+}
 
+.accordionImage{
+  max-width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+
+  /* About us: Box 1 */
   .aboutUs {
     flex-direction: column; /* Stack items vertically */
     align-items: flex-start; /* Align items to the start */
@@ -190,13 +272,34 @@
 
   .aboutUs .leftContent,
   .aboutUs .rightContent {
-    flex: none; /* Remove flex-grow */
-    width: 100%; /* Full width */
-    padding: 10px 0; /* Add vertical padding */
+    flex: none; 
+    width: 90%;
+    margin: 1rem;
   }
 
   .aboutUs .leftContent {
-    padding-right: 0; /* Remove right padding */
+    padding-right: 0;
+    margin: 0 1rem 0 1rem;
   }
+
+  .aboutUs .rightContent p {
+    padding-right: 0rem;
+  }
+
+  /* Accordion Section Box 2 */
+  .accordionSection {
+    flex-direction: column-reverse;
+    margin: 2rem 0 3rem 0;
+  }
+
+  .accordionSection .rightContent{
+    margin: 1rem;
+  }
+
+  .accordionSection .leftContent{
+    width: 92%;
+    margin: 1rem;
+  }
+
 }
 
