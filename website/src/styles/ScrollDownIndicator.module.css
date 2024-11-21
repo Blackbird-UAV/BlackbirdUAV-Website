@@ -1,0 +1,40 @@
+.scrollDownIndicator {
+  position: fixed; /* Changed from absolute to fixed */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 50; /* Ensure it appears above other elements */
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  border-bottom: 4px solid #e68787;
+  border-right: 4px solid #e68787;
+  transform: rotate(45deg);
+  margin: 1px;
+  animation: bounce 2s infinite;
+}
+
+.arrow:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.arrow:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  40% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(45deg);
+  }
+}
