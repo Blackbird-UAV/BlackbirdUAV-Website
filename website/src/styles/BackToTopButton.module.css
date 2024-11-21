@@ -1,28 +1,42 @@
 .backToTopButton {
-    position: fixed;
-    bottom: 20px; 
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #E68787;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99;
-  }
-  
-  .backToTopButton:hover {
-    background-color: #cc0000;
-  }
-  
-  .icon {
-    transform: rotate(-90deg); 
-  }
-  
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #e68787;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.backToTopButton:hover {
+  background-color: #e68787;
+  background: linear-gradient(to right, #00b5d8, #4e9ff3);
+  box-shadow: 0 4px 15px rgba(0, 181, 216, 0.5);
+  transform: scale(1.05);
+}
+
+.backToTopButton.visible {
+  opacity: 1;
+  transform: translateY(0); /* Moves into view */
+}
+
+.backToTopButton.hidden {
+  opacity: 0;
+  transform: translateY(20px); /* Moves out of view */
+}
+
+.icon {
+  transform: rotate(-90deg);
+}

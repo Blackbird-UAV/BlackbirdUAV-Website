@@ -324,18 +324,16 @@ export default function Sponsor() {
             isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"
           }
           transition="transform 0.4s ease, opacity 0.4s ease"
-          // opacity={isButtonVisible ? 1 : 0}
-          opacity={1}
-          visibility={"visible"}
-          // visibility={isButtonVisible ? "visible" : "hidden"}
+          opacity={isButtonVisible ? 1 : 0}
+          visibility={isButtonVisible ? "visible" : "hidden"} // might be an issue idek
           borderRadius="full"
           bg="transparent"
           border="2px solid white"
           color="white"
           _hover={{ bg: "gray.800" }}
           _active={{ bg: "gray.900" }}
-          size="sm"
-          boxShadow="md"
+          size="md"
+          boxShadow="lg"
         >
           <Box as="span" transform="rotate(90deg)" fontSize="lg">
             <svg

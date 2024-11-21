@@ -9,6 +9,7 @@ import {
   Image,
   Grid,
 } from "@chakra-ui/react";
+import React from "react";
 import { motion } from "framer-motion";
 import styles from "@/styles/SponsorSidebar.module.css";
 import { fadeInUp, stagger, scaleUp } from "@/components/animations";
@@ -75,8 +76,8 @@ const SponsorSidebar = () => {
                   href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
                   isExternal
                   size="lg"
-                  bg="#e68787" /* Default color */
-                  color="white" /* Text color */
+                  bg="#e68787"
+                  color="white"
                   borderRadius="full"
                   m={4}
                   p={6}
@@ -85,7 +86,7 @@ const SponsorSidebar = () => {
                   whileHover={{
                     scale: 1.1,
                     background: "linear-gradient(to right, #00b5d8, #4e9ff3)",
-                  }} /* Hover color */
+                  }}
                   whileTap={{ scale: 0.95 }}
                   boxShadow="lg"
                   _focus={{
@@ -130,4 +131,4 @@ const SponsorSidebar = () => {
   );
 };
 
-export default SponsorSidebar;
+export default React.memo(SponsorSidebar);

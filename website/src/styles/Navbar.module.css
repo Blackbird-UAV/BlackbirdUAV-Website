@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(28, 28, 28, 0.90);
+  background-color: rgba(28, 28, 28, 0.9);
   /* Slightly opaque background */
   backdrop-filter: blur(10px);
   /* Adds a blur effect */
@@ -38,7 +38,7 @@
 
 /* Link Buttons */
 .link {
-  color: #F5F5F5;
+  color: #f5f5f5;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
@@ -53,7 +53,7 @@
 
 /* Underline effect */
 .link span::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -85,15 +85,18 @@
 }
 
 .sponsorButton {
-  background-color: red;
+  background-color: #e68787;
   padding: 10px 8px;
   border-radius: 50px;
   margin-left: 4px;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .sponsorButton:hover {
-  background-color: #4169E1;
+  background-color: #e68787;
+  background: linear-gradient(to right, #00b5d8, #4e9ff3);
+  box-shadow: 0 4px 15px rgba(0, 181, 216, 0.5);
+  transform: scale(1.05);
 }
 
 .sponsorLink {
