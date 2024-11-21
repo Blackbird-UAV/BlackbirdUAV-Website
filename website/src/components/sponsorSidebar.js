@@ -51,7 +51,7 @@ const SponsorSidebar = () => {
               <Box>
                 <MotionHeading
                   as="h2"
-                  size="lg"
+                  size="2xl"
                   mb={4}
                   variants={fadeInUp}
                 >

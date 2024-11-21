@@ -6,6 +6,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import BackToTopButton from "@/components/BackToTopButton";
 import { defaultSystem } from "@chakra-ui/react/preset";
 
+const theme = {
+  config: {
+    useSystemColorMode: false,
+    initialColorMode: "dark"
+  }
+}
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -16,7 +23,7 @@ export default function App({ Component, pageProps }) {
           <Footer />
         </ChakraProvider>
       </MantineProvider>
-      <BackToTopButton /> 
+      <BackToTopButton />
     </>
   );
 }

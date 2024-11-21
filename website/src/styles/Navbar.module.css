@@ -3,20 +3,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(28, 28, 28, 0.90); /* Slightly opaque background */
-  backdrop-filter: blur(10px); /* Adds a blur effect */
+  background-color: rgba(28, 28, 28, 0.90);
+  /* Slightly opaque background */
+  backdrop-filter: blur(10px);
+  /* Adds a blur effect */
   padding: 1rem 8rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   z-index: 100;
   width: 100%;
-  transform: translateY(-100%); /* Initially hidden above the screen */
-  transition: transform 0.5s ease; /* Smooth transition when shown */
+  transform: translateY(-100%);
+  /* Initially hidden above the screen */
+  transition: transform 0.5s ease;
+  /* Smooth transition when shown */
 }
 
 .navbar.show {
-  transform: translateY(0); /* Moves down when scrolled past the second div */
+  transform: translateY(0);
+  /* Moves down when scrolled past the second div */
 }
 
 .logoContainer {
@@ -59,12 +64,14 @@
 }
 
 .link:hover span::after {
-  width: 100%; /* Underline stretches to the width of the text */
+  width: 100%;
+  /* Underline stretches to the width of the text */
 }
 
 /* Active link styling to keep underline */
 .activeLink .link span::after {
-  width: 100%; /* Keep the line visible for active links */
+  width: 100%;
+  /* Keep the line visible for active links */
 }
 
 /* Link wrapper styles */
@@ -97,8 +104,9 @@
   padding: 5px 10px;
 }
 
-.chevron{
+.chevron {
   margin-left: 3px;
+  display: inline-flex;
 }
 
 /* Tablet - max-width: 900px */
