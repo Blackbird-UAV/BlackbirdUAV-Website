@@ -3,10 +3,41 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Link from 'next/link';
 import ScrollDownIndicator from '@/components/ScrollDownIndicator';
+import { Carousel } from '@mantine/carousel';
+import { Progress } from '@mantine/core';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function Home() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [embla, setEmbla] = useState(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    if (!embla) return;
+    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
+    setScrollProgress(progress * 100);
+  }, [embla, setScrollProgress]);
+
+  const handleWindowScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    if (embla) {
+      embla.on('scroll', handleScroll);
+      handleScroll();
+    }
+  }, [embla, handleScroll]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleWindowScroll);
+    return () => {
+      window.removeEventListener('scroll', handleWindowScroll);
+    };
+  }, []);
+
   return (
-    <>
+    <div className={styles.pageWrapper}>
       <Head>
         <title>BlackBird UAV</title>
         <meta name="description" content="BlackBird UAV | Carleton University's UAV Design Team" />
@@ -29,6 +60,11 @@ export default function Home() {
         <ScrollDownIndicator />
       </div>
 
+      <div className={styles.cloudContainer}>
+        <img src="/images/cloud.png" alt="Cloud Left" className={styles.cloudLeft} style={{ transform: `translateX(-${scrollY * 0.4}px)` }} />
+        <img src="/images/cloud2.png" alt="Cloud Right" className={styles.cloudRight} style={{ transform: `translateX(${scrollY * 0.4}px)` }} />
+      </div>
+
       <div id="secondDiv" className={styles.aboutContainer}>
         <img src="/images/tempImage.png" alt="Blackbird UAV Logo" className={styles.aboutImage} />
         <div className={styles.aboutText}>
@@ -39,26 +75,54 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="services" className={styles.servicesContainer}>
-        <h2 className={styles.servicesTitle}>Our Services</h2>
-        <div className={styles.serviceCards}>
-          <div className={styles.serviceCard}>
-            <img src="/images/aerial-photography.jpg" alt="Aerial Photography" className={styles.serviceImage} />
-            <h3>Aerial Photography</h3>
-            <p>Capture stunning visuals with our high-resolution drones for marketing and events.</p>
-          </div>
-          <div className={styles.serviceCard}>
-            <img src="/images/surveying-mapping.jpg" alt="Surveying & Mapping" className={styles.serviceImage} />
-            <h3>Surveying & Mapping</h3>
-            <p>Utilize advanced mapping solutions for accurate land surveys and data collection.</p>
-          </div>
-          <div className={styles.serviceCard}>
-            <img src="/images/inspection-services.jpg" alt="Inspection Services" className={styles.serviceImage} />
-            <h3>Inspection Services</h3>
-            <p>Perform thorough inspections of hard-to-reach areas, ensuring safety and efficiency.</p>
-          </div>
-        </div>
+      <div className={styles.galleryContainer}>
+        <h2 className={styles.galleryTitle}>Our UAVs</h2>
+        <Carousel
+          slideSize="70%"
+          height={400}
+          slideGap="md"
+          controlsOffset="md"
+          loop
+          withIndicators
+          getEmblaApi={setEmbla}
+          styles={{
+            indicator: {
+              width: 10,
+              height: 10,
+              background: 'gray',
+              '&[data-active]': {
+                background: 'blue',
+              },
+            },
+          }}
+        >
+          <Carousel.Slide>
+            <div className={styles.carouselSlide}>
+              <img src="/images/vehicle1.jpg" alt="Pegasus" className={styles.uavImage} />
+              <h3 className={styles.uavName}>Pegasus</h3>
+            </div>
+          </Carousel.Slide>
+          <Carousel.Slide>
+            <div className={styles.carouselSlide}>
+              <img src="/images/vehicle2.jpg" alt="Phoenix" className={styles.uavImage} />
+              <h3 className={styles.uavName}>Phoenix</h3>
+            </div>
+          </Carousel.Slide>
+          <Carousel.Slide>
+            <div className={styles.carouselSlide}>
+              <img src="/images/vehicle3.jpg" alt="Valkyrie" className={styles.uavImage} />
+              <h3 className={styles.uavName}>Valkyrie</h3>
+            </div>
+          </Carousel.Slide>
+          <Carousel.Slide>
+            <div className={styles.carouselSlide}>
+              <img src="/images/vehicle4.jpg" alt="Orion" className={styles.uavImage} />
+              <h3 className={styles.uavName}>Orion</h3>
+            </div>
+          </Carousel.Slide>
+        </Carousel>
+        <Progress value={scrollProgress} size="sm" mt="xl" mx="auto" className={styles.progressBar} />
       </div>
-    </>
+    </div>
   );
 }
