@@ -40,48 +40,65 @@ const SponsorSidebar = () => {
       >
         <MotionStack variants={stagger} spacing={6} w="100%">
           {/* Heading */}
-          <MotionHeading as="h1" size="3xl" variants={fadeInUp}>
+          <MotionHeading as="h1" size="3xl" color="#e68787" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
 
           {/* Content Box */}
-          <Box bg="gray.800" py={5} px={5} my={5} borderRadius="md" boxShadow="lg">
-            <Grid templateColumns={{ base: "1fr", md: "1fr 2fr" }} gap={6}>
+          <Box
+            bg="gray.800"
+            py={5}
+            px={5}
+            my={5}
+            borderRadius="md"
+            boxShadow="lg"
+          >
+            <Grid templateColumns="repeat(2, 1fr)" gap={6} alignItems="center">
               {/* Text Content */}
               <Box>
-                <MotionHeading
-                  as="h2"
-                  size="2xl"
-                  mb={4}
-                  variants={fadeInUp}
-                >
+                <MotionHeading as="h2" size="2xl" mb={4} variants={fadeInUp}>
                   What do sponsors do?
                 </MotionHeading>
                 <MotionText mb={4} variants={fadeInUp}>
-                  Sponsors play a vital role in helping us achieve our goals. We proudly display
-                  our sponsors' logos and brands at competitions, just like we do at any local
-                  team event. Their generous contributions enable us to participate in competitions
-                  and enhance our resources year by year.
+                  Sponsors play a vital role in helping us achieve our goals. We
+                  proudly display our sponsors' logos and brands at
+                  competitions, just like we do at any local team event. Their
+                  generous contributions enable us to participate in
+                  competitions and enhance our resources year by year.
                   <br />
                   <br />
-                  There are many ways to support our team. For more information, please read our sponsorship package.
+                  There are many ways to support our team. For more information,
+                  please read our sponsorship package.
                 </MotionText>
                 <MotionButton
                   as={Link}
                   href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
                   isExternal
                   size="lg"
-                  colorScheme="teal"
+                  bg="#e68787" /* Default color */
+                  color="white" /* Text color */
                   borderRadius="full"
                   m={4}
                   p={6}
                   fontWeight="bold"
                   variants={scaleUp}
-                  whileHover={{ scale: 1.1, background: "linear-gradient(to right, #00b5d8, #4e9ff3)" }}
+                  whileHover={{
+                    scale: 1.1,
+                    background: "linear-gradient(to right, #00b5d8, #4e9ff3)",
+                  }} /* Hover color */
                   whileTap={{ scale: 0.95 }}
                   boxShadow="lg"
-                  _focus={{ outline: "none", boxShadow: "0 0 0 2px #00b5d8" }}
-                  _hover={{ boxShadow: "0 4px 15px rgba(0, 181, 216, 0.5)" }}
+                  _focus={{
+                    outline: "none",
+                    boxShadow:
+                      "0 0 0 2px #e68787" /* Focus outline matches the default color */,
+                  }}
+                  _hover={{
+                    background:
+                      "#e68787" /* Reverts to default color when unhovered */,
+                    boxShadow:
+                      "0 4px 15px rgba(0, 181, 216, 0.5)" /* Hover shadow effect */,
+                  }}
                 >
                   Sponsorship Package
                 </MotionButton>
@@ -92,6 +109,8 @@ const SponsorSidebar = () => {
                 variants={fadeInUp}
                 overflow="hidden"
                 borderRadius="lg"
+                height="100%"
+                display="cover"
               >
                 <Image
                   src="/images/company4.jpg"

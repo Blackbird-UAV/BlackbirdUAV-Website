@@ -1,21 +1,91 @@
-import { Grid, GridItem, Stack, Box, Heading, Link, Image, Button, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Grid,
+  GridItem,
+  Stack,
+  Box,
+  Heading,
+  Link,
+  Image,
+  Button,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import FadeInLayout from "@/components/FadeWhenVisible";
 import Sidebar from "@/components/sponsorSidebar";
 
 const sponsors = [
-  { name: "Company One", logo: "/images/clear1.png", link: "https://company1.com", tier: "platinum" },
-  { name: "Company One Point Five", logo: "/images/clear4.png", link: "https://company1.com", tier: "platinum" },
-  { name: "Company Two", logo: "/images/clear2.png", link: "https://company2.com", tier: "gold" },
-  { name: "Company Two Point Three", logo: "/images/clear5.png", link: "https://company2.com", tier: "gold" },
-  { name: "Company Three", logo: "/images/clear3.png", link: "https://company3.com", tier: "silver" },
-  { name: "Company Four", logo: "/images/clear4.png", link: "https://company4.com", tier: "silver" },
-  { name: "Company Five", logo: "/images/clear5.png", link: "https://company1.com", tier: "bronze" },
-  { name: "Company Six", logo: "/images/clear6.png", link: "https://company2.com", tier: "bronze" },
-  { name: "Company Seven", logo: "/images/clear7.png", link: "https://company3.com", tier: "bronze" },
-  { name: "Company Eight", logo: "/images/clear1.png", link: "https://company3.com", tier: "bronze" },
-  { name: "Company Nine", logo: "/images/clear2.png", link: "https://company3.com", tier: "bronze" },
-  { name: "Company Ten", logo: "/images/clear3.png", link: "https://company3.com", tier: "bronze" },
+  {
+    name: "Company One",
+    logo: "/images/clear1.png",
+    link: "https://company1.com",
+    tier: "platinum",
+  },
+  {
+    name: "Company One Point Five",
+    logo: "/images/clear4.png",
+    link: "https://company1.com",
+    tier: "platinum",
+  },
+  {
+    name: "Company Two",
+    logo: "/images/clear2.png",
+    link: "https://company2.com",
+    tier: "gold",
+  },
+  {
+    name: "Company Two Point Three",
+    logo: "/images/clear5.png",
+    link: "https://company2.com",
+    tier: "gold",
+  },
+  {
+    name: "Company Three",
+    logo: "/images/clear3.png",
+    link: "https://company3.com",
+    tier: "silver",
+  },
+  {
+    name: "Company Four",
+    logo: "/images/clear4.png",
+    link: "https://company4.com",
+    tier: "silver",
+  },
+  {
+    name: "Company Five",
+    logo: "/images/clear5.png",
+    link: "https://company1.com",
+    tier: "bronze",
+  },
+  {
+    name: "Company Six",
+    logo: "/images/clear6.png",
+    link: "https://company2.com",
+    tier: "bronze",
+  },
+  {
+    name: "Company Seven",
+    logo: "/images/clear7.png",
+    link: "https://company3.com",
+    tier: "bronze",
+  },
+  {
+    name: "Company Eight",
+    logo: "/images/clear1.png",
+    link: "https://company3.com",
+    tier: "bronze",
+  },
+  {
+    name: "Company Nine",
+    logo: "/images/clear2.png",
+    link: "https://company3.com",
+    tier: "bronze",
+  },
+  {
+    name: "Company Ten",
+    logo: "/images/clear3.png",
+    link: "https://company3.com",
+    tier: "bronze",
+  },
 ];
 
 export default function Sponsor() {
@@ -35,7 +105,7 @@ export default function Sponsor() {
       platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" }, // Full row
       gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }, // Two per row
       silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Three per row
-      bronze: { base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" }, // Four per row
+      bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Four per row
     };
 
     return (
@@ -72,7 +142,7 @@ export default function Sponsor() {
                   src={sponsor.logo}
                   alt={sponsor.name}
                   objectFit="contain" // Ensure the entire logo fits within the box
-                  height="150px"
+                  height="100px"
                   width="100%"
                 />
               </Box>
@@ -81,8 +151,6 @@ export default function Sponsor() {
       </Grid>
     );
   };
-
-
 
   const handleScrollDown = () => {
     const bronzeSection = document.getElementById("bronzeSection");
@@ -100,12 +168,11 @@ export default function Sponsor() {
     // Optimize with requestAnimationFrame
     const handleScroll = () => requestAnimationFrame(toggleVisibility);
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     toggleVisibility(); // Ensure visibility is updated on mount
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   return (
     <Box bg="black" minHeight="100vh">
@@ -145,12 +212,18 @@ export default function Sponsor() {
           overflow="hidden"
         >
           <Stack w="90%" spacing={10}>
-            <Heading as="h2" size="3xl" textAlign="center" mb={4} color={"white"}>
+            <Heading
+              as="h2"
+              size="3xl"
+              textAlign="center"
+              mb={4}
+              color={"white"}
+            >
               Thank you to our generous sponsors!
             </Heading>
             <FadeInLayout>
               <Box
-                bg="#D6CFF0"
+                bg="rgba(214, 207, 240, 1)"
                 borderRadius="lg"
                 paddingY={6}
                 paddingX={8}
@@ -171,13 +244,18 @@ export default function Sponsor() {
             </FadeInLayout>
             <FadeInLayout>
               <Box
-                bg="#fddc5b"
+                bg="rgba(253, 221, 91, 1)"
                 borderRadius="lg"
                 paddingY={6}
                 paddingX={8}
                 mb={2}
                 ml={6}
                 shadow="lg"
+                boxShadow="0 0 0px 0px #fddc5b"
+                _hover={{
+                  boxShadow: "0 0 8px 4px #fddc5b", // Enhance glow on hover
+                  transition: "0.3s ease",
+                }}
               >
                 <Heading as="h3" size="lg" mb={6} color="black">
                   Gold Sponsors
@@ -187,13 +265,18 @@ export default function Sponsor() {
             </FadeInLayout>
             <FadeInLayout>
               <Box
-                bg="#c4c4c4"
+                bg="rgba(196, 196, 196, 1)"
                 borderRadius="lg"
                 paddingY={6}
                 paddingX={8}
                 mb={2}
                 ml={6}
                 shadow="lg"
+                boxShadow="0 0 0px 0px #c4c4c4"
+                _hover={{
+                  boxShadow: "0 0 8px 4px #c4c4c4", // Enhance glow on hover
+                  transition: "0.3s ease",
+                }}
               >
                 <Heading as="h3" size="lg" mb={6} color="black">
                   Silver Sponsors
@@ -203,15 +286,26 @@ export default function Sponsor() {
             </FadeInLayout>
             <FadeInLayout>
               <Box
-                bg="#de965d"
+                bg="rgba(222, 151, 93, 1)"
                 borderRadius="lg"
                 paddingY={6}
                 paddingX={8}
                 mb={2}
                 ml={6}
                 shadow="lg"
+                boxShadow="0 0 0px 0px #de965d"
+                _hover={{
+                  boxShadow: "0 0 8px 4px #de965d", // Enhance glow on hover
+                  transition: "0.3s ease",
+                }}
               >
-                <Heading id="bronzeSection" as="h3" size="lg" mb={6} color="black">
+                <Heading
+                  id="bronzeSection"
+                  as="h3"
+                  size="lg"
+                  mb={6}
+                  color="black"
+                >
                   Bronze Sponsors
                 </Heading>
                 {renderSponsorsByTier("bronze")}
@@ -226,7 +320,9 @@ export default function Sponsor() {
           position="fixed"
           bottom="40px"
           left="50%"
-          transform={isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"}
+          transform={
+            isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"
+          }
           transition="transform 0.4s ease, opacity 0.4s ease"
           // opacity={isButtonVisible ? 1 : 0}
           opacity={1}
