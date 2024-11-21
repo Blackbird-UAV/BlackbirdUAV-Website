@@ -89,14 +89,14 @@ const sponsors = [
 ];
 
 export default function Sponsor() {
-  const sideBarPadding = useBreakpointValue({ base: "5", md: "8", lg: "14" });
+  const sideBarPadding = useBreakpointValue({ base: 6, md: 8, lg: 12 });
   const mainContent = useBreakpointValue({
-    base: "5",
-    md: "14",
-    lg: "14",
+    base: 6,
+    md: 12,
+    lg: 14,
     xl: 0,
   });
-  const paddTop = useBreakpointValue({ base: "20", sm: 20, md: 20 });
+  const paddTop = useBreakpointValue({ base: 6, sm: 6, md: 6 });
 
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 
@@ -175,7 +175,7 @@ export default function Sponsor() {
   }, []);
 
   return (
-    <Box bg="black" minHeight="100vh">
+    <Box bg="black">
       <Grid
         id="mainGrid"
         templateColumns={{
@@ -187,7 +187,7 @@ export default function Sponsor() {
           sm: "repeat(1, 0)",
           lg: "repeat(2, 1fr)",
         }}
-        gap={8}
+        gap={6}
       >
         <GridItem
           padding={sideBarPadding}
@@ -205,8 +205,8 @@ export default function Sponsor() {
         <GridItem
           as="main"
           padding={mainContent}
-          marginTop={40}
-          marginBottom={20}
+          mt={36}
+          mb={20}
           rowSpan={2}
           colSpan={{ base: 1, sm: 2, md: 2, lg: 2, xl: 2 }}
           overflow="hidden"
@@ -225,20 +225,28 @@ export default function Sponsor() {
               <Box
                 bg="rgba(214, 207, 240, 1)"
                 borderRadius="lg"
-                paddingY={6}
-                paddingX={8}
+                padding={5}
                 mb={2}
-                ml={6}
+                ml={4}
                 shadow="xl"
                 boxShadow="0 0 0px 0px #7468B2"
                 _hover={{
-                  boxShadow: "0 0 10px 5px #7468B2", // Enhance glow on hover
+                  boxShadow: "0 0 10px 5px #7468B2",
                   transition: "0.3s ease",
                 }}
+                display="flex"
+                alignItems="center"
               >
-                <Heading as="h3" size="lg" mb={6} color="black">
-                  Platinum Sponsors
-                </Heading>
+                <Box
+                  transform="rotate(180deg)"
+                  writingMode="vertical-rl"
+                  textAlign="center"
+                  mr={2}
+                >
+                  <Heading as="h3" size="2xl" color="black">
+                    Platinum
+                  </Heading>
+                </Box>
                 {renderSponsorsByTier("platinum")}
               </Box>
             </FadeInLayout>
@@ -246,20 +254,28 @@ export default function Sponsor() {
               <Box
                 bg="rgba(253, 221, 91, 1)"
                 borderRadius="lg"
-                paddingY={6}
-                paddingX={8}
+                padding={5}
                 mb={2}
-                ml={6}
+                ml={4}
                 shadow="lg"
                 boxShadow="0 0 0px 0px #fddc5b"
                 _hover={{
-                  boxShadow: "0 0 8px 4px #fddc5b", // Enhance glow on hover
+                  boxShadow: "0 0 8px 4px #fddc5b",
                   transition: "0.3s ease",
                 }}
+                display="flex"
+                alignItems="center"
               >
-                <Heading as="h3" size="lg" mb={6} color="black">
-                  Gold Sponsors
-                </Heading>
+                <Box
+                  transform="rotate(180deg)"
+                  writingMode="vertical-rl"
+                  textAlign="center"
+                  mr={2}
+                >
+                  <Heading as="h3" size="2xl" color="black">
+                    Gold
+                  </Heading>
+                </Box>
                 {renderSponsorsByTier("gold")}
               </Box>
             </FadeInLayout>
@@ -267,20 +283,28 @@ export default function Sponsor() {
               <Box
                 bg="rgba(196, 196, 196, 1)"
                 borderRadius="lg"
-                paddingY={6}
-                paddingX={8}
+                padding={5}
                 mb={2}
-                ml={6}
+                ml={4}
                 shadow="lg"
                 boxShadow="0 0 0px 0px #c4c4c4"
                 _hover={{
-                  boxShadow: "0 0 8px 4px #c4c4c4", // Enhance glow on hover
+                  boxShadow: "0 0 8px 4px #c4c4c4",
                   transition: "0.3s ease",
                 }}
+                display="flex"
+                alignItems="center"
               >
-                <Heading as="h3" size="lg" mb={6} color="black">
-                  Silver Sponsors
-                </Heading>
+                <Box
+                  transform="rotate(180deg)"
+                  writingMode="vertical-rl"
+                  textAlign="center"
+                  mr={2}
+                >
+                  <Heading as="h3" size="2xl" color="black">
+                    Silver
+                  </Heading>
+                </Box>
                 {renderSponsorsByTier("silver")}
               </Box>
             </FadeInLayout>
@@ -288,26 +312,28 @@ export default function Sponsor() {
               <Box
                 bg="rgba(222, 151, 93, 1)"
                 borderRadius="lg"
-                paddingY={6}
-                paddingX={8}
+                padding={5}
                 mb={2}
-                ml={6}
+                ml={4}
                 shadow="lg"
                 boxShadow="0 0 0px 0px #de965d"
                 _hover={{
-                  boxShadow: "0 0 8px 4px #de965d", // Enhance glow on hover
+                  boxShadow: "0 0 8px 4px #de965d",
                   transition: "0.3s ease",
                 }}
+                display="flex"
+                alignItems="center"
               >
-                <Heading
-                  id="bronzeSection"
-                  as="h3"
-                  size="lg"
-                  mb={6}
-                  color="black"
+                <Box
+                  transform="rotate(180deg)"
+                  writingMode="vertical-rl"
+                  textAlign="center"
+                  mr={2}
                 >
-                  Bronze Sponsors
-                </Heading>
+                  <Heading as="h3" size="2xl" color="black">
+                    Bronze
+                  </Heading>
+                </Box>
                 {renderSponsorsByTier("bronze")}
               </Box>
             </FadeInLayout>
