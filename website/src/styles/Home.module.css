@@ -260,13 +260,13 @@
 }
 
 .cloudLeft {
-  bottom: -50%; /* Higher position */
+  bottom: 30%; /* Higher position */
   left: -20px; /* Offset to the left */
   z-index: 1;
 }
 
 .cloudRight {
-  bottom: -150%; /* Higher position */
+  bottom: -100%; /* Higher position */
   right: -100px; /* Offset to the right */
   z-index: 1;
 }
