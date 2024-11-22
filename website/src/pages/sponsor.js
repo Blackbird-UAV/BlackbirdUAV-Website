@@ -10,8 +10,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import FadeInLayout from "@/components/FadeWhenVisible";
+import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
+import { fadeInUp, stagger } from "@/components/animations";
 
 const sponsors = [
   {
@@ -88,68 +89,151 @@ const sponsors = [
   },
 ];
 
+const DURATIONS = {
+  VeryFast: 0.2,
+  Fast: 0.4,
+  Normal: 0.6,
+  Slow: 0.8,
+  VerySlow: 1.0,
+};
+
+const staggerAnimation = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.3,
+      duration: DURATIONS.Normal,
+      ease: [0.6, -0.05, 0.01, 0.99], // optional, uncomment to make it more snappy and comment to make it more flowy
+    },
+  }),
+};
+
 export default function Sponsor() {
-  const sideBarPadding = useBreakpointValue({ base: 6, md: 8, lg: 12 });
-  const mainContent = useBreakpointValue({
-    base: 6,
-    md: 12,
-    lg: 14,
-    xl: 0,
-  });
-  const paddTop = useBreakpointValue({ base: 6, sm: 6, md: 6 });
+  const padding = useBreakpointValue({ base: 6, md: 8, lg: 12 });
+  const marginTopSidebar = useBreakpointValue({ base: 6, sm: 6, md: 6 });
+  const marginBottom = useBreakpointValue({ base: 20, lg: 0 });
+  const marginTop = useBreakpointValue({ base: 0, lg: 20 });
 
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
 
-  const renderSponsorsByTier = (tier) => {
+  const renderSponsorsByTier = (tier, sectionIndex) => {
     const columnSettings = {
-      platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" }, // Full row
-      gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }, // Two per row
-      silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Three per row
-      bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }, // Three per row
+      Platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
+      Gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
+      Silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
+      Bronze: { base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" },
     };
 
     return (
-      <Grid templateColumns={columnSettings[tier]} gap={4} w="100%">
+      <Grid templateColumns={columnSettings[tier]} gap={4} px={2} w="100%">
         {sponsors
-          .filter((s) => s.tier === tier)
-          .map((sponsor, index) => (
-            <GridItem
-              key={index}
-              as={Link}
-              href={sponsor.link}
-              isExternal
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              overflow="hidden"
-              width="100%"
+          .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
+          .map((sponsor, sponsorIndex) => (
+            <motion.div
+              id={(function () {
+                switch (tier.toLowerCase()) {
+                  case "platinum":
+                    return "platSection";
+                  case "gold":
+                    return "goldSection";
+                  case "silver":
+                    return "silverSection";
+                  case "bronze":
+                    return "bronzeSection";
+                  default:
+                    return undefined;
+                }
+              })()}
+              key={sponsor.name}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
+                    duration: DURATIONS.Normal,
+                    // ease: [0.6, -0.05, 0.01, 0.99],
+                  },
+                },
+              }}
             >
-              <Box
-                bg="white"
-                margin={2}
-                padding={2}
-                borderRadius="md"
-                boxShadow="md"
-                _hover={{
-                  transform: "scale(1.05)",
-                  transition: "0.3s",
-                }}
+              <GridItem
+                as={Link}
+                href={sponsor.link}
+                isExternal
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
+                overflow="hidden"
                 width="100%"
               >
-                <Image
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  objectFit="contain"
-                  height="100px"
+                <Box
+                  bg="white"
+                  margin={2}
+                  padding={2}
+                  borderRadius="md"
+                  boxShadow="md"
+                  overflow="hidden"
+                  _hover={{
+                    transform: "scale(1.04)",
+                    transition: "0.3s",
+                  }}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
                   width="100%"
-                />
-              </Box>
-            </GridItem>
+                >
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    objectFit="contain"
+                    height="100px"
+                    width="100%"
+                  />
+                </Box>
+              </GridItem>
+            </motion.div>
           ))}
       </Grid>
+    );
+  };
+
+  const renderSponsorSections = (tier, sectionIndex) => {
+    const tierColors = {
+      Platinum: "#d6cff0",
+      Gold: "#fddd5b",
+      Silver: "#c4c4c4",
+      Bronze: "#de975d",
+    };
+
+    return (
+      <Box
+        bg={tierColors[tier]}
+        borderRadius="lg"
+        padding={5}
+        mb={2}
+        ml={4}
+        shadow="lg"
+        display="flex"
+        alignItems="center"
+      >
+        <Box
+          transform="rotate(180deg)"
+          writingMode="vertical-rl"
+          textAlign="center"
+          mr={0}
+        >
+          <Heading as="h3" size="2xl" color="black">
+            {tier}
+          </Heading>
+        </Box>
+        {renderSponsorsByTier(tier, sectionIndex)}
+      </Box>
     );
   };
 
@@ -160,22 +244,13 @@ export default function Sponsor() {
     }
   };
 
-  const marginBottom = useBreakpointValue({
-    base: 20,
-    lg: 0
-  })
-
-  const marginTop = useBreakpointValue({
-    base: 0,
-    lg: 36
-  })
+  const toggleVisibility = () => {
+    const scrollThreshold = 300;
+    const isVisible = window.scrollY < scrollThreshold;
+    setIsButtonVisible(isVisible);
+  };
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      const scrollThreshold = 200;
-      setIsButtonVisible(window.scrollY < scrollThreshold);
-    };
-
     const handleScroll = () => requestAnimationFrame(toggleVisibility);
 
     window.addEventListener("scroll", handleScroll);
@@ -184,10 +259,13 @@ export default function Sponsor() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    console.log("Button visibility updated:", isButtonVisible);
+  }, [isButtonVisible]);
+
   return (
     <Box bg="black">
       <Grid
-        id="mainGrid"
         templateColumns={{
           base: "repeat(1, 1fr)",
           lg: "repeat(5, 1fr)",
@@ -200,9 +278,9 @@ export default function Sponsor() {
         gap={6}
       >
         <GridItem
-          padding={sideBarPadding}
-          marginTop={paddTop}
-          marginBottom={marginBottom}
+          padding={padding}
+          mt={marginTopSidebar}
+          mb={marginBottom}
           rowSpan={2}
           colSpan={{ base: 1, sm: 1, md: 1, lg: 3, xl: 3 }}
           display="flex"
@@ -214,7 +292,7 @@ export default function Sponsor() {
         </GridItem>
         <GridItem
           as="main"
-          padding={mainContent}
+          padding={padding}
           mt={marginTop}
           mb={20}
           rowSpan={2}
@@ -231,126 +309,17 @@ export default function Sponsor() {
             >
               Thank you to our generous sponsors!
             </Heading>
-            <FadeInLayout>
-              <Box
-                bg="rgba(214, 207, 240, 1)"
-                borderRadius="lg"
-                padding={5}
-                mb={2}
-                ml={4}
-                shadow="xl"
-                boxShadow="0 0 0px 0px #7468B2"
-                _hover={{
-                  boxShadow: "0 0 10px 5px #7468B2",
-                  transition: "0.3s ease",
-                }}
-                display="flex"
-                alignItems="center"
+            {["Platinum", "Gold", "Silver", "Bronze"].map((tier, index) =>
+              <motion.div
+                key={index}
+                variants={staggerAnimation}
+                initial="hidden"
+                animate="visible"
+                custom={index}
               >
-                <Box
-                  transform="rotate(180deg)"
-                  writingMode="vertical-rl"
-                  textAlign="center"
-                  mr={2}
-                >
-                  <Heading as="h3" size="2xl" color="black">
-                    Platinum
-                  </Heading>
-                </Box>
-                {renderSponsorsByTier("platinum")}
-              </Box>
-            </FadeInLayout>
-            <FadeInLayout>
-              <Box
-                bg="rgba(253, 221, 91, 1)"
-                borderRadius="lg"
-                padding={5}
-                mb={2}
-                ml={4}
-                // Optional glow
-                // shadow="lg"
-                // boxShadow="0 0 0px 0px #fddc5b"
-                // _hover={{
-                //   boxShadow: "0 0 8px 4px #fddc5b",
-                //   transition: "0.3s ease",
-                // }}
-                display="flex"
-                alignItems="center"
-              >
-                <Box
-                  transform="rotate(180deg)"
-                  writingMode="vertical-rl"
-                  textAlign="center"
-                  mr={2}
-                >
-                  <Heading as="h3" size="2xl" color="black">
-                    Gold
-                  </Heading>
-                </Box>
-                {renderSponsorsByTier("gold")}
-              </Box>
-            </FadeInLayout>
-            <FadeInLayout>
-              <Box
-                bg="rgba(196, 196, 196, 1)"
-                borderRadius="lg"
-                padding={5}
-                mb={2}
-                ml={4}
-                // Optional glow
-                // shadow="lg"
-                // boxShadow="0 0 0px 0px #c4c4c4"
-                // _hover={{
-                //   boxShadow: "0 0 8px 4px #c4c4c4",
-                //   transition: "0.3s ease",
-                // }}
-                display="flex"
-                alignItems="center"
-              >
-                <Box
-                  transform="rotate(180deg)"
-                  writingMode="vertical-rl"
-                  textAlign="center"
-                  mr={2}
-                >
-                  <Heading as="h3" size="2xl" color="black">
-                    Silver
-                  </Heading>
-                </Box>
-                {renderSponsorsByTier("silver")}
-              </Box>
-            </FadeInLayout>
-            <FadeInLayout>
-              <Box
-                id="bronzeSection"
-                bg="rgba(222, 151, 93, 1)"
-                borderRadius="lg"
-                padding={5}
-                mb={2}
-                ml={4}
-                // Optional glow
-                // shadow="lg"
-                // boxShadow="0 0 0px 0px #de965d"
-                // _hover={{
-                //   boxShadow: "0 0 8px 4px #de965d",
-                //   transition: "0.3s ease",
-                // }}
-                display="flex"
-                alignItems="center"
-              >
-                <Box
-                  transform="rotate(180deg)"
-                  writingMode="vertical-rl"
-                  textAlign="center"
-                  mr={2}
-                >
-                  <Heading as="h3" size="2xl" color="black">
-                    Bronze
-                  </Heading>
-                </Box>
-                {renderSponsorsByTier("bronze")}
-              </Box>
-            </FadeInLayout>
+                {renderSponsorSections(tier, index)}
+              </motion.div>
+            )}
           </Stack>
         </GridItem>
       </Grid>
@@ -364,16 +333,19 @@ export default function Sponsor() {
             isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"
           }
           transition="transform 0.4s ease, opacity 0.4s ease"
-          opacity={isButtonVisible ? 1 : 0}
-          visibility={isButtonVisible ? "visible" : "hidden"} // might be an issue idek
           borderRadius="full"
           bg="transparent"
           border="2px solid white"
           color="white"
-          _hover={{ bg: "gray.800" }}
+          _hover={{
+            bg: "gray.800",
+            transform: "translate(-50%, 0) scale(1.1)",
+            transition: "transform 0.3s ease-in-out",
+          }}
           _active={{ bg: "gray.900" }}
           size="md"
           boxShadow="lg"
+          zIndex={999}
         >
           <Box as="span" transform="rotate(90deg)" fontSize="lg">
             <svg

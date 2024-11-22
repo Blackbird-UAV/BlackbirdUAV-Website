@@ -75,11 +75,11 @@ const SponsorSidebar = () => {
           </MotionHeading>
 
           {/* Content Box */}
-          <Box bg="gray.800" h="fit-content" minH="50vh" p={8} mt={2} borderRadius="md" boxShadow="lg" display="flex" justifyContent="center" alignItems="center" flexDirection="column">
-            <Grid templateColumns="repeat(2, 1fr)" gap={6} alignItems="center">
+          <Box bg="gray.800" h="fit-content" minH="60vh" p={8} mt={2} borderRadius="md" boxShadow="lg" display="flex" justifyContent="center" alignItems="center" flexDirection="column">
+            <Grid templateColumns="repeat(2, 1fr)" mx={2} gap={4} alignItems="center"> {/* instead of center, do same space between */}
               {/* Text Content */}
               <Box>
-                <MotionHeading as="h2" size="2xl" mb={4} variants={fadeInUp}>
+                <MotionHeading as="h2" size="3xl" mb={4} variants={fadeInUp}>
                   What do sponsors do?
                 </MotionHeading>
                 <MotionText mb={4} variants={fadeInUp}>
@@ -147,7 +147,7 @@ const SponsorSidebar = () => {
                   height="auto"
                   width="100%"
                   borderRadius="md"
-                  boxShadow="md"
+                  boxShadow="lg"
                 />
               </MotionBox>
             </Grid>
@@ -155,11 +155,11 @@ const SponsorSidebar = () => {
               display="flex" // Make the Box a flex container
               flexDirection="column" // Stack the content vertically
               alignItems="center" // Center horizontally
-              mt={2}
+              mt={4}
             >
               <MotionText
                 color="white"
-                mb={3}
+                mb={4}
                 variants={fadeInUp}
                 textAlign="center"
               >
