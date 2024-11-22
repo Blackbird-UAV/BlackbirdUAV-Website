@@ -160,6 +160,16 @@ export default function Sponsor() {
     }
   };
 
+  const marginBottom = useBreakpointValue({
+    base: 20,
+    lg: 0
+  })
+
+  const marginTop = useBreakpointValue({
+    base: 0,
+    lg: 36
+  })
+
   useEffect(() => {
     const toggleVisibility = () => {
       const scrollThreshold = 200;
@@ -192,7 +202,7 @@ export default function Sponsor() {
         <GridItem
           padding={sideBarPadding}
           marginTop={paddTop}
-          marginBottom={20}
+          marginBottom={marginBottom}
           rowSpan={2}
           colSpan={{ base: 1, sm: 1, md: 1, lg: 3, xl: 3 }}
           display="flex"
@@ -205,7 +215,7 @@ export default function Sponsor() {
         <GridItem
           as="main"
           padding={mainContent}
-          mt={36}
+          mt={marginTop}
           mb={20}
           rowSpan={2}
           colSpan={{ base: 1, sm: 2, md: 2, lg: 2, xl: 2 }}

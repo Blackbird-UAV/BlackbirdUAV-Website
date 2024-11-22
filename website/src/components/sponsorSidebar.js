@@ -23,6 +23,21 @@ const SponsorSidebar = () => {
   const MotionButton = motion(Button);
   const display = useBreakpointValue({ base: "none", lg: "block" });
 
+  const position = useBreakpointValue({
+    base: "relative",
+    lg: "fixed",
+  });
+
+  const top = useBreakpointValue({
+    base: 20,
+    lg: 20,
+  });
+
+  const width = useBreakpointValue({
+    base: "100%",
+    lg: "55%"
+  })
+
   const handleContactUsClick = () => {
     window.location.href =
       "mailto:business@cublackbird.ca?subject=Inquiry%20from%20Sponsor&body=Dear%20Team%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20about%20our%20sponsorship.";
@@ -33,12 +48,12 @@ const SponsorSidebar = () => {
       initial="initial"
       animate="animate"
       variants={fadeInUp}
-      position="fixed" // Set the position to 'fixed' to make it stick at the bottom
-      top={20} // This will stick the sidebar to the bottom of the page
-      width="55%" // Optional: Set the width to 100% to cover the full width of the page
-      // maxHeight="auto"
+      position={position} // Dynamically set the position
+      top={top}
+      width={width}
       bg="black"
       color="white"
+      zIndex={10}
     >
       {/* <motion.div
         id="sidebarCircle"
@@ -77,40 +92,45 @@ const SponsorSidebar = () => {
                   There are many ways to support our team. For more information,
                   please read our sponsorship package.
                 </MotionText>
-                <MotionButton
-                  as={Link}
-                  href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
-                  isExternal
-                  size="lg"
-                  bg="#e68787"
-                  color="white"
-                  borderRadius="full"
-                  m={4}
-                  p={6}
-                  fontWeight="bold"
-                  variants={scaleUp}
-                  whileHover={{
-                    scale: 1.1,
-                    background: "linear-gradient(to right, #00b5d8, #4e9ff3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  boxShadow="lg"
-                  _focus={{
-                    outline: "none",
-                    boxShadow:
-                      "0 0 0 2px #e68787" /* Focus outline matches the default color */,
-                  }}
-                  _hover={{
-                    background:
-                      "#e68787" /* Reverts to default color when unhovered */,
-                    boxShadow:
-                      "0 4px 15px rgba(0, 181, 216, 0.5)" /* Hover shadow effect */,
-                  }}
+                <Box
                   display="flex" // Make the Box a flex container
+                  flexDirection="column"
                   alignItems="center" // Center horizontally
                 >
-                  Sponsorship Package
-                </MotionButton>
+                  <MotionButton
+                    as={Link}
+                    href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
+                    isExternal
+                    size="lg"
+                    bg="#e68787"
+                    color="white"
+                    borderRadius="full"
+                    mb={2}
+                    p={6}
+                    fontWeight="bold"
+                    variants={scaleUp}
+                    whileHover={{
+                      scale: 1.1,
+                      background: "linear-gradient(to right, #00b5d8, #4e9ff3)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    boxShadow="lg"
+                    _focus={{
+                      outline: "none",
+                      boxShadow:
+                        "0 0 0 2px #e68787" /* Focus outline matches the default color */,
+                    }}
+                    _hover={{
+                      background:
+                        "#e68787" /* Reverts to default color when unhovered */,
+                      boxShadow:
+                        "0 4px 15px rgba(0, 181, 216, 0.5)" /* Hover shadow effect */,
+                    }}
+                    w="fit-content"
+                  >
+                    Sponsorship Package
+                  </MotionButton>
+                </Box>
               </Box>
 
               {/* Image */}
@@ -153,7 +173,7 @@ const SponsorSidebar = () => {
                 bg="#e68787"
                 color="white"
                 borderRadius="full"
-                m={2}
+                mb={2}
                 p={6}
                 fontWeight="bold"
                 variants={scaleUp}
@@ -173,7 +193,7 @@ const SponsorSidebar = () => {
                 }}
                 display="flex" // Make the Box a flex container
                 alignItems="center" // Center horizontally
-                w="96%"
+                w="fit-content"
               >
                 Send us an email
               </MotionButton>
