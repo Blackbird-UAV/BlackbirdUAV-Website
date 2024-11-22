@@ -63,20 +63,19 @@ const SponsorSidebar = () => {
         animate={"animate"}
       ></motion.div> */}
       <Container
-        padding={0}
-        mt={4}
-        // height={{ xl: "100vh" }}
-        display={{ xl: "flex" }}
-        alignItems={{ xl: "center" }}
+        py={2}
+        mt={8}
+        height={{ lg: "100vh" }}
+        alignItems={{ lg: "center" }}
       >
-        <MotionStack variants={stagger} spacing={6} w="100%">
+        <MotionStack variants={stagger} spacing={6} w="100%" justify="center" align="center">
           {/* Heading */}
           <MotionHeading as="h1" size="3xl" color="#e68787" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
 
           {/* Content Box */}
-          <Box bg="gray.800" p={6} mt={2} borderRadius="md" boxShadow="lg">
+          <Box bg="gray.800" h="fit-content" minH="50vh" p={8} mt={2} borderRadius="md" boxShadow="lg" display="flex" justifyContent="center" alignItems="center" flexDirection="column">
             <Grid templateColumns="repeat(2, 1fr)" gap={6} alignItems="center">
               {/* Text Content */}
               <Box>
