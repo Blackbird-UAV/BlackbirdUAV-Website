@@ -61,8 +61,8 @@ export default function Home() {
       </div>
 
       <div className={styles.cloudContainer}>
-        <img src="/images/cloud.png" alt="Cloud Left" className={styles.cloudLeft} style={{ transform: `translateX(-${scrollY * 0.4}px)` }} />
-        <img src="/images/cloud2.png" alt="Cloud Right" className={styles.cloudRight} style={{ transform: `translateX(${scrollY * 0.4}px)` }} />
+        <img src="/images/cloud.png" alt="Cloud Left" className={styles.cloudLeft} style={{ transform: `translateX(-${scrollY * 0.9}px)` }} />
+        <img src="/images/cloud2.png" alt="Cloud Right" className={styles.cloudRight} style={{ transform: `translateX(${scrollY * 0.9}px)` }} />
       </div>
 
       <div id="secondDiv" className={styles.aboutContainer}>
@@ -78,8 +78,8 @@ export default function Home() {
       <div className={styles.galleryContainer}>
         <h2 className={styles.galleryTitle}>Our UAVs</h2>
         <Carousel
-          slideSize="70%"
-          height={400}
+          slideSize="60%"
+          height={300}
           slideGap="md"
           controlsOffset="md"
           loop
