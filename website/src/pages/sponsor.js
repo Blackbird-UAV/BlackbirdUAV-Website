@@ -105,7 +105,7 @@ const staggerAnimation = {
     transition: {
       delay: i * 0.3,
       duration: DURATIONS.Normal,
-      ease: [0.6, -0.05, 0.01, 0.99], // optional, uncomment to make it more snappy and comment to make it more flowy
+      // ease: [0.6, -0.05, 0.01, 0.99], // optional, uncomment to make it more snappy and comment to make it more flowy
     },
   }),
 };
@@ -309,7 +309,7 @@ export default function Sponsor() {
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Platinum", "Gold", "Silver", "Bronze"].map((tier, index) =>
+            {["Platinum", "Gold", "Silver", "Bronze"].map((tier, index) => (
               <motion.div
                 key={index}
                 variants={staggerAnimation}
@@ -319,7 +319,7 @@ export default function Sponsor() {
               >
                 {renderSponsorSections(tier, index)}
               </motion.div>
-            )}
+            ))}
           </Stack>
         </GridItem>
       </Grid>

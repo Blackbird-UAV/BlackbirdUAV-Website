@@ -35,12 +35,14 @@ const SponsorSidebar = () => {
 
   const width = useBreakpointValue({
     base: "100%",
-    lg: "55%"
-  })
+    lg: "55%",
+  });
 
   const handleContactUsClick = () => {
-    window.location.href =
-      "mailto:business@cublackbird.ca?subject=Inquiry%20from%20Sponsor&body=Dear%20Team%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20about%20our%20sponsorship.";
+    window.open(
+      "mailto:replaceemail@cublackbird.ca?subject=Blackbird%20UAV%20Sponsorship%20",
+      "_blank"
+    );
   };
 
   return (
@@ -68,15 +70,40 @@ const SponsorSidebar = () => {
         height={{ lg: "100vh" }}
         alignItems={{ lg: "center" }}
       >
-        <MotionStack variants={stagger} spacing={6} w="100%" justify="center" align="center">
+        <MotionStack
+          variants={stagger}
+          spacing={6}
+          w="100%"
+          justify="center"
+          align="center"
+        >
           {/* Heading */}
           <MotionHeading as="h1" size="3xl" color="#e68787" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
 
           {/* Content Box */}
-          <Box bg="gray.800" h="fit-content" minH="60vh" p={8} mt={2} borderRadius="md" boxShadow="lg" display="flex" justifyContent="center" alignItems="center" flexDirection="column">
-            <Grid templateColumns="repeat(2, 1fr)" mx={2} gap={4} alignItems="center"> {/* instead of center, do same space between */}
+          <Box
+            bg="gray.800"
+            h="fit-content"
+            minH="60vh"
+            p={8}
+            mt={2}
+            borderRadius="md"
+            boxShadow="lg"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+          >
+            <Grid
+              templateColumns="repeat(2, 1fr)"
+              mx={2}
+              gap={4}
+              alignItems="center"
+            >
+              {" "}
+              {/* instead of center, do same space between */}
               {/* Text Content */}
               <Box>
                 <MotionHeading as="h2" size="3xl" mb={4} variants={fadeInUp}>
@@ -99,6 +126,7 @@ const SponsorSidebar = () => {
                   <MotionButton
                     as={Link}
                     href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
+                    target="_blank"
                     isExternal
                     size="lg"
                     bg="#e68787"
@@ -116,14 +144,11 @@ const SponsorSidebar = () => {
                     boxShadow="lg"
                     _focus={{
                       outline: "none",
-                      boxShadow:
-                        "0 0 0 2px #e68787" /* Focus outline matches the default color */,
+                      boxShadow: "0 0 0 2px #e68787",
                     }}
                     _hover={{
-                      background:
-                        "#e68787" /* Reverts to default color when unhovered */,
-                      boxShadow:
-                        "0 4px 15px rgba(0, 181, 216, 0.5)" /* Hover shadow effect */,
+                      background: "#e68787",
+                      boxShadow: "0 4px 15px rgba(0, 181, 216, 0.5)",
                     }}
                     w="fit-content"
                   >
@@ -131,7 +156,6 @@ const SponsorSidebar = () => {
                   </MotionButton>
                 </Box>
               </Box>
-
               {/* Image */}
               <MotionBox
                 variants={fadeInUp}
