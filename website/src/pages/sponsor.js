@@ -164,6 +164,7 @@ export default function Sponsor() {
             >
               <GridItem
                 as={Link}
+                target="_blank"
                 href={sponsor.link}
                 isExternal
                 display="flex"
