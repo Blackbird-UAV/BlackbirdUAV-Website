@@ -3,38 +3,65 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Link from 'next/link';
 import ScrollDownIndicator from '@/components/ScrollDownIndicator';
-import { Carousel } from '@mantine/carousel';
-import { Progress } from '@mantine/core';
 import { useCallback, useEffect, useState } from 'react';
+
+const slides = [
+  { name: "Pegasus", image: "/images/vehicle1.jpg", description: "A versatile UAV designed for various applications." },
+  { name: "Phoenix", image: "/images/vehicle2.jpg", description: "A high-performance UAV with advanced capabilities." },
+  { name: "Valkyrie", image: "/images/vehicle3.jpg", description: "A robust UAV built for endurance and reliability." },
+  { name: "Orion", image: "/images/vehicle4.jpg", description: "A cutting-edge UAV with state-of-the-art technology." }
+];
 
 export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [embla, setEmbla] = useState(null);
   const [scrollY, setScrollY] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleScroll = useCallback(() => {
-    if (!embla) return;
-    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
+    const progress = Math.max(0, Math.min(1, window.scrollY / document.body.scrollHeight));
     setScrollProgress(progress * 100);
-  }, [embla, setScrollProgress]);
+  }, []);
 
   const handleWindowScroll = () => {
     setScrollY(window.scrollY);
   };
 
+  const handlePrev = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
+  };
+
+  const handleNext = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  const handleDotClick = (index) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+  };
+
   useEffect(() => {
-    if (embla) {
-      embla.on('scroll', handleScroll);
-      handleScroll();
-    }
-  }, [embla, handleScroll]);
+    const transitionEndHandler = () => setIsTransitioning(false);
+    const slideContainer = document.querySelector(`.${styles.slideContainer}`);
+    slideContainer.addEventListener('transitionend', transitionEndHandler);
+    return () => {
+      slideContainer.removeEventListener('transitionend', transitionEndHandler);
+    };
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleWindowScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <div className={styles.pageWrapper}>
@@ -61,8 +88,8 @@ export default function Home() {
       </div>
 
       <div className={styles.cloudContainer}>
-        <img src="/images/cloud.png" alt="Cloud Left" className={styles.cloudLeft} style={{ transform: `translateX(-${scrollY * 0.9}px)` }} />
-        <img src="/images/cloud2.png" alt="Cloud Right" className={styles.cloudRight} style={{ transform: `translateX(${scrollY * 0.9}px)` }} />
+        <img src="/images/cloud.png" alt="Cloud Left" className={styles.cloudLeft} style={{ transform: `translateX(-${scrollY * 0.4}px)` }} />
+        <img src="/images/cloud2.png" alt="Cloud Right" className={styles.cloudRight} style={{ transform: `translateX(${scrollY * 0.4}px)` }} />
       </div>
 
       <div id="secondDiv" className={styles.aboutContainer}>
@@ -77,51 +104,39 @@ export default function Home() {
 
       <div className={styles.galleryContainer}>
         <h2 className={styles.galleryTitle}>Our UAVs</h2>
-        <Carousel
-          slideSize="60%"
-          height={300}
-          slideGap="md"
-          controlsOffset="md"
-          loop
-          withIndicators
-          getEmblaApi={setEmbla}
-          styles={{
-            indicator: {
-              width: 10,
-              height: 10,
-              background: 'gray',
-              '&[data-active]': {
-                background: 'blue',
-              },
-            },
-          }}
-        >
-          <Carousel.Slide>
-            <div className={styles.carouselSlide}>
-              <img src="/images/vehicle1.jpg" alt="Pegasus" className={styles.uavImage} />
-              <h3 className={styles.uavName}>Pegasus</h3>
+        <div className={styles.carouselWrapper}>
+          <button className={`${styles.control} ${styles.controlLeft}`} onClick={handlePrev}>
+            &lt;
+          </button>
+          <div className={styles.carousel}>
+            <div className={styles.slideContainer} style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: `transform 0.5s ease-in-out` }}>
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`}
+                >
+                  <img src={slide.image} alt={slide.name} className={styles.uavImage} />
+                  <div className={styles.gradientOverlay}>
+                    <h3 className={styles.uavName}>{slide.name}</h3>
+                    <p className={styles.uavDescription}>{slide.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <div className={styles.carouselSlide}>
-              <img src="/images/vehicle2.jpg" alt="Phoenix" className={styles.uavImage} />
-              <h3 className={styles.uavName}>Phoenix</h3>
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <div className={styles.carouselSlide}>
-              <img src="/images/vehicle3.jpg" alt="Valkyrie" className={styles.uavImage} />
-              <h3 className={styles.uavName}>Valkyrie</h3>
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <div className={styles.carouselSlide}>
-              <img src="/images/vehicle4.jpg" alt="Orion" className={styles.uavImage} />
-              <h3 className={styles.uavName}>Orion</h3>
-            </div>
-          </Carousel.Slide>
-        </Carousel>
-        <Progress value={scrollProgress} size="sm" mt="xl" mx="auto" className={styles.progressBar} />
+          </div>
+          <button className={`${styles.control} ${styles.controlRight}`} onClick={handleNext}>
+            &gt;
+          </button>
+        </div>
+        <div className={styles.dots}>
+          {slides.map((_, index) => (
+            <span
+              key={index}
+              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
+              onClick={() => handleDotClick(index)}
+            ></span>
+          ))}
+        </div>
       </div>
     </div>
   );
