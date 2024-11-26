@@ -215,9 +215,11 @@
 }
 
 .galleryTitle {
-  font-size: 2.5rem;
+  font-size: 4rem;
   color: #e68787;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-family: 'Fahkwang', sans-serif;
 }
 
 .carousel {
@@ -232,17 +234,16 @@
 }
 
 .carouselWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-    margin-top: 2rem; /* Added margin for spacing */
-  }
-  
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 2rem; /* Added margin for spacing */
+}
 
 .slideContainer {
   display: flex;
@@ -277,30 +278,29 @@
 }
 
 .control {
-    background-color: #e68787; /* Red accent color */
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    z-index: 2;
-    font-size: 2rem;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-  }
+  background: none; /* Remove background */
+  color: white; /* Set text color to black */
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 2rem;
+  transition: color 0.3s;
+}
 
-  .control:hover {
-    background-color: #c26161;
-  }
+.control:hover {
+  color: #e68787; /* Change color on hover */
+}
 
-  .controlLeft {
-    position: absolute;
-    left: -100%; 
-  }
-  
-  .controlRight {
-    position: absolute;
-    right: -60px;
-  }
+.controlLeft {
+  position: absolute;
+  left: -60px; /* Position outside the carousel */
+}
+
+.controlRight {
+  position: absolute;
+  right: -60px; /* Position outside the carousel */
+}
 
 .control:disabled {
   background: rgba(0, 0, 0, 0.3);
@@ -308,20 +308,20 @@
 }
 
 .gradientOverlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-    color: white;
-    text-align: left;
-  }
-  
-  .uavDescription {
-    font-size: 1rem;
-    color: #fff;
-    margin-top: 0.5rem;
-  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  color: white;
+  text-align: left;
+}
+
+.uavDescription {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 0.5rem;
+}
 
 .control:first-of-type {
   left: 10px;

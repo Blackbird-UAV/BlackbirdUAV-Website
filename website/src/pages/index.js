@@ -1,9 +1,8 @@
-// src/pages/index.js
 import Head from "next/head";
+import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from 'next/link';
 import ScrollDownIndicator from '@/components/ScrollDownIndicator';
-import { useCallback, useEffect, useState } from 'react';
 
 const slides = [
   { name: "Pegasus", image: "/images/vehicle1.jpg", description: "A versatile UAV designed for various applications." },
@@ -62,6 +61,14 @@ export default function Home() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={styles.pageWrapper}>
