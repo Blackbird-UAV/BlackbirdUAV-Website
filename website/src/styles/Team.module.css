@@ -37,6 +37,14 @@
   width: 100%;
   justify-content: center;
   margin-bottom: 40px;
+  flex-direction: column;
+}
+
+.subteamContent{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 40px;
   flex-direction: row;
 }
 
@@ -320,13 +328,48 @@
   background-color: #f6b93b;
 }
 
+.Executives {
+  background-color: #6859d9;
+}
+
+.Competition {
+  background-color: #121212;
+}
+
+.linesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compBox {
+  width: 75%;
+  padding: 20px;
+  text-align: center;
+}
+
+.compText {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.horizontalLine {
+  width: 75%;
+  height: 10px;
+  background-color: #333;
+  border-radius: 15px;
+}
+
 /* Tablet styles */
 @media (min-width: 768px) and (max-width: 1024px) {
   .container {
     padding: 30px;
   }
 
-  .subteam {
+  .subteamContent {
     margin: 0 auto 30px;
   }
 
@@ -345,7 +388,7 @@
   .headerDesc {
     max-width: 80%;
   }
-  .subteam {
+  .subteamContent {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
@@ -384,6 +427,14 @@
   
   .sidebar.administrative {
     background-color: #f6b93b;
+  }
+
+  .sidebar.Executives {
+    background-color: #6859d9;
+  }
+  
+  .sidebar.Competition {
+    background-color: #121212;
   }
 
   .grid {
