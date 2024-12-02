@@ -52,6 +52,12 @@ const sponsors = [
     tier: "silver",
   },
   {
+    name: "Company Four Point Five",
+    logo: "/images/clear1.png",
+    link: "https://company1.com",
+    tier: "silver",
+  },
+  {
     name: "Company Five",
     logo: "/images/clear5.png",
     link: "https://company1.com",
@@ -119,15 +125,33 @@ export default function Sponsor() {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
   const renderSponsorsByTier = (tier, sectionIndex) => {
+    // const columnSettings = {
+    //   Platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
+    //   Gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
+    //   Silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
+    //   Bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
+    // };
     const columnSettings = {
-      Platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
-      Gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
-      Silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
-      Bronze: { base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" },
+      Platinum: {
+        base: "repeat(auto-fit, minmax(200px, 1fr))",
+        lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
+      },
+      Gold: {
+        base: "repeat(auto-fit, minmax(160px, 1fr))",
+        lg: "repeat(auto-fit, minmax(140px, 1fr))", // change these md values as needed
+      },
+      Silver: {
+        base: "repeat(auto-fit, minmax(140px, 1fr))",
+        lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
+      },
+      Bronze: {
+        base: "repeat(auto-fit, minmax(120px, 1fr))",
+        lg: "repeat(auto-fit, minmax(100px, 1fr))", // change these md values as needed
+      },
     };
 
     return (
-      <Grid templateColumns={columnSettings[tier]} gap={4} px={2} w="100%">
+      <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
         {sponsors
           .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
           .map((sponsor, sponsorIndex) => (
@@ -195,6 +219,7 @@ export default function Sponsor() {
                     objectFit="contain"
                     height="100px"
                     width="100%"
+                    minWidth="50px"
                   />
                 </Box>
               </GridItem>
@@ -214,14 +239,27 @@ export default function Sponsor() {
 
     return (
       <Box
+        width="100%"
         bg={tierColors[tier]}
         borderRadius="lg"
         padding={5}
         mb={2}
-        ml={4}
         shadow="lg"
         display="flex"
         alignItems="center"
+        // if section is platinum, add a glow on hover
+        _hover={
+          tier.toLowerCase() === "platinum"
+            ? {
+                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
+                transform: "scale(1.03)", // Slight scaling
+                transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
+              }
+            : {
+                transform: "scale(1.02)", // Subtle scaling for other tiers
+                transition: "transform 0.3s ease", // Smooth transition
+              }
+        }
       >
         <Box
           transform="rotate(180deg)"
@@ -265,7 +303,7 @@ export default function Sponsor() {
   }, [isButtonVisible]);
 
   return (
-    <Box bg="black">
+    <Box bg="black" pl={{ base: 0, lg: 5 }}>
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -276,12 +314,16 @@ export default function Sponsor() {
           sm: "repeat(1, 0)",
           lg: "repeat(2, 1fr)",
         }}
-        gap={6}
+        gap={{
+          base: 0,
+          lg: 6,
+        }}
       >
         <GridItem
           padding={padding}
           mt={marginTopSidebar}
           mb={marginBottom}
+          mx={2}
           rowSpan={2}
           colSpan={{ base: 1, sm: 1, md: 1, lg: 3, xl: 3 }}
           display="flex"
@@ -295,12 +337,13 @@ export default function Sponsor() {
           as="main"
           padding={padding}
           mt={marginTop}
-          mb={20}
+          mb={6}
+          mx={2}
           rowSpan={2}
           colSpan={{ base: 1, sm: 2, md: 2, lg: 2, xl: 2 }}
           overflow="hidden"
         >
-          <Stack w="90%" spacing={10}>
+          <Stack w="100%" spacing={10}>
             <Heading
               as="h2"
               size="3xl"

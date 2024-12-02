@@ -121,7 +121,7 @@ const SponsorSidebar = () => {
                 <Box
                   display="flex" // Make the Box a flex container
                   flexDirection="column"
-                  alignItems="center" // Center horizontally
+                  alignItems="left" // Center horizontally
                 >
                   <MotionButton
                     as={Link}
@@ -175,11 +175,19 @@ const SponsorSidebar = () => {
                 />
               </MotionBox>
             </Grid>
+
             <Box
-              display="flex" // Make the Box a flex container
-              flexDirection="column" // Stack the content vertically
-              alignItems="center" // Center horizontally
-              mt={4}
+              width="100%"
+              height="1px"
+              bg="rgba(255, 255, 255, 0.2)"
+              my={2}
+            />
+
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              mt={2}
             >
               <MotionText
                 color="white"
