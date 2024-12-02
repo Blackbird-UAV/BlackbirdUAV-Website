@@ -40,7 +40,7 @@ const SponsorSidebar = () => {
 
   const handleContactUsClick = () => {
     window.open(
-      "mailto:replaceemail@cublackbird.ca?subject=Blackbird%20UAV%20Sponsorship%20",
+      "mailto:sponsor@blackbirduav.ca?subject=Blackbird%20UAV%20Sponsorship",
       "_blank"
     );
   };
