@@ -137,7 +137,7 @@ export default function Home() {
       <div id="secondDiv" className={styles.aboutContainer}>
         <img src="/images/tempImage.png" alt="Blackbird UAV Logo" className={styles.aboutImage} />
         <div className={styles.aboutText}>
-          <h1>About Us</h1>
+          <h1 className={styles.aboutUsText}>About Us</h1>
           <p>
             At Blackbird UAV, we specialize in cutting-edge drone technology that empowers businesses and individuals to reach new heights. Our team of experienced engineers and pilots is dedicated to providing innovative aerial solutions across various industries, including agriculture, construction, and surveillance.
           </p>
