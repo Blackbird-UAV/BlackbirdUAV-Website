@@ -93,11 +93,11 @@ export default function Vehicles() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % vehicles[0].images.length);
-    }, 4000);
-  
+    }, 3000);
+
     return () => clearInterval(interval);
-  }, [vehicles]);
-  
+  }, []);
+
   return (
     <>
       <Head>
@@ -114,32 +114,25 @@ export default function Vehicles() {
             >
               <div className={styles.carouselContainer}>
                 <div className={styles.carousel}>
-                  {vehicle.images.map((image, idx) => (
-                    <img
-                      key={idx}
-                      src={image}
-                      alt={`${vehicle.name} image ${idx + 1}`}
-                      className={`${styles.vehicleImage} ${
-                        idx === currentIndex ? styles.active : ""
-                      }`}
-                    />
-                  ))}
+                  <img
+                    src={vehicle.images[currentIndex]}
+                    alt={`${vehicle.name} image ${currentIndex + 1}`}
+                    className={styles.vehicleImage}
+                  />
                   <div className={styles.titleOverlay}>
                     <h2 className={styles.imageTitle}>{vehicle.name}</h2>
                   </div>
-                  <div className={styles.indicatorContainer}>
+                  <div className={`${styles.indicatorContainer} ${index % 2 === 1 ? styles.indicatorLeft : styles.indicatorRight}`}>
                     {vehicle.images.map((_, idx) => (
                       <div
                         key={idx}
-                        className={`${styles.indicator} ${
-                          currentIndex === idx ? styles.activeIndicator : ""
-                        }`}
+                        className={`${styles.indicator} ${currentIndex === idx ? styles.activeIndicator : ""}`}
                       />
                     ))}
                   </div>
                 </div>
               </div>
-  
+
               <div className={styles.textBox}>
                 <p>{vehicle.description.overview}</p>
                 <div className={styles.divider}></div>
@@ -157,4 +150,4 @@ export default function Vehicles() {
       </div>
     </>
   );
-}  
+}
