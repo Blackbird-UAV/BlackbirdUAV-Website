@@ -60,10 +60,16 @@
 }
 
 .buttonSection {
-  flex: 2;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.mobileButtonSection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .sponsorButton {
@@ -279,11 +285,11 @@
 
 .control {
   background: none; /* Remove background */
-  color: white; /* Set text color to black */
+  color: white; /* Set text color to white */
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10; /* Ensure the control buttons are above the carousel */
   font-size: 2rem;
   transition: color 0.3s;
 }
@@ -396,6 +402,11 @@
   }
 }
 
+.chevron {
+  width: 60px;
+  height: 60px;
+}
+
 /* Media Queries for Mobile and Tablet */
 @media (max-width: 951px) {
   .HomeContainer {
@@ -455,17 +466,35 @@
 }
 
 @media (max-width: 600px) {
+  .chevron {
+    width: 30px;
+    height: 30px;
+  }
+
   .name {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .subtitle {
     font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .buttonSection {
+    display: none; /* Hide the desktop button section in mobile mode */
   }
 
   .sponsorButton {
     font-size: 1rem;
     padding: 0.5rem 1rem;
+  }
+
+  .uavName {
+    font-size: 2rem; /* Smaller title in the carousel */
+  }
+
+  .uavDescription {
+    font-size: 0.8rem; /* Smaller text in the carousel */
   }
 
   .aboutText h1 {
@@ -474,5 +503,9 @@
 
   .aboutText p {
     font-size: 1rem;
+  }
+
+  .galleryTitle {
+    font-size: 2.5rem;
   }
 }

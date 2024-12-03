@@ -11,11 +11,24 @@ const slides = [
   { name: "Orion", image: "/images/vehicle4.jpg", description: "A cutting-edge UAV with state-of-the-art technology." }
 ];
 
+const ChevronLeft = (props) => (
+  <svg className={styles.chevron} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M15 6L9 12L15 18" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ChevronRight = (props) => (
+  <svg className={styles.chevron} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M9 6L15 12L9 18" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleScroll = useCallback(() => {
     const progress = Math.max(0, Math.min(1, window.scrollY / document.body.scrollHeight));
@@ -70,6 +83,19 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call initially to set the correct state
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className={styles.pageWrapper}>
       <Head>
@@ -84,12 +110,21 @@ export default function Home() {
           <div className={styles.textSection}>
             <h1 className={styles.name}>BLACKBIRD</h1>
             <h2 className={styles.subtitle}>Fly Around and Find Out</h2>
+            {isMobile && (
+              <div className={styles.mobileButtonSection}>
+                <Link href="/sponsor" className={styles.sponsorButton}>
+                  Sponsor Us
+                </Link>
+              </div>
+            )}
           </div>
-          <div className={styles.buttonSection}>
-            <Link href="/sponsor" className={styles.sponsorButton}>
-              Sponsor Us
-            </Link>
-          </div>
+          {!isMobile && (
+            <div className={styles.buttonSection}>
+              <Link href="/sponsor" className={styles.sponsorButton}>
+                Sponsor Us
+              </Link>
+            </div>
+          )}
         </div>
         <ScrollDownIndicator />
       </div>
@@ -113,7 +148,7 @@ export default function Home() {
         <h2 className={styles.galleryTitle}>Our UAVs</h2>
         <div className={styles.carouselWrapper}>
           <button className={`${styles.control} ${styles.controlLeft}`} onClick={handlePrev}>
-            &lt;
+            <ChevronLeft />
           </button>
           <div className={styles.carousel}>
             <div className={styles.slideContainer} style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: `transform 0.5s ease-in-out` }}>
@@ -132,7 +167,7 @@ export default function Home() {
             </div>
           </div>
           <button className={`${styles.control} ${styles.controlRight}`} onClick={handleNext}>
-            &gt;
+            <ChevronRight />
           </button>
         </div>
         <div className={styles.dots}>
