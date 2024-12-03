@@ -11,7 +11,10 @@
 .title {
   text-align: center;
   margin-bottom: 60px;
-  color: #E68787;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 16px;
   font-size: 4rem;
   font-family: 'Fahkwang', sans-serif;
 }

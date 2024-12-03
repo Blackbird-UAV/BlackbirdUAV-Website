@@ -78,7 +78,7 @@ const SponsorSidebar = () => {
           align="center"
         >
           {/* Heading */}
-          <MotionHeading as="h1" size="3xl" color="#e68787" variants={fadeInUp}>
+          <MotionHeading as="h1" size="3xl" color="#ffffff" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
 

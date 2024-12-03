@@ -13,7 +13,10 @@
 .title {
   font-size: 4rem;
   font-weight: bold;
-  color: #4a4a4a;
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 16px;
   text-align: center;
   margin: 1% 0;
 }
