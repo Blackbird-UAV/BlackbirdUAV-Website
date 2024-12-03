@@ -129,7 +129,7 @@ const SponsorSidebar = () => {
                     target="_blank"
                     isExternal
                     size="lg"
-                    bg="#e68787"
+                    bg="#eb1d25"
                     color="white"
                     borderRadius="full"
                     mb={2}
@@ -201,7 +201,7 @@ const SponsorSidebar = () => {
               <MotionButton
                 onClick={handleContactUsClick}
                 size="lg"
-                bg="#e68787"
+                bg="#eb1d25"
                 color="white"
                 borderRadius="full"
                 mb={2}

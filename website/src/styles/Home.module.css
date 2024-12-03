@@ -79,8 +79,8 @@
   margin-left: 5%;
   margin-right: 5%;
   font-size: 1.5rem;
-  color: #212121;
-  background-color: #e68787;
+  color: #ffffff;
+  background-color: #212121;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -101,10 +101,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 12rem; /* Reduced padding */
-  color: #e68787;
+  padding: 2rem 12rem;
   font-family: 'Fahkwang', sans-serif;
-  gap: 1rem; /* Reduced gap */
+  gap: 1rem;
 }
 
 .aboutImage {
@@ -117,8 +116,7 @@
 }
 
 .aboutText {
-  max-width: 90%; /* Adjusted width */
-  color: #e68787;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -127,10 +125,14 @@
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #e68787;
+  color: #e0e0e0;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: left;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 16px;
+  position: relative;
 }
 
 .aboutText p {
@@ -222,10 +224,13 @@
 
 .galleryTitle {
   font-size: 4rem;
-  color: #e68787;
+  color: #000000;
   margin-bottom: 1.5rem;
   font-weight: 700;
   font-family: 'Fahkwang', sans-serif;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 8px;
 }
 
 .carousel {
