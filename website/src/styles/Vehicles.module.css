@@ -226,4 +226,10 @@
   .textBox p {
     margin-top: 5px;
   }
+
+  .vehiclesList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
