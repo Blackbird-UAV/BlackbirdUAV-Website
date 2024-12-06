@@ -175,17 +175,18 @@
 }
 
 @media (max-width: 1000px) {
-  .container{
+  .container {
     padding-top: 10rem;
   }
+
   .title {
     font-size: 3rem;
   }
-  
+
   .vehicleCard {
     flex-direction: column;
   }
-  
+
   .vehicleCard.right {
     flex-direction: column; /* Ensure right image cards also stack vertically */
   }
@@ -198,11 +199,11 @@
   .vehicleTitle {
     font-size: 2rem;
   }
-  
+
   .vehicleImage {
     height: auto;
   }
-  
+
   /* Title Overlay for mobile view */
   .titleOverlay {
     position: static;
@@ -210,7 +211,7 @@
     background: none;
     color: #E68787;
   }
-  
+
   .indicatorContainer {
     position: absolute;
     bottom: 90px;
@@ -226,6 +227,7 @@
     padding-top: 0px;
     text-align: left;
   }
+
   .textBox p {
     margin-top: 5px;
   }
@@ -234,5 +236,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-top: 2rem; /* Add padding to adjust scroll position */
   }
 }

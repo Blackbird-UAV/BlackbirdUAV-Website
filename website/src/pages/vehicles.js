@@ -56,29 +56,25 @@ const vehicles = [
     images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle4.jpg"]
   },
 ];
+
 export default function Vehicles() {
   const vehiclesRef = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const observerOptions = { threshold: 0.1 };
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const element = entry.target;
-        const isVisible = entry.isIntersecting;
-
-        if (isVisible) {
-          element.classList.add(
-            styles.visible,
-            element.classList.contains(styles.right) ? styles.right : styles.left
-          );
-          element.classList.remove(styles.out);
-        } else {
-          element.classList.add(
-            styles.out,
-            element.classList.contains(styles.right) ? styles.right : styles.left
-          );
-          element.classList.remove(styles.visible);
+        if (entry.isIntersecting) {
+          entry.target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
         }
       });
     }, observerOptions);
@@ -101,7 +97,10 @@ export default function Vehicles() {
   return (
     <>
       <Head>
-        {/* Head content remains the same */}
+        <title>Our Aircraft</title>
+        <meta name="description" content="Our Aircraft" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
         <h1 className={styles.title}>Our Aircraft</h1>
