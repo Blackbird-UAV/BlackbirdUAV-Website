@@ -62,28 +62,47 @@ export default function Vehicles() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5 
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 600;
+      const container = document.querySelector(`.${styles.vehiclesList}`);
+      if (isMobile) {
+        container.style.scrollSnapType = 'none';
+      } else {
+        container.style.scrollSnapType = 'y mandatory';
+      }
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!isMobile) {
+              entry.target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+              });
+            }
+          }
+        });
+      }, observerOptions);
+
+      vehiclesRef.current.forEach((ref) => {
+        if (ref) observer.observe(ref);
+      });
+
+      return () => observer.disconnect();
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-          });
-        }
-      });
-    }, observerOptions);
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call initially to set the correct state
 
-    vehiclesRef.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
