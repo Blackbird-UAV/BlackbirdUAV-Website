@@ -4,13 +4,13 @@ const teamData = {
     Competition: [
       {
         id: 1,
-        firstName: 'Félix-Antoine',
-        lastName: 'Chénier',
+        firstName: 'Lorem ipsum dolor sit',
+        lastName: 'Lorem ips',
         isPresident: true,
         isExecutive: false,
         image: '/assets/TeamHeadshots/Headshot_Felix.jpg',
-        description: 'Felix is the club president and does club president things and such.',
-        extendedDescription: 'Felix is the club president and does club president things and such. Felix is the club president and does club president things and such. Felix is the club president and does club president things yup.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ',
+        extendedDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea',
         link: 'https://www.linkedin.com/in/',
       },
       {
