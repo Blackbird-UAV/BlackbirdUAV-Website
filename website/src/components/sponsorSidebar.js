@@ -97,10 +97,13 @@ const SponsorSidebar = () => {
             flexDirection="column"
           >
             <Grid
-              templateColumns="repeat(2, 1fr)"
-              mx={2}
+              templateColumns={{
+                base: "1fr",
+                lg: "repeat(2, 1fr)",
+              }}
               gap={4}
               alignItems="center"
+              textAlign="center"
             >
               {" "}
               {/* instead of center, do same space between */}
@@ -109,20 +112,18 @@ const SponsorSidebar = () => {
                 <MotionHeading as="h2" size="3xl" mb={4} variants={fadeInUp}>
                   What do sponsors do?
                 </MotionHeading>
-                <MotionText mb={4} variants={fadeInUp}>
+                <MotionText mb={4} variants={fadeInUp} textAlign="left">
+                  {/* &emsp; */}
                   Sponsors play a vital role in helping us achieve our goals.
                   Their generous contributions enable us to participate in
                   competitions and enhance our resources year by year.
                   <br />
                   <br />
+                  {/* &emsp; */}
                   There are many ways to support our team. For more information,
                   please read our sponsorship package.
                 </MotionText>
-                <Box
-                  display="flex" // Make the Box a flex container
-                  flexDirection="column"
-                  alignItems="left" // Center horizontally
-                >
+                <Box display="flex" flexDirection="column" alignItems="center">
                   <MotionButton
                     as={Link}
                     href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
@@ -161,15 +162,22 @@ const SponsorSidebar = () => {
                 variants={fadeInUp}
                 overflow="hidden"
                 borderRadius="lg"
-                height="80%"
+                height="95%"
+                // display="flex"
                 display="cover"
+                justifyContent="center"
+                alignItems="center"
+                flexDirection="column"
+                mb={2}
               >
                 <Image
                   src="/images/company4.jpg"
                   alt="Sponsorship Event"
                   objectFit="cover"
-                  height="auto"
-                  width="100%"
+                  // height="auto"
+                  // width="100%"
+                  height="100%"
+                  width="auto"
                   borderRadius="md"
                   boxShadow="lg"
                 />
