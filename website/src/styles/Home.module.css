@@ -12,14 +12,31 @@
   position: absolute;
 }
 
+/* Gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 60%;
+  }
+
+  50% {
+    background-position: 100% 30%;
+  }
+
+  100% {
+    background-position: 100% 60%;
+  }
+}
+
 .HomeContainer {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   padding: 2rem;
-  background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8);
-  /* More intense gradient background */
+  /* background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8); */
+  background: linear-gradient(180deg, #92a2f3 0%, #9dbdf8 15%, #8cd5f1 30%, #ffffff 100%);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease-in-out infinite;
   position: relative;
   overflow: hidden;
   font-family: "Fahkwang", sans-serif;

@@ -145,129 +145,129 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.pageWrapper}>
-      <Head>
-        <title>BlackBird UAV</title>
-        <meta
-          name="description"
-          content="BlackBird UAV | Carleton University's UAV Design Team"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
+      <div className={styles.pageWrapper}>
+        <Head>
+          <title>BlackBird UAV</title>
+          <meta
+            name="description"
+            content="BlackBird UAV | Carleton University's UAV Design Team"
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <ThreeScene />
-      <div className={styles.HomeContainer}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.textSection}>
-            <h1 className={styles.name}>BLACKBIRD</h1>
-            <h2 className={styles.subtitle}>Fly Around and Find Out</h2>
-            {isMobile && (
-              <div className={styles.mobileButtonSection}>
+        <ThreeScene />
+        <div className={styles.HomeContainer}>
+          <div className={styles.contentWrapper}>
+            <div className={styles.textSection}>
+              <h1 className={styles.name}>BLACKBIRD</h1>
+              <h2 className={styles.subtitle}>Fly Around and Find Out</h2>
+              {isMobile && (
+                <div className={styles.mobileButtonSection}>
+                  <Link href="/sponsor" className={styles.sponsorButton}>
+                    Sponsor Us
+                  </Link>
+                </div>
+              )}
+            </div>
+            {!isMobile && (
+              <div className={styles.buttonSection}>
                 <Link href="/sponsor" className={styles.sponsorButton}>
                   Sponsor Us
                 </Link>
               </div>
             )}
           </div>
-          {!isMobile && (
-            <div className={styles.buttonSection}>
-              <Link href="/sponsor" className={styles.sponsorButton}>
-                Sponsor Us
-              </Link>
-            </div>
-          )}
+          <ScrollDownIndicator />
         </div>
-        <ScrollDownIndicator />
-      </div>
 
-      <div className={styles.cloudContainer}>
-        <img
-          src="/images/cloud.png"
-          alt="Cloud Left"
-          className={styles.cloudLeft}
-          style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
-        />
-        <img
-          src="/images/cloud2.png"
-          alt="Cloud Right"
-          className={styles.cloudRight}
-          style={{ transform: `translateX(${scrollY * 0.4}px)` }}
-        />
-      </div>
-
-      <div id="secondDiv" className={styles.aboutContainer}>
-        <img
-          src="/images/tempImage.png"
-          alt="Blackbird UAV Logo"
-          className={styles.aboutImage}
-        />
-        <div className={styles.aboutText}>
-          <h1 className={styles.aboutUsText}>About Us</h1>
-          <p>
-            At Blackbird UAV, we specialize in cutting-edge drone technology
-            that empowers businesses and individuals to reach new heights. Our
-            team of experienced engineers and pilots is dedicated to providing
-            innovative aerial solutions across various industries, including
-            agriculture, construction, and surveillance.
-          </p>
+        <div className={styles.cloudContainer}>
+          <img
+            src="/images/cloud.png"
+            alt="Cloud Left"
+            className={styles.cloudLeft}
+            style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
+          />
+          <img
+            src="/images/cloud2.png"
+            alt="Cloud Right"
+            className={styles.cloudRight}
+            style={{ transform: `translateX(${scrollY * 0.4}px)` }}
+          />
         </div>
-      </div>
 
-      <div className={styles.galleryContainer}>
-        <h2 className={styles.galleryTitle}>Our UAVs</h2>
-        <div className={styles.carouselWrapper}>
-          <button
-            className={`${styles.control} ${styles.controlLeft}`}
-            onClick={handlePrev}
-          >
-            <ChevronLeft />
-          </button>
-          <div className={styles.carousel}>
-            <div
-              className={styles.slideContainer}
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-                transition: `transform 0.5s ease-in-out`,
-              }}
-            >
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`${styles.slide} ${
-                    index === currentIndex ? styles.active : ""
-                  }`}
-                >
-                  <img
-                    src={slide.image}
-                    alt={slide.name}
-                    className={styles.uavImage}
-                  />
-                  <div className={styles.gradientOverlay}>
-                    <h3 className={styles.uavName}>{slide.name}</h3>
-                    <p className={styles.uavDescription}>{slide.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div id="secondDiv" className={styles.aboutContainer}>
+          <img
+            src="/images/tempImage.png"
+            alt="Blackbird UAV Logo"
+            className={styles.aboutImage}
+          />
+          <div className={styles.aboutText}>
+            <h1 className={styles.aboutUsText}>About Us</h1>
+            <p>
+              At Blackbird UAV, we specialize in cutting-edge drone technology
+              that empowers businesses and individuals to reach new heights. Our
+              team of experienced engineers and pilots is dedicated to providing
+              innovative aerial solutions across various industries, including
+              agriculture, construction, and surveillance.
+            </p>
           </div>
-          <button
-            className={`${styles.control} ${styles.controlRight}`}
-            onClick={handleNext}
-          >
-            <ChevronRight />
-          </button>
         </div>
-        <div className={styles.dots}>
-          {slides.map((_, index) => (
-            <span
-              key={index}
-              className={`${styles.dot} ${
-                index === currentIndex ? styles.activeDot : ""
-              }`}
-              onClick={() => handleDotClick(index)}
-            ></span>
-          ))}
+
+        <div className={styles.galleryContainer}>
+          <h2 className={styles.galleryTitle}>Our UAVs</h2>
+          <div className={styles.carouselWrapper}>
+            <button
+              className={`${styles.control} ${styles.controlLeft}`}
+              onClick={handlePrev}
+            >
+              <ChevronLeft />
+            </button>
+            <div className={styles.carousel}>
+              <div
+                className={styles.slideContainer}
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                  transition: `transform 0.5s ease-in-out`,
+                }}
+              >
+                {slides.map((slide, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.slide} ${index === currentIndex ? styles.active : ""
+                      }`}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.name}
+                      className={styles.uavImage}
+                    />
+                    <div className={styles.gradientOverlay}>
+                      <h3 className={styles.uavName}>{slide.name}</h3>
+                      <p className={styles.uavDescription}>{slide.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button
+              className={`${styles.control} ${styles.controlRight}`}
+              onClick={handleNext}
+            >
+              <ChevronRight />
+            </button>
+          </div>
+          <div className={styles.dots}>
+            {slides.map((_, index) => (
+              <span
+                key={index}
+                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
+                  }`}
+                onClick={() => handleDotClick(index)}
+              ></span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
