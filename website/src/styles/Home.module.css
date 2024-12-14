@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 .pageWrapper {
+  width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
   /* Prevent horizontal scrolling */
+}
+
+.ThreeScene {
+  overflow-x: hidden;
+  position: absolute;
 }
 
 .HomeContainer {
@@ -11,10 +18,7 @@
   justify-content: center;
   align-items: flex-end;
   padding: 2rem;
-  background: linear-gradient(to top,
-      #d9e1e7,
-      #eeeee4,
-      #809ab8);
+  background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8);
   /* More intense gradient background */
   position: relative;
   overflow: hidden;

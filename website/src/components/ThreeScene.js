@@ -2,32 +2,40 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
+const lerp = (s, e, t) => {
+  return s + (e - s) * t;
+};
+
 const ThreeScene = () => {
   const canvasRef = useRef(null);
   const sceneRef = useRef(null);
   const modelRef = useRef(null);
 
   // constants (play around with these values)
-  const modelScale = 40000;
+  const modelXOffset = -0.5;
+  const modelYOffset = 1;
+
+  const modelScale = 0.0007;
   let uniformScale;
-  const minScale = 0.02;
+  const minScale = 0.3;
 
   const mouse = { x: 0, y: 0 };
   const targetMouse = { x: 0, y: 0 };
   const mouseSpeed = 0.05;
 
-  const rotationMagnitude = 0.015;
-  const mouseDisplacement = 0.4;
+  const rotationMagnitude = 0.045;
+
+  let mouseDisplacement =
+    30000 * modelScale * Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
 
   const hoverXOffset = 0.6;
   const hoverYOffset = 0.4;
-  const hoverXAmplitude = 0.1;
-  const hoverYAmplitude = 0.07;
+  let hoverXAmplitude = 6000 * modelScale * (window.innerWidth / 1920);
+  let hoverYAmplitude = 4000 * modelScale * (window.innerHeight / 1080);
 
   const rotationXBase = Math.PI / 7;
   const rotationYBase = Math.PI / 4;
 
-  const scrollSpeed = 0.005;
   const scroll = { x: 0, y: 0 };
   const targetScroll = { x: 0, y: 0 };
   const scrollLerpSpeed = 0.1;
@@ -49,19 +57,35 @@ const ThreeScene = () => {
     );
     camera.position.set(0, 0, 10);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+    });
+
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(
+      // fixes scrollbar issue
+      document.documentElement.clientWidth,
+      document.documentElement.clientHeight
+    );
+
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
 
     const loader = new GLTFLoader();
     let model;
     loader.load(
-      "/assets/model/Final.gltf", // replace with path to apogee
+      "/assets/model/scene.gltf", // replace with path to apogee
       (gltf) => {
         model = gltf.scene;
-
         modelRef.current = model;
+
+        model.traverse((child) => {
+          if (child.isMesh) {
+            child.material = new THREE.MeshStandardMaterial();
+          }
+        });
 
         // calibrate the model origin
         const box = new THREE.Box3().setFromObject(model);
@@ -73,10 +97,11 @@ const ThreeScene = () => {
         // model.position.y -= center.y;
         // model.position.z -= center.z;
 
-        model.position.x += 0.8;
-        model.position.y += 2;
+        // have the model above the blackbird text
+        model.position.x += modelXOffset;
+        model.position.y += modelYOffset;
 
-        uniformScale = Math.max(minScale, window.outerWidth / modelScale);
+        uniformScale = Math.max(minScale, window.innerWidth * modelScale);
 
         model.scale.set(uniformScale, uniformScale, uniformScale);
 
@@ -97,7 +122,7 @@ const ThreeScene = () => {
 
     const handleMouseMove = (event) => {
       targetMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      targetMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      targetMouse.y = -(event.clientY / window.innerWidth) * 2 + 1;
     };
 
     const handleResize = () => {
@@ -106,19 +131,31 @@ const ThreeScene = () => {
 
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      // renderer.setSize(width, height);
+      renderer.setSize(
+        // fixes scrollbar issue
+        document.documentElement.clientWidth,
+        document.documentElement.clientHeight
+      );
 
       if (modelRef.current) {
-        uniformScale = Math.max(minScale, window.outerWidth / modelScale);
+        uniformScale = Math.max(minScale, window.innerWidth * modelScale);
         modelRef.current.scale.set(uniformScale, uniformScale, uniformScale);
       }
+
+      mouseDisplacement =
+        25000 *
+        modelScale *
+        Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
+      hoverXAmplitude = 6000 * modelScale * (window.innerWidth / 1920);
+      hoverYAmplitude = 4000 * modelScale * (window.innerHeight / 1080);
     };
 
     const animate = () => {
       requestAnimationFrame(animate);
 
-      mouse.x += (targetMouse.x - mouse.x) * mouseSpeed;
-      mouse.y += (targetMouse.y - mouse.y) * mouseSpeed;
+      mouse.x = lerp(mouse.x, targetMouse.x, mouseSpeed);
+      mouse.y = lerp(mouse.y, targetMouse.y, mouseSpeed);
 
       const time = Date.now() * 0.002;
       const hoverX = Math.sin(time * hoverXOffset) * hoverXAmplitude;
@@ -127,14 +164,20 @@ const ThreeScene = () => {
       const rotationX = rotationXBase + mouse.y * Math.PI * -rotationMagnitude;
       const rotationY = rotationYBase + mouse.x * Math.PI * rotationMagnitude;
 
-      targetScroll.x = window.scrollY * scrollSpeed;
-      targetScroll.y = window.scrollY * scrollSpeed * -0.25;
+      targetScroll.x = window.scrollY * modelScale * 500;
+      targetScroll.y = window.scrollY * modelScale * 500 * -0.25;
 
-      scroll.x += (targetScroll.x - scroll.x) * scrollLerpSpeed;
-      scroll.y += (targetScroll.y - scroll.y) * scrollLerpSpeed;
+      scroll.x = lerp(scroll.x, targetScroll.x, scrollLerpSpeed);
+      scroll.y = lerp(scroll.y, targetScroll.y, scrollLerpSpeed);
 
-      droneTargetY = (window.outerWidth <= 600) ? 0.8 : 0;
-      droneY += (droneTargetY - droneY) * droneLerpSpeed;
+      if (window.innerWidth <= 600) {
+        droneTargetY = modelScale * 42000;
+      } else if (window.innerWidth <= 1100) {
+        droneTargetY = modelScale * 36000;
+      } else {
+        droneTargetY = 0;
+      }
+      droneY = lerp(droneY, droneTargetY, droneLerpSpeed);
 
       scene.traverse((model) => {
         if (model.isMesh) {
@@ -144,7 +187,8 @@ const ThreeScene = () => {
           model.position.x =
             (-mouse.x * mouseDisplacement + hoverX + scroll.x) / uniformScale;
           model.position.y =
-            (-mouse.y * mouseDisplacement + hoverY + scroll.y + droneY) / uniformScale;
+            (-mouse.y * mouseDisplacement + hoverY + scroll.y + droneY) /
+            uniformScale;
         }
       });
 
@@ -169,8 +213,8 @@ const ThreeScene = () => {
       style={{
         position: "absolute",
         top: 0,
-        left: -100,
-        transform: "translate(5%, 0)",
+        left: 0,
+        transform: "translate(0, 0)",
         width: "100vw",
         height: "100vh",
         zIndex: 2,
