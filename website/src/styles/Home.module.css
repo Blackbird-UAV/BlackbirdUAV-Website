@@ -38,7 +38,7 @@
   justify-content: space-between;
   width: 100%;
   align-items: flex-end;
-  z-index: 2;
+  z-index: 3;
 }
 
 .textSection {
@@ -104,7 +104,7 @@
   align-self: flex-start;
   text-align: center;
   font-family: "Fahkwang", sans-serif;
-  z-index: 2;
+  z-index: 3;
 }
 
 .sponsorButton:hover {
@@ -479,6 +479,7 @@
   .buttonSection {
     justify-content: center;
     margin-bottom: 2rem;
+    z-index: 3;
   }
 
   .sponsorButton {

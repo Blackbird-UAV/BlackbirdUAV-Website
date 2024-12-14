@@ -234,9 +234,8 @@ export default function Home() {
               {slides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`${styles.slide} ${
-                    index === currentIndex ? styles.active : ""
-                  }`}
+                  className={`${styles.slide} ${index === currentIndex ? styles.active : ""
+                    }`}
                 >
                   <img
                     src={slide.image}
@@ -262,9 +261,8 @@ export default function Home() {
           {slides.map((_, index) => (
             <span
               key={index}
-              className={`${styles.dot} ${
-                index === currentIndex ? styles.activeDot : ""
-              }`}
+              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
+                }`}
               onClick={() => handleDotClick(index)}
             ></span>
           ))}

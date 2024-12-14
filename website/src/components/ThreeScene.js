@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -7,12 +7,13 @@ const ThreeScene = () => {
   const sceneRef = useRef(null);
   const modelRef = useRef(null);
 
-  const mouse = { x: 0, y: 0 };
-  const targetMouse = { x: 0, y: 0 };
-
   // constants (play around with these values)
   const modelScale = 40000;
   let uniformScale;
+  const minScale = 0.02;
+
+  const mouse = { x: 0, y: 0 };
+  const targetMouse = { x: 0, y: 0 };
   const mouseSpeed = 0.05;
 
   const rotationMagnitude = 0.015;
@@ -30,6 +31,10 @@ const ThreeScene = () => {
   const scroll = { x: 0, y: 0 };
   const targetScroll = { x: 0, y: 0 };
   const scrollLerpSpeed = 0.1;
+
+  let droneY = 0;
+  let droneTargetY = 0;
+  let droneLerpSpeed = 0.1;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -62,6 +67,8 @@ const ThreeScene = () => {
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
+
+        // model.position.sub(center);
         // model.position.x -= center.x;
         // model.position.y -= center.y;
         // model.position.z -= center.z;
@@ -69,10 +76,9 @@ const ThreeScene = () => {
         model.position.x += 0.8;
         model.position.y += 2;
 
-        uniformScale = window.outerWidth / modelScale;
+        uniformScale = Math.max(minScale, window.outerWidth / modelScale);
 
         model.scale.set(uniformScale, uniformScale, uniformScale);
-
 
         scene.add(model);
       },
@@ -103,7 +109,7 @@ const ThreeScene = () => {
       renderer.setSize(width, height);
 
       if (modelRef.current) {
-        uniformScale = window.outerWidth / modelScale;
+        uniformScale = Math.max(minScale, window.outerWidth / modelScale);
         modelRef.current.scale.set(uniformScale, uniformScale, uniformScale);
       }
     };
@@ -127,6 +133,9 @@ const ThreeScene = () => {
       scroll.x += (targetScroll.x - scroll.x) * scrollLerpSpeed;
       scroll.y += (targetScroll.y - scroll.y) * scrollLerpSpeed;
 
+      droneTargetY = (window.outerWidth <= 600) ? 0.8 : 0;
+      droneY += (droneTargetY - droneY) * droneLerpSpeed;
+
       scene.traverse((model) => {
         if (model.isMesh) {
           model.rotation.x = rotationX;
@@ -135,7 +144,7 @@ const ThreeScene = () => {
           model.position.x =
             (-mouse.x * mouseDisplacement + hoverX + scroll.x) / uniformScale;
           model.position.y =
-            (-mouse.y * mouseDisplacement + hoverY + scroll.y) / uniformScale;
+            (-mouse.y * mouseDisplacement + hoverY + scroll.y + droneY) / uniformScale;
         }
       });
 
@@ -160,8 +169,8 @@ const ThreeScene = () => {
       style={{
         position: "absolute",
         top: 0,
-        left: "50%",
-        transform: "translate(-50%, 0)",
+        left: -100,
+        transform: "translate(5%, 0)",
         width: "100vw",
         height: "100vh",
         zIndex: 2,
