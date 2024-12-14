@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 .pageWrapper {
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
 }
 
 .HomeContainer {
@@ -10,12 +11,11 @@
   justify-content: center;
   align-items: flex-end;
   padding: 2rem;
-  background: linear-gradient(
-    to top,
-    #d9e1e7,
-    #eeeee4,
-    #809ab8
-  ); /* More intense gradient background */
+  background: linear-gradient(to top,
+      #d9e1e7,
+      #eeeee4,
+      #809ab8);
+  /* More intense gradient background */
   position: relative;
   overflow: hidden;
   font-family: "Fahkwang", sans-serif;
@@ -151,7 +151,8 @@
 }
 
 .aboutText p {
-  font-family: Arial, sans-serif; /* Changed to Arial */
+  font-family: Arial, sans-serif;
+  /* Changed to Arial */
   font-size: 1.5rem;
   line-height: 2;
   color: #e0e0e0;
@@ -268,7 +269,8 @@
   max-width: 800px;
   margin: 0 auto;
   overflow: hidden;
-  margin-top: 2rem; /* Added margin for spacing */
+  margin-top: 2rem;
+  /* Added margin for spacing */
 }
 
 .slideContainer {
@@ -304,28 +306,34 @@
 }
 
 .control {
-  background: none; /* Remove background */
-  color: white; /* Set text color to white */
+  background: none;
+  /* Remove background */
+  color: white;
+  /* Set text color to white */
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  z-index: 10; /* Ensure the control buttons are above the carousel */
+  z-index: 10;
+  /* Ensure the control buttons are above the carousel */
   font-size: 2rem;
   transition: color 0.3s;
 }
 
 .control:hover {
-  color: #e68787; /* Change color on hover */
+  color: #e68787;
+  /* Change color on hover */
 }
 
 .controlLeft {
   position: absolute;
-  left: -60px; /* Position outside the carousel */
+  left: -60px;
+  /* Position outside the carousel */
 }
 
 .controlRight {
   position: absolute;
-  right: -60px; /* Position outside the carousel */
+  right: -60px;
+  /* Position outside the carousel */
 }
 
 .control:disabled {
@@ -379,10 +387,11 @@
 .cloudContainer {
   position: relative;
   width: 100%;
-  height: 40px; /* Increased height */
+  height: 40px;
+  /* Increased height */
   overflow: visible;
-  background-color: #212121; /* Light sky blue background */
-  z-index: 0;
+  background-color: #212121;
+  /* Light sky blue background */
 }
 
 .cloudLeft,
@@ -395,21 +404,26 @@
 }
 
 .cloudLeft {
-  bottom: -50%; /* Higher position */
-  left: -20px; /* Offset to the left */
+  bottom: -50%;
+  /* Higher position */
+  left: -20px;
+  /* Offset to the left */
   z-index: 1;
 }
 
 .cloudRight {
-  bottom: -300%; /* Higher position */
-  right: -100px; /* Offset to the right */
-  z-index: 1;
+  bottom: -300%;
+  /* Higher position */
+  right: -100px;
+  /* Offset to the right */
+  z-index: 2;
 }
 
 @keyframes moveCloudLeft {
   0% {
     transform: translateX(0) translateY(-50%);
   }
+
   100% {
     transform: translateX(-400px) translateY(-50%);
   }
@@ -419,6 +433,7 @@
   0% {
     transform: translateX(0) translateY(-50%);
   }
+
   100% {
     transform: translateX(200px) translateY(-50%);
   }
@@ -434,6 +449,7 @@
   .aboutContainer {
     padding: 4rem;
   }
+
   /* .aboutText {
     padding: 0rem;
   } */
@@ -471,20 +487,24 @@
   }
 
   .cloudContainer {
-    height: 50px; /* Adjust height for mobile */
+    height: 50px;
+    /* Adjust height for mobile */
   }
 
   .cloudLeft {
-    bottom: -20%; /* Higher position */
+    bottom: -20%;
+    /* Higher position */
   }
 
   .cloudRight {
-    bottom: -70%; /* Higher position */
+    bottom: -70%;
+    /* Higher position */
   }
 
   .aboutContainer {
     padding: 1rem;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
+    /* Stack elements vertically */
   }
 
   .aboutText h1 {
@@ -512,7 +532,8 @@
   }
 
   .buttonSection {
-    display: none; /* Hide the desktop button section in mobile mode */
+    display: none;
+    /* Hide the desktop button section in mobile mode */
   }
 
   .sponsorButton {
@@ -521,11 +542,13 @@
   }
 
   .uavName {
-    font-size: 2rem; /* Smaller title in the carousel */
+    font-size: 2rem;
+    /* Smaller title in the carousel */
   }
 
   .uavDescription {
-    font-size: 0.8rem; /* Smaller text in the carousel */
+    font-size: 0.8rem;
+    /* Smaller text in the carousel */
   }
 
   .aboutText h1 {

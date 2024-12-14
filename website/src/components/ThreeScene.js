@@ -5,7 +5,31 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 const ThreeScene = () => {
   const canvasRef = useRef(null);
   const sceneRef = useRef(null);
+  const modelRef = useRef(null);
+
   const mouse = { x: 0, y: 0 };
+  const targetMouse = { x: 0, y: 0 };
+
+  // constants (play around with these values)
+  const modelScale = 40000;
+  let uniformScale;
+  const mouseSpeed = 0.05;
+
+  const rotationMagnitude = 0.015;
+  const mouseDisplacement = 0.4;
+
+  const hoverXOffset = 0.6;
+  const hoverYOffset = 0.4;
+  const hoverXAmplitude = 0.1;
+  const hoverYAmplitude = 0.07;
+
+  const rotationXBase = Math.PI / 7;
+  const rotationYBase = Math.PI / 4;
+
+  const scrollSpeed = 0.005;
+  const scroll = { x: 0, y: 0 };
+  const targetScroll = { x: 0, y: 0 };
+  const scrollLerpSpeed = 0.1;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,26 +49,19 @@ const ThreeScene = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
 
-    // test cube
-    // const geometry = new THREE.BoxGeometry();
-    // const material = new THREE.MeshStandardMaterial({ color: 0xff00ff });
-    // const cube = new THREE.Mesh(geometry, material);
-    // scene.add(cube);
-
     const loader = new GLTFLoader();
-    let uniformScale;
     let model;
     loader.load(
       "/assets/model/Final.gltf", // replace with path to apogee
       (gltf) => {
         model = gltf.scene;
 
+        modelRef.current = model;
+
         // calibrate the model origin
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
-
-        console.log("center:", center);
         // model.position.x -= center.x;
         // model.position.y -= center.y;
         // model.position.z -= center.z;
@@ -52,12 +69,10 @@ const ThreeScene = () => {
         model.position.x += 0.8;
         model.position.y += 2;
 
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const desiredSize = 10; // size is good at 9
-        uniformScale = desiredSize / maxDim;
+        uniformScale = window.outerWidth / modelScale;
 
-        console.log("scale:", uniformScale);
         model.scale.set(uniformScale, uniformScale, uniformScale);
+
 
         scene.add(model);
       },
@@ -75,46 +90,66 @@ const ThreeScene = () => {
     scene.add(ambientLight);
 
     const handleMouseMove = (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      targetMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      targetMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     };
-    window.addEventListener("mousemove", handleMouseMove);
+
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+
+      if (modelRef.current) {
+        uniformScale = window.outerWidth / modelScale;
+        modelRef.current.scale.set(uniformScale, uniformScale, uniformScale);
+      }
+    };
 
     const animate = () => {
       requestAnimationFrame(animate);
 
+      mouse.x += (targetMouse.x - mouse.x) * mouseSpeed;
+      mouse.y += (targetMouse.y - mouse.y) * mouseSpeed;
+
       const time = Date.now() * 0.002;
-      const hoverX = Math.sin(time * 0.6) * 0.1;
-      const hoverY = Math.cos(time * 0.4) * 0.07;
+      const hoverX = Math.sin(time * hoverXOffset) * hoverXAmplitude;
+      const hoverY = Math.cos(time * hoverYOffset) * hoverYAmplitude;
 
-      const rotationX = Math.PI / 12 + mouse.y * Math.PI * -0.1;
-      const rotationY = mouse.x * Math.PI * 0.1;
-      const mouseDisplacement = 1.5;
+      const rotationX = rotationXBase + mouse.y * Math.PI * -rotationMagnitude;
+      const rotationY = rotationYBase + mouse.x * Math.PI * rotationMagnitude;
 
-      //   cube.rotation.x = Math.PI / 8 + rotationX;
-      //   cube.rotation.y = Math.PI / 4 + rotationY;
-      //   cube.position.x = -mouse.x * mouseDisplacement + hoverX;
-      //   cube.position.y = -mouse.y * mouseDisplacement + hoverY;
+      targetScroll.x = window.scrollY * scrollSpeed;
+      targetScroll.y = window.scrollY * scrollSpeed * -0.25;
+
+      scroll.x += (targetScroll.x - scroll.x) * scrollLerpSpeed;
+      scroll.y += (targetScroll.y - scroll.y) * scrollLerpSpeed;
 
       scene.traverse((model) => {
         if (model.isMesh) {
-          model.rotation.x = Math.PI / 8 + rotationX;
-          model.rotation.y = Math.PI / 4 + rotationY;
+          model.rotation.x = rotationX;
+          model.rotation.y = rotationY;
 
           model.position.x =
-            (-mouse.x * mouseDisplacement + hoverX) / uniformScale;
+            (-mouse.x * mouseDisplacement + hoverX + scroll.x) / uniformScale;
           model.position.y =
-            (-mouse.y * mouseDisplacement + hoverY) / uniformScale;
+            (-mouse.y * mouseDisplacement + hoverY + scroll.y) / uniformScale;
         }
       });
 
       renderer.render(scene, camera);
     };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize);
     animate();
 
     // Cleanup
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
       renderer.dispose();
     };
   }, []);
@@ -125,10 +160,11 @@ const ThreeScene = () => {
       style={{
         position: "absolute",
         top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        zIndex: 1,
+        left: "50%",
+        transform: "translate(-50%, 0)",
+        width: "100vw",
+        height: "100vh",
+        zIndex: 2,
         pointerEvents: "none",
       }}
     />
