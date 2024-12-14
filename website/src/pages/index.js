@@ -156,8 +156,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <ThreeScene />
       <div className={styles.HomeContainer}>
-        <ThreeScene />
         <div className={styles.contentWrapper}>
           <div className={styles.textSection}>
             <h1 className={styles.name}>BLACKBIRD</h1>

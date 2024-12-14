@@ -44,8 +44,16 @@ const ThreeScene = () => {
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
 
+        console.log("center:", center);
+        // model.position.x -= center.x;
+        // model.position.y -= center.y;
+        // model.position.z -= center.z;
+
+        model.position.x += 0.8;
+        model.position.y += 2;
+
         const maxDim = Math.max(size.x, size.y, size.z);
-        const desiredSize = 9;
+        const desiredSize = 10; // size is good at 9
         uniformScale = desiredSize / maxDim;
 
         console.log("scale:", uniformScale);
@@ -59,7 +67,7 @@ const ThreeScene = () => {
       }
     );
 
-    const light = new THREE.PointLight(0xffffff, 100, 50);
+    const light = new THREE.PointLight(0xfdffd3, 100, 50);
     light.position.set(10, 10, 10);
     scene.add(light);
 
@@ -79,9 +87,9 @@ const ThreeScene = () => {
       const hoverX = Math.sin(time * 0.6) * 0.1;
       const hoverY = Math.cos(time * 0.4) * 0.07;
 
-      const rotationX = mouse.y * Math.PI * -0.1;
+      const rotationX = Math.PI / 12 + mouse.y * Math.PI * -0.1;
       const rotationY = mouse.x * Math.PI * 0.1;
-      const mouseDisplacement = 0.5;
+      const mouseDisplacement = 1.5;
 
       //   cube.rotation.x = Math.PI / 8 + rotationX;
       //   cube.rotation.y = Math.PI / 4 + rotationY;
@@ -116,8 +124,8 @@ const ThreeScene = () => {
       ref={canvasRef}
       style={{
         position: "absolute",
-        top: -150,
-        left: 50,
+        top: 0,
+        left: 0,
         width: "100%",
         height: "100%",
         zIndex: 1,
