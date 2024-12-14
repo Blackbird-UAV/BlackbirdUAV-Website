@@ -1,25 +1,66 @@
 import Head from "next/head";
 import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
-import Link from 'next/link';
-import ScrollDownIndicator from '@/components/ScrollDownIndicator';
+import Link from "next/link";
+import ScrollDownIndicator from "@/components/ScrollDownIndicator";
+import ThreeScene from "@/components/ThreeScene";
 
 const slides = [
-  { name: "Pegasus", image: "/images/vehicle1.jpg", description: "A versatile UAV designed for various applications." },
-  { name: "Phoenix", image: "/images/vehicle2.jpg", description: "A high-performance UAV with advanced capabilities." },
-  { name: "Valkyrie", image: "/images/vehicle3.jpg", description: "A robust UAV built for endurance and reliability." },
-  { name: "Orion", image: "/images/vehicle4.jpg", description: "A cutting-edge UAV with state-of-the-art technology." }
+  {
+    name: "Pegasus",
+    image: "/images/vehicle1.jpg",
+    description: "A versatile UAV designed for various applications.",
+  },
+  {
+    name: "Phoenix",
+    image: "/images/vehicle2.jpg",
+    description: "A high-performance UAV with advanced capabilities.",
+  },
+  {
+    name: "Valkyrie",
+    image: "/images/vehicle3.jpg",
+    description: "A robust UAV built for endurance and reliability.",
+  },
+  {
+    name: "Orion",
+    image: "/images/vehicle4.jpg",
+    description: "A cutting-edge UAV with state-of-the-art technology.",
+  },
 ];
 
 const ChevronLeft = (props) => (
-  <svg className={styles.chevron} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <path d="M15 6L9 12L15 18" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    className={styles.chevron}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M15 6L9 12L15 18"
+      stroke="#fff"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRight = (props) => (
-  <svg className={styles.chevron} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <path d="M9 6L15 12L9 18" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+  <svg
+    className={styles.chevron}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M9 6L15 12L9 18"
+      stroke="#fff"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -31,7 +72,10 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
 
   const handleScroll = useCallback(() => {
-    const progress = Math.max(0, Math.min(1, window.scrollY / document.body.scrollHeight));
+    const progress = Math.max(
+      0,
+      Math.min(1, window.scrollY / document.body.scrollHeight)
+    );
     setScrollProgress(progress * 100);
   }, []);
 
@@ -42,13 +86,17 @@ export default function Home() {
   const handlePrev = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+    );
   };
 
   const handleNext = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const handleDotClick = (index) => {
@@ -60,18 +108,18 @@ export default function Home() {
   useEffect(() => {
     const transitionEndHandler = () => setIsTransitioning(false);
     const slideContainer = document.querySelector(`.${styles.slideContainer}`);
-    slideContainer.addEventListener('transitionend', transitionEndHandler);
+    slideContainer.addEventListener("transitionend", transitionEndHandler);
     return () => {
-      slideContainer.removeEventListener('transitionend', transitionEndHandler);
+      slideContainer.removeEventListener("transitionend", transitionEndHandler);
     };
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleWindowScroll);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleWindowScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleWindowScroll);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleWindowScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll]);
 
@@ -88,11 +136,11 @@ export default function Home() {
       setIsMobile(window.innerWidth <= 600);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize(); // Call initially to set the correct state
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -100,12 +148,16 @@ export default function Home() {
     <div className={styles.pageWrapper}>
       <Head>
         <title>BlackBird UAV</title>
-        <meta name="description" content="BlackBird UAV | Carleton University's UAV Design Team" />
+        <meta
+          name="description"
+          content="BlackBird UAV | Carleton University's UAV Design Team"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.HomeContainer}>
+        <ThreeScene />
         <div className={styles.contentWrapper}>
           <div className={styles.textSection}>
             <h1 className={styles.name}>BLACKBIRD</h1>
@@ -130,16 +182,34 @@ export default function Home() {
       </div>
 
       <div className={styles.cloudContainer}>
-        <img src="/images/cloud.png" alt="Cloud Left" className={styles.cloudLeft} style={{ transform: `translateX(-${scrollY * 0.4}px)` }} />
-        <img src="/images/cloud2.png" alt="Cloud Right" className={styles.cloudRight} style={{ transform: `translateX(${scrollY * 0.4}px)` }} />
+        <img
+          src="/images/cloud.png"
+          alt="Cloud Left"
+          className={styles.cloudLeft}
+          style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
+        />
+        <img
+          src="/images/cloud2.png"
+          alt="Cloud Right"
+          className={styles.cloudRight}
+          style={{ transform: `translateX(${scrollY * 0.4}px)` }}
+        />
       </div>
 
       <div id="secondDiv" className={styles.aboutContainer}>
-        <img src="/images/tempImage.png" alt="Blackbird UAV Logo" className={styles.aboutImage} />
+        <img
+          src="/images/tempImage.png"
+          alt="Blackbird UAV Logo"
+          className={styles.aboutImage}
+        />
         <div className={styles.aboutText}>
           <h1 className={styles.aboutUsText}>About Us</h1>
           <p>
-            At Blackbird UAV, we specialize in cutting-edge drone technology that empowers businesses and individuals to reach new heights. Our team of experienced engineers and pilots is dedicated to providing innovative aerial solutions across various industries, including agriculture, construction, and surveillance.
+            At Blackbird UAV, we specialize in cutting-edge drone technology
+            that empowers businesses and individuals to reach new heights. Our
+            team of experienced engineers and pilots is dedicated to providing
+            innovative aerial solutions across various industries, including
+            agriculture, construction, and surveillance.
           </p>
         </div>
       </div>
@@ -147,17 +217,32 @@ export default function Home() {
       <div className={styles.galleryContainer}>
         <h2 className={styles.galleryTitle}>Our UAVs</h2>
         <div className={styles.carouselWrapper}>
-          <button className={`${styles.control} ${styles.controlLeft}`} onClick={handlePrev}>
+          <button
+            className={`${styles.control} ${styles.controlLeft}`}
+            onClick={handlePrev}
+          >
             <ChevronLeft />
           </button>
           <div className={styles.carousel}>
-            <div className={styles.slideContainer} style={{ transform: `translateX(-${currentIndex * 100}%)`, transition: `transform 0.5s ease-in-out` }}>
+            <div
+              className={styles.slideContainer}
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: `transform 0.5s ease-in-out`,
+              }}
+            >
               {slides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`}
+                  className={`${styles.slide} ${
+                    index === currentIndex ? styles.active : ""
+                  }`}
                 >
-                  <img src={slide.image} alt={slide.name} className={styles.uavImage} />
+                  <img
+                    src={slide.image}
+                    alt={slide.name}
+                    className={styles.uavImage}
+                  />
                   <div className={styles.gradientOverlay}>
                     <h3 className={styles.uavName}>{slide.name}</h3>
                     <p className={styles.uavDescription}>{slide.description}</p>
@@ -166,7 +251,10 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <button className={`${styles.control} ${styles.controlRight}`} onClick={handleNext}>
+          <button
+            className={`${styles.control} ${styles.controlRight}`}
+            onClick={handleNext}
+          >
             <ChevronRight />
           </button>
         </div>
@@ -174,7 +262,9 @@ export default function Home() {
           {slides.map((_, index) => (
             <span
               key={index}
-              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
+              className={`${styles.dot} ${
+                index === currentIndex ? styles.activeDot : ""
+              }`}
               onClick={() => handleDotClick(index)}
             ></span>
           ))}
