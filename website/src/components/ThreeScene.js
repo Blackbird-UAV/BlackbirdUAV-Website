@@ -15,7 +15,7 @@ const ThreeScene = () => {
   const modelXOffset = -0.5;
   const modelYOffset = 1;
 
-  const modelScale = 0.0007;
+  const modelScale = 0.00055;
   let uniformScale;
   const minScale = 0.3;
 
@@ -23,15 +23,14 @@ const ThreeScene = () => {
   const targetMouse = { x: 0, y: 0 };
   const mouseSpeed = 0.05;
 
-  const rotationMagnitude = 0.045;
+  const rotationMagnitude = 0.03;
 
-  let mouseDisplacement =
-    30000 * modelScale * Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
+  let mouseDisplacement = 20000 * modelScale;
 
   const hoverXOffset = 0.6;
   const hoverYOffset = 0.4;
-  let hoverXAmplitude = 6000 * modelScale * (window.innerWidth / 1920);
-  let hoverYAmplitude = 4000 * modelScale * (window.innerHeight / 1080);
+  let hoverXAmplitude = 6000 * modelScale;
+  let hoverYAmplitude = 4000 * modelScale;
 
   const rotationXBase = Math.PI / 7;
   const rotationYBase = Math.PI / 4;
@@ -144,7 +143,7 @@ const ThreeScene = () => {
       }
 
       mouseDisplacement =
-        25000 *
+        20000 *
         modelScale *
         Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
       hoverXAmplitude = 6000 * modelScale * (window.innerWidth / 1920);
