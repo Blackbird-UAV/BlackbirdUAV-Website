@@ -121,6 +121,7 @@ export default function Sponsor() {
   const marginTopSidebar = useBreakpointValue({ base: 6, sm: 6, md: 6 });
   const marginBottom = useBreakpointValue({ base: 20, lg: 0 });
   const marginTop = useBreakpointValue({ base: 0, lg: 20 });
+  const MotionHeading = motion(Heading);
 
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
@@ -251,14 +252,14 @@ export default function Sponsor() {
         _hover={
           tier.toLowerCase() === "platinum"
             ? {
-                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
-                transform: "scale(1.03)", // Slight scaling
-                transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
-              }
+              boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
+              transform: "scale(1.03)", // Slight scaling
+              transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
+            }
             : {
-                transform: "scale(1.02)", // Subtle scaling for other tiers
-                transition: "transform 0.3s ease", // Smooth transition
-              }
+              transform: "scale(1.02)", // Subtle scaling for other tiers
+              transition: "transform 0.3s ease", // Smooth transition
+            }
         }
       >
         <Box
@@ -344,13 +345,19 @@ export default function Sponsor() {
           overflow="hidden"
         >
           <Stack w="100%" spacing={10}>
-            <Heading
+            {/* <MotionHeading
               as="h2"
               size="3xl"
               textAlign="center"
               mb={4}
               color={"white"}
+              variants={fadeInUp}
+              initial="initial"
+              animate="animate"
             >
+              Thank you to our generous sponsors!
+            </MotionHeading> */}
+            <Heading as="h2" size="3xl" textAlign="center" mb={4} color={"white"}>
               Thank you to our generous sponsors!
             </Heading>
             {["Platinum", "Gold", "Silver", "Bronze"].map((tier, index) => (

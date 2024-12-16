@@ -50,7 +50,7 @@ const SponsorSidebar = () => {
       initial="initial"
       animate="animate"
       variants={fadeInUp}
-      position={position} // Dynamically set the position
+      position={position}
       top={top}
       width={width}
       bg="black"
@@ -81,7 +81,9 @@ const SponsorSidebar = () => {
           <MotionHeading as="h1" size="3xl" color="#ffffff" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
-
+          {/* <Heading as="h1" size="3xl" color="#ffffff">
+            Sponsorships
+          </Heading> */}
           {/* Content Box */}
           <Box
             bg="gray.800"

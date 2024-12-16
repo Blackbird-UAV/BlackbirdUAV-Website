@@ -4,6 +4,8 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import ThreeScene from "@/components/ThreeScene";
+import { motion } from "framer-motion";
+import { fadeInUp, fadeInUpSlower } from "@/components/animations";
 
 const slides = [
   {
@@ -161,8 +163,12 @@ export default function Home() {
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
-              <h1 className={styles.name}>BLACKBIRD</h1>
-              <h2 className={styles.subtitle}>Fly Around and Find Out</h2>
+              <motion.h1 className={styles.name} variants={fadeInUp} initial="initial" animate="animate">
+                BLACKBIRD
+              </motion.h1>
+              <motion.h2 className={styles.subtitle} variants={fadeInUp} initial="initial" animate="animate">
+                Fly Around and Find Out
+              </motion.h2>
               {isMobile && (
                 <div className={styles.mobileButtonSection}>
                   <Link href="/sponsor" className={styles.sponsorButton}>
@@ -182,7 +188,7 @@ export default function Home() {
           <ScrollDownIndicator />
         </div>
 
-        <div className={styles.cloudContainer}>
+        <motion.div className={styles.cloudContainer} variants={fadeInUpSlower} initial="initial" animate="animate">
           <img
             src="/images/cloud.png"
             alt="Cloud Left"
@@ -195,7 +201,7 @@ export default function Home() {
             className={styles.cloudRight}
             style={{ transform: `translateX(${scrollY * 0.4}px)` }}
           />
-        </div>
+        </motion.div>
 
         <div id="secondDiv" className={styles.aboutContainer}>
           <img

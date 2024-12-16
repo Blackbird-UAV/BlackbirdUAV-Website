@@ -15,15 +15,15 @@
 /* Gradient animation */
 @keyframes gradientAnimation {
   0% {
-    background-position: 100% 60%;
-  }
-
-  50% {
     background-position: 100% 30%;
   }
 
-  100% {
+  50% {
     background-position: 100% 60%;
+  }
+
+  100% {
+    background-position: 100% 30%;
   }
 }
 
@@ -34,7 +34,7 @@
   align-items: flex-end;
   padding: 2rem;
   /* background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8); */
-  background: linear-gradient(180deg, #92a2f3 0%, #9dbdf8 15%, #8cd5f1 30%, #ffffff 100%);
+  background: linear-gradient(180deg, #92a2f3 0%, #9dbdf8 20%, #98b6db 40%, #ffffff 100%);
   background-size: 200% 200%;
   animation: gradientAnimation 10s ease-in-out infinite;
   position: relative;
@@ -86,13 +86,13 @@
   font-size: 10rem;
   font-weight: bold;
   margin: 0;
-  color: #333;
+  color: #000;
   font-family: "Fahkwang", sans-serif;
 }
 
 .subtitle {
   font-size: 3rem;
-  color: #666;
+  color: #444444;
   margin-bottom: 8%;
 }
 
@@ -117,7 +117,7 @@
   margin-right: 5%;
   font-size: 1.5rem;
   color: #ffffff;
-  background-color: #212121;
+  background-color: #000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
