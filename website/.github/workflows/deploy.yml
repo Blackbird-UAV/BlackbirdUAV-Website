@@ -1,0 +1,39 @@
+name: Deploy Node.js App
+
+on:
+  workflow_run:
+    workflows: ["Node.js CI"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Deploy to Server
+        env:
+          HOST: ${{ secrets.SERVER_HOST }}
+          USER: ${{ secrets.SERVER_USER }}
+          KEY: ${{ secrets.SERVER_PRIVATE_KEY }}
+          DESTINATION_PATH: ${{ secrets.SERVER_DESTINATION_PATH }}
+        run: |
+          echo "$KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          rsync -avz --delete --exclude=".git" ./build $USER@$HOST:$DESTINATION_PATH
+          ssh -i ~/.ssh/id_rsa $USER@$HOST "pm2 reload all || pm2 start npm --name blackbird-uav-website -- run start"

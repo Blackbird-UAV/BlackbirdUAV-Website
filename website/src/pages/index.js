@@ -164,7 +164,7 @@ export default function Home() {
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
               <motion.h1 className={styles.name} variants={fadeInUp} initial="initial" animate="animate">
-                BLACKBIRD
+                BLACKBIRD UAV
               </motion.h1>
               <motion.h2 className={styles.subtitle} variants={fadeInUp} initial="initial" animate="animate">
                 Fly Around and Find Out
