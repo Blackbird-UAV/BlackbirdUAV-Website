@@ -124,7 +124,7 @@ const ThreeScene = () => {
     cube1.position.set(10, 10, 10);
     // scene.add(cube1);
 
-    const light2 = new THREE.PointLight(0xfdffd3, 500, 50);
+    const light2 = new THREE.PointLight(0xfdffd3, 300, 30);
     light2.position.set(-10, 10, -10);
     scene.add(light2);
 
@@ -135,8 +135,8 @@ const ThreeScene = () => {
     cube2.position.set(-10, 10, -10);
     // scene.add(cube2);
 
-    const light3 = new THREE.PointLight(0xfdffd3, 500, 50);
-    light3.position.set(-10, 0, 10);
+    const light3 = new THREE.PointLight(0xfdffd3, 120, 12);
+    light3.position.set(3, 10, -5);
     scene.add(light3);
 
     const cube3 = new THREE.Mesh(
@@ -149,7 +149,7 @@ const ThreeScene = () => {
     // const axesHelper = new THREE.AxesHelper(5);
     // scene.add(axesHelper);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 20);
+    const ambientLight = new THREE.AmbientLight(0xe7f5fb, 5);
     scene.add(ambientLight);
 
     const handleMouseMove = (event) => {
@@ -176,11 +176,11 @@ const ThreeScene = () => {
       }
 
       mouseDisplacement =
-        20000 *
+        1000 *
         modelScale *
         Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
-      hoverXAmplitude = 6000 * modelScale * (window.innerWidth / 1920);
-      hoverYAmplitude = 4000 * modelScale * (window.innerHeight / 1080);
+      hoverXAmplitude = 350 * modelScale * (window.innerWidth / 1920);
+      hoverYAmplitude = 200 * modelScale * (window.innerHeight / 1080);
     };
 
     const animate = () => {
@@ -203,9 +203,9 @@ const ThreeScene = () => {
       scroll.y = lerp(scroll.y, targetScroll.y, scrollLerpSpeed);
 
       if (window.innerWidth <= 600) {
-        droneTargetY = modelScale * 42000;
+        droneTargetY = modelScale * 7000;
       } else if (window.innerWidth <= 1100) {
-        droneTargetY = modelScale * 36000;
+        droneTargetY = modelScale * 5000;
       } else {
         droneTargetY = 0;
       }
