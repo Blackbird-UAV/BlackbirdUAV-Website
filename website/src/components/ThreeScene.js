@@ -117,11 +117,39 @@ const ThreeScene = () => {
     light1.position.set(10, 10, 10);
     scene.add(light1);
 
+    const cube1 = new THREE.Mesh(
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    );
+    cube1.position.set(10, 10, 10);
+    // scene.add(cube1);
+
     const light2 = new THREE.PointLight(0xfdffd3, 500, 50);
     light2.position.set(-10, 10, -10);
     scene.add(light2);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 10);
+    const cube2 = new THREE.Mesh(
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    );
+    cube2.position.set(-10, 10, -10);
+    // scene.add(cube2);
+
+    const light3 = new THREE.PointLight(0xfdffd3, 500, 50);
+    light3.position.set(-10, 0, 10);
+    scene.add(light3);
+
+    const cube3 = new THREE.Mesh(
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    );
+    cube3.position.set(-10, 0, 10);
+    // scene.add(cube3);
+
+    // const axesHelper = new THREE.AxesHelper(5);
+    // scene.add(axesHelper);
+
+    const ambientLight = new THREE.AmbientLight(0x404040, 20);
     scene.add(ambientLight);
 
     const handleMouseMove = (event) => {
