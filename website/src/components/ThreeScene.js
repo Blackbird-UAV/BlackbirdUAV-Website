@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 
 const lerp = (s, e, t) => {
   return s + (e - s) * t;
@@ -12,10 +14,10 @@ const ThreeScene = () => {
   const modelRef = useRef(null);
 
   // constants (play around with these values)
-  const modelXOffset = -0.5;
-  const modelYOffset = 1;
+  const modelXOffset = 1;
+  const modelYOffset = 0;
 
-  const modelScale = 0.00055;
+  const modelScale = 0.0003;
   let uniformScale;
   const minScale = 0.3;
 
@@ -23,14 +25,14 @@ const ThreeScene = () => {
   const targetMouse = { x: 0, y: 0 };
   const mouseSpeed = 0.05;
 
-  const rotationMagnitude = 0.03;
+  const rotationMagnitude = 0.02;
 
-  let mouseDisplacement = 20000 * modelScale;
+  let mouseDisplacement = 1000 * modelScale;
 
   const hoverXOffset = 0.6;
   const hoverYOffset = 0.4;
-  let hoverXAmplitude = 6000 * modelScale;
-  let hoverYAmplitude = 4000 * modelScale;
+  let hoverXAmplitude = 350 * modelScale;
+  let hoverYAmplitude = 200 * modelScale;
 
   const rotationXBase = Math.PI / 7;
   const rotationYBase = Math.PI / 4;
@@ -72,19 +74,18 @@ const ThreeScene = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
 
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/assets/draco/')
+
     const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+
     let model;
     loader.load(
-      "/assets/model/scene.gltf", // replace with path to apogee
+      "/assets/model/final.glb",
       (gltf) => {
         model = gltf.scene;
         modelRef.current = model;
-
-        model.traverse((child) => {
-          if (child.isMesh) {
-            child.material = new THREE.MeshStandardMaterial();
-          }
-        });
 
         // calibrate the model origin
         const box = new THREE.Box3().setFromObject(model);
@@ -112,11 +113,15 @@ const ThreeScene = () => {
       }
     );
 
-    const light = new THREE.PointLight(0xfdffd3, 100, 50);
-    light.position.set(10, 10, 10);
-    scene.add(light);
+    const light1 = new THREE.PointLight(0xfdffd3, 1000, 100);
+    light1.position.set(10, 10, 10);
+    scene.add(light1);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 1);
+    const light2 = new THREE.PointLight(0xfdffd3, 500, 50);
+    light2.position.set(-10, 10, -10);
+    scene.add(light2);
+
+    const ambientLight = new THREE.AmbientLight(0x404040, 10);
     scene.add(ambientLight);
 
     const handleMouseMove = (event) => {
@@ -163,8 +168,8 @@ const ThreeScene = () => {
       const rotationX = rotationXBase + mouse.y * Math.PI * -rotationMagnitude;
       const rotationY = rotationYBase + mouse.x * Math.PI * rotationMagnitude;
 
-      targetScroll.x = window.scrollY * modelScale * 500;
-      targetScroll.y = window.scrollY * modelScale * 500 * -0.25;
+      targetScroll.x = window.scrollY * modelScale * 100;
+      targetScroll.y = window.scrollY * modelScale * 100 * -0.25;
 
       scroll.x = lerp(scroll.x, targetScroll.x, scrollLerpSpeed);
       scroll.y = lerp(scroll.y, targetScroll.y, scrollLerpSpeed);
