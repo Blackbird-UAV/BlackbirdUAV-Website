@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        working-directory: ./website
+        cache-dependency-path: './website/package-lock.json'
     - name: Install dependencies
       run: npm install
       working-directory: ./website
