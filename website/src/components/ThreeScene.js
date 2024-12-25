@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 const lerp = (s, e, t) => {
   return s + (e - s) * t;
@@ -18,34 +17,45 @@ const ThreeScene = () => {
   const modelYOffset = 0;
 
   const modelScale = 0.0003;
-  let uniformScale;
+  // let uniformScale = null;
+  const uniformScaleRef = useRef(null);
   const minScale = 0.3;
 
-  const mouse = { x: 0, y: 0 };
-  const targetMouse = { x: 0, y: 0 };
   const mouseSpeed = 0.05;
 
   const rotationMagnitude = 0.02;
 
-  let mouseDisplacement = 1000 * modelScale;
+  // let mouseDisplacement = 1000 * modelScale;
+  const mouseDisplacementRef = useRef(null);
 
   const hoverXOffset = 0.6;
   const hoverYOffset = 0.4;
-  let hoverXAmplitude = 350 * modelScale;
-  let hoverYAmplitude = 200 * modelScale;
+  // let hoverXAmplitude = 350 * modelScale;
+  // let hoverYAmplitude = 200 * modelScale;
+  const hoverXAmplitudeRef = useRef(null);
+  const hoverYAmplitudeRef = useRef(null);
 
   const rotationXBase = Math.PI / 7;
   const rotationYBase = Math.PI / 4;
 
-  const scroll = { x: 0, y: 0 };
-  const targetScroll = { x: 0, y: 0 };
   const scrollLerpSpeed = 0.1;
 
-  let droneY = 0;
-  let droneTargetY = 0;
-  let droneLerpSpeed = 0.1;
+  // let droneY = 0;
+  const droneYRef = useRef(0);
+  const droneLerpSpeed = 0.1;
 
   useEffect(() => {
+    const mouse = { x: 0, y: 0 };
+    const targetMouse = { x: 0, y: 0 };
+
+    const scroll = { x: 0, y: 0 };
+    const targetScroll = { x: 0, y: 0 };
+
+    mouseDisplacementRef.current = 1000 * modelScale;
+
+    hoverXAmplitudeRef.current = 350 * modelScale * (window.innerWidth / 1920);
+    hoverYAmplitudeRef.current = 200 * modelScale * (window.innerHeight / 1080);
+
     const canvas = canvasRef.current;
     const scene = new THREE.Scene();
     sceneRef.current = scene;
@@ -75,17 +85,22 @@ const ThreeScene = () => {
     renderer.setClearColor(0x000000, 0);
 
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/assets/draco/')
+    dracoLoader.setDecoderPath("/assets/draco/");
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
 
-    let model;
     loader.load(
-      "/assets/model/final.glb",
+      "/assets/model/final_comp.glb",
       (gltf) => {
-        model = gltf.scene;
+        const model = gltf.scene;
         modelRef.current = model;
+
+        model.traverse((child) => {
+          if (child.isMesh) {
+            child.material = child.material.clone();
+          }
+        });
 
         // calibrate the model origin
         const box = new THREE.Box3().setFromObject(model);
@@ -101,11 +116,12 @@ const ThreeScene = () => {
         model.position.x += modelXOffset;
         model.position.y += modelYOffset;
 
-        uniformScale = Math.max(minScale, window.innerWidth * modelScale);
+        uniformScaleRef.current = Math.max(minScale, window.innerWidth * modelScale);
 
-        model.scale.set(uniformScale, uniformScale, uniformScale);
+        model.scale.set(uniformScaleRef.current, uniformScaleRef.current, uniformScaleRef.current);
 
         scene.add(model);
+        animate();
       },
       undefined,
       (error) => {
@@ -117,37 +133,13 @@ const ThreeScene = () => {
     light1.position.set(10, 10, 10);
     scene.add(light1);
 
-    const cube1 = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    );
-    cube1.position.set(10, 10, 10);
-    // scene.add(cube1);
-
     const light2 = new THREE.PointLight(0xfdffd3, 300, 30);
     light2.position.set(-10, 10, -10);
     scene.add(light2);
 
-    const cube2 = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    );
-    cube2.position.set(-10, 10, -10);
-    // scene.add(cube2);
-
-    const light3 = new THREE.PointLight(0xfdffd3, 120, 12);
-    light3.position.set(3, 10, -5);
-    scene.add(light3);
-
-    const cube3 = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    );
-    cube3.position.set(-10, 0, 10);
-    // scene.add(cube3);
-
-    // const axesHelper = new THREE.AxesHelper(5);
-    // scene.add(axesHelper);
+    // const light3 = new THREE.PointLight(0xfdffd3, 120, 12);
+    // light3.position.set(3, 10, -5);
+    // scene.add(light3);
 
     const ambientLight = new THREE.AmbientLight(0xe7f5fb, 5);
     scene.add(ambientLight);
@@ -171,16 +163,16 @@ const ThreeScene = () => {
       );
 
       if (modelRef.current) {
-        uniformScale = Math.max(minScale, window.innerWidth * modelScale);
-        modelRef.current.scale.set(uniformScale, uniformScale, uniformScale);
+        uniformScaleRef.current = Math.max(minScale, window.innerWidth * modelScale);
+        modelRef.current.scale.set(uniformScaleRef.current, uniformScaleRef.current, uniformScaleRef.current);
       }
 
-      mouseDisplacement =
+      mouseDisplacementRef.current =
         1000 *
         modelScale *
         Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
-      hoverXAmplitude = 350 * modelScale * (window.innerWidth / 1920);
-      hoverYAmplitude = 200 * modelScale * (window.innerHeight / 1080);
+      hoverXAmplitudeRef.current = 350 * modelScale * (window.innerWidth / 1920);
+      hoverYAmplitudeRef.current = 200 * modelScale * (window.innerHeight / 1080);
     };
 
     const animate = () => {
@@ -190,8 +182,8 @@ const ThreeScene = () => {
       mouse.y = lerp(mouse.y, targetMouse.y, mouseSpeed);
 
       const time = Date.now() * 0.002;
-      const hoverX = Math.sin(time * hoverXOffset) * hoverXAmplitude;
-      const hoverY = Math.cos(time * hoverYOffset) * hoverYAmplitude;
+      const hoverX = Math.sin(time * hoverXOffset) * hoverXAmplitudeRef.current;
+      const hoverY = Math.cos(time * hoverYOffset) * hoverYAmplitudeRef.current;
 
       const rotationX = rotationXBase + mouse.y * Math.PI * -rotationMagnitude;
       const rotationY = rotationYBase + mouse.x * Math.PI * rotationMagnitude;
@@ -202,14 +194,13 @@ const ThreeScene = () => {
       scroll.x = lerp(scroll.x, targetScroll.x, scrollLerpSpeed);
       scroll.y = lerp(scroll.y, targetScroll.y, scrollLerpSpeed);
 
+      let droneTargetY = 0;
       if (window.innerWidth <= 600) {
         droneTargetY = modelScale * 7000;
       } else if (window.innerWidth <= 1100) {
         droneTargetY = modelScale * 5000;
-      } else {
-        droneTargetY = 0;
       }
-      droneY = lerp(droneY, droneTargetY, droneLerpSpeed);
+      droneYRef.current = lerp(droneYRef.current, droneTargetY, droneLerpSpeed);
 
       scene.traverse((model) => {
         if (model.isMesh) {
@@ -217,10 +208,10 @@ const ThreeScene = () => {
           model.rotation.y = rotationY;
 
           model.position.x =
-            (-mouse.x * mouseDisplacement + hoverX + scroll.x) / uniformScale;
+            (-mouse.x * mouseDisplacementRef.current + hoverX + scroll.x) / uniformScaleRef.current;
           model.position.y =
-            (-mouse.y * mouseDisplacement + hoverY + scroll.y + droneY) /
-            uniformScale;
+            (-mouse.y * mouseDisplacementRef.current + hoverY + scroll.y + droneYRef.current) /
+            uniformScaleRef.current;
         }
       });
 
@@ -231,13 +222,12 @@ const ThreeScene = () => {
     window.addEventListener("resize", handleResize);
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
     };
-  }, []);
+  }, [rotationXBase, rotationYBase]);
 
   return (
     <canvas

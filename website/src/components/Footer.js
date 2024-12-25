@@ -6,6 +6,7 @@ import {
   faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
 import styles from "@/styles/Footer.module.css";
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -13,7 +14,10 @@ export default function Footer() {
       <div className={styles.footerContent}>
         {/* Logo Section */}
         <div className={styles.logoSection}>
-          <img src="/logos/BirdBBUAVLogo.png" alt="BlackBird Logo" />
+          <img
+            src="/logos/BirdBBUAVLogo.png"
+            alt="BlackBird Logo"
+          />
         </div>
 
         {/* Social Media Links Section */}

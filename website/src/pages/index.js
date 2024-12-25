@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from 'next/image';
 import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
@@ -85,21 +86,21 @@ export default function Home() {
     setScrollY(window.scrollY);
   };
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? slides.length - 1 : prevIndex - 1
     );
-  };
+  }, [isTransitioning]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentIndex((prevIndex) =>
       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [isTransitioning]);
 
   const handleDotClick = (index) => {
     if (isTransitioning) return;
@@ -131,7 +132,7 @@ export default function Home() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [handleNext]);
 
   useEffect(() => {
     const handleResize = () => {

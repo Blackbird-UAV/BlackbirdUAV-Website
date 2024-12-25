@@ -16,11 +16,11 @@ import { motion } from "framer-motion";
 import { fadeInUp, stagger, scaleUp } from "@/components/animations";
 
 const SponsorSidebar = () => {
-  const MotionHeading = motion(Heading);
-  const MotionText = motion(Text);
-  const MotionStack = motion(Stack);
-  const MotionBox = motion(Box);
-  const MotionButton = motion(Button);
+  const MotionHeading = motion.create(Heading);
+  const MotionText = motion.create(Text);
+  const MotionStack = motion.create(Stack);
+  const MotionBox = motion.create(Box);
+  const MotionButton = motion.create(Button);
   const display = useBreakpointValue({ base: "none", lg: "block" });
 
   const position = useBreakpointValue({

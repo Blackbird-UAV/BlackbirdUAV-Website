@@ -59,10 +59,10 @@ export default function Navbar() {
     <nav className={navbarClass}>
       <Link href="/">
         <div className={styles.logoContainer}>
-          <Image
+          <img
             src="/logos/BirdLogo.png"
             alt="Logo"
-            fill
+            layout="fill"
             className={styles.logo}
             sizes="(max-width: 768px) 50px, 100px"
           />
@@ -81,18 +81,16 @@ export default function Navbar() {
 
       <div className={`${styles.linksContainer} ${isOpen ? styles.open : ""}`}>
         <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === "/" ? styles.activeLink : ""
-          }`}
+          className={`${styles.linkWrapper} ${router.pathname === "/" ? styles.activeLink : ""
+            }`}
         >
           <Link href="/" className={styles.link} onClick={handleLinkClick}>
             <span>Home</span>
           </Link>
         </div>
         <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === "/vehicles" ? styles.activeLink : ""
-          }`}
+          className={`${styles.linkWrapper} ${router.pathname === "/vehicles" ? styles.activeLink : ""
+            }`}
         >
           <Link href="/vehicles" className={styles.link} onClick={handleLinkClick}>
             <span>Vehicles</span>
@@ -102,9 +100,8 @@ export default function Navbar() {
         <Menu trigger="hover" transitionProps={{ exitDuration: 0 }}>
           <Menu.Target>
             <div
-              className={`${styles.linkWrapper} ${
-                router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
-              }`}
+              className={`${styles.linkWrapper} ${router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
+                }`}
               style={{ position: "relative" }}
             >
               <Center className={styles.link}>
@@ -136,9 +133,8 @@ export default function Navbar() {
         </Menu>
 
         <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === "/joinTheTeam" ? styles.activeLink : ""
-          }`}
+          className={`${styles.linkWrapper} ${router.pathname === "/joinTheTeam" ? styles.activeLink : ""
+            }`}
         >
           <Link href="/joinTheTeam" className={styles.link} onClick={handleLinkClick}>
             <span>Join</span>

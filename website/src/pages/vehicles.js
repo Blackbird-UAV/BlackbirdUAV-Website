@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/Vehicles.module.css";
 
@@ -74,7 +75,7 @@ export default function Vehicles() {
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5 
+        threshold: 0.5
       };
 
       const observer = new IntersectionObserver((entries) => {
