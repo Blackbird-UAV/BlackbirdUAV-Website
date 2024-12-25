@@ -22,5 +22,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
-    - run: npm run lint
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./website
+    - name: Run linting
+      run: npm run lint
+      working-directory: ./website
