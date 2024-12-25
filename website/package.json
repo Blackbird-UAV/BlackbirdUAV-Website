@@ -11,6 +11,8 @@
   "dependencies": {
     "@chakra-ui/react": "^3.2.0",
     "@emotion/react": "^11.13.5",
+    "@eslint/config-array": "^0.19.1",
+    "@eslint/object-schema": "^2.1.5",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
@@ -25,6 +27,7 @@
     "fortawesome": "^0.0.1-security",
     "framer-motion": "^11.11.17",
     "ftp-deploy": "^2.4.7",
+    "glob": "^11.0.0",
     "next": "^14.2.21",
     "react": "^18.3.1",
     "react-dom": "^18",
