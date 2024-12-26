@@ -6,6 +6,7 @@ import { faChevronDown, faDraftingCompass, faPlane, faCogs, faUsers, faClipboard
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { Accordion, Group, Text } from '@mantine/core';
+import Header from "@/components/Header";
 
 const accordionItems = [
   {
@@ -75,19 +76,20 @@ export default function Join() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Join the Team</title>
         <meta
           name="description"
           content="Join Black Bird UAV - Be a part of a cutting-edge UAV community"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      </Head> */}
+      <Header imagePath="/images/JoinUsMedia.jpg" headerText="Join the Team" />
 
       <div className={styles.pageWrapper}>
-        <div className={styles.banner}>
+        {/* <div className={styles.banner}>
           <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
-        </div>
+        </div> */}
 
         <div className={styles.contentContainer}>
 

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/Vehicles.module.css";
+import Header from "@/components/Header";
 
 const vehicles = [
   {
@@ -116,14 +117,15 @@ export default function Vehicles() {
 
   return (
     <>
-      <Head>
+      <Header imagePath="/images/apogee.jpg" headerText="Our Aircraft" initialOffset={900} />
+      {/* <Head>
         <title>Our Aircraft</title>
         <meta name="description" content="Our Aircraft" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
       <div className={styles.container}>
-        <h1 className={styles.title}>Our Aircraft</h1>
+        {/* <h1 className={styles.title}>Our Aircraft</h1> */}
         <div className={styles.vehiclesList}>
           {vehicles.map((vehicle, index) => (
             <div
