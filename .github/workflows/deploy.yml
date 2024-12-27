@@ -14,17 +14,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: 'npm'
+          cache-dependency-path: './website/package-lock.json'
 
       - name: Install Dependencies and Build
         run: |
           npm install
           npm run build
-          npm run export
+        working-directory: ./website
 
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
