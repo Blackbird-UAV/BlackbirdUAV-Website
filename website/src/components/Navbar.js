@@ -11,6 +11,7 @@ export default function Navbar() {
   const router = useRouter();
   const [showNavbar, setShowNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     if (router.pathname === "/") {
@@ -23,13 +24,28 @@ export default function Navbar() {
         }
       };
 
+      const handleMouseMove = (event) => {
+        console.log(isDropdownOpen);
+        if (isDropdownOpen) {
+          setShowNavbar(true);
+        } else {
+          if (event.clientY < 100) {
+            setShowNavbar(true);
+          } else {
+            setShowNavbar(false);
+          }
+        }
+      };
+
       window.addEventListener("scroll", handleScroll);
+      window.addEventListener("mousemove", handleMouseMove);
 
       return () => {
         window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("mousemove", handleMouseMove);
       };
     }
-  }, [router.pathname]);
+  }, [router.pathname, isDropdownOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,6 +57,18 @@ export default function Navbar() {
 
   const handleLinkClick = () => {
     setIsOpen(false);
+  };
+
+  const handleDropdownEnter = () => {
+    setIsDropdownOpen(true);
+    setShowNavbar(true);
+  };
+
+  const handleDropdownLeave = (event) => {
+    setIsDropdownOpen(false);
+    if (event.clientY >= 100) {
+      setShowNavbar(false);
+    }
   };
 
   const navbarClass =
@@ -105,20 +133,27 @@ export default function Navbar() {
               style={{ position: "relative" }}
             >
               <Center className={styles.link}>
-                <span>
-                  Team
-                  <IconChevronDown
-                    size="0.9rem"
-                    stroke={1.5}
-                    color="#f9fafb"
-                    className={styles.chevron}
-                  />
-                </span>
+                <Link href="/MeetTheTeam/2024-2025" className={styles.link} onClick={handleLinkClick}>
+                  <span>
+                    Team
+                    <IconChevronDown
+                      size="0.9rem"
+                      stroke={1.5}
+                      color="#f9fafb"
+                      className={styles.chevron}
+                    />
+                  </span>
+                </Link>
               </Center>
             </div>
           </Menu.Target>
 
-          <Menu.Dropdown className={dropdownStyles.dropdownMenu}>
+          <Menu.Dropdown
+            className={dropdownStyles.dropdownMenu}
+            onMouseEnter={handleDropdownEnter}
+            onMouseLeave={(event) => handleDropdownLeave(event)
+            }>
+
             {teamLinks.map((item) => (
               <Link href={item.link} key={item.link} onClick={handleLinkClick}>
                 <Menu.Item
