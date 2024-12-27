@@ -4,6 +4,7 @@ import { Text } from '@mantine/core';
 import styles from '../../styles/Team.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+import Header from '@/components/Header';
 
 const MeetTeam = () => {
   const router = useRouter();
@@ -30,81 +31,85 @@ const MeetTeam = () => {
     return (
       <div className={styles.container}>
         <h1 className={styles.title}>{teamTitle}</h1>
-        <p className={styles.message}>Sorry, we couldn't find the team for the specified year.</p>
+        <p className={styles.message}>Sorry, we couldn&apos;t find the team for the specified year.</p>
       </div>
     );
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{teamTitle}</h1>
-      <div className={styles.headerDesc}>
-        {teamDescription && <div>{teamDescription}</div>}
-      </div>
-      {Object.keys(team).map((subteam) => (
-        subteam !== 'description' && (
-        <div className={styles.subteam} key={subteam}>
-          <div className={styles.subteamContent}>
-            <div className={`${styles.sidebar} ${styles[subteam]}`}>
-              <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
-            </div>
-            <div className={styles.grid}>
-            {team[subteam]
-                .sort((a, b) => (b.isExecutive ? 1 : 0) - (a.isExecutive ? 1 : 0)) // Sort execs first
-                .map((member) => (
-                <div key={member.name} className={styles.card}>
-                  <div className={styles.cardInner}>
-                    {/* Front Side */}
-                    <div className={styles.cardFront} style={{ backgroundImage: `url(${member.image})` }}>
-                      <div className={styles.turnOverIcon}>
-                        <FontAwesomeIcon icon={faAnglesRight} />
-                      </div>
-                      {member.isPresident && <span className={styles.presidentTag}>President</span>}
-                      {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
-                      <Text className={styles.firstName}>{member.firstName}</Text>
-                      <Text className={styles.lastName}>{member.lastName}</Text>
-                      <Text className={styles.description}>{member.description}</Text>
-                    </div>
-                    {/* Back Side */}
-                    <div className={styles.cardBack}>
-                      <div className={`${styles.colorTop} ${styles[subteam]}`}>
-                        {member.isPresident && <span className={styles.presidentTag}>President</span>}
-                        {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
-                        <Text className={styles.firstName}>{member.firstName}</Text>
-                        <Text className={styles.lastName}>{member.lastName}</Text>
-                      </div>
-
-                      <Text className={styles.extendedDescription}>{member.extendedDescription}</Text>
-                      <a
-                        href={member.link}
-                        className={styles.linkButton}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        See LinkedIn
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Render double lines for comp team */}
-          {subteam === "Competition" && (
-            <div className={styles.linesContainer}>
-               <div className={styles.compBox}>
-                <p className={styles.compText}>
-                  *This is the description for the competition team. Highlight key details or achievements here*
-                </p>
-              </div>
-              <div className={styles.horizontalLine}></div>
-            </div>
-          )}
-
+    <>
+      <Header imagePath="/images/team.jpg" headerText={teamTitle} initialOffset={200} />
+      <div className={styles.container}>
+        {/* <h1 className={styles.title}>{teamTitle}</h1> */}
+        {/* <Header imagePath="/images/team.jpg" headerText={teamTitle} /> */}
+        <div className={styles.headerDesc}>
+          {teamDescription && <div>{teamDescription}</div>}
         </div>
-      )))}
-    </div>
+        {Object.keys(team).map((subteam) => (
+          subteam !== 'description' && (
+            <div className={styles.subteam} key={subteam}>
+              <div className={styles.subteamContent}>
+                <div className={`${styles.sidebar} ${styles[subteam]}`}>
+                  <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
+                </div>
+                <div className={styles.grid}>
+                  {team[subteam]
+                    .sort((a, b) => (b.isExecutive ? 1 : 0) - (a.isExecutive ? 1 : 0)) // Sort execs first
+                    .map((member) => (
+                      <div key={member.id} className={styles.card}>
+                        <div className={styles.cardInner}>
+                          {/* Front Side */}
+                          <div className={styles.cardFront} style={{ backgroundImage: `url(${member.image})` }}>
+                            <div className={styles.turnOverIcon}>
+                              <FontAwesomeIcon icon={faAnglesRight} />
+                            </div>
+                            {member.isPresident && <span className={styles.presidentTag}>President</span>}
+                            {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
+                            <Text className={styles.firstName}>{member.firstName}</Text>
+                            <Text className={styles.lastName}>{member.lastName}</Text>
+                            <Text className={styles.description}>{member.description}</Text>
+                          </div>
+                          {/* Back Side */}
+                          <div className={styles.cardBack}>
+                            <div className={`${styles.colorTop} ${styles[subteam]}`}>
+                              {member.isPresident && <span className={styles.presidentTag}>President</span>}
+                              {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
+                              <Text className={styles.firstName}>{member.firstName}</Text>
+                              <Text className={styles.lastName}>{member.lastName}</Text>
+                            </div>
+
+                            <Text className={styles.extendedDescription}>{member.extendedDescription}</Text>
+                            <a
+                              href={member.link}
+                              className={styles.linkButton}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              See LinkedIn
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              {/* Render double lines for comp team */}
+              {subteam === "Competition" && (
+                <div className={styles.linesContainer}>
+                  <div className={styles.compBox}>
+                    <p className={styles.compText}>
+                      *This is the description for the competition team. Highlight key details or achievements here*
+                    </p>
+                  </div>
+                  <div className={styles.horizontalLine}></div>
+                </div>
+              )}
+
+            </div>
+          )))}
+      </div>
+    </>
   );
 };
 

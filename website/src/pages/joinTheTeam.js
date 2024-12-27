@@ -1,10 +1,12 @@
 import Head from "next/head";
+import Image from 'next/image';
 import styles from "@/styles/Join.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faDraftingCompass, faPlane, faCogs, faUsers, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { Accordion, Group, Text } from '@mantine/core';
+import Header from "@/components/Header";
 
 const accordionItems = [
   {
@@ -52,19 +54,19 @@ const accordionItems = [
 // This is the top label that acts as a button to reveal the content
 function AccordionLabel({ icon, value, description, color }) {
   return (
-      <Group noWrap style={{ justifyContent: 'space-between', width: '100%' }}>
-        <div className={styles.accordionLabelLR}>
-          <div>
-            <FontAwesomeIcon icon={icon} size="2x" className={styles.accordionLabelIcon} style={{ color }} />
-          </div>
-          <div>
-            <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
-            <Text ta="left" className={styles.accordionLabelDescription}>
-              {description}
-            </Text>
-          </div>
+    <Group nowrap="true" style={{ justifyContent: 'space-between', width: '100%' }}>
+      <div className={styles.accordionLabelLR}>
+        <div>
+          <FontAwesomeIcon icon={icon} size="2x" className={styles.accordionLabelIcon} style={{ color }} />
         </div>
-      </Group>
+        <div>
+          <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
+          <Text ta="left" className={styles.accordionLabelDescription}>
+            {description}
+          </Text>
+        </div>
+      </div>
+    </Group>
   );
 }
 
@@ -74,22 +76,23 @@ export default function Join() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Join the Team</title>
         <meta
           name="description"
           content="Join Black Bird UAV - Be a part of a cutting-edge UAV community"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      </Head> */}
+      <Header imagePath="/images/JoinUsMedia.jpg" headerText="Join the Team" />
 
       <div className={styles.pageWrapper}>
-        <div className={styles.banner}>
-            <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
-        </div>
+        {/* <div className={styles.banner}>
+          <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
+        </div> */}
 
         <div className={styles.contentContainer}>
-          
+
           {/* Top banner */}
           <div className={styles.gradientTextContainer}>
             <h1 className={styles.bigHeader}>
@@ -127,7 +130,7 @@ export default function Join() {
 
             <div className={styles.leftContent}>
               <div className={styles.accordionHeightWrapper}>
-              <Accordion
+                <Accordion
                   className={styles.accordionStyles}
                   chevron={
                     <div className={styles.accordionLabelChevron}>
@@ -153,9 +156,9 @@ export default function Join() {
                           ${currentAccordionValue === item.value ? styles.selected : ''}
                           `}
                       >
-                        <AccordionLabel 
+                        <AccordionLabel
                           icon={item.icon}
-                          value={item.value} 
+                          value={item.value}
                           description={item.description}
                           color={item.color}
                         />
@@ -166,7 +169,7 @@ export default function Join() {
                     </Accordion.Item>
                   ))}
                 </Accordion>
-            </div>
+              </div>
             </div>
 
             <div className={styles.rightContent}>

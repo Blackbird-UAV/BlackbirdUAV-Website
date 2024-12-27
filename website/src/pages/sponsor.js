@@ -121,7 +121,6 @@ export default function Sponsor() {
   const marginTopSidebar = useBreakpointValue({ base: 6, sm: 6, md: 6 });
   const marginBottom = useBreakpointValue({ base: 20, lg: 0 });
   const marginTop = useBreakpointValue({ base: 0, lg: 20 });
-  const MotionHeading = motion(Heading);
 
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
@@ -345,18 +344,6 @@ export default function Sponsor() {
           overflow="hidden"
         >
           <Stack w="100%" spacing={10}>
-            {/* <MotionHeading
-              as="h2"
-              size="3xl"
-              textAlign="center"
-              mb={4}
-              color={"white"}
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-            >
-              Thank you to our generous sponsors!
-            </MotionHeading> */}
             <Heading as="h2" size="3xl" textAlign="center" mb={4} color={"white"}>
               Thank you to our generous sponsors!
             </Heading>
