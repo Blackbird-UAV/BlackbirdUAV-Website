@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "npm run clean && next build && npm run copy-htaccess",
     "clean": "rimraf ./website/out/*",
-    "copy-htaccess": "cp ./website/.htaccess ./website/out/.htaccess",
+    "copy-htaccess": "cp .htaccess ./out/.htaccess",
     "start": "next start",
     "lint": "next lint"
   },
