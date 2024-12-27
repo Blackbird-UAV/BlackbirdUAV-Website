@@ -27,35 +27,6 @@ jobs:
           npm run build
         working-directory: ./website
 
-      name: Deploy to FTP
-
-on:
-  workflow_run:
-    workflows: ["Node.js CI Production"]
-    types:
-      - completed
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-          cache: 'npm'
-          cache-dependency-path: './website/package-lock.json'
-
-      - name: Install Dependencies and Build
-        run: |
-          npm install
-          npm run build
-        working-directory: ./website
-
       - name: Upload to FTP (Build Folder)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
