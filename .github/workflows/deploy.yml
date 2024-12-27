@@ -30,7 +30,7 @@ jobs:
       - name: Upload to FTP (Build Folder)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ftp://dev.blackbirduav.ca
+          server: dev.blackbirduav.ca
           port: 21
           protocol: ftp
           username: ${{ secrets.FTP_USERNAME }}
@@ -41,7 +41,7 @@ jobs:
       - name: Upload to FTP (Rewrite Engine)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ftp://dev.blackbirduav.ca
+          server: dev.blackbirduav.ca
           port: 21
           protocol: ftp
           username: ${{ secrets.FTP_USERNAME }}
