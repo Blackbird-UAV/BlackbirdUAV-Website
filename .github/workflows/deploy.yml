@@ -36,7 +36,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./website/out/
-          server-dir: /public_html/
+          server-dir: /
 
       - name: Upload to FTP (Rewrite Engine)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -46,5 +46,5 @@ jobs:
           protocol: ftp
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./website/.htaccess
-          server-dir: /public_html/
+          local-dir: ./website/htaccess/
+          server-dir: /
