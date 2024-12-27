@@ -27,7 +27,7 @@ jobs:
           npm run build
         working-directory: ./website
 
-      - name: Upload to FTP
+      - name: Upload to FTP (Build Folder)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp://dev.blackbirduav.ca
@@ -35,7 +35,16 @@ jobs:
           protocol: ftp
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: |
-            out
-            .htaccess
+          local-dir: ./website/out/
+          server-dir: /public_html
+
+      - name: Upload to FTP (Rewrite Engine)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ftp://dev.blackbirduav.ca
+          port: 21
+          protocol: ftp
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./website/.htaccess
           server-dir: /public_html
