@@ -34,5 +34,7 @@ jobs:
           protocol: ftp
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: out
+          local-dir: |
+            out
+            .htaccess
           server-dir: /public_html

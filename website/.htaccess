@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# Rewrite clean URLs to .html files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Rewrite dynamic routes in the MeetTheTeam folder to [year].html
+RewriteCond %{REQUEST_URI} ^/MeetTheTeam/([^/]+)/?$
+RewriteCond %{DOCUMENT_ROOT}/MeetTheTeam/[year].html -f
+RewriteRule ^MeetTheTeam/([^/]+)/?$ MeetTheTeam/[year].html [L]
+
+# Serve index.html for root
+DirectoryIndex index.html
