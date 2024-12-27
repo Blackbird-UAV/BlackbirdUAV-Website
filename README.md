@@ -1,4 +1,6 @@
 # [BlackBird UAV Website]
+[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=0077b6">](https://github.com/SamKirkland/FTP-Deploy-Action)
+
 **Date**: [Oct/4/2024]  
 **Team Members / Developers**:  
 
