@@ -14,6 +14,10 @@ export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
+    const isMobileDevice = () => {
+      return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    };
+    
     if (router.pathname === "/") {
       const handleScroll = () => {
         const secondDiv = document.getElementById("secondDiv");
@@ -25,24 +29,30 @@ export default function Navbar() {
       };
 
       const handleMouseMove = (event) => {
-        console.log(isDropdownOpen);
-        if (isDropdownOpen) {
-          setShowNavbar(true);
-        } else {
-          if (event.clientY < 100) {
+        if (!isMobileDevice()) {
+          console.log(isDropdownOpen);
+          if (isDropdownOpen) {
             setShowNavbar(true);
           } else {
-            setShowNavbar(false);
+            if (event.clientY < 100) {
+              setShowNavbar(true);
+            } else {
+              setShowNavbar(false);
+            }
           }
         }
       };
 
       window.addEventListener("scroll", handleScroll);
-      window.addEventListener("mousemove", handleMouseMove);
+      if (!isMobileDevice()) {
+        window.addEventListener("mousemove", handleMouseMove);
+      }
 
       return () => {
         window.removeEventListener("scroll", handleScroll);
-        window.removeEventListener("mousemove", handleMouseMove);
+        if (!isMobileDevice()) {
+          window.removeEventListener("mousemove", handleMouseMove);
+        }
       };
     }
   }, [router.pathname, isDropdownOpen]);
