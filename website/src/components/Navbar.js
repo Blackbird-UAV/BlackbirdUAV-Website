@@ -17,43 +17,31 @@ export default function Navbar() {
     const isMobileDevice = () => {
       return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
     };
-    
+
     if (router.pathname === "/") {
       const handleScroll = () => {
         const secondDiv = document.getElementById("secondDiv");
-        if (secondDiv && window.scrollY >= secondDiv.offsetTop) {
-          setShowNavbar(true);
-        } else {
-          setShowNavbar(false);
-        }
-      };
-
-      const handleMouseMove = (event) => {
-        if (!isMobileDevice()) {
-          console.log(isDropdownOpen);
-          if (isDropdownOpen) {
+        if (secondDiv) {
+          if (window.scrollY >= secondDiv.offsetTop) {
             setShowNavbar(true);
           } else {
-            if (event.clientY < 100) {
-              setShowNavbar(true);
-            } else {
-              setShowNavbar(false);
-            }
+            setShowNavbar(false);
           }
         }
       };
 
-      window.addEventListener("scroll", handleScroll);
-      if (!isMobileDevice()) {
-        window.addEventListener("mousemove", handleMouseMove);
+      const secondDiv = document.getElementById("secondDiv");
+      if (secondDiv) {
+        window.addEventListener("scroll", handleScroll);
       }
 
       return () => {
-        window.removeEventListener("scroll", handleScroll);
-        if (!isMobileDevice()) {
-          window.removeEventListener("mousemove", handleMouseMove);
+        if (secondDiv) {
+          window.removeEventListener("scroll", handleScroll);
         }
       };
+    } else {
+      setShowNavbar(true);
     }
   }, [router.pathname, isDropdownOpen]);
 
@@ -81,6 +69,17 @@ export default function Navbar() {
     }
   };
 
+  const handleTeamClick = (event) => {
+    if (isMobileDevice()) {
+      event.preventDefault();
+      setIsDropdownOpen(!isDropdownOpen);
+    }
+  };
+
+  const isMobileDevice = () => {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  };
+
   const navbarClass =
     router.pathname === "/"
       ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${isOpen ? styles.open : ""}`
@@ -93,6 +92,21 @@ export default function Navbar() {
     { link: "/MeetTheTeam/pastMembers", label: "Past Members" },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isDropdownOpen && !event.target.closest(`.${dropdownStyles.dropdownMenu}`) && !event.target.closest(`.${styles.linkWrapper}`)) {
+        setIsDropdownOpen(false);
+      } else if (isOpen && !event.target.closest(`.${styles.linksContainer}`) && !event.target.closest(`.${styles.hamburger}`)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen, isOpen]);
+
   return (
     <nav className={navbarClass}>
       <Link href="/">
@@ -103,6 +117,7 @@ export default function Navbar() {
             layout="fill"
             className={styles.logo}
             sizes="(max-width: 768px) 50px, 100px"
+            loading="lazy"
           />
         </div>
       </Link>
@@ -141,19 +156,18 @@ export default function Navbar() {
               className={`${styles.linkWrapper} ${router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
                 }`}
               style={{ position: "relative" }}
+              onClick={handleTeamClick}
             >
               <Center className={styles.link}>
-                <Link href="/MeetTheTeam/2024-2025" className={styles.link} onClick={handleLinkClick}>
-                  <span>
-                    Team
-                    <IconChevronDown
-                      size="0.9rem"
-                      stroke={1.5}
-                      color="#f9fafb"
-                      className={styles.chevron}
-                    />
-                  </span>
-                </Link>
+                <span>
+                  Team
+                  <IconChevronDown
+                    size="0.9rem"
+                    stroke={1.5}
+                    color="#f9fafb"
+                    className={styles.chevron}
+                  />
+                </span>
               </Center>
             </div>
           </Menu.Target>
@@ -161,9 +175,9 @@ export default function Navbar() {
           <Menu.Dropdown
             className={dropdownStyles.dropdownMenu}
             onMouseEnter={handleDropdownEnter}
-            onMouseLeave={(event) => handleDropdownLeave(event)
-            }>
-
+            onMouseLeave={(event) => handleDropdownLeave(event)}
+            style={{ display: isMobileDevice() && !isDropdownOpen ? 'none' : 'block' }}
+          >
             {teamLinks.map((item) => (
               <Link href={item.link} key={item.link} onClick={handleLinkClick}>
                 <Menu.Item

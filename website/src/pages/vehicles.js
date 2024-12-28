@@ -76,7 +76,7 @@ export default function Vehicles() {
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5
+        threshold: 0.1 // Adjusted threshold to reduce dead zone
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -118,20 +118,14 @@ export default function Vehicles() {
   return (
     <>
       <Header imagePath="/images/apogee.jpg" headerText="Our Aircraft" initialOffset={900} />
-      {/* <Head>
-        <title>Our Aircraft</title>
-        <meta name="description" content="Our Aircraft" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
       <div className={styles.container}>
-        {/* <h1 className={styles.title}>Our Aircraft</h1> */}
         <div className={styles.vehiclesList}>
           {vehicles.map((vehicle, index) => (
             <div
               key={vehicle.id}
               className={`${styles.vehicleCard} ${index % 2 === 1 ? styles.right : styles.left}`}
               ref={(el) => (vehiclesRef.current[index] = el)}
+              style={{ scrollSnapAlign: 'center' }} // Ensure snap alignment
             >
               <div className={styles.carouselContainer}>
                 <div className={styles.carousel}>
