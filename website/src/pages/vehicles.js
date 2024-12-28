@@ -76,7 +76,7 @@ export default function Vehicles() {
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1 // Adjusted threshold to reduce dead zone
+        threshold: 0.5 // Adjusted threshold to ensure only one card is snapped to
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -87,6 +87,13 @@ export default function Vehicles() {
                 behavior: 'smooth',
                 block: 'center'
               });
+              // Stop scroll momentum
+              setTimeout(() => {
+                container.style.scrollSnapType = 'none';
+                setTimeout(() => {
+                  container.style.scrollSnapType = 'y mandatory';
+                }, 100);
+              }, 300);
             }
           }
         });
