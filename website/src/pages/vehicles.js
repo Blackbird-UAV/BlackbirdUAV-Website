@@ -17,7 +17,7 @@ const vehicles = [
       communication: "Fully LTE",
       platform: "Bespoke Platform"
     },
-    images: ["/images/Vehicles/Apogee1.jpg", "/images/Vehicles/Apogee2.jpg", "/images/Vehicles/Apogee3.jpg"]
+    images: ["/images/Vehicles/Apogee_1.jpg", "/images/Vehicles/Apogee_2.jpg", "/images/Vehicles/Apogee_3.jpg"]
   },
   {
     id: 2,
