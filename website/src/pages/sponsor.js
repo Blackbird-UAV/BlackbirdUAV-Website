@@ -17,7 +17,7 @@ import { fadeInUp, stagger } from "@/components/animations";
 const sponsors = [
   {
     name: "Carleton University | Faculty of Engineering and Design",
-    logo: "/images/Sponsors/CarletonEng.png",
+    logo: "/images/Sponsors/Sponsor_CarletonEng.png",
     link: "https://carleton.ca/engineering-design/",
     tier: "platinum",
   },
