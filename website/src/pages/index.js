@@ -196,7 +196,7 @@ export default function Home() {
 
         <div id="secondDiv" className={styles.aboutContainer}>
           <img
-            src="/images/tempImage.png"
+            src="/images/AboutUs.jpg"
             alt="Blackbird UAV Logo"
             className={styles.aboutImage}
           />
