@@ -14,9 +14,6 @@ export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
-    const isMobileDevice = () => {
-      return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-    };
 
     if (router.pathname === "/") {
       const handleScroll = () => {
@@ -70,14 +67,7 @@ export default function Navbar() {
   };
 
   const handleTeamClick = (event) => {
-    if (isMobileDevice()) {
-      event.preventDefault();
-      setIsDropdownOpen(!isDropdownOpen);
-    }
-  };
 
-  const isMobileDevice = () => {
-    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
   };
 
   const navbarClass =
@@ -174,7 +164,6 @@ export default function Navbar() {
             className={dropdownStyles.dropdownMenu}
             onMouseEnter={handleDropdownEnter}
             onMouseLeave={(event) => handleDropdownLeave(event)}
-            style={{ display: isMobileDevice() && !isDropdownOpen ? 'none' : 'block' }}
           >
             {teamLinks.map((item) => (
               <Link href={item.link} key={item.link} onClick={handleLinkClick}>
