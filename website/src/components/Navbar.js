@@ -88,8 +88,6 @@ export default function Navbar() {
   const teamLinks = [
     { link: "/MeetTheTeam/2024-2025", label: "Current Team" },
     { link: "/MeetTheTeam/2023-2024", label: "2023 - 2024" },
-    { link: "/MeetTheTeam/2022-2023", label: "2022 - 2023" },
-    { link: "/MeetTheTeam/pastMembers", label: "Past Members" },
   ];
 
   useEffect(() => {
