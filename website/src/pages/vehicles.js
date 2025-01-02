@@ -7,27 +7,29 @@ import Header from "@/components/Header";
 const vehicles = [
   {
     id: 1,
-    name: "Pegasus",
+    name: "Apogee",
     description: {
-      overview: "Pegasus is a quadcopter featuring our team's most recent airframe design and software integration efforts. Pegasus stands as WARG's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing.",
-      weight: "10 kg",
-      flightTime: "30 min",
-      propulsion: "22\" propellers",
-      powerSupply: "50v (12s LiPo)",
-      payload: "2 kg"
+      overview: "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Pegasus stands as WARG's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing.",
+      wingspan: "2.5 meters",
+      MTOW: "15 kg",
+      maxSpeed: "156 km/h (84.2 kt)",
+      payloadCompartment: "Modular",
+      communication: "Fully LTE",
+      platform: "Bespoke Platform"
     },
-    images: ["/images/vehicle1.jpg", "/images/vehicle2.jpg", "/images/vehicle3.jpg"]
+    images: ["/images/Vehicles/Apogee1.jpg", "/images/Vehicles/Apogee2.jpg", "/images/Vehicles/Apogee3.jpg"]
   },
   {
     id: 2,
-    name: "Phoenix",
+    name: "Zenith",
     description: {
-      overview: "Phoenix is designed for endurance, with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
-      weight: "12 kg",
-      flightTime: "45 min",
-      propulsion: "24\" propellers",
-      powerSupply: "60v (14s LiPo)",
-      payload: "2.5 kg"
+      overview: "Zenith is designed for endurance, with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
+      wingspan: "2.0 meters",
+      MTOW: "11 kg",
+      maxSpeed: "120 km/h (64.8 kt)",
+      payloadCompartment: "Fixed",
+      communication: "Fully LTE",
+      platform: "Modified Kit Platform"
     },
     images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle3.jpg"]
   },
@@ -159,11 +161,12 @@ export default function Vehicles() {
                 <p>{vehicle.description.overview}</p>
                 <div className={styles.divider}></div>
                 <ul className={styles.specsList}>
-                  <li><strong>Weight:</strong> {vehicle.description.weight}</li>
-                  <li><strong>Flight Time:</strong> {vehicle.description.flightTime}</li>
-                  <li><strong>Propulsion:</strong> {vehicle.description.propulsion}</li>
-                  <li><strong>Power Supply:</strong> {vehicle.description.powerSupply}</li>
-                  <li><strong>Payload:</strong> {vehicle.description.payload}</li>
+                  <li><strong>Wingspan:</strong> {vehicle.description.wingspan}</li>
+                  <li><strong>MTOW:</strong> {vehicle.description.MTOW}</li>
+                  <li><strong>Max Speed:</strong> {vehicle.description.maxSpeed}</li>
+                  <li><strong>Payload Compartment:</strong> {vehicle.description.payloadCompartment}</li>
+                  <li><strong>Communication:</strong> {vehicle.description.communication}</li>
+                  <li><strong>Platform:</strong> {vehicle.description.platform}</li>
                 </ul>
               </div>
             </div>
