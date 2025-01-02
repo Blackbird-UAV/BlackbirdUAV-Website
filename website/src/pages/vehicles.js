@@ -33,32 +33,6 @@ const vehicles = [
     },
     images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle3.jpg"]
   },
-  {
-    id: 3,
-    name: "Valkyrie",
-    description: {
-      overview: "Valkyrie is optimized for agility and rapid response, suitable for close-range operations with minimal setup time.",
-      weight: "8 kg",
-      flightTime: "25 min",
-      propulsion: "20\" propellers",
-      powerSupply: "45v (10s LiPo)",
-      payload: "1.5 kg"
-    },
-    images: ["/images/vehicle3.jpg", "/images/vehicle2.jpg", "/images/vehicle1.jpg"]
-  },
-  {
-    id: 4,
-    name: "Orion",
-    description: {
-      overview: "Orion combines power and precision, designed to handle payloads with heavy-duty requirements for complex missions.",
-      weight: "15 kg",
-      flightTime: "40 min",
-      propulsion: "26\" propellers",
-      powerSupply: "70v (16s LiPo)",
-      payload: "3 kg"
-    },
-    images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle4.jpg"]
-  },
 ];
 
 export default function Vehicles() {

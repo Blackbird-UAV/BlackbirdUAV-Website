@@ -93,16 +93,6 @@ export default function Join() {
 
         <div className={styles.contentContainer}>
 
-          {/* Top banner */}
-          <div className={styles.gradientTextContainer}>
-            <h1 className={styles.bigHeader}>
-              Join a team of innovators,
-            </h1>
-            <h1 className={styles.bigHeaderGradient}>
-              <strong>Fly around and find out.</strong>
-            </h1>
-          </div>
-
           {/* About us box */}
           <div className={styles.aboutUs}>
             <div className={styles.leftContent}>
