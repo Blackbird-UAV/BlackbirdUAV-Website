@@ -10,24 +10,14 @@ import { fadeInUp, fadeInUpSlower } from "@/components/animations";
 
 const slides = [
   {
-    name: "Pegasus",
-    image: "/images/vehicle1.jpg",
+    name: "Apogee",
+    image: "/images/Vehicles/Apogee_1.jpg",
     description: "A versatile UAV designed for various applications.",
   },
   {
-    name: "Phoenix",
-    image: "/images/vehicle2.jpg",
+    name: "Zenith",
+    image: "/images/Vehicles/Zenith_1.jpg",
     description: "A high-performance UAV with advanced capabilities.",
-  },
-  {
-    name: "Valkyrie",
-    image: "/images/vehicle3.jpg",
-    description: "A robust UAV built for endurance and reliability.",
-  },
-  {
-    name: "Orion",
-    image: "/images/vehicle4.jpg",
-    description: "A cutting-edge UAV with state-of-the-art technology.",
   },
 ];
 

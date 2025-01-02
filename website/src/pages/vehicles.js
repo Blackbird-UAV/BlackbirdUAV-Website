@@ -31,7 +31,7 @@ const vehicles = [
       communication: "Fully LTE",
       platform: "Modified Kit Platform"
     },
-    images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle3.jpg"]
+    images: ["/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_3.jpg"]
   },
 ];
 
