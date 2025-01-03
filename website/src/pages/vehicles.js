@@ -31,7 +31,7 @@ const vehicles = [
       communication: "Fully LTE",
       platform: "Modified Kit Platform"
     },
-    images: ["/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_3.jpg"]
+    images: ["/images/Vehicles/Zenith_1.jpg", "/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_3.jpg"]
   },
 ];
 
@@ -100,6 +100,14 @@ export default function Vehicles() {
 
   return (
     <>
+      <Head>
+      <title>BlackBird UAV | Our Vehicles</title>
+      <meta
+        name="description"
+        content="Sponsor Us!"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
       <Header imagePath="/images/apogee.jpg" headerText="Our Aircraft" initialOffset={900} />
       <div className={styles.container}>
         <div className={styles.vehiclesList}>

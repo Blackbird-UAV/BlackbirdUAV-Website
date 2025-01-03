@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
 import { fadeInUp, stagger } from "@/components/animations";
+import Head from "next/head";
 
 const sponsors = [
   {
@@ -97,6 +98,15 @@ export default function Sponsor() {
     };
 
     return (
+      <>
+      <Head>
+      <title>BlackBird UAV | Sponsor Us</title>
+      <meta
+        name="description"
+        content="Sponsor Us!"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
       <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
         {sponsors
           .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
@@ -172,6 +182,7 @@ export default function Sponsor() {
             </motion.div>
           ))}
       </Grid>
+      </>
     );
   };
 
