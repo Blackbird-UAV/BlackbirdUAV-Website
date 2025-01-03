@@ -9,7 +9,7 @@ const vehicles = [
     id: 1,
     name: "Apogee",
     description: {
-      overview: "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Pegasus stands as WARG's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing.",
+      overview: "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Apogee stands as BBUAVS's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing. Apogee also used a similar LTE link in 2024.",
       wingspan: "2.5 meters",
       MTOW: "15 kg",
       maxSpeed: "156 km/h (84.2 kt)",
@@ -23,13 +23,13 @@ const vehicles = [
     id: 2,
     name: "Zenith",
     description: {
-      overview: "Zenith is designed for endurance, with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
+      overview: "Zenith is designed for endurance, with advanced navigation systems and enhanced flight stability, ideal for long-range missions. Zenith was the first to feature LTE and VTOL transition in 2023.",
       wingspan: "2.0 meters",
       MTOW: "11 kg",
       maxSpeed: "120 km/h (64.8 kt)",
-      payloadCompartment: "Fixed",
+      payloadCompartment: "Modular",
       communication: "Fully LTE",
-      platform: "Modified Kit Platform"
+      platform: "Bespoke Platform"
     },
     images: ["/images/Vehicles/Zenith_1.jpg", "/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_3.jpg"]
   },
@@ -101,13 +101,10 @@ export default function Vehicles() {
   return (
     <>
       <Head>
-      <title>BlackBird UAV | Our Vehicles</title>
-      <meta
-        name="description"
-        content="Sponsor Us!"
-      />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
+        <title>BlackBird UAV | Our Vehicles</title>
+        <meta name="description" content="Sponsor Us!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Header imagePath="/images/apogee.jpg" headerText="Our Aircraft" initialOffset={900} />
       <div className={styles.container}>
         <div className={styles.vehiclesList}>

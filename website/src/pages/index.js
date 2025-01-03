@@ -12,12 +12,12 @@ const slides = [
   {
     name: "Apogee",
     image: "/images/Vehicles/Apogee_1.jpg",
-    description: "A versatile UAV designed for various applications.",
+    description: "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
   },
   {
     name: "Zenith",
     image: "/images/Vehicles/Zenith_1.jpg",
-    description: "A high-performance UAV with advanced capabilities.",
+    description: "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
   },
 ];
 

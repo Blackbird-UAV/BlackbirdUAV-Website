@@ -319,6 +319,14 @@
   background-color: #30b463;
 }
 
+.Member {
+  background-color: #30b463;
+}
+
+.Support {
+  background-color: #e01d19;
+}
+
 .manufacturing {
   background-color: #e01d19;
 }
@@ -404,7 +412,7 @@
     padding: 15px 0;
     font-size: 1.5rem;
     font-weight: bold;
-    color: white;
+    color: black;
     background-color: inherit;
     margin-bottom: 10px;
     writing-mode: horizontal-tb;
