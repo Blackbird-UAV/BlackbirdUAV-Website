@@ -308,12 +308,6 @@ const teamData = {
       },
     ],
   },
-  '2023-2024': {
-    description: 'The 2023-2024 team achieved significant milestones, including winning the Innovation Award and competing in the national competition. They worked on advanced projects such as a quadcopter and a fixed-wing plane, showcasing their expertise and dedication.',
-    Competition: [
-      // Add members for the 2023-2024 team here
-    ],
-  },
 };
 
 export default teamData;
