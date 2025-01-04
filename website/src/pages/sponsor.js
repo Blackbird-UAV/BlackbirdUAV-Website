@@ -36,7 +36,7 @@ const sponsors = [
   },
   {
     name: "SolidWorks",
-    logo: "/images/Sponsors/Sponsor_Solidworks.png",
+    logo: "/images/Sponsors/Sponsor_SolidWorks.png",
     link: "https://www.solidworks.com/",
     tier: "platinum",
   },
