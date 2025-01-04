@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from 'next/image';
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
@@ -164,10 +164,20 @@ export default function Home() {
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
-              <motion.h1 className={styles.name} variants={fadeInUp} initial="initial" animate="animate">
+              <motion.h1
+                className={styles.name}
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+              >
                 BLACKBIRD UAV
               </motion.h1>
-              <motion.h2 className={styles.subtitle} variants={fadeInUp} initial="initial" animate="animate">
+              <motion.h2
+                className={styles.subtitle}
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+              >
                 Fly Around and Find Out
               </motion.h2>
               {isMobile && (
@@ -189,7 +199,13 @@ export default function Home() {
           <ScrollDownIndicator />
         </div>
 
-        <motion.div className={styles.cloudContainer} variants={fadeInUpSlower} initial="initial" animate="animate">
+        <motion.div
+          id="firstDiv"
+          className={styles.cloudContainer}
+          variants={fadeInUpSlower}
+          initial="initial"
+          animate="animate"
+        >
           <img
             src="/images/cloud.png"
             alt="Cloud Left"
@@ -242,8 +258,9 @@ export default function Home() {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`${styles.slide} ${index === currentIndex ? styles.active : ""
-                      }`}
+                    className={`${styles.slide} ${
+                      index === currentIndex ? styles.active : ""
+                    }`}
                   >
                     <img
                       src={slide.image}
@@ -252,7 +269,9 @@ export default function Home() {
                     />
                     <div className={styles.gradientOverlay}>
                       <h3 className={styles.uavName}>{slide.name}</h3>
-                      <p className={styles.uavDescription}>{slide.description}</p>
+                      <p className={styles.uavDescription}>
+                        {slide.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -269,8 +288,9 @@ export default function Home() {
             {slides.map((_, index) => (
               <span
                 key={index}
-                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
-                  }`}
+                className={`${styles.dot} ${
+                  index === currentIndex ? styles.activeDot : ""
+                }`}
                 onClick={() => handleDotClick(index)}
               ></span>
             ))}

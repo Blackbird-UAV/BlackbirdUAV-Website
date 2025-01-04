@@ -1,66 +1,88 @@
 import Head from "next/head";
-import Image from 'next/image';
+import Image from "next/image";
 import styles from "@/styles/Join.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faDraftingCompass, faPlane, faCogs, faUsers, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faDraftingCompass,
+  faPlane,
+  faCogs,
+  faUsers,
+  faClipboard,
+} from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
-import { Accordion, Group, Text } from '@mantine/core';
+import { Accordion, Group, Text } from "@mantine/core";
 import Header from "@/components/Header";
 
 const accordionItems = [
   {
     icon: faDraftingCompass,
-    value: 'Design',
-    description: 'Creative UAV designs',
-    content: 'Focus on creative and innovative UAV designs, combining cutting-edge aesthetics with functionality.',
-    image: '/images/vehicle1.jpg',
-    color: '#30b463',
+    value: "Design",
+    description: "Creative UAV designs",
+    content:
+      "Focus on creative and innovative UAV designs, combining cutting-edge aesthetics with functionality.",
+    image: "/images/vehicle1.jpg",
+    color: "#30b463",
   },
   {
     icon: faPlane,
-    value: 'Manufacturing',
-    description: 'Engineering robust UAV structures',
-    content: 'Design and construct UAV structures that are strong, reliable, and lightweight for optimal performance.',
-    image: '/images/vehicle2.jpg',
-    color: '#e01d19'
+    value: "Manufacturing",
+    description: "Engineering robust UAV structures",
+    content:
+      "Design and construct UAV structures that are strong, reliable, and lightweight for optimal performance.",
+    image: "/images/vehicle2.jpg",
+    color: "#e01d19",
   },
   {
     icon: faCogs,
-    value: 'Systems',
-    description: 'Advanced UAV systems',
-    content: 'Develop sophisticated systems and software that power modern UAV technology.',
-    image: '/images/vehicle3.jpg',
-    color: '#e94e77',
+    value: "Systems",
+    description: "Advanced UAV systems",
+    content:
+      "Develop sophisticated systems and software that power modern UAV technology.",
+    image: "/images/vehicle3.jpg",
+    color: "#e94e77",
   },
   {
     icon: faUsers,
-    value: 'Administration',
-    description: 'Managing team and logistics',
-    content: 'Handle team operations, ensuring smooth collaboration and efficient resource management.',
-    image: '/images/vehicle4.jpg',
-    color: '#f6b93b'
+    value: "Administration",
+    description: "Managing team and logistics",
+    content:
+      "Handle team operations, ensuring smooth collaboration and efficient resource management.",
+    image: "/images/vehicle4.jpg",
+    color: "#f6b93b",
   },
   {
     icon: faClipboard,
-    value: 'Operations',
-    description: 'Overseeing UAV missions',
-    content: 'Coordinate UAV operations, ensuring missions are conducted safely and efficiently.',
-    image: '/images/vehicle5.jpg',
-    color: '#6553e0'
-  }
+    value: "Operations",
+    description: "Overseeing UAV missions",
+    content:
+      "Coordinate UAV operations, ensuring missions are conducted safely and efficiently.",
+    image: "/images/vehicle5.jpg",
+    color: "#6553e0",
+  },
 ];
 
 // This is the top label that acts as a button to reveal the content
 function AccordionLabel({ icon, value, description, color }) {
   return (
-    <Group nowrap="true" style={{ justifyContent: 'space-between', width: '100%' }}>
+    <Group
+      nowrap="true"
+      style={{ justifyContent: "space-between", width: "100%" }}
+    >
       <div className={styles.accordionLabelLR}>
         <div>
-          <FontAwesomeIcon icon={icon} size="2x" className={styles.accordionLabelIcon} style={{ color }} />
+          <FontAwesomeIcon
+            icon={icon}
+            size="2x"
+            className={styles.accordionLabelIcon}
+            style={{ color }}
+          />
         </div>
         <div>
-          <Text ta="left" className={styles.accordionLabelValue}>{value}</Text>
+          <Text ta="left" className={styles.accordionLabelValue}>
+            {value}
+          </Text>
           <Text ta="left" className={styles.accordionLabelDescription}>
             {description}
           </Text>
@@ -84,7 +106,11 @@ export default function Join() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head> */}
-      <Header imagePath="/images/JoinUsMedia.jpg" headerText="Join the Team" />
+      <Header
+        imagePath="/images/JoinUsMedia.jpg"
+        headerText="Join the Team"
+        initialOffset={0}
+      />
 
       <div className={styles.pageWrapper}>
         {/* <div className={styles.banner}>
@@ -92,12 +118,9 @@ export default function Join() {
         </div> */}
 
         <div className={styles.contentContainer}>
-
           {/* Top banner */}
           <div className={styles.gradientTextContainer}>
-            <h1 className={styles.bigHeader}>
-              Join a team of innovators,
-            </h1>
+            <h1 className={styles.bigHeader}>Join a team of innovators,</h1>
             <h1 className={styles.bigHeaderGradient}>
               <strong>Fly around and find out.</strong>
             </h1>
@@ -106,12 +129,18 @@ export default function Join() {
           {/* About us box */}
           <div className={styles.aboutUs}>
             <div className={styles.leftContent}>
-              <img src="/images/JoinUsMedia.jpg" alt="Join Us" className={styles.aboutUsImage} />
+              <img
+                src="/images/JoinUsMedia.jpg"
+                alt="Join Us"
+                className={styles.aboutUsImage}
+              />
             </div>
             <div className={styles.rightContent}>
               <h3>Join Us Today!</h3>
               <p>
-                Be part of a team that is at the forefront of UAV technology. Collaborate, innovate, and soar to new heights with us. Interested in learning more about our subteams? Look below!
+                Be part of a team that is at the forefront of UAV technology.
+                Collaborate, innovate, and soar to new heights with us.
+                Interested in learning more about our subteams? Look below!
               </p>
               <a
                 href="https://discord.gg/Spw3F6KrCn"
@@ -127,7 +156,6 @@ export default function Join() {
 
           {/* Accordion subteams */}
           <div className={styles.accordionSection}>
-
             <div className={styles.leftContent}>
               <div className={styles.accordionHeightWrapper}>
                 <Accordion
@@ -140,7 +168,9 @@ export default function Join() {
                   defaultValue="Design"
                   onChange={(value) => {
                     if (value !== currentAccordionValue) {
-                      const selectedItem = accordionItems.find(item => item.value === value);
+                      const selectedItem = accordionItems.find(
+                        (item) => item.value === value
+                      );
                       if (selectedItem) {
                         setSelectedImage(selectedItem.image);
                         setCurrentAccordionValue(value);
@@ -149,11 +179,19 @@ export default function Join() {
                   }}
                 >
                   {accordionItems.map((item) => (
-                    <Accordion.Item key={item.value} value={item.value} className={styles.accordionItem}>
+                    <Accordion.Item
+                      key={item.value}
+                      value={item.value}
+                      className={styles.accordionItem}
+                    >
                       <Accordion.Control
                         className={`
                           ${styles.accordionControl} 
-                          ${currentAccordionValue === item.value ? styles.selected : ''}
+                          ${
+                            currentAccordionValue === item.value
+                              ? styles.selected
+                              : ""
+                          }
                           `}
                       >
                         <AccordionLabel
@@ -173,7 +211,11 @@ export default function Join() {
             </div>
 
             <div className={styles.rightContent}>
-              <img src={selectedImage} alt="Selected" className={styles.accordionImage} />
+              <img
+                src={selectedImage}
+                alt="Selected"
+                className={styles.accordionImage}
+              />
             </div>
           </div>
         </div>
