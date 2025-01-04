@@ -40,13 +40,13 @@ const MeetTeam = () => {
   return (
     <>
       <Head>
-      <title>BlackBird UAV | Meet the Team</title>
-      <meta
-        name="description"
-        content="Meet the Team"
-      />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
+        <title>BlackBird UAV | Meet the Team</title>
+        <meta
+          name="description"
+          content="Meet the Team"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Header imagePath="/images/team.jpg" headerText={teamTitle} initialOffset={200} />
       <div className={styles.container}>
         {/* <h1 className={styles.title}>{teamTitle}</h1> */}
