@@ -78,7 +78,7 @@ const SponsorSidebar = () => {
           align="center"
         >
           {/* Heading */}
-          <MotionHeading as="h1" size="3xl" color="#ffffff" variants={fadeInUp}>
+          <MotionHeading as="h1" size="5xl" color="#ffffff" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
           {/* <Heading as="h1" size="3xl" color="#ffffff">
@@ -89,7 +89,7 @@ const SponsorSidebar = () => {
             bg="gray.800"
             h="fit-content"
             minH="60vh"
-            p={8}
+            px={8}
             mt={2}
             borderRadius="md"
             boxShadow="lg"
@@ -111,7 +111,7 @@ const SponsorSidebar = () => {
               {/* instead of center, do same space between */}
               {/* Text Content */}
               <Box>
-                <MotionHeading as="h2" size="3xl" mb={4} variants={fadeInUp}>
+                <MotionHeading as="h2" size="2xl" mb={4} variants={fadeInUp}>
                   What do sponsors do?
                 </MotionHeading>
                 <MotionText mb={4} variants={fadeInUp} textAlign="left">
@@ -173,7 +173,7 @@ const SponsorSidebar = () => {
                 mb={2}
               >
                 <Image
-                  src="/images/company4.jpg"
+                  src="/images/Sponsor_TeamWorking.jpg"
                   alt="Sponsorship Event"
                   objectFit="cover"
                   // height="auto"

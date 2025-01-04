@@ -13,39 +13,40 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    if (router.pathname === "/") {
-      const handleScroll = () => {
-        const secondDiv = document.getElementById("secondDiv");
-        if (secondDiv && window.scrollY >= secondDiv.offsetTop) {
-          setShowNavbar(true);
-        } else {
-          setShowNavbar(false);
-        }
-      };
-
-      const handleMouseMove = (event) => {
-        console.log(isDropdownOpen);
-        if (isDropdownOpen) {
-          setShowNavbar(true);
-        } else {
-          if (event.clientY < 100) {
-            setShowNavbar(true);
-          } else {
-            setShowNavbar(false);
-          }
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      window.addEventListener("mousemove", handleMouseMove);
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        window.removeEventListener("mousemove", handleMouseMove);
-      };
+  const handleDropdownHover = (isEntering) => {
+    setIsDropdownOpen(isEntering);
+    if (isEntering) {
+      setShowNavbar(true);
+    } else if (window.scrollY < 300 && !isEntering) {
+      setShowNavbar(false);
     }
-  }, [router.pathname, isDropdownOpen]);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 300) {
+        setShowNavbar(true);
+      } else {
+        setShowNavbar(false);
+      }
+    };
+
+    const handleMouseMove = (event) => {
+      if (window.scrollY < 300 && event.clientY < 100) {
+        setShowNavbar(true);
+      } else if (!isDropdownOpen && window.scrollY < 300) {
+        setShowNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isDropdownOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -59,29 +60,37 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
-  const handleDropdownEnter = () => {
-    setIsDropdownOpen(true);
-    setShowNavbar(true);
-  };
-
-  const handleDropdownLeave = (event) => {
-    setIsDropdownOpen(false);
-    if (event.clientY >= 100) {
-      setShowNavbar(false);
-    }
-  };
-
   const navbarClass =
     router.pathname === "/"
-      ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${isOpen ? styles.open : ""}`
+      ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${
+          isOpen ? styles.open : ""
+        }`
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ""}`;
 
-  const teamLinks = [
-    { link: "/MeetTheTeam/2024-2025", label: "Current Team" },
-    { link: "/MeetTheTeam/2023-2024", label: "2023 - 2024" },
-    { link: "/MeetTheTeam/2022-2023", label: "2022 - 2023" },
-    { link: "/MeetTheTeam/pastMembers", label: "Past Members" },
-  ];
+  const teamLinks = [{ link: "/MeetTheTeam/2024-2025", label: "Current Team" }];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isDropdownOpen &&
+        !event.target.closest(`.${dropdownStyles.dropdownMenu}`) &&
+        !event.target.closest(`.${styles.linkWrapper}`)
+      ) {
+        setIsDropdownOpen(false);
+      } else if (
+        isOpen &&
+        !event.target.closest(`.${styles.linksContainer}`) &&
+        !event.target.closest(`.${styles.hamburger}`)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen, isOpen]);
 
   return (
     <nav className={navbarClass}>
@@ -93,6 +102,7 @@ export default function Navbar() {
             layout="fill"
             className={styles.logo}
             sizes="(max-width: 768px) 50px, 100px"
+            loading="lazy"
           />
         </div>
       </Link>
@@ -109,18 +119,24 @@ export default function Navbar() {
 
       <div className={`${styles.linksContainer} ${isOpen ? styles.open : ""}`}>
         <div
-          className={`${styles.linkWrapper} ${router.pathname === "/" ? styles.activeLink : ""
-            }`}
+          className={`${styles.linkWrapper} ${
+            router.pathname === "/" ? styles.activeLink : ""
+          }`}
         >
           <Link href="/" className={styles.link} onClick={handleLinkClick}>
             <span>Home</span>
           </Link>
         </div>
         <div
-          className={`${styles.linkWrapper} ${router.pathname === "/vehicles" ? styles.activeLink : ""
-            }`}
+          className={`${styles.linkWrapper} ${
+            router.pathname === "/vehicles" ? styles.activeLink : ""
+          }`}
         >
-          <Link href="/vehicles" className={styles.link} onClick={handleLinkClick}>
+          <Link
+            href="/vehicles"
+            className={styles.link}
+            onClick={handleLinkClick}
+          >
             <span>Vehicles</span>
           </Link>
         </div>
@@ -128,32 +144,30 @@ export default function Navbar() {
         <Menu trigger="hover" transitionProps={{ exitDuration: 0 }}>
           <Menu.Target>
             <div
-              className={`${styles.linkWrapper} ${router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
-                }`}
+              className={`${styles.linkWrapper} ${
+                router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
+              }`}
               style={{ position: "relative" }}
             >
               <Center className={styles.link}>
-                <Link href="/MeetTheTeam/2024-2025" className={styles.link} onClick={handleLinkClick}>
-                  <span>
-                    Team
-                    <IconChevronDown
-                      size="0.9rem"
-                      stroke={1.5}
-                      color="#f9fafb"
-                      className={styles.chevron}
-                    />
-                  </span>
-                </Link>
+                <span>
+                  Team
+                  <IconChevronDown
+                    size="0.9rem"
+                    stroke={1.5}
+                    color="#f9fafb"
+                    className={styles.chevron}
+                  />
+                </span>
               </Center>
             </div>
           </Menu.Target>
 
           <Menu.Dropdown
             className={dropdownStyles.dropdownMenu}
-            onMouseEnter={handleDropdownEnter}
-            onMouseLeave={(event) => handleDropdownLeave(event)
-            }>
-
+            onMouseEnter={() => handleDropdownHover(true)}
+            onMouseLeave={() => handleDropdownHover(false)}
+          >
             {teamLinks.map((item) => (
               <Link href={item.link} key={item.link} onClick={handleLinkClick}>
                 <Menu.Item
@@ -168,15 +182,24 @@ export default function Navbar() {
         </Menu>
 
         <div
-          className={`${styles.linkWrapper} ${router.pathname === "/joinTheTeam" ? styles.activeLink : ""
-            }`}
+          className={`${styles.linkWrapper} ${
+            router.pathname === "/joinTheTeam" ? styles.activeLink : ""
+          }`}
         >
-          <Link href="/joinTheTeam" className={styles.link} onClick={handleLinkClick}>
+          <Link
+            href="/joinTheTeam"
+            className={styles.link}
+            onClick={handleLinkClick}
+          >
             <span>Join</span>
           </Link>
         </div>
         <div className={`${styles.linkWrapper} ${styles.sponsorButton}`}>
-          <Link href="/sponsor" className={styles.sponsorLink} onClick={handleLinkClick}>
+          <Link
+            href="/sponsor"
+            className={styles.sponsorLink}
+            onClick={handleLinkClick}
+          >
             Sponsor Us
           </Link>
         </div>

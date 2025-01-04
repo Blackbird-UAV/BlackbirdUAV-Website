@@ -1,10 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
 
 .pageWrapper {
-  background-color: #171717; /* Set the entire page background */
-  color: white; /* Set the text color to white */
+  background-color: #F4F4F4;
 }
-
 
 .banner {
   width: 100%;
@@ -21,52 +19,17 @@
 
 .contentContainer {
   position: relative;
-  max-width: 85%;
   margin: 0 auto;
   padding: 0;
-  color: #171717;
   display: flex;
   flex-direction: column;
-  padding-top: 5rem;
-}
-
-.bigHeader {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ffffff;
-  /* font-family: 'Fahkwang', sans-serif; */
-}
-
-.bigHeaderGradient {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #8B0000, #FF4500, #FF6347);
-  background-clip: text; 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #333; 
-  /* font-family: 'Fahkwang', sans-serif; */
-}
-
-.gradientTextContainer {
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.flavourTextTop {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  font-style: italic;
-  color: #cccccc;
 }
 
 .flavourText,
 .contentText {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: #dddddd;
+  color: #171717;
   line-height: 1.6;
 }
 
@@ -74,14 +37,13 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background-color: #d3d3d3;
   padding: 1.5rem;
-  margin: 1rem 0 0 0;
-  border-radius: 16px;
   color: #1d1d1f;
   flex: 1;
-  /* issue */
-  /* box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2); */
+  max-width: 85%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .aboutUs .leftContent{
@@ -106,17 +68,18 @@
 
 .aboutUs .rightContent h3 {
   margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 3rem;
   font-weight: bolder;
+  color: #171717;
 }
 
 .aboutUs .rightContent p {
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   padding-right: 4rem;
+  color: #171717;
 }
 
 /* The discord button */
@@ -150,138 +113,96 @@
   background-color: #4752c4; 
 }
 
-.accordionSection {
+.backgroundContainer {
+  background-color: #2F2F2F;
+  padding: 3rem 0;
+}
+
+.subteamSection {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: #d3d3d3;
-  padding: 1.5rem;
-  margin: 4rem 0;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  flex: 1;
-  height: auto;
-  /* issue */
-  /* box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2); */
-}
-
-.accordionSection .leftContent {
-  flex: 1;
-  /* margin: 1rem 3rem 1rem 1rem; */
-  margin: auto 0;
-}
-
-.accordionHeightWrapper{
-  /* issue: Change this height if accordion causes wobbling */
-  /* border: 1px solid red; */
-  height: 500px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.accordionStyles{
-  border-radius: 5px;
   overflow: hidden;
-  border: 1px solid #dee2e6;
-  /* border: 1px solid purple; */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.tabs {
+  display: flex;
+  width: 100%;
+  background-color: #f1f1f3;
+  border-bottom: 1px solid #ddd;
+}
 
-.accordionSection .rightContent {
+.tab {
   flex: 1;
-  margin: auto 3rem auto 1rem;
-  /* margin: auto 0; */
-}
-
-.accordionSection .leftContent img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  padding-left: 20px;
-}
-
-.accordionControl {
-  background-color: #ffffff;
-  color: #292929;
-  padding: 15px;
+  text-align: center;
+  background-color: transparent;
+  color: inherit;
+  border: none;
   cursor: pointer;
-  /* display: flex; */
-  /* issue */
-  width: 100%;
-  border: none;
-  transition: box-shadow 0.3s ease;
+  padding: 10px 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 20px;
 }
 
-.accordionControl.selected{
-  background-color: #f8f9fa;
+.tab:hover {
+  background-color: #939193;
+  color: white;
 }
 
-.accordionControl:hover {
-  background-color: #f8f9fa;
+.active {
+  background-color: var(--tab-color);
+  color: white;
 }
 
-/* Accordion Labels */
-.accordionLabelLR{
+.carouselContent {
   display: flex;
-  align-items: center;
-  width: 100%;
+  flex-direction: row;
 }
 
-.accordionLabelIcon {
-  width: 1.75rem;
-  height: 1.75rem;
-  margin: auto 1rem auto 0.5rem;
+.textSection {
+  flex: 3;
+  padding: 16px;
+  background-color: #fafafa;
+  font-size: 16px;
+  color: #333;
 }
 
-.accordionLabelValue{
-  font-size: 1.25rem;
-  margin-bottom: 0.25rem;
+.tagline {
+  font-size: 22px;
   font-weight: bold;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
 }
 
-.accordionLabelDescription{
-  color: #a4aab1;
-  font-size: 0.875rem;
-}
-
-.accordionLabelChevron {
-  margin-right: 1rem;
-  margin-top: 1rem;
-  margin-bottom: -1.5rem;
-  font-size: 15px;
+.imageSection {
+  flex: 2;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-end;
-  height: 100%;
+  padding: 16px;
+  background-color: #fff;
 }
 
-.accordionPanel {
-  background-color: #f8f9fa;
-  color: #292929;
-  padding: 0 15px 15px 15px;
-  border: none;
-  transition: box-shadow 0.3s ease;
-  height: auto;
-  overflow: hidden;
-}
-
-.accordionItem:not(:first-of-type) {
-  /* border-top: 1px solid red; */
-  border-top: 1px solid #dee2e6;
-  width: 100%;
-}
-
-.accordionImage{
+.imageSection img {
   max-width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
+  max-height: 100%;
+  object-fit: contain;
 }
+
 
 @media (max-width: 768px) {
 
   /* About us: Box 1 */
   .aboutUs {
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the start */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .aboutUs .leftContent,
@@ -300,20 +221,59 @@
     padding-right: 0rem;
   }
 
-  /* Accordion Section Box 2 */
-  .accordionSection {
-    flex-direction: column-reverse;
-    margin: 2rem 0 3rem 0;
+  .subteamSection {
+    max-width: 100%;
+    padding: 1rem;
   }
 
-  .accordionSection .rightContent{
-    margin: 1rem;
+  .tabs {
+    flex-direction: column;
   }
 
-  .accordionSection .leftContent{
-    width: 92%;
-    margin: 1rem;
+  .tab {
+    font-size: 18px;
+    padding: 12px 0;
   }
 
+  .carouselContent {
+    flex-direction: column;
+  }
+
+  .textSection {
+    font-size: 14px;
+    padding: 12px;
+    flex: none;
+  }
+
+  .imageSection {
+    padding: 12px;
+    flex: none;
+  }
+
+  .tagline {
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* For smaller phones (480px and smaller) */
+@media (max-width: 480px) {
+  .tab {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+
+  .textSection {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .imageSection {
+    padding: 8px;
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
 }
 

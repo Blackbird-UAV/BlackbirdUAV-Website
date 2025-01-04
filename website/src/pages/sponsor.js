@@ -13,86 +13,39 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
 import { fadeInUp, stagger } from "@/components/animations";
+import Head from "next/head";
 
 const sponsors = [
   {
-    name: "Company One",
-    logo: "/images/clear1.png",
-    link: "https://company1.com",
-    tier: "platinum",
-  },
-  {
-    name: "Company One Point Five",
-    logo: "/images/clear4.png",
-    link: "https://company1.com",
-    tier: "platinum",
-  },
-  {
-    name: "Company Two",
-    logo: "/images/clear2.png",
-    link: "https://company2.com",
+    name: "Carleton University | Faculty of Engineering and Design",
+    logo: "/images/Sponsors/Sponsor_CarletonEng.png",
+    link: "https://carleton.ca/engineering-design/",
     tier: "gold",
   },
   {
-    name: "Company Two Point Three",
-    logo: "/images/clear5.png",
-    link: "https://company2.com",
+    name: "Carleton Student Engineering Society",
+    logo: "/images/Sponsors/Sponsor_CSES.png",
+    link: "https://www.mycses.ca/",
     tier: "gold",
   },
   {
-    name: "Company Three",
-    logo: "/images/clear3.png",
-    link: "https://company3.com",
-    tier: "silver",
+    name: "Aircraft Spruce & Specialty Co.",
+    logo: "/images/Sponsors/Sponsor_AircraftSpruce.png",
+    link: "https://www.aircraftspruce.ca/",
+    tier: "gold",
   },
   {
-    name: "Company Four",
-    logo: "/images/clear4.png",
-    link: "https://company4.com",
-    tier: "silver",
+    name: "SolidWorks",
+    logo: "/images/Sponsors/Sponsor_SolidWorks.png",
+    link: "https://www.solidworks.com/",
+    tier: "gold",
   },
   {
-    name: "Company Four Point Five",
-    logo: "/images/clear1.png",
-    link: "https://company1.com",
-    tier: "silver",
-  },
-  {
-    name: "Company Five",
-    logo: "/images/clear5.png",
-    link: "https://company1.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Six",
-    logo: "/images/clear6.png",
-    link: "https://company2.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Seven",
-    logo: "/images/clear7.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Eight",
-    logo: "/images/clear1.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Nine",
-    logo: "/images/clear2.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Ten",
-    logo: "/images/clear3.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
+    name: "Kostiuk Engineering Funding Collective",
+    logo: "/images/Sponsors/Sponsor_KEFC.png",
+    link: "https://www.mycses.ca/student-group-funding",
+    tier: "platinum"
+  }
 ];
 
 const DURATIONS = {
@@ -151,81 +104,91 @@ export default function Sponsor() {
     };
 
     return (
-      <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
-        {sponsors
-          .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
-          .map((sponsor, sponsorIndex) => (
-            <motion.div
-              id={(function () {
-                switch (tier.toLowerCase()) {
-                  case "platinum":
-                    return "platSection";
-                  case "gold":
-                    return "goldSection";
-                  case "silver":
-                    return "silverSection";
-                  case "bronze":
-                    return "bronzeSection";
-                  default:
-                    return undefined;
-                }
-              })()}
-              key={sponsor.name}
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
-                    duration: DURATIONS.Normal,
-                    // ease: [0.6, -0.05, 0.01, 0.99],
+      <>
+        <Head>
+          <title>BlackBird UAV | Sponsor Us</title>
+          <meta
+            name="description"
+            content="Sponsor Us!"
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
+          {sponsors
+            .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
+            .map((sponsor, sponsorIndex) => (
+              <motion.div
+                id={(function () {
+                  switch (tier.toLowerCase()) {
+                    case "platinum":
+                      return "platSection";
+                    case "gold":
+                      return "goldSection";
+                    case "silver":
+                      return "silverSection";
+                    case "bronze":
+                      return "bronzeSection";
+                    default:
+                      return undefined;
+                  }
+                })()}
+                key={sponsor.name}
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
+                      duration: DURATIONS.Normal,
+                      // ease: [0.6, -0.05, 0.01, 0.99],
+                    },
                   },
-                },
-              }}
-            >
-              <GridItem
-                as={Link}
-                target="_blank"
-                href={sponsor.link}
-                isExternal
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                overflow="hidden"
-                width="100%"
+                }}
               >
-                <Box
-                  bg="white"
-                  margin={2}
-                  padding={2}
-                  borderRadius="md"
-                  boxShadow="md"
-                  overflow="hidden"
-                  _hover={{
-                    transform: "scale(1.04)",
-                    transition: "0.3s",
-                  }}
+                <GridItem
+                  as={Link}
+                  target="_blank"
+                  href={sponsor.link}
+                  isExternal
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
+                  overflow="hidden"
                   width="100%"
                 >
-                  <Image
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    objectFit="contain"
-                    height="100px"
+                  <Box
+                    bg="white"
+                    margin={2}
+                    padding={2}
+                    borderRadius="md"
+                    boxShadow="md"
+                    overflow="hidden"
+                    _hover={{
+                      transform: "scale(1.04)",
+                      transition: "0.3s",
+                    }}
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
                     width="100%"
-                    minWidth="50px"
-                  />
-                </Box>
-              </GridItem>
-            </motion.div>
-          ))}
-      </Grid>
+                  >
+                    <Image
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      objectFit="contain"
+                      height="100px"
+                      width="100%"
+                      minWidth="50px"
+                    />
+                  </Box>
+                </GridItem>
+              </motion.div>
+            ))}
+        </Grid>
+      </>
     );
   };
 
@@ -251,14 +214,14 @@ export default function Sponsor() {
         _hover={
           tier.toLowerCase() === "platinum"
             ? {
-              boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
-              transform: "scale(1.03)", // Slight scaling
-              transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
-            }
+                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
+                transform: "scale(1.03)", // Slight scaling
+                transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
+              }
             : {
-              transform: "scale(1.02)", // Subtle scaling for other tiers
-              transition: "transform 0.3s ease", // Smooth transition
-            }
+                transform: "scale(1.02)", // Subtle scaling for other tiers
+                transition: "transform 0.3s ease", // Smooth transition
+              }
         }
       >
         <Box
@@ -297,10 +260,6 @@ export default function Sponsor() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    console.log("Button visibility updated:", isButtonVisible);
-  }, [isButtonVisible]);
 
   return (
     <Box bg="black" pl={{ base: 0, lg: 5 }}>
@@ -344,10 +303,16 @@ export default function Sponsor() {
           overflow="hidden"
         >
           <Stack w="100%" spacing={10}>
-            <Heading as="h2" size="3xl" textAlign="center" mb={4} color={"white"}>
+            <Heading
+              as="h2"
+              size="3xl"
+              textAlign="center"
+              mb={4}
+              color={"white"}
+            >
               Thank you to our generous sponsors!
             </Heading>
-            {["Platinum", "Gold", "Silver", "Bronze"].map((tier, index) => (
+            {["Platinum", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
               <motion.div
                 key={index}
                 variants={staggerAnimation}

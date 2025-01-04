@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from 'next/image';
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
@@ -10,24 +10,14 @@ import { fadeInUp, fadeInUpSlower } from "@/components/animations";
 
 const slides = [
   {
-    name: "Pegasus",
-    image: "/images/vehicle1.jpg",
-    description: "A versatile UAV designed for various applications.",
+    name: "Apogee",
+    image: "/images/Vehicles/Apogee_1.jpg",
+    description: "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
   },
   {
-    name: "Phoenix",
-    image: "/images/vehicle2.jpg",
-    description: "A high-performance UAV with advanced capabilities.",
-  },
-  {
-    name: "Valkyrie",
-    image: "/images/vehicle3.jpg",
-    description: "A robust UAV built for endurance and reliability.",
-  },
-  {
-    name: "Orion",
-    image: "/images/vehicle4.jpg",
-    description: "A cutting-edge UAV with state-of-the-art technology.",
+    name: "Zenith",
+    image: "/images/Vehicles/Zenith_1.jpg",
+    description: "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
   },
 ];
 
@@ -164,10 +154,20 @@ export default function Home() {
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
-              <motion.h1 className={styles.name} variants={fadeInUp} initial="initial" animate="animate">
+              <motion.h1
+                className={styles.name}
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+              >
                 BLACKBIRD UAV
               </motion.h1>
-              <motion.h2 className={styles.subtitle} variants={fadeInUp} initial="initial" animate="animate">
+              <motion.h2
+                className={styles.subtitle}
+                variants={fadeInUp}
+                initial="initial"
+                animate="animate"
+              >
                 Fly Around and Find Out
               </motion.h2>
               {isMobile && (
@@ -189,7 +189,13 @@ export default function Home() {
           <ScrollDownIndicator />
         </div>
 
-        <motion.div className={styles.cloudContainer} variants={fadeInUpSlower} initial="initial" animate="animate">
+        <motion.div
+          id="firstDiv"
+          className={styles.cloudContainer}
+          variants={fadeInUpSlower}
+          initial="initial"
+          animate="animate"
+        >
           <img
             src="/images/cloud.png"
             alt="Cloud Left"
@@ -206,7 +212,7 @@ export default function Home() {
 
         <div id="secondDiv" className={styles.aboutContainer}>
           <img
-            src="/images/tempImage.png"
+            src="/images/Home_AboutUs.jpg"
             alt="Blackbird UAV Logo"
             className={styles.aboutImage}
           />
@@ -242,8 +248,9 @@ export default function Home() {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`${styles.slide} ${index === currentIndex ? styles.active : ""
-                      }`}
+                    className={`${styles.slide} ${
+                      index === currentIndex ? styles.active : ""
+                    }`}
                   >
                     <img
                       src={slide.image}
@@ -252,7 +259,9 @@ export default function Home() {
                     />
                     <div className={styles.gradientOverlay}>
                       <h3 className={styles.uavName}>{slide.name}</h3>
-                      <p className={styles.uavDescription}>{slide.description}</p>
+                      <p className={styles.uavDescription}>
+                        {slide.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -269,8 +278,9 @@ export default function Home() {
             {slides.map((_, index) => (
               <span
                 key={index}
-                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
-                  }`}
+                className={`${styles.dot} ${
+                  index === currentIndex ? styles.activeDot : ""
+                }`}
                 onClick={() => handleDotClick(index)}
               ></span>
             ))}
