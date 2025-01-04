@@ -116,13 +116,13 @@ export default function Join() {
                     onClick={() => setActiveTab(tab)}
                   >
                     {tab.title}
-                    <FontAwesomeIcon
+                    {/* <FontAwesomeIcon
                       icon={tab.icon}
                       style={{
                         color: activeTab.id === tab.id ? "white" : tab.color,
                         marginLeft: "12px",
                       }}
-                    />
+                    /> */}
                   </button>
                 ))}
               </div>
