@@ -1,10 +1,10 @@
-name: Node.js CI Production
+name: Node.js CI Dev
 
 on:
   push:
-    branches: [ "production" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "production" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
