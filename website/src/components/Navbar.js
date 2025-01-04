@@ -13,34 +13,40 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  useEffect(() => {
-
-    if (router.pathname === "/") {
-      const handleScroll = () => {
-        const secondDiv = document.getElementById("secondDiv");
-        if (secondDiv) {
-          if (window.scrollY >= secondDiv.offsetTop) {
-            setShowNavbar(true);
-          } else {
-            setShowNavbar(false);
-          }
-        }
-      };
-
-      const secondDiv = document.getElementById("secondDiv");
-      if (secondDiv) {
-        window.addEventListener("scroll", handleScroll);
-      }
-
-      return () => {
-        if (secondDiv) {
-          window.removeEventListener("scroll", handleScroll);
-        }
-      };
-    } else {
+  const handleDropdownHover = (isEntering) => {
+    setIsDropdownOpen(isEntering);
+    if (isEntering) {
       setShowNavbar(true);
+    } else if (window.scrollY < 300 && !isEntering) {
+      setShowNavbar(false);
     }
-  }, [router.pathname, isDropdownOpen]);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 300) {
+        setShowNavbar(true);
+      } else {
+        setShowNavbar(false);
+      }
+    };
+
+    const handleMouseMove = (event) => {
+      if (window.scrollY < 300 && event.clientY < 100) {
+        setShowNavbar(true);
+      } else if (!isDropdownOpen && window.scrollY < 300) {
+        setShowNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isDropdownOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -54,37 +60,28 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
-  const handleDropdownEnter = () => {
-    setIsDropdownOpen(true);
-    setShowNavbar(true);
-  };
-
-  const handleDropdownLeave = (event) => {
-    setIsDropdownOpen(false);
-    if (event.clientY >= 100) {
-      setShowNavbar(false);
-    }
-  };
-
-  const handleTeamClick = (event) => {
-
-  };
-
   const navbarClass =
     router.pathname === "/"
-      ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${isOpen ? styles.open : ""}`
+      ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${
+          isOpen ? styles.open : ""
+        }`
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ""}`;
 
-  const teamLinks = [
-    { link: "/MeetTheTeam/2024-2025", label: "Current Team" },
-    { link: "/MeetTheTeam/2023-2024", label: "2023 - 2024" },
-  ];
+  const teamLinks = [{ link: "/MeetTheTeam/2024-2025", label: "Current Team" }];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isDropdownOpen && !event.target.closest(`.${dropdownStyles.dropdownMenu}`) && !event.target.closest(`.${styles.linkWrapper}`)) {
+      if (
+        isDropdownOpen &&
+        !event.target.closest(`.${dropdownStyles.dropdownMenu}`) &&
+        !event.target.closest(`.${styles.linkWrapper}`)
+      ) {
         setIsDropdownOpen(false);
-      } else if (isOpen && !event.target.closest(`.${styles.linksContainer}`) && !event.target.closest(`.${styles.hamburger}`)) {
+      } else if (
+        isOpen &&
+        !event.target.closest(`.${styles.linksContainer}`) &&
+        !event.target.closest(`.${styles.hamburger}`)
+      ) {
         setIsOpen(false);
       }
     };
@@ -122,18 +119,24 @@ export default function Navbar() {
 
       <div className={`${styles.linksContainer} ${isOpen ? styles.open : ""}`}>
         <div
-          className={`${styles.linkWrapper} ${router.pathname === "/" ? styles.activeLink : ""
-            }`}
+          className={`${styles.linkWrapper} ${
+            router.pathname === "/" ? styles.activeLink : ""
+          }`}
         >
           <Link href="/" className={styles.link} onClick={handleLinkClick}>
             <span>Home</span>
           </Link>
         </div>
         <div
-          className={`${styles.linkWrapper} ${router.pathname === "/vehicles" ? styles.activeLink : ""
-            }`}
+          className={`${styles.linkWrapper} ${
+            router.pathname === "/vehicles" ? styles.activeLink : ""
+          }`}
         >
-          <Link href="/vehicles" className={styles.link} onClick={handleLinkClick}>
+          <Link
+            href="/vehicles"
+            className={styles.link}
+            onClick={handleLinkClick}
+          >
             <span>Vehicles</span>
           </Link>
         </div>
@@ -141,10 +144,10 @@ export default function Navbar() {
         <Menu trigger="hover" transitionProps={{ exitDuration: 0 }}>
           <Menu.Target>
             <div
-              className={`${styles.linkWrapper} ${router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
-                }`}
+              className={`${styles.linkWrapper} ${
+                router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
+              }`}
               style={{ position: "relative" }}
-              onClick={handleTeamClick}
             >
               <Center className={styles.link}>
                 <span>
@@ -162,8 +165,8 @@ export default function Navbar() {
 
           <Menu.Dropdown
             className={dropdownStyles.dropdownMenu}
-            onMouseEnter={handleDropdownEnter}
-            onMouseLeave={(event) => handleDropdownLeave(event)}
+            onMouseEnter={() => handleDropdownHover(true)}
+            onMouseLeave={() => handleDropdownHover(false)}
           >
             {teamLinks.map((item) => (
               <Link href={item.link} key={item.link} onClick={handleLinkClick}>
@@ -179,15 +182,24 @@ export default function Navbar() {
         </Menu>
 
         <div
-          className={`${styles.linkWrapper} ${router.pathname === "/joinTheTeam" ? styles.activeLink : ""
-            }`}
+          className={`${styles.linkWrapper} ${
+            router.pathname === "/joinTheTeam" ? styles.activeLink : ""
+          }`}
         >
-          <Link href="/joinTheTeam" className={styles.link} onClick={handleLinkClick}>
+          <Link
+            href="/joinTheTeam"
+            className={styles.link}
+            onClick={handleLinkClick}
+          >
             <span>Join</span>
           </Link>
         </div>
         <div className={`${styles.linkWrapper} ${styles.sponsorButton}`}>
-          <Link href="/sponsor" className={styles.sponsorLink} onClick={handleLinkClick}>
+          <Link
+            href="/sponsor"
+            className={styles.sponsorLink}
+            onClick={handleLinkClick}
+          >
             Sponsor Us
           </Link>
         </div>

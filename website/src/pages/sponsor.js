@@ -36,7 +36,7 @@ const sponsors = [
   },
   {
     name: "SolidWorks",
-    logo: "/images/Sponsors/Sponsor_Solidworks.png",
+    logo: "/images/Sponsors/Sponsor_SolidWorks.png",
     link: "https://www.solidworks.com/",
     tier: "gold",
   },
@@ -214,14 +214,14 @@ export default function Sponsor() {
         _hover={
           tier.toLowerCase() === "platinum"
             ? {
-              boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
-              transform: "scale(1.03)", // Slight scaling
-              transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
-            }
+                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
+                transform: "scale(1.03)", // Slight scaling
+                transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
+              }
             : {
-              transform: "scale(1.02)", // Subtle scaling for other tiers
-              transition: "transform 0.3s ease", // Smooth transition
-            }
+                transform: "scale(1.02)", // Subtle scaling for other tiers
+                transition: "transform 0.3s ease", // Smooth transition
+              }
         }
       >
         <Box
@@ -260,10 +260,6 @@ export default function Sponsor() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    console.log("Button visibility updated:", isButtonVisible);
-  }, [isButtonVisible]);
 
   return (
     <Box bg="black" pl={{ base: 0, lg: 5 }}>
@@ -307,7 +303,13 @@ export default function Sponsor() {
           overflow="hidden"
         >
           <Stack w="100%" spacing={10}>
-            <Heading as="h2" size="3xl" textAlign="center" mb={4} color={"white"}>
+            <Heading
+              as="h2"
+              size="3xl"
+              textAlign="center"
+              mb={4}
+              color={"white"}
+            >
               Thank you to our generous sponsors!
             </Heading>
             {["Platinum", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
