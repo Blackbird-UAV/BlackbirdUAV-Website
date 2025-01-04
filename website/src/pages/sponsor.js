@@ -13,85 +13,32 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
 import { fadeInUp, stagger } from "@/components/animations";
+import Head from "next/head";
 
 const sponsors = [
   {
-    name: "Company One",
-    logo: "/images/clear1.png",
-    link: "https://company1.com",
+    name: "Carleton University | Faculty of Engineering and Design",
+    logo: "/images/Sponsors/Sponsor_CarletonEng.png",
+    link: "https://carleton.ca/engineering-design/",
     tier: "platinum",
   },
   {
-    name: "Company One Point Five",
-    logo: "/images/clear4.png",
-    link: "https://company1.com",
+    name: "Carleton Student Engineering Society",
+    logo: "/images/Sponsors/Sponsor_CSES.png",
+    link: "https://www.mycses.ca/",
     tier: "platinum",
   },
   {
-    name: "Company Two",
-    logo: "/images/clear2.png",
-    link: "https://company2.com",
-    tier: "gold",
+    name: "Aircraft Spruce & Specialty Co.",
+    logo: "/images/Sponsors/Sponsor_AircraftSpruce.png",
+    link: "https://www.aircraftspruce.ca/",
+    tier: "platinum",
   },
   {
-    name: "Company Two Point Three",
-    logo: "/images/clear5.png",
-    link: "https://company2.com",
-    tier: "gold",
-  },
-  {
-    name: "Company Three",
-    logo: "/images/clear3.png",
-    link: "https://company3.com",
-    tier: "silver",
-  },
-  {
-    name: "Company Four",
-    logo: "/images/clear4.png",
-    link: "https://company4.com",
-    tier: "silver",
-  },
-  {
-    name: "Company Four Point Five",
-    logo: "/images/clear1.png",
-    link: "https://company1.com",
-    tier: "silver",
-  },
-  {
-    name: "Company Five",
-    logo: "/images/clear5.png",
-    link: "https://company1.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Six",
-    logo: "/images/clear6.png",
-    link: "https://company2.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Seven",
-    logo: "/images/clear7.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Eight",
-    logo: "/images/clear1.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Nine",
-    logo: "/images/clear2.png",
-    link: "https://company3.com",
-    tier: "bronze",
-  },
-  {
-    name: "Company Ten",
-    logo: "/images/clear3.png",
-    link: "https://company3.com",
-    tier: "bronze",
+    name: "SolidWorks",
+    logo: "/images/Sponsors/Sponsor_SolidWorks.png",
+    link: "https://www.solidworks.com/",
+    tier: "platinum",
   },
 ];
 
@@ -151,6 +98,15 @@ export default function Sponsor() {
     };
 
     return (
+      <>
+      <Head>
+      <title>BlackBird UAV | Sponsor Us</title>
+      <meta
+        name="description"
+        content="Sponsor Us!"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
       <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
         {sponsors
           .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
@@ -226,6 +182,7 @@ export default function Sponsor() {
             </motion.div>
           ))}
       </Grid>
+      </>
     );
   };
 

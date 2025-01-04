@@ -7,55 +7,31 @@ import Header from "@/components/Header";
 const vehicles = [
   {
     id: 1,
-    name: "Pegasus",
+    name: "Apogee",
     description: {
-      overview: "Pegasus is a quadcopter featuring our team's most recent airframe design and software integration efforts. Pegasus stands as WARG's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing.",
-      weight: "10 kg",
-      flightTime: "30 min",
-      propulsion: "22\" propellers",
-      powerSupply: "50v (12s LiPo)",
-      payload: "2 kg"
+      overview: "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Apogee stands as BBUAVS's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing. Apogee also used a similar LTE link in 2024.",
+      wingspan: "2.5 meters",
+      MTOW: "15 kg",
+      maxSpeed: "156 km/h (84.2 kt)",
+      payloadCompartment: "Modular",
+      communication: "Fully LTE",
+      platform: "Bespoke Platform"
     },
-    images: ["/images/vehicle1.jpg", "/images/vehicle2.jpg", "/images/vehicle3.jpg"]
+    images: ["/images/Vehicles/Apogee_1.jpg", "/images/Vehicles/Apogee_2.jpg", "/images/Vehicles/Apogee_3.jpg"]
   },
   {
     id: 2,
-    name: "Phoenix",
+    name: "Zenith",
     description: {
-      overview: "Phoenix is designed for endurance, with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
-      weight: "12 kg",
-      flightTime: "45 min",
-      propulsion: "24\" propellers",
-      powerSupply: "60v (14s LiPo)",
-      payload: "2.5 kg"
+      overview: "Zenith is designed for endurance, with advanced navigation systems and enhanced flight stability, ideal for long-range missions. Zenith was the first to feature LTE and VTOL transition in 2023.",
+      wingspan: "2.0 meters",
+      MTOW: "11 kg",
+      maxSpeed: "120 km/h (64.8 kt)",
+      payloadCompartment: "Modular",
+      communication: "Fully LTE",
+      platform: "Bespoke Platform"
     },
-    images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle3.jpg"]
-  },
-  {
-    id: 3,
-    name: "Valkyrie",
-    description: {
-      overview: "Valkyrie is optimized for agility and rapid response, suitable for close-range operations with minimal setup time.",
-      weight: "8 kg",
-      flightTime: "25 min",
-      propulsion: "20\" propellers",
-      powerSupply: "45v (10s LiPo)",
-      payload: "1.5 kg"
-    },
-    images: ["/images/vehicle3.jpg", "/images/vehicle2.jpg", "/images/vehicle1.jpg"]
-  },
-  {
-    id: 4,
-    name: "Orion",
-    description: {
-      overview: "Orion combines power and precision, designed to handle payloads with heavy-duty requirements for complex missions.",
-      weight: "15 kg",
-      flightTime: "40 min",
-      propulsion: "26\" propellers",
-      powerSupply: "70v (16s LiPo)",
-      payload: "3 kg"
-    },
-    images: ["/images/vehicle2.jpg", "/images/vehicle1.jpg", "/images/vehicle4.jpg"]
+    images: ["/images/Vehicles/Zenith_1.jpg", "/images/Vehicles/Zenith_2.jpg", "/images/Vehicles/Zenith_3.jpg"]
   },
 ];
 
@@ -76,7 +52,7 @@ export default function Vehicles() {
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5
+        threshold: 0.5 // Adjusted threshold to ensure only one card is snapped to
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -87,6 +63,13 @@ export default function Vehicles() {
                 behavior: 'smooth',
                 block: 'center'
               });
+              // Stop scroll momentum
+              setTimeout(() => {
+                container.style.scrollSnapType = 'none';
+                setTimeout(() => {
+                  container.style.scrollSnapType = 'y mandatory';
+                }, 100);
+              }, 300);
             }
           }
         });
@@ -117,21 +100,20 @@ export default function Vehicles() {
 
   return (
     <>
-      <Header imagePath="/images/apogee.jpg" headerText="Our Aircraft" initialOffset={900} />
-      {/* <Head>
-        <title>Our Aircraft</title>
-        <meta name="description" content="Our Aircraft" />
+      <Head>
+        <title>BlackBird UAV | Our Vehicles</title>
+        <meta name="description" content="Sponsor Us!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
+      </Head>
+      <Header imagePath="/images/apogee.jpg" headerText="Our Aircraft" initialOffset={900} />
       <div className={styles.container}>
-        {/* <h1 className={styles.title}>Our Aircraft</h1> */}
         <div className={styles.vehiclesList}>
           {vehicles.map((vehicle, index) => (
             <div
               key={vehicle.id}
               className={`${styles.vehicleCard} ${index % 2 === 1 ? styles.right : styles.left}`}
               ref={(el) => (vehiclesRef.current[index] = el)}
+              style={{ scrollSnapAlign: 'center' }} // Ensure snap alignment
             >
               <div className={styles.carouselContainer}>
                 <div className={styles.carousel}>
@@ -158,11 +140,12 @@ export default function Vehicles() {
                 <p>{vehicle.description.overview}</p>
                 <div className={styles.divider}></div>
                 <ul className={styles.specsList}>
-                  <li><strong>Weight:</strong> {vehicle.description.weight}</li>
-                  <li><strong>Flight Time:</strong> {vehicle.description.flightTime}</li>
-                  <li><strong>Propulsion:</strong> {vehicle.description.propulsion}</li>
-                  <li><strong>Power Supply:</strong> {vehicle.description.powerSupply}</li>
-                  <li><strong>Payload:</strong> {vehicle.description.payload}</li>
+                  <li><strong>Wingspan:</strong> {vehicle.description.wingspan}</li>
+                  <li><strong>MTOW:</strong> {vehicle.description.MTOW}</li>
+                  <li><strong>Max Speed:</strong> {vehicle.description.maxSpeed}</li>
+                  <li><strong>Payload Compartment:</strong> {vehicle.description.payloadCompartment}</li>
+                  <li><strong>Communication:</strong> {vehicle.description.communication}</li>
+                  <li><strong>Platform:</strong> {vehicle.description.platform}</li>
                 </ul>
               </div>
             </div>

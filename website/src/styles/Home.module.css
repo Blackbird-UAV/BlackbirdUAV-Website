@@ -138,7 +138,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 12rem;
+  padding: 5rem 12rem 2rem; /* Increased padding-top */
   font-family: "Fahkwang", sans-serif;
   gap: 1rem;
 }
@@ -153,9 +153,9 @@
 }
 
 .aboutText {
-  max-width: 90%;
+  max-width: 100%; /* Increased width */
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem; /* Increased padding */
 }
 
 .aboutText h1 {

@@ -173,7 +173,7 @@ const SponsorSidebar = () => {
                 mb={2}
               >
                 <Image
-                  src="/images/company4.jpg"
+                  src="/images/Sponsor_TeamWorking.jpg"
                   alt="Sponsorship Event"
                   objectFit="cover"
                   // height="auto"

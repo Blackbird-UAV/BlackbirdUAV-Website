@@ -176,7 +176,7 @@
 
 @media (max-width: 1000px) {
   .container {
-    padding-top: 10rem;
+    padding-top: 2rem; /* Reduced padding-top for mobile view */
   }
 
   .title {
@@ -235,7 +235,7 @@
   .vehiclesList {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-top: 2rem; /* Add padding to adjust scroll position */
+    gap: 20px; /* Reduced gap for mobile view */
+    padding-top: 0.5rem; /* Add padding to adjust scroll position */
   }
 }

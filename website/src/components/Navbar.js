@@ -28,11 +28,7 @@ export default function Navbar() {
           if (isDropdownOpen) {
             setShowNavbar(true);
           } else {
-            if (event.clientY < 100) {
-              setShowNavbar(true);
-            } else {
-              setShowNavbar(false);
-            }
+            setShowNavbar(false);
           }
         }
       };
@@ -48,6 +44,8 @@ export default function Navbar() {
           window.removeEventListener("mousemove", handleMouseMove);
         }
       };
+    } else {
+      setShowNavbar(true);
     }
   }, [router.pathname, isDropdownOpen]);
 
@@ -75,6 +73,8 @@ export default function Navbar() {
     }
   };
 
+  const handleTeamClick = (event) => {};
+
   const navbarClass =
     router.pathname === "/"
       ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${
@@ -82,12 +82,30 @@ export default function Navbar() {
         }`
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ""}`;
 
-  const teamLinks = [
-    { link: "/MeetTheTeam/2024-2025", label: "Current Team" },
-    { link: "/MeetTheTeam/2023-2024", label: "2023 - 2024" },
-    { link: "/MeetTheTeam/2022-2023", label: "2022 - 2023" },
-    { link: "/MeetTheTeam/pastMembers", label: "Past Members" },
-  ];
+  const teamLinks = [{ link: "/MeetTheTeam/2024-2025", label: "Current Team" }];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isDropdownOpen &&
+        !event.target.closest(`.${dropdownStyles.dropdownMenu}`) &&
+        !event.target.closest(`.${styles.linkWrapper}`)
+      ) {
+        setIsDropdownOpen(false);
+      } else if (
+        isOpen &&
+        !event.target.closest(`.${styles.linksContainer}`) &&
+        !event.target.closest(`.${styles.hamburger}`)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen, isOpen]);
 
   return (
     <nav className={navbarClass}>
@@ -99,6 +117,7 @@ export default function Navbar() {
             layout="fill"
             className={styles.logo}
             sizes="(max-width: 768px) 50px, 100px"
+            loading="lazy"
           />
         </div>
       </Link>
@@ -144,23 +163,18 @@ export default function Navbar() {
                 router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
               }`}
               style={{ position: "relative" }}
+              onClick={handleTeamClick}
             >
               <Center className={styles.link}>
-                <Link
-                  href="/MeetTheTeam/2024-2025"
-                  className={styles.link}
-                  onClick={handleLinkClick}
-                >
-                  <span>
-                    Team
-                    <IconChevronDown
-                      size="0.9rem"
-                      stroke={1.5}
-                      color="#f9fafb"
-                      className={styles.chevron}
-                    />
-                  </span>
-                </Link>
+                <span>
+                  Team
+                  <IconChevronDown
+                    size="0.9rem"
+                    stroke={1.5}
+                    color="#f9fafb"
+                    className={styles.chevron}
+                  />
+                </span>
               </Center>
             </div>
           </Menu.Target>

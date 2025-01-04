@@ -10,24 +10,14 @@ import { fadeInUp, fadeInUpSlower } from "@/components/animations";
 
 const slides = [
   {
-    name: "Pegasus",
-    image: "/images/vehicle1.jpg",
-    description: "A versatile UAV designed for various applications.",
+    name: "Apogee",
+    image: "/images/Vehicles/Apogee_1.jpg",
+    description: "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
   },
   {
-    name: "Phoenix",
-    image: "/images/vehicle2.jpg",
-    description: "A high-performance UAV with advanced capabilities.",
-  },
-  {
-    name: "Valkyrie",
-    image: "/images/vehicle3.jpg",
-    description: "A robust UAV built for endurance and reliability.",
-  },
-  {
-    name: "Orion",
-    image: "/images/vehicle4.jpg",
-    description: "A cutting-edge UAV with state-of-the-art technology.",
+    name: "Zenith",
+    image: "/images/Vehicles/Zenith_1.jpg",
+    description: "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
   },
 ];
 
@@ -222,7 +212,7 @@ export default function Home() {
 
         <div id="secondDiv" className={styles.aboutContainer}>
           <img
-            src="/images/tempImage.png"
+            src="/images/Home_AboutUs.jpg"
             alt="Blackbird UAV Logo"
             className={styles.aboutImage}
           />
