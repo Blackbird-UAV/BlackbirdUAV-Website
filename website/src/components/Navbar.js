@@ -13,41 +13,40 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    if (router.pathname === "/") {
-      const handleScroll = () => {
-        if (window.scrollY >= 300) {
-          setShowNavbar(true);
-        } else {
-          setShowNavbar(false);
-        }
-      };
-
-      const handleMouseMove = (event) => {
-        if (window.innerWidth > 600) {
-          if (isDropdownOpen) {
-            setShowNavbar(true);
-          } else {
-            setShowNavbar(false);
-          }
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      if (window.innerWidth > 600) {
-        window.addEventListener("mousemove", handleMouseMove);
-      }
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        if (window.innerWidth > 600) {
-          window.removeEventListener("mousemove", handleMouseMove);
-        }
-      };
-    } else {
+  const handleDropdownHover = (isEntering) => {
+    setIsDropdownOpen(isEntering);
+    if (isEntering) {
       setShowNavbar(true);
+    } else if (window.scrollY < 300 && !isEntering) {
+      setShowNavbar(false);
     }
-  }, [router.pathname, isDropdownOpen]);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 300) {
+        setShowNavbar(true);
+      } else {
+        setShowNavbar(false);
+      }
+    };
+
+    const handleMouseMove = (event) => {
+      if (window.scrollY < 300 && event.clientY < 100) {
+        setShowNavbar(true);
+      } else if (!isDropdownOpen && window.scrollY < 300) {
+        setShowNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isDropdownOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -60,20 +59,6 @@ export default function Navbar() {
   const handleLinkClick = () => {
     setIsOpen(false);
   };
-
-  const handleDropdownEnter = () => {
-    setIsDropdownOpen(true);
-    setShowNavbar(true);
-  };
-
-  const handleDropdownLeave = (event) => {
-    setIsDropdownOpen(false);
-    if (event.clientY >= 100) {
-      setShowNavbar(false);
-    }
-  };
-
-  const handleTeamClick = (event) => {};
 
   const navbarClass =
     router.pathname === "/"
@@ -163,7 +148,6 @@ export default function Navbar() {
                 router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
               }`}
               style={{ position: "relative" }}
-              onClick={handleTeamClick}
             >
               <Center className={styles.link}>
                 <span>
@@ -181,8 +165,8 @@ export default function Navbar() {
 
           <Menu.Dropdown
             className={dropdownStyles.dropdownMenu}
-            onMouseEnter={handleDropdownEnter}
-            onMouseLeave={(event) => handleDropdownLeave(event)}
+            onMouseEnter={() => handleDropdownHover(true)}
+            onMouseLeave={() => handleDropdownHover(false)}
           >
             {teamLinks.map((item) => (
               <Link href={item.link} key={item.link} onClick={handleLinkClick}>
