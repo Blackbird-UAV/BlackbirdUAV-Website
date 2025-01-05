@@ -219,11 +219,13 @@ export default function Home() {
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
             <p>
-              At Blackbird UAV, we specialize in cutting-edge drone technology
-              that empowers businesses and individuals to reach new heights. Our
-              team of experienced engineers and pilots is dedicated to providing
-              innovative aerial solutions across various industries, including
-              agriculture, construction, and surveillance.
+            We are Blackbird UAV (BBUAV), a group of Carleton University students working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC)
+            </p>
+            <p>
+            BBUAV was established in 2009 as an extra-curricular
+            program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
+
+
             </p>
           </div>
         </div>
