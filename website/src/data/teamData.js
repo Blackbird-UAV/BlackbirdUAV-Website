@@ -8,7 +8,7 @@ const teamData = {
         lastName: 'Chenier',
         role: 'President / Administration',
         isPresident: true,
-        isExecutive: true,
+        isExecutive: false,
         image: '/images/TeamHeadshots/Felix.JPG',
         description: 'Felix joined Blackbird UAV in 2021 at the beginning of his first year and is currently the president of the club. He is currently completing his fourth year of a bachelor’s degree in civil engineering.',
         extendedDescription: 'Felix is the club president and oversees all club activities, ensuring that the team meets its goals and objectives.',
