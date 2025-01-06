@@ -115,6 +115,19 @@
   position: absolute;
 }
 
+/* Adjust the z-index of the front and back sides */
+.cardFront {
+  z-index: 1;
+}
+
+.flipped .cardFront {
+  z-index: -1;
+}
+
+.cardBack {
+  z-index: 2;
+}
+
 .cardBack {
   background-color: #f8f8f8;
   transform: rotateY(180deg);
@@ -312,6 +325,11 @@
   font-size: 0.9rem;
   color: #666;
   margin-top: 10px;
+}
+
+/* Hide the front side content when the card is flipped */
+.flipped .cardFront {
+  visibility: hidden;
 }
 
 /* Team specific styles */
