@@ -36,6 +36,15 @@ const MeetTeam = () => {
     );
   }
 
+  // Sort the Executives array to ensure the executive with id: 1 is always first
+  if (team.Executives) {
+    team.Executives.sort((a, b) => {
+      if (a.id === 1) return 1;
+      if (b.id === 1) return -1;
+      return 0;
+    });
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{teamTitle}</h1>
