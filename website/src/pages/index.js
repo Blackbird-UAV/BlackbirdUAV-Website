@@ -196,25 +196,31 @@ export default function Home() {
           initial="initial"
           animate="animate"
         >
-          <img
+          <Image
             src="/images/cloud.png"
             alt="Cloud Left"
             className={styles.cloudLeft}
             style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
+            width={500} // Provide the width
+            height={300} // Provide the height
           />
-          <img
+          <Image
             src="/images/cloud2.png"
             alt="Cloud Right"
             className={styles.cloudRight}
             style={{ transform: `translateX(${scrollY * 0.4}px)` }}
+            width={500} // Provide the width
+            height={300} // Provide the height
           />
         </motion.div>
 
         <div id="secondDiv" className={styles.aboutContainer}>
-          <img
+          <Image
             src="/images/Home_AboutUs.jpg"
             alt="Blackbird UAV Logo"
             className={styles.aboutImage}
+            width={500} // Provide the width
+            height={300} // Provide the height
           />
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
@@ -254,9 +260,11 @@ export default function Home() {
                       index === currentIndex ? styles.active : ""
                     }`}
                   >
-                    <img
+                    <Image
                       src={slide.image}
                       alt={slide.name}
+                      width={500} // Provide the width
+                      height={300} // Provide the height
                       className={styles.uavImage}
                     />
                     <div className={styles.gradientOverlay}>

@@ -96,7 +96,7 @@ export default function Navbar() {
     <nav className={navbarClass}>
       <Link href="/">
         <div className={styles.logoContainer}>
-          <img
+          <Image
             src="/logos/BirdLogo.png"
             alt="Logo"
             layout="fill"

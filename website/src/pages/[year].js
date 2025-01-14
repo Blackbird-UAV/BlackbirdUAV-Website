@@ -45,6 +45,7 @@ const MeetTeam = () => {
     });
   }
 
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{teamTitle}</h1>
@@ -55,7 +56,7 @@ const MeetTeam = () => {
         subteam !== 'description' && (
           <div className={styles.subteam} key={subteam}>
             <div className={styles.subteamContent}>
-              <div className={`${styles.sidebar} ${styles[subteam]}`}>
+              <div className={styles.sidebar}>
                 <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
               </div>
               <div className={styles.grid}>

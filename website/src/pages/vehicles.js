@@ -135,9 +135,11 @@ export default function Vehicles() {
             >
               <div className={styles.carouselContainer}>
                 <div className={styles.carousel}>
-                  <img
+                  <Image
                     src={vehicle.images[currentIndex]}
                     alt={`${vehicle.name} image ${currentIndex + 1}`}
+                    width={500}
+                    height={300}
                     className={styles.vehicleImage}
                   />
                   <div className={styles.titleOverlay}>
