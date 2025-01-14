@@ -169,6 +169,7 @@
 
 .cardBack .executiveTag {
   background-color: #ffd700;
+  color:black;
   padding: 4px 10px;
   font-size: 0.75em;
   border-radius: 50px;
@@ -287,6 +288,7 @@
 
 .cardFront .executiveTag {
   background-color: #ffd700;
+  color:black;
   padding: 4px 10px;
   font-size: 0.75em;
   border-radius: 50px;

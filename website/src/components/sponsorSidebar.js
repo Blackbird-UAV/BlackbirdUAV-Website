@@ -12,15 +12,15 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { motion } from "framer-motion";
-// import styles from "@/styles/SponsorSidebar.module.css"; // this page uses tailwind now
 import { fadeInUp, stagger, scaleUp } from "@/components/animations";
+import styles from "@/styles/SponsorSidebar.module.css";
 
 const SponsorSidebar = () => {
-  const MotionHeading = motion.create(Heading);
-  const MotionText = motion.create(Text);
-  const MotionStack = motion.create(Stack);
-  const MotionBox = motion.create(Box);
-  const MotionButton = motion.create(Button);
+  const MotionHeading = motion(Heading);
+  const MotionText = motion(Text);
+  const MotionStack = motion(Stack);
+  const MotionBox = motion(Box);
+  const MotionButton = motion(Button);
   const display = useBreakpointValue({ base: "none", lg: "block" });
 
   const position = useBreakpointValue({
@@ -57,13 +57,6 @@ const SponsorSidebar = () => {
       color="white"
       zIndex={10}
     >
-      {/* <motion.div
-        id="sidebarCircle"
-        className={`${styles.sidebar}`}
-        variants={scaleUp}
-        style={{ display: display }}
-        animate={"animate"}
-      ></motion.div> */}
       <Container
         py={2}
         mt={8}
@@ -81,9 +74,6 @@ const SponsorSidebar = () => {
           <MotionHeading as="h1" size="5xl" color="#ffffff" variants={fadeInUp}>
             Sponsorships
           </MotionHeading>
-          {/* <Heading as="h1" size="3xl" color="#ffffff">
-            Sponsorships
-          </Heading> */}
           {/* Content Box */}
           <Box
             bg="gray.800"
@@ -97,6 +87,7 @@ const SponsorSidebar = () => {
             justifyContent="center"
             alignItems="center"
             flexDirection="column"
+            className={styles.mobilePaddingTop} // Add padding to the top in mobile mode
           >
             <Grid
               templateColumns={{
@@ -107,21 +98,17 @@ const SponsorSidebar = () => {
               alignItems="center"
               textAlign="center"
             >
-              {" "}
-              {/* instead of center, do same space between */}
               {/* Text Content */}
               <Box>
                 <MotionHeading as="h2" size="2xl" mb={4} variants={fadeInUp}>
                   What do sponsors do?
                 </MotionHeading>
                 <MotionText mb={4} variants={fadeInUp} textAlign="left">
-                  {/* &emsp; */}
                   Sponsors play a vital role in helping us achieve our goals.
                   Their generous contributions enable us to participate in
                   competitions and enhance our resources year by year.
                   <br />
                   <br />
-                  {/* &emsp; */}
                   There are many ways to support our team. For more information,
                   please read our sponsorship package.
                 </MotionText>
@@ -165,7 +152,6 @@ const SponsorSidebar = () => {
                 overflow="hidden"
                 borderRadius="lg"
                 height="95%"
-                // display="flex"
                 display="cover"
                 justifyContent="center"
                 alignItems="center"
@@ -176,8 +162,6 @@ const SponsorSidebar = () => {
                   src="/images/Sponsor_TeamWorking.jpg"
                   alt="Sponsorship Event"
                   objectFit="cover"
-                  // height="auto"
-                  // width="100%"
                   height="100%"
                   width="auto"
                   borderRadius="md"
@@ -198,6 +182,7 @@ const SponsorSidebar = () => {
               flexDirection="column"
               alignItems="center"
               mt={2}
+              className={styles.mobilePaddingBottom} // Add padding below the button in mobile mode
             >
               <MotionText
                 color="white"

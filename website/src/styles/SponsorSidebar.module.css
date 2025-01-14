@@ -17,6 +17,12 @@
     display: none;
     min-width: auto;
   }
+  .mobilePaddingTop {
+    padding-top: 20px; /* Add padding to the top of the section */
+  }
+  .mobilePaddingBottom {
+    padding-bottom: 20px; /* Add padding below the button */
+  }
 }
 @media (max-width: 1280px) {
   .sidebar {
