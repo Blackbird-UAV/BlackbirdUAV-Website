@@ -10,7 +10,7 @@ const vehicles = [
     name: "Apogee",
     description: {
       overview:
-        "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Apogee stands as BBUAVS's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing. Apogee also used a similar LTE link in 2024.",
+        "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Apogee stands as BBUAVS's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing.",
       wingspan: "2.5 meters",
       MTOW: "15 kg",
       maxSpeed: "156 km/h (84.2 kt)",
