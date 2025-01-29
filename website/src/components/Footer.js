@@ -14,9 +14,11 @@ export default function Footer() {
       <div className={styles.footerContent}>
         {/* Logo Section */}
         <div className={styles.logoSection}>
-          <img
+          <Image
             src="/logos/BirdBBUAVLogo.png"
             alt="BlackBird Logo"
+            width={100}
+            height={100}
           />
         </div>
 

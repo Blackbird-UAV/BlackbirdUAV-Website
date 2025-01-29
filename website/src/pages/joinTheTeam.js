@@ -97,10 +97,12 @@ export default function Join() {
           {/* About us box */}
           <div className={styles.aboutUs}>
             <div className={styles.leftContent}>
-              <img
+              <Image
                 src="/images/JoinUsMedia.jpg"
                 alt="Join Us"
                 className={styles.aboutUsImage}
+                width={500}
+                height={500}
               />
             </div>
             <div className={styles.rightContent}>
@@ -158,10 +160,12 @@ export default function Join() {
                   {activeTab.content}
                 </div>
                 <div className={styles.imageSection}>
-                  <img
+                  <Image
                     src={activeTab.image}
                     alt={`Image for ${activeTab.title}`}
                     className={styles.image}
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>

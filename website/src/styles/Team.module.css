@@ -115,6 +115,19 @@
   position: absolute;
 }
 
+/* Adjust the z-index of the front and back sides */
+.cardFront {
+  z-index: 1;
+}
+
+.flipped .cardFront {
+  z-index: -1;
+}
+
+.cardBack {
+  z-index: 2;
+}
+
 .cardBack {
   background-color: #f8f8f8;
   transform: rotateY(180deg);
@@ -156,6 +169,7 @@
 
 .cardBack .executiveTag {
   background-color: #ffd700;
+  color:black;
   padding: 4px 10px;
   font-size: 0.75em;
   border-radius: 50px;
@@ -184,7 +198,7 @@
 }
 
 .cardBack .extendedDescription {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #555;
   margin-top: 15px;
   text-align: left;
@@ -274,6 +288,7 @@
 
 .cardFront .executiveTag {
   background-color: #ffd700;
+  color:black;
   padding: 4px 10px;
   font-size: 0.75em;
   border-radius: 50px;
@@ -314,6 +329,11 @@
   margin-top: 10px;
 }
 
+/* Hide the front side content when the card is flipped */
+.flipped .cardFront {
+  visibility: hidden;
+}
+
 /* Team specific styles */
 .design {
   background-color: #30b463;
@@ -323,8 +343,8 @@
   background-color: #30b463;
 }
 
-.Support {
-  background-color: #e01d19;
+.Legacy {
+  background-color: blue;
 }
 
 .manufacturing {
