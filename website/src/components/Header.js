@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "./animations";
 import styles from "@/styles/Header.module.css";
 
-const Header = ({ imagePath, headerText, initialOffset }) => {
+const Header = ({ imagePath, headerText, initialOffset, className }) => {
   const headerRef = useRef(null);
   const parallaxAmplitude = 0.5;
 
@@ -35,7 +35,7 @@ const Header = ({ imagePath, headerText, initialOffset }) => {
   return (
     <header
       ref={headerRef}
-      className={`${styles.header}`}
+      className={`${styles.header} ${className || ''}`}
       style={{ backgroundImage: `url(${imagePath})` }}
     >
       <div className={styles.overlay}></div>
