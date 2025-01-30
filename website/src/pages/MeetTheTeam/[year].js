@@ -6,10 +6,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import Header from '@/components/Header';
 import Head from "next/head";
+import { useState, useEffect } from 'react';
 
 const MeetTeam = () => {
   const router = useRouter();
   const { year } = router.query;
+
+  const [headerOffset, setHeaderOffset] = useState(200);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 480) {
+        setHeaderOffset(10);
+      } else if (width <= 768) {
+        setHeaderOffset(150);
+      } else {
+        setHeaderOffset(170);
+      }
+    };
+
+    handleResize(); // Initial call
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const team = year && teamData[year] ? teamData[year] : null;
 
@@ -47,7 +67,12 @@ const MeetTeam = () => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header imagePath="/images/team.jpg" headerText={teamTitle} initialOffset={200} />
+      <Header 
+        imagePath="/images/team.jpg" 
+        headerText={teamTitle} 
+        initialOffset={headerOffset} 
+        className={styles.teamHeader} 
+      />
       <div className={styles.container}>
         {/* <h1 className={styles.title}>{teamTitle}</h1> */}
         {/* <Header imagePath="/images/team.jpg" headerText={teamTitle} /> */}

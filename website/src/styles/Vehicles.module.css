@@ -239,7 +239,7 @@
 }
 
 .vehiclesHeaderText {
-  font-size: 4rem;
+  font-size: 5rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -251,7 +251,7 @@
 }
 
 .vehiclesPageHeader h1 {
-  font-size: 3.5rem;
+  font-size: 5rem;
 }
 
 @media (max-width: 1000px) {
