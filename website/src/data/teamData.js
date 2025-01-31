@@ -82,6 +82,7 @@ const teamData = {
         role: 'Systems',
         isPresident: false,
         isExecutive: false,
+        isManager: true,
         image: '/images/TeamHeadshots/Ahmed.JPG',
         description: 'CE in Networking/Security and Embedded Systems.',
         extendedDescription: 'Ahmed joined the BBUAV team in 2025 as a sub-team manager for the Systems team. His role focuses on the development of software for autonomous drone navigation and seamless integration with hardware components.',
