@@ -83,7 +83,7 @@ const teamData = {
         isPresident: false,
         isExecutive: false,
         image: '/images/TeamHeadshots/Ahmed.JPG',
-        description: 'CE, with interests in Networking/Security and Embedded Systems.',
+        description: 'CE in Networking/Security and Embedded Systems.',
         extendedDescription: 'Ahmed joined the BBUAV team in 2025 as a sub-team manager for the Systems team. His role focuses on the development of software for autonomous drone navigation and seamless integration with hardware components.',
         link: 'https://www.linkedin.com/in/ahmed-ali-050738221/',
       },
