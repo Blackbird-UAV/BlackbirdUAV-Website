@@ -1,3 +1,122 @@
+.teamHeader {
+  height: 60vh !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+}
+
+.teamHeader h1 {
+  font-size: 4rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .teamHeader {
+    height: 70vh !important;
+  }
+  
+  .teamHeader h1 {
+    font-size: 4rem !important;
+  }
+
+  .container {
+    padding-top: 1rem !important; /* Reduce padding-top */
+  }
+  .headerDesc {
+    margin-top: 0.5rem !important; /* Reduce margin-top */
+  }
+  .subteamContent {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .sidebar {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    background-color: inherit;
+    margin-bottom: 10px;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  
+  .sidebarText {
+    font-size: 3rem;
+  }
+
+  /* Background colors for different teams */
+  .sidebar.design {
+    background-color: #30b463;
+  }
+  
+  .sidebar.manufacturing {
+    background-color: #e01d19;
+  }
+  
+  .sidebar.systems {
+    background-color: #e94e77;
+  }
+  
+  .sidebar.administrative {
+    background-color: #f6b93b;
+  }
+
+  .sidebar.Executives {
+    background-color: #6859d9;
+  }
+  
+  .sidebar.Competition {
+    background-color: #121212;
+  }
+
+  .grid {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .teamsPageHeader {
+    height: 60vh !important;
+  }
+  
+  .teamsPageHeader h1 {
+    font-size: 5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamHeader {
+    height: 50vh !important;
+  }
+  
+  .teamHeader h1 {
+    font-size: 3rem !important;
+  }
+
+  .container {
+    padding-top: 0.5rem !important; /* Further reduce padding-top */
+  }
+  .headerDesc {
+    margin-top: 0.25rem !important; /* Further reduce margin-top */
+  }
+  .teamsPageHeader {
+    height: 40vh !important;
+  }
+  
+  .teamsPageHeader h1 {
+    font-size: 2.5rem !important;
+  }
+}
+
 .container {
   min-height: 100vh;
   background-color: #F5F5F5;
@@ -5,9 +124,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1% 0;
   margin: 0 4%;
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 
 .title {
@@ -394,24 +512,17 @@
   border-radius: 15px;
 }
 
-/* Tablet styles */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .container {
-    padding: 30px;
-  }
-
-  .subteamContent {
-    margin: 0 auto 30px;
-  }
-
-  .grid {
-    width: 90%;
-    padding: 0 10px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
+.teamsPageHeader {
+  height: 80vh !important;
+  background-size: cover !important;
+  background-position: center 25% !important;
 }
 
-/* Mobile styles */
+.teamsPageHeader h1 {
+  font-size: 5rem !important;
+  margin-top: -5vh;
+}
+
 @media (max-width: 768px) {
   .container{
     padding-top: 10rem;
@@ -476,5 +587,23 @@
   .card {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .teamsPageHeader {
+    height: 60vh !important;
+  }
+  
+  .teamsPageHeader h1 {
+    font-size: 5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamsPageHeader {
+    height: 40vh !important;
+  }
+  
+  .teamsPageHeader h1 {
+    font-size: 2.5rem !important;
   }
 }

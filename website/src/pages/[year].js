@@ -5,6 +5,7 @@ import { Text } from '@mantine/core';
 import styles from '../styles/Team.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+import Header from '@/components/Header';
 
 const MemberCard = ({ member, subteam }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -93,41 +94,49 @@ const MeetTeam = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{teamTitle}</h1>
-      <div className={styles.headerDesc}>
-        {teamDescription && <div>{teamDescription}</div>}
-      </div>
-      {Object.keys(team).map((subteam) => (
-        subteam !== 'description' && (
-          <div className={styles.subteam} key={subteam}>
-            <div className={styles.subteamContent}>
-              <div className={styles.sidebar}>
-                <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
-              </div>
-              <div className={styles.grid}>
-                {team[subteam]
-                  .sort((a, b) => (b.isExecutive ? 1 : 0) - (a.isExecutive ? 1 : 0)) // Sort execs first
-                  .map((member) => (
-                    <MemberCard key={member.id} member={member} subteam={subteam} />
-                  ))}
-              </div>
-            </div>
-
-            {/* Render double lines for comp team */}
-            {subteam === "Competition" && (
-              <div className={styles.linesContainer}>
-                <div className={styles.compBox}>
-                  <p className={styles.compText}>
-                    *This is the description for the competition team. Highlight key details or achievements here*
-                  </p>
+    <>
+      <Header
+        imagePath="/images/team_header.jpg"
+        headerText="Our Team"
+        initialOffset={200}
+        className={styles.teamHeader} // Changed from teamsPageHeader
+      />
+      <div className={styles.container}>
+        <h1 className={styles.title}>{teamTitle}</h1>
+        <div className={styles.headerDesc}>
+          {teamDescription && <div>{teamDescription}</div>}
+        </div>
+        {Object.keys(team).map((subteam) => (
+          subteam !== 'description' && (
+            <div className={styles.subteam} key={subteam}>
+              <div className={styles.subteamContent}>
+                <div className={styles.sidebar}>
+                  <span className={styles.sidebarText}>{subteam.charAt(0).toUpperCase() + subteam.slice(1)}</span>
                 </div>
-                <div className={styles.horizontalLine}></div>
+                <div className={styles.grid}>
+                  {team[subteam]
+                    .sort((a, b) => (b.isExecutive ? 1 : 0) - (a.isExecutive ? 1 : 0)) // Sort execs first
+                    .map((member) => (
+                      <MemberCard key={member.id} member={member} subteam={subteam} />
+                    ))}
+                </div>
               </div>
-            )}
-          </div>
-        )))}
-    </div>
+
+              {/* Render double lines for comp team */}
+              {subteam === "Competition" && (
+                <div className={styles.linesContainer}>
+                  <div className={styles.compBox}>
+                    <p className={styles.compText}>
+                      *This is the description for the competition team. Highlight key details or achievements here*
+                    </p>
+                  </div>
+                  <div className={styles.horizontalLine}></div>
+                </div>
+              )}
+            </div>
+          )))}
+      </div>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "./animations";
 import styles from "@/styles/Header.module.css";
 
-const Header = ({ imagePath, headerText, initialOffset }) => {
+const Header = ({ imagePath, headerText, initialOffset, className }) => {
   const headerRef = useRef(null);
   const parallaxAmplitude = 0.5;
 
@@ -12,42 +12,50 @@ const Header = ({ imagePath, headerText, initialOffset }) => {
     const handleScroll = () => {
       if (headerRef.current) {
         const offset = window.scrollY;
-        console.log(offset);
+        const windowWidth = window.innerWidth;
+        let adjustedOffset = initialOffset;
+
+        // Responsive offset adjustments
+        if (windowWidth <= 480) {
+          adjustedOffset = 80;
+        } else if (windowWidth <= 768) {
+          adjustedOffset = 150;
+        } else {
+          adjustedOffset = 200;
+        }
+
         headerRef.current.style.backgroundPositionY = `${
-          -initialOffset + offset * parallaxAmplitude
+          -adjustedOffset + offset * parallaxAmplitude
         }px`;
         headerRef.current.style.backgroundPositionX = "center";
       }
     };
 
-    if (headerRef.current) {
-      const offset = window.scrollY;
-      headerRef.current.style.backgroundPositionY = `${
-        -initialOffset + offset * parallaxAmplitude
-      }px`;
-      headerRef.current.style.backgroundPositionX = "center";
-    }
-
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [parallaxAmplitude, initialOffset]);
 
   return (
     <header
       ref={headerRef}
-      className={`${styles.header}`}
+      className={`${styles.header} ${className || ''}`}
       style={{ backgroundImage: `url(${imagePath})` }}
     >
       <div className={styles.overlay}></div>
       <motion.h1
-        className={styles.text}
+        className={`${styles.text} ${styles.headerText}`} // Ensure correct class name
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         {headerText}
       </motion.h1>
-      <link rel="icon" href="/favicon.ico" />
     </header>
   );
 };
@@ -63,3 +71,4 @@ Header.defaultProps = {
 };
 
 export default Header;
+
