@@ -325,6 +325,18 @@ const teamData = {
       // Add members for the 2023-2024 team here
     ],
   },
+  'Competition': {
+    description: 'Add competition team group photo here and just detail the names as a text underneath. Make it sectioned by year (for now make 2 parts)',
+    Competition: [
+      // Add members for the 2023-2024 team here
+    ],
+  },
+  'Alumni': {
+    description: 'Make this like a searchable database (no fancy pictures or much here. Their name, their role, and the dates they were here. Add a search bar please',
+    Competition: [
+      // Add members for the 2023-2024 team here
+    ],
+  },
 };
 
 export default teamData;
