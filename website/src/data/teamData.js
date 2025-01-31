@@ -8,7 +8,7 @@ const teamData = {
         lastName: 'Chenier',
         role: 'President / Administration',
         isPresident: true,
-        isExecutive: true,
+        isExecutive: false,
         image: '/images/TeamHeadshots/Felix.JPG',
         description: 'Club President since 2024',
         extendedDescription: 'Felix joined BBUAV in 2022 and became president in 2024. He oversees club activities and management to reach the clubs goals at Carleton and at competitions.',
