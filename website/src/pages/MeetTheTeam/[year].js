@@ -88,7 +88,7 @@ const MeetTeam = () => {
                 </div>
                 <div className={styles.grid}>
                   {team[subteam]
-                    .sort((a, b) => (b.isExecutive ? 1 : 0) - (a.isExecutive ? 1 : 0)) // Sort execs first
+                    .sort((a, b) => (b.isPresident ? 2 : b.isExecutive ? 1 : 0) - (a.isPresident ? 2 : a.isExecutive ? 1 : 0)) // Sort execs first
                     .map((member) => (
                       <div key={member.id} className={styles.card}>
                         <div className={styles.cardInner}>
