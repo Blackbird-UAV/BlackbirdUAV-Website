@@ -91,7 +91,7 @@ const ThreeScene = () => {
     loader.setDRACOLoader(dracoLoader);
 
     loader.load(
-      "/assets/model/comp.glb",
+      "/assets/model/final_export.glb",
       (gltf) => {
         const model = gltf.scene;
         modelRef.current = model;

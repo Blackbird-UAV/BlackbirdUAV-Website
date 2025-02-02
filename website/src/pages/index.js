@@ -150,7 +150,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <ThreeScene />
+        {!isMobile && <ThreeScene />}
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
@@ -225,11 +225,11 @@ export default function Home() {
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
             <p>
-            We are Blackbird UAV (BBUAV), a group of Carleton University students working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
+              We are Blackbird UAV (BBUAV), a group of Carleton University students working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
             </p>
             <p>
-            BBUAV was established in 2009 as an extra-curricular
-            program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
+              BBUAV was established in 2009 as an extra-curricular
+              program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
 
 
             </p>
@@ -256,9 +256,8 @@ export default function Home() {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`${styles.slide} ${
-                      index === currentIndex ? styles.active : ""
-                    }`}
+                    className={`${styles.slide} ${index === currentIndex ? styles.active : ""
+                      }`}
                   >
                     <Image
                       src={slide.image}
@@ -288,9 +287,8 @@ export default function Home() {
             {slides.map((_, index) => (
               <span
                 key={index}
-                className={`${styles.dot} ${
-                  index === currentIndex ? styles.activeDot : ""
-                }`}
+                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
+                  }`}
                 onClick={() => handleDotClick(index)}
               ></span>
             ))}
