@@ -225,7 +225,7 @@ export default function Home() {
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
             <p>
-              We are Blackbird UAV (BBUAV), a group of Carleton University students working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
+              We are Blackbird UAV (BBUAV), Carleton University students, a student design team, working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
             </p>
             <p>
               BBUAV was established in 2009 as an extra-curricular
