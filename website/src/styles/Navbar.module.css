@@ -95,10 +95,10 @@
 }
 
 .sponsorButton:hover {
-  background-color: #e68787;
-  background: linear-gradient(to right, #00b5d8, #4e9ff3);
-  box-shadow: 0 4px 15px rgba(0, 181, 216, 0.5);
+  background-color: #e91c23;
   transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(233, 28, 35, 0.5);
+  filter: brightness(1.2);
 }
 
 .sponsorLink {

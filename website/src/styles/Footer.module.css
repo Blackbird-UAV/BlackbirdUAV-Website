@@ -2,14 +2,18 @@
 .footer {
   background-color: #171717;
   color: #f5f5f5;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   width: 100%;
   position: relative;
   z-index: 98;
+  flex-shrink: 0;
+  
 }
 
 .footerContent {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 2rem;
