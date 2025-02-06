@@ -146,7 +146,7 @@ const ThreeScene = () => {
 
     const handleMouseMove = (event) => {
       targetMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      targetMouse.y = -(event.clientY / window.innerWidth) * 2 + 1;
+      // targetMouse.y = -(event.clientY / window.innerWidth) * 2 + 1;
     };
 
     const handleResize = () => {
@@ -179,13 +179,14 @@ const ThreeScene = () => {
       requestAnimationFrame(animate);
 
       mouse.x = lerp(mouse.x, targetMouse.x, mouseSpeed);
-      mouse.y = lerp(mouse.y, targetMouse.y, mouseSpeed);
+      // mouse.y = lerp(mouse.y, targetMouse.y, mouseSpeed);
 
       const time = Date.now() * 0.002;
       const hoverX = Math.sin(time * hoverXOffset) * hoverXAmplitudeRef.current;
       const hoverY = Math.cos(time * hoverYOffset) * hoverYAmplitudeRef.current;
 
-      const rotationX = rotationXBase + mouse.y * Math.PI * -rotationMagnitude;
+      // const rotationX = rotationXBase + mouse.y * Math.PI * -rotationMagnitude;
+      const rotationX = rotationXBase;
       const rotationY = rotationYBase + mouse.x * Math.PI * rotationMagnitude;
 
       targetScroll.x = window.scrollY * modelScale * 100;
@@ -210,7 +211,7 @@ const ThreeScene = () => {
           model.position.x =
             (-mouse.x * mouseDisplacementRef.current + hoverX + scroll.x) / uniformScaleRef.current;
           model.position.y =
-            (-mouse.y * mouseDisplacementRef.current + hoverY + scroll.y + droneYRef.current) /
+            (mouseDisplacementRef.current + hoverY + scroll.y + droneYRef.current) /
             uniformScaleRef.current;
         }
       });
