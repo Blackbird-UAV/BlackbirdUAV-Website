@@ -7,6 +7,7 @@ import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import ThreeScene from "@/components/ThreeScene";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInUpSlower } from "@/components/animations";
+import { RingLoader } from "react-spinners"; // Import a loader from react-spinners
 
 const slides = [
   {
@@ -63,6 +64,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSceneLoaded, setIsSceneLoaded] = useState(false); // New state for scene loading
 
   const handleScroll = useCallback(() => {
     const progress = Math.max(
@@ -150,7 +152,16 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        {!isMobile && <ThreeScene />}
+        {!isMobile && (
+          <>
+            {!isSceneLoaded && (
+              <div className={styles.loaderContainer}>
+                <RingLoader color="#00BFFF" size={100} />
+              </div>
+            )}
+            <ThreeScene onSceneLoaded={() => setIsSceneLoaded(true)} />
+          </>
+        )}
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
@@ -201,16 +212,16 @@ export default function Home() {
             alt="Cloud Left"
             className={styles.cloudLeft}
             style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
-            width={500} // Provide the width
-            height={300} // Provide the height
+            width={500}
+            height={300}
           />
           <Image
             src="/images/cloud2.png"
             alt="Cloud Right"
             className={styles.cloudRight}
             style={{ transform: `translateX(${scrollY * 0.4}px)` }}
-            width={500} // Provide the width
-            height={300} // Provide the height
+            width={500}
+            height={300}
           />
         </motion.div>
 
@@ -219,8 +230,8 @@ export default function Home() {
             src="/images/Home_AboutUs.jpg"
             alt="Blackbird UAV Logo"
             className={styles.aboutImage}
-            width={500} // Provide the width
-            height={300} // Provide the height
+            width={500}
+            height={300}
           />
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
@@ -230,8 +241,6 @@ export default function Home() {
             <p>
               BBUAV was established in 2009 as an extra-curricular
               program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
-
-
             </p>
           </div>
         </div>
@@ -262,8 +271,8 @@ export default function Home() {
                     <Image
                       src={slide.image}
                       alt={slide.name}
-                      width={500} // Provide the width
-                      height={300} // Provide the height
+                      width={500}
+                      height={300}
                       className={styles.uavImage}
                     />
                     <div className={styles.gradientOverlay}>

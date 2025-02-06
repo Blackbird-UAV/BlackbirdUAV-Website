@@ -5,7 +5,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 const lerp = (s, e, t) => s + (e - s) * t;
 
-const ThreeScene = () => {
+const ThreeScene = ({ onSceneLoaded }) => {
   const canvasRef = useRef(null);
   const sceneRef = useRef(new THREE.Scene());
   const modelRef = useRef(null);
@@ -72,6 +72,10 @@ const ThreeScene = () => {
 
       scene.add(model);
       animate();
+
+      if (onSceneLoaded) {
+        onSceneLoaded();
+      }
     }, undefined, (error) => {
       console.error("Error loading model: ", error);
     });
