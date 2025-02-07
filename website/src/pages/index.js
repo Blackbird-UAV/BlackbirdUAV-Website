@@ -7,7 +7,8 @@ import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import ThreeScene from "@/components/ThreeScene";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInUpSlower } from "@/components/animations";
-import { RingLoader } from "react-spinners"; // Import a loader from react-spinners
+import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
+import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
 
 const slides = [
   {
@@ -156,7 +157,10 @@ export default function Home() {
           <>
             {!isSceneLoaded && (
               <div className={styles.loaderContainer}>
-                <RingLoader color="#00BFFF" size={100} />
+                <div className={styles.loaderContent}>
+                  <Image src={BBUAVLoaderLogo} className={styles.logo}/>
+                  <PuffLoader color="#ef1a2e" size={100} />
+                </div>
               </div>
             )}
             <ThreeScene onSceneLoaded={() => setIsSceneLoaded(true)} />
