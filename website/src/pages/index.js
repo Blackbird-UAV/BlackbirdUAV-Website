@@ -140,6 +140,21 @@ export default function Home() {
     };
   }, []);
 
+  //Fading out loader (set on a 0.5s delay for a 1s transition
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  useEffect(() => {
+    if (isSceneLoaded) {
+      // Start fade-out effect after scene is loaded
+      const timer = setTimeout(() => {
+        setIsFadingOut(true); // Start fading out
+      }, 500); // Small delay to let the scene load
+  
+      return () => clearTimeout(timer);
+    }
+  }, [isSceneLoaded]);
+  
+
   return (
     <div>
       <div className={styles.pageWrapper}>
@@ -158,14 +173,22 @@ export default function Home() {
             {!isSceneLoaded && (
               <div className={styles.loaderContainer}>
                 <div className={styles.loaderContent}>
-                  <Image src={BBUAVLoaderLogo} className={styles.logo}/>
+                  <Image src={BBUAVLoaderLogo} className={styles.logo} />
                   <PuffLoader color="#ef1a2e" size={100} />
                 </div>
               </div>
             )}
+            {/* Add fadeOut class when loader is fading */}
+            <div className={`${styles.loaderContainer} ${isFadingOut ? styles.fadeOut : ''}`}>
+              <div className={styles.loaderContent}>
+                <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                <PuffLoader color="#ef1a2e" size={100} />
+              </div>
+            </div>
             <ThreeScene onSceneLoaded={() => setIsSceneLoaded(true)} />
           </>
         )}
+
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
