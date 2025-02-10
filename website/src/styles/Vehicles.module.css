@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* General Layout */
 .container {
@@ -16,7 +17,7 @@
   text-decoration-color: #eb1d25;
   text-underline-offset: 16px;
   font-size: 4rem;
-  font-family: 'Fahkwang', sans-serif;
+  font-family: "Fahkwang", sans-serif;
 }
 
 /* Vehicle Card with Lighter Background */
@@ -85,7 +86,7 @@
 }
 
 .activeIndicator {
-  background-color: #E68787;
+  background-color: #e68787;
 }
 
 .titleOverlay {
@@ -98,7 +99,7 @@
   align-items: center;
   font-weight: bold;
   font-size: 4.5rem;
-  color: #DBF5F5;
+  color: #dbf5f5;
   background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
 }
 
@@ -106,7 +107,7 @@
 .textBox {
   width: 33.33%;
   padding: 40px;
-  color: #DBF5F5;
+  color: #dbf5f5;
   border-radius: 12px;
   margin: 0 20px;
   text-align: center;
@@ -115,7 +116,7 @@
 .vehicleTitle {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #E68787;
+  color: #e68787;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -141,10 +142,10 @@
 }
 
 .specsList li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
-  color: #E68787;
+  color: #e68787;
   font-size: 1.2rem;
 }
 
@@ -165,13 +166,25 @@
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-100px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(100px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .header {
@@ -207,6 +220,10 @@
   font-size: 4rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.vehiclesPageHeader {
+  font-family: "Fira Sans", serif;
 }
 
 .vehiclesHeader {
@@ -271,7 +288,8 @@
     flex-direction: column; /* Ensure right image cards also stack vertically */
   }
 
-  .carouselContainer, .textBox {
+  .carouselContainer,
+  .textBox {
     width: 100%;
     margin: 0;
   }
@@ -289,7 +307,7 @@
     position: static;
     font-size: 2rem;
     background: none;
-    color: #E68787;
+    color: #e68787;
   }
 
   .indicatorContainer {
@@ -318,7 +336,7 @@
     gap: 20px; /* Reduced gap for mobile view */
     padding-top: 0.5rem; /* Add padding to adjust scroll position */
   }
-  
+
   .header {
     height: 60vh;
   }
@@ -356,7 +374,7 @@
   .vehiclesPageHeader {
     height: 40vh !important;
   }
-  
+
   .vehiclesPageHeader h1 {
     font-size: 2.5rem;
   }
@@ -382,7 +400,7 @@
   .vehiclesPageHeader {
     height: 30vh !important;
   }
-  
+
   .vehiclesPageHeader h1 {
     font-size: 2rem;
   }
