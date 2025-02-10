@@ -88,7 +88,10 @@ const MeetTeam = () => {
                 </div>
                 <div className={styles.grid}>
                   {team[subteam]
-                    .sort((a, b) => (b.isExecutive ? 1 : 0) - (a.isExecutive ? 1 : 0)) // Sort execs first
+                    .sort((a, b) => 
+                      (b.isPresident ? 3 : b.isExecutive ? 2 : b.isManager ? 1 : 0) - 
+                      (a.isPresident ? 3 : a.isExecutive ? 2 : a.isManager ? 1 : 0)
+                    )
                     .map((member) => (
                       <div key={member.id} className={styles.card}>
                         <div className={styles.cardInner}>
@@ -99,6 +102,7 @@ const MeetTeam = () => {
                             </div>
                             {member.isPresident && <span className={styles.presidentTag}>President</span>}
                             {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
+                            {member.isManager && <span className={styles.managerTag}>Manager</span>}
                             <Text className={styles.firstName}>{member.firstName}</Text>
                             <Text className={styles.lastName}>{member.lastName}</Text>
                             <Text className={styles.description}>{member.description}</Text>
@@ -108,6 +112,7 @@ const MeetTeam = () => {
                             <div className={`${styles.colorTop} ${styles[subteam]}`}>
                               {member.isPresident && <span className={styles.presidentTag}>President</span>}
                               {member.isExecutive && <span className={styles.executiveTag}>Executive</span>}
+                              {member.isManager && <span className={styles.managerTag}>Manager</span>}
                               <Text className={styles.firstName}>{member.firstName}</Text>
                               <Text className={styles.lastName}>{member.lastName}</Text>
                             </div>

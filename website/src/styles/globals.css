@@ -1,5 +1,5 @@
 :root {
-  --background: #F5F5F5;
+  --background: #f5f5f5;
   --foreground: #171717;
 }
 
@@ -28,15 +28,15 @@ body {
   word-wrap: break-word;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   width: 0.4em;
 }
 
-body::-webkit-scrollbar-track-piece{
+body::-webkit-scrollbar-track-piece {
   width: 10px;
 }
 
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb {
   background: var(--chakra-colors-gray-600);
   border-radius: 1em;
 }
@@ -56,4 +56,22 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/fonts/FiraSans-Regular.woff2") format("woff2"),
+    url("/fonts/FiraSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/fonts/FiraSans-Bold.woff2") format("woff2"),
+    url("/fonts/FiraSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }

@@ -262,7 +262,7 @@ export default function Sponsor() {
   }, []);
 
   return (
-    <Box bg="black" pl={{ base: 0, lg: 5 }}>
+    <Box bg="black" pl={{ base: 0, lg: 5 }} minHeight="100vh" display="flex" flexDirection="column">
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -326,7 +326,7 @@ export default function Sponsor() {
           </Stack>
         </GridItem>
       </Grid>
-      {isButtonVisible && (
+      {/* {isButtonVisible && (
         <Button
           onClick={handleScrollDown}
           position="fixed"
@@ -366,7 +366,7 @@ export default function Sponsor() {
             </svg>
           </Box>
         </Button>
-      )}
+      )} */}
     </Box>
   );
 }

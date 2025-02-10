@@ -82,6 +82,7 @@ const teamData = {
         role: 'Systems',
         isPresident: false,
         isExecutive: false,
+        isManager: true,
         image: '/images/TeamHeadshots/Ahmed.JPG',
         description: 'CE in Networking/Security and Embedded Systems.',
         extendedDescription: 'Ahmed joined the BBUAV team in 2025 as a sub-team manager for the Systems team. His role focuses on the development of software for autonomous drone navigation and seamless integration with hardware components.',
@@ -321,6 +322,18 @@ const teamData = {
   },
   '2023-2024': {
     description: 'The 2023-2024 team achieved significant milestones, including winning the Innovation Award and competing in the national competition. They worked on advanced projects such as a quadcopter and a fixed-wing plane, showcasing their expertise and dedication.',
+    Competition: [
+      // Add members for the 2023-2024 team here
+    ],
+  },
+  'Competition': {
+    description: 'Add competition team group photo here and just detail the names as a text underneath. Make it sectioned by year (for now make 2 parts)',
+    Competition: [
+      // Add members for the 2023-2024 team here
+    ],
+  },
+  'Alumni': {
+    description: 'Make this like a searchable database (no fancy pictures or much here. Their name, their role, and the dates they were here. Add a search bar please',
     Competition: [
       // Add members for the 2023-2024 team here
     ],

@@ -7,6 +7,8 @@ import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import ThreeScene from "@/components/ThreeScene";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeInUpSlower } from "@/components/animations";
+import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
+import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
 
 const slides = [
   {
@@ -63,6 +65,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSceneLoaded, setIsSceneLoaded] = useState(false); // New state for scene loading
 
   const handleScroll = useCallback(() => {
     const progress = Math.max(
@@ -137,6 +140,21 @@ export default function Home() {
     };
   }, []);
 
+  //Fading out loader (set on a 0.5s delay for a 1s transition
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  useEffect(() => {
+    if (isSceneLoaded) {
+      // Start fade-out effect after scene is loaded
+      const timer = setTimeout(() => {
+        setIsFadingOut(true); // Start fading out
+      }, 500); // Small delay to let the scene load
+  
+      return () => clearTimeout(timer);
+    }
+  }, [isSceneLoaded]);
+  
+
   return (
     <div>
       <div className={styles.pageWrapper}>
@@ -150,7 +168,27 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <ThreeScene />
+        {!isMobile && (
+          <>
+            {!isSceneLoaded && (
+              <div className={styles.loaderContainer}>
+                <div className={styles.loaderContent}>
+                  <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                  <PuffLoader color="#ef1a2e" size={100} />
+                </div>
+              </div>
+            )}
+            {/* Add fadeOut class when loader is fading */}
+            <div className={`${styles.loaderContainer} ${isFadingOut ? styles.fadeOut : ''}`}>
+              <div className={styles.loaderContent}>
+                <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                <PuffLoader color="#ef1a2e" size={100} />
+              </div>
+            </div>
+            <ThreeScene onSceneLoaded={() => setIsSceneLoaded(true)} />
+          </>
+        )}
+
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
@@ -201,16 +239,16 @@ export default function Home() {
             alt="Cloud Left"
             className={styles.cloudLeft}
             style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
-            width={500} // Provide the width
-            height={300} // Provide the height
+            width={500}
+            height={300}
           />
           <Image
             src="/images/cloud2.png"
             alt="Cloud Right"
             className={styles.cloudRight}
             style={{ transform: `translateX(${scrollY * 0.4}px)` }}
-            width={500} // Provide the width
-            height={300} // Provide the height
+            width={500}
+            height={300}
           />
         </motion.div>
 
@@ -219,19 +257,17 @@ export default function Home() {
             src="/images/Home_AboutUs.jpg"
             alt="Blackbird UAV Logo"
             className={styles.aboutImage}
-            width={500} // Provide the width
-            height={300} // Provide the height
+            width={500}
+            height={300}
           />
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
             <p>
-            We are Blackbird UAV (BBUAV), a group of Carleton University students working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
+              We are Blackbird UAV (BBUAV), Carleton University students, a student design team, working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
             </p>
             <p>
-            BBUAV was established in 2009 as an extra-curricular
-            program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
-
-
+              BBUAV was established in 2009 as an extra-curricular
+              program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
             </p>
           </div>
         </div>
@@ -256,15 +292,14 @@ export default function Home() {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`${styles.slide} ${
-                      index === currentIndex ? styles.active : ""
-                    }`}
+                    className={`${styles.slide} ${index === currentIndex ? styles.active : ""
+                      }`}
                   >
                     <Image
                       src={slide.image}
                       alt={slide.name}
-                      width={500} // Provide the width
-                      height={300} // Provide the height
+                      width={500}
+                      height={300}
                       className={styles.uavImage}
                     />
                     <div className={styles.gradientOverlay}>
@@ -288,9 +323,8 @@ export default function Home() {
             {slides.map((_, index) => (
               <span
                 key={index}
-                className={`${styles.dot} ${
-                  index === currentIndex ? styles.activeDot : ""
-                }`}
+                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
+                  }`}
                 onClick={() => handleDotClick(index)}
               ></span>
             ))}
