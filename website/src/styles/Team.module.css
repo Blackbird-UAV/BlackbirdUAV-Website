@@ -1,24 +1,4 @@
-.teamHeader {
-  height: 60vh !important;
-  background-size: cover !important;
-  background-position: center 30% !important;
-}
-
-.teamHeader h1 {
-  font-size: 4rem;
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
 @media (max-width: 768px) {
-  .teamHeader {
-    height: 70vh !important;
-  }
-  
-  .teamHeader h1 {
-    font-size: 4rem !important;
-  }
-
   .container {
     padding-top: 1rem !important; /* Reduce padding-top */
   }
@@ -44,7 +24,7 @@
     writing-mode: horizontal-tb;
     transform: none;
   }
-  
+
   .sidebarText {
     font-size: 3rem;
   }
@@ -53,15 +33,15 @@
   .sidebar.design {
     background-color: #30b463;
   }
-  
+
   .sidebar.manufacturing {
     background-color: #e01d19;
   }
-  
+
   .sidebar.systems {
     background-color: #e94e77;
   }
-  
+
   .sidebar.administrative {
     background-color: #f6b93b;
   }
@@ -69,7 +49,7 @@
   .sidebar.Executives {
     background-color: #6859d9;
   }
-  
+
   .sidebar.Competition {
     background-color: #121212;
   }
@@ -87,21 +67,13 @@
   .teamsPageHeader {
     height: 60vh !important;
   }
-  
+
   .teamsPageHeader h1 {
     font-size: 5rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .teamHeader {
-    height: 50vh !important;
-  }
-  
-  .teamHeader h1 {
-    font-size: 3rem !important;
-  }
-
   .container {
     padding-top: 0.5rem !important; /* Further reduce padding-top */
   }
@@ -111,7 +83,7 @@
   .teamsPageHeader {
     height: 40vh !important;
   }
-  
+
   .teamsPageHeader h1 {
     font-size: 2.5rem !important;
   }
@@ -119,7 +91,7 @@
 
 .container {
   min-height: 100vh;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,7 +133,7 @@
   flex-direction: column;
 }
 
-.subteamContent{
+.subteamContent {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -201,10 +173,10 @@
 .card {
   position: relative;
   width: 100%;
-  height: 400px;  /* Fixed height */
+  height: 400px; /* Fixed height */
   perspective: 1000px;
   display: flex;
-  align-items: center;  /* Ensure contents are centered */
+  align-items: center; /* Ensure contents are centered */
   justify-content: center;
 }
 
@@ -220,7 +192,8 @@
   transform: rotateY(-180deg);
 }
 
-.cardFront, .cardBack {
+.cardFront,
+.cardBack {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
@@ -265,7 +238,7 @@
   background-color: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
   padding: 4% 8%;
@@ -287,7 +260,7 @@
 
 .cardBack .executiveTag {
   background-color: #ffd700;
-  color:black;
+  color: black;
   padding: 4px 10px;
   font-size: 0.75em;
   border-radius: 50px;
@@ -300,7 +273,7 @@
 
 .cardBack .managerTag {
   background-color: #ffd700;
-  color:black;
+  color: black;
   padding: 4px 10px;
   font-size: 0.75em;
   border-radius: 50px;
@@ -311,7 +284,7 @@
   z-index: 2;
 }
 
-.cardBack .firstName{
+.cardBack .firstName {
   font-weight: lighter;
   font-size: 1.25em;
   color: #ffffff;
@@ -319,7 +292,7 @@
   margin-bottom: -4%;
 }
 
-.cardBack .lastName{
+.cardBack .lastName {
   font-weight: 800;
   font-size: 2.5em;
   color: #ffffff;
@@ -366,7 +339,7 @@
 
 /* CardFront elements */
 .cardFront::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -441,7 +414,7 @@
   z-index: 2;
 }
 
-.cardFront .firstName{
+.cardFront .firstName {
   font-weight: lighter;
   font-size: 1.25em;
   color: #ffffff;
@@ -449,7 +422,7 @@
   margin-bottom: -4%;
 }
 
-.cardFront .lastName{
+.cardFront .lastName {
   font-weight: 800;
   font-size: 2.5em;
   color: #ffffff;
@@ -549,7 +522,7 @@
 }
 
 @media (max-width: 768px) {
-  .container{
+  .container {
     padding-top: 10rem;
   }
   .headerDesc {
@@ -574,8 +547,8 @@
     writing-mode: horizontal-tb;
     transform: none;
   }
-  
-  .sidebarText{
+
+  .sidebarText {
     font-size: 3rem;
   }
 
@@ -583,15 +556,15 @@
   .sidebar.design {
     background-color: #30b463;
   }
-  
+
   .sidebar.manufacturing {
     background-color: #e01d19;
   }
-  
+
   .sidebar.systems {
     background-color: #e94e77;
   }
-  
+
   .sidebar.administrative {
     background-color: #f6b93b;
   }
@@ -599,7 +572,7 @@
   .sidebar.Executives {
     background-color: #6859d9;
   }
-  
+
   .sidebar.Competition {
     background-color: #121212;
   }
@@ -617,7 +590,7 @@
   .teamsPageHeader {
     height: 60vh !important;
   }
-  
+
   .teamsPageHeader h1 {
     font-size: 5rem !important;
   }
@@ -627,7 +600,7 @@
   .teamsPageHeader {
     height: 40vh !important;
   }
-  
+
   .teamsPageHeader h1 {
     font-size: 2.5rem !important;
   }

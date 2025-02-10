@@ -17,11 +17,11 @@ const Header = ({ imagePath, headerText, initialOffset, className }) => {
 
         // Responsive offset adjustments
         if (windowWidth <= 480) {
-          adjustedOffset = 80;
+          adjustedOffset = -40;
         } else if (windowWidth <= 768) {
-          adjustedOffset = 150;
+          adjustedOffset = 0;
         } else {
-          adjustedOffset = 200;
+          adjustedOffset = 40;
         }
 
         headerRef.current.style.backgroundPositionY = `${
@@ -34,7 +34,7 @@ const Header = ({ imagePath, headerText, initialOffset, className }) => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
     handleScroll(); // Initial call
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
@@ -44,7 +44,7 @@ const Header = ({ imagePath, headerText, initialOffset, className }) => {
   return (
     <header
       ref={headerRef}
-      className={`${styles.header} ${className || ''}`}
+      className={`${styles.header} ${className || ""}`}
       style={{ backgroundImage: `url(${imagePath})` }}
     >
       <div className={styles.overlay}></div>
@@ -71,4 +71,3 @@ Header.defaultProps = {
 };
 
 export default Header;
-
