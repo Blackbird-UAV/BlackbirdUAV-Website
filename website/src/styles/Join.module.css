@@ -1,7 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
 
 .pageWrapper {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
 .banner {
@@ -46,7 +46,7 @@
   margin-bottom: 1rem;
 }
 
-.aboutUs .leftContent{
+.aboutUs .leftContent {
   flex: 1;
   margin: 1rem 3rem 1rem 1rem;
   display: flex;
@@ -61,7 +61,7 @@
   object-fit: cover;
 }
 
-.aboutUs .rightContent{
+.aboutUs .rightContent {
   flex: 1;
   margin: 1rem 1rem 1rem 3rem;
 }
@@ -98,7 +98,7 @@
   padding: 20px 40px; /* Increased padding for larger button */
   background-color: #5865f2;
   border-radius: 8px; /* Slightly larger border radius */
-  color: #f6f7fe; 
+  color: #f6f7fe;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
   font-size: 1.5rem; /* Increased font size */
@@ -110,11 +110,11 @@
 }
 
 .discordButton:hover {
-  background-color: #4752c4; 
+  background-color: #4752c4;
 }
 
 .backgroundContainer {
-  background-color: #2F2F2F;
+  background-color: #2f2f2f;
   padding: 3rem 0;
 }
 
@@ -151,7 +151,7 @@
 }
 
 .tab:hover {
-  background-color: #3d3d3d;
+  background-color: #a0a0a041;
   color: white;
 }
 
@@ -196,9 +196,7 @@
   object-fit: contain;
 }
 
-
 @media (max-width: 768px) {
-
   /* About us: Box 1 */
   .aboutUs {
     flex-direction: column;
@@ -207,7 +205,7 @@
 
   .aboutUs .leftContent,
   .aboutUs .rightContent {
-    flex: none; 
+    flex: none;
     width: 90%;
     margin: 1rem;
   }
@@ -276,4 +274,3 @@
     font-size: 16px;
   }
 }
-

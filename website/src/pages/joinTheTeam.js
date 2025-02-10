@@ -11,7 +11,7 @@ import {
   faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Accordion, Group, Text } from "@mantine/core";
 import Header from "@/components/Header";
 

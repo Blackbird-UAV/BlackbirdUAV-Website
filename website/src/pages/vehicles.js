@@ -120,8 +120,6 @@ export default function Vehicles() {
       <Header
         imagePath="/images/Vehicles/Apogee_1.jpg"
         headerText="Our Aircraft"
-        initialOffset={200} // Reduced from 800
-        className={styles.vehiclesPageHeader}
       />
       <div className={styles.container}>
         <div className={styles.vehiclesList}>

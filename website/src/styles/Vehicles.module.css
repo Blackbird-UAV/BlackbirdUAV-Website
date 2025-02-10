@@ -222,10 +222,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.vehiclesPageHeader {
-  font-family: "Fira Sans", serif;
-}
-
 .vehiclesHeader {
   position: relative;
   width: 100%;
@@ -259,16 +255,6 @@
   font-size: 5rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.vehiclesPageHeader {
-  height: 50vh !important;
-  background-size: cover !important;
-  background-position: center !important;
-}
-
-.vehiclesPageHeader h1 {
-  font-size: 5rem;
 }
 
 @media (max-width: 1000px) {
@@ -338,7 +324,7 @@
   }
 
   .header {
-    height: 60vh;
+    /* height: 60vh; */
   }
 
   .headerBackground {
@@ -352,7 +338,7 @@
 
 @media (max-width: 768px) {
   .header {
-    height: 60vh;
+    /* height: 60vh; */
   }
 
   .headerBackground {
@@ -368,14 +354,6 @@
   }
 
   .vehiclesHeaderText {
-    font-size: 2.5rem;
-  }
-
-  .vehiclesPageHeader {
-    height: 40vh !important;
-  }
-
-  .vehiclesPageHeader h1 {
     font-size: 2.5rem;
   }
 }
@@ -394,14 +372,6 @@
   }
 
   .vehiclesHeaderText {
-    font-size: 2rem;
-  }
-
-  .vehiclesPageHeader {
-    height: 30vh !important;
-  }
-
-  .vehiclesPageHeader h1 {
     font-size: 2rem;
   }
 }

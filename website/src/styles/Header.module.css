@@ -3,13 +3,11 @@
 .header {
   position: relative;
   /* min-height: 300px; */
-  height: 300px;
+  height: 40vh !important;
   width: 100%;
-  /* background-size: 100% auto; */
-  background-size: cover; /* Ensures the image covers the container */
+  background-size: cover !important; /* Ensures the image covers the container */
   background-repeat: no-repeat; /* Prevents tiling */
-  background-position: center;
-  /* background-size: cover; */
+  background-position: center 40% !important;
 }
 
 .overlay {
@@ -27,7 +25,27 @@
   left: 70px;
   color: white;
   font-size: 4rem;
-  font-family: "Fira Sans", serif;
+  font-family: "Fira Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 35vh !important;
+  }
+
+  .header h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 30vh !important;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
 }
