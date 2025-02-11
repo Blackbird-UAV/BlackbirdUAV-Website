@@ -151,7 +151,7 @@ export default function Join() {
                     >
                       <FontAwesomeIcon
                         icon={tab.icon}
-                        style={{ marginRight: "8px" }}
+                        style={{ marginRight: "8px", width: "24px" }}
                       />
                       {tab.title}
                       {/* <FontAwesomeIcon
