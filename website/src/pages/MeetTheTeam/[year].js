@@ -69,7 +69,9 @@ const MeetTeam = () => {
       <Header imagePath="/images/team.jpg" headerText={teamTitle} />
       <div className={styles.container}>
         {/* <h1 className={styles.title}>{teamTitle}</h1> */}
-        {/* <Header imagePath="/images/team.jpg" headerText={teamTitle} /> */}
+        <div className={styles.headerDescTitle}>
+          <h1>Meet the Team</h1>
+        </div>
         <div className={styles.headerDesc}>
           {teamDescription && <div>{teamDescription}</div>}
         </div>

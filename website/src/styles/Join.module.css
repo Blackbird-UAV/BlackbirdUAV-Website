@@ -198,7 +198,7 @@
   justify-content: center;
 }
 
-.tab:hover {
+.tab:hover:not(.active) {
   background-color: #e0e0e0;
   color: #333;
   transform: scale(1.05);
