@@ -34,7 +34,13 @@
   align-items: flex-end;
   padding: 2rem;
   /* background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8); */
-  background: linear-gradient(180deg, #92a2f3 0%, #9dbdf8 20%, #98b6db 40%, #ffffff 100%);
+  background: linear-gradient(
+    180deg,
+    #92a2f3 0%,
+    #9dbdf8 20%,
+    #98b6db 40%,
+    #ffffff 100%
+  );
   background-size: 200% 200%;
   animation: gradientAnimation 10s ease-in-out infinite;
   position: relative;
@@ -98,8 +104,10 @@
 
 .buttonSection {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  margin: 0 auto;
 }
 
 .mobileButtonSection {
@@ -111,25 +119,28 @@
 
 .sponsorButton {
   flex: 2;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 25%;
+  padding: 1rem 1.5rem;
+  margin-bottom: 20%;
   margin-left: 5%;
   margin-right: 5%;
   font-size: 1.5rem;
   color: #ffffff;
   background-color: #000;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s;
   align-self: flex-start;
   text-align: center;
-  font-family: "Fahkwang", sans-serif;
+  font-family: "Fira Sans", sans-serif;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   z-index: 3;
 }
 
 .sponsorButton:hover {
   background-color: #c26161;
+  transform: scale(1.1);
+  transition: transform 0.3s;
 }
 
 .aboutContainer {
@@ -606,7 +617,6 @@
   opacity: 0;
   pointer-events: none; /* Prevents interaction after fade */
 }
-
 
 .loaderContent {
   display: flex;
