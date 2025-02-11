@@ -101,7 +101,7 @@ export default function Join() {
                 src="/images/JoinUsMedia.jpg"
                 alt="Join Us"
                 className={styles.aboutUsImage}
-                width={500}
+                width={600}
                 height={500}
               />
             </div>
@@ -126,47 +126,60 @@ export default function Join() {
 
           {/* Subteams */}
           <div className={styles.backgroundContainer}>
-            <div className={styles.subteamSection}>
-              {/* Subteams: Clickable Tabs */}
-              <div className={styles.tabs}>
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    className={`${styles.tab} ${
-                      activeTab.id === tab.id ? styles.active : ""
-                    }`}
-                    style={{
-                      "--tab-color": tab.color,
-                      color: activeTab.id === tab.id ? "white" : tab.color,
-                    }}
-                    onClick={() => setActiveTab(tab)}
-                  >
-                    {tab.title}
-                    {/* <FontAwesomeIcon
-                      icon={tab.icon}
+            <div className={styles.leftSubteams}>
+              <h1>Introducing Our Subteams</h1>
+              <p className={styles.subteamsDescription}>
+                Explore the teams that make Blackbird UAV soar. Each subteam
+                plays a vital role in our success, from design to operations.
+              </p>
+            </div>
+            <div className={styles.rightSubteams}>
+              <div className={styles.subteamSection}>
+                {/* Subteams: Clickable Tabs */}
+                <div className={styles.tabs}>
+                  {tabs.map((tab) => (
+                    <button
+                      key={tab.id}
+                      className={`${styles.tab} ${
+                        activeTab.id === tab.id ? styles.active : ""
+                      }`}
                       style={{
+                        "--tab-color": tab.color,
                         color: activeTab.id === tab.id ? "white" : tab.color,
-                        marginLeft: "12px",
                       }}
-                    /> */}
-                  </button>
-                ))}
-              </div>
-
-              {/* Subteams: Content Carousel */}
-              <div className={styles.carouselContent}>
-                <div className={styles.textSection}>
-                  <div className={styles.tagline}>{activeTab.tagline}</div>
-                  {activeTab.content}
+                      onClick={() => setActiveTab(tab)}
+                    >
+                      <FontAwesomeIcon
+                        icon={tab.icon}
+                        style={{ marginRight: "8px" }}
+                      />
+                      {tab.title}
+                      {/* <FontAwesomeIcon
+                          icon={tab.icon}
+                          style={{
+                            color: activeTab.id === tab.id ? "white" : tab.color,
+                            marginLeft: "12px",
+                          }}
+                        /> */}
+                    </button>
+                  ))}
                 </div>
-                <div className={styles.imageSection}>
-                  <Image
-                    src={activeTab.image}
-                    alt={`Image for ${activeTab.title}`}
-                    className={styles.image}
-                    width={500}
-                    height={500}
-                  />
+
+                {/* Subteams: Content Carousel */}
+                <div className={styles.carouselContent}>
+                  <div className={styles.textSection}>
+                    <div className={styles.tagline}>{activeTab.tagline}</div>
+                    {activeTab.content}
+                  </div>
+                  <div className={styles.imageSection}>
+                    <Image
+                      src={activeTab.image}
+                      alt={`Image for ${activeTab.title}`}
+                      className={styles.image}
+                      width={500}
+                      height={500}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

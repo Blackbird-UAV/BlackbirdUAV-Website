@@ -40,11 +40,23 @@ const ThreeScene = ({ onSceneLoaded }) => {
 
     const canvas = canvasRef.current;
     const scene = sceneRef.current;
-    const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      canvas.clientWidth / canvas.clientHeight,
+      1,
+      1000
+    );
     camera.position.set(0, 0, 10);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
-    renderer.setSize(document.documentElement.clientWidth, document.documentElement.clientHeight);
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: false,
+    });
+    renderer.setSize(
+      document.documentElement.clientWidth,
+      document.documentElement.clientHeight
+    );
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
 
@@ -54,31 +66,43 @@ const ThreeScene = ({ onSceneLoaded }) => {
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
 
-    loader.load("/assets/model/final_export.glb", (gltf) => {
-      const model = gltf.scene;
-      modelRef.current = model;
+    loader.load(
+      "/assets/model/final_export.glb",
+      (gltf) => {
+        const model = gltf.scene;
+        modelRef.current = model;
 
-      model.traverse((child) => {
-        if (child.isMesh) {
-          child.material = child.material.clone();
+        model.traverse((child) => {
+          if (child.isMesh) {
+            child.material = child.material.clone();
+          }
+        });
+
+        model.position.x += modelXOffset;
+        model.position.y += modelYOffset;
+
+        uniformScaleRef.current = Math.max(
+          minScale,
+          window.innerWidth * modelScale
+        );
+        model.scale.set(
+          uniformScaleRef.current,
+          uniformScaleRef.current,
+          uniformScaleRef.current
+        );
+
+        scene.add(model);
+        animate();
+
+        if (onSceneLoaded) {
+          onSceneLoaded();
         }
-      });
-
-      model.position.x += modelXOffset;
-      model.position.y += modelYOffset;
-
-      uniformScaleRef.current = Math.max(minScale, window.innerWidth * modelScale);
-      model.scale.set(uniformScaleRef.current, uniformScaleRef.current, uniformScaleRef.current);
-
-      scene.add(model);
-      animate();
-
-      if (onSceneLoaded) {
-        onSceneLoaded();
+      },
+      undefined,
+      (error) => {
+        console.error("Error loading model: ", error);
       }
-    }, undefined, (error) => {
-      console.error("Error loading model: ", error);
-    });
+    );
 
     // const light1 = new THREE.DirectionalLight(0xfdffd3, 3);
     // light1.position.set(10, 10, 10);
@@ -88,7 +112,7 @@ const ThreeScene = ({ onSceneLoaded }) => {
     light2.position.set(-10, 10, -10);
     scene.add(light2);
 
-    const ambientLight = new THREE.AmbientLight(0xe7f5fb, 3);
+    const ambientLight = new THREE.AmbientLight(0xe7f5fb, 4);
     scene.add(ambientLight);
 
     const handleMouseMove = (event) => {
@@ -101,16 +125,31 @@ const ThreeScene = ({ onSceneLoaded }) => {
 
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(document.documentElement.clientWidth, document.documentElement.clientHeight);
+      renderer.setSize(
+        document.documentElement.clientWidth,
+        document.documentElement.clientHeight
+      );
 
       if (modelRef.current) {
-        uniformScaleRef.current = Math.max(minScale, window.innerWidth * modelScale);
-        modelRef.current.scale.set(uniformScaleRef.current, uniformScaleRef.current, uniformScaleRef.current);
+        uniformScaleRef.current = Math.max(
+          minScale,
+          window.innerWidth * modelScale
+        );
+        modelRef.current.scale.set(
+          uniformScaleRef.current,
+          uniformScaleRef.current,
+          uniformScaleRef.current
+        );
       }
 
-      mouseDisplacementRef.current = 1000 * modelScale * Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
-      hoverXAmplitudeRef.current = 350 * modelScale * (window.innerWidth / 1920);
-      hoverYAmplitudeRef.current = 200 * modelScale * (window.innerHeight / 1080);
+      mouseDisplacementRef.current =
+        1000 *
+        modelScale *
+        Math.max(0.7, Math.min(1.1, window.innerWidth / 1080));
+      hoverXAmplitudeRef.current =
+        350 * modelScale * (window.innerWidth / 1920);
+      hoverYAmplitudeRef.current =
+        200 * modelScale * (window.innerHeight / 1080);
     };
 
     const animate = () => {
@@ -144,8 +183,15 @@ const ThreeScene = ({ onSceneLoaded }) => {
           model.rotation.x = rotationX;
           model.rotation.y = rotationY;
 
-          model.position.x = (-mouse.x * mouseDisplacementRef.current + hoverX + scroll.x) / uniformScaleRef.current;
-          model.position.y = (mouseDisplacementRef.current + hoverY + scroll.y + droneYRef.current) / uniformScaleRef.current;
+          model.position.x =
+            (-mouse.x * mouseDisplacementRef.current + hoverX + scroll.x) /
+            uniformScaleRef.current;
+          model.position.y =
+            (mouseDisplacementRef.current +
+              hoverY +
+              scroll.y +
+              droneYRef.current) /
+            uniformScaleRef.current;
         }
       });
 
