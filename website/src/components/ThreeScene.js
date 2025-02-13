@@ -205,7 +205,9 @@ const ThreeScene = ({ onSceneLoaded }) => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
+
       renderer.dispose();
+      scene.clear();
     };
   }, []);
 

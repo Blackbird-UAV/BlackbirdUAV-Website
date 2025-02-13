@@ -102,8 +102,8 @@
 }
 
 .searchBar {
-  width: 100%;
-  max-width: 600px;
+  width: 90%;
+  max-width: 500px;
   margin-top: 1.2rem;
   padding: 1rem;
   border-radius: 8px;
