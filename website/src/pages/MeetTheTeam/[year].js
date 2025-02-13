@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import teamData from "../../data/teamData";
-import { Text } from "@mantine/core";
+import { Text, TextInput } from "@mantine/core";
 import styles from "../../styles/Team.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
@@ -12,24 +12,8 @@ const MeetTeam = () => {
   const router = useRouter();
   const { year } = router.query;
 
-  const [headerOffset, setHeaderOffset] = useState(200);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width <= 480) {
-        setHeaderOffset(10);
-      } else if (width <= 768) {
-        setHeaderOffset(150);
-      } else {
-        setHeaderOffset(170);
-      }
-    };
-
-    handleResize(); // Initial call
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredMembers, setFilteredMembers] = useState([]);
 
   const team = year && teamData[year] ? teamData[year] : null;
 
@@ -47,6 +31,37 @@ const MeetTeam = () => {
   }
 
   const teamDescription = team ? team.description : "";
+
+  useEffect(() => {
+    if (searchQuery && team) {
+      const allMembers = Object.keys(team).reduce((acc, subteam) => {
+        if (subteam !== "description") {
+          return acc.concat(team[subteam]);
+        }
+        return acc;
+      }, []);
+
+      const filtered = allMembers.filter((member) =>
+        `${member.firstName} ${member.lastName}`
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      );
+      setFilteredMembers(filtered);
+    } else {
+      setFilteredMembers([]);
+    }
+  }, [searchQuery, team]);
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const scrollToMember = (id) => {
+    const element = document.getElementById(`member-${id}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
 
   if (!team) {
     return (
@@ -68,13 +83,35 @@ const MeetTeam = () => {
       </Head>
       <Header imagePath="/images/team.jpg" headerText={teamTitle} />
       <div className={styles.container}>
-        {/* <h1 className={styles.title}>{teamTitle}</h1> */}
         <div className={styles.headerDescTitle}>
           <h1>Meet the Team</h1>
         </div>
         <div className={styles.headerDesc}>
           {teamDescription && <div>{teamDescription}</div>}
         </div>
+        {year === "2024-2025" && (
+          <div className={styles.searchBar}>
+            <TextInput
+              description="Type the name of an alumni to search for them"
+              placeholder="Search for a member..."
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+            {filteredMembers.length > 0 && (
+              <div className={styles.searchResults}>
+                {filteredMembers.map((member) => (
+                  <div
+                    key={member.id}
+                    className={styles.searchResultItem}
+                    onClick={() => scrollToMember(member.id)}
+                  >
+                    {member.firstName} {member.lastName}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
         {Object.keys(team).map(
           (subteam) =>
             subteam !== "description" && (
@@ -105,7 +142,11 @@ const MeetTeam = () => {
                             : 0)
                       )
                       .map((member) => (
-                        <div key={member.id} className={styles.card}>
+                        <div
+                          key={member.id}
+                          id={`member-${member.id}`}
+                          className={styles.card}
+                        >
                           <div className={styles.cardInner}>
                             {/* Front Side */}
                             <div
