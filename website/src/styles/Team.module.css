@@ -310,6 +310,15 @@
   margin-bottom: -2%;
 }
 
+/* Adjust font size for longer names */
+.cardBack .lastName.medium {
+  font-size: 1.9em;
+}
+
+.cardBack .lastName.small {
+  font-size: 1.6em;
+}
+
 .cardBack .extendedDescription {
   font-size: 0.9rem;
   color: #555;
@@ -437,6 +446,15 @@
   color: #ffffff;
   z-index: 2;
   margin-left: -1%;
+}
+
+/* Adjust font size for longer names */
+.cardFront .lastName.medium {
+  font-size: 1.9em;
+}
+
+.cardFront .lastName.small {
+  font-size: 1.6em;
 }
 
 .cardFront .description {
