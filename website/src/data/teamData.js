@@ -114,6 +114,42 @@ const teamData = {
       },
       {
         id: 10,
+        firstName: 'Edwin',
+        lastName: 'Ngui',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Edwin.JPG',
+        description: 'Edwin leads the development of the Blackbird UAV Website',
+        extendedDescription: 'Edwin is part of the website sub-team, leading the website team to create the customer-facing website to attract sponsors and potential members.',
+        link: 'https://www.linkedin.com/in/edwin-ngui/'
+      },
+      {
+        id: 11,
+        firstName: 'Marc',
+        lastName: 'Vidal',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Marc.JPG',
+        description: 'Marc develops components for the Blackbird UAV website.',
+        extendedDescription: 'Marc is part of the website sub-team, developing key components for the functionality of the website.',
+        link: 'https://www.linkedin.com/in/marc-vidal-979148278/'
+      },
+      {
+        id: 12,
+        firstName: 'Daniel',
+        lastName: 'Lu',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Daniel.JPG',
+        description: 'Daniel develops components for the Blackbird UAV website.',
+        extendedDescription: 'Daniel is part of the website sub-team, developing key components for the functionality of the website.',
+        link: 'https://www.linkedin.com/in/daniel-lu-9575a0176/'
+      },
+      {
+        id: 13,
         firstName: 'Teddy',
         lastName: 'Kurita',
         role: 'Systems / Website',
@@ -123,12 +159,24 @@ const teamData = {
         description: 'Teddy works on the website and graphic design for Blackbird.',
         extendedDescription: 'Teddy is part of the website sub-team and assists by working on the graphic design. He also provides graphic design for different aspects within Blackbird UAV where it is needed.',
         link: 'http://www.linkedin.com/in/edwardkurita'
-      }
+      },
+      {
+        id: 14,
+        firstName: 'Jonah',
+        lastName: 'Pasquantonio',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Jonah.JPG',
+        description: 'Jonah develops components for the Blackbird UAV website.',
+        extendedDescription: 'Jonah is part of the website sub-team, developing key components for the functionality of the website.',
+        link: 'https://www.linkedin.com/'
+      },
 
     ],
     administrative: [
       {
-        id: 11,
+        id: 15,
         firstName: 'Lucas',
         lastName: 'Klemm',
         role: 'Administrative / Manufacturing',
@@ -141,7 +189,7 @@ const teamData = {
       },
 
       {
-        id: 12,
+        id: 16,
         firstName: 'Peter',
         lastName: 'Liang',
         role: 'Administrative / Structures',
@@ -154,7 +202,7 @@ const teamData = {
       },
 
       {
-        id: 13,
+        id: 17,
         firstName: 'William',
         lastName: 'Sison',
         role: 'Administrative',
@@ -166,7 +214,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/williamsison/'
       },
       {
-        id: 14,
+        id: 18,
         firstName: 'Nassim',
         lastName: 'Gaboune',
         role: 'Administrative',
@@ -177,13 +225,23 @@ const teamData = {
         extendedDescription: 'Nassim assists with KEFC reports and phase 1 documentation. He has contributed to sponsorship initiatives and provides financial expertise to the team.',
         link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/'
       },
-
-      
+      {
+        id: 19,
+        firstName: 'Nassim',
+        lastName: 'Gaboune',
+        role: 'Administrative',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Nassim.JPG',
+        description: 'Joined BBUAV in 2022. Bachelor of Commerce, Accounting.',
+        extendedDescription: 'Nassim assists with KEFC reports and phase 1 documentation. He has contributed to sponsorship initiatives and provides financial expertise to the team.',
+        link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/'
+      },
  
     ],
     manufacturing: [
       {
-        id: 15,
+        id: 20,
         firstName: 'Karl',
         lastName: 'Kurniawan',
         role: 'Manufacturing / Structures',
@@ -195,7 +253,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca',
       },
       {
-        id: 16,
+        id: 21,
         firstName: 'Timothy',
         lastName: 'Hildebrand',
         role: 'Manufacturing / Structures',
@@ -207,7 +265,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/timothy-hildebrand-ba6199341',
       },
       {
-        id: 17,
+        id: 22,
         firstName: 'Emma',
         lastName: 'Ellsworth',
         role: 'Manufacturing / Structures',
@@ -219,7 +277,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/emma-ellsworth-a30221289/',
       },
       {
-        id: 18,
+        id: 23,
         firstName: 'Jasmine',
         lastName: 'Hartwig',
         role: 'Manufacturing / Structures / Administrative',
@@ -235,7 +293,7 @@ const teamData = {
     ],
     design: [
       {
-        id: 19,
+        id: 24,
         firstName: 'Shamaita',
         lastName: 'Shabnam',
         role: 'Design / Structures',
@@ -247,7 +305,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/shamaita-shabnam/',
       },
       {
-        id: 20,
+        id: 25,
         firstName: 'Owen',
         lastName: 'McKechnie',
         role: 'Design / Manufacturing',
@@ -259,7 +317,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/owen-mckechnie-97a526293',
       },
       {
-        id: 21,
+        id: 26,
         firstName: 'Samuel',
         lastName: 'Howell',
         role: 'Design',
@@ -271,7 +329,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/samueldavidhowell/',
       },
       {
-        id: 22,
+        id: 27,
         firstName: 'Cole',
         lastName: 'Gladders',
         role: 'Design',
@@ -283,7 +341,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/cole-gladders-6525541a8',
       },
       {
-        id: 23,
+        id: 28,
         firstName: 'James',
         lastName: 'Houghton',
         role: 'Design',
@@ -295,7 +353,7 @@ const teamData = {
         link: 'http://linkedin.com/in/james-houghton-1886bb2a0',
       },
       {
-        id: 24,
+        id: 29,
         firstName: 'Charles-Xavier',
         lastName: 'Mino',
         role: 'Design / Operations',
@@ -306,7 +364,7 @@ const teamData = {
         extendedDescription: 'CX assists in designing placements for the battery, ECM, Pixhawk, and motor on Goliath, ensures Mission Planner compatibility, and serves as a secondary pilot.',
       },
       {
-        id: 25,
+        id: 30,
         firstName: 'Ryan',
         lastName: 'Wong',
         role: 'Design',

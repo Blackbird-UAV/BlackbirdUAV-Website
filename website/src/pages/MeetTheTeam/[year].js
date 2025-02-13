@@ -176,7 +176,15 @@ const MeetTeam = () => {
                               <Text className={styles.firstName}>
                                 {member.firstName}
                               </Text>
-                              <Text className={styles.lastName}>
+                              <Text
+                                className={`${styles.lastName} ${
+                                  member.lastName.length > 12
+                                    ? styles.small
+                                    : member.lastName.length > 8
+                                    ? styles.medium
+                                    : ""
+                                }`}
+                              >
                                 {member.lastName}
                               </Text>
                               <Text className={styles.description}>
@@ -206,8 +214,16 @@ const MeetTeam = () => {
                                 <Text className={styles.firstName}>
                                   {member.firstName}
                                 </Text>
-                                <Text className={styles.lastName}>
-                                  {member.lastName}
+                                <Text
+                                className={`${styles.lastName} ${
+                                  member.lastName.length > 12
+                                    ? styles.small
+                                    : member.lastName.length > 8
+                                    ? styles.medium
+                                    : ""
+                                    }`}
+                                  >
+                                    {member.lastName}
                                 </Text>
                               </div>
 
