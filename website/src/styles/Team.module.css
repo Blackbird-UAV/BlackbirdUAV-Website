@@ -577,7 +577,6 @@
   background-color: #e94e77;
 }
 
-
 .administrative {
   background-color: #f6b93b;
 }
@@ -850,4 +849,324 @@
   .roleTags {
     justify-content: flex-start;
   }
+}
+
+.yearSection {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.yearTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.teamImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.yearDescription {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.yearDescription p {
+  margin: 10px 0;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberItem {
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memberRole {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.yearContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.teamImageLeft {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.teamImageRight {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.yearDescription a {
+  color: #1e90ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .yearContent {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .teamImageLeft {
+    margin-right: 20px;
+  }
+
+  .teamImageRight {
+    margin-left: 20px;
+  }
+
+  .yearDescription {
+    text-align: left;
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #333;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timelineItem {
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.timelineItem::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  border: 4px solid #333;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timelineItem.left::after {
+  right: -12.5px;
+}
+
+.timelineItem.right::after {
+  left: -12.5px;
+}
+
+.timelineItem.left {
+  left: 0;
+}
+
+.timelineItem.right {
+  left: 50%;
+}
+
+.timelineContent {
+  padding: 20px 30px;
+  background-color: #333;
+  position: relative;
+  border-radius: 6px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.timelineContent img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.timelineContent h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.timelineContent p {
+  margin: 10px 0;
+}
+
+.timelineContent a {
+  color: #1e90ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.yearLabel {
+  position: absolute;
+  top: 15px;
+  font-size: 3rem; /* Make the date larger */
+  font-weight: bold;
+  color: #fff; /* Make the date white */
+}
+
+.timelineItem.left .yearLabel {
+  right: -150px;
+}
+
+.timelineItem.right .yearLabel {
+  left: -150px;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberItem {
+  background-color: #444;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memberRole {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+@media (max-width: 768px) {
+  .timelineItem {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timelineItem.left::after,
+  .timelineItem.right::after {
+    left: 60px;
+  }
+
+  .timelineItem.right {
+    left: 0%;
+  }
+
+  .yearLabel {
+    font-size: 2rem;
+  }
+
+  .timelineItem.left .yearLabel {
+    right: -60px;
+  }
+
+  .timelineItem.right .yearLabel {
+    left: -60px;
+  }
+}
+
+.yearTitle {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.teamImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.yearDescription {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.yearDescription p {
+  margin: 10px 0;
+}
+
+.yearDescription a {
+  color: #1e90ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberItem {
+  background-color: #444;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memberRole {
+  font-size: 0.9rem;
+  color: #aaa;
 }

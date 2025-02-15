@@ -70,8 +70,9 @@ export default function Navbar() {
   const teamLinks = [
     { link: "/MeetTheTeam/2024-2025", label: "Current Team" }, 
     { link: "/MeetTheTeam/2023-2024", label: "2023-2024" }, 
-    { link: "/MeetTheTeam/Competition", label: "Competition Team" },
-    { link: "/Alumni", label: "Alumni" }];
+    { link: "/Competition", label: "Competition" },
+    { link: "/Alumni", label: "Alumni" }
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {

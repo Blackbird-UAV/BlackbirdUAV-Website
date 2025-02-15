@@ -393,7 +393,7 @@ const teamData = {
         extendedDescription: 'PJ joined Blackbird UAV in 2019 as a first-year student. He is in the final year of his bachelor’s degree in communication engineering. PJ is the current president of Blackbird UAV. He took over what was left of Blackbird UAV while starting his 3rd year in the middle of the COVID pandemic. With Jed, the only other member from Blackbird, the pair recruited new first and second-year students. With a young team with much to learn, PJ rebuilt the club with the great support of Felix and other members after three years of leading the club. Blackbird came from last to take a first-place victory in 2023. After competing one final time this 2023-2024 season, PJ plans to stay active with the team as an alum to guide and advise his legacy.',
         link: 'https://www.linkedin.com/in/pjparisien',
       },
-      {
+      { 
         id: 2,
         firstName: 'Félix-Antoine',
         lastName: 'Chénier',
@@ -600,10 +600,75 @@ const teamData = {
     ],
   },
   'Competition': {
-    description: 'Add competition team group photo here and just detail the names as a text underneath. Make it sectioned by year (for now make 2 parts)',
-    Competition: [
-      // Add members for the 2023-2024 team here
-    ],
+    description: 'This page lists all the competition teams of Blackbird UAV. Each section represents a different year.',
+    years: {
+      '2024': {
+        description: `
+          <p>First year since COVID that BBUAV produced a vehicle completely from the ground up.</p>
+          <p>Team won the 2nd innovation award in its history.</p>
+          <p>Ground Speed record broken with 156 km/h.</p>
+          <p>Vehicle was still a quadplane, and still controlled over the internet.</p>
+          <p>Location: Alma, Québec.</p>
+          <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADx9pYcBep3DuqdyzH94hYcRvLehjvlYwas">LINK</a></p>
+        `,
+        image: '/images/comp2024.png',
+        members: [
+          { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
+          { firstName: 'Felix', lastName: 'Vice-President' },
+          { firstName: 'Jed', lastName: '' },
+          { firstName: 'Meyiwa', lastName: '' },
+          { firstName: 'DJ', lastName: '' },
+          { firstName: 'Jacob', lastName: '' },
+          { firstName: 'Dylan', lastName: '' },
+          { firstName: 'Emilia', lastName: '' },
+          { firstName: 'Lidya', lastName: '' },
+          { firstName: 'Nick', lastName: 'Mucci' },
+          { firstName: 'Duaa', lastName: '' },
+          { firstName: 'Ryan', lastName: '' },
+          { firstName: 'Jasmine', lastName: '' },
+          { firstName: 'Karl', lastName: 'Kurniawan', role: 'Integral to comp' },
+        ],
+      },
+      '2023': {
+        description: `
+          <p>First year of BBUAV actually participating in the competition since COVID.</p>
+          <p>Team won First Place in Phase 2 for the first time in the club's history.</p>
+          <p>First team to run a vehicle completely over the internet instead of radio control.</p>
+          <p>First team to successfully transition flight modes in any vehicle (vertical flight to horizontal flight and back).</p>
+          <p>Potential ground speed record of 120 km/h.</p>
+          <p>Location: Alma, Québec.</p>
+          <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">LINK</a></p>
+        `,
+        image: '/images/comp2023.png',
+        members: [
+          { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
+          { firstName: 'Jed', lastName: '' },
+          { firstName: 'Meyiwa', lastName: '' },
+          { firstName: 'Imad', lastName: '' },
+          { firstName: 'Felix', lastName: '' },
+          { firstName: 'Ben', lastName: '' },
+          { firstName: 'DJ', lastName: '' },
+          { firstName: 'Jacob', lastName: '' },
+          { firstName: 'Dylan', lastName: '' },
+        ],
+      },
+      '2022': {
+        description: `
+          <p>First year of in-person comp after COVID.</p>
+          <p>Team only observed.</p>
+          <p>Location: Southport, Manitoba.</p>
+        `,
+        image: '', // No image available for 2022
+        members: [
+          { firstName: 'Pier-Jean', lastName: 'Parisien', role: 'Club President' },
+          { firstName: 'Jed', lastName: '' },
+          { firstName: 'Meyiwa', lastName: '' },
+          { firstName: 'Imad', lastName: '' },
+          { firstName: 'Felix', lastName: '' },
+          { firstName: 'Ben', lastName: '' },
+        ],
+      },
+    },
   },
   'Alumni': {
     description: 'This page lists all the alumni of Blackbird UAV. You can search for specific alumni using the search bar below.',
