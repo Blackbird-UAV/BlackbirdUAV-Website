@@ -390,7 +390,7 @@ const teamData = {
         left: '2024',
         image: '/images/TeamHeadshots/PJParisien.JPG',
         description: 'PJ is the current president of Blackbird UAV.',
-        extendedDescription: 'PJ joined Blackbird UAV in 2019 as a first-year student. He is in the final year of his bachelor’s degree in communication engineering. PJ is the current president of Blackbird UAV. He took over what was left of Blackbird UAV while starting his 3rd year in the middle of the COVID pandemic. With Jed, the only other member from Blackbird, the pair recruited new first and second-year students. With a young team with much to learn, PJ rebuilt the club with the great support of Felix and other members after three years of leading the club. Blackbird came from last to take a first-place victory in 2023. After competing one final time this 2023-2024 season, PJ plans to stay active with the team as an alum to guide and advise his legacy.',
+        extendedDescription: 'PJ joined Blackbird UAV in 2019 as a first-year student in communication engineering. As president, he rebuilt the club with Jed, recruiting new members and leading the team to a first-place victory in 2023. After his final competition in 2024, he plans to stay involved as an alum, guiding the next generation.',
         link: 'https://www.linkedin.com/in/pjparisien',
       },
       { 
@@ -402,7 +402,7 @@ const teamData = {
         left: '2024',
         image: '/images/TeamHeadshots/FelixChenier.JPG',
         description: 'Felix is the Vice-President of Blackbird UAV.',
-        extendedDescription: 'Felix joined Blackbird UAV in 2021 at the start of his first year. He is finishing his third year of a bachelor’s degree in civil engineering. When Felix joined the club, he started helping where he could and tried to encourage others to become more active. Two years later, he became the Vice-President of the club and instituted multiple administrative initiatives like project management systems, information, and member management, as well as acting as the project manager for the new team’s first fully custom vehicle development project. Felix hopes to remain with Blackbird until his graduation and wants to set up the team for a bright future.',
+        extendedDescription: 'Felix joined Blackbird UAV in 2021 and is now Vice-President. Studying civil engineering, he introduced project management systems and led the team’s first custom vehicle project. He plans to stay with Blackbird until graduation to ensure a strong future for the team.',
         link: 'https://www.linkedin.com/in/felixchenier',
       },
       {
@@ -426,7 +426,7 @@ const teamData = {
         left: '2024',
         image: '/images/TeamHeadshots/DJVanNice.JPG',
         description: 'DJ designs, CADs, and manufactures parts for the UAV.',
-        extendedDescription: 'DJ is a second-year mechanical engineering student, who joined Blackbird UAV at the beginning of his first year in 2022. DJ had some independent quadcopter building experience as a hobbyist prior to joining and used this knowledge to install system electronics and hardware for the winning aircraft of the 2023 AEAC competition. This year DJ has worked to design, CAD, and manufacture all parts necessary for the cabin and fuselage for the 2024 competition vehicle, the team’s first fully custom UAV.',
+        extendedDescription: 'DJ, a second-year mechanical engineering student, joined Blackbird UAV in 2022. With prior quadcopter experience, he installed electronics for the 2023 winning aircraft. Now, he is leading the design and manufacturing of the cabin and fuselage for the team’s first fully custom UAV.',
         link: 'https://www.linkedin.com/in/djvannice',
       },
       {
@@ -462,7 +462,7 @@ const teamData = {
         left: '2024',
         image: '/images/TeamHeadshots/KarlKurniawan.JPG',
         description: 'Karl is the leading manufacturing manager.',
-        extendedDescription: 'Karl is a final year Aerospace Engineering student specializing in aerodynamics and gas turbine design. He supported Blackbird as the leading manufacturing manager and is heavily involved in structural design of the aircraft wing structure. He employed his previous experience from other clubs and internship as a fleet maintenance engineer and organized Blackbird’s manufacturing process, drawings, machining, and composites layup.',
+        extendedDescription: 'Karl, a final-year aerospace engineering student, specializes in aerodynamics and gas turbines. As manufacturing lead, he streamlined production, machining, and composites layup while contributing to wing structure design.',
         link: 'https://www.linkedin.com/in/karlkurniawan',
       },
       {
@@ -486,7 +486,7 @@ const teamData = {
         left: '2024',
         image: '/images/TeamHeadshots/NickMucci.JPG',
         description: 'Nick focuses on the design and modeling of the aircraft.',
-        extendedDescription: 'Nick is a 6th year Mechanical Engineering student, pursing a MASc degree in Applied Dynamics at Carleton. He joined BBUAV in 2024, bringing to the team professional experience in the drone field from industry and CAD and mechanical design experience. Originally brought on to focus on the design and modelling of the aircrafts main fuselage structure and wing attachment points, the scope of his contributions expanded to include the composite manufacturing of the wing surfaces, 3D-Printing of both cosmetic and structural parts, and the finalization of the aircrafts main power distribution system.',
+        extendedDescription: 'Nick, a 6th-year mechanical engineering MASc student, joined BBUAV in 2024. With industry experience in drones, he contributed to fuselage design, composites, 3D printing, and power distribution.',
         link: 'https://www.linkedin.com/in/nickmucci',
       },
       {
@@ -498,7 +498,7 @@ const teamData = {
         left: '2024',
         image: '/images/TeamHeadshots/RyanWhalen.JPG',
         description: 'Ryan contributes to the manufacturing of Apogee.',
-        extendedDescription: 'Ryan is a third year aerospace engineering student specializing in aerodynamics, propulsion and vehicle performance. He joined BBUAV at the beginning of 2024 and has contributed to the manufacturing of Apogee, BBUAs 2024 competition vehicle. He has worked with the manufacturing team to create engineering drawings, design parts to aid in structural stability, and manufacture the wings and tail of Apogee.',
+        extendedDescription: 'Ryan, a third-year aerospace engineering student, joined BBUAV in 2024. Specializing in aerodynamics and propulsion, he helped design, manufacture, and reinforce Apogee’s wings and tail.',
         link: 'https://www.linkedin.com/in/ryanwhalen',
       },
       {
