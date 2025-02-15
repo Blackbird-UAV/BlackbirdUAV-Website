@@ -66,7 +66,7 @@ const MeetTeam = () => {
         <meta name="description" content="Meet the Team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header imagePath="/images/team.jpg" headerText={teamTitle} />
+      <Header imagePath="/images/team2.jpg" headerText={teamTitle} />
       <div className={styles.container}>
         {/* <h1 className={styles.title}>{teamTitle}</h1> */}
         <div className={styles.headerDescTitle}>

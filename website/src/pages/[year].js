@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import teamData from '../data/teamData';
 import { Text } from '@mantine/core';
 import styles from '../styles/Team.module.css';
@@ -84,22 +84,13 @@ const MeetTeam = () => {
     );
   }
 
-  // Sort the Executives array to ensure the executive with id: 1 is always first
-  if (team.Executives) {
-    team.Executives.sort((a, b) => {
-      if (a.id === 1) return 1;
-      if (b.id === 1) return -1;
-      return 0;
-    });
-  }
-
   return (
     <>
       <Header
-        imagePath="/images/team_header.jpg"
+        imagePath="/images/team2.jpg"
         headerText="Our Team"
         initialOffset={200}
-        className={styles.teamHeader} // Changed from teamsPageHeader
+        className={styles.teamHeader}
       />
       <div className={styles.container}>
         <h1 className={styles.title}>{teamTitle}</h1>

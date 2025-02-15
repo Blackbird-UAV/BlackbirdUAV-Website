@@ -498,6 +498,7 @@
   background-color: #e94e77;
 }
 
+
 .administrative {
   background-color: #f6b93b;
 }
@@ -630,5 +631,144 @@
 
   .teamsPageHeader h1 {
     font-size: 2.5rem !important;
+  }
+}
+
+.searchBar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #333; /* Dark background for search bar */
+  color: #fff; /* White text for search bar */
+}
+
+.searchBar::placeholder {
+  color: #bbb; /* Lighter color for placeholder text */
+}
+
+.alumniList {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alumniItem {
+  padding: 10px;
+  border: 1px solid #444; /* Darker border */
+  border-radius: 4px;
+  background-color: #222; /* Dark background for alumni items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alumniInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.alumniName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff; /* White text */
+}
+
+.alumniDates {
+  font-size: 0.9rem;
+  color: #aaa; /* Darker gray text */
+  text-align: right;
+}
+
+.roleTags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.roleTag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border-radius: 50px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.roleTag.president {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.roleTag.executive {
+  background-color: #ffd700;
+  color: black;
+}
+
+.roleTag.manager {
+  background-color: #ffd700;
+  color: black;
+}
+
+.roleTag.design {
+  background-color: #30b463;
+  color: white;
+}
+
+.roleTag.manufacturing {
+  background-color: #e01d19;
+  color: white;
+}
+
+.roleTag.systems {
+  background-color: #e94e77;
+  color: white;
+}
+
+.roleTag.administrative {
+  background-color: #f6b93b;
+  color: black;
+}
+
+.roleTag.website {
+  background-color: #007bff;
+  color: white;
+}
+
+.alumniContainer {
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  padding: 20px;
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+}
+
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .alumniItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alumniDates {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .roleTags {
+    justify-content: flex-start;
   }
 }
