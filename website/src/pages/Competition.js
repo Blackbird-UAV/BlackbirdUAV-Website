@@ -26,10 +26,10 @@ const Competition = () => {
               contentStyle={{ background: '#333', color: '#fff' }}
               contentArrowStyle={{ borderRight: '7px solid  #333' }}
             >
-              <h2 className={styles.yearTitle}>{year}</h2>
               {years[year].image && (
                 <img src={years[year].image} alt={`${year} Team`} className={styles.teamImage} />
               )}
+              <div className={styles.yearTitle}>{year}</div>
               <div className={styles.yearDescription} dangerouslySetInnerHTML={{ __html: years[year].description }} />
               <div className={styles.membersList}>
                 {years[year].members.map((member, index) => (
