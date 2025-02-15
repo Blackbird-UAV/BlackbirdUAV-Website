@@ -91,14 +91,15 @@
 
 .name {
   font-size: 8rem;
-  font-weight: bold;
+  font-weight: 700;
   margin: 0;
   color: #000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
   font-size: 3rem;
-  color: #444444;
+  color: #353535;
   margin-bottom: 8%;
 }
 
@@ -125,22 +126,24 @@
   margin-right: 5%;
   font-size: 1.5rem;
   color: #ffffff;
-  background-color: #000;
+  background: linear-gradient(135deg, #ff417a, #f34741);
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
   align-self: flex-start;
   text-align: center;
   font-family: "Fira Sans", sans-serif;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
   z-index: 3;
 }
 
 .sponsorButton:hover {
-  background-color: #c26161;
-  transform: scale(1.1);
-  transition: transform 0.3s;
+  background-color: #e91c23;
+  transform: scale(1.05);
+  box-shadow: 0 0px 15px rgba(233, 28, 35, 0.5);
+  filter: brightness(1.2);
 }
 
 .aboutContainer {

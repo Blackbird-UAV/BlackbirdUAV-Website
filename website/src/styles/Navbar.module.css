@@ -87,7 +87,7 @@
 }
 
 .sponsorButton {
-  background-color: #e91c23;
+  background: linear-gradient(135deg, #ff417a, #f34741);
   padding: 10px 8px;
   border-radius: 50px;
   margin-left: 4px;
@@ -97,7 +97,7 @@
 .sponsorButton:hover {
   background-color: #e91c23;
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(233, 28, 35, 0.5);
+  box-shadow: 0 0px 15px rgba(233, 28, 35, 0.5);
   filter: brightness(1.2);
 }
 
@@ -214,7 +214,7 @@
   }
 
   .hamburger {
-    font-size:90px;
+    font-size: 90px;
     display: flex;
     position: absolute;
     top: 1.4rem;
