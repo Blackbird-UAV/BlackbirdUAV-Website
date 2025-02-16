@@ -7,19 +7,12 @@
 - [Edwin Ngui]
 - [Daniel Lu]
 - [Marc Vidal]
-- [Jonah P]
-- [Teddy]
+- [Jonah Pasquantonio]
+- [Teddy Kurita]
 
 ## Overview
 
-This code represents the 2024 version of the organization website geared towards companies and sponsors.
-
-## Technologies Used
-
-- **React**
-- **Next.js**
-- **CSS**
-- **JavaScript**
+This code represents the 2024/2025 version of the organization website geared towards companies and sponsors.
 
 ## How to Run Locally
 
@@ -44,4 +37,5 @@ The website should now be running locally at `http://localhost:3000`.
 
 ## Deployment
 
-This project is not currently deployed live.
+- Project Development is deployed to https://dev.blackbirduav.ca/
+- Live site is deployed to https://blackbirduav.ca/
