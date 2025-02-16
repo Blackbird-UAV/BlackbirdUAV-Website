@@ -14,12 +14,14 @@ const slides = [
   {
     name: "Apogee",
     image: "/images/Vehicles/Apogee_1.jpg",
-    description: "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
+    description:
+      "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
   },
   {
     name: "Zenith",
     image: "/images/Vehicles/Zenith_1.jpg",
-    description: "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
+    description:
+      "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
   },
 ];
 
@@ -65,6 +67,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const [isSceneLoaded, setIsSceneLoaded] = useState(false); // New state for scene loading
 
   const handleScroll = useCallback(() => {
@@ -130,6 +133,7 @@ export default function Home() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 600);
+      setIsTablet(window.innerWidth <= 1050);
     };
 
     window.addEventListener("resize", handleResize);
@@ -149,11 +153,10 @@ export default function Home() {
       const timer = setTimeout(() => {
         setIsFadingOut(true); // Start fading out
       }, 500); // Small delay to let the scene load
-  
+
       return () => clearTimeout(timer);
     }
   }, [isSceneLoaded]);
-  
 
   return (
     <div>
@@ -179,7 +182,11 @@ export default function Home() {
               </div>
             )}
             {/* Add fadeOut class when loader is fading */}
-            <div className={`${styles.loaderContainer} ${isFadingOut ? styles.fadeOut : ''}`}>
+            <div
+              className={`${styles.loaderContainer} ${
+                isFadingOut ? styles.fadeOut : ""
+              }`}
+            >
               <div className={styles.loaderContent}>
                 <Image src={BBUAVLoaderLogo} className={styles.logo} />
                 <PuffLoader color="#ef1a2e" size={100} />
@@ -208,7 +215,7 @@ export default function Home() {
               >
                 Fly Around and Find Out
               </motion.h2>
-              {isMobile && (
+              {isTablet && (
                 <div className={styles.mobileButtonSection}>
                   <Link href="/sponsor" className={styles.sponsorButton}>
                     Sponsor Us
@@ -216,7 +223,7 @@ export default function Home() {
                 </div>
               )}
             </div>
-            {!isMobile && (
+            {!isTablet && (
               <div className={styles.buttonSection}>
                 <Link href="/sponsor" className={styles.sponsorButton}>
                   Sponsor Us
@@ -263,11 +270,16 @@ export default function Home() {
           <div className={styles.aboutText}>
             <h1 className={styles.aboutUsText}>About Us</h1>
             <p>
-              We are Blackbird UAV (BBUAV), Carleton University students, a student design team, working to create uncrewed aerial vehicles (UAVs) to compete at the Aerial Evolution Association of Canada Student Competition (AEAC SC).
+              We are Blackbird UAV (BBUAV), Carleton University students, a
+              student design team, working to create uncrewed aerial vehicles
+              (UAVs) to compete at the Aerial Evolution Association of Canada
+              Student Competition (AEAC SC).
             </p>
             <p>
-              BBUAV was established in 2009 as an extra-curricular
-              program for this competition but evolved to offer experience for students from varied studies and background in real-world design projects, operations, administration, and teamwork.
+              BBUAV was established in 2009 as an extra-curricular program for
+              this competition but evolved to offer experience for students from
+              varied studies and background in real-world design projects,
+              operations, administration, and teamwork.
             </p>
           </div>
         </div>
@@ -292,8 +304,9 @@ export default function Home() {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`${styles.slide} ${index === currentIndex ? styles.active : ""
-                      }`}
+                    className={`${styles.slide} ${
+                      index === currentIndex ? styles.active : ""
+                    }`}
                   >
                     <Image
                       src={slide.image}
@@ -323,8 +336,9 @@ export default function Home() {
             {slides.map((_, index) => (
               <span
                 key={index}
-                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ""
-                  }`}
+                className={`${styles.dot} ${
+                  index === currentIndex ? styles.activeDot : ""
+                }`}
                 onClick={() => handleDotClick(index)}
               ></span>
             ))}

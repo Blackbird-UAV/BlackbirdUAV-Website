@@ -8,6 +8,7 @@
   border: 1px solid #e9ecef;
   box-shadow: 0 1px 1px rgba(0.1, 0.1, 0.1, 0.1);
   padding: 4px 6px;
+  transform: translateX(-40%);
 }
 
 .dropdownItem {

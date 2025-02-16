@@ -101,6 +101,84 @@
   background: linear-gradient(to bottom, #131313ad -10rem, #2b2b2b);
 }
 
+.searchBar {
+  width: 90%;
+  max-width: 500px;
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+  background-color: #27272a;
+  transition: box-shadow 0.3s ease, border-radius 0.3s ease;
+}
+
+.searchBar:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.searchBar:focus-within {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.searchBar p {
+  color: #e2e2e2;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.searchBar input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchBar input::placeholder {
+  color: #999;
+}
+
+.searchBar input:focus {
+  border-color: #e91c23;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Results */
+.searchResults {
+  width: 100%;
+  max-width: 600px;
+  padding: 0.5rem;
+  background-color: #27272a;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.searchResultItem {
+  padding: 0.5rem;
+  background-color: #27272a;
+  border-radius: 8px;
+  color: #e2e2e2;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.searchResultItem:hover {
+  background-color: #ffffff25;
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.searchResultItem:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
 .title {
   font-size: 4rem;
   font-weight: bold;
@@ -113,11 +191,11 @@
 }
 
 .headerDesc {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #f0f0f0;
   line-height: 1.6;
   max-width: 50%;
-  margin: 0 auto 3rem;
+  margin: 0 auto 0rem;
   text-align: center;
 }
 
@@ -138,6 +216,7 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  margin-top: 20px;
   margin-bottom: 40px;
   flex-direction: column;
 }
@@ -310,6 +389,15 @@
   margin-bottom: -2%;
 }
 
+/* Adjust font size for longer names */
+.cardBack .lastName.medium {
+  font-size: 1.9em;
+}
+
+.cardBack .lastName.small {
+  font-size: 1.6em;
+}
+
 .cardBack .extendedDescription {
   font-size: 0.9rem;
   color: #555;
@@ -320,7 +408,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
   height: 100%;
 }
@@ -437,6 +525,15 @@
   color: #ffffff;
   z-index: 2;
   margin-left: -1%;
+}
+
+/* Adjust font size for longer names */
+.cardFront .lastName.medium {
+  font-size: 1.9em;
+}
+
+.cardFront .lastName.small {
+  font-size: 1.6em;
 }
 
 .cardFront .description {
@@ -613,4 +710,464 @@
   .teamsPageHeader h1 {
     font-size: 2.5rem !important;
   }
+}
+
+.searchBar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #333; /* Dark background for search bar */
+  color: #fff; /* White text for search bar */
+}
+
+.searchBar::placeholder {
+  color: #bbb; /* Lighter color for placeholder text */
+}
+
+.alumniList {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alumniItem {
+  padding: 10px;
+  border: 1px solid #444; /* Darker border */
+  border-radius: 4px;
+  background-color: #222; /* Dark background for alumni items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alumniInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.alumniName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff; /* White text */
+}
+
+.alumniDates {
+  font-size: 0.9rem;
+  color: #aaa; /* Darker gray text */
+  text-align: right;
+}
+
+.roleTags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.roleTag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border-radius: 50px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.roleTag.president {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.roleTag.executive {
+  background-color: #ffd700;
+  color: black;
+}
+
+.roleTag.manager {
+  background-color: #ffd700;
+  color: black;
+}
+
+.roleTag.design {
+  background-color: #30b463;
+  color: white;
+}
+
+.roleTag.manufacturing {
+  background-color: #e01d19;
+  color: white;
+}
+
+.roleTag.systems {
+  background-color: #e94e77;
+  color: white;
+}
+
+.roleTag.administrative {
+  background-color: #f6b93b;
+  color: black;
+}
+
+.roleTag.website {
+  background-color: #007bff;
+  color: white;
+}
+
+.alumniContainer {
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  padding: 20px;
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+}
+
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .alumniItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alumniDates {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .roleTags {
+    justify-content: flex-start;
+  }
+}
+
+.yearSection {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.yearTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.teamImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.yearDescription {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.yearDescription p {
+  margin: 10px 0;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberItem {
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memberRole {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.yearContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.teamImageLeft {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.teamImageRight {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.yearDescription a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .yearContent {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .teamImageLeft {
+    margin-right: 20px;
+  }
+
+  .teamImageRight {
+    margin-left: 20px;
+  }
+
+  .yearDescription {
+    text-align: left;
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #333;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timelineItem {
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.timelineItem::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  border: 4px solid #333;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timelineItem.left::after {
+  right: -12.5px;
+}
+
+.timelineItem.right::after {
+  left: -12.5px;
+}
+
+.timelineItem.left {
+  left: 0;
+}
+
+.timelineItem.right {
+  left: 50%;
+}
+
+.timelineContent {
+  padding: 20px 30px;
+  background-color: #333;
+  position: relative;
+  border-radius: 6px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.timelineContent img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.timelineContent h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.timelineContent p {
+  margin: 10px 0;
+}
+
+.timelineContent a {
+  color: #1e90ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.yearLabel {
+  position: absolute;
+  top: 15px;
+  font-size: 3rem; /* Make the date larger */
+  font-weight: bold;
+  color: #fff; /* Make the date white */
+}
+
+.timelineItem.left .yearLabel {
+  right: -150px;
+}
+
+.timelineItem.right .yearLabel {
+  left: -150px;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberItem {
+  background-color: #444;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memberRole {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+@media (max-width: 768px) {
+  .timelineItem {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timelineItem.left::after,
+  .timelineItem.right::after {
+    left: 60px;
+  }
+
+  .timelineItem.right {
+    left: 0%;
+  }
+
+  .yearLabel {
+    font-size: 2rem;
+  }
+
+  .timelineItem.left .yearLabel {
+    right: -60px;
+  }
+
+  .timelineItem.right .yearLabel {
+    left: -60px;
+  }
+}
+
+.yearTitle {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color:white;
+}
+
+.teamImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.yearDescription {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.yearDescription p {
+  margin: 10px 0;
+}
+
+.yearDescription a {
+  color: #1e90ff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberItem {
+  background-color: #444;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memberName {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.memberRole {
+  font-size: 0.9rem;
+  color: #aaa;
 }

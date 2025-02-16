@@ -12,13 +12,24 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleDropdownHover = (isEntering) => {
-    setIsDropdownOpen(isEntering);
-    if (isEntering) {
-      setShowNavbar(true);
-    } else if (window.scrollY < 300 && !isEntering) {
-      setShowNavbar(false);
+    if (!isMobile) {
+      setIsDropdownOpen(isEntering);
     }
   };
 
@@ -60,6 +71,12 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const handleDropdownClick = () => {
+    if (isMobile) {
+      setIsDropdownOpen(!isDropdownOpen);
+    }
+  };
+
   const navbarClass =
     router.pathname === "/"
       ? `${styles.navbar} ${showNavbar ? styles.show : ""} ${
@@ -70,8 +87,9 @@ export default function Navbar() {
   const teamLinks = [
     { link: "/MeetTheTeam/2024-2025", label: "Current Team" }, 
     { link: "/MeetTheTeam/2023-2024", label: "2023-2024" }, 
-    { link: "/MeetTheTeam/Competition", label: "Competition Team" },
-    { link: "/MeetTheTeam/Alumni", label: "Alumni" }];
+    { link: "/Competition", label: "Competition" },
+    { link: "/Alumni", label: "Alumni" }
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -145,45 +163,40 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <Menu trigger="hover" transitionProps={{ exitDuration: 0 }}>
-          <Menu.Target>
+        <div
+          className={`${styles.linkWrapper} ${
+            router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
+          }`}
+          style={{ position: "relative" }}
+          onClick={handleDropdownClick}
+          onMouseEnter={() => handleDropdownHover(true)}
+          onMouseLeave={() => handleDropdownHover(false)}
+        >
+          <Center className={styles.link}>
+            <span>
+              Team
+              <IconChevronDown
+                size="0.9rem"
+                stroke={1.5}
+                color="#f9fafb"
+                className={styles.chevron}
+              />
+            </span>
+          </Center>
+          {isDropdownOpen && (
             <div
-              className={`${styles.linkWrapper} ${
-                router.pathname.startsWith("/meetTeam") ? styles.activeLink : ""
-              }`}
-              style={{ position: "relative" }}
+              className={`${dropdownStyles.dropdownMenu} ${isDropdownOpen ? dropdownStyles.show : ""}`}
             >
-              <Center className={styles.link}>
-                <span>
-                  Team
-                  <IconChevronDown
-                    size="0.9rem"
-                    stroke={1.5}
-                    color="#f9fafb"
-                    className={styles.chevron}
-                  />
-                </span>
-              </Center>
+              {teamLinks.map((item) => (
+                <Link href={item.link} key={item.link} onClick={handleLinkClick}>
+                  <div className={dropdownStyles.dropdownItem}>
+                    {item.label}
+                  </div>
+                </Link>
+              ))}
             </div>
-          </Menu.Target>
-
-          <Menu.Dropdown
-            className={dropdownStyles.dropdownMenu}
-            onMouseEnter={() => handleDropdownHover(true)}
-            onMouseLeave={() => handleDropdownHover(false)}
-          >
-            {teamLinks.map((item) => (
-              <Link href={item.link} key={item.link} onClick={handleLinkClick}>
-                <Menu.Item
-                  key={item.link}
-                  className={dropdownStyles.dropdownItem}
-                >
-                  {item.label}
-                </Menu.Item>
-              </Link>
-            ))}
-          </Menu.Dropdown>
-        </Menu>
+          )}
+        </div>
 
         <div
           className={`${styles.linkWrapper} ${

@@ -114,6 +114,42 @@ const teamData = {
       },
       {
         id: 10,
+        firstName: 'Edwin',
+        lastName: 'Ngui',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Edwin.JPG',
+        description: 'Edwin leads the development of the Blackbird UAV Website',
+        extendedDescription: 'Edwin is part of the website sub-team, leading the website team to create the customer-facing website to attract sponsors and potential members.',
+        link: 'https://www.linkedin.com/in/edwin-ngui/'
+      },
+      {
+        id: 11,
+        firstName: 'Marc',
+        lastName: 'Vidal',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Marc.JPG',
+        description: 'Marc develops components for the Blackbird UAV website.',
+        extendedDescription: 'Marc is part of the website sub-team, developing key components for the functionality of the website.',
+        link: 'https://www.linkedin.com/in/marc-vidal-979148278/'
+      },
+      {
+        id: 12,
+        firstName: 'Daniel',
+        lastName: 'Lu',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Daniel.JPG',
+        description: 'Daniel develops components for the Blackbird UAV website.',
+        extendedDescription: 'Daniel is part of the website sub-team, developing key components for the functionality of the website.',
+        link: 'https://www.linkedin.com/in/daniel-lu-9575a0176/'
+      },
+      {
+        id: 13,
         firstName: 'Teddy',
         lastName: 'Kurita',
         role: 'Systems / Website',
@@ -123,12 +159,24 @@ const teamData = {
         description: 'Teddy works on the website and graphic design for Blackbird.',
         extendedDescription: 'Teddy is part of the website sub-team and assists by working on the graphic design. He also provides graphic design for different aspects within Blackbird UAV where it is needed.',
         link: 'http://www.linkedin.com/in/edwardkurita'
-      }
+      },
+      {
+        id: 14,
+        firstName: 'Jonah',
+        lastName: 'Pasquantonio',
+        role: 'Systems / Website',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Jonah.JPG',
+        description: 'Jonah develops components for the Blackbird UAV website.',
+        extendedDescription: 'Jonah is part of the website sub-team, developing key components for the functionality of the website.',
+        link: 'https://www.linkedin.com/'
+      },
 
     ],
     administrative: [
       {
-        id: 11,
+        id: 15,
         firstName: 'Lucas',
         lastName: 'Klemm',
         role: 'Administrative / Manufacturing',
@@ -141,7 +189,7 @@ const teamData = {
       },
 
       {
-        id: 12,
+        id: 16,
         firstName: 'Peter',
         lastName: 'Liang',
         role: 'Administrative / Structures',
@@ -154,7 +202,7 @@ const teamData = {
       },
 
       {
-        id: 13,
+        id: 17,
         firstName: 'William',
         lastName: 'Sison',
         role: 'Administrative',
@@ -166,7 +214,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/williamsison/'
       },
       {
-        id: 14,
+        id: 18,
         firstName: 'Nassim',
         lastName: 'Gaboune',
         role: 'Administrative',
@@ -177,13 +225,23 @@ const teamData = {
         extendedDescription: 'Nassim assists with KEFC reports and phase 1 documentation. He has contributed to sponsorship initiatives and provides financial expertise to the team.',
         link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/'
       },
-
-      
+      {
+        id: 19,
+        firstName: 'Nassim',
+        lastName: 'Gaboune',
+        role: 'Administrative',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Nassim.JPG',
+        description: 'Joined BBUAV in 2022. Bachelor of Commerce, Accounting.',
+        extendedDescription: 'Nassim assists with KEFC reports and phase 1 documentation. He has contributed to sponsorship initiatives and provides financial expertise to the team.',
+        link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/'
+      },
  
     ],
     manufacturing: [
       {
-        id: 15,
+        id: 20,
         firstName: 'Karl',
         lastName: 'Kurniawan',
         role: 'Manufacturing / Structures',
@@ -195,7 +253,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca',
       },
       {
-        id: 16,
+        id: 21,
         firstName: 'Timothy',
         lastName: 'Hildebrand',
         role: 'Manufacturing / Structures',
@@ -207,7 +265,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/timothy-hildebrand-ba6199341',
       },
       {
-        id: 17,
+        id: 22,
         firstName: 'Emma',
         lastName: 'Ellsworth',
         role: 'Manufacturing / Structures',
@@ -219,7 +277,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/emma-ellsworth-a30221289/',
       },
       {
-        id: 18,
+        id: 23,
         firstName: 'Jasmine',
         lastName: 'Hartwig',
         role: 'Manufacturing / Structures / Administrative',
@@ -235,7 +293,7 @@ const teamData = {
     ],
     design: [
       {
-        id: 19,
+        id: 24,
         firstName: 'Shamaita',
         lastName: 'Shabnam',
         role: 'Design / Structures',
@@ -247,7 +305,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/shamaita-shabnam/',
       },
       {
-        id: 20,
+        id: 25,
         firstName: 'Owen',
         lastName: 'McKechnie',
         role: 'Design / Manufacturing',
@@ -259,7 +317,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/owen-mckechnie-97a526293',
       },
       {
-        id: 21,
+        id: 26,
         firstName: 'Samuel',
         lastName: 'Howell',
         role: 'Design',
@@ -271,7 +329,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/samueldavidhowell/',
       },
       {
-        id: 22,
+        id: 27,
         firstName: 'Cole',
         lastName: 'Gladders',
         role: 'Design',
@@ -283,7 +341,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/cole-gladders-6525541a8',
       },
       {
-        id: 23,
+        id: 28,
         firstName: 'James',
         lastName: 'Houghton',
         role: 'Design',
@@ -295,7 +353,7 @@ const teamData = {
         link: 'http://linkedin.com/in/james-houghton-1886bb2a0',
       },
       {
-        id: 24,
+        id: 29,
         firstName: 'Charles-Xavier',
         lastName: 'Mino',
         role: 'Design / Operations',
@@ -306,7 +364,7 @@ const teamData = {
         extendedDescription: 'CX assists in designing placements for the battery, ECM, Pixhawk, and motor on Goliath, ensures Mission Planner compatibility, and serves as a secondary pilot.',
       },
       {
-        id: 25,
+        id: 30,
         firstName: 'Ryan',
         lastName: 'Wong',
         role: 'Design',
@@ -322,20 +380,347 @@ const teamData = {
   },
   '2023-2024': {
     description: 'The 2023-2024 team achieved significant milestones, including winning the Innovation Award and competing in the national competition. They worked on advanced projects such as a quadcopter and a fixed-wing plane, showcasing their expertise and dedication.',
-    Competition: [
-      // Add members for the 2023-2024 team here
+    'Legacy': [
+      {
+        id: 1,
+        firstName: 'PJ',
+        lastName: 'Parisien',
+        role: 'President / Communication Engineering',
+        joined: '2019',
+        left: '2024',
+        image: '/images/TeamHeadshots/PJParisien.JPG',
+        description: 'PJ is the current president of Blackbird UAV.',
+        extendedDescription: 'PJ joined Blackbird UAV in 2019 as a first-year student in communication engineering. As president, he rebuilt the club with Jed, recruiting new members and leading the team to a first-place victory in 2023. After his final competition in 2024, he plans to stay involved as an alum, guiding the next generation.',
+        link: 'https://www.linkedin.com/in/pjparisien',
+      },
+      { 
+        id: 2,
+        firstName: 'Félix-Antoine',
+        lastName: 'Chénier',
+        role: 'Vice-President / Civil Engineering',
+        joined: '2021',
+        left: '2024',
+        image: '/images/TeamHeadshots/FelixChenier.JPG',
+        description: 'Felix is the Vice-President of Blackbird UAV.',
+        extendedDescription: 'Felix joined Blackbird UAV in 2021 and is now Vice-President. Studying civil engineering, he introduced project management systems and led the team’s first custom vehicle project. He plans to stay with Blackbird until graduation to ensure a strong future for the team.',
+        link: 'https://www.linkedin.com/in/felixchenier',
+      },
+      {
+        id: 3,
+        firstName: 'Dylan',
+        lastName: 'Tingley',
+        role: 'Propulsion / Vehicle Performance',
+        joined: '2020',
+        left: '2024',
+        image: '/images/TeamHeadshots/DylanTingley.JPG',
+        description: 'Dylan handles sizing and selecting the propulsion system.',
+        extendedDescription: 'Dylan is a 4th year aerospace engineering student (Stream A Propulsion, Vehicle Performance and Aerodynamics). He handles sizing and selecting the propulsion system, as well as designing the booms and motor mounts. He also handles manufacturing the components he designed.',
+        link: 'https://www.linkedin.com/in/dylantingley',
+      },
+      {
+        id: 4,
+        firstName: 'DJ',
+        lastName: 'Van Nice',
+        role: 'Mechanical Engineering / Systems',
+        joined: '2022',
+        left: '2024',
+        image: '/images/TeamHeadshots/DJVanNice.JPG',
+        description: 'DJ designs, CADs, and manufactures parts for the UAV.',
+        extendedDescription: 'DJ, a second-year mechanical engineering student, joined Blackbird UAV in 2022. With prior quadcopter experience, he installed electronics for the 2023 winning aircraft. Now, he is leading the design and manufacturing of the cabin and fuselage for the team’s first fully custom UAV.',
+        link: 'https://www.linkedin.com/in/djvannice',
+      },
+      {
+        id: 5,
+        firstName: 'Jacob',
+        lastName: 'Lebrasseur',
+        role: 'Structural Design',
+        joined: '2021',
+        left: '2024',
+        image: '/images/TeamHeadshots/JacobLebrasseur.JPG',
+        description: 'Jacob helps with the tail assembly and related components.',
+        extendedDescription: 'Jacob is a 3rd year student in aerospace engineering. He is involved in structural design, mainly helping with the tail assembly and related components. He is also in charge of designing a crate to ensure safe and easy transportation of the UAV.',
+        link: 'https://www.linkedin.com/in/jacoblebrasseur',
+      },
+      {
+        id: 6,
+        firstName: 'Meyiwa',
+        lastName: 'Temile',
+        role: 'Software Development',
+        joined: '2020',
+        left: '2024',
+        image: '/images/TeamHeadshots/MeyiwaTemile.JPG',
+        description: 'Meyiwa develops autonomous solutions for UAV navigation.',
+        extendedDescription: 'Meyiwa, a fourth-year Software Engineering major contributes his ability in software development towards developing autonomous solutions for UAV navigation. He closely collaborates with team members to further the efficiency and functionality of the club’s software projects.',
+        link: 'https://www.linkedin.com/in/meyiwatemile',
+      },
+      {
+        id: 7,
+        firstName: 'Karl',
+        lastName: 'Kurniawan',
+        role: 'Manufacturing Manager / Structural Design',
+        joined: '2020',
+        left: '2024',
+        image: '/images/TeamHeadshots/KarlKurniawan.JPG',
+        description: 'Karl is the leading manufacturing manager.',
+        extendedDescription: 'Karl, a final-year aerospace engineering student, specializes in aerodynamics and gas turbines. As manufacturing lead, he streamlined production, machining, and composites layup while contributing to wing structure design.',
+        link: 'https://www.linkedin.com/in/karlkurniawan',
+      },
+      {
+        id: 8,
+        firstName: 'Jedidiah',
+        lastName: 'Nevo',
+        role: 'Manufacturing / Design',
+        joined: '2020',
+        left: '2024',
+        image: '/images/TeamHeadshots/JedidiahNevo.JPG',
+        description: 'Jedidiah focuses on wing-related projects and aircraft stability.',
+        extendedDescription: 'Jedidiah Nevo, a Master’s Student in Mechanical Engineering specializing in Aerospace (Stream A), is part of Blackbird’s Manufacturing and Design team, with a focus on wing-related projects and aircraft stability, including PID tuning. Joining in September 2020, he also serves on the executive team, contributing to decision-making processes.',
+        link: 'https://www.linkedin.com/in/jedidiahnevo',
+      },
+      {
+        id: 9,
+        firstName: 'Nick',
+        lastName: 'Mucci',
+        role: 'Mechanical Engineering / Applied Dynamics',
+        joined: '2024',
+        left: '2024',
+        image: '/images/TeamHeadshots/NickMucci.JPG',
+        description: 'Nick focuses on the design and modeling of the aircraft.',
+        extendedDescription: 'Nick, a 6th-year mechanical engineering MASc student, joined BBUAV in 2024. With industry experience in drones, he contributed to fuselage design, composites, 3D printing, and power distribution.',
+        link: 'https://www.linkedin.com/in/nickmucci',
+      },
+      {
+        id: 10,
+        firstName: 'Ryan',
+        lastName: 'Whalen',
+        role: 'Aerospace Engineering / Manufacturing',
+        joined: '2024',
+        left: '2024',
+        image: '/images/TeamHeadshots/RyanWhalen.JPG',
+        description: 'Ryan contributes to the manufacturing of Apogee.',
+        extendedDescription: 'Ryan, a third-year aerospace engineering student, joined BBUAV in 2024. Specializing in aerodynamics and propulsion, he helped design, manufacture, and reinforce Apogee’s wings and tail.',
+        link: 'https://www.linkedin.com/in/ryanwhalen',
+      },
+      {
+        id: 11,
+        firstName: 'Lidya',
+        lastName: 'Sobhano',
+        role: 'Graphics / Design',
+        joined: '2024',
+        left: '2024',
+        image: '/images/TeamHeadshots/LidyaSobhano.JPG',
+        description: 'Lidya works on graphics and design for the club.',
+        extendedDescription: 'Lidya is her last year of Aerospace Engineering Stream B. Currently she is working on graphics and design for the club.',
+        link: 'https://www.linkedin.com/in/lidyasobhano',
+      },
+      {
+        id: 12,
+        firstName: 'Duaa',
+        lastName: 'J. Israr',
+        role: 'Aerospace Engineering / Social Media',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/DuaaJIsrar.JPG',
+        description: 'Duaa coordinates the club’s social media.',
+        extendedDescription: 'Duaa is a 2nd-year student studying Aerospace Engineering. She is in stream B, focusing on Aerospace Structures, Systems, and Vehicle Design. Currently, she is coordinating the club’s social media, creating graphics for the website, and working with the manufacturing team to produce CAD components for the competition vehicle.',
+        link: 'https://www.linkedin.com/in/duaajisrar',
+      },
+      {
+        id: 13,
+        firstName: 'Jasmine',
+        lastName: 'Hartwig',
+        role: 'Aerospace Engineering / Electronics and Systems',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/JasmineHartwig.JPG',
+        description: 'Jasmine is designing the seats for Apogee.',
+        extendedDescription: 'Jasmine is a 2nd Year student studying Aerospace Engineering with a focus in Electronics and Systems. Currently she is designing the seats for Apogee and working with a few other members to rehabilitate one of the club’s older drones, Archie.',
+        link: 'https://www.linkedin.com/in/jasminehartwig',
+      },
+      {
+        id: 14,
+        firstName: 'Benjamin',
+        lastName: 'Pyun',
+        role: 'Aerospace Engineering / Design',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/BenjaminPyun.JPG',
+        description: 'Benjamin designs and models 3D printed parts for the UAV.',
+        extendedDescription: 'Benjamin is a third year Aerospace Engineering student at Carleton. He is studying in stream A which specializes in aerodynamics, propulsion, and vehicle performance. Currently, Benjamin is working on designing and modeling 3D printed parts that hold important components for the UAV using CAD software.',
+        link: 'https://www.linkedin.com/in/benjaminpyun',
+      },
+      {
+        id: 15,
+        firstName: 'Zachary',
+        lastName: 'Myers',
+        role: 'Aerospace Engineering / Administrative',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/ZacharyMyers.JPG',
+        description: 'Zachary focuses on avionics and electronics.',
+        extendedDescription: 'Zachary is a first year Aerospace Engineering student, focusing on the avionics and electronics stream. He is involved with administrative work including documentation and planning. In addition, he provides support for rehabilitation of past projects and helps with 3D modeling across a range of applications.',
+        link: 'https://www.linkedin.com/in/zacharymyers',
+      },
+      {
+        id: 16,
+        firstName: 'Aidan',
+        lastName: 'Sheridan',
+        role: 'Aerospace Engineering / Design',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/AidanSheridan.JPG',
+        description: 'Aidan designs seats for Apogee and rehabilitates older drones.',
+        extendedDescription: 'Aidan is a 2nd Year Aerospace Engineering student in Stream A which focuses on Aerodynamics, Propulsion and Vehicle Performance. He is working on designing seats for Apogee and is part of a team working to rehabilitate Archie, one of the club’s older drones.',
+        link: 'https://www.linkedin.com/in/aidansheridan',
+      },
+      {
+        id: 17,
+        firstName: 'Nassim',
+        lastName: 'Gaboune',
+        role: 'Administrative / Finance',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/NassimGaboune.JPG',
+        description: 'Nassim focuses on finance and administrative tasks.',
+        extendedDescription: 'Nassim Gaboune is a first-year bachelor of commerce student with a concentration in accounting. His role in Blackbird UAV is as an administrative assistant, with a focus on finance.',
+        link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/',
+      },
+      {
+        id: 18,
+        firstName: 'Emilia',
+        lastName: 'Dashko',
+        role: 'Administrative / Editor',
+        joined: '2023',
+        left: '2024',
+        image: '/images/TeamHeadshots/EmiliaDashko.JPG',
+        description: 'Emilia provides editorial and administrative support.',
+        extendedDescription: 'Emilia Dashko is in the final year of her MA in History. She joined Blackbird in December 2023 as editor and administrator, using her humanities skills to provide the team with an outsider point of view.',
+        link: 'https://www.linkedin.com/in/emiliadashko',
+      },
     ],
   },
   'Competition': {
-    description: 'Add competition team group photo here and just detail the names as a text underneath. Make it sectioned by year (for now make 2 parts)',
-    Competition: [
-      // Add members for the 2023-2024 team here
-    ],
+    description: 'This page lists all the competition teams of Blackbird UAV. Each section represents a different year.',
+    years: {
+      '2024': {
+        description: `
+          <p>First year since COVID that BBUAV produced a vehicle completely from the ground up.</p>
+          <p>Team won the 2nd innovation award in its history.</p>
+          <p>Ground Speed record broken with 156 km/h.</p>
+          <p>Vehicle was still a quadplane, and still controlled over the internet.</p>
+          <p>Location: Alma, Québec.</p>
+          <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADx9pYcBep3DuqdyzH94hYcRvLehjvlYwas">LINK</a></p>
+        `,
+        image: '/images/comp2024.png',
+        members: [
+          { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
+          { firstName: 'Felix', lastName: 'Vice-President' },
+          { firstName: 'Jed', lastName: '' },
+          { firstName: 'Meyiwa', lastName: '' },
+          { firstName: 'DJ', lastName: '' },
+          { firstName: 'Jacob', lastName: '' },
+          { firstName: 'Dylan', lastName: '' },
+          { firstName: 'Emilia', lastName: '' },
+          { firstName: 'Lidya', lastName: '' },
+          { firstName: 'Nick', lastName: 'Mucci' },
+          { firstName: 'Duaa', lastName: '' },
+          { firstName: 'Ryan', lastName: '' },
+          { firstName: 'Jasmine', lastName: '' },
+          { firstName: 'Karl', lastName: 'Kurniawan', role: 'Integral to comp' },
+        ],
+      },
+      '2023': {
+        description: `
+          <p>First year of BBUAV actually participating in the competition since COVID.</p>
+          <p>Team won First Place in Phase 2 for the first time in the club's history.</p>
+          <p>First team to run a vehicle completely over the internet instead of radio control.</p>
+          <p>First team to successfully transition flight modes in any vehicle (vertical flight to horizontal flight and back).</p>
+          <p>Potential ground speed record of 120 km/h.</p>
+          <p>Location: Alma, Québec.</p>
+          <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">LINK</a></p>
+        `,
+        image: '/images/comp2023.png',
+        members: [
+          { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
+          { firstName: 'Jed', lastName: '' },
+          { firstName: 'Meyiwa', lastName: '' },
+          { firstName: 'Imad', lastName: '' },
+          { firstName: 'Felix', lastName: '' },
+          { firstName: 'Ben', lastName: '' },
+          { firstName: 'DJ', lastName: '' },
+          { firstName: 'Jacob', lastName: '' },
+          { firstName: 'Dylan', lastName: '' },
+        ],
+      },
+      '2022': {
+        description: `
+          <p>First year of in-person comp after COVID.</p>
+          <p>Team only observed.</p>
+          <p>Location: Southport, Manitoba.</p>
+        `,
+        image: '', // No image available for 2022
+        members: [
+          { firstName: 'Pier-Jean', lastName: 'Parisien', role: 'Club President' },
+          { firstName: 'Jed', lastName: '' },
+          { firstName: 'Meyiwa', lastName: '' },
+          { firstName: 'Imad', lastName: '' },
+          { firstName: 'Felix', lastName: '' },
+          { firstName: 'Ben', lastName: '' },
+        ],
+      },
+    },
   },
   'Alumni': {
-    description: 'Make this like a searchable database (no fancy pictures or much here. Their name, their role, and the dates they were here. Add a search bar please',
-    Competition: [
-      // Add members for the 2023-2024 team here
+    description: 'This page lists all the alumni of Blackbird UAV. You can search for specific alumni using the search bar below.',
+    members: [
+      {
+        id: 1,
+        firstName: 'Pier-Jean',
+        lastName: 'Parisien',
+        role: 'Executive / President',
+        joined: '2022',
+        left: '2024',
+      },
+      {
+        id: 2,
+        firstName: 'Meyiwa',
+        lastName: '',
+        role: '',
+        joined: '2022',
+        left: '2024',
+      },
+      {
+        id: 3,
+        firstName: 'Imad',
+        lastName: '',
+        role: '',
+        joined: '2022',
+        left: '2023',
+      },
+      {
+        id: 4,
+        firstName: 'Dylan',
+        lastName: '',
+        role: '',
+        joined: '2023',
+        left: '2024',
+      },
+      {
+        id: 5,
+        firstName: 'Lidya',
+        lastName: '',
+        role: '',
+        joined: '2024',
+        left: '2024',
+      },
+      {
+        id: 6,
+        firstName: 'Ben',
+        lastName: '',
+        role: '',
+        joined: '2022',
+        left: '2023',
+      },
     ],
   },
 };
