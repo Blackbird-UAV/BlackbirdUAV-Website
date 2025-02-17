@@ -69,6 +69,10 @@ const ThreeScene = ({ onSceneLoaded }) => {
     loader.load(
       "/assets/model/final_export.glb",
       (gltf) => {
+        if (modelRef.current) {
+          scene.remove(modelRef.current); // Remove the existing model if it exists
+        }
+
         const model = gltf.scene;
         modelRef.current = model;
 
