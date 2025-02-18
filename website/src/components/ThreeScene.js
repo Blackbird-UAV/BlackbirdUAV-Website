@@ -116,7 +116,7 @@ const ThreeScene = ({ onSceneLoaded }) => {
     light2.position.set(-10, 10, -10);
     scene.add(light2);
 
-    const ambientLight = new THREE.AmbientLight(0xe7f5fb, 4);
+    const ambientLight = new THREE.AmbientLight(0xe7f5fb, 10);
     scene.add(ambientLight);
 
     const handleMouseMove = (event) => {
