@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding: 2rem;
+  padding: 0.5rem;
   /* background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8); */
   background: linear-gradient(
     180deg,

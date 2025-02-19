@@ -92,7 +92,7 @@ const MeetTeam = () => {
         {year === "2024-2025" && (
           <div className={styles.searchBar}>
             <TextInput
-              description="Type the name of an alumni to search for them"
+              // description="Type the name of an alumni to search for them"
               placeholder="Search for a member..."
               value={searchQuery}
               onChange={handleSearch}
@@ -215,15 +215,15 @@ const MeetTeam = () => {
                                   {member.firstName}
                                 </Text>
                                 <Text
-                                className={`${styles.lastName} ${
-                                  member.lastName.length > 12
-                                    ? styles.small
-                                    : member.lastName.length > 8
-                                    ? styles.medium
-                                    : ""
-                                    }`}
-                                  >
-                                    {member.lastName}
+                                  className={`${styles.lastName} ${
+                                    member.lastName.length > 12
+                                      ? styles.small
+                                      : member.lastName.length > 8
+                                      ? styles.medium
+                                      : ""
+                                  }`}
+                                >
+                                  {member.lastName}
                                 </Text>
                               </div>
 
