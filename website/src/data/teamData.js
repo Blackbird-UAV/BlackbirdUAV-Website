@@ -225,19 +225,6 @@ const teamData = {
         extendedDescription: 'Nassim assists with KEFC reports and phase 1 documentation. He has contributed to sponsorship initiatives and provides financial expertise to the team.',
         link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/'
       },
-      {
-        id: 19,
-        firstName: 'Nassim',
-        lastName: 'Gaboune',
-        role: 'Administrative',
-        isPresident: false,
-        isExecutive: false,
-        image: '/images/TeamHeadshots/Nassim.JPG',
-        description: 'Joined BBUAV in 2022. Bachelor of Commerce, Accounting.',
-        extendedDescription: 'Nassim assists with KEFC reports and phase 1 documentation. He has contributed to sponsorship initiatives and provides financial expertise to the team.',
-        link: 'https://www.linkedin.com/in/nassim-gaboune-73b8252a1/'
-      },
- 
     ],
     manufacturing: [
       {
