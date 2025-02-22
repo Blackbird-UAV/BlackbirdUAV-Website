@@ -37,6 +37,22 @@ const fadeInUpSlower = {
   },
 };
 
+const fadeInUpDelayed = {
+  initial: {
+    y: 80,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: DURATIONS.Slow,
+      ease: easing,
+    },
+  },
+};
+
 const letterSpace = {
   initial: {
     opacity: 0,
@@ -139,11 +155,58 @@ const galleryStagger = {
   },
 };
 
+const slideFromLeft = {
+  initial: {
+    x: -100, // Start off-screen to the left
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: DURATIONS.Normal,
+      ease: easing,
+    },
+  },
+};
+
+const slideFromLeftDelayed = {
+  initial: {
+    x: -100, // Start off-screen to the left
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: DURATIONS.Normal,
+      ease: easing,
+    },
+  },
+};
+
+const slideFromRight = {
+  initial: {
+    x: 100, // Start off-screen to the right
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: DURATIONS.Normal,
+      ease: easing,
+    },
+  },
+};
+
 export {
   DURATIONS,
   easing,
   fadeInUp,
   fadeInUpSlower,
+  fadeInUpDelayed,
   letterSpace,
   stagger,
   galleryStagger,
@@ -151,4 +214,7 @@ export {
   menuAnim,
   scaleUp,
   avatarAnimation,
+  slideFromLeft,
+  slideFromRight,
+  slideFromLeftDelayed,
 };

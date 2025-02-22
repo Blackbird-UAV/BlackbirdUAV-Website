@@ -1,12 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import ThreeScene from "@/components/ThreeScene";
 import { motion } from "framer-motion";
-import { fadeInUp, fadeInUpSlower } from "@/components/animations";
+import {
+  fadeInUp,
+  fadeInUpSlower,
+  fadeInUpDelayed,
+  slideFromLeftDelayed,
+  slideFromLeft,
+  slideFromRight,
+} from "@/components/animations";
 import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
 import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
 
@@ -68,7 +75,8 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
-  const [isSceneLoaded, setIsSceneLoaded] = useState(false); // New state for scene loading
+  const [isSceneLoaded, setIsSceneLoaded] = useState(false);
+  const [visibleSection, setVisibleSection] = useState(null);
 
   const handleScroll = useCallback(() => {
     const progress = Math.max(
@@ -201,17 +209,19 @@ export default function Home() {
             <div className={styles.textSection}>
               <motion.h1
                 className={styles.name}
-                variants={fadeInUp}
+                variants={slideFromLeftDelayed}
                 initial="initial"
-                animate="animate"
+                animate={isSceneLoaded ? "animate" : "initial"}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 BLACKBIRD UAV
               </motion.h1>
               <motion.h2
                 className={styles.subtitle}
-                variants={fadeInUp}
+                variants={fadeInUpDelayed}
                 initial="initial"
-                animate="animate"
+                animate={isSceneLoaded ? "animate" : "initial"}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 Fly Around and Find Out
               </motion.h2>
@@ -234,13 +244,7 @@ export default function Home() {
           <ScrollDownIndicator />
         </div>
 
-        <motion.div
-          id="firstDiv"
-          className={styles.cloudContainer}
-          variants={fadeInUpSlower}
-          initial="initial"
-          animate="animate"
-        >
+        <div id="firstDiv" className={styles.cloudContainer}>
           <Image
             src="/images/cloud.png"
             alt="Cloud Left"
@@ -257,18 +261,31 @@ export default function Home() {
             width={500}
             height={300}
           />
-        </motion.div>
+        </div>
 
         <div id="secondDiv" className={styles.aboutContainer}>
-          <Image
-            src="/images/Home_AboutUs.jpg"
-            alt="Blackbird UAV Logo"
-            className={styles.aboutImage}
-            width={500}
-            height={300}
-          />
-          <div className={styles.aboutText}>
-            <h1 className={styles.aboutUsText}>About Us</h1>
+          <motion.div
+            variants={slideFromLeft}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Image
+              src="/images/Home_AboutUs.jpg"
+              alt="Blackbird UAV Logo"
+              className={styles.aboutImage}
+              width={500}
+              height={300}
+            />
+          </motion.div>
+          <motion.div
+            className={styles.aboutText}
+            variants={slideFromRight}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h1>About Us</h1>
             <p>
               We are Blackbird UAV (BBUAV), Carleton University students, a
               student design team, working to create uncrewed aerial vehicles
@@ -281,7 +298,46 @@ export default function Home() {
               varied studies and background in real-world design projects,
               operations, administration, and teamwork.
             </p>
-          </div>
+          </motion.div>
+        </div>
+
+        <div id="aeacContainer" className={styles.aeacContainer}>
+          <motion.div
+            className={styles.aboutText}
+            variants={slideFromLeft}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h1>AEAC SC</h1>
+            <p>
+              The Aerial Evolution Association of Canada Student Competition
+              (AEAC SC) is a national event that challenges university and
+              college students to design, build, and operate uncrewed aerial
+              systems (UAS) for real-world applications.
+            </p>
+            <p>
+              The competition provides students with hands-on experience in
+              aerospace engineering, avionics, and mission planning, while
+              promoting innovation in the UAV industry.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={slideFromRight}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <a href="https://www.aerialevolution.ca/">
+              <Image
+                src="/images/AEACSC_logo.jpg"
+                alt="AEAC SC Logo"
+                className={styles.aboutImage}
+                width={500}
+                height={300}
+              />
+            </a>
+          </motion.div>
         </div>
 
         <div className={styles.galleryContainer}>
