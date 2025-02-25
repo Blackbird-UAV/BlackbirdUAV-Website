@@ -1,41 +1,119 @@
-# [BlackBird UAV Website]
-[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=0077b6">](https://github.com/SamKirkland/FTP-Deploy-Action)
+# BlackBird UAV Website 
+<div align="center">
+   
+![image](https://github.com/user-attachments/assets/53425d02-3118-4149-bd47-0a7f639d4f4b)
 
-**Date**: [Oct/4/2024]  
+[![Release](https://img.shields.io/badge/v1.3.3-306998?style=for-the-badge&logo=Release&label=Release&labelColor=4D4D4D)](https://github.com/Blackbird-UAV/BlackBirdUAV-Website/releases)					
+[![Deploy to FTP](https://github.com/Blackbird-UAV/BlackBirdUAV-Website/actions/workflows/deploy.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackBirdUAV-Website/actions/workflows/deploy.yml)
+
+[![Website Status](https://img.shields.io/website?down_message=offline&label=Main%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fblackbirduav.ca)](https://blackbirduav.ca)
+[![Website Status](https://img.shields.io/website?down_message=offline&label=Dev%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fdev.blackbirduav.ca)](https://dev.blackbirduav.ca)
+
+</div>
+
+**Start Date**: October 4, 2024  
 **Team Members / Developers**:  
+- [Edwin Ngui](https://github.com/EdwinNgui)
+- [Daniel Lu](https://github.com/FinityFly)
+- [Marc Vidal](https://github.com/MarcVidalCodes)
+- [Jonah Pasquantonio](https://github.com/jonahp123)
+- [Teddy Kurita]()
 
-- [Edwin Ngui]
-- [Daniel Lu]
-- [Marc Vidal]
-- [Jonah Pasquantonio]
-- [Teddy Kurita]
+---
 
 ## Overview
 
-This code represents the 2024/2025 version of the organization website geared towards companies and sponsors.
+Welcome to the official repository for the **BlackBird UAV** website! This project represents the 2024/2025 version of the organization's website, designed to showcase our work, attract sponsors, and engage with the community. The website serves as a central hub for information about our team, projects, events, and partnerships.
 
-## How to Run Locally
+---
 
-1. Clone the repository:
+## Features
+
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.  
+- **Dynamic Content**: Easily updatable content for news, events, and sponsor information.  
+- **Modern Tech Stack**: Built with cutting-edge tools for performance and scalability.  
+
+---
+
+## Technologies Used
+
+- **Frontend**: [React.js](https://reactjs.org/)  
+- **Backend**: [Node.js](https://nodejs.org/)
+- **Deployment**: FTP Deploy Action, GitHub Actions
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher)  
+- [npm](https://www.npmjs.com/) (v7 or higher)  
+- [Git](https://git-scm.com/)  
+
+### How to Run Locally
+
+1. Clone the repository:  
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/BlackBirdUAV/website.git
    ```
-2. Navigate to the project folder:
+
+2. Navigate to the project folder:  
    ```bash
    cd website
    ```
-3. Install dependencies:
+
+3. Install dependencies:  
    ```bash
    npm install
    ```
-4. Run the development server:
+
+4. Run the development server:  
    ```bash
    npm run dev
    ```
 
-The website should now be running locally at `http://localhost:3000`.
+5. Open your browser and visit:  
+   ```
+   http://localhost:3000
+   ```
+
+---
 
 ## Deployment
 
-- Project Development is deployed to https://dev.blackbirduav.ca/
-- Live site is deployed to https://blackbirduav.ca/
+The website is deployed using **FTP Deploy Action** via GitHub Actions.  
+
+- **Development Environment**: [https://dev.blackbirduav.ca/](https://dev.blackbirduav.ca/)  
+- **Live Production Site**: [https://blackbirduav.ca/](https://blackbirduav.ca/)  
+
+---
+
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute, please follow these steps:  
+
+1. Fork the repository.  
+2. Create a new branch for your feature or bugfix:  
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```  
+3. Commit your changes:  
+   ```bash
+   git commit -m "Add your commit message here"
+   ```  
+4. Push your branch:  
+   ```bash
+   git push origin feature/your-feature-name
+   ```  
+5. Open a pull request and describe your changes.  
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.  
+
+---
+
+**BlackBird UAV** – Soaring to New Heights! 🚀

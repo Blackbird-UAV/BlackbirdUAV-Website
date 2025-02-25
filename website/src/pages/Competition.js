@@ -1,9 +1,12 @@
-import React from 'react';
-import teamData from '../data/teamData';
-import styles from '../styles/Team.module.css';
-import Header from '@/components/Header';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
+import React from "react";
+import teamData from "../data/teamData";
+import styles from "../styles/Team.module.css";
+import Header from "@/components/Header";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 const Competition = () => {
   const { years } = teamData.Competition;
@@ -18,29 +21,42 @@ const Competition = () => {
       />
       <div className={styles.container}>
         <VerticalTimeline>
-          {Object.keys(years).sort((a, b) => b - a).map((year, index) => (
-            <VerticalTimelineElement
-              key={year}
-              date={year}
-              iconStyle={{ background: 'red', color: '#fff' }}
-              contentStyle={{ background: '#333', color: '#fff' }}
-              contentArrowStyle={{ borderRight: '7px solid  #333' }}
-            >
-              {years[year].image && (
-                <img src={years[year].image} alt={`${year} Team`} className={styles.teamImage} />
-              )}
-              <div className={styles.yearTitle}>{year}</div>
-              <div className={styles.yearDescription} dangerouslySetInnerHTML={{ __html: years[year].description }} />
-              <div className={styles.membersList}>
-                {years[year].members.map((member, index) => (
-                  <div key={index} className={styles.memberItem}>
-                    <span className={styles.memberName}>{member.firstName} {member.lastName}</span>
-                    {member.role && <span className={styles.memberRole}>{member.role}</span>}
-                  </div>
-                ))}
-              </div>
-            </VerticalTimelineElement>
-          ))}
+          {Object.keys(years)
+            .sort((a, b) => b - a)
+            .map((year, index) => (
+              <VerticalTimelineElement
+                key={year}
+                date={year}
+                iconStyle={{ background: "red", color: "#fff" }}
+                contentStyle={{ background: "#333", color: "#fff" }}
+                contentArrowStyle={{ borderRight: "7px solid  #333" }}
+              >
+                {years[year].image && (
+                  <img
+                    src={years[year].image}
+                    alt={`${year} Team`}
+                    className={styles.teamImage}
+                  />
+                )}
+                <div className={styles.yearTitle}>{year}</div>
+                <div
+                  className={styles.yearDescription}
+                  dangerouslySetInnerHTML={{ __html: years[year].description }}
+                />
+                <div className={styles.membersList}>
+                  {years[year].members.map((member, index) => (
+                    <div key={index} className={styles.memberItem}>
+                      <span className={styles.memberName}>
+                        {member.firstName} {member.lastName}
+                      </span>
+                      {member.role && (
+                        <span className={styles.memberRole}>{member.role}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </VerticalTimelineElement>
+            ))}
         </VerticalTimeline>
       </div>
     </>

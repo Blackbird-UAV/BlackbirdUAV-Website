@@ -101,9 +101,15 @@
   background: linear-gradient(to bottom, #131313ad -10rem, #2b2b2b);
 }
 
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .searchBar {
-  width: 90%;
-  max-width: 500px;
+  width: 25%;
+  min-width: 300px;
   margin-top: 1.2rem;
   padding: 1rem;
   border-radius: 8px;
@@ -111,6 +117,22 @@
   background-color: #27272a;
   transition: box-shadow 0.3s ease, border-radius 0.3s ease;
 }
+
+/* .searchBar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+}
+
+.searchBar::placeholder {
+  color: #bbb;
+} */
 
 .searchBar:hover {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
@@ -130,31 +152,38 @@
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  background-color: #ffffff;
-  color: #333;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .searchBar input::placeholder {
-  color: #999;
+  color: #bbb;
+}
+
+.searchBar input:hover {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
 .searchBar input:focus {
-  border-color: #e91c23;
+  border: 1px solid #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Search Results */
 .searchResults {
-  width: 100%;
-  max-width: 600px;
+  position: absolute;
+  width: 25%;
+  min-width: 300px;
+  margin: 1rem -1rem;
   padding: 0.5rem;
   background-color: #27272a;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 
 .searchResultItem {
@@ -200,7 +229,7 @@
 }
 
 .headerDescTitle {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #f0f0f0;
   margin-top: 1rem;
@@ -640,6 +669,10 @@
     margin-bottom: 20px;
   }
 
+  .headerDescTitle {
+    font-size: 2rem;
+  }
+
   .sidebar {
     display: block;
     width: 100%;
@@ -703,6 +736,10 @@
 }
 
 @media (max-width: 480px) {
+  .headerDescTitle {
+    font-size: 1.5rem;
+  }
+
   .teamsPageHeader {
     height: 40vh !important;
   }
@@ -710,22 +747,6 @@
   .teamsPageHeader h1 {
     font-size: 2.5rem !important;
   }
-}
-
-.searchBar {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #333; /* Dark background for search bar */
-  color: #fff; /* White text for search bar */
-}
-
-.searchBar::placeholder {
-  color: #bbb; /* Lighter color for placeholder text */
 }
 
 .alumniList {
@@ -827,12 +848,6 @@
   color: #fff; /* White text */
   padding: 20px;
   min-height: 100vh; /* Ensure it covers the full viewport height */
-}
-
-.searchBarContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -967,7 +982,7 @@
 }
 
 .timeline::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 6px;
   background-color: #333;
@@ -984,7 +999,7 @@
 }
 
 .timelineItem::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 25px;
   height: 25px;
@@ -1118,7 +1133,7 @@
 .yearTitle {
   font-size: 2rem;
   margin-bottom: 10px;
-  color:white;
+  color: white;
 }
 
 .teamImage {

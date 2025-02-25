@@ -72,7 +72,7 @@
 .aboutUs .rightContent h3 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #171717;
 }
@@ -143,7 +143,7 @@
 }
 
 .backgroundContainer .leftSubteams h1 {
-  font-size: 2.8rem; /* Slightly larger and more modern */
+  font-size: 2.2rem; /* Slightly larger and more modern */
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.8rem;
@@ -282,6 +282,14 @@
     margin: 1rem;
   }
 
+  .backgroundContainer .leftSubteams h1 {
+    font-size: 2rem; /* Slightly larger and more modern */
+  }
+
+  .aboutUs .rightContent h3 {
+    font-size: 2rem;
+  }
+
   .subteamSection {
     width: 100%;
   }
@@ -314,6 +322,14 @@
 }
 
 @media (max-width: 480px) {
+  .backgroundContainer .leftSubteams h1 {
+    font-size: 1.5rem;
+  }
+
+  .aboutUs .rightContent h3 {
+    font-size: 1.5rem;
+  }
+
   .tab {
     font-size: 14px;
     padding: 10px 0;
