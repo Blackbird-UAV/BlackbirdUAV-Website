@@ -41,6 +41,12 @@ const sponsors = [
     tier: "gold",
   },
   {
+    name: "T-MOTOR",
+    logo: "/images/Sponsors/Sponsor_T-MOTOR.png",
+    link: "https://uav-en.tmotor.com/",
+    tier: "gold",
+  },
+  {
     name: "Kostiuk Engineering Funding Collective",
     logo: "/images/Sponsors/Sponsor_KEFC.png",
     link: "https://www.mycses.ca/student-group-funding",
