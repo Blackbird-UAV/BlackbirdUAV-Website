@@ -188,7 +188,7 @@
 }
 
 .aboutText h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: #e0e0e0;
@@ -295,6 +295,15 @@
   text-decoration: underline;
   text-decoration-color: #eb1d25;
   text-underline-offset: 8px;
+}
+
+.gallerySubtitle {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .carousel {
@@ -496,6 +505,10 @@
     padding: 4rem;
   }
 
+  .aeacContainer {
+    padding: 4rem;
+  }
+
   /* .aboutText {
     padding: 0rem;
   } */
@@ -555,11 +568,16 @@
   }
 
   .aboutText h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .aboutText p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .aeacContainer {
+    padding: 1rem;
+    flex-direction: column;
   }
 }
 

@@ -342,6 +342,9 @@ export default function Home() {
 
         <div className={styles.galleryContainer}>
           <h2 className={styles.galleryTitle}>Our UAVs</h2>
+          <p className={styles.gallerySubtitle}>
+            Discover the evolution of our UAV technology and designs.
+          </p>
           <div className={styles.carouselWrapper}>
             <button
               className={`${styles.control} ${styles.controlLeft}`}
@@ -398,6 +401,87 @@ export default function Home() {
                 onClick={() => handleDotClick(index)}
               ></span>
             ))}
+          </div>
+        </div>
+
+        <div className={styles.sponsorsContainer}>
+          <h2 className={styles.sectionTitle}>Our Sponsors</h2>
+          <p className={styles.sectionSubtitle}>
+            We are grateful for the support of our amazing sponsors.
+          </p>
+          <div className={styles.sponsorsGrid}>
+            <Image
+              src="/images/sponsors/sponsor1.png"
+              alt="Sponsor 1"
+              width={150}
+              height={100}
+            />
+            <Image
+              src="/images/sponsors/sponsor2.png"
+              alt="Sponsor 2"
+              width={150}
+              height={100}
+            />
+            <Image
+              src="/images/sponsors/sponsor3.png"
+              alt="Sponsor 3"
+              width={150}
+              height={100}
+            />
+          </div>
+        </div>
+
+        <div className={styles.contactContainer}>
+          <h2 className={styles.sectionTitle}>Contact Us</h2>
+          <p className={styles.sectionSubtitle}>
+            Have questions? Reach out to us!
+          </p>
+          <form className={styles.contactForm}>
+            <input
+              type="text"
+              placeholder="Your Name"
+              className={styles.inputField}
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className={styles.inputField}
+            />
+            <textarea
+              placeholder="Your Message"
+              className={styles.textArea}
+            ></textarea>
+            <button type="submit" className={styles.submitButton}>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <div className={styles.faqContainer}>
+          <h2 className={styles.sectionTitle}>FAQ</h2>
+          <p className={styles.sectionSubtitle}>
+            Find answers to common questions.
+          </p>
+          <div className={styles.faqItem}>
+            <h3>What is BlackBird UAV?</h3>
+            <p>
+              BlackBird UAV is a student-run design team at Carleton University
+              focused on developing autonomous aerial vehicles.
+            </p>
+          </div>
+          <div className={styles.faqItem}>
+            <h3>How can I join the team?</h3>
+            <p>
+              Students can join by attending our recruitment sessions or
+              reaching out through our contact form.
+            </p>
+          </div>
+          <div className={styles.faqItem}>
+            <h3>How can I become a sponsor?</h3>
+            <p>
+              If you're interested in sponsoring us, please contact us via our
+              sponsor page.
+            </p>
           </div>
         </div>
       </div>
