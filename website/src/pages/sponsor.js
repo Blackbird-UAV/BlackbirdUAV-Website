@@ -20,14 +20,15 @@ const sponsors = [
     name: "Carleton University | Faculty of Engineering and Design",
     logo: "/images/Sponsors/Sponsor_CarletonEng.png",
     link: "https://carleton.ca/engineering-design/",
-    tier: "gold",
+    tier: "partner",
   },
-  {
-    name: "Carleton Student Engineering Society",
-    logo: "/images/Sponsors/Sponsor_CSES.png",
-    link: "https://www.mycses.ca/",
-    tier: "gold",
-  },
+  // No longer fund us
+  // {
+  //   name: "Carleton Student Engineering Society",
+  //   logo: "/images/Sponsors/Sponsor_CSES.png",
+  //   link: "https://www.mycses.ca/",
+  //   tier: "gold",
+  // },
   {
     name: "Aircraft Spruce & Specialty Co.",
     logo: "/images/Sponsors/Sponsor_AircraftSpruce.png",
@@ -50,7 +51,7 @@ const sponsors = [
     name: "Kostiuk Engineering Funding Collective",
     logo: "/images/Sponsors/Sponsor_KEFC.png",
     link: "https://www.mycses.ca/student-group-funding",
-    tier: "platinum"
+    tier: "partner"
   }
 ];
 
@@ -85,13 +86,13 @@ export default function Sponsor() {
 
   const renderSponsorsByTier = (tier, sectionIndex) => {
     // const columnSettings = {
-    //   Platinum: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
+    //   Partner: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
     //   Gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
     //   Silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
     //   Bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
     // };
     const columnSettings = {
-      Platinum: {
+      Partner: {
         base: "repeat(auto-fit, minmax(200px, 1fr))",
         lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
       },
@@ -126,8 +127,8 @@ export default function Sponsor() {
               <motion.div
                 id={(function () {
                   switch (tier.toLowerCase()) {
-                    case "platinum":
-                      return "platSection";
+                    case "partner":
+                      return "partnerSection";
                     case "gold":
                       return "goldSection";
                     case "silver":
@@ -200,7 +201,7 @@ export default function Sponsor() {
 
   const renderSponsorSections = (tier, sectionIndex) => {
     const tierColors = {
-      Platinum: "#d6cff0",
+      Partner: "#d6cff0",
       Gold: "#fddd5b",
       Silver: "#c4c4c4",
       Bronze: "#de975d",
@@ -216,9 +217,9 @@ export default function Sponsor() {
         shadow="lg"
         display="flex"
         alignItems="center"
-        // if section is platinum, add a glow on hover
+        // if section is partner, add a glow on hover
         _hover={
-          tier.toLowerCase() === "platinum"
+          tier.toLowerCase() === "partner"
             ? {
                 boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
                 transform: "scale(1.03)", // Slight scaling
@@ -314,11 +315,12 @@ export default function Sponsor() {
               size="3xl"
               textAlign="center"
               mb={4}
+              mt={2}
               color={"white"}
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Platinum", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
+            {["Partner", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
               <motion.div
                 key={index}
                 variants={staggerAnimation}

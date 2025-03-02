@@ -14,6 +14,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, stagger, scaleUp } from "@/components/animations";
 import styles from "@/styles/SponsorSidebar.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 const SponsorSidebar = () => {
   const MotionHeading = motion(Heading);
@@ -46,6 +49,7 @@ const SponsorSidebar = () => {
   };
 
   return (
+    <>
     <MotionBox
       initial="initial"
       animate="animate"
@@ -142,7 +146,7 @@ const SponsorSidebar = () => {
                     }}
                     w="fit-content"
                   >
-                    Sponsorship Package
+                    Sponsorship Package <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                   </MotionButton>
                 </Box>
               </Box>
@@ -221,13 +225,14 @@ const SponsorSidebar = () => {
                 alignItems="center" // Center horizontally
                 w="fit-content"
               >
-                Send us an email
+                Send us an email <FontAwesomeIcon icon={faEnvelope} />
               </MotionButton>
             </Box>
           </Box>
         </MotionStack>
       </Container>
     </MotionBox>
+    </>
   );
 };
 
