@@ -474,6 +474,22 @@
   z-index: 2;
 }
 
+/* FAQ Section */
+.faqSection {
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.faqSection h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 8px;
+}
+
 @keyframes moveCloudLeft {
   0% {
     transform: translateX(0) translateY(-50%);
@@ -625,6 +641,10 @@
   }
 
   .galleryTitle {
+    font-size: 2.5rem;
+  }
+
+  .faqSection h2 {
     font-size: 2.5rem;
   }
 }

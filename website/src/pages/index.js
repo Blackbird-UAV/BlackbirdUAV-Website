@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import ThreeScene from "@/components/ThreeScene";
+import Accordion from "@/components/Accordion";
 import { motion } from "framer-motion";
 import {
   fadeInUp,
@@ -29,6 +30,18 @@ const slides = [
     image: "/images/Vehicles/Zenith_1.jpg",
     description:
       "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
+  },
+];
+
+const faqData = [
+  {
+    question: "What is BlackBird UAV?",
+    answer: "BlackBird UAV is Carleton University's premier UAV design team.",
+  },
+  {
+    question: "How can I join the team?",
+    answer:
+      "You can join by joining our discord linked at the bottom of the page.",
   },
 ];
 
@@ -343,7 +356,8 @@ export default function Home() {
         <div className={styles.galleryContainer}>
           <h2 className={styles.galleryTitle}>Our UAVs</h2>
           <p className={styles.gallerySubtitle}>
-            Discover the evolution of our UAV technology and designs.
+            Discover the evolution of our UAV technology and designs over the
+            years.
           </p>
           <div className={styles.carouselWrapper}>
             <button
@@ -375,7 +389,9 @@ export default function Home() {
                       className={styles.uavImage}
                     />
                     <div className={styles.gradientOverlay}>
-                      <h3 className={styles.uavName}>{slide.name}</h3>
+                      <a href="/vehicles">
+                        <h3 className={styles.uavName}>{slide.name}</h3>
+                      </a>
                       <p className={styles.uavDescription}>
                         {slide.description}
                       </p>
@@ -404,85 +420,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.sponsorsContainer}>
-          <h2 className={styles.sectionTitle}>Our Sponsors</h2>
-          <p className={styles.sectionSubtitle}>
-            We are grateful for the support of our amazing sponsors.
-          </p>
-          <div className={styles.sponsorsGrid}>
-            <Image
-              src="/images/sponsors/sponsor1.png"
-              alt="Sponsor 1"
-              width={150}
-              height={100}
-            />
-            <Image
-              src="/images/sponsors/sponsor2.png"
-              alt="Sponsor 2"
-              width={150}
-              height={100}
-            />
-            <Image
-              src="/images/sponsors/sponsor3.png"
-              alt="Sponsor 3"
-              width={150}
-              height={100}
-            />
-          </div>
-        </div>
-
-        <div className={styles.contactContainer}>
-          <h2 className={styles.sectionTitle}>Contact Us</h2>
-          <p className={styles.sectionSubtitle}>
-            Have questions? Reach out to us!
-          </p>
-          <form className={styles.contactForm}>
-            <input
-              type="text"
-              placeholder="Your Name"
-              className={styles.inputField}
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className={styles.inputField}
-            />
-            <textarea
-              placeholder="Your Message"
-              className={styles.textArea}
-            ></textarea>
-            <button type="submit" className={styles.submitButton}>
-              Send Message
-            </button>
-          </form>
-        </div>
-
-        <div className={styles.faqContainer}>
-          <h2 className={styles.sectionTitle}>FAQ</h2>
-          <p className={styles.sectionSubtitle}>
-            Find answers to common questions.
-          </p>
-          <div className={styles.faqItem}>
-            <h3>What is BlackBird UAV?</h3>
-            <p>
-              BlackBird UAV is a student-run design team at Carleton University
-              focused on developing autonomous aerial vehicles.
-            </p>
-          </div>
-          <div className={styles.faqItem}>
-            <h3>How can I join the team?</h3>
-            <p>
-              Students can join by attending our recruitment sessions or
-              reaching out through our contact form.
-            </p>
-          </div>
-          <div className={styles.faqItem}>
-            <h3>How can I become a sponsor?</h3>
-            <p>
-              If you're interested in sponsoring us, please contact us via our
-              sponsor page.
-            </p>
-          </div>
+        <div id="faqSection" className={styles.faqSection}>
+          <h2>Frequently Asked Questions</h2>
+          <Accordion data={faqData} />
         </div>
       </div>
     </div>
