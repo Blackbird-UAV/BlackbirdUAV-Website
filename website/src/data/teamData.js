@@ -61,6 +61,18 @@ const teamData = {
         description: 'Jedidiah is a 2nd year graduate student.',
         extendedDescription: 'Jed is a part of executive team. Having been a member since 2020, Jed has worked on a variety of projects. He is currently in charge of vehicle propulsion and stability.',
         link: 'http://www.linkedin.com/in/jedidiahnevo'
+      },
+      {
+        id: 31,
+        firstName: 'Nick',
+        lastName: 'Mucci',
+        role: 'CAD Design Lead / Manufacturing Co-Lead',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Nick.JPG',
+        description: 'Lead CAD designer and manufacturing co-lead with industry expertise.',
+        extendedDescription: 'As a 6th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team\'s design and manufacturing processes.',
+        link: 'https://www.linkedin.com/in/nickmucci',
       }
     ],
     systems: [
@@ -275,8 +287,18 @@ const teamData = {
         extendedDescription: 'Jasmine contributes primarily to manufacturing and has trained several club members on the operation of BBUAV\'s CNC foam cutter. She also helps write the club\'s technical reports every winter.',
         link: 'https://www.linkedin.com/in/jasmine-hartwig',
       },
-
-
+      {
+        id: 32,
+        firstName: 'Nick',
+        lastName: 'Mucci',
+        role: 'CAD Design Lead / Manufacturing Co-Lead',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Nick.JPG',
+        description: 'Lead CAD designer and manufacturing co-lead with industry expertise.',
+        extendedDescription: 'As a 6th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team\'s design and manufacturing processes.',
+        link: 'https://www.linkedin.com/in/nickmucci',
+      }
     ],
     design: [
       {
