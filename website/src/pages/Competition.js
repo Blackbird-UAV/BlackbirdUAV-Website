@@ -34,8 +34,13 @@ const Competition = () => {
                 {years[year].image && (
                   <img
                     src={years[year].image}
-                    alt={`${year} Team`}
+                    alt={`${year} Competition Team`}
                     className={styles.teamImage}
+                    onError={(e) => {
+                      console.error(`Failed to load image for year ${year}`);
+                      e.target.onerror = null; // Prevent infinite loop
+                      e.target.src = '/images/team2.jpg'; // Fallback image
+                    }}
                   />
                 )}
                 <div className={styles.yearTitle}>{year}</div>

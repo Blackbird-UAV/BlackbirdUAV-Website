@@ -645,7 +645,7 @@ const teamData = {
           <p>Team only observed.</p>
           <p>Location: Southport, Manitoba.</p>
         `,
-        image: '', // No image available for 2022
+        image: '/images/comp2022.png', 
         members: [
           { firstName: 'Pier-Jean', lastName: 'Parisien', role: 'Club President' },
           { firstName: 'Jed', lastName: '' },
