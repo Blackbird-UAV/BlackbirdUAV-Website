@@ -1,0 +1,73 @@
+/* Accordion.module.css */
+
+.accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0px 8px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  padding: 10px;
+}
+
+.accordionItem {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordionTrigger {
+  width: 100%;
+  padding: 16px;
+  background-color: #ef1a2e; /* Primary color */
+  color: white;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.accordionTrigger:hover {
+  background-color: #e3141a;
+}
+
+.accordionContent {
+  padding: 0 16px;
+  background-color: #ffffff00;
+  font-size: 15px;
+  font-style: italic;
+  color: #333;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease-in-out, transform 0.5s ease-out;
+}
+
+.accordionContent.open {
+  height: auto;
+  opacity: 1;
+  padding: 16px;
+  transform: translateY(0);
+}
+
+.accordionItem:last-child {
+  border-bottom: none;
+}
+
+/* Arrow styles */
+.arrow {
+  transition: transform 0.3s ease-in-out;
+  font-size: 18px;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
