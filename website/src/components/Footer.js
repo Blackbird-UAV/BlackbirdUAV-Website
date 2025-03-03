@@ -61,6 +61,7 @@ export default function Footer() {
           <p>Canal Building, Library Rd, Ottawa, ON</p>
           <p>Carleton University, Ottawa, ON K1S 5B6</p>
           <p>© Copyright, BlackBird UAV</p>
+          <p>contact@blackbirduav.ca</p>
         </div>
       </div>
     </footer>
