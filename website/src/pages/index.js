@@ -300,10 +300,9 @@ export default function Home() {
           >
             <h1>About Us</h1>
             <p>
-              We are Blackbird UAV (BBUAV), a
-              student design team, working to create uncrewed aerial vehicles
-              (UAVs) to compete at the Aerial Evolution Association of Canada
-              Student Competition (AEAC SC).
+              We are Blackbird UAV (BBUAV), a student design team, working to
+              create uncrewed aerial vehicles (UAVs) to compete at the Aerial
+              Evolution Association of Canada Student Competition (AEAC SC).
             </p>
             <p>
               BBUAV was established in 2009 as an extra-curricular program for
@@ -389,9 +388,9 @@ export default function Home() {
                       className={styles.uavImage}
                     />
                     <div className={styles.gradientOverlay}>
-                      <a href="/vehicles">
+                      <Link href="/vehicles">
                         <h3 className={styles.uavName}>{slide.name}</h3>
-                      </a>
+                      </Link>
                       <p className={styles.uavDescription}>
                         {slide.description}
                       </p>
