@@ -287,18 +287,6 @@ const teamData = {
         extendedDescription: 'Jasmine contributes primarily to manufacturing and has trained several club members on the operation of BBUAV\'s CNC foam cutter. She also helps write the club\'s technical reports every winter.',
         link: 'https://www.linkedin.com/in/jasmine-hartwig',
       },
-      {
-        id: 32,
-        firstName: 'Nick',
-        lastName: 'Mucci',
-        role: 'CAD Design Lead / Manufacturing Co-Lead',
-        isPresident: false,
-        isExecutive: true,
-        image: '/images/TeamHeadshots/Nick.JPG',
-        description: 'Lead CAD designer and manufacturing co-lead with industry expertise.',
-        extendedDescription: 'As a 6th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team\'s design and manufacturing processes.',
-        link: 'https://www.linkedin.com/in/nickmucci',
-      }
     ],
     design: [
       {
@@ -356,7 +344,7 @@ const teamData = {
         role: 'Design',
         isPresident: false,
         isExecutive: false,
-        image: '/images/TeamHeadshots/James.jpeg',
+        image: '/images/TeamHeadshots/James.JPG',
         description: 'Second year Aerospace Engineering student who joined in 2024.',
         extendedDescription: 'Contributing to the design of the water reservoir and release system while assisting with other aspects as the design progresses.',
         link: 'http://linkedin.com/in/james-houghton-1886bb2a0',
@@ -689,7 +677,7 @@ const teamData = {
         role: 'Executive / President',
         joined: '2022',
         left: '2024',
-        image: '/images/TeamHeadshots/pj.png'
+        image: '/images/TeamHeadshots/Pj.JPG'
       },
       {
         id: 2,
@@ -698,7 +686,7 @@ const teamData = {
         role: '',
         joined: '2022',
         left: '2024',
-        image: '/images/TeamHeadshots/meyiwa.png'
+        image: '/images/TeamHeadshots/Meyiwa.JPG'
       },
       {
         id: 3,
@@ -707,7 +695,7 @@ const teamData = {
         role: '',
         joined: '2022',
         left: '2023',
-        image: '/images/TeamHeadshots/Imad.png'
+        image: '/images/TeamHeadshots/Imad.JPG'
       },
       {
         id: 4,
@@ -716,7 +704,7 @@ const teamData = {
         role: '',
         joined: '2023',
         left: '2024',
-        image: '/images/TeamHeadshots/Dylan.png'
+        image: '/images/TeamHeadshots/Dylan.JPG'
       },
       {
         id: 5,
@@ -725,7 +713,7 @@ const teamData = {
         role: '',
         joined: '2024',
         left: '2024',
-        image: '/images/TeamHeadshots/Lidya.png'
+        image: '/images/TeamHeadshots/Lidya.JPG'
       },
       {
         id: 6,
@@ -734,7 +722,7 @@ const teamData = {
         role: '',
         joined: '2022',
         left: '2023',
-        image: '/images/TeamHeadshots/Ben.png'
+        image: '/images/TeamHeadshots/Ben.JPG'
       },
     ],
   },
