@@ -50,6 +50,13 @@ const Alumni = () => {
         <div className={styles.alumniList}>
           {filteredAlumni.map((member) => (
             <div key={member.id} className={styles.alumniItem}>
+              <div className={styles.alumniImageContainer}>
+                <img 
+                  src={member.image} 
+                  alt={`${member.firstName} ${member.lastName}`}
+                  className={styles.alumniImage}
+                />
+              </div>
               <Text className={styles.alumniName}>
                 {member.firstName} {member.lastName}
               </Text>
