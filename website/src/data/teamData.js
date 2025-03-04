@@ -689,6 +689,7 @@ const teamData = {
         role: 'Executive / President',
         joined: '2022',
         left: '2024',
+        image: '/images/TeamHeadshots/pj.png'
       },
       {
         id: 2,
@@ -697,6 +698,7 @@ const teamData = {
         role: '',
         joined: '2022',
         left: '2024',
+        image: '/images/TeamHeadshots/meyiwa.png'
       },
       {
         id: 3,
@@ -705,6 +707,7 @@ const teamData = {
         role: '',
         joined: '2022',
         left: '2023',
+        image: '/images/TeamHeadshots/Imad.png'
       },
       {
         id: 4,
@@ -713,6 +716,7 @@ const teamData = {
         role: '',
         joined: '2023',
         left: '2024',
+        image: '/images/TeamHeadshots/Dylan.png'
       },
       {
         id: 5,
@@ -721,6 +725,7 @@ const teamData = {
         role: '',
         joined: '2024',
         left: '2024',
+        image: '/images/TeamHeadshots/Lidya.png'
       },
       {
         id: 6,
@@ -729,6 +734,7 @@ const teamData = {
         role: '',
         joined: '2022',
         left: '2023',
+        image: '/images/TeamHeadshots/Ben.png'
       },
     ],
   },

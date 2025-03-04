@@ -1186,3 +1186,49 @@
   font-size: 0.9rem;
   color: #aaa;
 }
+/* Add these styles after the existing .alumniItem styles */
+
+.alumniItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #222;
+}
+
+.alumniImageContainer {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #444;
+}
+
+.alumniImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alumniInfo {
+  flex-grow: 1;
+}
+
+/* Update media query for mobile responsiveness */
+@media (max-width: 768px) {
+  .alumniItem {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .alumniImageContainer {
+    margin-bottom: 15px;
+  }
+
+  .alumniInfo {
+    width: 100%;
+  }
+}
