@@ -51,8 +51,8 @@ const sponsors = [
     name: "Kostiuk Engineering Funding Collective",
     logo: "/images/Sponsors/Sponsor_KEFC.png",
     link: "https://www.mycses.ca/student-group-funding",
-    tier: "partner"
-  }
+    tier: "partner",
+  },
 ];
 
 const DURATIONS = {
@@ -113,11 +113,8 @@ export default function Sponsor() {
     return (
       <>
         <Head>
-          <title>BlackBird UAV | Sponsor Us</title>
-          <meta
-            name="description"
-            content="Sponsor Us!"
-          />
+          <title>Blackbird UAV | Sponsor Us</title>
+          <meta name="description" content="Sponsor Us!" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
@@ -269,7 +266,13 @@ export default function Sponsor() {
   }, []);
 
   return (
-    <Box bg="black" pl={{ base: 0, lg: 5 }} minHeight="100vh" display="flex" flexDirection="column">
+    <Box
+      bg="black"
+      pl={{ base: 0, lg: 5 }}
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+    >
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -320,7 +323,7 @@ export default function Sponsor() {
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Partner", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
+            {["Partner", "Gold" /*, "Silver", "Bronze"*/].map((tier, index) => (
               <motion.div
                 key={index}
                 variants={staggerAnimation}

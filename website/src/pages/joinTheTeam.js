@@ -79,7 +79,7 @@ export default function Join() {
   return (
     <>
       <Head>
-        <title>BlackBird UAV | Join the Team</title>
+        <title>Blackbird UAV | Join the Team</title>
         <meta
           name="description"
           content="Join Black Bird UAV - Be a part of a cutting-edge UAV community"

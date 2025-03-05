@@ -113,7 +113,7 @@ export default function Vehicles() {
   return (
     <>
       <Head>
-        <title>BlackBird UAV | Our Vehicles</title>
+        <title>Blackbird UAV | Our Vehicles</title>
         <meta name="description" content="Sponsor Us!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

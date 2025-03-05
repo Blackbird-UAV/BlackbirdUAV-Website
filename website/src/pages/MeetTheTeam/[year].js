@@ -77,7 +77,7 @@ const MeetTeam = () => {
   return (
     <>
       <Head>
-        <title>BlackBird UAV | Meet the Team</title>
+        <title>Blackbird UAV | Meet the Team</title>
         <meta name="description" content="Meet the Team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
