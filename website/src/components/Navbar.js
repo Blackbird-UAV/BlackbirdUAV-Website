@@ -85,10 +85,10 @@ export default function Navbar() {
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ""}`;
 
   const teamLinks = [
-    { link: "/MeetTheTeam/2024-2025", label: "Current Team" }, 
-    { link: "/MeetTheTeam/2023-2024", label: "2023-2024" }, 
-    { link: "/Competition", label: "Competition" },
-    { link: "/Alumni", label: "Alumni" }
+    { link: "/MeetTheTeam/2024-2025", label: "Current Team" },
+    { link: "/MeetTheTeam/2023-2024", label: "2023-2024" },
+    { link: "/Competitions", label: "Competitions" },
+    { link: "/Alumni", label: "Alumni" },
   ];
 
   useEffect(() => {
@@ -185,10 +185,16 @@ export default function Navbar() {
           </Center>
           {isDropdownOpen && (
             <div
-              className={`${dropdownStyles.dropdownMenu} ${isDropdownOpen ? dropdownStyles.show : ""}`}
+              className={`${dropdownStyles.dropdownMenu} ${
+                isDropdownOpen ? dropdownStyles.show : ""
+              }`}
             >
               {teamLinks.map((item) => (
-                <Link href={item.link} key={item.link} onClick={handleLinkClick}>
+                <Link
+                  href={item.link}
+                  key={item.link}
+                  onClick={handleLinkClick}
+                >
                   <div className={dropdownStyles.dropdownItem}>
                     {item.label}
                   </div>
