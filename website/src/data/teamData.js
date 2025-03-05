@@ -627,33 +627,33 @@ const teamData = {
           "Benjamin is a third year Aerospace Engineering student at Carleton. He is studying in stream A which specializes in aerodynamics, propulsion, and vehicle performance. Currently, Benjamin is working on designing and modeling 3D printed parts that hold important components for the UAV using CAD software.",
         link: "https://www.linkedin.com/in/benjaminpyun",
       },
-      {
-        id: 15,
-        firstName: "Zachary",
-        lastName: "Myers",
-        role: "Aerospace Engineering / Administrative",
-        joined: "2023",
-        left: "2024",
-        image: "/images/TeamHeadshots/ZacharyMyers.JPG",
-        description: "Zachary focuses on avionics and electronics.",
-        extendedDescription:
-          "Zachary is a first year Aerospace Engineering student, focusing on the avionics and electronics stream. He is involved with administrative work including documentation and planning. In addition, he provides support for rehabilitation of past projects and helps with 3D modeling across a range of applications.",
-        link: "https://www.linkedin.com/in/zacharymyers",
-      },
-      {
-        id: 16,
-        firstName: "Aidan",
-        lastName: "Sheridan",
-        role: "Aerospace Engineering / Design",
-        joined: "2023",
-        left: "2024",
-        image: "/images/TeamHeadshots/AidanSheridan.JPG",
-        description:
-          "Aidan designs seats for Apogee and rehabilitates older drones.",
-        extendedDescription:
-          "Aidan is a 2nd Year Aerospace Engineering student in Stream A which focuses on Aerodynamics, Propulsion and Vehicle Performance. He is working on designing seats for Apogee and is part of a team working to rehabilitate Archie, one of the club’s older drones.",
-        link: "https://www.linkedin.com/in/aidansheridan",
-      },
+      // {
+      //   id: 15,
+      //   firstName: "Zachary",
+      //   lastName: "Myers",
+      //   role: "Aerospace Engineering / Administrative",
+      //   joined: "2023",
+      //   left: "2024",
+      //   image: "/images/TeamHeadshots/ZacharyMyers.JPG",
+      //   description: "Zachary focuses on avionics and electronics.",
+      //   extendedDescription:
+      //     "Zachary is a first year Aerospace Engineering student, focusing on the avionics and electronics stream. He is involved with administrative work including documentation and planning. In addition, he provides support for rehabilitation of past projects and helps with 3D modeling across a range of applications.",
+      //   link: "https://www.linkedin.com/in/zacharymyers",
+      // },
+      // {
+      //   id: 16,
+      //   firstName: "Aidan",
+      //   lastName: "Sheridan",
+      //   role: "Aerospace Engineering / Design",
+      //   joined: "2023",
+      //   left: "2024",
+      //   image: "/images/TeamHeadshots/AidanSheridan.JPG",
+      //   description:
+      //     "Aidan designs seats for Apogee and rehabilitates older drones.",
+      //   extendedDescription:
+      //     "Aidan is a 2nd Year Aerospace Engineering student in Stream A which focuses on Aerodynamics, Propulsion and Vehicle Performance. He is working on designing seats for Apogee and is part of a team working to rehabilitate Archie, one of the club’s older drones.",
+      //   link: "https://www.linkedin.com/in/aidansheridan",
+      // },
       {
         id: 17,
         firstName: "Nassim",
