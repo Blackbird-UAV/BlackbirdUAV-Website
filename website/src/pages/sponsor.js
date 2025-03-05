@@ -93,16 +93,16 @@ export default function Sponsor() {
     // };
     const columnSettings = {
       Partner: {
-        base: "repeat(auto-fit, minmax(200px, 1fr))",
-        lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
+        base: "repeat(auto-fit, minmax(600px, 1fr))",
+        lg: "repeat(auto-fit, minmax(500px, 1fr))", // change these md values as needed
       },
       Gold: {
-        base: "repeat(auto-fit, minmax(160px, 1fr))",
-        lg: "repeat(auto-fit, minmax(140px, 1fr))", // change these md values as needed
+        base: "repeat(auto-fit, minmax(240px, 1fr))",
+        lg: "repeat(auto-fit, minmax(200px, 1fr))", // change these md values as needed
       },
       Silver: {
-        base: "repeat(auto-fit, minmax(140px, 1fr))",
-        lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
+        base: "repeat(auto-fit, minmax(160px, 1fr))",
+        lg: "repeat(auto-fit, minmax(140px, 1fr))", // change these md values as needed
       },
       Bronze: {
         base: "repeat(auto-fit, minmax(120px, 1fr))",
