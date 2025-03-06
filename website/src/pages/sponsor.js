@@ -218,8 +218,8 @@ export default function Sponsor() {
         _hover={
           tier.toLowerCase() === "partner"
             ? {
-                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
-                transform: "scale(1.03)", // Slight scaling
+                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.4)", // Glow effect
+                transform: "scale(1.02)", // Slight scaling
                 transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
               }
             : {

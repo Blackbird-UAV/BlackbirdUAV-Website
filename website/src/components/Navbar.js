@@ -115,14 +115,14 @@ export default function Navbar() {
   }, [isDropdownOpen, isOpen]);
 
   return (
-    <nav className={navbarClass}>
+    <nav className={`${navbarClass}`}>
       <Link href="/">
         <div className={styles.logoContainer}>
           <Image
             src="/logos/BirdLogo.png"
             alt="Logo"
-            layout="fill"
-            className={styles.logo}
+            fill
+            className={`${styles.logo}`}
             sizes="(max-width: 768px) 50px, 100px"
             loading="lazy"
           />

@@ -137,7 +137,6 @@ const SponsorSidebar = () => {
                       borderRadius="full"
                       mb={2}
                       p={6}
-                      fontWeight="bold"
                       variants={scaleUp}
                       whileHover={{
                         scale: 1.05,
@@ -223,7 +222,6 @@ const SponsorSidebar = () => {
                   borderRadius="full"
                   mb={2}
                   p={6}
-                  fontWeight="bold"
                   variants={scaleUp}
                   whileHover={{
                     scale: 1.05,

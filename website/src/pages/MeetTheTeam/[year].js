@@ -149,12 +149,22 @@ const MeetTeam = () => {
                         >
                           <div className={styles.cardInner}>
                             {/* Front Side */}
-                            <div
-                              className={styles.cardFront}
-                              style={{
-                                backgroundImage: `url(${member.image})`,
-                              }}
-                            >
+                            <div className={styles.cardFront}>
+                              <img
+                                src={member.image}
+                                alt={`${member.firstName} ${member.lastName}`}
+                                className={styles.memberImage}
+                                onError={(e) => {
+                                  e.target.src =
+                                    "/images/TeamHeadshots/memberPlaceholder.png";
+                                  e.target.style.filter =
+                                    "blur(4px) brightness(0.9)";
+                                  {
+                                    /* */
+                                  }
+                                  e.target.style.scale = "1.02";
+                                }}
+                              />
                               <div className={styles.turnOverIcon}>
                                 <FontAwesomeIcon icon={faAnglesRight} />
                               </div>

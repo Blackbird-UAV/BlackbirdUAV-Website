@@ -188,7 +188,7 @@ const teamData = {
         role: "Systems",
         isPresident: false,
         isExecutive: false,
-        // image: "/images/TeamHeadshots/Daniel.JPG",
+        image: "/images/TeamHeadshots/Daniel.JPG",
         description:
           "Daniel develops components for the Blackbird UAV website.",
         extendedDescription:
