@@ -1,6 +1,6 @@
 import React from "react";
-import teamData from "../data/teamData";
-import styles from "../styles/Team.module.css";
+import teamData from "@/data/teamData";
+import styles from "@/styles/Team.module.css";
 import Header from "@/components/Header";
 import {
   VerticalTimeline,
@@ -39,7 +39,7 @@ const Competition = () => {
                     onError={(e) => {
                       console.error(`Failed to load image for year ${year}`);
                       e.target.onerror = null; // Prevent infinite loop
-                      e.target.src = '/images/team2.jpg'; // Fallback image
+                      e.target.src = "/images/team2.jpg"; // Fallback image
                     }}
                   />
                 )}

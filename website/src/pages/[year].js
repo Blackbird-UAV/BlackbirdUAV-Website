@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import teamData from "../data/teamData";
+import teamData from "@/data/teamData";
 import { Text } from "@mantine/core";
-import styles from "../styles/Team.module.css";
+import styles from "@/styles/Team.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";

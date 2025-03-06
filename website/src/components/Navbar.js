@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "@/styles/Navbar.module.css";
-import dropdownStyles from "../styles/Dropdown.module.css";
+import dropdownStyles from "@/styles/Dropdown.module.css";
 import { Menu, Center } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 
