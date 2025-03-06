@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import styles from "@/styles/Join.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +15,7 @@ import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { useState, useEffect } from "react";
 import { Accordion, Group, Text } from "@mantine/core";
 import Header from "@/components/Header";
+import { slideFromLeft, slideFromRight } from "@/components/animations";
 
 const tabs = [
   {
@@ -96,7 +98,13 @@ export default function Join() {
         <div className={styles.contentContainer}>
           {/* About us box */}
           <div className={styles.aboutUs}>
-            <div className={styles.leftContent}>
+            <motion.div
+              className={styles.leftContent}
+              variants={slideFromLeft}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <Image
                 src="/images/JoinUsMedia.jpg"
                 alt="Join Us"
@@ -104,8 +112,14 @@ export default function Join() {
                 width={600}
                 height={500}
               />
-            </div>
-            <div className={styles.rightContent}>
+            </motion.div>
+            <motion.div
+              className={styles.rightContent}
+              variants={slideFromRight}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <h3>Join Us Today!</h3>
               <p>
                 Be part of a team that is at the forefront of UAV technology.
@@ -121,19 +135,31 @@ export default function Join() {
                 <FontAwesomeIcon icon={faDiscord} width={24} height={24} />
                 <span>Discord Server</span>
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Subteams */}
           <div className={styles.backgroundContainer}>
-            <div className={styles.leftSubteams}>
+            <motion.div
+              className={styles.leftSubteams}
+              variants={slideFromLeft}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <h1>Introducing Our Subteams</h1>
               <p className={styles.subteamsDescription}>
                 Explore the teams that make Blackbird UAV soar. Each subteam
                 plays a vital role in our success, from design to operations.
               </p>
-            </div>
-            <div className={styles.rightSubteams}>
+            </motion.div>
+            <motion.div
+              className={styles.rightSubteams}
+              variants={slideFromRight}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <div className={styles.subteamSection}>
                 {/* Subteams: Clickable Tabs */}
                 <div className={styles.tabs}>
@@ -182,7 +208,7 @@ export default function Join() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
