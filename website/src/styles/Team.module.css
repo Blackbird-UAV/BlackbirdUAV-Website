@@ -315,12 +315,21 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   display: block;
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
   position: absolute;
+}
+
+.memberImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Adjust the z-index of the front and back sides */

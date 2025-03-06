@@ -14,46 +14,7 @@ import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
 import { fadeInUp, stagger } from "@/components/animations";
 import Head from "next/head";
-
-const sponsors = [
-  {
-    name: "Carleton University | Faculty of Engineering and Design",
-    logo: "/images/Sponsors/Sponsor_CarletonEng.png",
-    link: "https://carleton.ca/engineering-design/",
-    tier: "partner",
-  },
-  // No longer fund us
-  // {
-  //   name: "Carleton Student Engineering Society",
-  //   logo: "/images/Sponsors/Sponsor_CSES.png",
-  //   link: "https://www.mycses.ca/",
-  //   tier: "gold",
-  // },
-  {
-    name: "Aircraft Spruce & Specialty Co.",
-    logo: "/images/Sponsors/Sponsor_AircraftSpruce.png",
-    link: "https://www.aircraftspruce.ca/",
-    tier: "gold",
-  },
-  {
-    name: "SolidWorks",
-    logo: "/images/Sponsors/Sponsor_SolidWorks.png",
-    link: "https://www.solidworks.com/",
-    tier: "gold",
-  },
-  {
-    name: "T-MOTOR",
-    logo: "/images/Sponsors/Sponsor_T-MOTOR.png",
-    link: "https://uav-en.tmotor.com/",
-    tier: "gold",
-  },
-  {
-    name: "Kostiuk Engineering Funding Collective",
-    logo: "/images/Sponsors/Sponsor_KEFC.png",
-    link: "https://www.mycses.ca/student-group-funding",
-    tier: "partner"
-  }
-];
+import sponsors from "@/data/sponsorData";
 
 const DURATIONS = {
   VeryFast: 0.2,
@@ -93,16 +54,16 @@ export default function Sponsor() {
     // };
     const columnSettings = {
       Partner: {
-        base: "repeat(auto-fit, minmax(200px, 1fr))",
-        lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
+        base: "repeat(auto-fit, minmax(450px, 1fr))",
+        lg: "repeat(auto-fit, minmax(400px, 1fr))", // change these md values as needed
       },
       Gold: {
-        base: "repeat(auto-fit, minmax(160px, 1fr))",
-        lg: "repeat(auto-fit, minmax(140px, 1fr))", // change these md values as needed
+        base: "repeat(auto-fit, minmax(240px, 1fr))",
+        lg: "repeat(auto-fit, minmax(200px, 1fr))", // change these md values as needed
       },
       Silver: {
-        base: "repeat(auto-fit, minmax(140px, 1fr))",
-        lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
+        base: "repeat(auto-fit, minmax(120px, 1fr))",
+        lg: "repeat(auto-fit, minmax(100px, 1fr))", // change these md values as needed
       },
       Bronze: {
         base: "repeat(auto-fit, minmax(120px, 1fr))",
@@ -113,11 +74,8 @@ export default function Sponsor() {
     return (
       <>
         <Head>
-          <title>BlackBird UAV | Sponsor Us</title>
-          <meta
-            name="description"
-            content="Sponsor Us!"
-          />
+          <title>Blackbird UAV | Sponsor Us</title>
+          <meta name="description" content="Sponsor Us!" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
@@ -221,8 +179,8 @@ export default function Sponsor() {
         _hover={
           tier.toLowerCase() === "partner"
             ? {
-                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
-                transform: "scale(1.03)", // Slight scaling
+                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.4)", // Glow effect
+                transform: "scale(1.02)", // Slight scaling
                 transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
               }
             : {
@@ -269,7 +227,13 @@ export default function Sponsor() {
   }, []);
 
   return (
-    <Box bg="black" pl={{ base: 0, lg: 5 }} minHeight="100vh" display="flex" flexDirection="column">
+    <Box
+      bg="black"
+      pl={{ base: 0, lg: 5 }}
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+    >
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -320,7 +284,7 @@ export default function Sponsor() {
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Partner", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
+            {["Partner", "Gold", "Silver" /*"Bronze"*/].map((tier, index) => (
               <motion.div
                 key={index}
                 variants={staggerAnimation}

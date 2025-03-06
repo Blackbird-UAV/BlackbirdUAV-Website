@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "@/styles/Navbar.module.css";
-import dropdownStyles from "../styles/Dropdown.module.css";
+import dropdownStyles from "@/styles/Dropdown.module.css";
 import { Menu, Center } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 
@@ -85,10 +85,10 @@ export default function Navbar() {
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ""}`;
 
   const teamLinks = [
-    { link: "/MeetTheTeam/2024-2025", label: "Current Team" }, 
-    { link: "/MeetTheTeam/2023-2024", label: "2023-2024" }, 
-    { link: "/Competition", label: "Competition" },
-    { link: "/Alumni", label: "Alumni" }
+    { link: "/MeetTheTeam/2024-2025", label: "Current Team" },
+    { link: "/MeetTheTeam/2023-2024", label: "2023-2024" },
+    { link: "/Competitions", label: "Competitions" },
+    { link: "/Alumni", label: "Alumni" },
   ];
 
   useEffect(() => {
@@ -115,14 +115,14 @@ export default function Navbar() {
   }, [isDropdownOpen, isOpen]);
 
   return (
-    <nav className={navbarClass}>
+    <nav className={`${navbarClass}`}>
       <Link href="/">
         <div className={styles.logoContainer}>
           <Image
             src="/logos/BirdLogo.png"
             alt="Logo"
-            layout="fill"
-            className={styles.logo}
+            fill
+            className={`${styles.logo}`}
             sizes="(max-width: 768px) 50px, 100px"
             loading="lazy"
           />
@@ -185,10 +185,16 @@ export default function Navbar() {
           </Center>
           {isDropdownOpen && (
             <div
-              className={`${dropdownStyles.dropdownMenu} ${isDropdownOpen ? dropdownStyles.show : ""}`}
+              className={`${dropdownStyles.dropdownMenu} ${
+                isDropdownOpen ? dropdownStyles.show : ""
+              }`}
             >
               {teamLinks.map((item) => (
-                <Link href={item.link} key={item.link} onClick={handleLinkClick}>
+                <Link
+                  href={item.link}
+                  key={item.link}
+                  onClick={handleLinkClick}
+                >
                   <div className={dropdownStyles.dropdownItem}>
                     {item.label}
                   </div>

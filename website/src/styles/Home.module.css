@@ -163,7 +163,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4rem 12rem 2rem;
+  padding: 2rem 12rem 4rem;
   gap: 1rem;
 }
 
@@ -476,6 +476,7 @@
 
 /* FAQ Section */
 .faqSection {
+  background: linear-gradient(165deg, #2e2e2e, #0c0c0c);
   padding: 6rem 2rem;
   text-align: center;
 }

@@ -24,7 +24,8 @@
 .vehiclesList {
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  overflow: hidden;
+  gap: 20px;
 }
 
 .vehicleCard {
@@ -33,6 +34,7 @@
   background-color: #262626;
   border-radius: 12px;
   padding: 20px;
+  margin: 0 0 40px 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   position: relative;
@@ -106,10 +108,9 @@
 /* Text Box with Border for Separation */
 .textBox {
   width: 33.33%;
-  padding: 40px;
+  padding: 20px 40px;
   color: #dbf5f5;
   border-radius: 12px;
-  margin: 0 20px;
   text-align: center;
 }
 

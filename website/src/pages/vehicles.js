@@ -1,8 +1,17 @@
 import Head from "next/head";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/Vehicles.module.css";
 import Header from "@/components/Header";
+import {
+  fadeInUp,
+  fadeInUpSlower,
+  fadeInUpDelayed,
+  slideFromLeftDelayed,
+  slideFromLeft,
+  slideFromRight,
+} from "@/components/animations";
 
 const vehicles = [
   {
@@ -113,7 +122,7 @@ export default function Vehicles() {
   return (
     <>
       <Head>
-        <title>BlackBird UAV | Our Vehicles</title>
+        <title>Blackbird UAV | Our Vehicles</title>
         <meta name="description" content="Sponsor Us!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -124,13 +133,17 @@ export default function Vehicles() {
       <div className={styles.container}>
         <div className={styles.vehiclesList}>
           {vehicles.map((vehicle, index) => (
-            <div
+            <motion.div
               key={vehicle.id}
               className={`${styles.vehicleCard} ${
                 index % 2 === 1 ? styles.right : styles.left
               }`}
               ref={(el) => (vehiclesRef.current[index] = el)}
               // style={{ scrollSnapAlign: "center" }} // Ensure snap alignment
+              variants={fadeInUpSlower}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.1 }}
             >
               <div className={styles.carouselContainer}>
                 <div className={styles.carousel}>
@@ -189,7 +202,7 @@ export default function Vehicles() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

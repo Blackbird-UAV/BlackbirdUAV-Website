@@ -23,7 +23,7 @@ const slides = [
     name: "Apogee",
     image: "/images/Vehicles/Apogee_1.jpg",
     description:
-      "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
+      "Blackbird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
   },
   {
     name: "Zenith",
@@ -35,8 +35,8 @@ const slides = [
 
 const faqData = [
   {
-    question: "What is BlackBird UAV?",
-    answer: "BlackBird UAV is Carleton University's premier UAV design team.",
+    question: "What is Blackbird UAV?",
+    answer: "Blackbird UAV is Carleton University's premier UAV design team.",
   },
   {
     question: "How can I join the team?",
@@ -183,10 +183,10 @@ export default function Home() {
     <div>
       <div className={styles.pageWrapper}>
         <Head>
-          <title>BlackBird UAV</title>
+          <title>Blackbird UAV</title>
           <meta
             name="description"
-            content="BlackBird UAV | Carleton University's UAV Design Team"
+            content="Blackbird UAV | Carleton University's UAV Design Team"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
@@ -420,7 +420,7 @@ export default function Home() {
         </div>
 
         <div id="faqSection" className={styles.faqSection}>
-          <h2>Frequently Asked Questions</h2>
+          <h2>FAQ</h2>
           <Accordion data={faqData} />
         </div>
       </div>

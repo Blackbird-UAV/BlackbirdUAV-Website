@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
-import teamData from "../../data/teamData";
+import teamData from "@/data/teamData";
 import { Text, TextInput } from "@mantine/core";
-import styles from "../../styles/Team.module.css";
+import styles from "@/styles/Team.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
@@ -77,7 +77,7 @@ const MeetTeam = () => {
   return (
     <>
       <Head>
-        <title>BlackBird UAV | Meet the Team</title>
+        <title>Blackbird UAV | Meet the Team</title>
         <meta name="description" content="Meet the Team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -149,12 +149,22 @@ const MeetTeam = () => {
                         >
                           <div className={styles.cardInner}>
                             {/* Front Side */}
-                            <div
-                              className={styles.cardFront}
-                              style={{
-                                backgroundImage: `url(${member.image})`,
-                              }}
-                            >
+                            <div className={styles.cardFront}>
+                              <img
+                                src={member.image}
+                                alt={`${member.firstName} ${member.lastName}`}
+                                className={styles.memberImage}
+                                onError={(e) => {
+                                  e.target.src =
+                                    "/images/TeamHeadshots/memberPlaceholder.png";
+                                  e.target.style.filter =
+                                    "blur(4px) brightness(0.9)";
+                                  {
+                                    /* */
+                                  }
+                                  e.target.style.scale = "1.02";
+                                }}
+                              />
                               <div className={styles.turnOverIcon}>
                                 <FontAwesomeIcon icon={faAnglesRight} />
                               </div>

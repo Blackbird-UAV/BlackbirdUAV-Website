@@ -120,7 +120,7 @@
 }
 
 .backgroundContainer {
-  background-color: #2f2f2f;
+  background: linear-gradient(150deg, #2e2e2e, #0c0c0c);
   padding: 4rem 0;
   display: flex;
   justify-content: space-around;
