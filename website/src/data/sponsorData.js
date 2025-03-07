@@ -46,7 +46,7 @@ const sponsors = [
     name: "SIMNET",
     logo: "/images/Sponsors/Sponsor_SIMNET.png",
     link: "https://www.simnet.aero/",
-    tier: "silver",
+    tier: "support",
   },
 ];
 
