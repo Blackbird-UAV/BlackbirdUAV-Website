@@ -46,30 +46,55 @@ export default function Sponsor() {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
   const renderSponsorsByTier = (tier, sectionIndex) => {
-    // const columnSettings = {
-    //   Partner: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
-    //   Gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
-    //   Silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
-    //   Bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
-    // };
     const columnSettings = {
       Partner: {
-        base: "repeat(auto-fit, minmax(450px, 1fr))",
-        lg: "repeat(auto-fit, minmax(400px, 1fr))", // change these md values as needed
+        sm: "repeat(1, 1fr)",
+        base: "repeat(1, 1fr)",
+        md: "repeat(1, 1fr)",
       },
       Gold: {
-        base: "repeat(auto-fit, minmax(240px, 1fr))",
-        lg: "repeat(auto-fit, minmax(200px, 1fr))", // change these md values as needed
+        sm: "repeat(2, 1fr)",
+        base: "repeat(2, 1fr)",
+        md: "repeat(2, 1fr)",
       },
       Silver: {
-        base: "repeat(auto-fit, minmax(120px, 1fr))",
-        lg: "repeat(auto-fit, minmax(100px, 1fr))", // change these md values as needed
+        sm: "repeat(2, 1fr)",
+        base: "repeat(3, 1fr)",
+        md: "repeat(3, 1fr)",
       },
       Bronze: {
-        base: "repeat(auto-fit, minmax(120px, 1fr))",
-        lg: "repeat(auto-fit, minmax(100px, 1fr))", // change these md values as needed
+        sm: "repeat(2, 1fr)",
+        base: "repeat(3, 1fr)",
+        md: "repeat(3, 1fr)",
+      },
+      Support: {
+        sm: "repeat(2, 1fr)",
+        base: "repeat(3, 1fr)",
+        md: "repeat(3, 1fr)",
       },
     };
+    // const columnSettings = {
+    //   Partner: {
+    //     base: "repeat(auto-fit, minmax(240px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(220px, 1fr))", // change these md values as needed
+    //   },
+    //   Gold: {
+    //     base: "repeat(auto-fit, minmax(180px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
+    //   },
+    //   Silver: {
+    //     base: "repeat(auto-fit, minmax(150px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(150px, 1fr))", // change these md values as needed
+    //   },
+    //   Bronze: {
+    //     base: "repeat(auto-fit, minmax(120px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
+    //   },
+    //   Support: {
+    //     base: "repeat(auto-fit, minmax(90px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(90px, 1fr))", // change these md values as needed
+    //   },
+    // };
 
     return (
       <>
@@ -93,6 +118,8 @@ export default function Sponsor() {
                       return "silverSection";
                     case "bronze":
                       return "bronzeSection";
+                    case "support":
+                      return "supportSection";
                     default:
                       return undefined;
                   }
@@ -163,6 +190,7 @@ export default function Sponsor() {
       Gold: "#fddd5b",
       Silver: "#c4c4c4",
       Bronze: "#de975d",
+      Support: "#f0f0f0",
     };
 
     return (
@@ -284,17 +312,19 @@ export default function Sponsor() {
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Partner", "Gold", "Silver" /*"Bronze"*/].map((tier, index) => (
-              <motion.div
-                key={index}
-                variants={staggerAnimation}
-                initial="hidden"
-                animate="visible"
-                custom={index}
-              >
-                {renderSponsorSections(tier, index)}
-              </motion.div>
-            ))}
+            {["Partner", "Gold", "Silver" /*, "Bronze"*/, "Support"].map(
+              (tier, index) => (
+                <motion.div
+                  key={index}
+                  variants={staggerAnimation}
+                  initial="hidden"
+                  animate="visible"
+                  custom={index}
+                >
+                  {renderSponsorSections(tier, index)}
+                </motion.div>
+              )
+            )}
           </Stack>
         </GridItem>
       </Grid>
