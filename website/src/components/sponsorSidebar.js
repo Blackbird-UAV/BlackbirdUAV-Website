@@ -85,13 +85,14 @@ const SponsorSidebar = () => {
             </MotionHeading>
             {/* Content Box */}
             <Box
-              bg="gray.800"
+              // bg="gray.800"
+              bg="linear-gradient(150deg, #2e2e2e,rgb(20, 20, 20))"
               h="fit-content"
               minH="60vh"
               px={8}
               mt={2}
               borderRadius="md"
-              boxShadow="lg"
+              boxShadow="0 0 12px 2px rgba(255, 255, 255, 0.3)"
               display="flex"
               justifyContent="center"
               alignItems="center"

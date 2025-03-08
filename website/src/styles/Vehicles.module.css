@@ -31,7 +31,7 @@
 .vehicleCard {
   display: flex;
   align-items: center;
-  background-color: #262626;
+  background: linear-gradient(135deg, #2e2e2e, #1f1f1f);
   border-radius: 12px;
   padding: 20px;
   margin: 0 0 40px 0;
