@@ -92,7 +92,7 @@ const SponsorSidebar = () => {
               px={8}
               mt={2}
               borderRadius="md"
-              boxShadow="0 0 12px 2px rgba(255, 255, 255, 0.3)"
+              boxShadow="0 0 8px 4px rgba(255, 255, 255, 0.2)"
               display="flex"
               justifyContent="center"
               alignItems="center"

@@ -7,6 +7,15 @@ import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
 import Head from "next/head";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+const DURATIONS = {
+  VeryFast: 0.2,
+  Fast: 0.4,
+  Normal: 0.6,
+  Slow: 0.8,
+  VerySlow: 1.0,
+};
 
 const MeetTeam = () => {
   const router = useRouter();
@@ -141,11 +150,25 @@ const MeetTeam = () => {
                             ? 1
                             : 0)
                       )
-                      .map((member) => (
-                        <div
+                      .map((member, index) => (
+                        <motion.div
                           key={member.id}
                           id={`member-${member.id}`}
                           className={styles.card}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.1 }}
+                          variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              transition: {
+                                delay: (index % 4) * 0.1,
+                                duration: DURATIONS.Normal,
+                              },
+                            },
+                          }}
                         >
                           <div className={styles.cardInner}>
                             {/* Front Side */}
@@ -250,7 +273,7 @@ const MeetTeam = () => {
                               </a>
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
                   </div>
                 </div>

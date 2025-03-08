@@ -12,7 +12,6 @@ import {
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
-import { fadeInUp, stagger } from "@/components/animations";
 import Head from "next/head";
 import sponsors from "@/data/sponsorData";
 
