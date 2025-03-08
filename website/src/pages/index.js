@@ -17,6 +17,7 @@ import {
 } from "@/components/animations";
 import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
 import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
+import SponsorGrid from "@/components/sponsorGrid";
 
 const slides = [
   {
@@ -127,12 +128,20 @@ export default function Home() {
 
   const cloudLeftVariants = {
     hidden: { x: "-100%", opacity: 0.1 },
-    visible: { x: 0, opacity: 1, transition: { duration: 1, ease: "easeOut" } },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
   };
 
   const cloudRightVariants = {
     hidden: { x: "100%", opacity: 0.1 },
-    visible: { x: 0, opacity: 1, transition: { duration: 1, ease: "easeOut" } },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
   };
 
   useEffect(() => {
@@ -277,7 +286,9 @@ export default function Home() {
               src="/images/cloud.png"
               alt="Cloud Left"
               className={styles.cloudLeft}
-              style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
+              style={{
+                transform: `translateX(-${scrollY * 0.4}px)`,
+              }}
               width={500}
               height={300}
             />
@@ -291,7 +302,9 @@ export default function Home() {
               src="/images/cloud2.png"
               alt="Cloud Right"
               className={styles.cloudRight}
-              style={{ transform: `translateX(${scrollY * 0.4}px)` }}
+              style={{
+                transform: `translateX(${scrollY * 0.4}px)`,
+              }}
               width={500}
               height={300}
             />
@@ -443,9 +456,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="faqSection" className={styles.faqSection}>
-          <h2>FAQ</h2>
-          <Accordion data={faqData} />
+        <div id="backgroundSection" className={styles.backgroundSection}>
+          <div id="sponsorSection" className={styles.sponsorSection}>
+            <h2>Sponsors</h2>
+            <SponsorGrid />
+          </div>
+          <div id="faqSection" className={styles.faqSection}>
+            <h2>FAQ</h2>
+            <Accordion data={faqData} />
+          </div>
         </div>
       </div>
     </div>

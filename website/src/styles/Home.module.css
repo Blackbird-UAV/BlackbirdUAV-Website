@@ -475,10 +475,28 @@
   z-index: 2;
 }
 
+.backgroundSection {
+  background: linear-gradient(165deg, #2e2e2e, #0c0c0c);
+}
+
+.sponsorSection {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.sponsorSection h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 8px;
+}
+
 /* FAQ Section */
 .faqSection {
-  background: linear-gradient(165deg, #2e2e2e, #0c0c0c);
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
 }
 
