@@ -147,8 +147,12 @@
   filter: brightness(1.2);
 }
 
+.backgroundContainer {
+  background: linear-gradient(150deg, #2e2e2e, #0c0c0c);
+}
+
 .aboutContainer {
-  background-color: #212121;
+  /* background-color: #212121; */
   min-height: 40vh;
   display: flex;
   justify-content: center;
@@ -158,7 +162,7 @@
 }
 
 .aeacContainer {
-  background-color: #212121;
+  /* background-color: #212121; */
   min-height: 40vh;
   display: flex;
   justify-content: center;
@@ -444,7 +448,7 @@
 .cloudContainer {
   position: relative;
   width: 100%;
-  height: 30px;
+  height: 0px;
   overflow: visible;
   background-color: #212121;
 }
@@ -452,32 +456,47 @@
 .cloudLeft,
 .cloudRight {
   position: absolute;
-  width: 50%;
+  width: 50vw;
   height: auto;
   background: url("/images/cloud.png") no-repeat;
   background-size: contain;
+  will-change: transform;
 }
 
 .cloudLeft {
-  bottom: -50%;
-  /* Higher position */
+  bottom: -48px;
   left: -20px;
-  /* Offset to the left */
   z-index: 1;
 }
 
 .cloudRight {
-  bottom: -300%;
-  /* Higher position */
+  bottom: -100px;
   right: -100px;
-  /* Offset to the right */
   z-index: 2;
+}
+
+.backgroundSection {
+  background: linear-gradient(165deg, #2e2e2e, #0c0c0c);
+}
+
+.sponsorSection {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.sponsorSection h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 8px;
 }
 
 /* FAQ Section */
 .faqSection {
-  background: linear-gradient(165deg, #2e2e2e, #0c0c0c);
-  padding: 6rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
 }
 

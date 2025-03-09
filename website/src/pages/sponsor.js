@@ -12,7 +12,6 @@ import {
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
-import { fadeInUp, stagger } from "@/components/animations";
 import Head from "next/head";
 import sponsors from "@/data/sponsorData";
 
@@ -98,11 +97,6 @@ export default function Sponsor() {
 
     return (
       <>
-        <Head>
-          <title>Blackbird UAV | Sponsor Us</title>
-          <meta name="description" content="Sponsor Us!" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
         <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
           {sponsors
             .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
@@ -135,7 +129,7 @@ export default function Sponsor() {
                     transition: {
                       delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
                       duration: DURATIONS.Normal,
-                      // ease: [0.6, -0.05, 0.01, 0.99],
+                      ease: [0.6, -0.05, 0.01, 0.99],
                     },
                   },
                 }}
@@ -158,6 +152,7 @@ export default function Sponsor() {
                     borderRadius="md"
                     boxShadow="md"
                     overflow="hidden"
+                    transition="transform 0.3s ease-in-out"
                     _hover={{
                       transform: "scale(1.04)",
                       transition: "0.3s",
@@ -204,16 +199,18 @@ export default function Sponsor() {
         display="flex"
         alignItems="center"
         // if section is partner, add a glow on hover
+        transition="transform 0.3s ease-in-out"
         _hover={
           tier.toLowerCase() === "partner"
             ? {
                 boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.4)", // Glow effect
                 transform: "scale(1.02)", // Slight scaling
-                transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
+                transition:
+                  "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out", // Smooth transition
               }
             : {
                 transform: "scale(1.02)", // Subtle scaling for other tiers
-                transition: "transform 0.3s ease", // Smooth transition
+                transition: "transform 0.3s ease-in-out", // Smooth transition
               }
         }
       >
@@ -262,6 +259,11 @@ export default function Sponsor() {
       display="flex"
       flexDirection="column"
     >
+      <Head>
+        <title>Blackbird UAV | Sponsor Us</title>
+        <meta name="description" content="Sponsor Us!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -337,7 +339,7 @@ export default function Sponsor() {
           transform={
             isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"
           }
-          transition="transform 0.4s ease, opacity 0.4s ease"
+          transition="transform 0.4s ease-in-out, opacity 0.4s ease-in-out"
           borderRadius="full"
           bg="transparent"
           border="2px solid white"
