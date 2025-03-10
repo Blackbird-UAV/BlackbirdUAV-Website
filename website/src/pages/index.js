@@ -376,7 +376,7 @@ export default function Home() {
               whileInView="animate"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <a href="https://www.aerialevolution.ca/">
+              <a href="https://www.aerialevolution.ca/annual-student-competition/">
                 <Image
                   src="/images/AEACSC_logo.jpg"
                   alt="AEAC SC Logo"
