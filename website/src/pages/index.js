@@ -18,6 +18,7 @@ import {
 import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
 import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
 import SponsorGrid from "@/components/sponsorGrid";
+import faqData from "@/data/faqData";
 
 const slides = [
   {
@@ -31,18 +32,6 @@ const slides = [
     image: "/images/Vehicles/Zenith_1.jpg",
     description:
       "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
-  },
-];
-
-const faqData = [
-  {
-    question: "What is Blackbird UAV?",
-    answer: "Blackbird UAV is Carleton University's premier UAV design team.",
-  },
-  {
-    question: "How can I join the team?",
-    answer:
-      "You can join by joining our discord linked at the bottom of the page.",
   },
 ];
 
@@ -362,7 +351,7 @@ export default function Home() {
             >
               <h1>About Us</h1>
               <p>
-                We are Blackbird UAV (BBUAV), a student design team, working to
+                We are Blackbird UAV (BBUAV), a student design team working to
                 create uncrewed aerial vehicles (UAVs) to compete at the Aerial
                 Evolution Association of Canada Student Competition (AEAC SC).
               </p>

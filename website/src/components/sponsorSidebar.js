@@ -214,7 +214,7 @@ const SponsorSidebar = () => {
                 </MotionText>
                 <MotionButton
                   as={Link}
-                  href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
+                  href="mailto:sponsor@blackbirduav.ca?subject=Blackbird%20UAV%20Sponsorship"
                   target="_blank"
                   isExternal
                   size="lg"
