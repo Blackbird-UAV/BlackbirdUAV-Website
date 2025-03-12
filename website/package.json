@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run clean && next build && npm run copy-htaccess",
+    "build": "npm run clean && next build && npm run copy-htaccess-win",
     "clean": "rimraf ./website/out/*",
     "copy-htaccess": "cp .htaccess ./out/.htaccess",
+    "copy-htaccess-win": "copy .htaccess ./out/.htaccess",
     "start": "next start",
     "lint": "next lint"
   },
