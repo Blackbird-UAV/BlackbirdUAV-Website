@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, stagger, scaleUp } from "@/components/animations";
 import styles from "@/styles/SponsorSidebar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faDonate } from "@fortawesome/free-solid-svg-icons";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 const SponsorSidebar = () => {
@@ -50,188 +50,247 @@ const SponsorSidebar = () => {
 
   return (
     <>
-    <MotionBox
-      initial="initial"
-      animate="animate"
-      variants={fadeInUp}
-      position={position}
-      top={top}
-      width={width}
-      bg="black"
-      color="white"
-      zIndex={10}
-    >
-      <Container
-        py={2}
-        mt={8}
-        height={{ lg: "100vh" }}
-        alignItems={{ lg: "center" }}
+      <MotionBox
+        initial="initial"
+        animate="animate"
+        variants={fadeInUp}
+        position={position}
+        top={top}
+        width={width}
+        bg="black"
+        color="white"
+        zIndex={10}
       >
-        <MotionStack
-          variants={stagger}
-          spacing={6}
-          w="100%"
-          justify="center"
-          align="center"
+        <Container
+          py={2}
+          mt={8}
+          height={{ lg: "100vh" }}
+          alignItems={{ lg: "center" }}
         >
-          {/* Heading */}
-          <MotionHeading as="h1" size="5xl" color="#ffffff" variants={fadeInUp}>
-            Sponsorships
-          </MotionHeading>
-          {/* Content Box */}
-          <Box
-            bg="gray.800"
-            h="fit-content"
-            minH="60vh"
-            px={8}
-            mt={2}
-            borderRadius="md"
-            boxShadow="lg"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="column"
-            className={styles.mobilePaddingTop} // Add padding to the top in mobile mode
+          <MotionStack
+            variants={stagger}
+            spacing={6}
+            w="100%"
+            justify="center"
+            align="center"
           >
-            <Grid
-              templateColumns={{
-                base: "1fr",
-                lg: "repeat(2, 1fr)",
-              }}
-              gap={4}
-              alignItems="center"
-              textAlign="center"
+            {/* Heading */}
+            <MotionHeading
+              as="h1"
+              size="4xl"
+              color="#ffffff"
+              variants={fadeInUp}
             >
-              {/* Text Content */}
-              <Box>
-                <MotionHeading as="h2" size="2xl" mb={4} variants={fadeInUp}>
-                  What do sponsors do?
-                </MotionHeading>
-                <MotionText mb={4} variants={fadeInUp} textAlign="left">
-                  Sponsors play a vital role in helping us achieve our goals.
-                  Their generous contributions enable us to participate in
-                  competitions and enhance our resources year by year.
-                  <br />
-                  <br />
-                  There are many ways to support our team. For more information,
-                  please read our sponsorship package.
+              Sponsorships
+            </MotionHeading>
+            {/* Content Box */}
+            <Box
+              // bg="gray.800"
+              bg="linear-gradient(150deg, #2e2e2e,rgb(20, 20, 20))"
+              h="fit-content"
+              minH="60vh"
+              px={8}
+              mt={2}
+              borderRadius="md"
+              boxShadow="0 0 8px 4px rgba(255, 255, 255, 0.2)"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="column"
+              className={styles.mobilePaddingTop} // Add padding to the top in mobile mode
+            >
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  lg: "repeat(2, 1fr)",
+                }}
+                gap={4}
+                alignItems="center"
+                textAlign="center"
+              >
+                {/* Text Content */}
+                <Box>
+                  <MotionHeading as="h2" size="2xl" my={4} variants={fadeInUp}>
+                    What do sponsors do?
+                  </MotionHeading>
+                  <MotionText mb={4} variants={fadeInUp} textAlign="left">
+                    Sponsors play a vital role in helping us achieve our goals.
+                    Their generous contributions enable us to participate in
+                    competitions and enhance our resources year by year.
+                    <br />
+                    <br />
+                    There are many ways to support our team. For more
+                    information, please read our sponsorship package.
+                  </MotionText>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                  >
+                    <MotionButton
+                      as={Link}
+                      href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
+                      target="_blank"
+                      isExternal
+                      size="lg"
+                      bg="linear-gradient(135deg,rgb(255, 65, 97),rgb(247, 57, 51))"
+                      color="white"
+                      borderRadius="full"
+                      mb={2}
+                      p={6}
+                      variants={scaleUp}
+                      whileHover={{
+                        scale: 1.05,
+                        backgroundColor: "#e91c23",
+                        boxShadow: "0 0px 15px rgba(233, 28, 35, 0.5)",
+                        filter: "brightness(1.2)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      transition="all 0.3s ease-in-out"
+                      boxShadow="lg"
+                      _focus={{
+                        outline: "none",
+                        boxShadow: "0 0 0 2px #e68787",
+                      }}
+                      _hover={{
+                        backgroundColor: "#e91c23",
+                        transform: "scale(1.05)",
+                        boxShadow: "0 0px 15px rgba(233, 28, 35, 0.5)",
+                        filter: "brightness(1.2)",
+                      }}
+                      w="fit-content"
+                    >
+                      Sponsorship Package{" "}
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    </MotionButton>
+                  </Box>
+                </Box>
+                {/* Image */}
+                <MotionBox
+                  variants={fadeInUp}
+                  overflow="hidden"
+                  borderRadius="lg"
+                  height="95%"
+                  display="cover"
+                  justifyContent="center"
+                  alignItems="center"
+                  flexDirection="column"
+                  mb={2}
+                >
+                  <Image
+                    src="/images/Sponsor_TeamWorking.jpg"
+                    alt="Sponsorship Event"
+                    objectFit="cover"
+                    height="100%"
+                    width="auto"
+                    borderRadius="md"
+                    boxShadow="lg"
+                  />
+                </MotionBox>
+              </Grid>
+
+              <Box
+                width="100%"
+                height="1px"
+                bg="rgba(255, 255, 255, 0.2)"
+                my={2}
+              />
+
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                mt={2}
+                className={styles.mobilePaddingBottom} // Add padding below the button in mobile mode
+              >
+                <MotionText
+                  color="white"
+                  mb={4}
+                  variants={fadeInUp}
+                  textAlign="center"
+                >
+                  If you have any questions, would like to discuss sponsorship
+                  opportunities, or wish to support us with a donation, feel
+                  free to reach out:
                 </MotionText>
-                <Box display="flex" flexDirection="column" alignItems="center">
+                <Box display="flex" flexDirection="row" alignItems="center">
                   <MotionButton
                     as={Link}
-                    href="/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf"
+                    href="mailto:sponsor@blackbirduav.ca?subject=Blackbird%20UAV%20Sponsorship"
                     target="_blank"
                     isExternal
                     size="lg"
-                    bg="#eb1d25"
+                    bg="linear-gradient(135deg,rgb(255, 65, 97),rgb(247, 57, 51))"
                     color="white"
                     borderRadius="full"
                     mb={2}
                     p={6}
-                    fontWeight="bold"
                     variants={scaleUp}
                     whileHover={{
-                      scale: 1.1,
-                      background: "linear-gradient(to right, #00b5d8, #4e9ff3)",
+                      scale: 1.05,
+                      backgroundColor: "#e91c23",
+                      boxShadow: "0 0px 15px rgba(233, 28, 35, 0.5)",
+                      filter: "brightness(1.2)",
                     }}
                     whileTap={{ scale: 0.95 }}
+                    transition="all 0.3s ease-in-out"
                     boxShadow="lg"
                     _focus={{
                       outline: "none",
                       boxShadow: "0 0 0 2px #e68787",
                     }}
                     _hover={{
-                      background: "#e68787",
-                      boxShadow: "0 4px 15px rgba(0, 181, 216, 0.5)",
+                      backgroundColor: "#e91c23",
+                      transform: "scale(1.05)",
+                      boxShadow: "0 0px 15px rgba(233, 28, 35, 0.5)",
+                      filter: "brightness(1.2)",
                     }}
                     w="fit-content"
                   >
-                    Sponsorship Package <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                    Send us an email <FontAwesomeIcon icon={faEnvelope} />
+                  </MotionButton>
+                  <MotionButton
+                    as={Link}
+                    href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
+                    target="_blank"
+                    isExternal
+                    size="lg"
+                    bg="linear-gradient(135deg,rgb(65, 105, 225),rgb(57, 51, 247))"
+                    color="white"
+                    borderRadius="full"
+                    mb={2}
+                    p={6}
+                    ml={4}
+                    variants={scaleUp}
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "#4169e1",
+                      boxShadow: "0 0px 15px rgba(65, 105, 225, 0.5)",
+                      filter: "brightness(1.2)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition="all 0.3s ease-in-out"
+                    boxShadow="lg"
+                    _focus={{
+                      outline: "none",
+                      boxShadow: "0 0 0 2px #87a7e6",
+                    }}
+                    _hover={{
+                      backgroundColor: "#4169e1",
+                      transform: "scale(1.05)",
+                      boxShadow: "0 0px 15px rgba(65, 105, 225, 0.5)",
+                      filter: "brightness(1.2)",
+                    }}
+                    w="fit-content"
+                  >
+                    Donate <FontAwesomeIcon icon={faDonate} />
                   </MotionButton>
                 </Box>
               </Box>
-              {/* Image */}
-              <MotionBox
-                variants={fadeInUp}
-                overflow="hidden"
-                borderRadius="lg"
-                height="95%"
-                display="cover"
-                justifyContent="center"
-                alignItems="center"
-                flexDirection="column"
-                mb={2}
-              >
-                <Image
-                  src="/images/Sponsor_TeamWorking.jpg"
-                  alt="Sponsorship Event"
-                  objectFit="cover"
-                  height="100%"
-                  width="auto"
-                  borderRadius="md"
-                  boxShadow="lg"
-                />
-              </MotionBox>
-            </Grid>
-
-            <Box
-              width="100%"
-              height="1px"
-              bg="rgba(255, 255, 255, 0.2)"
-              my={2}
-            />
-
-            <Box
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              mt={2}
-              className={styles.mobilePaddingBottom} // Add padding below the button in mobile mode
-            >
-              <MotionText
-                color="white"
-                mb={4}
-                variants={fadeInUp}
-                textAlign="center"
-              >
-                If you have any questions or would like to discuss sponsorship
-                opportunities, feel free to reach out:
-              </MotionText>
-              <MotionButton
-                onClick={handleContactUsClick}
-                size="lg"
-                bg="#eb1d25"
-                color="white"
-                borderRadius="full"
-                mb={2}
-                p={6}
-                fontWeight="bold"
-                variants={scaleUp}
-                whileHover={{
-                  scale: 1.1,
-                  background: "linear-gradient(to right, #00b5d8, #4e9ff3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                boxShadow="lg"
-                _focus={{
-                  outline: "none",
-                  boxShadow: "0 0 0 2px #e68787", // Focus outline matches the default color
-                }}
-                _hover={{
-                  background: "#e68787", // Reverts to default color when unhovered
-                  boxShadow: "0 4px 15px rgba(0, 181, 216, 0.5)", // Hover shadow effect
-                }}
-                display="flex" // Make the Box a flex container
-                alignItems="center" // Center horizontally
-                w="fit-content"
-              >
-                Send us an email <FontAwesomeIcon icon={faEnvelope} />
-              </MotionButton>
             </Box>
-          </Box>
-        </MotionStack>
-      </Container>
-    </MotionBox>
+          </MotionStack>
+        </Container>
+      </MotionBox>
     </>
   );
 };

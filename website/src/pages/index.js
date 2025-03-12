@@ -17,31 +17,21 @@ import {
 } from "@/components/animations";
 import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
 import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
+import SponsorGrid from "@/components/sponsorGrid";
+import faqData from "@/data/faqData";
 
 const slides = [
   {
     name: "Apogee",
     image: "/images/Vehicles/Apogee_1.jpg",
     description:
-      "BlackBird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
+      "Blackbird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
   },
   {
     name: "Zenith",
     image: "/images/Vehicles/Zenith_1.jpg",
     description:
       "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
-  },
-];
-
-const faqData = [
-  {
-    question: "What is BlackBird UAV?",
-    answer: "BlackBird UAV is Carleton University's premier UAV design team.",
-  },
-  {
-    question: "How can I join the team?",
-    answer:
-      "You can join by joining our discord linked at the bottom of the page.",
   },
 ];
 
@@ -125,6 +115,24 @@ export default function Home() {
     setCurrentIndex(index);
   };
 
+  const cloudLeftVariants = {
+    hidden: { x: "-100%", opacity: 0.1 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  const cloudRightVariants = {
+    hidden: { x: "100%", opacity: 0.1 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
   useEffect(() => {
     const transitionEndHandler = () => setIsTransitioning(false);
     const slideContainer = document.querySelector(`.${styles.slideContainer}`);
@@ -179,14 +187,40 @@ export default function Home() {
     }
   }, [isSceneLoaded]);
 
+  const injectGA = () => {
+    if (typeof window == "undefined") {
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-G90X971NWB");
+  };
+
   return (
     <div>
       <div className={styles.pageWrapper}>
         <Head>
-          <title>BlackBird UAV</title>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-G90X971NWB"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-G90X971NWB');
+            `,
+            }}
+          />
+          <title>Blackbird UAV</title>
           <meta
             name="description"
-            content="BlackBird UAV | Carleton University's UAV Design Team"
+            content="Blackbird UAV | Carleton University's UAV Design Team"
           />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
@@ -258,98 +292,116 @@ export default function Home() {
         </div>
 
         <div id="firstDiv" className={styles.cloudContainer}>
-          <Image
-            src="/images/cloud.png"
-            alt="Cloud Left"
-            className={styles.cloudLeft}
-            style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
-            width={500}
-            height={300}
-          />
-          <Image
-            src="/images/cloud2.png"
-            alt="Cloud Right"
-            className={styles.cloudRight}
-            style={{ transform: `translateX(${scrollY * 0.4}px)` }}
-            width={500}
-            height={300}
-          />
-        </div>
-
-        <div id="secondDiv" className={styles.aboutContainer}>
           <motion.div
-            variants={slideFromLeft}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
+            initial="hidden"
+            animate={isSceneLoaded ? "visible" : "hidden"}
+            variants={cloudLeftVariants}
           >
             <Image
-              src="/images/Home_AboutUs.jpg"
-              alt="Blackbird UAV Logo"
-              className={styles.aboutImage}
+              src="/images/cloud.png"
+              alt="Cloud Left"
+              className={styles.cloudLeft}
+              style={{
+                transform: `translateX(-${scrollY * 0.4}px)`,
+              }}
               width={500}
               height={300}
             />
           </motion.div>
           <motion.div
-            className={styles.aboutText}
-            variants={slideFromRight}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
+            initial="hidden"
+            animate={isSceneLoaded ? "visible" : "hidden"}
+            variants={cloudRightVariants}
           >
-            <h1>About Us</h1>
-            <p>
-              We are Blackbird UAV (BBUAV), a student design team, working to
-              create uncrewed aerial vehicles (UAVs) to compete at the Aerial
-              Evolution Association of Canada Student Competition (AEAC SC).
-            </p>
-            <p>
-              BBUAV was established in 2009 as an extra-curricular program for
-              this competition but evolved to offer experience for students from
-              varied studies and background in real-world design projects,
-              operations, administration, and teamwork.
-            </p>
+            <Image
+              src="/images/cloud2.png"
+              alt="Cloud Right"
+              className={styles.cloudRight}
+              style={{
+                transform: `translateX(${scrollY * 0.4}px)`,
+              }}
+              width={500}
+              height={300}
+            />
           </motion.div>
         </div>
 
-        <div id="aeacContainer" className={styles.aeacContainer}>
-          <motion.div
-            className={styles.aboutText}
-            variants={slideFromLeft}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <h1>AEAC SC</h1>
-            <p>
-              The Aerial Evolution Association of Canada Student Competition
-              (AEAC SC) is a national event that challenges university and
-              college students to design, build, and operate uncrewed aerial
-              systems (UAS) for real-world applications.
-            </p>
-            <p>
-              The competition provides students with hands-on experience in
-              aerospace engineering, avionics, and mission planning, while
-              promoting innovation in the UAV industry.
-            </p>
-          </motion.div>
-          <motion.div
-            variants={slideFromRight}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <a href="https://www.aerialevolution.ca/">
+        <div className={styles.backgroundContainer}>
+          <div id="secondDiv" className={styles.aboutContainer}>
+            <motion.div
+              variants={slideFromLeft}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <Image
-                src="/images/AEACSC_logo.jpg"
-                alt="AEAC SC Logo"
+                src="/images/Home_AboutUs.jpg"
+                alt="Blackbird UAV Logo"
                 className={styles.aboutImage}
                 width={500}
                 height={300}
               />
-            </a>
-          </motion.div>
+            </motion.div>
+            <motion.div
+              className={styles.aboutText}
+              variants={slideFromRight}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <h1>About Us</h1>
+              <p>
+                We are Blackbird UAV (BBUAV), a student design team working to
+                create uncrewed aerial vehicles (UAVs) to compete at the Aerial
+                Evolution Association of Canada Student Competition (AEAC SC).
+              </p>
+              <p>
+                BBUAV was established in 2009 as an extra-curricular program for
+                this competition but evolved to offer experience for students
+                from varied studies and background in real-world design
+                projects, operations, administration, and teamwork.
+              </p>
+            </motion.div>
+          </div>
+
+          <div id="aeacContainer" className={styles.aeacContainer}>
+            <motion.div
+              className={styles.aboutText}
+              variants={slideFromLeft}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <h1>AEAC SC</h1>
+              <p>
+                The Aerial Evolution Association of Canada Student Competition
+                (AEAC SC) is a national event that challenges university and
+                college students to design, build, and operate uncrewed aerial
+                systems (UAS) for real-world applications.
+              </p>
+              <p>
+                The competition provides students with hands-on experience in
+                aerospace engineering, avionics, and mission planning, while
+                promoting innovation in the UAV industry.
+              </p>
+            </motion.div>
+            <motion.div
+              variants={slideFromRight}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <a href="https://www.aerialevolution.ca/annual-student-competition/">
+                <Image
+                  src="/images/AEACSC_logo.jpg"
+                  alt="AEAC SC Logo"
+                  className={styles.aboutImage}
+                  width={500}
+                  height={300}
+                />
+              </a>
+            </motion.div>
+          </div>
         </div>
 
         <div className={styles.galleryContainer}>
@@ -419,9 +471,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="faqSection" className={styles.faqSection}>
-          <h2>Frequently Asked Questions</h2>
-          <Accordion data={faqData} />
+        <div id="backgroundSection" className={styles.backgroundSection}>
+          <div id="sponsorSection" className={styles.sponsorSection}>
+            <h2>Sponsors</h2>
+            <SponsorGrid />
+          </div>
+          <div id="faqSection" className={styles.faqSection}>
+            <h2>FAQ</h2>
+            <Accordion data={faqData} />
+          </div>
         </div>
       </div>
     </div>

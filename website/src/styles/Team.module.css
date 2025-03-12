@@ -1,94 +1,3 @@
-@media (max-width: 768px) {
-  .container {
-    padding-top: 1rem !important; /* Reduce padding-top */
-  }
-  .headerDesc {
-    margin-top: 0.5rem !important; /* Reduce margin-top */
-  }
-  .subteamContent {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-
-  .sidebar {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    background-color: inherit;
-    margin-bottom: 10px;
-    writing-mode: horizontal-tb;
-    transform: none;
-  }
-
-  .sidebarText {
-    font-size: 3rem;
-  }
-
-  /* Background colors for different teams */
-  .sidebar.design {
-    background-color: #30b463;
-  }
-
-  .sidebar.manufacturing {
-    background-color: #e01d19;
-  }
-
-  .sidebar.systems {
-    background-color: #e94e77;
-  }
-
-  .sidebar.administrative {
-    background-color: #f6b93b;
-  }
-
-  .sidebar.Executives {
-    background-color: #6859d9;
-  }
-
-  .sidebar.Competition {
-    background-color: #121212;
-  }
-
-  .grid {
-    width: 100%;
-    margin-left: 0px;
-  }
-
-  .card {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .teamsPageHeader {
-    height: 60vh !important;
-  }
-
-  .teamsPageHeader h1 {
-    font-size: 5rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding-top: 0.5rem !important; /* Further reduce padding-top */
-  }
-  .headerDesc {
-    margin-top: 0.25rem !important; /* Further reduce margin-top */
-  }
-  .teamsPageHeader {
-    height: 40vh !important;
-  }
-
-  .teamsPageHeader h1 {
-    font-size: 2.5rem !important;
-  }
-}
-
 .container {
   min-height: 100vh;
   display: flex;
@@ -243,10 +152,11 @@
 
 .subteam {
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 40px;
+  /* margin: 20px 0 40px 20px; */
   flex-direction: column;
 }
 
@@ -254,7 +164,7 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   flex-direction: row;
 }
 
@@ -277,12 +187,12 @@
 
 .grid {
   max-width: 1200px;
-  width: calc(100% - 20px);
+  width: calc(100% - 80px);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   flex-grow: 1;
-  margin-left: 10px;
+  margin-left: 20px;
   justify-content: center;
 }
 
@@ -315,12 +225,21 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   display: block;
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
   position: absolute;
+}
+
+.memberImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Adjust the z-index of the front and back sides */
@@ -658,10 +577,14 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-top: 10rem;
+    padding-top: 1rem;
   }
   .headerDesc {
     max-width: 80%;
+    margin-top: 0.5rem;
+  }
+  .subteam {
+    width: 95%;
   }
   .subteamContent {
     flex-direction: column;
@@ -682,7 +605,7 @@
     font-weight: bold;
     color: black;
     background-color: inherit;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     writing-mode: horizontal-tb;
     transform: none;
   }

@@ -12,48 +12,8 @@ import {
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "@/components/sponsorSidebar";
-import { fadeInUp, stagger } from "@/components/animations";
 import Head from "next/head";
-
-const sponsors = [
-  {
-    name: "Carleton University | Faculty of Engineering and Design",
-    logo: "/images/Sponsors/Sponsor_CarletonEng.png",
-    link: "https://carleton.ca/engineering-design/",
-    tier: "partner",
-  },
-  // No longer fund us
-  // {
-  //   name: "Carleton Student Engineering Society",
-  //   logo: "/images/Sponsors/Sponsor_CSES.png",
-  //   link: "https://www.mycses.ca/",
-  //   tier: "gold",
-  // },
-  {
-    name: "Aircraft Spruce & Specialty Co.",
-    logo: "/images/Sponsors/Sponsor_AircraftSpruce.png",
-    link: "https://www.aircraftspruce.ca/",
-    tier: "gold",
-  },
-  {
-    name: "SolidWorks",
-    logo: "/images/Sponsors/Sponsor_SolidWorks.png",
-    link: "https://www.solidworks.com/",
-    tier: "gold",
-  },
-  {
-    name: "T-MOTOR",
-    logo: "/images/Sponsors/Sponsor_T-MOTOR.png",
-    link: "https://uav-en.tmotor.com/",
-    tier: "gold",
-  },
-  {
-    name: "Kostiuk Engineering Funding Collective",
-    logo: "/images/Sponsors/Sponsor_KEFC.png",
-    link: "https://www.mycses.ca/student-group-funding",
-    tier: "partner"
-  }
-];
+import sponsors from "@/data/sponsorData";
 
 const DURATIONS = {
   VeryFast: 0.2,
@@ -85,41 +45,58 @@ export default function Sponsor() {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
   const renderSponsorsByTier = (tier, sectionIndex) => {
-    // const columnSettings = {
-    //   Partner: { base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" },
-    //   Gold: { base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" },
-    //   Silver: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
-    //   Bronze: { base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" },
-    // };
     const columnSettings = {
       Partner: {
-        base: "repeat(auto-fit, minmax(200px, 1fr))",
-        lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
+        sm: "repeat(1, 1fr)",
+        base: "repeat(1, 1fr)",
+        md: "repeat(1, 1fr)",
       },
       Gold: {
-        base: "repeat(auto-fit, minmax(160px, 1fr))",
-        lg: "repeat(auto-fit, minmax(140px, 1fr))", // change these md values as needed
+        sm: "repeat(2, 1fr)",
+        base: "repeat(2, 1fr)",
+        md: "repeat(2, 1fr)",
       },
       Silver: {
-        base: "repeat(auto-fit, minmax(140px, 1fr))",
-        lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
+        sm: "repeat(2, 1fr)",
+        base: "repeat(3, 1fr)",
+        md: "repeat(3, 1fr)",
       },
       Bronze: {
-        base: "repeat(auto-fit, minmax(120px, 1fr))",
-        lg: "repeat(auto-fit, minmax(100px, 1fr))", // change these md values as needed
+        sm: "repeat(2, 1fr)",
+        base: "repeat(3, 1fr)",
+        md: "repeat(3, 1fr)",
+      },
+      Support: {
+        sm: "repeat(2, 1fr)",
+        base: "repeat(3, 1fr)",
+        md: "repeat(3, 1fr)",
       },
     };
+    // const columnSettings = {
+    //   Partner: {
+    //     base: "repeat(auto-fit, minmax(240px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(220px, 1fr))", // change these md values as needed
+    //   },
+    //   Gold: {
+    //     base: "repeat(auto-fit, minmax(180px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
+    //   },
+    //   Silver: {
+    //     base: "repeat(auto-fit, minmax(150px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(150px, 1fr))", // change these md values as needed
+    //   },
+    //   Bronze: {
+    //     base: "repeat(auto-fit, minmax(120px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
+    //   },
+    //   Support: {
+    //     base: "repeat(auto-fit, minmax(90px, 1fr))",
+    //     lg: "repeat(auto-fit, minmax(90px, 1fr))", // change these md values as needed
+    //   },
+    // };
 
     return (
       <>
-        <Head>
-          <title>BlackBird UAV | Sponsor Us</title>
-          <meta
-            name="description"
-            content="Sponsor Us!"
-          />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
         <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
           {sponsors
             .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
@@ -135,6 +112,8 @@ export default function Sponsor() {
                       return "silverSection";
                     case "bronze":
                       return "bronzeSection";
+                    case "support":
+                      return "supportSection";
                     default:
                       return undefined;
                   }
@@ -150,7 +129,7 @@ export default function Sponsor() {
                     transition: {
                       delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
                       duration: DURATIONS.Normal,
-                      // ease: [0.6, -0.05, 0.01, 0.99],
+                      ease: [0.6, -0.05, 0.01, 0.99],
                     },
                   },
                 }}
@@ -173,6 +152,7 @@ export default function Sponsor() {
                     borderRadius="md"
                     boxShadow="md"
                     overflow="hidden"
+                    transition="transform 0.3s ease-in-out"
                     _hover={{
                       transform: "scale(1.04)",
                       transition: "0.3s",
@@ -205,6 +185,7 @@ export default function Sponsor() {
       Gold: "#fddd5b",
       Silver: "#c4c4c4",
       Bronze: "#de975d",
+      Support: "#f0f0f0",
     };
 
     return (
@@ -218,16 +199,18 @@ export default function Sponsor() {
         display="flex"
         alignItems="center"
         // if section is partner, add a glow on hover
+        transition="transform 0.3s ease-in-out"
         _hover={
           tier.toLowerCase() === "partner"
             ? {
-                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.8)", // Glow effect
-                transform: "scale(1.03)", // Slight scaling
-                transition: "box-shadow 0.3s ease, transform 0.3s ease", // Smooth transition
+                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.4)", // Glow effect
+                transform: "scale(1.02)", // Slight scaling
+                transition:
+                  "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out", // Smooth transition
               }
             : {
                 transform: "scale(1.02)", // Subtle scaling for other tiers
-                transition: "transform 0.3s ease", // Smooth transition
+                transition: "transform 0.3s ease-in-out", // Smooth transition
               }
         }
       >
@@ -269,7 +252,18 @@ export default function Sponsor() {
   }, []);
 
   return (
-    <Box bg="black" pl={{ base: 0, lg: 5 }} minHeight="100vh" display="flex" flexDirection="column">
+    <Box
+      bg="black"
+      pl={{ base: 0, lg: 5 }}
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+    >
+      <Head>
+        <title>Blackbird UAV | Sponsor Us</title>
+        <meta name="description" content="Sponsor Us!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -320,17 +314,19 @@ export default function Sponsor() {
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Partner", "Gold"/*, "Silver", "Bronze"*/].map((tier, index) => (
-              <motion.div
-                key={index}
-                variants={staggerAnimation}
-                initial="hidden"
-                animate="visible"
-                custom={index}
-              >
-                {renderSponsorSections(tier, index)}
-              </motion.div>
-            ))}
+            {["Partner", "Gold", "Silver" /*, "Bronze"*/, "Support"].map(
+              (tier, index) => (
+                <motion.div
+                  key={index}
+                  variants={staggerAnimation}
+                  initial="hidden"
+                  animate="visible"
+                  custom={index}
+                >
+                  {renderSponsorSections(tier, index)}
+                </motion.div>
+              )
+            )}
           </Stack>
         </GridItem>
       </Grid>
@@ -343,7 +339,7 @@ export default function Sponsor() {
           transform={
             isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"
           }
-          transition="transform 0.4s ease, opacity 0.4s ease"
+          transition="transform 0.4s ease-in-out, opacity 0.4s ease-in-out"
           borderRadius="full"
           bg="transparent"
           border="2px solid white"

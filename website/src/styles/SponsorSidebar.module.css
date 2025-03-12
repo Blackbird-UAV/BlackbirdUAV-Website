@@ -1,5 +1,5 @@
 .sidebar {
-  border: 3px solid #B0C4DE;
+  border: 3px solid #b0c4de;
   border-left-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -12,6 +12,7 @@
   z-index: -1;
   opacity: 0;
 }
+
 @media (max-width: 480px) {
   .sidebar {
     display: none;

@@ -6,7 +6,7 @@ import {
   faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
 import styles from "@/styles/Footer.module.css";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -16,7 +16,7 @@ export default function Footer() {
         <div className={styles.logoSection}>
           <Image
             src="/logos/BirdBBUAVLogo.png"
-            alt="BlackBird Logo"
+            alt="Blackbird Logo"
             width={100}
             height={100}
           />
@@ -60,7 +60,7 @@ export default function Footer() {
         <div className={styles.infoSection}>
           <p>Canal Building, Library Rd, Ottawa, ON</p>
           <p>Carleton University, Ottawa, ON K1S 5B6</p>
-          <p>© Copyright, BlackBird UAV</p>
+          <p>© Copyright, Blackbird UAV</p>
           <p>contact@blackbirduav.ca</p>
         </div>
       </div>

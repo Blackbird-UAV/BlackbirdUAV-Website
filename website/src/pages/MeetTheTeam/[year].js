@@ -1,12 +1,21 @@
 import { useRouter } from "next/router";
-import teamData from "../../data/teamData";
+import teamData from "@/data/teamData";
 import { Text, TextInput } from "@mantine/core";
-import styles from "../../styles/Team.module.css";
+import styles from "@/styles/Team.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "@/components/Header";
 import Head from "next/head";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+const DURATIONS = {
+  VeryFast: 0.2,
+  Fast: 0.4,
+  Normal: 0.6,
+  Slow: 0.8,
+  VerySlow: 1.0,
+};
 
 const MeetTeam = () => {
   const router = useRouter();
@@ -77,7 +86,7 @@ const MeetTeam = () => {
   return (
     <>
       <Head>
-        <title>BlackBird UAV | Meet the Team</title>
+        <title>Blackbird UAV | Meet the Team</title>
         <meta name="description" content="Meet the Team" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -141,20 +150,44 @@ const MeetTeam = () => {
                             ? 1
                             : 0)
                       )
-                      .map((member) => (
-                        <div
+                      .map((member, index) => (
+                        <motion.div
                           key={member.id}
                           id={`member-${member.id}`}
                           className={styles.card}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.1 }}
+                          variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: {
+                              opacity: 1,
+                              y: 0,
+                              transition: {
+                                delay: (index % 4) * 0.1,
+                                duration: DURATIONS.Normal,
+                              },
+                            },
+                          }}
                         >
                           <div className={styles.cardInner}>
                             {/* Front Side */}
-                            <div
-                              className={styles.cardFront}
-                              style={{
-                                backgroundImage: `url(${member.image})`,
-                              }}
-                            >
+                            <div className={styles.cardFront}>
+                              <img
+                                src={member.image}
+                                alt={`${member.firstName} ${member.lastName}`}
+                                className={styles.memberImage}
+                                onError={(e) => {
+                                  e.target.src =
+                                    "/images/TeamHeadshots/memberPlaceholder.png";
+                                  e.target.style.filter =
+                                    "blur(4px) brightness(0.9)";
+                                  {
+                                    /* */
+                                  }
+                                  e.target.style.scale = "1.02";
+                                }}
+                              />
                               <div className={styles.turnOverIcon}>
                                 <FontAwesomeIcon icon={faAnglesRight} />
                               </div>
@@ -240,7 +273,7 @@ const MeetTeam = () => {
                               </a>
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
                   </div>
                 </div>

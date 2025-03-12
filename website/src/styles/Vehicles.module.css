@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* General Layout */
 .container {
@@ -24,15 +23,17 @@
 .vehiclesList {
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  overflow: hidden;
+  gap: 20px;
 }
 
 .vehicleCard {
   display: flex;
   align-items: center;
-  background-color: #262626;
+  background: linear-gradient(135deg, #2e2e2e, #1f1f1f);
   border-radius: 12px;
   padding: 20px;
+  margin: 0 0 40px 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   position: relative;
@@ -106,10 +107,9 @@
 /* Text Box with Border for Separation */
 .textBox {
   width: 33.33%;
-  padding: 40px;
+  padding: 20px 40px;
   color: #dbf5f5;
   border-radius: 12px;
-  margin: 0 20px;
   text-align: center;
 }
 
