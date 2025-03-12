@@ -18,6 +18,7 @@ import {
 import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
 import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
 import SponsorGrid from "@/components/sponsorGrid";
+import faqData from "@/data/faqData";
 
 const slides = [
   {
@@ -31,18 +32,6 @@ const slides = [
     image: "/images/Vehicles/Zenith_1.jpg",
     description:
       "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
-  },
-];
-
-const faqData = [
-  {
-    question: "What is Blackbird UAV?",
-    answer: "Blackbird UAV is Carleton University's premier UAV design team.",
-  },
-  {
-    question: "How can I join the team?",
-    answer:
-      "You can join by joining our discord linked at the bottom of the page.",
   },
 ];
 
@@ -198,10 +187,36 @@ export default function Home() {
     }
   }, [isSceneLoaded]);
 
+  const injectGA = () => {
+    if (typeof window == "undefined") {
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-G90X971NWB");
+  };
+
   return (
     <div>
       <div className={styles.pageWrapper}>
         <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-G90X971NWB"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-G90X971NWB');
+            `,
+            }}
+          />
           <title>Blackbird UAV</title>
           <meta
             name="description"
@@ -336,7 +351,7 @@ export default function Home() {
             >
               <h1>About Us</h1>
               <p>
-                We are Blackbird UAV (BBUAV), a student design team, working to
+                We are Blackbird UAV (BBUAV), a student design team working to
                 create uncrewed aerial vehicles (UAVs) to compete at the Aerial
                 Evolution Association of Canada Student Competition (AEAC SC).
               </p>
@@ -376,7 +391,7 @@ export default function Home() {
               whileInView="animate"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <a href="https://www.aerialevolution.ca/">
+              <a href="https://www.aerialevolution.ca/annual-student-competition/">
                 <Image
                   src="/images/AEACSC_logo.jpg"
                   alt="AEAC SC Logo"

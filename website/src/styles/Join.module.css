@@ -167,7 +167,6 @@
 .subteamSection {
   display: flex;
   flex-direction: column;
-  font-family: Arial, sans-serif;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
