@@ -109,8 +109,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin: 2rem auto;
+  gap: 2rem;
+  margin: 0rem 3rem 2rem 2rem;
   width: auto; /* Remove fixed width to allow centering */
 }
 
@@ -146,7 +146,7 @@
 
 /* Donate button specific styles */
 .donateButton {
-  background-color: #4169e1;
+  background: linear-gradient(135deg, rgb(65, 105, 225), rgb(57, 51, 247));
   color: #ffffff;
   border: none;
 }
@@ -588,9 +588,10 @@
     z-index: 3;
   }
 
-  .sponsorButton {
+  .sponsorButton,
+  .donateButton {
     font-size: 1.2rem;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
   }
 
   .cloudContainer {
@@ -648,9 +649,10 @@
     /* Hide the desktop button section in mobile mode */
   }
 
-  .sponsorButton {
+  .sponsorButton,
+  .donateButton {
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem;
   }
 
   .uavName {

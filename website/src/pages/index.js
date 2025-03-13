@@ -187,23 +187,11 @@ export default function Home() {
     }
   }, [isSceneLoaded]);
 
-  const injectGA = () => {
-    if (typeof window == "undefined") {
-      return;
-    }
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-G90X971NWB");
-  };
-
   return (
     <div>
       <div className={styles.pageWrapper}>
         <Head>
-          <script
+          {/* <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-G90X971NWB"
           />
@@ -216,7 +204,7 @@ export default function Home() {
               gtag('config', 'G-G90X971NWB');
             `,
             }}
-          />
+          /> */}
           <title>Blackbird UAV</title>
           <meta
             name="description"
