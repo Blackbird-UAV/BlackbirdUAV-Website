@@ -274,6 +274,13 @@ export default function Home() {
               </motion.h2>
               {isTablet && (
                 <div className={styles.mobileButtonSection}>
+                  <Link
+                    href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
+                    target="_blank"
+                    className={styles.donateButton}
+                  >
+                    Donate
+                  </Link>
                   <Link href="/sponsor" className={styles.sponsorButton}>
                     Sponsor Us
                   </Link>
@@ -282,6 +289,13 @@ export default function Home() {
             </div>
             {!isTablet && (
               <div className={styles.buttonSection}>
+                <Link
+                  href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
+                  target="_blank"
+                  className={styles.donateButton}
+                >
+                  Donate
+                </Link>
                 <Link href="/sponsor" className={styles.sponsorButton}>
                   Sponsor Us
                 </Link>

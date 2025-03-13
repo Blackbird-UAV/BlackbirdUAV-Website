@@ -732,7 +732,7 @@ const teamData = {
           { firstName: "PJ", lastName: "Parisien", role: "Club president" },
           { firstName: "Jed", lastName: "" },
           { firstName: "Meyiwa", lastName: "" },
-          { firstName: "Imad", lastName: "" },
+          { firstName: "Imad", lastName: "" ,role: "Executive"},
           { firstName: "Felix", lastName: "" },
           { firstName: "Ben", lastName: "" },
           { firstName: "DJ", lastName: "" },
