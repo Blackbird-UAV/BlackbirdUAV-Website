@@ -43,6 +43,12 @@ const sponsors = [
     tier: "silver",
   },
   {
+    name: "Metal Pros",
+    logo: "/images/Sponsors/Sponsor_MetalPros.png",
+    link: "https://www.metalpros.com/",
+    tier: "silver",
+  },
+  {
     name: "SIMNET",
     logo: "/images/Sponsors/Sponsor_SIMNET.png",
     link: "https://www.simnet.aero/",
