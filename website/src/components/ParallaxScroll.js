@@ -12,9 +12,9 @@ export const ParallaxScroll = ({ items, className }) => {
     container: gridRef,
     offset: ["start start", "end start"],
   });
-  const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const translateSecond = useTransform(scrollYProgress, [0, 1], [-60, 320]);
-  const translateThird = useTransform(scrollYProgress, [0, 1], [60, -50]);
+  const translateFirst = useTransform(scrollYProgress, [0, 1], [120, -50]);
+  const translateSecond = useTransform(scrollYProgress, [0, 1], [20, 320]);
+  const translateThird = useTransform(scrollYProgress, [0, 1], [80, -50]);
   const firstPart = items.filter((item) => item.column === 1);
   const secondPart = items.filter((item) => item.column === 2);
   const thirdPart = items.filter((item) => item.column === 3);
