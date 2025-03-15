@@ -65,7 +65,7 @@ const teamData = {
         role: "Executive / Design",
         isPresident: false,
         isExecutive: true,
-        image: "/images/TeamHeadshots/Jeddiah.JPG",
+        image: "/images/TeamHeadshots/Jedidiah.JPG",
         description: "Jedidiah is a 2nd year graduate student.",
         extendedDescription:
           "Jed is a part of executive team. Having been a member since 2020, Jed has worked on a variety of projects. He is currently in charge of vehicle propulsion and stability.",
@@ -448,7 +448,7 @@ const teamData = {
         role: "President / Communication Engineering",
         joined: "2019",
         left: "2024",
-        image: "/images/TeamHeadshots/PJParisien.JPG",
+        image: "/images/TeamHeadshots/Pj.JPG",
         description: "PJ is the current president of Blackbird UAV.",
         extendedDescription:
           "PJ joined Blackbird UAV in 2019 as a first-year student in communication engineering. As president, he rebuilt the club with Jed, recruiting new members and leading the team to a first-place victory in 2023. After his final competition in 2024, he plans to stay involved as an alum, guiding the next generation.",
@@ -461,7 +461,7 @@ const teamData = {
         role: "Vice-President / Civil Engineering",
         joined: "2021",
         left: "2024",
-        image: "/images/TeamHeadshots/FelixChenier.JPG",
+        image: "/images/TeamHeadshots/Felix.JPG",
         description: "Felix is the Vice-President of Blackbird UAV.",
         extendedDescription:
           "Felix joined Blackbird UAV in 2021 and is now Vice-President. Studying civil engineering, he introduced project management systems and led the team’s first custom vehicle project. He plans to stay with Blackbird until graduation to ensure a strong future for the team.",
@@ -474,7 +474,7 @@ const teamData = {
         role: "Propulsion / Vehicle Performance",
         joined: "2020",
         left: "2024",
-        image: "/images/TeamHeadshots/DylanTingley.JPG",
+        image: "/images/TeamHeadshots/Dylan.JPG",
         description:
           "Dylan handles sizing and selecting the propulsion system.",
         extendedDescription:
@@ -488,7 +488,7 @@ const teamData = {
         role: "Mechanical Engineering / Systems",
         joined: "2022",
         left: "2024",
-        image: "/images/TeamHeadshots/DJVanNice.JPG",
+        image: "/images/TeamHeadshots/DJ.JPG",
         description: "DJ designs, CADs, and manufactures parts for the UAV.",
         extendedDescription:
           "DJ, a second-year mechanical engineering student, joined Blackbird UAV in 2022. With prior quadcopter experience, he installed electronics for the 2023 winning aircraft. Now, he is leading the design and manufacturing of the cabin and fuselage for the team’s first fully custom UAV.",
@@ -501,7 +501,7 @@ const teamData = {
         role: "Structural Design",
         joined: "2021",
         left: "2024",
-        image: "/images/TeamHeadshots/JacobLebrasseur.JPG",
+        image: "/images/TeamHeadshots/Jacob.JPG",
         description:
           "Jacob helps with the tail assembly and related components.",
         extendedDescription:
@@ -515,7 +515,7 @@ const teamData = {
         role: "Software Development",
         joined: "2020",
         left: "2024",
-        image: "/images/TeamHeadshots/MeyiwaTemile.JPG",
+        image: "/images/TeamHeadshots/Meyiwa.JPG",
         description: "Meyiwa develops autonomous solutions for UAV navigation.",
         extendedDescription:
           "Meyiwa, a fourth-year Software Engineering major contributes his ability in software development towards developing autonomous solutions for UAV navigation. He closely collaborates with team members to further the efficiency and functionality of the club’s software projects.",
@@ -528,7 +528,7 @@ const teamData = {
         role: "Manufacturing Manager / Structural Design",
         joined: "2020",
         left: "2024",
-        image: "/images/TeamHeadshots/KarlKurniawan.JPG",
+        image: "/images/TeamHeadshots/Karl.JPG",
         description: "Karl is the leading manufacturing manager.",
         extendedDescription:
           "Karl, a final-year aerospace engineering student, specializes in aerodynamics and gas turbines. As manufacturing lead, he streamlined production, machining, and composites layup while contributing to wing structure design.",
@@ -541,7 +541,7 @@ const teamData = {
         role: "Manufacturing / Design",
         joined: "2020",
         left: "2024",
-        image: "/images/TeamHeadshots/JedidiahNevo.JPG",
+        image: "/images/TeamHeadshots/Jedidiah.JPG",
         description:
           "Jedidiah focuses on wing-related projects and aircraft stability.",
         extendedDescription:
@@ -555,7 +555,7 @@ const teamData = {
         role: "Mechanical Engineering / Applied Dynamics",
         joined: "2024",
         left: "2024",
-        image: "/images/TeamHeadshots/NickMucci.JPG",
+        image: "/images/TeamHeadshots/Nick.JPG",
         description: "Nick focuses on the design and modeling of the aircraft.",
         extendedDescription:
           "Nick, a 6th-year mechanical engineering MASc student, joined BBUAV in 2024. With industry experience in drones, he contributed to fuselage design, composites, 3D printing, and power distribution.",
@@ -568,7 +568,7 @@ const teamData = {
         role: "Aerospace Engineering / Manufacturing",
         joined: "2024",
         left: "2024",
-        image: "/images/TeamHeadshots/RyanWhalen.JPG",
+        image: "/images/TeamHeadshots/RyanW.JPG",
         description: "Ryan contributes to the manufacturing of Apogee.",
         extendedDescription:
           "Ryan, a third-year aerospace engineering student, joined BBUAV in 2024. Specializing in aerodynamics and propulsion, he helped design, manufacture, and reinforce Apogee’s wings and tail.",
@@ -581,7 +581,7 @@ const teamData = {
         role: "Graphics / Design",
         joined: "2024",
         left: "2024",
-        image: "/images/TeamHeadshots/LidyaSobhano.JPG",
+        image: "/images/TeamHeadshots/Lidya.JPG",
         description: "Lidya works on graphics and design for the club.",
         extendedDescription:
           "Lidya is her last year of Aerospace Engineering Stream B. Currently she is working on graphics and design for the club.",
@@ -594,7 +594,7 @@ const teamData = {
         role: "Aerospace Engineering / Social Media",
         joined: "2023",
         left: "2024",
-        image: "/images/TeamHeadshots/DuaaJIsrar.JPG",
+        image: "/images/TeamHeadshots/Duaa.JPG",
         description: "Duaa coordinates the club’s social media.",
         extendedDescription:
           "Duaa is a 2nd-year student studying Aerospace Engineering. She is in stream B, focusing on Aerospace Structures, Systems, and Vehicle Design. Currently, she is coordinating the club’s social media, creating graphics for the website, and working with the manufacturing team to produce CAD components for the competition vehicle.",
@@ -607,7 +607,7 @@ const teamData = {
         role: "Aerospace Engineering / Electronics and Systems",
         joined: "2023",
         left: "2024",
-        image: "/images/TeamHeadshots/JasmineHartwig.JPG",
+        image: "/images/TeamHeadshots/Jasmine.JPG",
         description: "Jasmine is designing the seats for Apogee.",
         extendedDescription:
           "Jasmine is a 2nd Year student studying Aerospace Engineering with a focus in Electronics and Systems. Currently she is designing the seats for Apogee and working with a few other members to rehabilitate one of the club’s older drones, Archie.",
@@ -620,7 +620,7 @@ const teamData = {
         role: "Aerospace Engineering / Design",
         joined: "2023",
         left: "2024",
-        image: "/images/TeamHeadshots/BenjaminPyun.JPG",
+        image: "/images/TeamHeadshots/Ben.JPG",
         description:
           "Benjamin designs and models 3D printed parts for the UAV.",
         extendedDescription:
@@ -661,7 +661,7 @@ const teamData = {
         role: "Administrative / Finance",
         joined: "2023",
         left: "2024",
-        image: "/images/TeamHeadshots/NassimGaboune.JPG",
+        image: "/images/TeamHeadshots/Nassim.JPG",
         description: "Nassim focuses on finance and administrative tasks.",
         extendedDescription:
           "Nassim Gaboune is a first-year bachelor of commerce student with a concentration in accounting. His role in Blackbird UAV is as an administrative assistant, with a focus on finance.",
@@ -674,7 +674,7 @@ const teamData = {
         role: "Administrative / Editor",
         joined: "2023",
         left: "2024",
-        image: "/images/TeamHeadshots/EmiliaDashko.JPG",
+        image: "/images/TeamHeadshots/Emilia.JPG",
         description: "Emilia provides editorial and administrative support.",
         extendedDescription:
           "Emilia Dashko is in the final year of her MA in History. She joined Blackbird in December 2023 as editor and administrator, using her humanities skills to provide the team with an outsider point of view.",
@@ -732,7 +732,7 @@ const teamData = {
           { firstName: "PJ", lastName: "Parisien", role: "Club president" },
           { firstName: "Jed", lastName: "" },
           { firstName: "Meyiwa", lastName: "" },
-          { firstName: "Imad", lastName: "" ,role: "Executive"},
+          { firstName: "Imad", lastName: "", role: "Executive" },
           { firstName: "Felix", lastName: "" },
           { firstName: "Ben", lastName: "" },
           { firstName: "DJ", lastName: "" },
