@@ -1155,3 +1155,9 @@
     width: 100%;
   }
 }
+
+@media (max-width: 1170px) {
+  .verticalTimelineElement {
+    padding: 0rem 1rem;
+  }
+}

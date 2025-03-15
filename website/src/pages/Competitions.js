@@ -25,6 +25,7 @@ const Competition = () => {
             .sort((a, b) => b - a)
             .map((year, index) => (
               <VerticalTimelineElement
+                className={styles.verticalTimelineElement}
                 key={year}
                 date={year}
                 iconStyle={{ background: "red", color: "#fff" }}
