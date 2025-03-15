@@ -486,6 +486,40 @@
   z-index: 2;
 }
 
+.socialsSection {
+  padding: 4rem 0rem 4rem 0rem;
+  background-color: rgb(15, 15, 20);
+  width: 100vw;
+  min-height: 100vh; /* Ensure it takes up 100% of the vertical view height */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sectionTitle {
+  width: 25%;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  color: #e0e0e0;
+  letter-spacing: 2px;
+  text-align: right;
+  text-decoration: underline;
+  text-decoration-color: #eb1d25;
+  text-underline-offset: 16px;
+}
+
+.socialsMotionContainer {
+  width: 75%;
+}
+
+.socialsParallax {
+  width: 100%;
+  height: 100%;
+}
+
 .backgroundSection {
   background: linear-gradient(165deg, #2e2e2e, #0c0c0c);
 }
@@ -609,6 +643,22 @@
     /* Higher position */
   }
 
+  .socialsSection {
+    flex-direction: column;
+  }
+
+  .sectionTitle {
+    margin-left: 0rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .socialsMotionContainer {
+    width: 100%;
+  }
+
   .aboutContainer {
     padding: 1rem;
     flex-direction: column;
@@ -685,6 +735,18 @@
   .mobileButtonSection {
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .parallaxSectionTitle {
+    font-size: 2rem;
+  }
+
+  .parallaxTitle {
+    font-size: 1.5rem;
+  }
+
+  .parallaxContent {
+    font-size: 1rem;
   }
 }
 

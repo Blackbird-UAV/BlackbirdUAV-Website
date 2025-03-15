@@ -1,3 +1,4 @@
+"use client";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useCallback, useEffect, useState, useRef } from "react";
@@ -18,7 +19,9 @@ import {
 import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
 import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
 import SponsorGrid from "@/components/sponsorGrid";
+import ParallaxScroll from "@/components/ParallaxScroll";
 import faqData from "@/data/faqData";
+import socialMediaContent from "@/data/socialMediaContent";
 
 const slides = [
   {
@@ -261,7 +264,13 @@ export default function Home() {
                 Fly Around and Find Out
               </motion.h2>
               {isTablet && (
-                <div className={styles.mobileButtonSection}>
+                <motion.div
+                  className={styles.mobileButtonSection}
+                  variants={fadeInUpDelayed}
+                  initial="initial"
+                  animate={isSceneLoaded ? "animate" : "initial"}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
                   <Link
                     href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
                     target="_blank"
@@ -272,11 +281,17 @@ export default function Home() {
                   <Link href="/sponsor" className={styles.sponsorButton}>
                     Sponsor Us
                   </Link>
-                </div>
+                </motion.div>
               )}
             </div>
             {!isTablet && (
-              <div className={styles.buttonSection}>
+              <motion.div
+                className={styles.buttonSection}
+                variants={fadeInUpDelayed}
+                initial="initial"
+                animate={isSceneLoaded ? "animate" : "initial"}
+                viewport={{ once: true, amount: 0.2 }}
+              >
                 <Link
                   href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
                   target="_blank"
@@ -287,7 +302,7 @@ export default function Home() {
                 <Link href="/sponsor" className={styles.sponsorButton}>
                   Sponsor Us
                 </Link>
-              </div>
+              </motion.div>
             )}
           </div>
           <ScrollDownIndicator />
@@ -471,6 +486,30 @@ export default function Home() {
               ></span>
             ))}
           </div>
+        </div>
+
+        <div id="socialsSection" className={styles.socialsSection}>
+          <motion.h2
+            className={styles.sectionTitle}
+            variants={slideFromLeftDelayed}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            Follow Our Journey
+          </motion.h2>
+          <motion.div
+            className={styles.socialsMotionContainer}
+            variants={fadeInUpDelayed}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <ParallaxScroll
+              items={socialMediaContent}
+              className={styles.socialsParallax}
+            />
+          </motion.div>
         </div>
 
         <div id="backgroundSection" className={styles.backgroundSection}>

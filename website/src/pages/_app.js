@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }) {
           <Navbar />
           <Component {...pageProps} />
           <Footer />
+          <GoogleAnalytics gaId="G-G90X971NWB" />
         </ChakraProvider>
       </MantineProvider>
       <BackToTopButton />
