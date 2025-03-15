@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import styles from '@/styles/ScrollDownIndicator.module.css';
+import React, { useEffect, useState } from 'react'
+import styles from '@/styles/ScrollDownIndicator.module.css'
 
 const ScrollDownIndicator = () => {
   return (
-     (
+    (
       <div className={styles.scrollDownIndicator}>
-        <span className={styles.arrow}></span>
-        <span className={styles.arrow}></span>
+        <span className={styles.arrow} />
+        <span className={styles.arrow} />
       </div>
     )
-  );
-};
+  )
+}
 
-export default ScrollDownIndicator;
+export default ScrollDownIndicator

@@ -1,21 +1,21 @@
-import React from "react";
-import teamData from "@/data/teamData";
-import styles from "@/styles/Team.module.css";
-import Header from "@/components/Header";
+import React from 'react'
+import teamData from '@/data/teamData'
+import styles from '@/styles/Team.module.css'
+import Header from '@/components/Header'
 import {
   VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+  VerticalTimelineElement
+} from 'react-vertical-timeline-component'
+import 'react-vertical-timeline-component/style.min.css'
 
 const Competition = () => {
-  const { years } = teamData.Competition;
+  const { years } = teamData.Competition
 
   return (
     <>
       <Header
-        imagePath="/images/team2.jpg"
-        headerText="Competition Teams"
+        imagePath='/images/team2.jpg'
+        headerText='Competition Teams'
         initialOffset={200}
         className={styles.teamHeader}
       />
@@ -28,9 +28,9 @@ const Competition = () => {
                 className={styles.verticalTimelineElement}
                 key={year}
                 date={year}
-                iconStyle={{ background: "red", color: "#fff" }}
-                contentStyle={{ background: "#333", color: "#fff" }}
-                contentArrowStyle={{ borderRight: "7px solid  #333" }}
+                iconStyle={{ background: 'red', color: '#fff' }}
+                contentStyle={{ background: '#333', color: '#fff' }}
+                contentArrowStyle={{ borderRight: '7px solid  #333' }}
               >
                 {years[year].image && (
                   <img
@@ -38,9 +38,9 @@ const Competition = () => {
                     alt={`${year} Competition Team`}
                     className={styles.teamImage}
                     onError={(e) => {
-                      console.error(`Failed to load image for year ${year}`);
-                      e.target.onerror = null; // Prevent infinite loop
-                      e.target.src = "/images/team2.jpg"; // Fallback image
+                      console.error(`Failed to load image for year ${year}`)
+                      e.target.onerror = null // Prevent infinite loop
+                      e.target.src = '/images/team2.jpg' // Fallback image
                     }}
                   />
                 )}
@@ -66,7 +66,7 @@ const Competition = () => {
         </VerticalTimeline>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Competition;
+export default Competition

@@ -176,7 +176,7 @@ export default function Home() {
     };
   }, []);
 
-  //Fading out loader (set on a 0.5s delay for a 1s transition
+  // Fading out loader (set on a 0.5s delay for a 1s transition
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
@@ -275,6 +275,7 @@ export default function Home() {
                     href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
                     target="_blank"
                     className={styles.donateButton}
+                    rel="noreferrer"
                   >
                     Donate
                   </Link>
@@ -296,6 +297,7 @@ export default function Home() {
                   href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
                   target="_blank"
                   className={styles.donateButton}
+                  rel="noreferrer"
                 >
                   Donate
                 </Link>
@@ -439,7 +441,7 @@ export default function Home() {
                 className={styles.slideContainer}
                 style={{
                   transform: `translateX(-${currentIndex * 100}%)`,
-                  transition: `transform 0.5s ease-in-out`,
+                  transition: "transform 0.5s ease-in-out",
                 }}
               >
                 {slides.map((slide, index) => (
@@ -483,7 +485,7 @@ export default function Home() {
                   index === currentIndex ? styles.activeDot : ""
                 }`}
                 onClick={() => handleDotClick(index)}
-              ></span>
+              />
             ))}
           </div>
         </div>
@@ -496,7 +498,7 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, amount: 0.1 }}
           >
-            Follow Our Journey
+            Follow Our Flight Plan
           </motion.h2>
           <motion.div
             className={styles.socialsMotionContainer}

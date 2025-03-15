@@ -1,32 +1,32 @@
-import { useState } from "react";
-import teamData from "@/data/teamData";
-import { Text, TextInput } from "@mantine/core";
-import styles from "@/styles/Team.module.css";
-import Header from "@/components/Header";
+import { useState } from 'react'
+import teamData from '@/data/teamData'
+import { Text, TextInput } from '@mantine/core'
+import styles from '@/styles/Team.module.css'
+import Header from '@/components/Header'
 
 const Alumni = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const alumni = teamData["Alumni"].members;
+  const alumni = teamData.Alumni.members
 
   const filteredAlumni = alumni.filter((member) =>
     `${member.firstName} ${member.lastName}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
-  );
+  )
 
   return (
     <>
       <Header
-        imagePath="/images/team2.jpg"
-        headerText="Our Alumni"
+        imagePath='/images/team2.jpg'
+        headerText='Our Alumni'
         initialOffset={200}
         className={styles.teamHeader}
       />
       <div className={styles.alumniContainer}>
         <div className={styles.headerDesc}>
-          {teamData["Alumni"].description && (
-            <div>{teamData["Alumni"].description}</div>
+          {teamData.Alumni.description && (
+            <div>{teamData.Alumni.description}</div>
           )}
         </div>
         <div className={styles.searchBarContainer}>
@@ -40,7 +40,7 @@ const Alumni = () => {
           <div className={styles.searchBar}>
             <TextInput
               // description="Type the name of an alumni to search for them"
-              placeholder="Search for an alumni..."
+              placeholder='Search for an alumni...'
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -62,11 +62,11 @@ const Alumni = () => {
               </Text>
               <div className={styles.alumniDetails}>
                 <div className={styles.roleTags}>
-                  {member.role.split(" / ").map((role, index) => (
+                  {member.role.split(' / ').map((role, index) => (
                     <span
                       key={index}
                       className={`${styles.roleTag} ${
-                        styles[role.toLowerCase().replace(/ /g, "")]
+                        styles[role.toLowerCase().replace(/ /g, '')]
                       }`}
                     >
                       {role}
@@ -82,7 +82,7 @@ const Alumni = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Alumni;
+export default Alumni
