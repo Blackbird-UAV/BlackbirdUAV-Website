@@ -28,7 +28,7 @@
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@tabler/icons-react": "^3.21.0",
-    "embla-carousel-react": "^7.1.0",
+    "embla-carousel-react": "^8.5.2",
     "fortawesome": "^0.0.1-security",
     "framer-motion": "^12.4.10",
     "ftp-deploy": "^2.4.7",
