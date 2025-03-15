@@ -13,7 +13,7 @@
     "test": "standard --fix"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.2.0",
+    "@chakra-ui/react": "^3.13.0",
     "@emotion/react": "^11.14.0",
     "@eslint/config-array": "^0.19.1",
     "@eslint/object-schema": "^2.1.5",
