@@ -2,13 +2,12 @@ name: Node.js CI Main
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,24 +15,24 @@ jobs:
         node-version: [18.x, 20.x, 22.x]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: './website/package-lock.json'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          # cache: "npm"
+          # cache-dependency-path: "./website/package-lock.json"
 
-    - name: Install dependencies
-      run: npm ci
-      working-directory: ./website
-      
-    - name: Run linting
-      run: npm run lint
-      working-directory: ./website
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./website
 
-    - name: Run build
-      run: npm run build --if-present
-      working-directory: ./website
+      - name: Run linting
+        run: npm run lint
+        working-directory: ./website
+
+      - name: Run build
+        run: npm run build --if-present
+        working-directory: ./website

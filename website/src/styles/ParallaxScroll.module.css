@@ -1,0 +1,130 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 45rem;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  align-items: flex-start;
+}
+
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.container::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #363636;
+}
+
+.blurTop,
+.blurBottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  pointer-events: none;
+  z-index: 2;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.blurTop {
+  top: 0;
+  backdrop-filter: blur(5px);
+}
+
+.blurBottom {
+  bottom: 0;
+  backdrop-filter: blur(5px);
+  mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding: 1rem 3rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  align-items: flex-start;
+  scroll-behavior: smooth;
+}
+
+.column {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.image {
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+  object-position: left top;
+  border-radius: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.captionBox {
+  margin-top: 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.platformContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.platformIcon {
+  margin-right: 0.5rem;
+}
+
+.platformName {
+  color: white;
+  font-weight: 500;
+}
+
+.caption {
+  color: white;
+  font-size: 0.875rem;
+}
+
+.discordImage {
+  border-radius: 0.4rem;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
