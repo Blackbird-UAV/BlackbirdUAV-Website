@@ -5,6 +5,12 @@ const sponsors = [
     link: 'https://carleton.ca/engineering-design/',
     tier: 'partner'
   },
+  {
+    name: 'Carleton University Department of Mechanical and Aerospace Engineering',
+    logo: '/images/Sponsors/Sponsor_Carleton_MechandAero.png',
+    link: 'https://carleton.ca/mae/',
+    tier: 'partner'
+  },
   // No longer fund us
   // {
   //   name: "Carleton Student Engineering Society",
@@ -31,6 +37,12 @@ const sponsors = [
     tier: 'gold'
   },
   {
+    name: 'Ansys',
+    logo: '/images/Sponsors/Sponsor_Ansys.png',
+    link: 'https://www.ansys.com/',
+    tier: 'gold'
+  },
+  {
     name: 'Kostiuk Engineering Funding Collective',
     logo: '/images/Sponsors/Sponsor_KEFC.png',
     link: 'https://www.mycses.ca/student-group-funding',
@@ -46,6 +58,18 @@ const sponsors = [
     name: 'Metal Pros',
     logo: '/images/Sponsors/Sponsor_MetalPros.png',
     link: 'https://www.metalpros.com/',
+    tier: 'silver'
+  },
+  {
+    name: 'Teledyne',
+    logo: '/images/Sponsors/Sponsor_Teledyne.png',
+    link: 'https://www.teledyne.com/',
+    tier: 'silver'
+  },
+  {
+    name: 'Tattu',
+    logo: '/images/Sponsors/Sponsor_Tattu.png',
+    link: 'https://www.genstattu.com/',
     tier: 'silver'
   },
   {
