@@ -568,7 +568,7 @@ const teamData = {
         role: 'Aerospace Engineering / Manufacturing',
         joined: '2024',
         left: '2024',
-        image: '/images/TeamHeadshots/RyanW.JPG',
+        image: '/images/TeamHeadshots/Ryan.JPG',
         description: 'Ryan contributes to the manufacturing of Apogee.',
         extendedDescription:
           'Ryan, a third-year aerospace engineering student, joined BBUAV in 2024. Specializing in aerodynamics and propulsion, he helped design, manufacture, and reinforce Apogee’s wings and tail.',
