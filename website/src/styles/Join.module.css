@@ -112,13 +112,24 @@
   transform: translateY(-3px);
 }
 
-.custom-shape-divider-top-1741460850 {
-  position: absolute;
+.wavesJoin {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
+}
+
+.wavesJoin svg {
+  position: relative;
+  display: block;
+  width: calc(108% + 1.3px);
+  height: 137px;
+}
+
+.wavesJoin .wavesJoinFill {
+  fill: #000000;
 }
 
 .backgroundContainer {
