@@ -1,12 +1,12 @@
-import { useState } from "react";
-import styles from "@/styles/Accordion.module.css";
+import { useState } from 'react'
+import styles from '@/styles/Accordion.module.css'
 
 const Accordion = ({ data }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null)
 
   const toggleItem = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+    setActiveIndex(activeIndex === index ? null : index)
+  }
 
   return (
     <div className={styles.accordion}>
@@ -19,7 +19,7 @@ const Accordion = ({ data }) => {
             {item.question}
             <span
               className={`${styles.arrow} ${
-                activeIndex === index ? styles.open : ""
+                activeIndex === index ? styles.open : ''
               }`}
             >
               &#9660;
@@ -27,7 +27,7 @@ const Accordion = ({ data }) => {
           </button>
           <div
             className={`${styles.accordionContent} ${
-              activeIndex === index ? styles.open : ""
+              activeIndex === index ? styles.open : ''
             }`}
           >
             {item.answer}
@@ -35,7 +35,7 @@ const Accordion = ({ data }) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Accordion;
+export default Accordion

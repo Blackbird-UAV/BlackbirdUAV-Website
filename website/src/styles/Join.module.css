@@ -1,5 +1,5 @@
 .pageWrapper {
-  /* background-color: #000000; */
+  background-color: #2e2e2e;
 }
 
 .banner {
@@ -112,8 +112,8 @@
   transform: translateY(-3px);
 }
 
-.custom-shape-divider-top-1741460850 {
-  position: absolute;
+.wavesJoin {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -121,8 +121,20 @@
   line-height: 0;
 }
 
+.wavesJoin svg {
+  position: relative;
+  display: block;
+  width: calc(108% + 1.3px);
+  height: 137px;
+}
+
+.wavesJoin .wavesJoinFill {
+  fill: #000000;
+}
+
 .backgroundContainer {
-  background: linear-gradient(0deg, #222222, #0a0a0a);
+  /* background: linear-gradient(0deg, #222222, #0a0a0a); */
+  background: #2e2e2e;
   padding: 4rem 0;
   display: flex;
   justify-content: space-around;
@@ -139,7 +151,8 @@
   align-items: center;
   text-align: center; /* Ensure text is fully centered */
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1); /* Light background for modern effect */
+  background: #ffffff1a; /* Light background for modern effect */
+  /* background: #1c1c25; */
   border-radius: 12px; /* Rounded edges for a modern feel */
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle shadow effect */
 }

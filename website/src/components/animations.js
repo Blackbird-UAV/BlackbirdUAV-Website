@@ -3,44 +3,44 @@ const DURATIONS = {
   Fast: 0.6,
   Normal: 0.8,
   Slow: 1.2,
-  VerySlow: 1.8,
-};
-const easing = [0.6, -0.05, 0.01, 0.99];
+  VerySlow: 1.8
+}
+const easing = [0.6, -0.05, 0.01, 0.99]
 
 const fadeInUp = {
   initial: {
     y: 60,
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     y: 0,
     opacity: 1,
     transition: {
       duration: DURATIONS.Normal,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const fadeInUpSlower = {
   initial: {
     y: 80,
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     y: 0,
     opacity: 1,
     transition: {
       duration: DURATIONS.Slow,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const fadeInUpDelayed = {
   initial: {
     y: 80,
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     y: 0,
@@ -48,60 +48,60 @@ const fadeInUpDelayed = {
     transition: {
       delay: 0.5,
       duration: DURATIONS.Slow,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const letterSpace = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   animate: {
-    letterSpacing: ["0px", "-10px", "0px"],
+    letterSpacing: ['0px', '-10px', '0px'],
     opacity: 1,
     transition: {
       duration: DURATIONS.Slow,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const simpleOpacity = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     opacity: 1,
     transition: {
       duration: DURATIONS.Fast,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const scaleUp = {
   initial: {
     scale: 0,
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     opacity: [0, 1],
     scale: [1, 1.05, 1],
     transition: {
       duration: DURATIONS.VerySlow,
-      ease: easing,
-    },
+      ease: easing
+    }
   },
   lightMode: {
     opacity: [0, 1],
     scale: [0.99, 1.05, 1],
     transition: {
       duration: DURATIONS.VerySlow,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const menuAnim = {
   show: {
@@ -109,71 +109,71 @@ const menuAnim = {
     opacity: 1,
     transition: {
       ease: easing,
-      duration: DURATIONS.VeryFast,
-    },
+      duration: DURATIONS.VeryFast
+    }
   },
   hide: {
     opacity: 0,
     y: -100,
     transition: {
       ease: easing,
-      duration: DURATIONS.VeryFast,
-    },
-  },
-};
+      duration: DURATIONS.VeryFast
+    }
+  }
+}
 
 const avatarAnimation = {
   initial: {
     opacity: 0,
-    y: 60,
+    y: 60
   },
   animate: {
     y: 0,
     opacity: 1,
     transition: {
       duration: DURATIONS.Fast,
-      ease: easing,
-    },
+      ease: easing
+    }
   },
   exit: {
-    opacity: 0,
-  },
-};
+    opacity: 0
+  }
+}
 
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+      staggerChildren: 0.1
+    }
+  }
+}
 const galleryStagger = {
   animate: {
     transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+      staggerChildren: 0.2
+    }
+  }
+}
 
 const slideFromLeft = {
   initial: {
     x: -100, // Start off-screen to the left
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     x: 0,
     opacity: 1,
     transition: {
       duration: DURATIONS.Normal,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const slideFromLeftDelayed = {
   initial: {
     x: -100, // Start off-screen to the left
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     x: 0,
@@ -181,25 +181,25 @@ const slideFromLeftDelayed = {
     transition: {
       delay: 0.5,
       duration: DURATIONS.Normal,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 const slideFromRight = {
   initial: {
     x: 100, // Start off-screen to the right
-    opacity: 0,
+    opacity: 0
   },
   animate: {
     x: 0,
     opacity: 1,
     transition: {
       duration: DURATIONS.Normal,
-      ease: easing,
-    },
-  },
-};
+      ease: easing
+    }
+  }
+}
 
 export {
   DURATIONS,
@@ -216,5 +216,5 @@ export {
   avatarAnimation,
   slideFromLeft,
   slideFromRight,
-  slideFromLeftDelayed,
-};
+  slideFromLeftDelayed
+}

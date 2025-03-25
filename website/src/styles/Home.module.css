@@ -12,6 +12,7 @@
   position: absolute;
 }
 
+
 /* Gradient animation */
 @keyframes gradientAnimation {
   0% {
@@ -160,6 +161,25 @@
 
 .backgroundContainer {
   background: linear-gradient(150deg, #2e2e2e, #0c0c0c);
+}
+
+.wavesHome {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: #212121;
+}
+
+.wavesHome svg {
+  position: relative;
+  display: block;
+  width: calc(108% + 1.3px);
+  height: 137px;
+}
+
+.wavesHome .wavesHomeFill {
+  fill: #C5D6EA;
 }
 
 .aboutContainer {

@@ -7,21 +7,21 @@ import {
   Link,
   Image,
   Button,
-  useBreakpointValue,
-} from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import Sidebar from "@/components/sponsorSidebar";
-import Head from "next/head";
-import sponsors from "@/data/sponsorData";
+  useBreakpointValue
+} from '@chakra-ui/react'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import Sidebar from '@/components/sponsorSidebar'
+import Head from 'next/head'
+import sponsors from '@/data/sponsorData'
 
 const DURATIONS = {
   VeryFast: 0.2,
   Fast: 0.4,
   Normal: 0.6,
   Slow: 0.8,
-  VerySlow: 1.0,
-};
+  VerySlow: 1.0
+}
 
 const staggerAnimation = {
   hidden: { opacity: 0, y: 50 },
@@ -30,48 +30,48 @@ const staggerAnimation = {
     y: 0,
     transition: {
       delay: i * 0.3,
-      duration: DURATIONS.Normal,
+      duration: DURATIONS.Normal
       // ease: [0.6, -0.05, 0.01, 0.99], // optional, uncomment to make it more snappy and comment to make it more flowy
-    },
-  }),
-};
+    }
+  })
+}
 
-export default function Sponsor() {
-  const padding = useBreakpointValue({ base: 6, md: 8, lg: 12 });
-  const marginTopSidebar = useBreakpointValue({ base: 6, sm: 6, md: 6 });
-  const marginBottom = useBreakpointValue({ base: 20, lg: 0 });
-  const marginTop = useBreakpointValue({ base: 0, lg: 20 });
+export default function Sponsor () {
+  const padding = useBreakpointValue({ base: 6, md: 8, lg: 12 })
+  const marginTopSidebar = useBreakpointValue({ base: 6, sm: 6, md: 6 })
+  const marginBottom = useBreakpointValue({ base: 20, lg: 0 })
+  const marginTop = useBreakpointValue({ base: 0, lg: 20 })
 
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const [isButtonVisible, setIsButtonVisible] = useState(false)
 
   const renderSponsorsByTier = (tier, sectionIndex) => {
     const columnSettings = {
       Partner: {
-        sm: "repeat(1, 1fr)",
-        base: "repeat(1, 1fr)",
-        md: "repeat(1, 1fr)",
+        sm: 'repeat(1, 1fr)',
+        base: 'repeat(1, 1fr)',
+        md: 'repeat(1, 1fr)'
       },
       Gold: {
-        sm: "repeat(2, 1fr)",
-        base: "repeat(2, 1fr)",
-        md: "repeat(2, 1fr)",
+        sm: 'repeat(2, 1fr)',
+        base: 'repeat(2, 1fr)',
+        md: 'repeat(2, 1fr)'
       },
       Silver: {
-        sm: "repeat(2, 1fr)",
-        base: "repeat(3, 1fr)",
-        md: "repeat(3, 1fr)",
+        sm: 'repeat(2, 1fr)',
+        base: 'repeat(3, 1fr)',
+        md: 'repeat(3, 1fr)'
       },
       Bronze: {
-        sm: "repeat(2, 1fr)",
-        base: "repeat(3, 1fr)",
-        md: "repeat(3, 1fr)",
+        sm: 'repeat(2, 1fr)',
+        base: 'repeat(3, 1fr)',
+        md: 'repeat(3, 1fr)'
       },
       Support: {
-        sm: "repeat(2, 1fr)",
-        base: "repeat(3, 1fr)",
-        md: "repeat(3, 1fr)",
-      },
-    };
+        sm: 'repeat(2, 1fr)',
+        base: 'repeat(3, 1fr)',
+        md: 'repeat(3, 1fr)'
+      }
+    }
     // const columnSettings = {
     //   Partner: {
     //     base: "repeat(auto-fit, minmax(240px, 1fr))",
@@ -97,30 +97,30 @@ export default function Sponsor() {
 
     return (
       <>
-        <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w="100%">
+        <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w='100%'>
           {sponsors
             .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
             .map((sponsor, sponsorIndex) => (
               <motion.div
                 id={(function () {
                   switch (tier.toLowerCase()) {
-                    case "partner":
-                      return "partnerSection";
-                    case "gold":
-                      return "goldSection";
-                    case "silver":
-                      return "silverSection";
-                    case "bronze":
-                      return "bronzeSection";
-                    case "support":
-                      return "supportSection";
+                    case 'partner':
+                      return 'partnerSection'
+                    case 'gold':
+                      return 'goldSection'
+                    case 'silver':
+                      return 'silverSection'
+                    case 'bronze':
+                      return 'bronzeSection'
+                    case 'support':
+                      return 'supportSection'
                     default:
-                      return undefined;
+                      return undefined
                   }
                 })()}
                 key={sponsor.name}
-                initial="hidden"
-                animate="visible"
+                initial='hidden'
+                animate='visible'
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: {
@@ -129,46 +129,46 @@ export default function Sponsor() {
                     transition: {
                       delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
                       duration: DURATIONS.Normal,
-                      ease: [0.6, -0.05, 0.01, 0.99],
-                    },
-                  },
+                      ease: [0.6, -0.05, 0.01, 0.99]
+                    }
+                  }
                 }}
               >
                 <GridItem
                   as={Link}
-                  target="_blank"
+                  target='_blank'
                   href={sponsor.link}
                   isExternal
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  overflow="hidden"
-                  width="100%"
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                  overflow='hidden'
+                  width='100%'
                 >
                   <Box
-                    bg="white"
+                    bg='white'
                     margin={2}
                     padding={2}
-                    borderRadius="md"
-                    boxShadow="md"
-                    overflow="hidden"
-                    transition="transform 0.3s ease-in-out"
+                    borderRadius='md'
+                    boxShadow='md'
+                    overflow='hidden'
+                    transition='transform 0.3s ease-in-out'
                     _hover={{
-                      transform: "scale(1.04)",
-                      transition: "0.3s",
+                      transform: 'scale(1.04)',
+                      transition: '0.3s'
                     }}
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    width="100%"
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    width='100%'
                   >
                     <Image
                       src={sponsor.logo}
                       alt={sponsor.name}
-                      objectFit="contain"
-                      height="100px"
-                      width="100%"
-                      minWidth="50px"
+                      objectFit='contain'
+                      height='100px'
+                      width='100%'
+                      minWidth='50px'
                     />
                   </Box>
                 </GridItem>
@@ -176,107 +176,107 @@ export default function Sponsor() {
             ))}
         </Grid>
       </>
-    );
-  };
+    )
+  }
 
   const renderSponsorSections = (tier, sectionIndex) => {
     const tierColors = {
-      Partner: "#d6cff0",
-      Gold: "#fddd5b",
-      Silver: "#c4c4c4",
-      Bronze: "#de975d",
-      Support: "#f0f0f0",
-    };
+      Partner: '#d6cff0',
+      Gold: '#fddd5b',
+      Silver: '#c4c4c4',
+      Bronze: '#de975d',
+      Support: '#f0f0f0'
+    }
 
     return (
       <Box
-        width="100%"
+        width='100%'
         bg={tierColors[tier]}
-        borderRadius="lg"
+        borderRadius='lg'
         padding={5}
         mb={2}
-        shadow="lg"
-        display="flex"
-        alignItems="center"
+        shadow='lg'
+        display='flex'
+        alignItems='center'
         // if section is partner, add a glow on hover
-        transition="transform 0.3s ease-in-out"
+        transition='transform 0.3s ease-in-out'
         _hover={
-          tier.toLowerCase() === "partner"
+          tier.toLowerCase() === 'partner'
             ? {
-                boxShadow: "0 0 8px 4px rgba(214, 207, 240, 0.4)", // Glow effect
-                transform: "scale(1.02)", // Slight scaling
+                boxShadow: '0 0 8px 4px rgba(214, 207, 240, 0.4)', // Glow effect
+                transform: 'scale(1.02)', // Slight scaling
                 transition:
-                  "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out", // Smooth transition
+                  'box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out' // Smooth transition
               }
             : {
-                transform: "scale(1.02)", // Subtle scaling for other tiers
-                transition: "transform 0.3s ease-in-out", // Smooth transition
+                transform: 'scale(1.02)', // Subtle scaling for other tiers
+                transition: 'transform 0.3s ease-in-out' // Smooth transition
               }
         }
       >
         <Box
-          transform="rotate(180deg)"
-          writingMode="vertical-rl"
-          textAlign="center"
+          transform='rotate(180deg)'
+          writingMode='vertical-rl'
+          textAlign='center'
           mr={0}
         >
-          <Heading as="h3" size="2xl" color="black">
+          <Heading as='h3' size='2xl' color='black'>
             {tier}
           </Heading>
         </Box>
         {renderSponsorsByTier(tier, sectionIndex)}
       </Box>
-    );
-  };
+    )
+  }
 
   const handleScrollDown = () => {
-    const bronzeSection = document.getElementById("bronzeSection");
+    const bronzeSection = document.getElementById('bronzeSection')
     if (bronzeSection) {
-      bronzeSection.scrollIntoView({ behavior: "smooth" });
+      bronzeSection.scrollIntoView({ behavior: 'smooth' })
     }
-  };
+  }
 
   const toggleVisibility = () => {
-    const scrollThreshold = 300;
-    const isVisible = window.scrollY < scrollThreshold;
-    setIsButtonVisible(isVisible);
-  };
+    const scrollThreshold = 300
+    const isVisible = window.scrollY < scrollThreshold
+    setIsButtonVisible(isVisible)
+  }
 
   useEffect(() => {
-    const handleScroll = () => requestAnimationFrame(toggleVisibility);
+    const handleScroll = () => requestAnimationFrame(toggleVisibility)
 
-    window.addEventListener("scroll", handleScroll);
-    toggleVisibility();
+    window.addEventListener('scroll', handleScroll)
+    toggleVisibility()
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Box
-      bg="black"
+      bg='black'
       pl={{ base: 0, lg: 5 }}
-      minHeight="100vh"
-      display="flex"
-      flexDirection="column"
+      minHeight='100vh'
+      display='flex'
+      flexDirection='column'
     >
       <Head>
         <title>Blackbird UAV | Sponsor Us</title>
-        <meta name="description" content="Sponsor Us!" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='description' content='Sponsor Us!' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Grid
         templateColumns={{
-          base: "repeat(1, 1fr)",
-          lg: "repeat(5, 1fr)",
-          xl: "repeat(5, 1fr)",
+          base: 'repeat(1, 1fr)',
+          lg: 'repeat(5, 1fr)',
+          xl: 'repeat(5, 1fr)'
         }}
         templateRows={{
-          sm: "repeat(1, 0)",
-          lg: "repeat(2, 1fr)",
+          sm: 'repeat(1, 0)',
+          lg: 'repeat(2, 1fr)'
         }}
         gap={{
           base: 0,
-          lg: 6,
+          lg: 6
         }}
       >
         <GridItem
@@ -286,41 +286,41 @@ export default function Sponsor() {
           mx={2}
           rowSpan={2}
           colSpan={{ base: 1, sm: 1, md: 1, lg: 3, xl: 3 }}
-          display="flex"
-          alignContent="center"
-          as="div"
-          flexDirection={"row"}
+          display='flex'
+          alignContent='center'
+          as='div'
+          flexDirection='row'
         >
           <Sidebar />
         </GridItem>
         <GridItem
-          as="main"
+          as='main'
           padding={padding}
           mt={marginTop}
           mb={6}
           mx={2}
           rowSpan={2}
           colSpan={{ base: 1, sm: 2, md: 2, lg: 2, xl: 2 }}
-          overflow="hidden"
+          overflow='hidden'
         >
-          <Stack w="100%" spacing={10}>
+          <Stack w='100%' spacing={10}>
             <Heading
-              as="h2"
-              size="3xl"
-              textAlign="center"
+              as='h2'
+              size='3xl'
+              textAlign='center'
               mb={4}
               mt={2}
-              color={"white"}
+              color='white'
             >
               Thank you to our generous sponsors!
             </Heading>
-            {["Partner", "Gold", "Silver" /*, "Bronze"*/, "Support"].map(
+            {['Partner', 'Gold', 'Silver' /*, "Bronze" */, 'Support'].map(
               (tier, index) => (
                 <motion.div
                   key={index}
                   variants={staggerAnimation}
-                  initial="hidden"
-                  animate="visible"
+                  initial='hidden'
+                  animate='visible'
                   custom={index}
                 >
                   {renderSponsorSections(tier, index)}
@@ -372,5 +372,5 @@ export default function Sponsor() {
         </Button>
       )} */}
     </Box>
-  );
+  )
 }

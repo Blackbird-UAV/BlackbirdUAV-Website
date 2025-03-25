@@ -1,7 +1,7 @@
-"use client";
+// "use client";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
@@ -9,8 +9,6 @@ import ThreeScene from "@/components/ThreeScene";
 import Accordion from "@/components/Accordion";
 import { motion } from "framer-motion";
 import {
-  fadeInUp,
-  fadeInUpSlower,
   fadeInUpDelayed,
   slideFromLeftDelayed,
   slideFromLeft,
@@ -75,22 +73,12 @@ const ChevronRight = (props) => (
 );
 
 export default function Home() {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [isSceneLoaded, setIsSceneLoaded] = useState(false);
-  const [visibleSection, setVisibleSection] = useState(null);
-
-  const handleScroll = useCallback(() => {
-    const progress = Math.max(
-      0,
-      Math.min(1, window.scrollY / document.body.scrollHeight)
-    );
-    setScrollProgress(progress * 100);
-  }, []);
 
   const handleWindowScroll = () => {
     setScrollY(window.scrollY);
@@ -147,12 +135,10 @@ export default function Home() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleWindowScroll);
-    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleWindowScroll);
-      window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -176,7 +162,7 @@ export default function Home() {
     };
   }, []);
 
-  //Fading out loader (set on a 0.5s delay for a 1s transition
+  // Fading out loader (set on a 0.5s delay for a 1s transition
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
@@ -275,6 +261,7 @@ export default function Home() {
                     href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
                     target="_blank"
                     className={styles.donateButton}
+                    rel="noreferrer"
                   >
                     Donate
                   </Link>
@@ -296,6 +283,7 @@ export default function Home() {
                   href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
                   target="_blank"
                   className={styles.donateButton}
+                  rel="noreferrer"
                 >
                   Donate
                 </Link>
@@ -306,6 +294,20 @@ export default function Home() {
             )}
           </div>
           <ScrollDownIndicator />
+        </div>
+
+        <div className={styles.wavesHome}>
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+              className={styles.wavesHomeFill}
+            />
+          </svg>
         </div>
 
         <div id="firstDiv" className={styles.cloudContainer}>
@@ -439,7 +441,7 @@ export default function Home() {
                 className={styles.slideContainer}
                 style={{
                   transform: `translateX(-${currentIndex * 100}%)`,
-                  transition: `transform 0.5s ease-in-out`,
+                  transition: "transform 0.5s ease-in-out",
                 }}
               >
                 {slides.map((slide, index) => (
@@ -483,7 +485,7 @@ export default function Home() {
                   index === currentIndex ? styles.activeDot : ""
                 }`}
                 onClick={() => handleDotClick(index)}
-              ></span>
+              />
             ))}
           </div>
         </div>
@@ -496,7 +498,7 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, amount: 0.1 }}
           >
-            Follow Our Journey
+            Follow Our Flight Plan
           </motion.h2>
           <motion.div
             className={styles.socialsMotionContainer}
