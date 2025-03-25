@@ -135,12 +135,10 @@ export default function Home() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleWindowScroll);
-    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleWindowScroll);
-      window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
