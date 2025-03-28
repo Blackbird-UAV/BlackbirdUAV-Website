@@ -12,7 +12,6 @@
   position: absolute;
 }
 
-
 /* Gradient animation */
 @keyframes gradientAnimation {
   0% {
@@ -35,15 +34,9 @@
   align-items: flex-end;
   padding: 0.5rem;
   /* background: linear-gradient(to top, #d9e1e7, #eeeee4, #809ab8); */
-  background: linear-gradient(
-    180deg,
-    #92a2f3 0%,
-    #9dbdf8 20%,
-    #98b6db 40%,
-    #ffffff 100%
-  );
+  background: linear-gradient(180deg, #94b7e2 0%, #ffffff 100%);
   background-size: 200% 200%;
-  animation: gradientAnimation 10s ease-in-out infinite;
+  /* animation: gradientAnimation 10s ease-in-out infinite; */
   position: relative;
   overflow: hidden;
   /* font-family: "Fahkwang", sans-serif; */
@@ -168,7 +161,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  background: #212121;
+  background: linear-gradient(to right, #2e2e2e, #1b1b1b);
 }
 
 .wavesHome svg {
@@ -179,7 +172,7 @@
 }
 
 .wavesHome .wavesHomeFill {
-  fill: #C5D6EA;
+  fill: #c9dbf1;
 }
 
 .aboutContainer {
@@ -481,7 +474,7 @@
   width: 100%;
   height: 0px;
   overflow: visible;
-  background-color: #212121;
+  background-color: #262626;
 }
 
 .cloudLeft,
@@ -697,6 +690,10 @@
     padding: 1rem;
     flex-direction: column;
   }
+
+  .wavesHome {
+    background: linear-gradient(to right, #2e2e2e, #262626);
+  }
 }
 
 @media (max-width: 600px) {
@@ -767,6 +764,10 @@
 
   .parallaxContent {
     font-size: 1rem;
+  }
+
+  .wavesHome {
+    background: linear-gradient(to right, #2e2e2e, #2a2a2a);
   }
 }
 

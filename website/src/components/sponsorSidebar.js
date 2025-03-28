@@ -213,11 +213,11 @@ const SponsorSidebar = () => {
                   opportunities, or wish to support us with a donation, feel
                   free to reach out:
                 </MotionText>
-                <Box 
-                  display='flex' 
+                <Box
+                  display='flex'
                   flexDirection={{ base: 'column', md: 'row' }} // Stack vertically on mobile
                   alignItems='center'
-                  width="100%"
+                  width='100%'
                 >
                   <MotionButton
                     as={Link}
@@ -254,7 +254,7 @@ const SponsorSidebar = () => {
                   >
                     Send us an email <FontAwesomeIcon icon={faEnvelope} />
                   </MotionButton>
-                  
+
                   <MotionButton
                     as={Link}
                     href='https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/'
@@ -293,14 +293,14 @@ const SponsorSidebar = () => {
                   </MotionButton>
                 </Box>
 
-                <MotionText 
+                <MotionText
                   color='gray.400'
                   fontSize={{ base: 'xs', md: 'sm' }} // Smaller on mobile
                   mt={2}
                   px={{ base: 3, md: 0 }} // Add padding on mobile
                   textAlign='center'
                   fontStyle='italic'
-                  fontWeight="bold"
+                  fontWeight='bold'
                   variants={fadeInUp}
                 >
                   * Note: Unlike sponsorships, donations do not provide corporate benefits or recognition in return.
