@@ -220,7 +220,7 @@ const teamData = {
         description: 'Jonah develops components for the Blackbird UAV website.',
         extendedDescription:
           'Jonah is part of the website sub-team, developing key components for the functionality of the website.',
-        link: 'https://www.linkedin.com/'
+        link: 'https://www.linkedin.com/in/jonah-pasquantonio-5158b52b2/'
       },
       {
         id: 31,
@@ -778,7 +778,7 @@ const teamData = {
       {
         id: 2,
         firstName: 'Meyiwa',
-        lastName: '',
+        lastName: 'Temile',
         role: '',
         joined: '2022',
         left: '2024',
@@ -787,7 +787,7 @@ const teamData = {
       {
         id: 3,
         firstName: 'Imad',
-        lastName: '',
+        lastName: 'Rehman',
         role: 'Executive',
         joined: '2022',
         left: '2023',
@@ -796,7 +796,7 @@ const teamData = {
       {
         id: 4,
         firstName: 'Dylan',
-        lastName: '',
+        lastName: 'Tingley',
         role: 'Executive',
         joined: '2023',
         left: '2024',
@@ -805,7 +805,7 @@ const teamData = {
       {
         id: 5,
         firstName: 'Lidya',
-        lastName: '',
+        lastName: 'Sobhano',
         role: '',
         joined: '2024',
         left: '2024',
@@ -814,7 +814,7 @@ const teamData = {
       {
         id: 6,
         firstName: 'Ben',
-        lastName: '',
+        lastName: 'Pyun',
         role: 'Executive',
         joined: '2022',
         left: '2023',
