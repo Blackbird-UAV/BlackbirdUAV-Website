@@ -200,6 +200,7 @@ const SponsorSidebar = () => {
                 flexDirection='column'
                 alignItems='center'
                 mt={2}
+                id='donate'
                 className={styles.mobilePaddingBottom} // Add padding below the button in mobile mode
               >
                 <MotionText
@@ -285,6 +286,17 @@ const SponsorSidebar = () => {
                     Donate <FontAwesomeIcon icon={faDonate} />
                   </MotionButton>
                 </Box>
+                <MotionText 
+                  color='gray.400'
+                  fontSize='sm'
+                  mt={2}
+                  textAlign='center'
+                  fontStyle='italic'
+                  fontWeight="bold"  // Added bold styling
+                  variants={fadeInUp}
+                >
+                  * Note: Unlike sponsorships, donations do not provide corporate benefits or recognition in return.
+                </MotionText>
               </Box>
             </Box>
           </MotionStack>

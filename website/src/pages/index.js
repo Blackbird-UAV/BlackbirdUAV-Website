@@ -258,10 +258,8 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <Link
-                    href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
-                    target="_blank"
+                    href="/sponsor#donate"
                     className={styles.donateButton}
-                    rel="noreferrer"
                   >
                     Donate
                   </Link>
@@ -280,10 +278,8 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <Link
-                  href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
-                  target="_blank"
+                  href="/sponsor#donate"
                   className={styles.donateButton}
-                  rel="noreferrer"
                 >
                   Donate
                 </Link>
