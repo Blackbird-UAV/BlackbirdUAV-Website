@@ -213,18 +213,23 @@ const SponsorSidebar = () => {
                   opportunities, or wish to support us with a donation, feel
                   free to reach out:
                 </MotionText>
-                <Box display='flex' flexDirection='row' alignItems='center'>
+                <Box 
+                  display='flex' 
+                  flexDirection={{ base: 'column', md: 'row' }} // Stack vertically on mobile
+                  alignItems='center'
+                  width="100%"
+                >
                   <MotionButton
                     as={Link}
                     href='mailto:sponsor@blackbirduav.ca?subject=Blackbird%20UAV%20Sponsorship'
                     target='_blank'
                     isExternal
-                    size='lg'
+                    size={{ base: 'md', md: 'lg' }} // Smaller on mobile
                     bg='linear-gradient(135deg,rgb(255, 65, 97),rgb(247, 57, 51))'
                     color='white'
                     borderRadius='full'
                     mb={2}
-                    p={6}
+                    p={{ base: 4, md: 6 }} // Less padding on mobile
                     variants={scaleUp}
                     whileHover={{
                       scale: 1.05,
@@ -245,22 +250,23 @@ const SponsorSidebar = () => {
                       boxShadow: '0 0px 15px rgba(233, 28, 35, 0.5)',
                       filter: 'brightness(1.2)'
                     }}
-                    w='fit-content'
+                    w={{ base: '90%', md: 'fit-content' }} // Width control for mobile
                   >
                     Send us an email <FontAwesomeIcon icon={faEnvelope} />
                   </MotionButton>
+                  
                   <MotionButton
                     as={Link}
                     href='https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/'
                     target='_blank'
                     isExternal
-                    size='lg'
+                    size={{ base: 'md', md: 'lg' }} // Smaller on mobile
                     bg='linear-gradient(135deg,rgb(65, 105, 225),rgb(57, 51, 247))'
                     color='white'
                     borderRadius='full'
                     mb={2}
-                    p={6}
-                    ml={4}
+                    p={{ base: 4, md: 6 }} // Less padding on mobile
+                    ml={{ base: 0, md: 4 }} // No left margin on mobile
                     variants={scaleUp}
                     whileHover={{
                       scale: 1.05,
@@ -281,18 +287,20 @@ const SponsorSidebar = () => {
                       boxShadow: '0 0px 15px rgba(65, 105, 225, 0.5)',
                       filter: 'brightness(1.2)'
                     }}
-                    w='fit-content'
+                    w={{ base: '90%', md: 'fit-content' }} // Width control for mobile
                   >
                     Donate <FontAwesomeIcon icon={faDonate} />
                   </MotionButton>
                 </Box>
+
                 <MotionText 
                   color='gray.400'
-                  fontSize='sm'
+                  fontSize={{ base: 'xs', md: 'sm' }} // Smaller on mobile
                   mt={2}
+                  px={{ base: 3, md: 0 }} // Add padding on mobile
                   textAlign='center'
                   fontStyle='italic'
-                  fontWeight="bold"  // Added bold styling
+                  fontWeight="bold"
                   variants={fadeInUp}
                 >
                   * Note: Unlike sponsorships, donations do not provide corporate benefits or recognition in return.
