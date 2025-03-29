@@ -1,14 +1,26 @@
 const sponsors = [
-  {
-    name: 'Carleton University | Faculty of Engineering and Design',
-    logo: '/images/Sponsors/Sponsor_CarletonEng.png',
-    link: 'https://carleton.ca/engineering-design/',
-    tier: 'partner'
-  },
+  // {
+  //   name: 'Carleton University | Faculty of Engineering and Design',
+  //   logo: '/images/Sponsors/Sponsor_CarletonEng.png',
+  //   link: 'https://carleton.ca/engineering-design/',
+  //   tier: 'partner'
+  // },
   {
     name: 'Carleton University Department of Mechanical and Aerospace Engineering',
     logo: '/images/Sponsors/Sponsor_Carleton_MechandAero.png',
     link: 'https://carleton.ca/mae/',
+    tier: 'partner'
+  },
+  {
+    name: 'Kostiuk Engineering Funding Collective',
+    logo: '/images/Sponsors/Sponsor_KEFC.png',
+    link: 'https://www.mycses.ca/student-group-funding',
+    tier: 'partner'
+  },
+  {
+    name: 'Howell Data Systems',
+    logo: '/images/Sponsors/Sponsor_Howell.png',
+    link: 'https://www.howelldatasystems.com/',
     tier: 'partner'
   },
   // No longer fund us
@@ -43,12 +55,6 @@ const sponsors = [
     tier: 'gold'
   },
   {
-    name: 'Kostiuk Engineering Funding Collective',
-    logo: '/images/Sponsors/Sponsor_KEFC.png',
-    link: 'https://www.mycses.ca/student-group-funding',
-    tier: 'partner'
-  },
-  {
     name: 'Competiton Composites Inc.',
     logo: '/images/Sponsors/Sponsor_CCI.png',
     link: 'https://cci.one/',
@@ -60,12 +66,12 @@ const sponsors = [
     link: 'https://www.metalpros.com/',
     tier: 'silver'
   },
-  {
-    name: 'Teledyne',
-    logo: '/images/Sponsors/Sponsor_Teledyne.png',
-    link: 'https://www.teledyne.com/',
-    tier: 'silver'
-  },
+  // {
+  //   name: 'Teledyne',
+  //   logo: '/images/Sponsors/Sponsor_Teledyne.png',
+  //   link: 'https://www.teledyne.com/',
+  //   tier: 'silver'
+  // },
   {
     name: 'Tattu',
     logo: '/images/Sponsors/Sponsor_Tattu.png',
@@ -73,11 +79,17 @@ const sponsors = [
     tier: 'silver'
   },
   {
-    name: 'SIMNET',
-    logo: '/images/Sponsors/Sponsor_SIMNET.png',
-    link: 'https://www.simnet.aero/',
-    tier: 'support'
-  }
+    name: 'Print Parrot',
+    logo: '/images/Sponsors/Sponsor_PrintParrot.png',
+    link: 'https://www.printparrot.ca/',
+    tier: 'silver'
+  },
+  // {
+  //   name: 'SIMNET',
+  //   logo: '/images/Sponsors/Sponsor_SIMNET.png',
+  //   link: 'https://www.simnet.aero/',
+  //   tier: 'support'
+  // }
 ]
 
 export default sponsors
