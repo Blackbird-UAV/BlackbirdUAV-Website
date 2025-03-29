@@ -1,76 +1,76 @@
-import { useRouter } from 'next/router'
-import teamData from '@/data/teamData'
-import { Text, TextInput } from '@mantine/core'
-import styles from '@/styles/Team.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesRight } from '@fortawesome/free-solid-svg-icons'
-import Header from '@/components/Header'
-import Head from 'next/head'
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useRouter } from "next/router";
+import teamData from "@/data/teamData";
+import { Text, TextInput } from "@mantine/core";
+import styles from "@/styles/Team.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import Header from "@/components/Header";
+import Head from "next/head";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const DURATIONS = {
   VeryFast: 0.2,
   Fast: 0.4,
   Normal: 0.6,
   Slow: 0.8,
-  VerySlow: 1.0
-}
+  VerySlow: 1.0,
+};
 
 const MeetTeam = () => {
-  const router = useRouter()
-  const { year } = router.query
+  const router = useRouter();
+  const { year } = router.query;
 
-  const [searchQuery, setSearchQuery] = useState('')
-  const [filteredMembers, setFilteredMembers] = useState([])
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredMembers, setFilteredMembers] = useState([]);
 
-  const team = year && teamData[year] ? teamData[year] : null
+  const team = year && teamData[year] ? teamData[year] : null;
 
-  let teamTitle
-  if (year === '2024-2025') {
-    teamTitle = 'Current Team'
-  } else if (year === 'pastMembers') {
-    teamTitle = 'Past Members'
-  } else if (year === '2023-2024') {
-    teamTitle = '2023 - 2024 Team'
-  } else if (year === '2022-2023') {
-    teamTitle = '2022 - 2023 Team'
+  let teamTitle;
+  if (year === "2024-2025") {
+    teamTitle = "Current Team";
+  } else if (year === "pastMembers") {
+    teamTitle = "Past Members";
+  } else if (year === "2023-2024") {
+    teamTitle = "2023 - 2024 Team";
+  } else if (year === "2022-2023") {
+    teamTitle = "2022 - 2023 Team";
   } else {
-    teamTitle = year ? `${year} Team` : 'Team Not Found'
+    teamTitle = year ? `${year} Team` : "Team Not Found";
   }
 
-  const teamDescription = team ? team.description : ''
+  const teamDescription = team ? team.description : "";
 
   useEffect(() => {
     if (searchQuery && team) {
       const allMembers = Object.keys(team).reduce((acc, subteam) => {
-        if (subteam !== 'description') {
-          return acc.concat(team[subteam])
+        if (subteam !== "description") {
+          return acc.concat(team[subteam]);
         }
-        return acc
-      }, [])
+        return acc;
+      }, []);
 
       const filtered = allMembers.filter((member) =>
         `${member.firstName} ${member.lastName}`
           .toLowerCase()
           .includes(searchQuery.toLowerCase())
-      )
-      setFilteredMembers(filtered)
+      );
+      setFilteredMembers(filtered);
     } else {
-      setFilteredMembers([])
+      setFilteredMembers([]);
     }
-  }, [searchQuery, team])
+  }, [searchQuery, team]);
 
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value)
-  }
+    setSearchQuery(e.target.value);
+  };
 
   const scrollToMember = (id) => {
-    const element = document.getElementById(`member-${id}`)
+    const element = document.getElementById(`member-${id}`);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  }
+  };
 
   if (!team) {
     return (
@@ -80,17 +80,17 @@ const MeetTeam = () => {
           Sorry, we couldn&apos;t find the team for the specified year.
         </p>
       </div>
-    )
+    );
   }
 
   return (
     <>
       <Head>
         <title>Blackbird UAV | Meet the Team</title>
-        <meta name='description' content='Meet the Team' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name="description" content="Meet the Team" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header imagePath='/images/team2.jpg' headerText={teamTitle} />
+      <Header imagePath="/images/team2.jpg" headerText={teamTitle} />
       <div className={styles.container}>
         <div className={styles.headerDescTitle}>
           <h1>Meet the Team</h1>
@@ -98,11 +98,11 @@ const MeetTeam = () => {
         <div className={styles.headerDesc}>
           {teamDescription && <div>{teamDescription}</div>}
         </div>
-        {year === '2024-2025' && (
+        {year === "2024-2025" && (
           <div className={styles.searchBar}>
             <TextInput
               // description="Type the name of an alumni to search for them"
-              placeholder='Search for a member...'
+              placeholder="Search for a member..."
               value={searchQuery}
               onChange={handleSearch}
             />
@@ -123,7 +123,7 @@ const MeetTeam = () => {
         )}
         {Object.keys(team).map(
           (subteam) =>
-            subteam !== 'description' && (
+            subteam !== "description" && (
               <div className={styles.subteam} key={subteam}>
                 <div className={styles.subteamContent}>
                   <div className={`${styles.sidebar} ${styles[subteam]}`}>
@@ -138,25 +138,25 @@ const MeetTeam = () => {
                           (b.isPresident
                             ? 3
                             : b.isExecutive
-                              ? 2
-                              : b.isManager
-                                ? 1
-                                : 0) -
+                            ? 2
+                            : b.isManager
+                            ? 1
+                            : 0) -
                           (a.isPresident
                             ? 3
                             : a.isExecutive
-                              ? 2
-                              : a.isManager
-                                ? 1
-                                : 0)
+                            ? 2
+                            : a.isManager
+                            ? 1
+                            : 0)
                       )
                       .map((member, index) => (
                         <motion.div
                           key={member.id}
                           id={`member-${member.id}`}
                           className={styles.card}
-                          initial='hidden'
-                          whileInView='visible'
+                          initial="hidden"
+                          whileInView="visible"
                           viewport={{ once: true, amount: 0.1 }}
                           variants={{
                             hidden: { opacity: 0, y: 20 },
@@ -165,9 +165,9 @@ const MeetTeam = () => {
                               y: 0,
                               transition: {
                                 delay: (index % 4) * 0.1,
-                                duration: DURATIONS.Normal
-                              }
-                            }
+                                duration: DURATIONS.Normal,
+                              },
+                            },
                           }}
                         >
                           <div className={styles.cardInner}>
@@ -179,13 +179,13 @@ const MeetTeam = () => {
                                 className={styles.memberImage}
                                 onError={(e) => {
                                   e.target.src =
-                                    '/images/TeamHeadshots/memberPlaceholder.png'
+                                    "/images/TeamHeadshots/memberPlaceholder.png";
                                   e.target.style.filter =
-                                    'blur(4px) brightness(0.9)'
+                                    "blur(4px) brightness(0.9)";
                                   {
                                     /* */
                                   }
-                                  e.target.style.scale = '1.02'
+                                  e.target.style.scale = "1.02";
                                 }}
                               />
                               <div className={styles.turnOverIcon}>
@@ -215,7 +215,7 @@ const MeetTeam = () => {
                                     ? styles.small
                                     : member.lastName.length > 8
                                     ? styles.medium
-                                    : ''
+                                    : ""
                                 }`}
                               >
                                 {member.lastName}
@@ -253,7 +253,7 @@ const MeetTeam = () => {
                                       ? styles.small
                                       : member.lastName.length > 8
                                       ? styles.medium
-                                      : ''
+                                      : ""
                                   }`}
                                 >
                                   {member.lastName}
@@ -266,8 +266,8 @@ const MeetTeam = () => {
                               <a
                                 href={member.link}
                                 className={styles.linkButton}
-                                target='_blank'
-                                rel='noopener noreferrer'
+                                target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 See LinkedIn
                               </a>
@@ -279,7 +279,7 @@ const MeetTeam = () => {
                 </div>
 
                 {/* Render double lines for comp team */}
-                {subteam === 'Competition' && (
+                {subteam === "Competition" && (
                   <div className={styles.linesContainer}>
                     <div className={styles.compBox}>
                       <p className={styles.compText}>
@@ -295,7 +295,7 @@ const MeetTeam = () => {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default MeetTeam
+export default MeetTeam;

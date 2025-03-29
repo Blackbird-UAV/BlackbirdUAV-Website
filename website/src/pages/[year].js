@@ -1,19 +1,19 @@
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
-import teamData from '@/data/teamData'
-import { Text } from '@mantine/core'
-import styles from '@/styles/Team.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAnglesRight } from '@fortawesome/free-solid-svg-icons'
-import Header from '@/components/Header'
+import { useRouter } from "next/router";
+import { useState } from "react";
+import teamData from "@/data/teamData";
+import { Text } from "@mantine/core";
+import styles from "@/styles/Team.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import Header from "@/components/Header";
 
 const MemberCard = ({ member, subteam }) => {
-  const [isFlipped, setIsFlipped] = useState(false)
+  const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
       key={member.id}
-      className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}
+      className={`${styles.card} ${isFlipped ? styles.flipped : ""}`}
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div className={styles.cardInner}>
@@ -22,11 +22,12 @@ const MemberCard = ({ member, subteam }) => {
           className={`${styles.cardFront} ${styles.cardFace}`}
           style={{
             backgroundImage: `url(${
-              member.image || '/images/TeamHeadshots/memberPlaceholder.png'
-            })`
+              member.image || "/images/TeamHeadshots/memberPlaceholder.png"
+            })`,
           }}
           onError={(e) => {
-            e.target.style.backgroundImage = 'url(/images/TeamHeadshots/memberPlaceholder.png)'
+            e.target.style.backgroundImage =
+              "url(/images/TeamHeadshots/memberPlaceholder.png)";
           }}
         >
           <div className={styles.turnOverIcon}>
@@ -60,37 +61,37 @@ const MemberCard = ({ member, subteam }) => {
           <a
             href={member.link}
             className={styles.linkButton}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             See LinkedIn
           </a>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const MeetTeam = () => {
-  const router = useRouter()
-  const { year } = router.query
+  const router = useRouter();
+  const { year } = router.query;
 
-  const team = year && teamData[year] ? teamData[year] : null
+  const team = year && teamData[year] ? teamData[year] : null;
 
-  let teamTitle
-  if (year === '2024-2025') {
-    teamTitle = 'Current Team'
-  } else if (year === 'pastMembers') {
-    teamTitle = 'Past Members'
-  } else if (year === '2023-2024') {
-    teamTitle = '2023 - 2024 Team'
-  } else if (year === '2022-2023') {
-    teamTitle = '2022 - 2023 Team'
+  let teamTitle;
+  if (year === "2024-2025") {
+    teamTitle = "Current Team";
+  } else if (year === "pastMembers") {
+    teamTitle = "Past Members";
+  } else if (year === "2023-2024") {
+    teamTitle = "2023 - 2024 Team";
+  } else if (year === "2022-2023") {
+    teamTitle = "2022 - 2023 Team";
   } else {
-    teamTitle = year ? `${year} Team` : 'Team Not Found'
+    teamTitle = year ? `${year} Team` : "Team Not Found";
   }
 
-  const teamDescription = team ? team.description : ''
+  const teamDescription = team ? team.description : "";
 
   if (!team) {
     return (
@@ -100,14 +101,14 @@ const MeetTeam = () => {
           Sorry, we couldn&apos;t find the team for the specified year.
         </p>
       </div>
-    )
+    );
   }
 
   return (
     <>
       <Header
-        imagePath='/images/team2.jpg'
-        headerText='Our Team'
+        imagePath="/images/team2.jpg"
+        headerText="Our Team"
         initialOffset={200}
         className={styles.teamHeader}
       />
@@ -118,7 +119,7 @@ const MeetTeam = () => {
         </div>
         {Object.keys(team).map(
           (subteam) =>
-            subteam !== 'description' && (
+            subteam !== "description" && (
               <div className={styles.subteam} key={subteam}>
                 <div className={styles.subteamContent}>
                   <div className={styles.sidebar}>
@@ -143,7 +144,7 @@ const MeetTeam = () => {
                 </div>
 
                 {/* Render double lines for comp team */}
-                {subteam === 'Competition' && (
+                {subteam === "Competition" && (
                   <div className={styles.linesContainer}>
                     <div className={styles.compBox}>
                       <p className={styles.compText}>
@@ -159,7 +160,7 @@ const MeetTeam = () => {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default MeetTeam
+export default MeetTeam;

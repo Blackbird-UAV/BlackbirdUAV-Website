@@ -257,12 +257,7 @@ export default function Home() {
                   animate={isSceneLoaded ? "animate" : "initial"}
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  <Link
-                    href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
-                    target="_blank"
-                    className={styles.donateButton}
-                    rel="noreferrer"
-                  >
+                  <Link href="/sponsor#donate" className={styles.donateButton}>
                     Donate
                   </Link>
                   <Link href="/sponsor" className={styles.sponsorButton}>
@@ -279,12 +274,7 @@ export default function Home() {
                 animate={isSceneLoaded ? "animate" : "initial"}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <Link
-                  href="https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/"
-                  target="_blank"
-                  className={styles.donateButton}
-                  rel="noreferrer"
-                >
+                <Link href="/sponsor#donate" className={styles.donateButton}>
                   Donate
                 </Link>
                 <Link href="/sponsor" className={styles.sponsorButton}>
@@ -306,11 +296,11 @@ export default function Home() {
             <path
               d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
               className={styles.wavesHomeFill}
-            />
+            ></path>
           </svg>
         </div>
 
-        <div id="firstDiv" className={styles.cloudContainer}>
+        {/* <div id="firstDiv" className={styles.cloudContainer}>
           <motion.div
             initial="hidden"
             animate={isSceneLoaded ? "visible" : "hidden"}
@@ -343,7 +333,7 @@ export default function Home() {
               height={300}
             />
           </motion.div>
-        </div>
+        </div> */}
 
         <div className={styles.backgroundContainer}>
           <div id="secondDiv" className={styles.aboutContainer}>
