@@ -84,12 +84,12 @@ const sponsors = [
     link: 'https://www.printparrot.ca/',
     tier: 'silver'
   },
-  // {
-  //   name: 'SIMNET',
-  //   logo: '/images/Sponsors/Sponsor_SIMNET.png',
-  //   link: 'https://www.simnet.aero/',
-  //   tier: 'support'
-  // }
+  {
+    name: 'SIMNET',
+    logo: '/images/Sponsors/Sponsor_SIMNET.png',
+    link: 'https://www.simnet.aero/',
+    tier: 'support'
+  }
 ]
 
 export default sponsors
