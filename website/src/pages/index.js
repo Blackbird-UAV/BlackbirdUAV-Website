@@ -1,180 +1,180 @@
 // "use client";
-import Head from "next/head";
-import Image from "next/image";
-import React, { useCallback, useEffect, useState } from "react";
-import styles from "@/styles/Home.module.css";
-import Link from "next/link";
-import ScrollDownIndicator from "@/components/ScrollDownIndicator";
-import ThreeScene from "@/components/ThreeScene";
-import Accordion from "@/components/Accordion";
-import { motion } from "framer-motion";
+import Head from 'next/head'
+import Image from 'next/image'
+import React, { useCallback, useEffect, useState } from 'react'
+import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
+import ScrollDownIndicator from '@/components/ScrollDownIndicator'
+import ThreeScene from '@/components/ThreeScene'
+import Accordion from '@/components/Accordion'
+import { motion } from 'framer-motion'
 import {
   fadeInUpDelayed,
   slideFromLeftDelayed,
   slideFromLeft,
-  slideFromRight,
-} from "@/components/animations";
-import { PuffLoader } from "react-spinners"; // Import a loader from react-spinners
-import BBUAVLoaderLogo from "../../public/logos/BBUAVLoaderLogo.png";
-import SponsorGrid from "@/components/sponsorGrid";
-import ParallaxScroll from "@/components/ParallaxScroll";
-import faqData from "@/data/faqData";
-import socialMediaContent from "@/data/socialMediaContent";
+  slideFromRight
+} from '@/components/animations'
+import { PuffLoader } from 'react-spinners' // Import a loader from react-spinners
+import BBUAVLoaderLogo from '../../public/logos/BBUAVLoaderLogo.png'
+import SponsorGrid from '@/components/sponsorGrid'
+import ParallaxScroll from '@/components/ParallaxScroll'
+import faqData from '@/data/faqData'
+import socialMediaContent from '@/data/socialMediaContent'
 
 const slides = [
   {
-    name: "Apogee",
-    image: "/images/Vehicles/Apogee_1.jpg",
+    name: 'Apogee',
+    image: '/images/Vehicles/Apogee_1.jpg',
     description:
-      "Blackbird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment.",
+      "Blackbird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment."
   },
   {
-    name: "Zenith",
-    image: "/images/Vehicles/Zenith_1.jpg",
+    name: 'Zenith',
+    image: '/images/Vehicles/Zenith_1.jpg',
     description:
-      "Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.",
-  },
-];
+      'Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.'
+  }
+]
 
 const ChevronLeft = (props) => (
   <svg
     className={styles.chevron}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
     <path
-      d="M15 6L9 12L15 18"
-      stroke="#fff"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d='M15 6L9 12L15 18'
+      stroke='#fff'
+      strokeWidth='3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
   </svg>
-);
+)
 
 const ChevronRight = (props) => (
   <svg
     className={styles.chevron}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    viewBox='0 0 24 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
     <path
-      d="M9 6L15 12L9 18"
-      stroke="#fff"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d='M9 6L15 12L9 18'
+      stroke='#fff'
+      strokeWidth='3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
   </svg>
-);
+)
 
-export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
-  const [isSceneLoaded, setIsSceneLoaded] = useState(false);
+export default function Home () {
+  const [scrollY, setScrollY] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
+  const [isSceneLoaded, setIsSceneLoaded] = useState(false)
 
   const handleWindowScroll = () => {
-    setScrollY(window.scrollY);
-  };
+    setScrollY(window.scrollY)
+  }
 
   const handlePrev = useCallback(() => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    if (isTransitioning) return
+    setIsTransitioning(true)
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-    );
-  }, [isTransitioning]);
+    )
+  }, [isTransitioning])
 
   const handleNext = useCallback(() => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    if (isTransitioning) return
+    setIsTransitioning(true)
     setCurrentIndex((prevIndex) =>
       prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-    );
-  }, [isTransitioning]);
+    )
+  }, [isTransitioning])
 
   const handleDotClick = (index) => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-  };
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setCurrentIndex(index)
+  }
 
   const cloudLeftVariants = {
-    hidden: { x: "-100%", opacity: 0.1 },
+    hidden: { x: '-100%', opacity: 0.1 },
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 1, ease: "easeOut" },
-    },
-  };
+      transition: { duration: 1, ease: 'easeOut' }
+    }
+  }
 
   const cloudRightVariants = {
-    hidden: { x: "100%", opacity: 0.1 },
+    hidden: { x: '100%', opacity: 0.1 },
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 1, ease: "easeOut" },
-    },
-  };
+      transition: { duration: 1, ease: 'easeOut' }
+    }
+  }
 
   useEffect(() => {
-    const transitionEndHandler = () => setIsTransitioning(false);
-    const slideContainer = document.querySelector(`.${styles.slideContainer}`);
-    slideContainer.addEventListener("transitionend", transitionEndHandler);
+    const transitionEndHandler = () => setIsTransitioning(false)
+    const slideContainer = document.querySelector(`.${styles.slideContainer}`)
+    slideContainer.addEventListener('transitionend', transitionEndHandler)
     return () => {
-      slideContainer.removeEventListener("transitionend", transitionEndHandler);
-    };
-  }, []);
+      slideContainer.removeEventListener('transitionend', transitionEndHandler)
+    }
+  }, [])
 
   useEffect(() => {
-    window.addEventListener("scroll", handleWindowScroll);
+    window.addEventListener('scroll', handleWindowScroll)
     return () => {
-      window.removeEventListener("scroll", handleWindowScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleWindowScroll)
+    }
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      handleNext();
-    }, 3000);
+      handleNext()
+    }, 3000)
 
-    return () => clearInterval(interval);
-  }, [handleNext]);
+    return () => clearInterval(interval)
+  }, [handleNext])
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 600);
-      setIsTablet(window.innerWidth <= 1050);
-    };
+      setIsMobile(window.innerWidth <= 600)
+      setIsTablet(window.innerWidth <= 1050)
+    }
 
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Call initially to set the correct state
+    window.addEventListener('resize', handleResize)
+    handleResize() // Call initially to set the correct state
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   // Fading out loader (set on a 0.5s delay for a 1s transition
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false)
 
   useEffect(() => {
     if (isSceneLoaded) {
       // Start fade-out effect after scene is loaded
       const timer = setTimeout(() => {
-        setIsFadingOut(true); // Start fading out
-      }, 500); // Small delay to let the scene load
+        setIsFadingOut(true) // Start fading out
+      }, 500) // Small delay to let the scene load
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer)
     }
-  }, [isSceneLoaded]);
+  }, [isSceneLoaded])
 
   return (
     <div>
@@ -196,11 +196,11 @@ export default function Home() {
           /> */}
           <title>Blackbird UAV</title>
           <meta
-            name="description"
+            name='description'
             content="Blackbird UAV | Carleton University's UAV Design Team"
           />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <link rel='icon' href='/favicon.ico' />
         </Head>
 
         {!isMobile && (
@@ -209,19 +209,19 @@ export default function Home() {
               <div className={styles.loaderContainer}>
                 <div className={styles.loaderContent}>
                   <Image src={BBUAVLoaderLogo} className={styles.logo} />
-                  <PuffLoader color="#ef1a2e" size={100} />
+                  <PuffLoader color='#ef1a2e' size={100} />
                 </div>
               </div>
             )}
             {/* Add fadeOut class when loader is fading */}
             <div
               className={`${styles.loaderContainer} ${
-                isFadingOut ? styles.fadeOut : ""
+                isFadingOut ? styles.fadeOut : ''
               }`}
             >
               <div className={styles.loaderContent}>
                 <Image src={BBUAVLoaderLogo} className={styles.logo} />
-                <PuffLoader color="#ef1a2e" size={100} />
+                <PuffLoader color='#ef1a2e' size={100} />
               </div>
             </div>
             <ThreeScene onSceneLoaded={() => setIsSceneLoaded(true)} />
@@ -234,8 +234,8 @@ export default function Home() {
               <motion.h1
                 className={styles.name}
                 variants={slideFromLeftDelayed}
-                initial="initial"
-                animate={isSceneLoaded ? "animate" : "initial"}
+                initial='initial'
+                animate={isSceneLoaded ? 'animate' : 'initial'}
                 viewport={{ once: true, amount: 0.2 }}
               >
                 BLACKBIRD UAV
@@ -243,8 +243,8 @@ export default function Home() {
               <motion.h2
                 className={styles.subtitle}
                 variants={fadeInUpDelayed}
-                initial="initial"
-                animate={isSceneLoaded ? "animate" : "initial"}
+                initial='initial'
+                animate={isSceneLoaded ? 'animate' : 'initial'}
                 viewport={{ once: true, amount: 0.2 }}
               >
                 Fly Around and Find Out
@@ -253,14 +253,14 @@ export default function Home() {
                 <motion.div
                   className={styles.mobileButtonSection}
                   variants={fadeInUpDelayed}
-                  initial="initial"
-                  animate={isSceneLoaded ? "animate" : "initial"}
+                  initial='initial'
+                  animate={isSceneLoaded ? 'animate' : 'initial'}
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  <Link href="/sponsor#donate" className={styles.donateButton}>
+                  <Link href='/sponsor#donate' className={styles.donateButton}>
                     Donate
                   </Link>
-                  <Link href="/sponsor" className={styles.sponsorButton}>
+                  <Link href='/sponsor' className={styles.sponsorButton}>
                     Sponsor Us
                   </Link>
                 </motion.div>
@@ -270,14 +270,14 @@ export default function Home() {
               <motion.div
                 className={styles.buttonSection}
                 variants={fadeInUpDelayed}
-                initial="initial"
-                animate={isSceneLoaded ? "animate" : "initial"}
+                initial='initial'
+                animate={isSceneLoaded ? 'animate' : 'initial'}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <Link href="/sponsor#donate" className={styles.donateButton}>
+                <Link href='/sponsor#donate' className={styles.donateButton}>
                   Donate
                 </Link>
-                <Link href="/sponsor" className={styles.sponsorButton}>
+                <Link href='/sponsor' className={styles.sponsorButton}>
                   Sponsor Us
                 </Link>
               </motion.div>
@@ -288,46 +288,46 @@ export default function Home() {
 
         <div className={styles.wavesHome}>
           <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
+            data-name='Layer 1'
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 1200 120'
+            preserveAspectRatio='none'
           >
             <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+              d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'
               className={styles.wavesHomeFill}
-            ></path>
+            />
           </svg>
         </div>
 
-        <div id="firstDiv" className={styles.cloudContainer}>
+        <div id='firstDiv' className={styles.cloudContainer}>
           <motion.div
-            initial="hidden"
-            animate={isSceneLoaded ? "visible" : "hidden"}
+            initial='hidden'
+            animate={isSceneLoaded ? 'visible' : 'hidden'}
             variants={cloudLeftVariants}
           >
             <Image
-              src="/images/cloud.png"
-              alt="Cloud Left"
+              src='/images/cloud.png'
+              alt='Cloud Left'
               className={styles.cloudLeft}
               style={{
-                transform: `translateX(-${scrollY * 0.4}px)`,
+                transform: `translateX(-${scrollY * 0.4}px)`
               }}
               width={500}
               height={300}
             />
           </motion.div>
           <motion.div
-            initial="hidden"
-            animate={isSceneLoaded ? "visible" : "hidden"}
+            initial='hidden'
+            animate={isSceneLoaded ? 'visible' : 'hidden'}
             variants={cloudRightVariants}
           >
             <Image
-              src="/images/cloud2.png"
-              alt="Cloud Right"
+              src='/images/cloud2.png'
+              alt='Cloud Right'
               className={styles.cloudRight}
               style={{
-                transform: `translateX(${scrollY * 0.4}px)`,
+                transform: `translateX(${scrollY * 0.4}px)`
               }}
               width={500}
               height={300}
@@ -336,16 +336,16 @@ export default function Home() {
         </div>
 
         <div className={styles.backgroundContainer}>
-          <div id="secondDiv" className={styles.aboutContainer}>
+          <div id='secondDiv' className={styles.aboutContainer}>
             <motion.div
               variants={slideFromLeft}
-              initial="initial"
-              whileInView="animate"
+              initial='initial'
+              whileInView='animate'
               viewport={{ once: true, amount: 0.2 }}
             >
               <Image
-                src="/images/Home_AboutUs.jpg"
-                alt="Blackbird UAV Logo"
+                src='/images/Home_AboutUs.jpg'
+                alt='Blackbird UAV Logo'
                 className={styles.aboutImage}
                 width={500}
                 height={300}
@@ -354,8 +354,8 @@ export default function Home() {
             <motion.div
               className={styles.aboutText}
               variants={slideFromRight}
-              initial="initial"
-              whileInView="animate"
+              initial='initial'
+              whileInView='animate'
               viewport={{ once: true, amount: 0.2 }}
             >
               <h1>About Us</h1>
@@ -373,12 +373,12 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div id="aeacContainer" className={styles.aeacContainer}>
+          <div id='aeacContainer' className={styles.aeacContainer}>
             <motion.div
               className={styles.aboutText}
               variants={slideFromLeft}
-              initial="initial"
-              whileInView="animate"
+              initial='initial'
+              whileInView='animate'
               viewport={{ once: true, amount: 0.2 }}
             >
               <h1>AEAC SC</h1>
@@ -396,14 +396,14 @@ export default function Home() {
             </motion.div>
             <motion.div
               variants={slideFromRight}
-              initial="initial"
-              whileInView="animate"
+              initial='initial'
+              whileInView='animate'
               viewport={{ once: true, amount: 0.2 }}
             >
-              <a href="https://www.aerialevolution.ca/annual-student-competition/">
+              <a href='https://www.aerialevolution.ca/annual-student-competition/'>
                 <Image
-                  src="/images/AEACSC_logo.jpg"
-                  alt="AEAC SC Logo"
+                  src='/images/AEACSC_logo.jpg'
+                  alt='AEAC SC Logo'
                   className={styles.aboutImage}
                   width={500}
                   height={300}
@@ -431,14 +431,14 @@ export default function Home() {
                 className={styles.slideContainer}
                 style={{
                   transform: `translateX(-${currentIndex * 100}%)`,
-                  transition: "transform 0.5s ease-in-out",
+                  transition: 'transform 0.5s ease-in-out'
                 }}
               >
                 {slides.map((slide, index) => (
                   <div
                     key={index}
                     className={`${styles.slide} ${
-                      index === currentIndex ? styles.active : ""
+                      index === currentIndex ? styles.active : ''
                     }`}
                   >
                     <Image
@@ -449,7 +449,7 @@ export default function Home() {
                       className={styles.uavImage}
                     />
                     <div className={styles.gradientOverlay}>
-                      <Link href="/vehicles">
+                      <Link href='/vehicles'>
                         <h3 className={styles.uavName}>{slide.name}</h3>
                       </Link>
                       <p className={styles.uavDescription}>
@@ -472,7 +472,7 @@ export default function Home() {
               <span
                 key={index}
                 className={`${styles.dot} ${
-                  index === currentIndex ? styles.activeDot : ""
+                  index === currentIndex ? styles.activeDot : ''
                 }`}
                 onClick={() => handleDotClick(index)}
               />
@@ -480,12 +480,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="socialsSection" className={styles.socialsSection}>
+        <div id='socialsSection' className={styles.socialsSection}>
           <motion.h2
             className={styles.sectionTitle}
             variants={slideFromLeftDelayed}
-            initial="initial"
-            whileInView="animate"
+            initial='initial'
+            whileInView='animate'
             viewport={{ once: true, amount: 0.1 }}
           >
             Follow Our Flight Plan
@@ -493,8 +493,8 @@ export default function Home() {
           <motion.div
             className={styles.socialsMotionContainer}
             variants={fadeInUpDelayed}
-            initial="initial"
-            whileInView="animate"
+            initial='initial'
+            whileInView='animate'
             viewport={{ once: true, amount: 0.1 }}
           >
             <ParallaxScroll
@@ -504,17 +504,17 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div id="backgroundSection" className={styles.backgroundSection}>
-          <div id="sponsorSection" className={styles.sponsorSection}>
+        <div id='backgroundSection' className={styles.backgroundSection}>
+          <div id='sponsorSection' className={styles.sponsorSection}>
             <h2>Sponsors</h2>
             <SponsorGrid />
           </div>
-          <div id="faqSection" className={styles.faqSection}>
+          <div id='faqSection' className={styles.faqSection}>
             <h2>FAQ</h2>
             <Accordion data={faqData} />
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

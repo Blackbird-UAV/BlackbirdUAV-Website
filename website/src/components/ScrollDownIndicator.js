@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "@/styles/ScrollDownIndicator.module.css";
+import React from 'react'
+import styles from '@/styles/ScrollDownIndicator.module.css'
 
 const ScrollDownIndicator = () => {
   return (
@@ -7,7 +7,7 @@ const ScrollDownIndicator = () => {
       <span className={styles.arrow} />
       <span className={styles.arrow} />
     </div>
-  );
-};
+  )
+}
 
-export default ScrollDownIndicator;
+export default ScrollDownIndicator

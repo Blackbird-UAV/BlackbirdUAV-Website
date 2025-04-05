@@ -6,10 +6,8 @@ import {
   Heading,
   Link,
   Image,
-  Button,
   useBreakpointValue
 } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Sidebar from '@/components/sponsorSidebar'
 import Head from 'next/head'
@@ -42,7 +40,7 @@ export default function Sponsor () {
   const marginBottom = useBreakpointValue({ base: 20, lg: 0 })
   const marginTop = useBreakpointValue({ base: 0, lg: 20 })
 
-  const [isButtonVisible, setIsButtonVisible] = useState(false)
+  // const [isButtonVisible, setIsButtonVisible] = useState(false)
 
   const renderSponsorsByTier = (tier, sectionIndex) => {
     const columnSettings = {
@@ -229,27 +227,27 @@ export default function Sponsor () {
     )
   }
 
-  const handleScrollDown = () => {
-    const bronzeSection = document.getElementById('bronzeSection')
-    if (bronzeSection) {
-      bronzeSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  // const handleScrollDown = () => {
+  //   const bronzeSection = document.getElementById('bronzeSection')
+  //   if (bronzeSection) {
+  //     bronzeSection.scrollIntoView({ behavior: 'smooth' })
+  //   }
+  // }
 
-  const toggleVisibility = () => {
-    const scrollThreshold = 300
-    const isVisible = window.scrollY < scrollThreshold
-    setIsButtonVisible(isVisible)
-  }
+  // const toggleVisibility = () => {
+  //   const scrollThreshold = 300
+  //   const isVisible = window.scrollY < scrollThreshold
+  //   setIsButtonVisible(isVisible)
+  // }
 
-  useEffect(() => {
-    const handleScroll = () => requestAnimationFrame(toggleVisibility)
+  // useEffect(() => {
+  //   const handleScroll = () => requestAnimationFrame(toggleVisibility)
 
-    window.addEventListener('scroll', handleScroll)
-    toggleVisibility()
+  //   window.addEventListener('scroll', handleScroll)
+  //   toggleVisibility()
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  //   return () => window.removeEventListener('scroll', handleScroll)
+  // }, [])
 
   return (
     <Box
