@@ -14,9 +14,7 @@ const TIER_COLUMN_CONFIG = {
 const TIERS = ["Partner", "Gold", "Silver", /* "Bronze", */ "Support"];
 
 const SponsorItem = ({ sponsor, index }) => {
-  // Create a ref for this specific sponsor item
   const ref = useRef(null);
-  // Check if this element is in view
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   
   return (
