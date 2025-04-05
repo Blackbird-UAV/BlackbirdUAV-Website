@@ -213,7 +213,7 @@ const SponsorSidebar = () => {
                   display="flex"
                   flexDirection={{ base: "column", md: "row" }} // Stack vertically on mobile
                   alignItems="center"
-                  width="100%"
+                  width={{ base: "100%", md: "auto" }} // Full width on mobile
                 >
                   <MotionButton
                     as={Link}

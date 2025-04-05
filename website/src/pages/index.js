@@ -300,7 +300,7 @@ export default function Home() {
           </svg>
         </div>
 
-        {/* <div id="firstDiv" className={styles.cloudContainer}>
+        <div id="firstDiv" className={styles.cloudContainer}>
           <motion.div
             initial="hidden"
             animate={isSceneLoaded ? "visible" : "hidden"}
@@ -333,7 +333,7 @@ export default function Home() {
               height={300}
             />
           </motion.div>
-        </div> */}
+        </div>
 
         <div className={styles.backgroundContainer}>
           <div id="secondDiv" className={styles.aboutContainer}>
