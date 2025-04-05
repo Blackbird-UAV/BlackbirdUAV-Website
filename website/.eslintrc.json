@@ -1,4 +1,7 @@
 {
+  "env": {
+    "browser": true
+  },
   "extends": [
     "next/core-web-vitals"
   ]
