@@ -4,7 +4,7 @@
    
 ![image](https://github.com/user-attachments/assets/53425d02-3118-4149-bd47-0a7f639d4f4b)
 
-[![Release](https://img.shields.io/badge/v1.4.0-306998?style=for-the-badge&logo=Release&label=Release&labelColor=4D4D4D)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/releases)
+[![Release](https://img.shields.io/badge/v1.4.9-306998?style=for-the-badge&logo=Release&label=Release&labelColor=4D4D4D)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/releases)
 [![Deploy to FTP](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deploy.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deploy.yml)
 
 [![Website Status](https://img.shields.io/website?down_message=offline&label=Main%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fblackbirduav.ca)](https://blackbirduav.ca)
@@ -12,7 +12,7 @@
 
 </div>
 
-**Start Date**: October 4, 2024  
+**Start Date**: October 4, 2024
 **Team Members / Developers**:
 
 - [Edwin Ngui](https://github.com/EdwinNgui)
@@ -29,6 +29,15 @@ Welcome to the official repository for the **Blackbird UAV** website! This proje
 
 ---
 
+## Deployment
+
+The website is deployed to an FTP server using **FTP Deploy Action** via GitHub Actions.
+
+- **Development Environment**: [https://dev.blackbirduav.ca/](https://dev.blackbirduav.ca/)
+- **Live Production Site**: [https://blackbirduav.ca/](https://blackbirduav.ca/)
+
+---
+
 ## Features
 
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
@@ -40,8 +49,7 @@ Welcome to the official repository for the **Blackbird UAV** website! This proje
 ## Technologies Used
 
 - **Frontend**: [React.js](https://reactjs.org/)
-- **Backend**: [Node.js](https://nodejs.org/)
-- **Deployment**: FTP Deploy Action, GitHub Actions
+- **Deployment**: FTP, GitHub Actions
 
 ---
 
@@ -70,7 +78,7 @@ Welcome to the official repository for the **Blackbird UAV** website! This proje
 3. Install dependencies:
 
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 4. Run the development server:
@@ -84,14 +92,13 @@ Welcome to the official repository for the **Blackbird UAV** website! This proje
    http://localhost:3000
    ```
 
----
+### How to Build
 
-## Deployment
+1. Run the build command (if you're using unix/linux, replace `npm run copy-htaccess-win` with `npm run copy-htaccess` in the prod script in **package.json**):
 
-The website is deployed using **FTP Deploy Action** via GitHub Actions.
-
-- **Development Environment**: [https://dev.blackbirduav.ca/](https://dev.blackbirduav.ca/)
-- **Live Production Site**: [https://blackbirduav.ca/](https://blackbirduav.ca/)
+   ```bash
+   npm run prod
+   ```
 
 ---
 
