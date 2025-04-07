@@ -7,7 +7,8 @@
   padding-top: 3rem;
 
   /* Background image */
-  background: linear-gradient(to bottom, #131313ad -10rem, #2b2b2b);
+  /* background: linear-gradient(to bottom, #131313ad, #171717); */
+  background: #171717;
 }
 
 .searchBarContainer {
