@@ -153,7 +153,7 @@
 }
 
 .backgroundContainer {
-  background: linear-gradient(150deg, #2e2e2e, #0c0c0c);
+  background: linear-gradient(180deg, #2e2e2e, #0c0c0c);
 }
 
 .wavesHome {
@@ -161,7 +161,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  background: linear-gradient(to right, #2e2e2e, #1b1b1b);
+  background: #2e2e2e;
 }
 
 .wavesHome svg {
@@ -474,7 +474,7 @@
   width: 100%;
   height: 0px;
   overflow: visible;
-  background-color: #262626;
+  background-color: #2e2e2e;
 }
 
 .cloudLeft,
@@ -690,10 +690,6 @@
     padding: 1rem;
     flex-direction: column;
   }
-
-  .wavesHome {
-    background: linear-gradient(to right, #2e2e2e, #262626);
-  }
 }
 
 @media (max-width: 600px) {
@@ -764,10 +760,6 @@
 
   .parallaxContent {
     font-size: 1rem;
-  }
-
-  .wavesHome {
-    background: linear-gradient(to right, #2e2e2e, #2a2a2a);
   }
 }
 
