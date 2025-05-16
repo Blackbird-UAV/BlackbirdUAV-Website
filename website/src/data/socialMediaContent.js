@@ -1,5 +1,16 @@
 const socialMediaContent = [
-  // LinkedIn posts
+  // Linkedin posts
+  {
+    platform: 'Linkedin',
+    title: 'Blackbird UAV',
+    platformIcon: '/logos/logo_linkedin.png',
+    column: 1,
+    embedLink:
+      'https://www.linkedin.com/embed/feed/update/urn:li:share:7326064079662440448?collapsed=1',
+    link: 'https://www.linkedin.com/posts/blackbird-uav_blackbirduav-aeac2025-leadership-activity-7326064081201676288-VDcH',
+    caption:
+      'Meet our 2024 2025 Blackbird UAV Executive Team. This group of dedicated student leaders keeps everything running smoothly. They lead subteams, manage operations, and help drive the team forward...'
+  },
   {
     platform: 'Linkedin',
     title: 'Blackbird UAV',
@@ -21,17 +32,6 @@ const socialMediaContent = [
     link: 'https://www.linkedin.com/posts/blackbird-uav_apogeeplatform-student-competition-activity-7206318693780185088-sxua',
     caption:
       "Our #ApogeePlatform may have managed a speed record! Two weeks ago in Alma, Québec, we flew our vehicle, QBS-1 Apogee for the 15th annual Aerial Evolution Association of Canada's #Student #Competition."
-  },
-  {
-    platform: 'Linkedin',
-    title: 'Blackbird UAV',
-    platformIcon: '/logos/logo_linkedin.png',
-    column: 1,
-    embedLink:
-      'https://www.linkedin.com/embed/feed/update/urn:li:share:7207510875228839936?collapsed=1',
-    link: 'https://www.linkedin.com/posts/aerial-evolution-association-of-canada_mcelhanney-innovation-award-the-mcelhanney-activity-7207510878693253120-bHev?utm_source=share&utm_medium=member_desktop&rcm=ACoAACm7y1MBeulhaOMK6ktWMiG90AvOtsTd_qA',
-    caption:
-      "The McElhanney Innovation Award celebrates teams that push boundaries with unique solutions and creative problem-solving. This year's winner, Carleton University's Blackbird UAV Team, was recognized for their innovative ad-hoc solution to judge their drone's location relative to difficult landing pads."
   },
   // Instagram posts
   {
