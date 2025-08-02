@@ -686,6 +686,34 @@ const teamData = {
     description:
       'This page lists all the competition teams of Blackbird UAV. Each section represents a different year.',
     years: {
+      2025: {
+        description: `
+          <p>Second aircraft made completely from scratch since COVID by Blackbird UAV.</p>
+          <p>Team placed 3rd overall at the national UAV competition.</p>
+          <p>Location: Medicine Hat, Alberta.</p>
+          <p>A modular quadcopter was designed to detect and suppress wildfire hotspots. Despite major setbacks, including two motor failures and a broken Raspberry Pi, the team successfully completed the mission thanks to support from Queen’s Aerospace Design Team and UVic Aero.</p>
+          <p>Read More: <a href="https://carleton.ca/mae/2025/congrats-to-blackbird-uav-team/">LINK</a></p>
+        `,
+        image: '/images/comp2025.jpg',
+        members: [
+          { firstName: 'Felix', lastName: 'Chenier', role: 'Club president' },
+          { firstName: 'DJ', role: 'Flight' },
+          { firstName: 'Karl', role: 'Flight' },
+          { firstName: 'Nick', role: 'Flight' },
+          { firstName: 'Kevin', role: 'Flight'  },
+          { firstName: 'Jed', role: 'Operations'  },
+          { firstName: 'Jivitesh', role: 'Operations '  },
+          { firstName: 'Denise', role: 'Systems'  },
+          { firstName: 'Gopesh', role: 'Systems' },
+          { firstName: 'Ryan', role: 'Manufacturing'  },
+          { firstName: 'Owen', role: 'Manufacturing'  },
+          { firstName: 'Samuel', role: 'Manufacturing' },
+          { firstName: 'Timothy', role: 'Manufacturing' },
+          { firstName: 'Duaa', role: 'Support' },
+          { firstName: 'Cole', role: 'Support' },
+          { firstName: 'Lucas', role: 'Support' },
+        ]
+      },
       2024: {
         description: `
           <p>First year since COVID that BBUAV produced a vehicle completely from the ground up.</p>
