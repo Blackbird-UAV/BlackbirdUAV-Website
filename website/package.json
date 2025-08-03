@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run clean && next build",
-    "prod": "npm run build && npm run copy-htaccess-win",
+    "prod": "npm run build && npm run copy-htaccess",
     "clean": "rimraf ./website/out/*",
     "copy-htaccess": "cp .htaccess ./out/.htaccess",
-    "copy-htaccess-win": "copy \".htaccess\" \"./out/.htaccess\"",
     "start": "next start",
     "lint": "next lint",
     "test": "standard --fix"
