@@ -20,7 +20,6 @@
 - [Marc Vidal](https://github.com/MarcVidalCodes)
 - [Jonah Pasquantonio](https://github.com/jonahp123)
 - [Teddy Kurita]()
-- Test
 
 ---
 
