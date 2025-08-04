@@ -712,7 +712,6 @@ const teamData = {
           { firstName: 'Duaa', role: 'Support' },
           { firstName: 'Cole', role: 'Support' },
           { firstName: 'Lucas', role: 'Support' },
-          { firstName: 'Lucas', role: 'Test' },
         ]
       },
       2024: {
