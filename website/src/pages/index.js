@@ -360,9 +360,7 @@ export default function Home () {
             >
               <h1>About Us</h1>
               <p>
-                We are Blackbird UAV (BBUAV), a student design team working to
-                create uncrewed aerial vehicles (UAVs) to compete at the Aerial
-                Evolution Association of Canada Student Competition (AEAC SC).
+              Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
               </p>
               <p>
                 BBUAV was established in 2009 as an extra-curricular program for
