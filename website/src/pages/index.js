@@ -23,6 +23,12 @@ import socialMediaContent from '@/data/socialMediaContent'
 
 const slides = [
   {
+    name: 'Goliath',
+    image: '/images/Vehicles/Goliath_1.jpg',
+    description:
+      "Designed to autonomously detect multiple hotspots within a very large zone and to autonomously pick up water from a reservoir and dispense it on the hotspots."
+  },
+  {
     name: 'Apogee',
     image: '/images/Vehicles/Apogee_1.jpg',
     description:
