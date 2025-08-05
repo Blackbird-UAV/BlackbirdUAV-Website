@@ -16,8 +16,8 @@ const vehicles = [
       overview:
         "Goliath was built in a quadcopter configuration with a fully modular payload and is BBUAV's most recent drone. It also included First Person View cameras to give better precision for the pilots.",
       wingspan: '2.0 meters',
-      MTOW: '13 kg',
-      maxSpeed: '?',
+      MTOW: '15 kg',
+      maxSpeed: '45 km/h (24.3 kt)',
       payloadCompartment: 'Modular',
       communication: 'Fully LTE',
       platform: 'Bespoke Platform'
