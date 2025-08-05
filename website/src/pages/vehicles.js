@@ -9,12 +9,31 @@ import Header from '@/components/Header'
 import { fadeInUpSlower } from '@/components/animations'
 
 const vehicles = [
-  {
+    {
     id: 1,
+    name: 'Goliath',
+    description: {
+      overview:
+        "Goliath was built in a quadcopter configuration with a fully modular payload and is BBUAV's most recent drone. It also included First Person View cameras to give better precision for the pilots.",
+      wingspan: '2.0 meters',
+      MTOW: '13 kg',
+      maxSpeed: '?',
+      payloadCompartment: 'Modular',
+      communication: 'Fully LTE',
+      platform: 'Bespoke Platform'
+    },
+    images: [
+      '/images/Vehicles/Goliath_1.jpg',
+      '/images/Vehicles/Goliath_2.jpg',
+      '/images/Vehicles/Goliath_3.jpg'
+    ]
+  },
+  {
+    id: 2,
     name: 'Apogee',
     description: {
       overview:
-        "Apogee is a quadcopter featuring our team's most recent airframe design and software integration efforts. Apogee stands as BBUAVS's most advanced drone, boasting autonomous capabilities throughout its entire flight, from take-off to landing.",
+        "Apogee is a quadcopter featuring our team's airframe design and software integration efforts. Apogee boasts autonomous capabilities throughout its entire flight, from take-off to landing.",
       wingspan: '2.5 meters',
       MTOW: '15 kg',
       maxSpeed: '156 km/h (84.2 kt)',
@@ -122,7 +141,7 @@ export default function Vehicles () {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Header
-        imagePath='/images/Vehicles/Apogee_1.jpg'
+        imagePath='/images/Vehicles/Goliath_1.jpg'
         headerText='Our Aircraft'
       />
       <div className={styles.container}>

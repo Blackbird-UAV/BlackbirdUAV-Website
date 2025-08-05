@@ -32,7 +32,7 @@ const slides = [
     name: 'Apogee',
     image: '/images/Vehicles/Apogee_1.jpg',
     description:
-      "Blackbird UAV's most advanced drone, featuring autonomous capabilities from take-off to landing and a modular payload compartment."
+      "Blackbird UAV's drone that features autonomous capabilities from take-off to landing and a modular payload compartment."
   },
   {
     name: 'Zenith',

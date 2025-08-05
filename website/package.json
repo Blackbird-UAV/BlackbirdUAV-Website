@@ -3,7 +3,7 @@
   "version": "1.4.9",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "npm run clean && next build",
     "prod": "npm run build && npm run copy-htaccess-win",
     "clean": "rimraf ./website/out/*",
