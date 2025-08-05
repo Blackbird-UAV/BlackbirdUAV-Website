@@ -48,7 +48,7 @@ const vehicles = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     name: 'Zenith',
     description: {
       overview:
