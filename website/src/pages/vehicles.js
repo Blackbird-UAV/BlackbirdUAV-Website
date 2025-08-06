@@ -193,9 +193,11 @@ export default function Vehicles () {
                 <p>{vehicle.description.overview}</p>
                 <div className={styles.divider} />
                 <ul className={styles.specsList}>
-                  <li>
-                    <strong>Wingspan:</strong> {vehicle.description.wingspan}
-                  </li>
+                  {vehicle.description.wingspan && (
+                    <li>
+                      <strong>Wingspan:</strong> {vehicle.description.wingspan}
+                    </li>
+                  )}
                   <li>
                     <strong>MTOW:</strong> {vehicle.description.MTOW}
                   </li>
