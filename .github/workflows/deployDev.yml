@@ -18,8 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: 'npm'
-          cache-dependency-path: './website/package-lock.json'
+          # cache: 'npm'
+          # cache-dependency-path: './website/package-lock.json'
 
       - name: Install Dependencies and Build
         run: |
