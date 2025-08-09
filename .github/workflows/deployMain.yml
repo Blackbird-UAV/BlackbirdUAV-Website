@@ -1,4 +1,4 @@
-name: Deploy to FTP
+name: Deploy to Main
 
 on:
   workflow_run:
