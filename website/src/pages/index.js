@@ -38,7 +38,7 @@ const slides = [
     name: 'Zenith',
     image: '/images/Vehicles/Zenith_1.jpg',
     description:
-      'Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions. TEST'
+      'Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions. test.',
   }
 ]
 
