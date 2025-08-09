@@ -8,7 +8,6 @@
   position: relative;
   z-index: 98;
   flex-shrink: 0;
-  
 }
 
 .footerContent {
@@ -53,8 +52,24 @@
   padding-top: 40px;
 }
 
-.socialLinks a:hover {
+/* .socialLinks a:hover {
   color: #4169e1;
+} */
+
+.linkedin:hover {
+  color: #0077b5;
+}
+
+.instagram:hover {
+  color: #e4405f;
+}
+
+.youtube:hover {
+  color: #ff0000;
+}
+
+.discord:hover {
+  color: #7289da;
 }
 
 .footerContent > .logoSection {

@@ -1,8 +1,8 @@
-name: Deploy to FTP
+name: Deploy to Main
 
 on:
   workflow_run:
-    workflows: ["Node.js CI Dev"]
+    workflows: ["Node.js CI Main"]
     types:
       - completed
 
