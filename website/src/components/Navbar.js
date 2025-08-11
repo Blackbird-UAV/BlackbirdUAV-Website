@@ -85,7 +85,8 @@ export default function Navbar () {
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ''}`
 
   const teamLinks = [
-    { link: '/MeetTheTeam/2024-2025', label: 'Current Team' },
+    { link: '/MeetTheTeam/2025-2026', label: 'Current Team' },
+    { link: '/MeetTheTeam/2024-2025', label: '2024-2025' },
     { link: '/MeetTheTeam/2023-2024', label: '2023-2024' },
     { link: '/Competitions', label: 'Competitions' },
     { link: '/Alumni', label: 'Alumni' }

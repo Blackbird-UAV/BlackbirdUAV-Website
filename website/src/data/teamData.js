@@ -1,4 +1,114 @@
 const teamData = {
+    '2025-2026': {
+    description:
+      'This is the current Blackbird UAV team for the 2025 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals: Goliath. Goliath will be used to compete in various events over the course of the year as it aims to win as many of them as possible.',
+    Executives: [
+      {
+        id: 2,
+        firstName: 'DJ',
+        lastName: 'Van-Nice',
+        role: 'Vice-President / Systems',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/DJ.JPG',
+        description:
+          'As Vice President, DJ assists club progression and management',
+        extendedDescription:
+          'DJ joined Blackbird UAV in 2022 at the beginning of his first year in Mechanical Engineering. Now in his third year, he is vice president while assisting as needed with vehicle assembly and system implementation.',
+        link: 'https://www.linkedin.com/in/daniel-van-nice-28298a256/?originalSubdomain=ca'
+      },
+      {
+        id: 3,
+        firstName: 'Duaa',
+        lastName: 'J.Israr',
+        role: 'Administrative',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Duaa.JPG',
+        description:
+          'Duaa is the BBUAV Admin Co-Lead and a 3rd-year Aero Eng student.',
+        extendedDescription:
+          'As BBUAV’s Admin Co-Lead, she oversees club communications, manages social media, and contributes to merch design. She also assists the Manufacturing Sub-Team and learns new skills while supporting the team’s success.',
+        link: 'https://www.linkedin.com/in/duaa-j-israr-3b3657218/'
+      },
+      {
+        id: 4,
+        firstName: 'Ryan',
+        lastName: 'Whalen',
+        role: 'Design',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Ryan.JPG',
+        description:
+          'Ryan is the BBUAV Design Lead and a 4th year Aero Eng student.',
+        extendedDescription:
+          'Ryan leads the Design sub-team, which is responsible for aircraft sizing, aircraft conceptual design, detail design, and collaboration with the Manufacturing sub-team. ',
+        link: 'http://www.linkedin.com/in/ryan-whalen-065257252'
+      },
+      {
+        id: 5,
+        firstName: 'Karl',
+        lastName: 'Kurniawan',
+        role: 'Manufacturing / Structures',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Karl.JPG',
+        description: 'Master student specializing in gas turbine aerodynamics.',
+        extendedDescription:
+          'Karl is the Co-lead for manufacturing and structures sub team for the 2nd year. He brings practical hands-on experience in composites and different manufacturing methods, focusing on continuous improvement through learning and experience.',
+        link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca'
+      },
+      {
+        id: 6,
+        firstName: 'Denise',
+        lastName: 'Tablac',
+        role: 'Systems',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Denise.JPG',
+        description:
+          'Aerospace student passionate about innovation and technology.',
+        extendedDescription:
+          'Contributed to Black bird UAV by designing and optimizing flight systems. Focused on improving performance and reliability, integrating components to ensure seamless operations.',
+        link: 'http://www.linkedin.com/in/denisetablac'
+      },
+        {
+        id: 7,
+        firstName: 'Samuel',
+        lastName: 'Howell',
+        role: 'Design',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Samuel.JPG',
+        description:
+          'Sam is on the design team, specializing in aerospace engineering',
+        extendedDescription:
+          'Sam contributes to creation, calculations, and CAD for Blackbird UAV. He is pursuing a degree in Aerospace Engineering with a specialization in Space Systems Design.',
+        link: 'https://www.linkedin.com/in/samueldavidhowell/'
+      },
+    ],
+    systems: [
+      {
+        id: 8,
+        firstName: 'Gopesh',
+        lastName: 'Jaganbabu',
+        role: 'Systems',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Gopesh.JPG',
+        description:
+          'First year computer systems engineer. A member since 2024.',
+        extendedDescription:
+          'Gopesh works on integrating sensors to enable drones to operate fully autonomously. Additionly, he develops and implements machine learning algorithms to enhance drone functionality for various tasks.'
+      },
+    ],
+    administrative: [
+    ],
+    manufacturing: [
+    ],
+    design: [
+    ]
+  },
   '2024-2025': {
     description:
       'This is the current Blackbird UAV team for the 2025 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals: Goliath. Goliath will be used to compete in various events over the course of the year as it aims to win as many of them as possible.',

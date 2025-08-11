@@ -27,8 +27,10 @@ const MeetTeam = () => {
   const team = year && teamData[year] ? teamData[year] : null
 
   let teamTitle
-  if (year === '2024-2025') {
-    teamTitle = 'Current Team'
+    if (year === '2025-2026') {
+      teamTitle = 'Current Team'
+  } else if (year === '2024-2025') {
+    teamTitle = '2024 - 2025 Team'
   } else if (year === 'pastMembers') {
     teamTitle = 'Past Members'
   } else if (year === '2023-2024') {
@@ -98,7 +100,7 @@ const MeetTeam = () => {
         <div className={styles.headerDesc}>
           {teamDescription && <div>{teamDescription}</div>}
         </div>
-        {year === '2024-2025' && (
+        {year === '2025-2026' && (
           <div className={styles.searchBar}>
             <TextInput
               // description="Type the name of an alumni to search for them"
