@@ -526,6 +526,22 @@
   background-color: #e94e77;
 }
 
+.software{
+  background-color: #ff914d;
+}
+
+.mechanical {
+  background-color: #ff3131;
+}
+
+.electrical{
+  background-color: #7ed957;
+}
+
+.operations{
+  background-color: #5ce1e6;
+}
+
 .administrative {
   background-color: #f6b93b;
 }

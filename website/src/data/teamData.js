@@ -4,10 +4,21 @@ const teamData = {
       'This is the current Blackbird UAV team for the 2025 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals: Goliath. Goliath will be used to compete in various events over the course of the year as it aims to win as many of them as possible.',
     Executives: [
       {
+        id: 1,
+        firstName: 'Kevin',
+        lastName: 'Fernando',
+        role: 'President',
+        isPresident: true,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Kevin.JPG',
+        description: 'Club President since 2025',
+        link: 'https://www.linkedin.com/in/kmfernando',  
+      },
+      {
         id: 2,
         firstName: 'DJ',
         lastName: 'Van-Nice',
-        role: 'Vice-President / Systems',
+        role: 'Vice-President / Mechanical',
         isPresident: false,
         isExecutive: true,
         image: '/images/TeamHeadshots/DJ.JPG',
@@ -26,7 +37,7 @@ const teamData = {
         isExecutive: true,
         image: '/images/TeamHeadshots/Duaa.JPG',
         description:
-          'Duaa is the BBUAV Admin Co-Lead and a 3rd-year Aero Eng student.',
+          'Duaa is the BBUAV Admin Co-Lead and a 4th-year Aero Eng student.',
         extendedDescription:
           'As BBUAV’s Admin Co-Lead, she oversees club communications, manages social media, and contributes to merch design. She also assists the Manufacturing Sub-Team and learns new skills while supporting the team’s success.',
         link: 'https://www.linkedin.com/in/duaa-j-israr-3b3657218/'
@@ -35,7 +46,7 @@ const teamData = {
         id: 4,
         firstName: 'Ryan',
         lastName: 'Whalen',
-        role: 'Design',
+        role: 'Mechanical',
         isPresident: false,
         isExecutive: true,
         image: '/images/TeamHeadshots/Ryan.JPG',
@@ -47,22 +58,9 @@ const teamData = {
       },
       {
         id: 5,
-        firstName: 'Karl',
-        lastName: 'Kurniawan',
-        role: 'Manufacturing / Structures',
-        isPresident: false,
-        isExecutive: true,
-        image: '/images/TeamHeadshots/Karl.JPG',
-        description: 'Master student specializing in gas turbine aerodynamics.',
-        extendedDescription:
-          'Karl is the Co-lead for manufacturing and structures sub team for the 2nd year. He brings practical hands-on experience in composites and different manufacturing methods, focusing on continuous improvement through learning and experience.',
-        link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca'
-      },
-      {
-        id: 6,
         firstName: 'Denise',
         lastName: 'Tablac',
-        role: 'Systems',
+        role: 'Electrical',
         isPresident: false,
         isExecutive: true,
         image: '/images/TeamHeadshots/Denise.JPG',
@@ -73,10 +71,10 @@ const teamData = {
         link: 'http://www.linkedin.com/in/denisetablac'
       },
         {
-        id: 7,
+        id: 6,
         firstName: 'Samuel',
         lastName: 'Howell',
-        role: 'Design',
+        role: 'Mechanical',
         isPresident: false,
         isExecutive: true,
         image: '/images/TeamHeadshots/Samuel.JPG',
@@ -86,27 +84,62 @@ const teamData = {
           'Sam contributes to creation, calculations, and CAD for Blackbird UAV. He is pursuing a degree in Aerospace Engineering with a specialization in Space Systems Design.',
         link: 'https://www.linkedin.com/in/samueldavidhowell/'
       },
-    ],
-    systems: [
+      {
+        id: 7,
+        firstName: 'Maxwell',
+        lastName: 'Magnusson',
+        role: 'Finance admin',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Maxwell.JPG',
+        link: 'https://www.linkedin.com/in/maxwell-magnusson'
+      },
       {
         id: 8,
+        firstName: 'Jacob',
+        lastName: 'Hamdani',
+        role: 'External admin',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Jacob.JPG',
+        link: 'https://www.linkedin.com/in/jacob-hamdani-149b6a22a'
+
+      },
+            {
+        id: 9,
+        firstName: 'Jivitesh',
+        lastName: 'Mullangi',
+        role: 'Mechanical',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Jivitesh.JPG',
+        link: 'https://www.linkedin.com/in/jivitesh-mullangi'
+      },
+    ],
+    software: [
+      {
+        id: 10,
         firstName: 'Gopesh',
         lastName: 'Jaganbabu',
-        role: 'Systems',
+        role: 'Software',
         isPresident: false,
         isExecutive: false,
+        isManager: true,
         image: '/images/TeamHeadshots/Gopesh.JPG',
         description:
-          'First year computer systems engineer. A member since 2024.',
+          'Second year computer systems engineer. A member since 2024.',
         extendedDescription:
-          'Gopesh works on integrating sensors to enable drones to operate fully autonomously. Additionly, he develops and implements machine learning algorithms to enhance drone functionality for various tasks.'
+          'Gopesh works on integrating sensors to enable drones to operate fully autonomously. Additionly, he develops and implements machine learning algorithms to enhance drone functionality for various tasks.',
+        link:'https://www.linkedin.com/in/gopesh-jaganbabu-1998a3359'
       },
     ],
     administrative: [
     ],
-    manufacturing: [
+    mechanical: [
     ],
-    design: [
+    electrical: [
+    ],
+    operations: [
     ]
   },
   '2024-2025': {
