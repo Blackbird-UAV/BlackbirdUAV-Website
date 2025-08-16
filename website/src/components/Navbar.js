@@ -162,47 +162,53 @@ export default function Navbar () {
             <span>Vehicles</span>
           </Link>
         </div>
+<div
+  className={`${styles.linkWrapper} ${
+    router.pathname.startsWith('/meetTeam') ? styles.activeLink : ''
+  }`}
+  style={{ position: 'relative' }}
+  onMouseEnter={() => handleDropdownHover(true)}
+  onMouseLeave={() => handleDropdownHover(false)}
+>
+  <button
+    type="button"
+    onClick={handleDropdownClick}
+    className={styles.linkButton} // You can define this in CSS
+    aria-haspopup="true"
+    aria-expanded={isDropdownOpen}
+  >
+    <Center className={styles.link}>
+      <span>
+        Team
+        <IconChevronDown
+          size="0.9rem"
+          stroke={1.5}
+          color="#f9fafb"
+          className={styles.chevron}
+        />
+      </span>
+    </Center>
+  </button>
 
-        <div
-          className={`${styles.linkWrapper} ${
-            router.pathname.startsWith('/meetTeam') ? styles.activeLink : ''
-          }`}
-          style={{ position: 'relative' }}
-          onClick={handleDropdownClick}
-          onMouseEnter={() => handleDropdownHover(true)}
-          onMouseLeave={() => handleDropdownHover(false)}
-        >
-          <Center className={styles.link}>
-            <span>
-              Team
-              <IconChevronDown
-                size='0.9rem'
-                stroke={1.5}
-                color='#f9fafb'
-                className={styles.chevron}
-              />
-            </span>
-          </Center>
-          {isDropdownOpen && (
-            <div
-              className={`${dropdownStyles.dropdownMenu} ${
-                isDropdownOpen ? dropdownStyles.show : ''
-              }`}
-            >
-              {teamLinks.map((item) => (
-                <Link
-                  href={item.link}
-                  key={item.link}
-                  onClick={handleLinkClick}
-                >
-                  <div className={dropdownStyles.dropdownItem}>
-                    {item.label}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+  {isDropdownOpen && (
+    <div
+      className={`${dropdownStyles.dropdownMenu} ${
+        dropdownStyles.show
+      }`}
+    >
+      {teamLinks.map((item) => (
+        <Link href={item.link} key={item.link} legacyBehavior>
+          <a
+            className={dropdownStyles.dropdownItem}
+            onClick={handleLinkClick}
+          >
+            {item.label}
+          </a>
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
 
         <div
           className={`${styles.linkWrapper} ${
