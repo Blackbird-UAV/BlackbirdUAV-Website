@@ -173,7 +173,7 @@ export default function Navbar () {
   <button
     type="button"
     onClick={handleDropdownClick}
-    className={styles.linkButton} // You can define this in CSS
+    className={styles.link} 
     aria-haspopup="true"
     aria-expanded={isDropdownOpen}
   >
@@ -200,7 +200,9 @@ export default function Navbar () {
         <Link href={item.link} key={item.link} legacyBehavior>
           <a
             className={dropdownStyles.dropdownItem}
-            onClick={handleLinkClick}
+            onClick={() => {
+              setIsDropdownOpen(false)
+            }}
           >
             {item.label}
           </a>
