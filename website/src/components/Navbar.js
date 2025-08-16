@@ -34,30 +34,41 @@ export default function Navbar () {
   }
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= 300) {
-        setShowNavbar(true)
-      } else {
-        setShowNavbar(false)
-      }
+  let lastScrollY = window.scrollY
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+
+    if (currentScrollY >= 300) {
+      setShowNavbar(true)
+    } else {
+      setShowNavbar(false)
     }
 
-    const handleMouseMove = (event) => {
-      if (window.scrollY < 300 && event.clientY < 100) {
-        setShowNavbar(true)
-      } else if (!isDropdownOpen && window.scrollY < 300) {
-        setShowNavbar(false)
-      }
+    if (currentScrollY < lastScrollY && isDropdownOpen) {
+      setIsDropdownOpen(false)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('mousemove', handleMouseMove)
+    lastScrollY = currentScrollY
+  }
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('mousemove', handleMouseMove)
+  const handleMouseMove = (event) => {
+    if (window.scrollY < 300 && event.clientY < 100) {
+      setShowNavbar(true)
+    } else if (!isDropdownOpen && window.scrollY < 300) {
+      setShowNavbar(false)
     }
-  }, [isDropdownOpen])
+  }
+
+  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('mousemove', handleMouseMove)
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('mousemove', handleMouseMove)
+  }
+}, [isDropdownOpen])
+
 
   useEffect(() => {
     if (isOpen) {
