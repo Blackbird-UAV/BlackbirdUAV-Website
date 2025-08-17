@@ -4,6 +4,7 @@ import {
   faInstagram,
   faYoutube,
   faDiscord,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import styles from "@/styles/Footer.module.css";
 import Image from "next/image";
@@ -56,6 +57,14 @@ export default function Footer() {
               className={styles.discord}
             >
               <FontAwesomeIcon icon={faDiscord} />
+            </a>
+                        <a
+              href="https://github.com/Blackbird-UAV"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.github}
+            >
+              <FontAwesomeIcon icon={faGithub} />
             </a>
           </div>
         </div>

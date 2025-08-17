@@ -72,6 +72,10 @@
   color: #7289da;
 }
 
+.github:hover {
+  color: black;
+}
+
 .footerContent > .logoSection {
   height: 90px;
 }
