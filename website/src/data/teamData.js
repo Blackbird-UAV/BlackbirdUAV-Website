@@ -105,7 +105,7 @@ const teamData = {
         link: 'https://www.linkedin.com/in/jacob-hamdani-149b6a22a'
 
       },
-            {
+      {
         id: 9,
         firstName: 'Jivitesh',
         lastName: 'Mullangi',
@@ -115,10 +115,20 @@ const teamData = {
         image: '/images/TeamHeadshots/Jivitesh.JPG',
         link: 'https://www.linkedin.com/in/jivitesh-mullangi'
       },
+      {
+        id: 10,
+        firstName: 'Jeremy',
+        lastName: 'Friesen',
+        role: 'Software',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/TeamHeadshots/Jeremy.JPG',
+        link: 'https://www.linkedin.com/in/jeremyfriesen1'
+      },
     ],
     software: [
       {
-        id: 10,
+        id: 11,
         firstName: 'Gopesh',
         lastName: 'Jaganbabu',
         role: 'Software',
