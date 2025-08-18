@@ -15,7 +15,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.2.0",
     "@emotion/react": "^11.13.5",
-    "@eslint/config-array": "^0.20.0",
+    "@eslint/config-array": "^0.21.0",
     "@eslint/object-schema": "^2.1.5",
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
