@@ -15,14 +15,14 @@
   "dependencies": {
     "@chakra-ui/react": "^3.2.0",
     "@emotion/react": "^11.13.5",
-    "@eslint/config-array": "^0.20.0",
+    "@eslint/config-array": "^0.21.0",
     "@eslint/object-schema": "^2.1.5",
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mantine/carousel": "^7.17.4",
-    "@mantine/core": "^7.13.4",
+    "@mantine/core": "^8.3.1",
     "@mantine/hooks": "^7.13.4",
     "@next/third-parties": "^15.3.0",
     "@react-three/drei": "^10.7.6",
@@ -35,7 +35,7 @@
     "glob": "^11.0.0",
     "motion": "^12.5.0",
     "next": "^15.2.1",
-    "react": "^18.3.1",
+    "react": "^19.1.1",
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^9.16.0",
     "react-social-media-embed": "^2.5.18",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "24.2.0",
-    "@types/react": "18.3.12",
+    "@types/react": "19.1.10",
     "eslint": "^8",
     "eslint-config-next": "^15.2.1"
   }
