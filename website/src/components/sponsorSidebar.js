@@ -124,7 +124,7 @@ const SponsorSidebar = () => {
                   >
                     <MotionButton
                       as={Link}
-                      href='/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf'
+                      href='/assets/bbuavsponsorpackage2025.pdf'
                       target='_blank'
                       isExternal
                       size='lg'
