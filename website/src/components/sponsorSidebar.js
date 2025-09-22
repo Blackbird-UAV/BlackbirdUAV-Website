@@ -253,7 +253,7 @@ const SponsorSidebar = () => {
 
                   <MotionButton
                     as={Link}
-                    href='https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/'
+                    href='https://futurefunder.carleton.ca/giving-fund/blackbird-uav-national-design-competition/'
                     target='_blank'
                     isExternal
                     size={{ base: 'md', md: 'lg' }} // Smaller on mobile
