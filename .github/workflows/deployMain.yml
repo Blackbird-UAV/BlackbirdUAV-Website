@@ -1,4 +1,6 @@
 name: Deploy to Main
+permissions:
+  contents: read
 
 on:
   workflow_run:
