@@ -1,4 +1,6 @@
 name: Node.js CI Dev
+permissions:
+  contents: read
 
 on:
   push:
