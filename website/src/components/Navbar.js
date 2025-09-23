@@ -34,41 +34,40 @@ export default function Navbar () {
   }
 
   useEffect(() => {
-  let lastScrollY = window.scrollY
+    let lastScrollY = window.scrollY
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
 
-    if (currentScrollY >= 300) {
-      setShowNavbar(true)
-    } else {
-      setShowNavbar(false)
+      if (currentScrollY >= 300) {
+        setShowNavbar(true)
+      } else {
+        setShowNavbar(false)
+      }
+
+      if (currentScrollY < lastScrollY && isDropdownOpen) {
+        setIsDropdownOpen(false)
+      }
+
+      lastScrollY = currentScrollY
     }
 
-    if (currentScrollY < lastScrollY && isDropdownOpen) {
-      setIsDropdownOpen(false)
+    const handleMouseMove = (event) => {
+      if (window.scrollY < 300 && event.clientY < 100) {
+        setShowNavbar(true)
+      } else if (!isDropdownOpen && window.scrollY < 300) {
+        setShowNavbar(false)
+      }
     }
 
-    lastScrollY = currentScrollY
-  }
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('mousemove', handleMouseMove)
 
-  const handleMouseMove = (event) => {
-    if (window.scrollY < 300 && event.clientY < 100) {
-      setShowNavbar(true)
-    } else if (!isDropdownOpen && window.scrollY < 300) {
-      setShowNavbar(false)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('mousemove', handleMouseMove)
     }
-  }
-
-  window.addEventListener('scroll', handleScroll)
-  window.addEventListener('mousemove', handleMouseMove)
-
-  return () => {
-    window.removeEventListener('scroll', handleScroll)
-    window.removeEventListener('mousemove', handleMouseMove)
-  }
-}, [isDropdownOpen])
-
+  }, [isDropdownOpen])
 
   useEffect(() => {
     if (isOpen) {
@@ -173,55 +172,55 @@ export default function Navbar () {
             <span>Vehicles</span>
           </Link>
         </div>
-<div
-  className={`${styles.linkWrapper} ${
+        <div
+          className={`${styles.linkWrapper} ${
     router.pathname.startsWith('/meetTeam') ? styles.activeLink : ''
   }`}
-  style={{ position: 'relative' }}
-  onMouseEnter={() => handleDropdownHover(true)}
-  onMouseLeave={() => handleDropdownHover(false)}
->
-  <button
-    type="button"
-    onClick={handleDropdownClick}
-    className={styles.link} 
-    aria-haspopup="true"
-    aria-expanded={isDropdownOpen}
-  >
-    <Center className={styles.link}>
-      <span>
-        Team
-        <IconChevronDown
-          size="0.9rem"
-          stroke={1.5}
-          color="#f9fafb"
-          className={styles.chevron}
-        />
-      </span>
-    </Center>
-  </button>
+          style={{ position: 'relative' }}
+          onMouseEnter={() => handleDropdownHover(true)}
+          onMouseLeave={() => handleDropdownHover(false)}
+        >
+          <button
+            type='button'
+            onClick={handleDropdownClick}
+            className={styles.link}
+            aria-haspopup='true'
+            aria-expanded={isDropdownOpen}
+          >
+            <Center className={styles.link}>
+              <span>
+                Team
+                <IconChevronDown
+                  size='0.9rem'
+                  stroke={1.5}
+                  color='#f9fafb'
+                  className={styles.chevron}
+                />
+              </span>
+            </Center>
+          </button>
 
-  {isDropdownOpen && (
-    <div
-      className={`${dropdownStyles.dropdownMenu} ${
+          {isDropdownOpen && (
+            <div
+              className={`${dropdownStyles.dropdownMenu} ${
         dropdownStyles.show
       }`}
-    >
-      {teamLinks.map((item) => (
-        <Link href={item.link} key={item.link} legacyBehavior>
-          <a
-            className={dropdownStyles.dropdownItem}
-            onClick={() => {
-              setIsDropdownOpen(false)
-            }}
-          >
-            {item.label}
-          </a>
-        </Link>
-      ))}
-    </div>
-  )}
-</div>
+            >
+              {teamLinks.map((item) => (
+                <Link href={item.link} key={item.link} legacyBehavior>
+                  <a
+                    className={dropdownStyles.dropdownItem}
+                    onClick={() => {
+                      setIsDropdownOpen(false)
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div
           className={`${styles.linkWrapper} ${

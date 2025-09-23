@@ -1,23 +1,23 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faLinkedin,
   faInstagram,
   faYoutube,
   faDiscord,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-import styles from "@/styles/Footer.module.css";
-import Image from "next/image";
+  faGithub
+} from '@fortawesome/free-brands-svg-icons'
+import styles from '@/styles/Footer.module.css'
+import Image from 'next/image'
 
-export default function Footer() {
+export default function Footer () {
   return (
-    <footer className={styles.footer} id="footer">
+    <footer className={styles.footer} id='footer'>
       <div className={styles.footerContent}>
         {/* Logo Section */}
         <div className={styles.logoSection}>
           <Image
-            src="/logos/BirdBBUAVLogo.png"
-            alt="Blackbird Logo"
+            src='/logos/BirdBBUAVLogo.png'
+            alt='Blackbird Logo'
             width={100}
             height={100}
           />
@@ -27,41 +27,41 @@ export default function Footer() {
         <div className={styles.socialLinksSection}>
           <div className={styles.socialLinks}>
             <a
-              href="https://www.linkedin.com/company/blackbird-uav/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://www.linkedin.com/company/blackbird-uav/'
+              target='_blank'
+              rel='noopener noreferrer'
               className={styles.linkedin}
             >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
             <a
-              href="https://www.instagram.com/blackbird.uav/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://www.instagram.com/blackbird.uav/'
+              target='_blank'
+              rel='noopener noreferrer'
               className={styles.instagram}
             >
               <FontAwesomeIcon icon={faInstagram} />
             </a>
             <a
-              href="https://www.youtube.com/@BlackbirdUAV"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://www.youtube.com/@BlackbirdUAV'
+              target='_blank'
+              rel='noopener noreferrer'
               className={styles.youtube}
             >
               <FontAwesomeIcon icon={faYoutube} />
             </a>
             <a
-              href="https://discord.gg/Spw3F6KrCn"
-              target="_blank"
-              rel="noopener noreferrer"
+              href='https://discord.gg/Spw3F6KrCn'
+              target='_blank'
+              rel='noopener noreferrer'
               className={styles.discord}
             >
               <FontAwesomeIcon icon={faDiscord} />
             </a>
-                        <a
-              href="https://github.com/Blackbird-UAV"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a
+              href='https://github.com/Blackbird-UAV'
+              target='_blank'
+              rel='noopener noreferrer'
               className={styles.github}
             >
               <FontAwesomeIcon icon={faGithub} />
@@ -78,5 +78,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

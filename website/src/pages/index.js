@@ -26,7 +26,7 @@ const slides = [
     name: 'Goliath',
     image: '/images/Vehicles/Goliath_1.jpg',
     description:
-      "Designed to autonomously detect multiple hotspots within a very large zone and to autonomously pick up water from a reservoir and dispense it on the hotspots."
+      'Designed to autonomously detect multiple hotspots within a very large zone and to autonomously pick up water from a reservoir and dispense it on the hotspots.'
   },
   {
     name: 'Apogee',
@@ -366,7 +366,7 @@ export default function Home () {
             >
               <h1>About Us</h1>
               <p>
-              Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
+                Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
               </p>
               <p>
                 BBUAV was established in 2009 as an extra-curricular program for
