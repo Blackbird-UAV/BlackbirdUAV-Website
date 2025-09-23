@@ -214,7 +214,7 @@ export default function Home () {
             {!isSceneLoaded && (
               <div className={styles.loaderContainer}>
                 <div className={styles.loaderContent}>
-                  <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                  <Image src={BBUAVLoaderLogo} className={styles.logo} alt='Loading...' />
                   <PuffLoader color='#ef1a2e' size={100} />
                 </div>
               </div>
@@ -226,7 +226,7 @@ export default function Home () {
               }`}
             >
               <div className={styles.loaderContent}>
-                <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                <Image src={BBUAVLoaderLogo} className={styles.logo} alt='Loading...' />
                 <PuffLoader color='#ef1a2e' size={100} />
               </div>
             </div>

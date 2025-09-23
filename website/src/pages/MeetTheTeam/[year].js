@@ -8,6 +8,7 @@ import Header from '@/components/Header'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const DURATIONS = {
   VeryFast: 0.2,
@@ -173,7 +174,7 @@ const MeetTeam = () => {
                           <div className={styles.cardInner}>
                             {/* Front Side */}
                             <div className={styles.cardFront}>
-                              <img
+                              <Image
                                 src={member.image}
                                 alt={`${member.firstName} ${member.lastName}`}
                                 className={styles.memberImage}

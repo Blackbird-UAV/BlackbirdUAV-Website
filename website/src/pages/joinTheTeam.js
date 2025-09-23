@@ -89,9 +89,6 @@ export default function Join () {
       <Header imagePath='/images/JoinUsMedia.jpg' headerText='Join the Team' />
 
       <div className={styles.pageWrapper}>
-        {/* <div className={styles.banner}>
-          <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
-        </div> */}
 
         <div className={styles.contentContainer}>
           {/* About us box */}
