@@ -46,8 +46,8 @@ jobs:
       - name: Cache Next.js build cache
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/website/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('website/package-lock.json') }}-${{ hashFiles('website/**/*.[jt]s', 'website/**/*.[jt]sx') }}
+          path: website/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('website/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('website/package-lock.json') }}-
 
