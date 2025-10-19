@@ -44,6 +44,7 @@ const vehicles = [
       '/images/Vehicles/Apogee_1.jpg',
       '/images/Vehicles/Apogee_2.jpg',
       '/images/Vehicles/Apogee_3.jpg'
+      '/images/Vehicles/Apogee_4.jpg'
     ]
   },
   {
