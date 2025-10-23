@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "npm run clean && next build",
     "prod": "npm run build && npm run copy-htaccess",
-    "clean": "rimraf ./website/out/*",
+    "clean": "rimraf ./out/*",
     "copy-htaccess": "cp .htaccess ./out/.htaccess",
     "start": "next start",
     "lint": "eslint .",
