@@ -215,7 +215,7 @@ const ThreeScene = ({ onSceneLoaded }) => {
       renderer.dispose()
       scene.clear()
     }
-  }, [])
+  }, [onSceneLoaded, rotationXBase, rotationYBase])
 
   return (
     <canvas

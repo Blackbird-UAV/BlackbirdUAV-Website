@@ -1,4 +1,9 @@
 name: Deploy to Main
+permissions:
+  contents: read
+  actions: read
+  statuses: write
+
 
 on:
   workflow_run:
@@ -14,12 +19,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+        
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: 'npm'
           cache-dependency-path: './website/package-lock.json'
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+
+      
+      - name: Cache npm
+        id: npm-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('website/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: website/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('website/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('website/package-lock.json') }}-
+
 
       - name: Install Dependencies and Build
         run: |

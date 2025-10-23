@@ -9,7 +9,7 @@ import Header from '@/components/Header'
 import { fadeInUpSlower } from '@/components/animations'
 
 const vehicles = [
-    {
+  {
     id: 1,
     name: 'Goliath',
     description: {

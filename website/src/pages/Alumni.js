@@ -3,6 +3,7 @@ import teamData from '@/data/teamData'
 import { Text, TextInput } from '@mantine/core'
 import styles from '@/styles/Team.module.css'
 import Header from '@/components/Header'
+import Image from 'next/image'
 
 const Alumni = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -51,7 +52,7 @@ const Alumni = () => {
           {filteredAlumni.map((member) => (
             <div key={member.id} className={styles.alumniItem}>
               <div className={styles.alumniImageContainer}>
-                <img
+                <Image
                   src={member.image}
                   alt={`${member.firstName} ${member.lastName}`}
                   className={styles.alumniImage}

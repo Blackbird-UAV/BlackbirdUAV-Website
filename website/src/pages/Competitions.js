@@ -2,6 +2,7 @@ import React from 'react'
 import teamData from '@/data/teamData'
 import styles from '@/styles/Team.module.css'
 import Header from '@/components/Header'
+import Image from 'next/image'
 import {
   VerticalTimeline,
   VerticalTimelineElement
@@ -33,7 +34,7 @@ const Competition = () => {
                 contentArrowStyle={{ borderRight: '7px solid  #333' }}
               >
                 {years[year].image && (
-                  <img
+                  <Image
                     src={years[year].image}
                     alt={`${year} Competition Team`}
                     className={styles.teamImage}
