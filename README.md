@@ -69,25 +69,19 @@ The website is deployed to an FTP server using **FTP Deploy Action** via GitHub 
    git clone https://github.com/Blackbird-UAV/BlackbirdUAV-Website.git
    ```
 
-2. Navigate to the project folder:
-
-   ```bash
-   cd website
-   ```
-
-3. Install dependencies:
+2. Install dependencies:
 
    ```bash
    npm install --legacy-peer-deps
    ```
 
-4. Run the development server:
+3. Run the development server:
 
    ```bash
    npm run dev
    ```
 
-5. Open your browser and visit:
+4. Open your browser and visit:
    ```
    http://localhost:3000
    ```
