@@ -10,7 +10,8 @@
     "copy-htaccess": "cp .htaccess ./out/.htaccess",
     "start": "next start",
     "lint": "next lint",
-    "test": "standard --fix"
+    "test": "standard --fix",
+    "lighthouse": "lhci autorun --config=./lighthouserc.js && kill $!"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.2.0",
@@ -46,6 +47,7 @@
     "three-mesh-bvh": "^0.9.0"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "@types/node": "24.2.0",
     "@types/react": "18.3.12",
     "eslint": "^8",
