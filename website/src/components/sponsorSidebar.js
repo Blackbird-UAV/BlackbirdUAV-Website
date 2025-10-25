@@ -124,7 +124,7 @@ const SponsorSidebar = () => {
                   >
                     <MotionButton
                       as={Link}
-                      href='/assets/Blackbird UAV Sponsorship Package 2024-2025.pdf'
+                      href='/assets/bbuavsponsorpackage2025.pdf'
                       target='_blank'
                       isExternal
                       size='lg'
@@ -253,7 +253,7 @@ const SponsorSidebar = () => {
 
                   <MotionButton
                     as={Link}
-                    href='https://futurefunder.carleton.ca/campaigns/blackbird-uav-national-design-competition/'
+                    href='https://futurefunder.carleton.ca/giving-fund/blackbird-uav-national-design-competition/'
                     target='_blank'
                     isExternal
                     size={{ base: 'md', md: 'lg' }} // Smaller on mobile
