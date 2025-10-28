@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 import styles from '@/styles/Join.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faDraftingCompass,
   faPlane,
-  faCogs,
+  faBolt,
+  faComputer,
   faUsers,
   faClipboard
 } from '@fortawesome/free-solid-svg-icons'
@@ -18,36 +18,36 @@ import { slideFromLeft, slideFromRight } from '@/components/animations'
 const tabs = [
   {
     id: 1,
-    title: 'Design',
+    title: 'Electrical',
     tagline:
-      'Where creativity meets precision – designing the future, one UAV at a time.',
+      'Powering innovation – where circuitry meets the sky.',
     content:
-      'The Design team brings ideas to life, crafting UAVs that balance cutting-edge technology with sleek, functional aesthetics. You’ll have the chance to work with top-tier design software and collaborate with experts in aerodynamics and user-centered design. Your contributions will directly shape the performance and look of our UAVs, making them stand out on the competition stage. Join us and leave your mark on the future of flight!',
+      "Electrical is the powerhouse behind our UAVs. From helping with software design to integrating complex electrical systems, this team ensures that every UAV flies with precision and control. You’ll work with cutting-edge technologies, including flight control systems, sensors, and communications equipment. You’ll be at the heart of UAV technology, pushing the limits of innovation with every flight.",
     image: '/images/Join/Join_Design.jpg',
-    icon: faDraftingCompass,
-    color: '#30b463'
+    icon: faBolt,
+    color: '#7ed957'
   },
   {
     id: 2,
-    title: 'Manufacturing',
+    title: 'Mechanical',
     tagline:
       'Building the backbone of innovation – strong, reliable, and ready for takeoff.',
     content:
-      "The Manufacturing team is where ideas become reality. Here, you'll have hands-on experience assembling and fine-tuning UAV components, ensuring every part is precisely built for peak performance. From 3D printing to composite materials, we use cutting-edge techniques to create UAVs that withstand the challenges of competition. Join us and gain real-world skills in fabrication and engineering, all while bringing your designs to life.",
+      "The Mechanical Team is where ideas take flight — transforming concepts into high-performance UAVs that balance cutting-edge technology, precision engineering, and sleek design.   Here, you’ll gain hands-on experience assembling and fine-tuning components, working with advanced fabrication techniques such as 3D printing and composite materials to ensure every part is built for peak performance. Join us to develop real-world skills in fabrication and engineering — and leave your mark on the future of flight.",
     image: '/images/Join/Join_Manufacturing.jpg',
     icon: faPlane,
-    color: '#e01d19'
+    color: '#ff3131'
   },
   {
     id: 3,
-    title: 'Systems',
+    title: 'Software',
     tagline:
-      'Crafting the brains behind the wings – sophisticated systems, seamless flight.',
+      'Coding the skies – developing intelligent systems for autonomous flight.',
     content:
-      'Systems is the powerhouse behind our UAVs. From designing software to integrating complex electrical systems, this team ensures that every UAV flies with precision and control. You’ll work with cutting-edge technologies, including flight control systems, sensors, and communications equipment. Whether coding, debugging, or testing, you’ll be at the heart of UAV technology, pushing the limits of innovation with every flight.',
+      "The Software team is at the forefront of our UAV's intelligence and autonomy. As a member of this team, you'll dive into programming flight control systems, developing algorithms for navigation, and working with electrical components that make operating our UAVs seamless. If you're passionate about coding and eager to see your software take to the skies, this is the perfect team for you!",
     image: '/images/Join/Join_Systems.jpg',
-    icon: faCogs,
-    color: '#e94e77'
+    icon: faComputer,
+    color: '#ff914d'
   },
   {
     id: 4,
@@ -69,7 +69,7 @@ const tabs = [
       "The Operations team is responsible for making sure every UAV flight is executed flawlessly. You’ll be directly involved in mission planning, safety protocols, and flight coordination. Whether it’s navigating through challenging conditions or managing team logistics, the Operations team is integral to making each mission a success. If you're detail-oriented, love a challenge, and enjoy the thrill of real-time problem solving, this is the team for you!",
     image: '/images/Join/Join_Operations.jpg',
     icon: faClipboard,
-    color: '#6553e0'
+    color: '#5ce1e6'
   }
 ]
 
@@ -89,10 +89,6 @@ export default function Join () {
       <Header imagePath='/images/JoinUsMedia.jpg' headerText='Join the Team' />
 
       <div className={styles.pageWrapper}>
-        {/* <div className={styles.banner}>
-          <img src="/images/JoinUsMedia.jpg" alt="Join Us Banner" />
-        </div> */}
-
         <div className={styles.contentContainer}>
           {/* About us box */}
           <div className={styles.aboutUs}>
