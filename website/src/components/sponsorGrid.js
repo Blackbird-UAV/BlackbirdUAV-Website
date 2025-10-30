@@ -11,7 +11,7 @@ const TIER_COLUMN_CONFIG = {
   Support: 3
 }
 
-const TIERS = ['Partner', 'Gold', 'Silver', /* "Bronze", */ 'Support']
+const TIERS = ['Partner', 'Gold', /*'Silver', "Bronze", */ 'Support']
 
 const SponsorItem = ({ sponsor, index }) => {
   const ref = useRef(null)
