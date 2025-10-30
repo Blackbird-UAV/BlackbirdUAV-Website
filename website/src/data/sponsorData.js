@@ -30,12 +30,12 @@ const sponsors = [
   //   link: "https://www.mycses.ca/",
   //   tier: "gold",
   // },
-  {
-    name: 'Aircraft Spruce & Specialty Co.',
-    logo: '/images/Sponsors/Sponsor_AircraftSpruce.png',
-    link: 'https://www.aircraftspruce.ca/',
-    tier: 'gold'
-  },
+  // {
+  //   name: 'Aircraft Spruce & Specialty Co.',
+  //   logo: '/images/Sponsors/Sponsor_AircraftSpruce.png',
+  //   link: 'https://www.aircraftspruce.ca/',
+  //   tier: 'gold'
+  // },
   {
     name: 'SolidWorks',
     logo: '/images/Sponsors/Sponsor_SolidWorks.png',
@@ -54,42 +54,50 @@ const sponsors = [
     link: 'https://www.ansys.com/',
     tier: 'gold'
   },
-  {
-    name: 'Competiton Composites Inc.',
-    logo: '/images/Sponsors/Sponsor_CCI.png',
-    link: 'https://cci.one/',
-    tier: 'silver'
-  },
-  {
-    name: 'Metal Pros',
-    logo: '/images/Sponsors/Sponsor_MetalPros.png',
-    link: 'https://www.metalpros.com/',
-    tier: 'silver'
-  },
+  // {
+  //   name: 'Competiton Composites Inc.',
+  //   logo: '/images/Sponsors/Sponsor_CCI.png',
+  //   link: 'https://cci.one/',
+  //   tier: 'silver'
+  // },
+  // {
+  //   name: 'Metal Pros',
+  //   logo: '/images/Sponsors/Sponsor_MetalPros.png',
+  //   link: 'https://www.metalpros.com/',
+  //   tier: 'silver'
+  // },
   // {
   //   name: 'Teledyne',
   //   logo: '/images/Sponsors/Sponsor_Teledyne.png',
   //   link: 'https://www.teledyne.com/',
   //   tier: 'silver'
   // },
-  {
-    name: 'Tattu',
-    logo: '/images/Sponsors/Sponsor_Tattu.png',
-    link: 'https://www.genstattu.com/',
-    tier: 'silver'
-  },
-  {
-    name: 'Print Parrot',
-    logo: '/images/Sponsors/Sponsor_PrintParrot.png',
-    link: 'https://www.printparrot.ca/',
-    tier: 'silver'
-  },
+  // {
+  //   name: 'Tattu',
+  //   logo: '/images/Sponsors/Sponsor_Tattu.png',
+  //   link: 'https://www.genstattu.com/',
+  //   tier: 'silver'
+  // },
+  // {
+  //   name: 'Print Parrot',
+  //   logo: '/images/Sponsors/Sponsor_PrintParrot.png',
+  //   link: 'https://www.printparrot.ca/',
+  //   tier: 'silver'
+  // },
   {
     name: 'SIMNET',
     logo: '/images/Sponsors/Sponsor_SIMNET.png',
     link: 'https://www.simnet.aero/',
     tier: 'support'
-  }
+  },
+
+  {
+    name: 'AVSS',
+    logo: '/images/Sponsors/Sponsor_AVSS.svg',
+    link: 'https://www.avss.co/',
+    tier: 'partner'
+  },
+
 ]
 
 export default sponsors
