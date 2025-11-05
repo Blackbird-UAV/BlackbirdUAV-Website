@@ -97,6 +97,12 @@ const sponsors = [
     link: 'https://www.avss.co/',
     tier: 'partner'
   },
+  {
+    name: 'Robotic Centre',
+    logo: '/images/Sponsors/Sponsor_RoboticsCentre.svg',
+    link: 'https://robotics-centre.com/',
+    tier: 'partner'
+  },
 
 ]
 
