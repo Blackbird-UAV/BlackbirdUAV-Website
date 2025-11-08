@@ -36,4 +36,4 @@ jobs:
           username: ${{ secrets.DEV_FTP_USERNAME }}
           password: ${{ secrets.DEV_FTP_PASSWORD }}
           local-dir: ./website/out/
-          server-dir: /
+          server-dir: /dev.blackbirduav.ca/dev/
