@@ -30,7 +30,7 @@ jobs:
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: dev.blackbirduav.ca
+          server: ftp.blackbirduav.ca
           port: 21
           protocol: ftp
           username: ${{ secrets.DEV_FTP_USERNAME }}
