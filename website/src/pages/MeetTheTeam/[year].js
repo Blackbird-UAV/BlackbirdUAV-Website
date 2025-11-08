@@ -28,7 +28,7 @@ const MeetTeam = () => {
 
   let teamTitle
   if (year === '2024-2025') {
-    teamTitle = 'Current Team Test'
+    teamTitle = 'Current Team Tests'
   } else if (year === 'pastMembers') {
     teamTitle = 'Past Members'
   } else if (year === '2023-2024') {
