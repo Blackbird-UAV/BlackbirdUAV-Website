@@ -390,7 +390,7 @@ export default function Home () {
                 The Aerial Evolution Association of Canada Student Competition
                 (AEAC SC) is a national event that challenges university and
                 college students to design, build, and operate uncrewed aerial
-                systems (UAS) for real-world applications.
+                systems (UAS) for real-world applications. Test
               </p>
               <p>
                 The competition provides students with hands-on experience in
