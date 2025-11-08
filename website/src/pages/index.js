@@ -395,7 +395,7 @@ export default function Home () {
               <p>
                 The competition provides students with hands-on experience in
                 aerospace engineering, avionics, and mission planning, while
-                promoting innovation in the UAV industry.
+                promoting innovation in the UAV industry. Test
               </p>
             </motion.div>
             <motion.div
