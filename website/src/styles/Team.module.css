@@ -530,6 +530,14 @@
   background-color: #f6b93b;
 }
 
+.managers {
+  background-color: #f6b93b;
+}
+
+.advisors {
+  background-color: #0000ff;
+}
+
 .Executives {
   background-color: #6859d9;
 }
@@ -630,6 +638,14 @@
 
   .sidebar.administrative {
     background-color: #f6b93b;
+  }
+
+  .sidebar.managers {
+    background-color: #f6b93b;
+  }
+
+  .sidebar.advisors {
+    background-color: #0000ff;
   }
 
   .sidebar.Executives {
@@ -759,6 +775,16 @@
 
 .roleTag.administrative {
   background-color: #f6b93b;
+  color: black;
+}
+
+.roleTag.managers {
+  background-color: #f6b93b;
+  color: black;
+}
+
+.roleTag.advisors {
+  background-color: #0000ff;
   color: black;
 }
 

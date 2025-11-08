@@ -1,7 +1,281 @@
 const teamData = {
+    '2025-2026': {
+    description:
+      'This is the current Blackbird UAV team for the 2026 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals.',
+    Executives: [
+      {
+        id: 1,
+        firstName: 'Kevin',
+        lastName: 'Fernando',
+        role: 'President',
+        isPresident: true,
+        isExecutive: false,
+        image: '/images/2025Headshots/...',
+        description: 'Kevin leads Blackbird UAV toward innovation and success',
+        extendedDescription:
+          'Kevin leads Blackbird UAV, overseeing all technical and organizational operations. A fifth-year Aerospace Engineering student and UAV pilot, he ensures the executive functions effectively.',
+        link: 'https://www.linkedin.com/in/kmfernando/'
+      },
+      {
+        id: 2,
+        firstName: 'DJ',
+        lastName: 'Van Nice',
+        role: 'Mechanical',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          '4th year Mech Eng. undergrad supporting as lead for the mech sub-team',
+        extendedDescription:
+          'DJ joined Blackbird UAV in 2022 at the beginning of his 1st year in Mechanical Engineering. Now in his 4th year, he is a mechanical team lead with a major role in vehicle design and assembly, as well as being one of the team\'s head pilots.',
+        link: 'https://www.linkedin.com/in/daniel-van-nice-28298a256/'
+      },
+      {
+        id: 3,
+        firstName: 'Samuel',
+        lastName: 'Howell',
+        role: 'Mechanical',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Sam is a Mechanical Subteam Lead in his 4th-year of Aerospace Engineering',
+        extendedDescription:
+          'As Mechanical Lead, Sam\'s responsibilities include conceptual design, CAD, structures and sizing, and vehicle performance. He optimizes systems integration and manages a 20+ member subteam.',
+        link: 'https://www.linkedin.com/in/samueldavidhowell/'
+      },
+      {
+        id: 4,
+        firstName: 'Lucas',
+        lastName: 'Klemm',
+        role: 'Mechanical',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description: 'Lucas is a Mech Lead and Second Year Student',
+        extendedDescription:
+          'Lucas helps lead the Mech Team designing and manufacturing mechanisms and drones.',
+        link: 'https://www.linkedin.com/in/lucas-klemm-aero'
+      },
+      {
+        id: 5,
+        firstName: 'Duaa',
+        lastName: 'Israr',
+        role: 'Administrative',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Duaa is the BBUAV Admin Lead and a 4th year Aerospace Eng Student',
+        extendedDescription:
+          'As BBUAV’s Admin Lead, she oversees communications, manages merchandise, and supports the Finance and External Leads. She also assists other sub-teams and continually learns new skills while contributing to the team’s success.',
+        link: 'https://www.linkedin.com/in/duaa-j-israr-3b3657218/'
+      },
+      {
+        id: 6,
+        firstName: 'Maxwell',
+        lastName: 'Magnusson',
+        role: 'Administrative / Finance',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Maxwell manages the financial aspects of Blackbird UAV',
+        extendedDescription:
+          'Maxwell prepares funding pitches, oversees purchasing, and manages the budget.',
+        link: 'https://www.linkedin.com/in/maxwell-magnusson'
+      },
+      {
+        id: 7,
+        firstName: 'Jacob',
+        lastName: 'Hamdani',
+        role: 'Administrative / External',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Jacob is BBUAV\'s External Lead and an Aerospace Engineering Student.',
+        extendedDescription:
+          'As External Lead, Jacob oversees Blackbird UAV’s sponsorships, partnerships, events, and public relations, helping grow the team’s network and industry presence.',
+        link: 'https://www.linkedin.com/in/maxwell-magnusson'
+      },
+      {
+        id: 8,
+        firstName: 'Jeremy',
+        lastName: 'Friesen',
+        role: 'Software',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/Jeremy2.jpg',
+        description:
+          'Jeremy is the software lead for Blackbird UAV',
+        extendedDescription:
+          'Jeremy, a 3rd year Computer Science student, oversees all aspects of the club’s software infrastructure, ensuring reliable performance in both competitive and non-competitive environments.',
+        link: 'https://www.linkedin.com/in/jeremyfriesen1'
+      },
+      {
+        id: 9,
+        firstName: 'Gopesh',
+        lastName: 'Jaganbabu',
+        role: 'Software',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Gopesh leads the development of competition system software.',
+        extendedDescription:
+          'Gopesh co-leads the software subteam, managing and guiding the development of systems for networking, machine learning, automation, and sensor integration.',
+        link: 'https://www.linkedin.com/in/gopesh-jaganbabu-1998a3359'
+      },
+      {
+        id: 10,
+        firstName: 'Denise',
+        lastName: 'Tablac',
+        role: 'Electrical',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Aerospace Electronics and System student passionate about systems integration.',
+        extendedDescription:
+          'Denise leads the electrical team through projects of all scales that advance the competition vehicle’s capabilities, drawing on his experience in UAV systems and electrical design.',
+        link: 'https://www.linkedin.com/in/denisetablac/'
+      },
+      {
+        id: 11,
+        firstName: 'Jivitesh',
+        lastName: 'Mullangi',
+        role: 'Operations',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2025Headshots/...',
+        description:
+          'Jivitesh is the BBUAV Operations Lead and a member since 2023',
+        extendedDescription:
+          'Jivitesh is a third-year undergraduate student and the Operations Subteam Lead, overseeing vehicle testing, Transport Canada registration, and coordination with current and future team pilots.',
+        link: 'https://www.linkedin.com/in/jivitesh-mullangi'
+      }
+    ],
+    managers: [
+      {
+        id: 12,
+        firstName: 'JW',
+        lastName: 'Esterak',
+        role: 'Electrical',
+        isPresident: false,
+        isExecutive: false,
+        isManager: true,
+        image: '/images/2025Headshots/JW.jpg',
+        description:
+          'Second year aerospace engineering student',
+        extendedDescription:
+          'JW is a manager on the electrical sub-team. In this role he manages various projects, designs electronic components, and integrates off-the-shelf hardware.',
+        link: 'https://www.linkedin.com/in/james-w-esterak-530193211/'
+      },
+      {
+        id: 18,
+        firstName: 'Ali Asghar',
+        lastName: 'Bundookwalla',
+        role: 'Software',
+        isPresident: false,
+        isExecutive: false,
+        isManager: true,
+        image: '/images/2025Headshots/Ali.jpg',
+        description: 'Ali is a 3rd Year Computer Systems Engineering student',
+        extendedDescription:
+          'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
+        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
+      },
+      {
+        id: 19,
+        firstName: 'Jacob',
+        lastName: 'LastName',
+        role: 'Mechanical',
+        isPresident: false,
+        isExecutive: false,
+        isManager: true,
+        image: '/images/2025Headshots/AltJacob.jpg',
+        description: '',
+        extendedDescription:
+          '',
+        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
+      }
+    ],
+    advisors: [
+      {
+        id: 13,
+        firstName: 'Ryan',
+        lastName: 'Whalen',
+        role: 'Mechanical / Advisor',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/2025Headshots/Ryan.jpg',
+        description:
+          'Ryan assists the mechanical team with design decisions and project management.',
+        extendedDescription:
+          'Ryan is an advisor to the mechanical sub-team, assisting with design choices, project management, vehicle sizing and motor testing.',
+        link: 'http://www.linkedin.com/in/ ryan-whalen-065257252/'
+      },
+      {
+        id: 14,
+        firstName: 'Cole',
+        lastName: 'Gladders',
+        role: 'Mechanical / Advisor',
+        isPresident: false,
+        isExecutive: false,
+        isManager: false,
+        image: '/images/TeamHeadshots/Cole.JPG',
+        description:
+          'Cole is a mechanical advisor & a 5th-year Aero-Eng student',
+        extendedDescription:
+          'As a mechanical advisor, Cole helps with various projects relating to design. He contributes primarily to vehicle performance, vehicle architecture, and propulsion systems.',
+        link: 'https://www.linkedin.com/in/cole-gladders-6525541a8'
+      },
+      {
+        id: 15,
+        firstName: 'Jedidiah',
+        lastName: 'Nevo',
+        role: 'Mechanical / Advisor',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Jedidiah.JPG',
+        description: 'Jedidiah is a 3rd year graduate student.',
+        extendedDescription:
+          'Jed is a Blackbird advisor. Having been a member since 2020, Jed has worked on a variety of projects. He has helped with vehicle propulsion and stability.',
+        link: 'http://www.linkedin.com/in/jedidiahnevo'
+      },
+      {
+        id: 16,
+        firstName: 'Karl',
+        lastName: 'Kurniawan',
+        role: 'Mechanical / Advisor',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/2025Headshots/Karl.jpg',
+        description: 'Master student specializing in gas turbine aerodynamics.',
+        extendedDescription:
+          'Karl is an advisor for manufacturing and structures. He brings practical hands-on experience in composites and different manufacturing methods, focusing on continuous improvement through learning and experience.',
+        link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca'
+      },
+      {
+        id: 17,
+        firstName: 'Nick',
+        lastName: 'Mucci',
+        role: 'Mechanical / Advisor',
+        isPresident: false,
+        isExecutive: false,
+        image: '/images/TeamHeadshots/Nick.JPG',
+        description:
+          'Manufacturing and CAD advisor with industry expertise.',
+        extendedDescription:
+          "As a 7th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
+        link: 'https://www.linkedin.com/in/nickmucci'
+      }
+    ]
+  },
   '2024-2025': {
     description:
-      'This is the current Blackbird UAV team for the 2025 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals: Goliath. Goliath will be used to compete in various events over the course of the year as it aims to win as many of them as possible.',
+      'This is the Blackbird UAV team for the 2024-2025 year. This team worked together throughout the course of the year on a new drone that fullfilled competition goals: Goliath. Goliath was built in a quadcopter configuration with a fully modular payload and is BBUAV\'s most recent drone. It also included First Person View cameras to give better precision for the pilots and won 3rd prize at AEAC.',
     Executives: [
       {
         id: 1,

@@ -18,7 +18,7 @@ const Alumni = () => {
   return (
     <>
       <Header
-        imagePath='/images/team2.jpg'
+        imagePath='/images/team4.jpg'
         headerText='Our Alumni'
         initialOffset={200}
         className={styles.teamHeader}

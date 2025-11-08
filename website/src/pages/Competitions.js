@@ -14,7 +14,7 @@ const Competition = () => {
   return (
     <>
       <Header
-        imagePath='/images/team2.jpg'
+        imagePath='/images/team4.jpg'
         headerText='Competition Teams'
         initialOffset={200}
         className={styles.teamHeader}
@@ -40,7 +40,7 @@ const Competition = () => {
                     onError={(e) => {
                       console.error(`Failed to load image for year ${year}`)
                       e.target.onerror = null // Prevent infinite loop
-                      e.target.src = '/images/team2.jpg' // Fallback image
+                      e.target.src = '/images/team4.jpg' // Fallback image
                     }}
                   />
                 )}
