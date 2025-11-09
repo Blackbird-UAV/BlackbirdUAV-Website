@@ -216,21 +216,21 @@ const teamData = {
           'Ryan is an advisor to the mechanical sub-team, assisting with design choices, project management, vehicle sizing and motor testing.',
         link: 'http://www.linkedin.com/in/ryan-whalen-065257252/'
       },
-      {
-        id: 14,
-        firstName: 'Cole',
-        lastName: 'Gladders',
-        role: 'Mechanical / Advisor',
-        isPresident: false,
-        isExecutive: false,
-        isManager: false,
-        image: '/images/TeamHeadshots/Cole.JPG',
-        description:
-          'Cole is a mechanical advisor & a 5th-year Aero-Eng student',
-        extendedDescription:
-          'As a mechanical advisor, Cole helps with various projects relating to design. He contributes primarily to vehicle performance, vehicle architecture, and propulsion systems.',
-        link: 'https://www.linkedin.com/in/cole-gladders-6525541a8'
-      },
+      // {
+      //   id: 14,
+      //   firstName: 'Cole',
+      //   lastName: 'Gladders',
+      //   role: 'Mechanical / Advisor',
+      //   isPresident: false,
+      //   isExecutive: false,
+      //   isManager: false,
+      //   image: '/images/TeamHeadshots/Cole.JPG',
+      //   description:
+      //     'Cole is a mechanical advisor & a 5th-year Aero-Eng student',
+      //   extendedDescription:
+      //     'As a mechanical advisor, Cole helps with various projects relating to design. He contributes primarily to vehicle performance, vehicle architecture, and propulsion systems.',
+      //   link: 'https://www.linkedin.com/in/cole-gladders-6525541a8'
+      // },
       {
         id: 15,
         firstName: 'Jedidiah',
