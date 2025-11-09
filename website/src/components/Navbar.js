@@ -99,7 +99,6 @@ export default function Navbar () {
     { link: '/MeetTheTeam/2025-2026', label: 'Current Team' },
     { link: '/MeetTheTeam/2024-2025', label: '2024-2025' },
     { link: '/MeetTheTeam/2023-2024', label: '2023-2024' },
-    { link: '/Competitions', label: 'Competitions' },
     { link: '/Alumni', label: 'Alumni' }
   ]
 
@@ -159,6 +158,21 @@ export default function Navbar () {
         >
           <Link href='/' className={styles.link} onClick={handleLinkClick}>
             <span>Home</span>
+          </Link>
+        </div>
+
+
+        <div
+          className={`${styles.linkWrapper} ${
+            router.pathname === '/Competitions' ? styles.activeLink : ''
+          }`}
+        >
+          <Link
+            href='/Competitions'
+            className={styles.link}
+            onClick={handleLinkClick}
+          >
+            <span>Competitions</span>
           </Link>
         </div>
         <div
