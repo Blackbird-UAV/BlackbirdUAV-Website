@@ -10,7 +10,7 @@ const teamData = {
         role: 'President',
         isPresident: true,
         isExecutive: false,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Kevin.jpg',
         description: 'Kevin leads Blackbird UAV toward innovation and success',
         extendedDescription:
           'Kevin leads Blackbird UAV, overseeing all technical and organizational operations. A fifth-year Aerospace Engineering student and UAV pilot, he ensures the executive functions effectively.',
@@ -23,7 +23,7 @@ const teamData = {
         role: 'Mechanical',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/DJ.jpg',
         description:
           '4th year Mech Eng. undergrad supporting as lead for the mech sub-team',
         extendedDescription:
@@ -37,7 +37,7 @@ const teamData = {
         role: 'Mechanical',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Sam.jpg',
         description:
           'Sam is a Mechanical Subteam Lead in his 4th-year of Aerospace Engineering',
         extendedDescription:
@@ -51,7 +51,7 @@ const teamData = {
         role: 'Mechanical',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Lucas.jpg',
         description: 'Lucas is a Mech Lead and Second Year Student',
         extendedDescription:
           'Lucas helps lead the Mech Team designing and manufacturing mechanisms and drones.',
@@ -64,7 +64,7 @@ const teamData = {
         role: 'Administrative',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Duaa.jpg',
         description:
           'Duaa is the BBUAV Admin Lead and a 4th year Aerospace Eng Student',
         extendedDescription:
@@ -78,7 +78,7 @@ const teamData = {
         role: 'Administrative / Finance',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Max.jpg',
         description:
           'Maxwell manages the financial aspects of Blackbird UAV',
         extendedDescription:
@@ -92,12 +92,12 @@ const teamData = {
         role: 'Administrative / External',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/JacobH.jpg',
         description:
           'Jacob is BBUAV\'s External Lead and an Aerospace Engineering Student.',
         extendedDescription:
           'As External Lead, Jacob oversees Blackbird UAV’s sponsorships, partnerships, events, and public relations, helping grow the team’s network and industry presence.',
-        link: 'https://www.linkedin.com/in/maxwell-magnusson'
+        link: 'https://www.linkedin.com/in/jacob-hamdani-149b6a22a/'
       },
       {
         id: 8,
@@ -106,7 +106,7 @@ const teamData = {
         role: 'Software',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/Jeremy2.jpg',
+        image: '/images/2025Headshots/Jeremy.jpg',
         description:
           'Jeremy is the software lead for Blackbird UAV',
         extendedDescription:
@@ -120,7 +120,7 @@ const teamData = {
         role: 'Software',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Gopesh.jpg',
         description:
           'Gopesh leads the development of competition system software.',
         extendedDescription:
@@ -134,7 +134,7 @@ const teamData = {
         role: 'Electrical',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Denise.jpg',
         description:
           'Aerospace Electronics and System student passionate about systems integration.',
         extendedDescription:
@@ -148,7 +148,7 @@ const teamData = {
         role: 'Operations',
         isPresident: false,
         isExecutive: true,
-        image: '/images/2025Headshots/...',
+        image: '/images/2025Headshots/Jivitesh.jpg',
         description:
           'Jivitesh is the BBUAV Operations Lead and a member since 2023',
         extendedDescription:
@@ -180,26 +180,26 @@ const teamData = {
         isPresident: false,
         isExecutive: false,
         isManager: true,
-        image: '/images/2025Headshots/Ali.jpg',
+        image: '/images/2025Headshots/...',
         description: 'Ali is a 3rd Year Computer Systems Engineering student',
         extendedDescription:
           'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
         link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
-      },
-      {
-        id: 19,
-        firstName: 'Jacob',
-        lastName: 'LastName',
-        role: 'Mechanical',
-        isPresident: false,
-        isExecutive: false,
-        isManager: true,
-        image: '/images/2025Headshots/AltJacob.jpg',
-        description: '',
-        extendedDescription:
-          '',
-        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
       }
+      // {
+      //   id: 19,
+      //   firstName: 'Jacob',
+      //   lastName: 'LastName',
+      //   role: 'Mechanical',
+      //   isPresident: false,
+      //   isExecutive: false,
+      //   isManager: true,
+      //   image: '/images/2025Headshots/AltJacob.jpg',
+      //   description: '',
+      //   extendedDescription:
+      //     '',
+      //   link: ''
+      // }
     ],
     advisors: [
       {
@@ -214,7 +214,7 @@ const teamData = {
           'Ryan assists the mechanical team with design decisions and project management.',
         extendedDescription:
           'Ryan is an advisor to the mechanical sub-team, assisting with design choices, project management, vehicle sizing and motor testing.',
-        link: 'http://www.linkedin.com/in/ ryan-whalen-065257252/'
+        link: 'http://www.linkedin.com/in/ryan-whalen-065257252/'
       },
       {
         id: 14,
@@ -255,7 +255,7 @@ const teamData = {
         description: 'Master student specializing in gas turbine aerodynamics.',
         extendedDescription:
           'Karl is an advisor for manufacturing and structures. He brings practical hands-on experience in composites and different manufacturing methods, focusing on continuous improvement through learning and experience.',
-        link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca'
+        link: 'https://www.linkedin.com/in/karlkurniawan/'
       },
       {
         id: 17,
@@ -269,7 +269,7 @@ const teamData = {
           'Manufacturing and CAD advisor with industry expertise.',
         extendedDescription:
           "As a 7th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
-        link: 'https://www.linkedin.com/in/nickmucci'
+        link: 'https://www.linkedin.com/in/nicholas-mucci-164b49185'
       }
     ]
   },
@@ -370,7 +370,7 @@ const teamData = {
           'Lead CAD designer and manufacturing co-lead with industry expertise.',
         extendedDescription:
           "As a 6th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
-        link: 'https://www.linkedin.com/in/nickmucci'
+        link: 'https://www.linkedin.com/in/nicholas-mucci-164b49185'
       }
     ],
     systems: [
