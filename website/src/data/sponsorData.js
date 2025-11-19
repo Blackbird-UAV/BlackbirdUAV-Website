@@ -48,12 +48,12 @@ const sponsors = [
     link: 'https://uav-en.tmotor.com/',
     tier: 'gold'
   },
-  {
-    name: 'Ansys',
-    logo: '/images/Sponsors/Sponsor_Ansys.png',
-    link: 'https://www.ansys.com/',
-    tier: 'gold'
-  },
+  // {
+  //   name: 'Ansys',
+  //   logo: '/images/Sponsors/Sponsor_Ansys.png',
+  //   link: 'https://www.ansys.com/',
+  //   tier: 'gold'
+  // },
   // {
   //   name: 'Competiton Composites Inc.',
   //   logo: '/images/Sponsors/Sponsor_CCI.png',
