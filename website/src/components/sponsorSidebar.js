@@ -205,9 +205,7 @@ const SponsorSidebar = () => {
                   variants={fadeInUp}
                   textAlign='center'
                 >
-                  If you have any questions, would like to discuss sponsorship
-                  opportunities, or wish to support us with a donation, feel
-                  free to reach out:
+                If you or your company are interested in sponsoring Blackbird UAV or have any questions, please reach out to sponsor@blackbirduav.ca to start the sponsorship process and learn about next steps.
                 </MotionText>
                 <Box
                   display='flex'
