@@ -124,7 +124,7 @@ const SponsorSidebar = () => {
                   >
                     <MotionButton
                       as={Link}
-                      href='/assets/bbuavsponsorpackage2025.pdf'
+                      href='/assets/bbuavsponsorpackage2025v1_1.pdf'
                       target='_blank'
                       isExternal
                       size='lg'
