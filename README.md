@@ -1,8 +1,15 @@
 # Blackbird UAV Website
 
-<div align="center">
+<div align="center" style="width:100%;">
+  <a href="https://blackbirduav.ca">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/836fb028-7dbe-4231-98d8-655b2403d845">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/271396bd-6481-4cd9-b735-d8180a4749e4">
+      <!-- Fallback (-->
+        <img src="https://github.com/user-attachments/assets/f6306836-6f36-4c2a-9885-75999f012aab" alt="Blackbird UAV" style="width: 100%; height: auto;">
+    </picture>
+  </a>
    
-![image](https://github.com/user-attachments/assets/53425d02-3118-4149-bd47-0a7f639d4f4b)
 
 [![Release](https://img.shields.io/badge/v1.4.9-306998?style=for-the-badge&logo=Release&label=Release&labelColor=4D4D4D)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/releases)
 [![Deploy to FTP](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml)
@@ -11,6 +18,7 @@
 [![Website Status](https://img.shields.io/website?down_message=offline&label=Dev%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fdev.blackbirduav.ca)](https://dev.blackbirduav.ca)
 
 </div>
+
 
 **Start Date**: October 4, 2024
 **Team Members / Developers**:
