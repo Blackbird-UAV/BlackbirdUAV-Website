@@ -98,12 +98,17 @@ const sponsors = [
     tier: 'partner'
   },
   {
-    name: 'Robotic Centre',
+    name: 'Robotics Centre',
     logo: '/images/Sponsors/Sponsor_RoboticsCentre.svg',
     link: 'https://robotics-centre.com/',
     tier: 'partner'
   },
-
+  {
+    name: 'Malleum',
+    logo: '/images/Sponsors/Sponsor_Malleum.svg',
+    link: 'https://malleum.com/',
+    tier: 'partner'
+  }
 ]
 
 export default sponsors
