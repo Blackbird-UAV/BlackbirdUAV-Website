@@ -146,7 +146,8 @@ export default function Sponsor () {
                   <Box
                     bg='white'
                     margin={2}
-                    padding={2}
+                    height={sponsor.boxStyles?.height || '100%'}
+                    padding={sponsor.boxStyles?.padding || 2}
                     borderRadius='md'
                     boxShadow='md'
                     overflow='hidden'
@@ -163,9 +164,9 @@ export default function Sponsor () {
                     <Image
                       src={sponsor.logo}
                       alt={sponsor.name}
-                      objectFit='contain'
-                      height='100px'
-                      width='100%'
+                      objectFit={sponsor.imageStyles?.objectFit || 'contain'}
+                      height={sponsor.imageStyles?.height || '100px'} 
+                      width={sponsor.imageStyles?.width || '100%'}   
                       minWidth='50px'
                     />
                   </Box>

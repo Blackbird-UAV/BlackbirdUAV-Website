@@ -105,9 +105,18 @@ const sponsors = [
   },
   {
     name: 'Malleum',
-    logo: '/images/Sponsors/Sponsor_Malleum.svg',
+    logo: '/images/Sponsors/Sponsor_Malleum.png',
     link: 'https://malleum.com/',
-    tier: 'partner'
+    tier: 'partner',
+    imageStyles: {
+      height: '300px', 
+      width: 'auto', 
+      objectFit: 'contain'
+    },
+    boxStyles: {
+    height: '125px',
+    padding: 4 
+    }
   }
 ]
 
