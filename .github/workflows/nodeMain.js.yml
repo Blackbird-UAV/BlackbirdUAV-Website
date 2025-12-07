@@ -1,4 +1,6 @@
 name: Node.js CI Main
+permissions:
+  contents: read
 
 on:
   push:
