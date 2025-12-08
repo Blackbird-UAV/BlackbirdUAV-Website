@@ -50,7 +50,7 @@
     "@lhci/cli": "^0.15.1",
     "@types/node": "24.2.0",
     "@types/react": "18.3.12",
-    "eslint": "^8",
+    "eslint": "^9",
     "eslint-config-next": "^15.2.1"
   }
 }
