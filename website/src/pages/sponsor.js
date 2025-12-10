@@ -313,7 +313,7 @@ export default function Sponsor () {
             >
               Thank you to our generous sponsors!
             </Heading>
-            {['Partner', 'Gold', /* 'Silver' , "Bronze" */, 'Support'].map(
+            {['Partner', 'Gold', 'Bronze' /* 'Silver' , 'Support'*/].map(
               (tier, index) => (
                 <motion.div
                   key={index}
