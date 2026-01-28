@@ -25,9 +25,7 @@ function BackToTopButton () {
   return (
     isVisible && (
       <button
-        className={`${styles.backToTopButton} ${
-          isVisible ? styles.visible : styles.hidden
-        }`}
+        className={`${styles.backToTopButton} ${styles.visible}`}
         onClick={scrollToTop}
       >
         <span className={styles.icon}>✈︎</span>
