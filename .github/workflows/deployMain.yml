@@ -27,19 +27,18 @@ jobs:
       - name: Cache Next.js build
         uses: actions/cache@v4
         with:
-          path: ./website/.next/cache
-          key: nextjs-${{ runner.os }}-${{ hashFiles('./website/package-lock.json') }}-${{ hashFiles('./website/src/**/*') }}
+          path: |
+            ./website/.next/cache
+          key: nextjs-${{ runner.os }}-20.x-${{ hashFiles('./website/package-lock.json') }}-${{ hashFiles('./website/src/**/*') }}
           restore-keys: |
-            nextjs-${{ runner.os }}-${{ hashFiles('./website/package-lock.json') }}-
-            nextjs-${{ runner.os }}-
+            nextjs-${{ runner.os }}-20.x-${{ hashFiles('./website/package-lock.json') }}-
+            nextjs-${{ runner.os }}-20.x-
 
       - name: Install Dependencies and Build
         run: |
-          npm install --no-warnings
+          npm install
           npm run build
         working-directory: ./website
-        env:
-          npm_config_loglevel: error
 
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

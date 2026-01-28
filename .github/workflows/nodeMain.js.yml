@@ -30,17 +30,16 @@ jobs:
       - name: Cache Next.js build
         uses: actions/cache@v4
         with:
-          path: ./website/.next/cache
-          key: nextjs-${{ runner.os }}-${{ hashFiles('./website/package-lock.json') }}-${{ hashFiles('./website/src/**/*') }}
+          path: |
+            ./website/.next/cache
+          key: nextjs-${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('./website/package-lock.json') }}-${{ hashFiles('./website/src/**/*') }}
           restore-keys: |
-            nextjs-${{ runner.os }}-${{ hashFiles('./website/package-lock.json') }}-
-            nextjs-${{ runner.os }}-
+            nextjs-${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('./website/package-lock.json') }}-
+            nextjs-${{ runner.os }}-${{ matrix.node-version }}-
 
       - name: Install dependencies
-        run: npm install --no-warnings
+        run: npm install
         working-directory: ./website
-        env:
-          npm_config_loglevel: error
 
       - name: Run linting
         run: npm run lint
