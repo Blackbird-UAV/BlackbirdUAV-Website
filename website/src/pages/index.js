@@ -78,7 +78,7 @@ const ChevronRight = (props) => (
   </svg>
 )
 
-export default function Home () {
+export default function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -214,19 +214,18 @@ export default function Home () {
             {!isSceneLoaded && (
               <div className={styles.loaderContainer}>
                 <div className={styles.loaderContent}>
-                  <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                  <Image src={BBUAVLoaderLogo} className={styles.logo} alt="Blackbird UAV Logo" />
                   <PuffLoader color='#ef1a2e' size={100} />
                 </div>
               </div>
             )}
             {/* Add fadeOut class when loader is fading */}
             <div
-              className={`${styles.loaderContainer} ${
-                isFadingOut ? styles.fadeOut : ''
-              }`}
+              className={`${styles.loaderContainer} ${isFadingOut ? styles.fadeOut : ''
+                }`}
             >
               <div className={styles.loaderContent}>
-                <Image src={BBUAVLoaderLogo} className={styles.logo} />
+                <Image src={BBUAVLoaderLogo} className={styles.logo} alt="Blackbird UAV Logo" />
                 <PuffLoader color='#ef1a2e' size={100} />
               </div>
             </div>
@@ -366,7 +365,7 @@ export default function Home () {
             >
               <h1>About Us</h1>
               <p>
-              Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
+                Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
               </p>
               <p>
                 BBUAV was established in 2009 as an extra-curricular program for
@@ -441,9 +440,8 @@ export default function Home () {
                 {slides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`${styles.slide} ${
-                      index === currentIndex ? styles.active : ''
-                    }`}
+                    className={`${styles.slide} ${index === currentIndex ? styles.active : ''
+                      }`}
                   >
                     <Image
                       src={slide.image}
@@ -475,9 +473,8 @@ export default function Home () {
             {slides.map((_, index) => (
               <span
                 key={index}
-                className={`${styles.dot} ${
-                  index === currentIndex ? styles.activeDot : ''
-                }`}
+                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''
+                  }`}
                 onClick={() => handleDotClick(index)}
               />
             ))}

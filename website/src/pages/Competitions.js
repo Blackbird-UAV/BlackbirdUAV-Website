@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import teamData from '@/data/teamData'
 import styles from '@/styles/Team.module.css'
 import Header from '@/components/Header'
@@ -33,10 +34,12 @@ const Competition = () => {
                 contentArrowStyle={{ borderRight: '7px solid  #333' }}
               >
                 {years[year].image && (
-                  <img
+                  <Image
                     src={years[year].image}
                     alt={`${year} Competition Team`}
                     className={styles.teamImage}
+                    width={500}
+                    height={300}
                     onError={(e) => {
                       console.error(`Failed to load image for year ${year}`)
                       e.target.onerror = null // Prevent infinite loop

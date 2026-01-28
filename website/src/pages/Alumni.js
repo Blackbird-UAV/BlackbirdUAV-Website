@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import teamData from '@/data/teamData'
 import { Text, TextInput } from '@mantine/core'
 import styles from '@/styles/Team.module.css'
@@ -51,10 +52,12 @@ const Alumni = () => {
           {filteredAlumni.map((member) => (
             <div key={member.id} className={styles.alumniItem}>
               <div className={styles.alumniImageContainer}>
-                <img
+                <Image
                   src={member.image}
                   alt={`${member.firstName} ${member.lastName}`}
                   className={styles.alumniImage}
+                  width={150}
+                  height={150}
                 />
               </div>
               <Text className={styles.alumniName}>
@@ -65,9 +68,8 @@ const Alumni = () => {
                   {member.role.split(' / ').map((role, index) => (
                     <span
                       key={index}
-                      className={`${styles.roleTag} ${
-                        styles[role.toLowerCase().replace(/ /g, '')]
-                      }`}
+                      className={`${styles.roleTag} ${styles[role.toLowerCase().replace(/ /g, '')]
+                        }`}
                     >
                       {role}
                     </span>

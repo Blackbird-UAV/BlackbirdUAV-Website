@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import teamData from '@/data/teamData'
 import { Text, TextInput } from '@mantine/core'
 import styles from '@/styles/Team.module.css'
@@ -175,10 +176,12 @@ const MeetTeam = () => {
                           <div className={styles.cardInner}>
                             {/* Front Side */}
                             <div className={styles.cardFront}>
-                              <img
+                              <Image
                                 src={member.image}
                                 alt={`${member.firstName} ${member.lastName}`}
                                 className={styles.memberImage}
+                                width={250}
+                                height={300}
                                 onError={(e) => {
                                   e.target.src =
                                     '/images/TeamHeadshots/memberPlaceholder.png'
@@ -209,13 +212,12 @@ const MeetTeam = () => {
                                 {member.firstName}
                               </Text>
                               <Text
-                                className={`${styles.lastName} ${
-                                  member.lastName.length > 12
-                                    ? styles.small
-                                    : member.lastName.length > 8
+                                className={`${styles.lastName} ${member.lastName.length > 12
+                                  ? styles.small
+                                  : member.lastName.length > 8
                                     ? styles.medium
                                     : ''
-                                }`}
+                                  }`}
                               >
                                 {member.lastName}
                               </Text>
@@ -247,13 +249,12 @@ const MeetTeam = () => {
                                   {member.firstName}
                                 </Text>
                                 <Text
-                                  className={`${styles.lastName} ${
-                                    member.lastName.length > 12
-                                      ? styles.small
-                                      : member.lastName.length > 8
+                                  className={`${styles.lastName} ${member.lastName.length > 12
+                                    ? styles.small
+                                    : member.lastName.length > 8
                                       ? styles.medium
                                       : ''
-                                  }`}
+                                    }`}
                                 >
                                   {member.lastName}
                                 </Text>
