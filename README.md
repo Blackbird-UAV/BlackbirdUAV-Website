@@ -26,7 +26,7 @@
 - [Daniel Lu](https://github.com/FinityFly)
 - [Marc Vidal](https://github.com/MarcVidalCodes)
 - [Jonah Pasquantonio](https://github.com/jonahp123)
-- [Teddy Kurita]()
+- [Teddy Kurita](https://github.com/EdwardKurita)
 
 ---
 
@@ -64,7 +64,7 @@ The website is deployed to an FTP server using **FTP Deploy Action** via GitHub 
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v16 or higher)
+- [Node.js](https://nodejs.org/) (v20 or higher)
 - [npm](https://www.npmjs.com/) (v7 or higher)
 - [Git](https://git-scm.com/)
 
@@ -109,30 +109,9 @@ The website is deployed to an FTP server using **FTP Deploy Action** via GitHub 
 
 ---
 
-## Contributing
-
-We welcome contributions from the community! If you'd like to contribute, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add your commit message here"
-   ```
-4. Push your branch:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-5. Open a pull request and describe your changes.
-
----
-
 ## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **GNU License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
