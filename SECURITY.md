@@ -17,7 +17,7 @@ We take security vulnerabilities seriously. If you discover a security issue, pl
 ### How to Report
 
 1. **Do NOT open a public issue** for security vulnerabilities
-2. Email us directly at **jeremyfriesen12@gmail.com** with:
+2. Email us directly at **contact@blackbirduav.ca** with:
    - A description of the vulnerability
    - Steps to reproduce the issue
    - Potential impact of the vulnerability
