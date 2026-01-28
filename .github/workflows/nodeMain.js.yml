@@ -18,18 +18,29 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
           cache-dependency-path: "./website/package-lock.json"
 
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: ./website/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('./website/package-lock.json') }}-${{ hashFiles('./website/src/**/*') }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('./website/package-lock.json') }}-
+            nextjs-${{ runner.os }}-
+
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-warnings
         working-directory: ./website
+        env:
+          npm_config_loglevel: error
 
       - name: Run linting
         run: npm run lint
