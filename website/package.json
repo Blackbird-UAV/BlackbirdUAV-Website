@@ -9,7 +9,7 @@
     "clean": "rimraf ./website/out/*",
     "copy-htaccess": "cp .htaccess ./out/.htaccess",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --dir src",
     "test": "standard --fix",
     "lighthouse": "lhci autorun --config=./lighthouserc.js && kill $!"
   },
