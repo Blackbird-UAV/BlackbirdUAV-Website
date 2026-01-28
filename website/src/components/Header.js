@@ -12,7 +12,7 @@ const Header = ({ imagePath, headerText, initialOffset, className }) => {
       if (headerRef.current) {
         const offset = window.scrollY
         const windowWidth = window.innerWidth
-        let adjustedOffset = initialOffset
+        let adjustedOffset
 
         // Responsive offset adjustments
         if (windowWidth <= 480) {
