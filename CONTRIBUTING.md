@@ -1,4 +1,4 @@
-## Contributing
+## CONTRIBUTING
 
 We welcome contributions from the community! If you'd like to contribute, please follow these steps:
 
