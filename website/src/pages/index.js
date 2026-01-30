@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import ScrollDownIndicator from '@/components/ScrollDownIndicator'
-import ThreeScene from '@/components/ThreeScene'
+
 import Accordion from '@/components/Accordion'
 import { motion } from 'framer-motion'
 import {
@@ -14,8 +14,7 @@ import {
   slideFromLeft,
   slideFromRight
 } from '@/components/animations'
-import { PuffLoader } from 'react-spinners' // Import a loader from react-spinners
-import BBUAVLoaderLogo from '../../public/logos/BBUAVLoaderLogo.png'
+
 import SponsorGrid from '@/components/sponsorGrid'
 import ParallaxScroll from '@/components/ParallaxScroll'
 import faqData from '@/data/faqData'
@@ -84,7 +83,7 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
-  const [isSceneLoaded, setIsSceneLoaded] = useState(false)
+
 
   const handleWindowScroll = () => {
     setScrollY(window.scrollY)
@@ -168,19 +167,7 @@ export default function Home() {
     }
   }, [])
 
-  // Fading out loader (set on a 0.5s delay for a 1s transition
-  const [isFadingOut, setIsFadingOut] = useState(false)
 
-  useEffect(() => {
-    if (isSceneLoaded) {
-      // Start fade-out effect after scene is loaded
-      const timer = setTimeout(() => {
-        setIsFadingOut(true) // Start fading out
-      }, 500) // Small delay to let the scene load
-
-      return () => clearTimeout(timer)
-    }
-  }, [isSceneLoaded])
 
   return (
     <div>
@@ -209,29 +196,7 @@ export default function Home() {
           <link rel='icon' href='/favicon.ico' />
         </Head>
 
-        {!isMobile && (
-          <>
-            {!isSceneLoaded && (
-              <div className={styles.loaderContainer}>
-                <div className={styles.loaderContent}>
-                  <Image src={BBUAVLoaderLogo} className={styles.logo} alt="Blackbird UAV Logo" />
-                  <PuffLoader color='#ef1a2e' size={100} />
-                </div>
-              </div>
-            )}
-            {/* Add fadeOut class when loader is fading */}
-            <div
-              className={`${styles.loaderContainer} ${isFadingOut ? styles.fadeOut : ''
-                }`}
-            >
-              <div className={styles.loaderContent}>
-                <Image src={BBUAVLoaderLogo} className={styles.logo} alt="Blackbird UAV Logo" />
-                <PuffLoader color='#ef1a2e' size={100} />
-              </div>
-            </div>
-            <ThreeScene onSceneLoaded={() => setIsSceneLoaded(true)} />
-          </>
-        )}
+
 
         <div className={styles.HomeContainer}>
           <div className={styles.contentWrapper}>
@@ -240,7 +205,7 @@ export default function Home() {
                 className={styles.name}
                 variants={slideFromLeftDelayed}
                 initial='initial'
-                animate={isSceneLoaded ? 'animate' : 'initial'}
+                animate='animate'
                 viewport={{ once: true, amount: 0.2 }}
               >
                 BLACKBIRD UAV
@@ -249,7 +214,7 @@ export default function Home() {
                 className={styles.subtitle}
                 variants={fadeInUpDelayed}
                 initial='initial'
-                animate={isSceneLoaded ? 'animate' : 'initial'}
+                animate='animate'
                 viewport={{ once: true, amount: 0.2 }}
               >
                 Fly Around and Find Out
@@ -259,7 +224,7 @@ export default function Home() {
                   className={styles.mobileButtonSection}
                   variants={fadeInUpDelayed}
                   initial='initial'
-                  animate={isSceneLoaded ? 'animate' : 'initial'}
+                  animate='animate'
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <Link href='/sponsor#donate' className={styles.donateButton}>
@@ -276,7 +241,7 @@ export default function Home() {
                 className={styles.buttonSection}
                 variants={fadeInUpDelayed}
                 initial='initial'
-                animate={isSceneLoaded ? 'animate' : 'initial'}
+                animate='animate'
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <Link href='/sponsor#donate' className={styles.donateButton}>
@@ -308,7 +273,7 @@ export default function Home() {
         <div id='firstDiv' className={styles.cloudContainer}>
           <motion.div
             initial='hidden'
-            animate={isSceneLoaded ? 'visible' : 'hidden'}
+            animate='visible'
             variants={cloudLeftVariants}
           >
             <Image
@@ -324,7 +289,7 @@ export default function Home() {
           </motion.div>
           <motion.div
             initial='hidden'
-            animate={isSceneLoaded ? 'visible' : 'hidden'}
+            animate='visible'
             variants={cloudRightVariants}
           >
             <Image
