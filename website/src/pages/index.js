@@ -81,7 +81,6 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
 
 
