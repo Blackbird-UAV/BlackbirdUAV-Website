@@ -52,7 +52,7 @@
     "@types/node": "24.2.0",
     "@types/react": "18.3.12",
     "eslint": "^9",
-    "eslint-config-next": "^15.2.1"
+    "eslint-config-next": "^16.1.6"
   },
   "overrides": {
     "tmp": "^0.2.4"
