@@ -154,7 +154,6 @@ export default function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 600)
       setIsTablet(window.innerWidth <= 1050)
     }
 
