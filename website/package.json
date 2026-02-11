@@ -14,7 +14,7 @@
     "lighthouse": "lhci autorun --config=./lighthouserc.js && kill $!"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.31.0",
+    "@chakra-ui/react": "^3.32.0",
     "@emotion/react": "^11.13.5",
     "@eslint/config-array": "^0.20.0",
     "@eslint/object-schema": "^3.0.0",
@@ -24,6 +24,9 @@
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@mantine/carousel": "^8.3.14",
     "@mantine/core": "^8.3.13",
+    "@fortawesome/react-fontawesome": "^3.2.0",
+    "@mantine/carousel": "^8.3.13",
+    "@mantine/core": "^8.3.14",
     "@mantine/hooks": "^8.3.13",
     "@next/third-parties": "^16.0.10",
     "@react-three/drei": "^9.120.4",

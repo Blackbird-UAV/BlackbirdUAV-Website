@@ -37,7 +37,7 @@ jobs:
       - name: Install Dependencies and Build
         run: |
           npm install
-          npm run build
+          npm run prod
         working-directory: ./website
 
       - name: Upload to FTP
