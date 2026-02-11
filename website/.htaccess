@@ -1,6 +1,9 @@
 RewriteEngine On
 RewriteBase /
 
+# Redirect old sponsorship package PDF to new one
+RewriteRule ^assets/Blackbird%20UAV%20Sponsorship%20Package%202024-2025\.pdf$ /assets/bbuavsponsorpackage2025.pdf [R=301,L]
+
 # Rewrite clean URLs to .html files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
