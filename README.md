@@ -15,7 +15,6 @@
 [![Deploy to FTP](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml)
 
 [![Website Status](https://img.shields.io/website?down_message=offline&label=Main%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fblackbirduav.ca)](https://blackbirduav.ca)
-[![Website Status](https://img.shields.io/website?down_message=offline&label=Dev%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fdev.blackbirduav.ca)](https://dev.blackbirduav.ca)
 
 </div>
 
