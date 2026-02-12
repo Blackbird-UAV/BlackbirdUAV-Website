@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons'
 import Header from '@/components/Header'
 import Head from 'next/head'
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 const DURATIONS = {
@@ -23,7 +23,6 @@ const MeetTeam = () => {
   const { year } = router.query
 
   const [searchQuery, setSearchQuery] = useState('')
-  const [filteredMembers, setFilteredMembers] = useState([])
 
   const team = year && teamData[year] ? teamData[year] : null
 
@@ -44,7 +43,7 @@ const MeetTeam = () => {
 
   const teamDescription = team ? team.description : ''
 
-  useEffect(() => {
+  const filteredMembers = useMemo(() => {
     if (searchQuery && team) {
       const allMembers = Object.keys(team).reduce((acc, subteam) => {
         if (subteam !== 'description') {
@@ -53,15 +52,13 @@ const MeetTeam = () => {
         return acc
       }, [])
 
-      const filtered = allMembers.filter((member) =>
+      return allMembers.filter((member) =>
         `${member.firstName} ${member.lastName}`
           .toLowerCase()
           .includes(searchQuery.toLowerCase())
       )
-      setFilteredMembers(filtered)
-    } else {
-      setFilteredMembers([])
     }
+    return []
   }, [searchQuery, team])
 
   const handleSearch = (e) => {
