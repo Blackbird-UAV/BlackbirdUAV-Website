@@ -31,7 +31,7 @@
     "@tabler/icons-react": "^3.33.0",
     "embla-carousel-react": "^8.0.0",
     "fortawesome": "^0.0.1-security",
-    "framer-motion": "^12.34.0",
+    "framer-motion": "^12.34.3",
     "ftp-deploy": "^2.4.7",
     "glob": "^13.0.1",
     "motion": "^12.34.3",
