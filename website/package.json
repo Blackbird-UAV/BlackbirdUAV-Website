@@ -33,7 +33,7 @@
     "fortawesome": "^0.0.1-security",
     "framer-motion": "^12.34.3",
     "ftp-deploy": "^2.4.7",
-    "glob": "^13.0.1",
+    "glob": "^13.0.6",
     "motion": "^12.34.3",
     "next": "^16.1.5",
     "react": "^18.3.1",
