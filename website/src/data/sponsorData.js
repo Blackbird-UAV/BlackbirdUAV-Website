@@ -117,7 +117,20 @@ const sponsors = [
     // height: '125px',
     // padding: 4 
     // }
+  },
+  {
+    name: 'KF Aerospace',
+    logo: '/images/Sponsors/Sponsor_KF.png',
+    link: 'https://www.kfaero.ca/',
+    tier: 'gold'
+  },
+  {
+    name: 'CarteNav',
+    logo: '/images/Sponsors/Sponsor_CarteNav.svg',
+    link: 'https://cartenav.com/',
+    tier: 'gold'
   }
+
 ]
 
 export default sponsors
