@@ -24,7 +24,7 @@
     "@fortawesome/react-fontawesome": "^3.2.0",
     "@mantine/carousel": "^8.3.15",
     "@mantine/core": "^8.3.14",
-    "@mantine/hooks": "^8.3.14",
+    "@mantine/hooks": "^8.3.16",
     "@next/third-parties": "^16.0.10",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
