@@ -55,6 +55,9 @@
     "eslint-config-next": "^16.1.5"
   },
   "overrides": {
-    "tmp": "^0.2.4"
+    "tmp": "^0.2.4",
+    "ftp-deploy": {
+      "minimatch": "^9.0.7"
+    }
   }
 }
