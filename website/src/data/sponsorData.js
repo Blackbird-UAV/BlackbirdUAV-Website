@@ -129,6 +129,12 @@ const sponsors = [
     logo: '/images/Sponsors/Sponsor_CarteNav.svg',
     link: 'https://cartenav.com/',
     tier: 'gold'
+  },
+  {
+    name: 'Babcock',
+    logo: '/images/Sponsors/Sponsor_Babcock.png',
+    link: 'https://babcockcanada.com/',
+    tier: 'gold'
   }
 
 ]
