@@ -135,6 +135,12 @@ const sponsors = [
     logo: '/images/Sponsors/Sponsor_Babcock.png',
     link: 'https://babcockcanada.com/',
     tier: 'gold'
+  },
+  {
+    name: 'MHIRJ',
+    logo: '/images/Sponsors/Sponsor_MHIRJ.png',
+    link: 'https://mhirj.com/',
+    tier: 'partner'
   }
 
 ]
