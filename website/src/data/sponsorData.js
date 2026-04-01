@@ -72,12 +72,12 @@ const sponsors = [
   //   link: 'https://www.teledyne.com/',
   //   tier: 'silver'
   // },
-   {
+  {
      name: 'Tattu',
      logo: '/images/Sponsors/Sponsor_Tattu.png',
      link: 'https://www.genstattu.com/',
      tier: 'silver'
-   },
+  },
   // {
   //   name: 'Print Parrot',
   //   logo: '/images/Sponsors/Sponsor_PrintParrot.png',
