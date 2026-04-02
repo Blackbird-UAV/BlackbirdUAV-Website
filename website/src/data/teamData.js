@@ -1,5 +1,5 @@
 const teamData = {
-    '2025-2026': {
+  '2025-2026': {
     description:
       'This is the current Blackbird UAV team for the 2026 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals.',
     Executives: [
@@ -185,6 +185,21 @@ const teamData = {
         extendedDescription:
           'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
         link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
+      },
+      {
+        id: 30,
+        firstName: 'Ryan',
+        lastName: 'Wong',
+        role: 'Mechanical',
+        isPresident: false,
+        isExecutive: false,
+        isManager: true,
+        image: '/images/TeamHeadshots/RyanW.JPG',
+        description:
+          'Ryan is a 3rd year Aerospace (A) Student on the Mechanical Team',
+        extendedDescription:
+          'Ryan is currently a member under the mechanical sub-team. He is currently involved in designing various components using SolidWorks.',
+        link: 'https://www.linkedin.com/in/rwong23'
       }
       // {
       //   id: 19,
@@ -974,13 +989,13 @@ const teamData = {
           { firstName: 'DJ', role: 'Flight' },
           { firstName: 'Karl', role: 'Flight' },
           { firstName: 'Nick', role: 'Flight' },
-          { firstName: 'Kevin', role: 'Flight'  },
-          { firstName: 'Jed', role: 'Operations'  },
-          { firstName: 'Jivitesh', role: 'Operations '  },
-          { firstName: 'Denise', role: 'Systems'  },
+          { firstName: 'Kevin', role: 'Flight' },
+          { firstName: 'Jed', role: 'Operations' },
+          { firstName: 'Jivitesh', role: 'Operations ' },
+          { firstName: 'Denise', role: 'Systems' },
           { firstName: 'Gopesh', role: 'Systems' },
-          { firstName: 'Ryan', role: 'Manufacturing'  },
-          { firstName: 'Owen', role: 'Manufacturing'  },
+          { firstName: 'Ryan', role: 'Manufacturing' },
+          { firstName: 'Owen', role: 'Manufacturing' },
           { firstName: 'Samuel', role: 'Manufacturing' },
           { firstName: 'Timothy', role: 'Manufacturing' },
           { firstName: 'Duaa', role: 'Support' },
