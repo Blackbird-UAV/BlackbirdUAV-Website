@@ -198,7 +198,7 @@ const teamData = {
         description:
           'Ryan is a 3rd year Aerospace (A) Student on the Mechanical Team',
         extendedDescription:
-          'Ryan is currently a member under the mechanical sub-team. He is currently involved in designing various components using SolidWorks.',
+          'Ryan is a manager for the mechanical sub-team. His role includes component optimization and landing leg resizing. ',
         link: 'https://www.linkedin.com/in/rwong23'
       }
       // {
