@@ -25,7 +25,7 @@
     "@mantine/carousel": "^8.3.18",
     "@mantine/core": "^8.3.17",
     "@mantine/hooks": "^8.3.17",
-    "@next/third-parties": "^16.0.10",
+    "@next/third-parties": "^16.2.2",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@tabler/icons-react": "^3.41.1",
