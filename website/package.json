@@ -23,7 +23,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
     "@mantine/carousel": "^8.3.18",
-    "@mantine/core": "^8.3.17",
+    "@mantine/core": "^9.1.1",
     "@mantine/hooks": "^8.3.17",
     "@next/third-parties": "^16.2.4",
     "@react-three/drei": "^9.120.4",
