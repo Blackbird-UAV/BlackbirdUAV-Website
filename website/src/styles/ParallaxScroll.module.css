@@ -85,6 +85,41 @@
   padding: 0;
 }
 
+/* Holds either a deferred placeholder or the real embed once it mounts. */
+.embedSlot {
+  width: 100%;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  /* Roughly the height of a loaded embed, so mounting the real one
+     doesn't shove the rest of the column around. */
+  min-height: 400px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+}
+
+.placeholderIcon {
+  opacity: 0.5;
+}
+
+.placeholderLink {
+  color: #b9b9b9;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.placeholderLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .captionBox {
   margin-top: 1rem;
   background-color: rgba(0, 0, 0, 0.7);
