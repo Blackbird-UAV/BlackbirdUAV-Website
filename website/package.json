@@ -35,14 +35,14 @@
     "ftp-deploy": "^2.4.7",
     "glob": "^13.0.6",
     "motion": "^12.38.0",
-    "next": "^16.2.3",
+    "next": "^16.2.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^10.0.3",
     "react-social-media-embed": "^2.5.18",
     "react-spinners": "^0.17.0",
     "react-vertical-timeline-component": "^4.0.0",
-    "sharp": "^0.34.1",
+    "sharp": "^0.35.3",
     "three": "^0.183.2",
     "three-mesh-bvh": "^0.9.9"
   },
@@ -55,7 +55,18 @@
     "eslint-config-next": "^16.2.1"
   },
   "overrides": {
-    "tmp": "^0.2.4",
+    "tmp": "^0.2.6",
+    "postcss": ">=8.5.18",
+    "brace-expansion": ">=5.0.8",
+    "js-yaml": ">=4.1.2",
+    "uuid": ">=11.1.0",
+    "qs": ">=6.14.3",
+    "@babel/core": ">=8.0.1",
+    "sharp": "$sharp",
+    "basic-ftp": ">=5.3.1",
+    "body-parser": ">=1.20.6",
+    "path-to-regexp": ">=0.1.13",
+    "ws": ">=8.21.0",
     "ftp-deploy": {
       "minimatch": "^9.0.7"
     }
