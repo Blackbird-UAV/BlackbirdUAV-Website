@@ -38,7 +38,11 @@ jobs:
             nextjs-${{ runner.os }}-${{ matrix.node-version }}-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        working-directory: ./website
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
         working-directory: ./website
 
       - name: Run linting

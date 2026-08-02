@@ -16,3 +16,22 @@ RewriteRule ^MeetTheTeam/([^/]+)/?$ MeetTheTeam/[year].html [L]
 
 # Serve index.html for root
 DirectoryIndex index.html
+
+# Disable directory listing so unlinked files aren't enumerable
+Options -Indexes
+
+# Security response headers
+<IfModule mod_headers.c>
+  # Stop browsers from MIME-sniffing a response away from its declared type
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Clickjacking protection. SAMEORIGIN (not DENY) so the site can still be
+  # framed by our own pages if needed.
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Send the full referrer to ourselves, origin-only cross-origin, nothing on downgrade
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # No page here needs these device APIs
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+</IfModule>
