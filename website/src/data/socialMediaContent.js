@@ -1,37 +1,37 @@
 const socialMediaContent = [
   // Linkedin posts
   {
-    platform: 'Linkedin',
+    platform: 'LinkedIn',
     title: 'Blackbird UAV',
     platformIcon: '/logos/logo_linkedin.png',
     column: 1,
     embedLink:
-      'https://www.linkedin.com/embed/feed/update/urn:li:share:7326064079662440448?collapsed=1',
-    link: 'https://www.linkedin.com/posts/blackbird-uav_blackbirduav-aeac2025-leadership-activity-7326064081201676288-VDcH',
+      'https://www.linkedin.com/embed/feed/update/urn:li:share:7475663570379108353?collapsed=1',
+    link: 'https://www.linkedin.com/feed/update/urn:li:share:7475663570379108353/',
     caption:
-      'Meet our 2024 2025 Blackbird UAV Executive Team. This group of dedicated student leaders keeps everything running smoothly. They lead subteams, manage operations, and help drive the team forward...'
+      'Blackbird UAV Executive Applications Are Now Open! Interested in helping lead Blackbird UAV for the 2026-2027 season? Everyone is welcome to apply, whether you are new to Blackbird or already involved...'
   },
   {
-    platform: 'Linkedin',
+    platform: 'LinkedIn',
     title: 'Blackbird UAV',
     platformIcon: '/logos/logo_linkedin.png',
     column: 1,
     embedLink:
-      'https://www.linkedin.com/embed/feed/update/urn:li:share:7300311804457431040?collapsed=1',
-    link: 'https://www.linkedin.com/posts/aerial-evolution-association-of-canada_carleton-university-blackbird-uav-team-activity-7300907543059447809-INIO',
+      'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7472685155506102272?collapsed=1',
+    link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7472685155506102272/',
     caption:
-      'Carleton University & Blackbird UAV Team Spotlight - 2025 AEAC Student UAS Competition.'
+      'As we wrap up another incredible competition season, we want to extend a huge thank you to all of our sponsors for their continued support of Blackbird UAV. Your contributions make it possible for our team to design, build, test, and fly...'
   },
   {
-    platform: 'Linkedin',
+    platform: 'LinkedIn',
     title: 'Blackbird UAV',
     platformIcon: '/logos/logo_linkedin.png',
     column: 1,
     embedLink:
-      'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7206318685295108097?collapsed=1',
-    link: 'https://www.linkedin.com/posts/blackbird-uav_apogeeplatform-student-competition-activity-7206318693780185088-sxua',
+      'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7465559788521967616?collapsed=1',
+    link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7465559788521967616/',
     caption:
-      "Our #ApogeePlatform may have managed a speed record! Two weeks ago in Alma, Québec, we flew our vehicle, QBS-1 Apogee for the 15th annual Aerial Evolution Association of Canada's #Student #Competition."
+      'This weekend, Blackbird UAV had the chance to represent Carleton University at the annual Aerial Evolution Association of Canada Student Competition at Area X.O!'
   },
   // Instagram posts
   {
@@ -39,55 +39,54 @@ const socialMediaContent = [
     title: '@blackbird.uav',
     platformIcon: '/logos/logo_instagram.png',
     column: 2,
-    link: 'https://www.instagram.com/p/DDH85N8xzbI/',
+    link: 'https://www.instagram.com/p/DZFz6oRFbEG/',
     caption:
-      'Giving Tuesday is here! It’s your chance to help keep our club up and running while supporting our journey to success. This year, we’re taking on a series of ...'
+      "Introducing Leviathan! After a year of design, testing, prototyping, and manufacturing, we're excited to finally reveal Leviathan, Blackbird UAV's 2026 AEAC Student Competition Vehicle. Built for urban firefighting missions, Leviathan is a fully modular quadcopter..."
   },
   {
     platform: 'Instagram',
     title: '@blackbird.uav',
     platformIcon: '/logos/logo_instagram.png',
     column: 2,
-    link: 'https://www.instagram.com/blackbird.uav/p/DC17kaMxMtk/',
+    link: 'https://www.instagram.com/p/DWmHJ-iFSwC/',
     caption:
-      'Hey everyone! Come by the merch fair in the EDC Atrium! And maybe even pick up the merch you already bought early 👀. We will be here from 10 am - 5:30 pm.'
+      "Meet Blackbird UAV's 2026 AEAC Student Competition Team! After months of hard work and preparation, we're excited to introduce the 14 members representing Blackbird at this year's competition."
+  },
+  {
+    platform: 'Instagram',
+    title: '@blackbird.uav',
+    platformIcon: '/logos/logo_instagram.png',
+    column: 2,
+    link: 'https://www.instagram.com/p/DXHp5qsFYoH/',
+    caption:
+      "Testing, testing, testing! With warmer weather rolling in, we've been frequent flyers lately. Things are ramping up as we get closer to competition!"
   },
   {
     platform: 'Instagram',
     title: '@blackbird.uav',
     platformIcon: '/logos/logo_instagram.png',
     column: 3,
-    link: 'https://www.instagram.com/p/DCIR-6DvDOA/',
+    link: 'https://www.instagram.com/p/DWpaxRqCYtL/',
     caption:
-      'Our Small UAV Glider Event was a blast! 🚀. Seeing everyone come together, brainstorm, and bring their unique designs to life is something our club always looks forward to.'
-  },
-  // Discord newsletter
-  {
-    platform: 'Discord',
-    title: 'Duaa - Admin Co. Lead',
-    platformIcon: '/logos/logo_discord.png',
-    column: 3,
-    link: '/images/merch.png',
-    caption:
-      'I hope everyone had a great break! Exciting news: we still have merch available for purchase! If you missed your chance to order last fall, now’s the time to grab some before we run out.'
+      "We're excited to welcome MHIRJ as a new sponsor of Blackbird UAV! MHIRJ is a leader in aviation services, providing engineering expertise, maintenance, and support for regional aircraft programs around the world."
   },
   {
-    platform: 'Discord',
-    title: 'DJ - VP & Systems Lead',
-    platformIcon: '/logos/logo_discord.png',
+    platform: 'Instagram',
+    title: '@blackbird.uav',
+    platformIcon: '/logos/logo_instagram.png',
     column: 3,
-    link: '/images/team2.jpg',
+    link: 'https://www.instagram.com/p/DWb-3zZiTs2/',
     caption:
-      'We are having an open club meeting this Sunday the 19th in CB 3103 at 1pm. Feel free to drop by if you are looking to get involved!'
+      'Blackbird will be competing in the SAE Aero Regular Class next year! The goal is to design, build, and fly a fixed wing UAV capable of carrying the maximum payload.'
   },
   {
-    platform: 'Discord',
-    title: 'Felix - President',
-    platformIcon: '/logos/logo_discord.png',
+    platform: 'Instagram',
+    title: '@blackbird.uav',
+    platformIcon: '/logos/logo_instagram.png',
     column: 3,
-    link: '/images/JoinUsMedia.jpg',
+    link: 'https://www.instagram.com/p/DRZ0z7LDmfO/',
     caption:
-      "Open Doors TOMORROW. Good day @everyone! It's been a while since we posted here but things have been moving. Tomorrow (Sunday, March 9th) the club will have a meeting at Canal Building room 3103 starting at 13:00 for an hour+. Anyone can come!"
+      'Meet the Blackbird UAV Leadership Team! Our Execs and Managers are here to lead our subteams and projects, oversee club operations, support our members, and keep Blackbird UAV flying forward.'
   }
 ]
 
