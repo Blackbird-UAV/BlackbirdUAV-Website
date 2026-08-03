@@ -975,11 +975,44 @@ const teamData = {
     description:
       'This page lists all the competition teams of Blackbird UAV. Each section represents a different year.',
     years: {
+      2026: {
+        description: `
+          <p>Blackbird's 2nd Quadcopter built from scratch.</p>
+          <p>The team received the team spirit award for recognizing sportsmanship and support for other teams.</p>
+          <p>Location: Ottawa, ON</p>
+          <p>A modular quadcopter was designed to detect and extinguish urban fires, as well as carry a payload up to 4.5 kg. The team sucessfully completed task one of the mission, and were a fantastic host all-weekend long for the travelling teams in Ottawa.</p>
+          <p>Read More: <a href="https://charlatan.ca/blackbird-uav/">LINK</a></p>
+        `,
+        award: { variant: 'innovation', label: 'Team Spirit Award'},
+        image: '/images/comp2026.jpg',
+        members: [
+          { firstName: 'Kevin', lastName: 'Fernando', role: 'Club president' },
+          { firstName: 'DJ', role: 'Flight' },
+          { firstName: 'Sam', role: 'Flight' },
+          { firstName: 'Gopesh', role: 'Flight' },
+          { firstName: 'Denise', role: 'Flight' },
+          { firstName: 'Jivitesh', role: 'Operations' },
+          { firstName: 'Parsa', role: 'Operations' },
+          { firstName: 'Eleena', role: 'Operations' },
+          { firstName: 'J.W.', role: 'Electrical' },
+          { firstName: 'Felipe', role: 'Software' },
+          { firstName: 'Ryan', role: 'Mechanical' },
+          { firstName: 'Lucas', role: 'Mechanical' },
+          { firstName: 'Faraz', role: 'Mechanical' },
+          { firstName: 'Adam', role: 'Mechanical' },
+          { firstName: 'Liam', role: 'Mechanical' },
+          { firstName: 'Louis', role: 'Mechanical' },
+          { firstName: 'Duaa', role: 'Support' },
+          { firstName: 'Max', role: 'Support' },
+          { firstName: 'Jacob', role: 'Support' },
+          { firstName: 'Viveca', role: 'Support' },
+        ]
+      },
       2025: {
         description: `
           <p>Second aircraft made completely from scratch since COVID by Blackbird UAV.</p>
           <p>Team placed 3rd overall at the national UAV competition.</p>
-          <p>Location: Medicine Hat, Alberta.</p>
+          <p>Location: Medicine Hat, Alberta</p>
           <p>A modular quadcopter was designed to detect and suppress wildfire hotspots. Despite major setbacks, including two motor failures and a broken Raspberry Pi, the team successfully completed the mission thanks to support from Queen’s Aerospace Design Team and UVic Aero.</p>
           <p>Read More: <a href="https://carleton.ca/mae/2025/congrats-to-blackbird-uav-team/">LINK</a></p>
         `,
@@ -1010,7 +1043,7 @@ const teamData = {
           <p>Team won the 2nd innovation award in its history.</p>
           <p>Ground Speed record broken with 156 km/h.</p>
           <p>Vehicle was still a quadplane, and still controlled over the internet.</p>
-          <p>Location: Alma, Québec.</p>
+          <p>Location: Alma, Québec</p>
           <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADx9pYcBep3DuqdyzH94hYcRvLehjvlYwas">LINK</a></p>
         `,
         award: { variant: 'innovation', label: 'Innovation Award' },
@@ -1043,7 +1076,7 @@ const teamData = {
           <p>First team to run a vehicle completely over the internet instead of radio control.</p>
           <p>First team to successfully transition flight modes in any vehicle (vertical flight to horizontal flight and back).</p>
           <p>Potential ground speed record of 120 km/h.</p>
-          <p>Location: Alma, Québec.</p>
+          <p>Location: Alma, Québec</p>
           <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">LINK</a></p>
         `,
         award: { variant: 'gold', label: '1st Place', detail: 'Phase 2' },
@@ -1064,7 +1097,7 @@ const teamData = {
         description: `
           <p>First year of in-person comp after COVID.</p>
           <p>Team only observed.</p>
-          <p>Location: Southport, Manitoba.</p>
+          <p>Location: Southport, Manitoba</p>
         `,
         image: '/images/comp2022.png',
         members: [
