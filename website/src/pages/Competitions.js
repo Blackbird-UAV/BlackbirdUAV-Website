@@ -18,7 +18,6 @@ const Competition = () => {
       <Header
         imagePath='/images/team4.jpg'
         headerText='Competition Teams'
-        initialOffset={200}
         className={styles.teamHeader}
       />
       <div className={styles.container}>

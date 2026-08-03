@@ -111,7 +111,6 @@ const MeetTeam = () => {
       <Header
         imagePath='/images/3.jpg'
         headerText='Our Team'
-        initialOffset={200}
         className={styles.teamHeader}
       />
       <div className={styles.container}>

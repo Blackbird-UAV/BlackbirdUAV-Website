@@ -21,7 +21,6 @@ const Alumni = () => {
       <Header
         imagePath='/images/team4.jpg'
         headerText='Our Alumni'
-        initialOffset={200}
         className={styles.teamHeader}
       />
       <div className={styles.alumniContainer}>
