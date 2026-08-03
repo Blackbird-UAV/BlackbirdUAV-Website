@@ -1,0 +1,60 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.6rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 1rem;
+  line-height: 1;
+  /* Let the detail drop to a second line on very narrow cards rather than
+     overflowing; the label and detail each stay intact. */
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.label {
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.detail {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+/* Tint the pill to match its medal so placements read at a glance. */
+.gold {
+  background-color: rgba(247, 210, 104, 0.14);
+  border-color: rgba(247, 210, 104, 0.45);
+}
+
+.silver {
+  background-color: rgba(230, 233, 238, 0.12);
+  border-color: rgba(230, 233, 238, 0.4);
+}
+
+.bronze {
+  background-color: rgba(232, 168, 116, 0.14);
+  border-color: rgba(232, 168, 116, 0.45);
+}
+
+.innovation {
+  background-color: rgba(143, 180, 255, 0.14);
+  border-color: rgba(143, 180, 255, 0.45);
+}
+
+@media (max-width: 600px) {
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.75rem 0.35rem 0.5rem;
+  }
+}

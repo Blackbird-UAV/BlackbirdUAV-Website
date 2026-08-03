@@ -983,6 +983,7 @@ const teamData = {
           <p>A modular quadcopter was designed to detect and suppress wildfire hotspots. Despite major setbacks, including two motor failures and a broken Raspberry Pi, the team successfully completed the mission thanks to support from Queen’s Aerospace Design Team and UVic Aero.</p>
           <p>Read More: <a href="https://carleton.ca/mae/2025/congrats-to-blackbird-uav-team/">LINK</a></p>
         `,
+        award: { variant: 'bronze', label: '3rd Place', detail: 'Overall' },
         image: '/images/comp2025.jpg',
         members: [
           { firstName: 'Felix', lastName: 'Chenier', role: 'Club president' },
@@ -1012,6 +1013,7 @@ const teamData = {
           <p>Location: Alma, Québec.</p>
           <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADx9pYcBep3DuqdyzH94hYcRvLehjvlYwas">LINK</a></p>
         `,
+        award: { variant: 'innovation', label: 'Innovation Award' },
         image: '/images/comp2024.png',
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
@@ -1044,6 +1046,7 @@ const teamData = {
           <p>Location: Alma, Québec.</p>
           <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">LINK</a></p>
         `,
+        award: { variant: 'gold', label: '1st Place', detail: 'Phase 2' },
         image: '/images/comp2023.png',
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },

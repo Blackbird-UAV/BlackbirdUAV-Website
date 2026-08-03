@@ -3,6 +3,7 @@ import Image from 'next/image'
 import teamData from '@/data/teamData'
 import styles from '@/styles/Team.module.css'
 import Header from '@/components/Header'
+import AwardBadge from '@/components/AwardBadge'
 import {
   VerticalTimeline,
   VerticalTimelineElement
@@ -48,6 +49,13 @@ const Competition = () => {
                   />
                 )}
                 <div className={styles.yearTitle}>{year}</div>
+                {years[year].award && (
+                  <AwardBadge
+                    variant={years[year].award.variant}
+                    label={years[year].award.label}
+                    detail={years[year].award.detail}
+                  />
+                )}
                 <div
                   className={styles.yearDescription}
                   dangerouslySetInnerHTML={{ __html: years[year].description }}
