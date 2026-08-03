@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { motion } from 'framer-motion'
 import styles from '@/styles/Header.module.css'
 
-const Header = ({ imagePath, headerText, initialOffset = 0, className }) => {
+const Header = ({ imagePath, headerText, className }) => {
   const headerRef = useRef(null)
   const parallaxAmplitude = 0.5
 
@@ -38,7 +38,7 @@ const Header = ({ imagePath, headerText, initialOffset = 0, className }) => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
     }
-  }, [parallaxAmplitude, initialOffset])
+  }, [parallaxAmplitude])
 
   return (
     <header
@@ -62,7 +62,7 @@ const Header = ({ imagePath, headerText, initialOffset = 0, className }) => {
 Header.propTypes = {
   imagePath: PropTypes.string.isRequired,
   headerText: PropTypes.string.isRequired,
-  initialOffset: PropTypes.number
+  className: PropTypes.string
 }
 
 export default Header
