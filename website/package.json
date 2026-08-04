@@ -10,7 +10,7 @@
     "copy-htaccess": "cp .htaccess ./out/.htaccess",
     "start": "next start",
     "lint": "eslint src",
-    "test": "standard --fix",
+    "test": "eslint src",
     "lighthouse": "lhci autorun --config=./lighthouserc.js && kill $!"
   },
   "dependencies": {
