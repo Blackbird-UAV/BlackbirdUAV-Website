@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation } from 'motion/react'
 import { fadeInUpSlower } from '@/components/animations'
 
 const FadeInWhenVisible = ({ children }) => {

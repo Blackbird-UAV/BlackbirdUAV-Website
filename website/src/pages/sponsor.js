@@ -8,7 +8,7 @@ import {
   Image,
   useBreakpointValue
 } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import Sidebar from '@/components/sponsorSidebar'
 import Head from 'next/head'
 import sponsors from '@/data/sponsorData'

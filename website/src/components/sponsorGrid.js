@@ -1,6 +1,6 @@
 import { Grid, GridItem, Box, Link, Image } from '@chakra-ui/react'
 import { useRef, useState, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView } from 'motion/react'
 import sponsors from '@/data/sponsorData'
 
 const TIER_COLUMN_CONFIG = {
