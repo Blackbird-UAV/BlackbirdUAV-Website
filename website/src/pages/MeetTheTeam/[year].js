@@ -8,7 +8,7 @@ import { faAnglesRight } from '@fortawesome/free-solid-svg-icons'
 import Header from '@/components/Header'
 import Head from 'next/head'
 import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 const DURATIONS = {
   VeryFast: 0.2,

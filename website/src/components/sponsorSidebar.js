@@ -11,7 +11,7 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react'
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { fadeInUp, stagger, scaleUp } from '@/components/animations'
 import styles from '@/styles/SponsorSidebar.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

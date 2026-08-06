@@ -7,7 +7,7 @@ import Link from 'next/link'
 import ScrollDownIndicator from '@/components/ScrollDownIndicator'
 
 import Accordion from '@/components/Accordion'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import {
   fadeInUpDelayed,
   slideFromLeftDelayed,

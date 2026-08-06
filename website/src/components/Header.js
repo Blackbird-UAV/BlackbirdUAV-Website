@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import styles from '@/styles/Header.module.css'
 
 const Header = ({ imagePath, headerText, className }) => {
