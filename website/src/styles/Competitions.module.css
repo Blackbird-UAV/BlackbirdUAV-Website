@@ -1,0 +1,173 @@
+/*
+  Competition years render as full-width horizontal rows: the photo on one side,
+  the year, award, write-up and roster on the other. A centred timeline gave each
+  entry only ~44% of the container and left the opposite half empty; a row spans
+  the whole width instead.
+
+  The photo side alternates per row so a run of years still has some rhythm.
+  Because the columns are asymmetric, the alternation swaps the track widths too
+  (via nth-child) rather than reordering items — otherwise the photo would
+  inherit the wider text track on every second row.
+*/
+
+.timeline {
+  list-style: none;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 2.5rem;
+  align-items: start;
+  padding: 1.75rem;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  background: #1f1f1f;
+}
+
+.entry:nth-child(even) {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+.entry:nth-child(even) .media {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.entry:nth-child(even) .body {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* A year with no photo gets the full row for its text. */
+.entryNoMedia,
+.entryNoMedia:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.media {
+  margin: 0;
+}
+
+/* Height stays automatic so each photo keeps its own aspect ratio — the set
+   spans 1.33 to 1.92 and cropping them to a common box would cut into group
+   shots. Row height is driven by the text column anyway, so this costs nothing. */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Without this, a long unbroken word can stretch the track past its share. */
+.body {
+  min-width: 0;
+}
+
+.entryHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.year {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.description p {
+  margin: 0 0 0.6rem;
+}
+
+.description a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.rosterHeading {
+  margin: 1.5rem 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Name and role sit side by side rather than stacked: a roster runs to twenty
+   people, so a wrapping pill row costs a fraction of the height a column did. */
+.memberItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #3a3a3a;
+  border-radius: 999px;
+  background: #2c2c2c;
+}
+
+.memberName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.memberRole {
+  font-size: 0.8rem;
+  color: #9a9a9a;
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    padding: 0 1rem 2.5rem;
+    gap: 1.5rem;
+  }
+
+  /* One column: the photo goes back above the text on every row. */
+  .entry,
+  .entry:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .entry:nth-child(even) .media,
+  .entry:nth-child(even) .body {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .year {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
