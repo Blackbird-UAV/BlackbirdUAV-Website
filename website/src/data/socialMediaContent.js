@@ -1,3 +1,16 @@
+/*
+  Each entry is one card in the "Follow Our Flight Plan" grid.
+
+  `image` is optional and takes precedence over the platform embed: point it at
+  a file under /public and the card renders that artwork, linking out to the
+  post. Prefer it. It always renders, costs one image request rather than an
+  iframe plus the platform's scripts, and cannot be collapsed by a content
+  blocker — which is what happens to LinkedIn's embed, so those three posts show
+  a plain link card until their artwork is added here.
+
+  `column` (1-3) picks which column the card falls into; keep the three roughly
+  even or the grid ends up lopsided.
+*/
 const socialMediaContent = [
   // Linkedin posts
   {
@@ -8,6 +21,7 @@ const socialMediaContent = [
     embedLink:
       'https://www.linkedin.com/embed/feed/update/urn:li:share:7475663570379108353?collapsed=1',
     link: 'https://www.linkedin.com/feed/update/urn:li:share:7475663570379108353/',
+    image: '/images/social/li-exec-applications.jpg',
     caption:
       'Blackbird UAV Executive Applications Are Now Open! Interested in helping lead Blackbird UAV for the 2026-2027 season? Everyone is welcome to apply, whether you are new to Blackbird or already involved...'
   },
@@ -19,6 +33,7 @@ const socialMediaContent = [
     embedLink:
       'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7472685155506102272?collapsed=1',
     link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7472685155506102272/',
+    image: '/images/social/li-partner-sponsors.jpg',
     caption:
       'As we wrap up another incredible competition season, we want to extend a huge thank you to all of our sponsors for their continued support of Blackbird UAV. Your contributions make it possible for our team to design, build, test, and fly...'
   },
@@ -30,6 +45,7 @@ const socialMediaContent = [
     embedLink:
       'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7465559788521967616?collapsed=1',
     link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7465559788521967616/',
+    image: '/images/social/li-aeac-competition.jpg',
     caption:
       'This weekend, Blackbird UAV had the chance to represent Carleton University at the annual Aerial Evolution Association of Canada Student Competition at Area X.O!'
   },
