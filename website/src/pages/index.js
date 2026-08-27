@@ -23,7 +23,7 @@ const slides = [
     name: 'Leviathan',
     image: '/images/Vehicles/Leviathan_2.jpg',
     description:
-      'Endurance-focused platform with a fully modular payload bay and a fully LTE command link, flying up to 55 minutes at a 10 kg take-off weight.'
+      'Endurance-focused platform with a fully modular payload bay and a fully LTE command link, flying 30 minutes at its 15 kg maximum take-off weight.'
   },
   {
     name: 'Goliath',

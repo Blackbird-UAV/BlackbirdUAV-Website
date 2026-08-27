@@ -628,6 +628,12 @@
 }
 
 @media (max-width: 600px) {
+  /* 4rem is 80px here (:root is 20px), too wide for the section's content
+     box, and overflow-wrap: break-word split "Sponsors" mid-word. */
+  .sponsorSection h2 {
+    font-size: 2.5rem;
+  }
+
   .chevron {
     width: 30px;
     height: 30px;

@@ -14,9 +14,9 @@ const vehicles = [
     name: 'Leviathan',
     description: {
       overview:
-        'Leviathan is built around a fully modular payload bay and an all-LTE command link. Endurance is its focus: roughly 30 minutes at its 15 kg maximum take-off weight, extending to about 55 minutes at a 10 kg take-off weight.',
+        'Leviathan is built around a fully modular payload bay and an all-LTE command link, flying 30 minutes at its 15 kg maximum take-off weight.',
       MTOW: '15 kg',
-      flightTime: '~30 min at 15 kg MTOW; ~55 min at 10 kg',
+      flightTime: '30 min',
       payloadCompartment: 'Modular',
       communication: 'Fully LTE',
       platform: 'Bespoke Platform'
