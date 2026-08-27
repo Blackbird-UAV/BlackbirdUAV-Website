@@ -357,30 +357,39 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   justify-content: center;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 10px;
 }
 
 .cardBack .linkButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
+  align-self: center;
+  width: auto;
+  max-width: 84%;
+  margin-top: auto;
+  padding: 7px 16px;
+  background-color: #0a66c2;
+  color: #ffffff;
+  border-radius: 999px;
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   cursor: pointer;
-  width: 50%;
   box-sizing: border-box;
   z-index: 2;
 }
 
 .cardBack .linkButton:hover {
-  background-color: #0056b3;
+  background-color: #084d94;
+  transform: translateY(-1px);
 }
 
 /* CardFront elements */
