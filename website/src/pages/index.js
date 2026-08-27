@@ -22,6 +22,12 @@ import socialMediaContent from '@/data/socialMediaContent'
 
 const slides = [
   {
+    name: 'Leviathan',
+    image: '/images/Vehicles/Leviathan_1.jpg',
+    description:
+      'Endurance-focused platform with a fully modular payload bay and a fully LTE command link, flying up to 55 minutes at a 10 kg take-off weight.'
+  },
+  {
     name: 'Goliath',
     image: '/images/Vehicles/Goliath_1.jpg',
     description:

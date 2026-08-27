@@ -1,7 +1,7 @@
 const teamData = {
   '2025-2026': {
     description:
-      'This is the current Blackbird UAV team for the 2026 year. This team is working together throughout the course of the year on a new drone that will fulfill competition goals.',
+      'This is the Blackbird UAV team for the 2025-2026 year. This team worked together throughout the course of the year on a new drone that fulfilled competition goals.',
     Executives: [
       {
         id: 1,
