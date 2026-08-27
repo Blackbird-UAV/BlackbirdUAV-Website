@@ -16,14 +16,12 @@ import {
 } from '@/components/animations'
 
 import SponsorGrid from '@/components/sponsorGrid'
-import ParallaxScroll from '@/components/ParallaxScroll'
 import faqData from '@/data/faqData'
-import socialMediaContent from '@/data/socialMediaContent'
 
 const slides = [
   {
     name: 'Leviathan',
-    image: '/images/Vehicles/Leviathan_1.jpg',
+    image: '/images/Vehicles/Leviathan_2.jpg',
     description:
       'Endurance-focused platform with a fully modular payload bay and a fully LTE command link, flying up to 55 minutes at a 10 kg take-off weight.'
   },
@@ -448,30 +446,6 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
-
-        <div id='socialsSection' className={styles.socialsSection}>
-          <motion.h2
-            className={styles.sectionTitle}
-            variants={slideFromLeftDelayed}
-            initial='initial'
-            whileInView='animate'
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            Follow Our Flight Plan
-          </motion.h2>
-          <motion.div
-            className={styles.socialsMotionContainer}
-            variants={fadeInUpDelayed}
-            initial='initial'
-            whileInView='animate'
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <ParallaxScroll
-              items={socialMediaContent}
-              className={styles.socialsParallax}
-            />
-          </motion.div>
         </div>
 
         <div id='backgroundSection' className={styles.backgroundSection}>
