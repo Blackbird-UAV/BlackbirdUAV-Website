@@ -201,6 +201,20 @@ export default function Home() {
 
 
         <div className={styles.HomeContainer}>
+          <Image
+            src='/images/apogee-hero.png'
+            alt='Apogee in flight'
+            className={styles.skyApogee}
+            width={440}
+            height={201}
+          />
+          <Image
+            src='/images/zenith-hero.png'
+            alt='Zenith in flight'
+            className={styles.skyZenith}
+            width={440}
+            height={123}
+          />
           <div className={styles.contentWrapper}>
             <div className={styles.textSection}>
               <motion.h1
