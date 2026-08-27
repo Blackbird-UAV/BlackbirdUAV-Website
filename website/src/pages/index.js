@@ -273,6 +273,14 @@ export default function Home() {
         </div>
 
         <div id='firstDiv' className={styles.cloudContainer}>
+          <Image
+            src='/images/leviathan-hero.png'
+            alt='Leviathan hovering between the clouds'
+            className={styles.heroCraft}
+            width={537}
+            height={319}
+            priority
+          />
           <motion.div
             initial='hidden'
             animate='visible'
