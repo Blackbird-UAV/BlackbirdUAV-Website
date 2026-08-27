@@ -462,49 +462,28 @@
   background-color: #2e2e2e;
 }
 
-/* Apogee and Zenith ride higher and smaller than Leviathan, so the three read
-   as a formation receding into the sky rather than three drones the same size.
-   They sit under .contentWrapper (z-index 3), clear of the wordmark and CTAs. */
-.skyApogee,
-.skyZenith {
+/* Goliath holds the open sky on the right, smaller and higher than Leviathan
+   so the two read as near and far rather than a matched pair. It sits under
+   .contentWrapper (z-index 3), clear of the wordmark and the CTAs. */
+.skyGoliath {
   position: absolute;
+  top: 13%;
+  right: 11%;
+  width: clamp(120px, 16vw, 300px);
   height: auto;
   z-index: 1;
   pointer-events: none;
   filter: drop-shadow(0 10px 16px rgba(30, 50, 80, 0.16));
+  animation: skyDrift 10s ease-in-out infinite;
 }
 
-.skyApogee {
-  top: 15%;
-  left: 7%;
-  width: clamp(110px, 15vw, 290px);
-  animation: skyDriftA 9s ease-in-out infinite;
-}
-
-.skyZenith {
-  top: 12%;
-  right: 9%;
-  width: clamp(100px, 14vw, 270px);
-  animation: skyDriftB 11s ease-in-out infinite;
-}
-
-@keyframes skyDriftA {
+@keyframes skyDrift {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(-0.6deg);
+    transform: translate3d(0, 0, 0) rotate(-0.5deg);
   }
   50% {
-    transform: translate3d(1.5%, -7%, 0) rotate(0.6deg);
-  }
-}
-
-@keyframes skyDriftB {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0.5deg);
-  }
-  50% {
-    transform: translate3d(-2%, -6%, 0) rotate(-0.5deg);
+    transform: translate3d(-1.5%, -6%, 0) rotate(0.5deg);
   }
 }
 
@@ -539,8 +518,7 @@
     transform: translate(-50%, 0);
   }
 
-  .skyApogee,
-  .skyZenith {
+  .skyGoliath {
     animation: none;
   }
 }
@@ -553,10 +531,9 @@
     bottom: 250px;
   }
 
-  /* The phone hero is a single centred column of copy and buttons; three
-     aircraft crowd it, so only Leviathan stays. */
-  .skyApogee,
-  .skyZenith {
+  /* The phone hero is a single centred column of copy and buttons, so only
+     Leviathan stays. */
+  .skyGoliath {
     display: none;
   }
 }
