@@ -9,12 +9,31 @@ import Header from '@/components/Header'
 import { fadeInUpSlower } from '@/components/animations'
 
 const vehicles = [
-    {
+  {
+    id: 0,
+    name: 'Leviathan',
+    description: {
+      overview:
+        'Leviathan is built around a fully modular payload bay and an all-LTE command link. Endurance is its focus: roughly 30 minutes at its 15 kg maximum take-off weight, extending to about 55 minutes at a 10 kg take-off weight.',
+      MTOW: '15 kg',
+      flightTime: '~30 min at 15 kg MTOW; ~55 min at 10 kg',
+      payloadCompartment: 'Modular',
+      communication: 'Fully LTE',
+      platform: 'Bespoke Platform'
+    },
+    images: [
+      '/images/Vehicles/Leviathan_1.jpg',
+      '/images/Vehicles/Leviathan_2.jpg',
+      '/images/Vehicles/Leviathan_3.jpg',
+      '/images/Vehicles/Leviathan_4.jpg'
+    ]
+  },
+  {
     id: 1,
     name: 'Goliath',
     description: {
       overview:
-        "Goliath was built in a quadcopter configuration with a fully modular payload and is BBUAV's most recent drone. It also included First Person View cameras to give better precision for the pilots.",
+        'Goliath was built in a quadcopter configuration with a fully modular payload. It also included First Person View cameras to give better precision for the pilots.',
       MTOW: '15 kg',
       maxSpeed: '45 km/h (24.3 kt)',
       payloadCompartment: 'Modular',
@@ -123,10 +142,9 @@ export default function Vehicles () {
   }, [])
 
   useEffect(() => {
+    const longestGallery = Math.max(...vehicles.map((v) => v.images.length))
     const interval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % vehicles[0].images.length
-      )
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % longestGallery)
     }, 3000)
 
     return () => clearInterval(interval)
@@ -161,8 +179,10 @@ export default function Vehicles () {
               <div className={styles.carouselContainer}>
                 <div className={styles.carousel}>
                   <Image
-                    src={vehicle.images[currentIndex]}
-                    alt={`${vehicle.name} image ${currentIndex + 1}`}
+                    src={vehicle.images[currentIndex % vehicle.images.length]}
+                    alt={`${vehicle.name} image ${
+                      (currentIndex % vehicle.images.length) + 1
+                    }`}
                     width={500}
                     height={300}
                     className={styles.vehicleImage}
@@ -181,7 +201,9 @@ export default function Vehicles () {
                       <div
                         key={idx}
                         className={`${styles.indicator} ${
-                          currentIndex === idx ? styles.activeIndicator : ''
+                          currentIndex % vehicle.images.length === idx
+                            ? styles.activeIndicator
+                            : ''
                         }`}
                       />
                     ))}
@@ -201,9 +223,17 @@ export default function Vehicles () {
                   <li>
                     <strong>MTOW:</strong> {vehicle.description.MTOW}
                   </li>
-                  <li>
-                    <strong>Max Speed:</strong> {vehicle.description.maxSpeed}
-                  </li>
+                  {vehicle.description.flightTime && (
+                    <li>
+                      <strong>Flight Time:</strong>{' '}
+                      {vehicle.description.flightTime}
+                    </li>
+                  )}
+                  {vehicle.description.maxSpeed && (
+                    <li>
+                      <strong>Max Speed:</strong> {vehicle.description.maxSpeed}
+                    </li>
+                  )}
                   <li>
                     <strong>Payload Compartment:</strong>{' '}
                     {vehicle.description.payloadCompartment}
