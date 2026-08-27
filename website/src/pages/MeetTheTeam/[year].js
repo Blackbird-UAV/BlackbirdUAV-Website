@@ -295,4 +295,21 @@ const MeetTeam = () => {
   )
 }
 
+// Without these, `output: 'export'` emits a single literal [year].html whose
+// __NEXT_DATA__ carries an empty query, so a direct load (typed URL, refresh,
+// shared link) never resolves `year` and falls through to "Team Not Found".
+// One page per year fixes that; in-app navigation was unaffected either way.
+export async function getStaticPaths () {
+  return {
+    paths: Object.keys(teamData)
+      .filter((key) => /^\d{4}-\d{4}$/.test(key))
+      .map((year) => ({ params: { year } })),
+    fallback: false
+  }
+}
+
+export async function getStaticProps () {
+  return { props: {} }
+}
+
 export default MeetTeam

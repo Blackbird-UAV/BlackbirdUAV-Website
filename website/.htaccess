@@ -9,10 +9,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
-# Rewrite dynamic routes in the MeetTheTeam folder to [year].html
-RewriteCond %{REQUEST_URI} ^/MeetTheTeam/([^/]+)/?$
-RewriteCond %{DOCUMENT_ROOT}/MeetTheTeam/[year].html -f
-RewriteRule ^MeetTheTeam/([^/]+)/?$ MeetTheTeam/[year].html [L]
+# Rewrite nested clean URLs (e.g. /MeetTheTeam/2024-2025) to their exported
+# page. Each team year is now its own .html file, so this maps to the real
+# page instead of the old single [year].html template.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1/$2.html -f
+RewriteRule ^([^/]+)/([^/]+?)/?$ $1/$2.html [L]
 
 # Serve index.html for root
 DirectoryIndex index.html
