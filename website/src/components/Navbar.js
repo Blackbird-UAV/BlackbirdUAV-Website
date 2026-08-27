@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import styles from '@/styles/Navbar.module.css'
 import dropdownStyles from '@/styles/Dropdown.module.css'
-import { Center } from '@mantine/core'
 import { IconChevronDown } from '@tabler/icons-react'
 
 export default function Navbar () {
@@ -80,6 +79,7 @@ export default function Navbar () {
 
   const handleLinkClick = () => {
     setIsOpen(false)
+    setIsDropdownOpen(false)
   }
 
   const handleDropdownClick = () => {
@@ -94,6 +94,9 @@ export default function Navbar () {
           isOpen ? styles.open : ''
         }`
       : `${styles.navbar} ${styles.show} ${isOpen ? styles.open : ''}`
+
+  const isTeamRoute =
+    router.pathname.startsWith('/MeetTheTeam') || router.pathname === '/Alumni'
 
   const teamLinks = [
     { link: '/MeetTheTeam/2025-2026', label: 'Current Team' },
@@ -119,9 +122,20 @@ export default function Navbar () {
       }
     }
 
+    const handleKeyDown = (event) => {
+      if (event.key !== 'Escape') return
+      if (isDropdownOpen) {
+        setIsDropdownOpen(false)
+      } else if (isOpen) {
+        setIsOpen(false)
+      }
+    }
+
     document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
     }
   }, [isDropdownOpen, isOpen])
 
@@ -188,55 +202,50 @@ export default function Navbar () {
             <span>Vehicles</span>
           </Link>
         </div>
-<div
-  className={`${styles.linkWrapper} ${
-    router.pathname.startsWith('/meetTeam') ? styles.activeLink : ''
-  }`}
-  style={{ position: 'relative' }}
-  onMouseEnter={() => handleDropdownHover(true)}
-  onMouseLeave={() => handleDropdownHover(false)}
->
-  <button
-    type="button"
-    onClick={handleDropdownClick}
-    className={styles.link} 
-    aria-haspopup="true"
-    aria-expanded={isDropdownOpen}
-  >
-    <Center className={styles.link}>
-      <span>
-        Team
-        <IconChevronDown
-          size="0.9rem"
-          stroke={1.5}
-          color="#f9fafb"
-          className={styles.chevron}
-        />
-      </span>
-    </Center>
-  </button>
-
-  {isDropdownOpen && (
-    <div
-      className={`${dropdownStyles.dropdownMenu} ${
-        dropdownStyles.show
-      }`}
-    >
-      {teamLinks.map((item) => (
-        <Link href={item.link} key={item.link} legacyBehavior>
-          <a
-            className={dropdownStyles.dropdownItem}
-            onClick={() => {
-              setIsDropdownOpen(false)
-            }}
+        <div
+          className={`${styles.linkWrapper} ${styles.dropdownWrapper} ${
+            isTeamRoute ? styles.activeLink : ''
+          }`}
+          onMouseEnter={() => handleDropdownHover(true)}
+          onMouseLeave={() => handleDropdownHover(false)}
+        >
+          <button
+            type='button'
+            onClick={handleDropdownClick}
+            className={`${styles.link} ${styles.dropdownTrigger}`}
+            aria-haspopup='true'
+            aria-expanded={isDropdownOpen}
           >
-            {item.label}
-          </a>
-        </Link>
-      ))}
-    </div>
-  )}
-</div>
+            <span>
+              Team
+              <IconChevronDown
+                size='0.9rem'
+                stroke={1.5}
+                color='#f9fafb'
+                className={`${styles.chevron} ${
+                  isDropdownOpen ? styles.chevronOpen : ''
+                }`}
+              />
+            </span>
+          </button>
+
+          {isDropdownOpen && (
+            <div className={dropdownStyles.dropdownMenu} role='menu'>
+              {teamLinks.map((item) => (
+                <Link
+                  href={item.link}
+                  key={item.link}
+                  role='menuitem'
+                  aria-current={router.asPath === item.link ? 'page' : undefined}
+                  className={dropdownStyles.dropdownItem}
+                  onClick={handleLinkClick}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div
           className={`${styles.linkWrapper} ${

@@ -109,9 +109,28 @@
   padding: 5px 10px;
 }
 
+.dropdownWrapper {
+  position: relative;
+}
+
+/* Reset the UA button chrome so the trigger matches the sibling links */
+.dropdownTrigger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: inherit;
+}
+
 .chevron {
   margin-left: 3px;
   display: inline-flex;
+  vertical-align: middle;
+  transition: transform 0.25s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
 }
 
 .hamburger {
@@ -170,8 +189,8 @@
   }
 }
 
-/* Mobile - max-width: 480px */
-@media (max-width: 480px) {
+/* Mobile / small tablet - matches the 768px isMobile check in Navbar.js */
+@media (max-width: 768px) {
   .navbar {
     padding: 2rem;
     justify-content: space-between;
@@ -224,5 +243,11 @@
   .sponsorButton {
     font-size: 24px;
     padding: 10px 20px;
+  }
+
+  .dropdownWrapper {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
