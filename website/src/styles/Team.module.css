@@ -555,6 +555,18 @@
   background-color: #121212;
 }
 
+.Organization {
+  background-color: #6859d9;
+}
+
+.AEAC {
+  background-color: #e01d19;
+}
+
+.SAEAERO {
+  background-color: #30b463;
+}
+
 .linesContainer {
   display: flex;
   flex-direction: column;
@@ -663,6 +675,18 @@
 
   .sidebar.Competition {
     background-color: #121212;
+  }
+
+  .sidebar.Organization {
+    background-color: #6859d9;
+  }
+
+  .sidebar.AEAC {
+    background-color: #e01d19;
+  }
+
+  .sidebar.SAEAERO {
+    background-color: #30b463;
   }
 
   .grid {

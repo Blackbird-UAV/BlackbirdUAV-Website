@@ -99,6 +99,7 @@ export default function Navbar () {
     router.pathname.startsWith('/MeetTheTeam') || router.pathname === '/Alumni'
 
   const teamLinks = [
+    { link: '/MeetTheTeam/2026-2027', label: '2026-2027' },
     { link: '/MeetTheTeam/2025-2026', label: '2025-2026' },
     { link: '/MeetTheTeam/2024-2025', label: '2024-2025' },
     { link: '/MeetTheTeam/2023-2024', label: '2023-2024' },

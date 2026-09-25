@@ -100,7 +100,7 @@ const MeetTeam = () => {
         <div className={styles.headerDesc}>
           {teamDescription && <div>{teamDescription}</div>}
         </div>
-        {year === '2025-2026' && (
+        {year === '2026-2027' && (
           <div className={styles.searchBar}>
             <TextInput
               // description="Type the name of an alumni to search for them"
@@ -128,7 +128,7 @@ const MeetTeam = () => {
             subteam !== 'description' && (
               <div className={styles.subteam} key={subteam}>
                 <div className={styles.subteamContent}>
-                  <div className={`${styles.sidebar} ${styles[subteam]}`}>
+                  <div className={`${styles.sidebar} ${styles[subteam.replace(/\s+/g, '')]}`}>
                     <span className={styles.sidebarText}>
                       {subteam.charAt(0).toUpperCase() + subteam.slice(1)}
                     </span>
@@ -227,7 +227,7 @@ const MeetTeam = () => {
                             {/* Back Side */}
                             <div className={styles.cardBack}>
                               <div
-                                className={`${styles.colorTop} ${styles[subteam]}`}
+                                className={`${styles.colorTop} ${styles[subteam.replace(/\s+/g, '')]}`}
                               >
                                 {member.isPresident && (
                                   <span className={styles.presidentTag}>
@@ -262,14 +262,16 @@ const MeetTeam = () => {
                               <Text className={styles.extendedDescription}>
                                 {member.extendedDescription}
                               </Text>
-                              <a
-                                href={member.link}
-                                className={styles.linkButton}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                              >
-                                See LinkedIn
-                              </a>
+                              {member.link && member.link !== '#' && (
+                                <a
+                                  href={member.link}
+                                  className={styles.linkButton}
+                                  target='_blank'
+                                  rel='noopener noreferrer'
+                                >
+                                  See LinkedIn
+                                </a>
+                              )}
                             </div>
                           </div>
                         </motion.div>
