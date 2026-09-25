@@ -27,7 +27,9 @@ const MeetTeam = () => {
   const team = year && teamData[year] ? teamData[year] : null
 
   let teamTitle
-  if (year === '2025-2026') {
+  if (year === '2026-2027') {
+    teamTitle = '2026 - 2027 Team'
+  } else if (year === '2025-2026') {
     teamTitle = '2025 - 2026 Team'
   } else if (year === '2024-2025') {
     teamTitle = '2024 - 2025 Team'
