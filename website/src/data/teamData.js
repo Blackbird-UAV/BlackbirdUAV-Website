@@ -197,8 +197,90 @@ const teamData = {
       }
       // ... rest of 2025-2026 team would go here
     ]
+  },
+  Competition: {
+    description:
+      'This page lists all the competition teams of Blackbird UAV. Each section represents a different year.',
+    years: {
+      2026: {
+        description: `
+          <p>Blackbird's 2nd Quadcopter built from scratch.</p>
+          <p>The team received the team spirit award for recognizing sportsmanship and support for other teams.</p>
+          <p>Location: Ottawa, ON</p>
+          <p>A modular quadcopter was designed to detect and extinguish urban fires, as well as carry a payload up to 4.5 kg. The team sucessfully completed task one of the mission, and were a fantastic host all-weekend long for the travelling teams in Ottawa.</p>
+          <p>Read More: <a href="https://charlatan.ca/blackbird-uav/">LINK</a></p>
+        `,
+        award: { variant: 'innovation', label: 'Team Spirit Award'},
+        image: '/images/comp2026.jpg',
+        members: [
+          { firstName: 'Kevin', lastName: 'Fernando', role: 'Club president' },
+          { firstName: 'DJ', role: 'Flight' },
+          { firstName: 'Sam', role: 'Flight' },
+          { firstName: 'Gopesh', role: 'Flight' },
+          { firstName: 'Denise', role: 'Flight' },
+          { firstName: 'Jivitesh', role: 'Operations' },
+          { firstName: 'Parsa', role: 'Operations' },
+          { firstName: 'Eleena', role: 'Operations' },
+          { firstName: 'J.W.', role: 'Electrical' },
+          { firstName: 'Felipe', role: 'Software' },
+          { firstName: 'Ryan', role: 'Mechanical' },
+          { firstName: 'Lucas', role: 'Mechanical' },
+          { firstName: 'Faraz', role: 'Mechanical' },
+          { firstName: 'Adam', role: 'Mechanical' },
+          { firstName: 'Liam', role: 'Mechanical' },
+          { firstName: 'Louis', role: 'Mechanical' },
+          { firstName: 'Duaa', role: 'Support' },
+          { firstName: 'Max', role: 'Support' },
+          { firstName: 'Jacob', role: 'Support' },
+          { firstName: 'Viveca', role: 'Support' },
+        ]
+      },
+      2025: {
+        description: `
+          <p>Second aircraft made completely from scratch since COVID by Blackbird UAV.</p>
+          <p>Team placed 3rd overall at the national UAV competition.</p>
+          <p>Location: Medicine Hat, Alberta</p>
+          <p>A modular quadcopter was designed to detect and suppress wildfire hotspots. Despite major setbacks, including two motor failures and a broken Raspberry Pi, the team successfully completed the mission thanks to support from Queen's Aerospace Design Team and UVic Aero.</p>
+          <p>Read More: <a href="https://carleton.ca/mae/2025/congrats-to-blackbird-uav-team/">LINK</a></p>
+        `,
+        award: { variant: 'bronze', label: '3rd Place', detail: 'Overall' },
+        image: '/images/comp2025.jpg',
+        members: [
+          { firstName: 'Felix', lastName: 'Chenier', role: 'Club president' },
+          { firstName: 'DJ', role: 'Flight' },
+          { firstName: 'Karl', role: 'Flight' },
+          { firstName: 'Nick', role: 'Flight' },
+          { firstName: 'Kevin', role: 'Flight' },
+          { firstName: 'Jed', role: 'Operations' },
+          { firstName: 'Jivitesh', role: 'Operations ' },
+          { firstName: 'Denise', role: 'Systems' },
+          { firstName: 'Gopesh', role: 'Systems' },
+          { firstName: 'Ryan', role: 'Design' },
+          { firstName: 'Owen', role: 'Design' },
+          { firstName: 'Samuel', role: 'Design' },
+          { firstName: 'Timothy', role: 'Design' },
+          { firstName: 'Duaa', role: 'Support' },
+          { firstName: 'Cole', role: 'Support' },
+          { firstName: 'Lucas', role: 'Support' },
+        ]
+      }
+    }
+  },
+  Alumni: {
+    description:
+      'This page lists all the alumni of Blackbird UAV. You can search for specific alumni using the search bar below.',
+    members: [
+      {
+        id: 1,
+        firstName: 'Pier-Jean',
+        lastName: 'Parisien',
+        role: 'Executive / President',
+        joined: '2022',
+        left: '2024',
+        image: '/images/TeamHeadshots/Pj.JPG'
+      }
+    ]
   }
-  // ... rest of the team data would continue here
 }
 
 export default teamData
