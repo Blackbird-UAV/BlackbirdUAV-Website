@@ -9,3 +9,7 @@ updates:
     directory: "/website/" # Location of package manifests
     schedule:
       interval: "weekly"
+  - package-ecosystem: "github-actions" # Actions used in .github/workflows, incl. SHA pins
+    directory: "/" # Dependabot reads .github/workflows from the repository root
+    schedule:
+      interval: "weekly"
