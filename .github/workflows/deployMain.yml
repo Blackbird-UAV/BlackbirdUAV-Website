@@ -41,11 +41,16 @@ jobs:
         working-directory: ./website
 
       - name: Upload to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
         with:
           server: dev.blackbirduav.ca
           port: 21
-          protocol: ftp
+          # FTPS encrypts the login and files. "loose" skips certificate checks
+          # (stops sniffing, not an active MITM): as of 2026-10-08 the host
+          # presents a cert for srv16.swhc.ca (another IP), not for the server
+          # name above. Use "strict" if it ever presents one for that name.
+          protocol: ftps
+          security: loose
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./website/out/
