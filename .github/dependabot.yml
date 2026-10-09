@@ -9,6 +9,15 @@ updates:
     directory: "/website/" # Location of package manifests
     schedule:
       interval: "weekly"
+    # One PR per set of packages that move together. Separate PRs for react
+    # or @mantine/* packages each fail CI (#278, #286, #287, #288).
+    groups:
+      react: # react-dom 19 refuses to load unless react is the identical version
+        patterns: ["react", "react-dom", "@types/react"]
+      mantine: # the @mantine packages pin each other to the exact same release
+        patterns: ["@mantine/*"]
+      next: # released together
+        patterns: ["next", "@next/*", "eslint-config-next"]
   - package-ecosystem: "github-actions" # Actions used in .github/workflows, incl. SHA pins
     directory: "/" # Dependabot reads .github/workflows from the repository root
     schedule:
