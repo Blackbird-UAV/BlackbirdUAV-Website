@@ -7,17 +7,56 @@ on:
     workflows: ["Node.js CI Main"]
     types:
       - completed
+    branches: ["main"]
+
+# One deploy at a time, never cancelled mid-upload (that would leave a
+# half-synced site). queue: max keeps every waiting run; by default a newly
+# queued run cancels the one already waiting, even one for a newer commit.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+  queue: max
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # Deploys queue behind each other, so a hung one mustn't hold the queue
+    # for the 6-hour default. Real deploys take one to two minutes.
+    timeout-minutes: 30
+    # Only a push to main whose CI passed. The event check also stops fork
+    # PRs from a branch named main, which the branches filter lets through.
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          # The commit CI validated (the default is main's tip at trigger time).
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      # Runs can finish out of order, and re-running an old CI run triggers
+      # one too: deploy only main's current tip, so a stale run can't roll
+      # the site back. Skipping isn't a failure; the tip's own run deploys it.
+      - name: Skip unless this is still the tip of main
+        id: guard
+        shell: bash
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          tip=$(git ls-remote origin refs/heads/main | awk '$2 == "refs/heads/main" { print $1 }')
+          if [ -z "$tip" ]; then
+            echo "::error::Could not read the tip of main"
+            exit 1
+          fi
+          if [ "$tip" = "$HEAD_SHA" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Deploy skipped::This run is for $HEAD_SHA, but main is now at $tip; that commit's own CI run deploys it if it passes."
+          fi
 
       - name: Use Node.js 24.x
+        if: steps.guard.outputs.deploy == 'true'
         uses: actions/setup-node@v7
         with:
           node-version: 24.x
@@ -25,6 +64,7 @@ jobs:
           cache-dependency-path: './website/package-lock.json'
 
       - name: Cache Next.js build
+        if: steps.guard.outputs.deploy == 'true'
         uses: actions/cache@v6
         with:
           path: |
@@ -35,12 +75,27 @@ jobs:
             nextjs-${{ runner.os }}-24.x-
 
       - name: Install Dependencies and Build
+        if: steps.guard.outputs.deploy == 'true'
         run: |
           npm ci
           npm run prod
         working-directory: ./website
 
+      # This action can't upload an empty file over FTPS (upstream #412, #516,
+      # #520), so one would fail this deploy and every later one. Paths the
+      # action excludes by default (.git*, node_modules) are left out.
+      - name: Refuse 0-byte files
+        if: steps.guard.outputs.deploy == 'true'
+        run: |
+          empty=$(find ./website/out -type f -empty ! -path '*/.git*' ! -path '*/node_modules/*')
+          if [ -n "$empty" ]; then
+            list=${empty//'%'/%25}
+            echo "::error title=FTPS can't upload 0-byte files::Add content to these files or remove them (SamKirkland/FTP-Deploy-Action#412, #516, #520):%0A${list//$'\n'/%0A}"
+            exit 1
+          fi
+
       - name: Upload to FTP
+        if: steps.guard.outputs.deploy == 'true'
         uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
         with:
           server: dev.blackbirduav.ca
