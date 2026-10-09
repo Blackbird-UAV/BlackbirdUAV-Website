@@ -13,7 +13,7 @@ const teamData = {
         image: '/images/2026Headshots/Sam.jpg',
         description: 'Samuel leads Blackbird UAV as President',
         extendedDescription:
-          'Samuel leads Blackbird UAV as President, overseeing all organizational and strategic operations.',
+          'Samuel leads Blackbird UAV as President, overseeing all organizational and strategic operations. He coordinates technical development, sponsorship initiatives, and team leadership, ensuring effective collaboration across all subteams while driving the teams long-term growth and competitive success.',
         link: 'https://www.linkedin.com/in/samueldavidhowell/'
       },
       {
