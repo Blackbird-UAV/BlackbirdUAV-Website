@@ -55,9 +55,10 @@ Options -Indexes
   # No page here needs these device APIs
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
 
-  # Once a browser has seen this over HTTPS, it skips HTTP for a day. Raise
-  # max-age to a year (31536000) after a few clean weeks and at least one
-  # AutoSSL certificate renewal. No includeSubDomains: that would force HTTPS
-  # on every subdomain too, and dev.blackbirduav.ca isn't on the certificate.
-  Header always set Strict-Transport-Security "max-age=86400"
+  # Once a browser has seen this over HTTPS, it refuses plain HTTP for this
+  # host for a year, so AutoSSL must keep renewing the certificate: if it ever
+  # lapsed, visitors couldn't click past the warning. No includeSubDomains:
+  # that would force HTTPS on every subdomain too, and dev.blackbirduav.ca
+  # isn't on the certificate.
+  Header always set Strict-Transport-Security "max-age=31536000"
 </IfModule>
