@@ -20,6 +20,9 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # The FTP secrets live in this environment, which only main may deploy to,
+    # so a workflow on any other branch can't read them.
+    environment: production
     # Deploys queue behind each other, so a hung one mustn't hold the queue
     # for the 6-hour default. Real deploys take one to two minutes.
     timeout-minutes: 30
