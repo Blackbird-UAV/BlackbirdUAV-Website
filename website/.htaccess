@@ -1,6 +1,23 @@
 RewriteEngine On
 RewriteBase /
 
+# Certificate validation (cPanel AutoSSL, Let's Encrypt) fetches files
+# under /.well-known/ over plain HTTP, so serve them as they are: no HTTPS
+# redirect, no dotfile 403. This tests the rule's decoded, normalised path,
+# not %{REQUEST_URI}, which LiteSpeed can leave raw, so a request for
+# /.well-known/../.ftp-deploy-sync-state.json can't skip the rules below.
+RewriteRule ^\.well-known/ - [L]
+
+# Send plain-HTTP requests to HTTPS. The port check means a request that
+# came in over HTTPS can never loop, even if %{HTTPS} were misreported.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{SERVER_PORT} ^80$
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Refuse dotfiles, such as the deploy's .ftp-deploy-sync-state.json, which
+# lists every deployed file with its hash
+RewriteRule (^|/)\. - [F,L]
+
 # Redirect old sponsorship package PDF to new one
 RewriteRule ^assets/Blackbird\ UAV\ Sponsorship\ Package\ 2024-2025\.pdf$ /assets/bbuavsponsorpackage2025.pdf [R=301,L]
 
@@ -37,4 +54,10 @@ Options -Indexes
 
   # No page here needs these device APIs
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+  # Once a browser has seen this over HTTPS, it skips HTTP for a day. Raise
+  # max-age to a year (31536000) after a few clean weeks and at least one
+  # AutoSSL certificate renewal. No includeSubDomains: that would force HTTPS
+  # on every subdomain too, and dev.blackbirduav.ca isn't on the certificate.
+  Header always set Strict-Transport-Security "max-age=86400"
 </IfModule>
