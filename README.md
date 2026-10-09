@@ -63,8 +63,7 @@ The website is deployed to an FTP server using **FTP Deploy Action** via GitHub 
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v20 or higher)
-- [npm](https://www.npmjs.com/) (v7 or higher)
+- [Node.js](https://nodejs.org/) 24, the version in [`.nvmrc`](.nvmrc) and the one CI uses, with the npm it ships (11.17 or newer). Older npm releases may report `package-lock.json` as out of sync or rewrite it.
 - [Git](https://git-scm.com/)
 
 ### How to Run Locally
@@ -78,14 +77,17 @@ The website is deployed to an FTP server using **FTP Deploy Action** via GitHub 
 2. Navigate to the project folder:
 
    ```bash
-   cd website
+   cd BlackbirdUAV-Website/website
    ```
 
 3. Install dependencies:
 
    ```bash
-   npm install --legacy-peer-deps
+   nvm install   # with nvm: installs and switches to the Node version in .nvmrc
+   npm ci
    ```
+
+   `npm ci` installs exactly what `package-lock.json` pins. Don't use `npm install --legacy-peer-deps`: it rewrites the lockfile and leaves out the TypeScript peer that the ESLint config loads, so `npm run lint` fails.
 
 4. Run the development server:
 
