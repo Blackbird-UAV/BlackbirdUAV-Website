@@ -354,8 +354,11 @@
   text-align: left;
   line-height: 1.5;
   padding: 0 8%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* The card has a fixed height, so a bio too long for it scrolls instead
+     of losing its last lines. Bios that fit look the same as before. */
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
   display: flex;
   align-items: flex-start;
   justify-content: center;
