@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import teamData from '@/data/teamData'
 import { Text, TextInput } from '@mantine/core'
@@ -18,6 +19,10 @@ const Alumni = () => {
 
   return (
     <>
+      <Head>
+        <title>Blackbird UAV | Alumni</title>
+        <meta name='description' content='Meet the Blackbird UAV alumni' />
+      </Head>
       <Header
         imagePath='/images/team4.jpg'
         headerText='Our Alumni'

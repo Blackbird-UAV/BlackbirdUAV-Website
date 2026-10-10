@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import teamData from '@/data/teamData'
 import teamStyles from '@/styles/Team.module.css'
@@ -11,6 +12,13 @@ const Competition = () => {
 
   return (
     <>
+      <Head>
+        <title>Blackbird UAV | Competitions</title>
+        <meta
+          name='description'
+          content='Blackbird UAV competition teams and results, year by year'
+        />
+      </Head>
       <Header
         imagePath='/images/team4.jpg'
         headerText='Competition Teams'
