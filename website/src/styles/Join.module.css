@@ -1,5 +1,11 @@
 .pageWrapper {
   background-color: #2e2e2e;
+  /* The slideFromRight blocks sit 100px right of their place until they
+     come into view. Poking past the screen's right edge, they'd let the
+     page scroll sideways and, on phones, stretch the fixed navbar with it,
+     pushing the menu button off-screen, so clip them at the edge. Unlike
+     hidden, clip doesn't make this a scroll container. */
+  overflow-x: clip;
 }
 
 .banner {
