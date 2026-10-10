@@ -322,7 +322,7 @@
 }
 
 .cardBack .firstName {
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 1.25em;
   color: #ffffff;
   z-index: 2;
@@ -473,7 +473,7 @@
 }
 
 .cardFront .firstName {
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 1.25em;
   color: #ffffff;
   z-index: 2;
@@ -498,7 +498,7 @@
 }
 
 .cardFront .description {
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 0.9rem;
   color: #ffffff;
   overflow: hidden;

@@ -33,7 +33,7 @@ const firaSans = Fira_Sans({
   display: 'swap'
 })
 const firaSansWeights = Fira_Sans({
-  weight: ['100', '500', '600', '700', '800'],
+  weight: ['300', '500', '600', '700', '800'],
   subsets: ['latin'],
   display: 'swap',
   preload: false
