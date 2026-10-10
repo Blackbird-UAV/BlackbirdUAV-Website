@@ -67,7 +67,12 @@
 }
 
 .name {
-  font-size: 8rem;
+  /* "BLACKBIRD" in Fahkwang is about 6.7 times the font size wide, and the
+     Donate and Sponsor Us buttons beside it take about 33rem with their
+     margins, so shrink the wordmark only where 8rem wouldn't fit next to
+     them (below about 1366px at a 16px browser font). The hero clips
+     whatever doesn't fit. */
+  font-size: min(8rem, calc((99vw - 33rem) / 6.7));
   font-weight: 700;
   margin: 0;
   color: #000;
@@ -646,7 +651,8 @@
   }
 
   .name {
-    font-size: 5rem;
+    /* Still beside the desktop buttons down to 1051px (see .name above) */
+    font-size: min(5rem, calc((99vw - 33rem) / 6.7));
   }
 
   .subtitle {
@@ -701,6 +707,14 @@
   }
 }
 
+/* index.js moves the buttons under the subtitle at 1050px and below, so
+   the wordmark only has to fit the screen. */
+@media (max-width: 1050px) {
+  .name {
+    font-size: min(5rem, calc((100vw - 2rem) / 6.7));
+  }
+}
+
 @media (max-width: 600px) {
   /* 4rem is 80px here (:root is 20px), too wide for the section's content
      box, and overflow-wrap: break-word split "Sponsors" mid-word. */
@@ -714,7 +728,7 @@
   }
 
   .name {
-    font-size: 3rem;
+    font-size: min(3rem, calc((100vw - 2rem) / 6.7));
   }
 
   .subtitle {
