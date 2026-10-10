@@ -265,7 +265,9 @@ export default function Sponsor () {
       </Head>
       <Grid
         templateColumns={{
-          base: 'repeat(1, 1fr)',
+          // Not plain 1fr, which can't shrink below the sidebar's min-content
+          // and made small phones scroll sideways
+          base: 'repeat(1, minmax(0, 1fr))',
           lg: 'repeat(5, 1fr)',
           xl: 'repeat(5, 1fr)'
         }}

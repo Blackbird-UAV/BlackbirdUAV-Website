@@ -84,6 +84,7 @@ const SponsorSidebar = () => {
               bg='linear-gradient(150deg, #2e2e2e,rgb(20, 20, 20))'
               h='fit-content'
               minH='60vh'
+              maxW='100%' // No wider than its column, even on small phones
               px={8}
               mt={2}
               borderRadius='md'
@@ -132,7 +133,13 @@ const SponsorSidebar = () => {
                       color='white'
                       borderRadius='full'
                       mb={2}
-                      p={6}
+                      px={6}
+                      py={3}
+                      // Below lg, wrap the label rather than widen the page on
+                      // small phones. h='auto' with py={3} keeps a one-line
+                      // button the height p={6} gave it.
+                      h='auto'
+                      whiteSpace={{ base: 'normal', lg: 'nowrap' }}
                       variants={scaleUp}
                       whileHover={{
                         scale: 1.05,
