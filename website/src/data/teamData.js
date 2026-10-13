@@ -359,7 +359,6 @@ const teamData = {
         isPresident: false,
         isExecutive: false,
         isManager: true,
-        image: '/images/2025Headshots/...',
         description: 'Ali is a 3rd Year Computer Systems Engineering student',
         extendedDescription:
           'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
@@ -643,7 +642,6 @@ const teamData = {
         role: 'Systems',
         isPresident: false,
         isExecutive: false,
-        image: '/images/TeamHeadshots/Marc.JPG',
         description: 'Marc develops components for the Blackbird UAV website.',
         extendedDescription:
           'Marc is part of the website sub-team, developing key components for the functionality of the website.',
@@ -656,7 +654,6 @@ const teamData = {
         role: 'Systems',
         isPresident: false,
         isExecutive: false,
-        image: '/images/TeamHeadshots/Daniel.JPG',
         description:
           'Daniel develops components for the Blackbird UAV website.',
         extendedDescription:
@@ -684,7 +681,6 @@ const teamData = {
         role: 'Systems',
         isPresident: false,
         isExecutive: false,
-        image: '/images/TeamHeadshots/Jonah.JPG',
         description: 'Jonah develops components for the Blackbird UAV website.',
         extendedDescription:
           'Jonah is part of the website sub-team, developing key components for the functionality of the website.',
@@ -697,7 +693,6 @@ const teamData = {
         role: 'Systems',
         isPresident: false,
         isExecutive: false,
-        image: '/images/TeamHeadshots/Jonah.JPG',
         description: 'Ali is a 2nd Year Computer Systems Engineering student',
         extendedDescription:
           'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
@@ -1142,7 +1137,6 @@ const teamData = {
         role: 'Administrative / Editor',
         joined: '2023',
         left: '2024',
-        image: '/images/TeamHeadshots/Emilia.JPG',
         description: 'Emilia provides editorial and administrative support.',
         extendedDescription:
           'Emilia Dashko is in the final year of her MA in History. She joined Blackbird in December 2023 as editor and administrator, using her humanities skills to provide the team with an outsider point of view.',
