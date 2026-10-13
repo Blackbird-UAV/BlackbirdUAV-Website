@@ -18,6 +18,11 @@ const DURATIONS = {
   VerySlow: 1.0
 }
 
+// Shown, blurred, for a member with no `image` in teamData, and in place of
+// a headshot that fails to load.
+const PLACEHOLDER_IMAGE = '/images/TeamHeadshots/memberPlaceholder.png'
+const PLACEHOLDER_STYLE = { filter: 'blur(4px) brightness(0.9)', scale: '1.02' }
+
 const MeetTeam = () => {
   const router = useRouter()
   const { year } = router.query
@@ -176,17 +181,17 @@ const MeetTeam = () => {
                             {/* Front Side */}
                             <div className={styles.cardFront}>
                               <Image
-                                src={member.image}
+                                src={member.image || PLACEHOLDER_IMAGE}
                                 alt={`${member.firstName} ${member.lastName}`}
                                 className={styles.memberImage}
                                 width={250}
                                 height={300}
+                                style={
+                                  member.image ? undefined : PLACEHOLDER_STYLE
+                                }
                                 onError={(e) => {
-                                  e.target.src =
-                                    '/images/TeamHeadshots/memberPlaceholder.png'
-                                  e.target.style.filter =
-                                    'blur(4px) brightness(0.9)'
-                                  e.target.style.scale = '1.02'
+                                  e.target.src = PLACEHOLDER_IMAGE
+                                  Object.assign(e.target.style, PLACEHOLDER_STYLE)
                                 }}
                               />
                               <div className={styles.turnOverIcon}>
