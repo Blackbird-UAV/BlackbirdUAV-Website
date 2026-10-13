@@ -21,11 +21,11 @@ import {
   faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
 
-const MotionHeading = motion(Heading)
-const MotionText = motion(Text)
-const MotionStack = motion(Stack)
-const MotionBox = motion(Box)
-const MotionButton = motion(Button)
+const MotionHeading = motion.create(Heading)
+const MotionText = motion.create(Text)
+const MotionStack = motion.create(Stack)
+const MotionBox = motion.create(Box)
+const MotionButton = motion.create(Button)
 
 const SponsorSidebar = () => {
   const position = useBreakpointValue({
