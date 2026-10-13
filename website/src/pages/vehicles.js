@@ -1,9 +1,7 @@
-/* global IntersectionObserver */
-
 import Head from 'next/head'
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '@/styles/Vehicles.module.css'
 import Header from '@/components/Header'
 import { fadeInUpSlower } from '@/components/animations'
@@ -87,59 +85,7 @@ const vehicles = [
 ]
 
 export default function Vehicles () {
-  const vehiclesRef = useRef([])
   const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth <= 600
-      const container = document.querySelector(`.${styles.vehiclesList}`)
-      if (isMobile) {
-        container.style.scrollSnapType = 'none'
-      } else {
-        container.style.scrollSnapType = 'y mandatory'
-      }
-
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5 // Adjusted threshold to ensure only one card is snapped to
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (!isMobile) {
-              // entry.target.scrollIntoView({
-              //   behavior: "smooth",
-              //   block: "center",
-              // });
-              // Stop scroll momentum
-              // setTimeout(() => {x
-              //   container.style.scrollSnapType = 'none';
-              //   setTimeout(() => {
-              //     container.style.scrollSnapType = 'y mandatory';
-              //   }, 100);
-              // }, 300);
-            }
-          }
-        })
-      }, observerOptions)
-
-      vehiclesRef.current.forEach((ref) => {
-        if (ref) observer.observe(ref)
-      })
-
-      return () => observer.disconnect()
-    }
-
-    window.addEventListener('resize', handleResize)
-    handleResize() // Call initially to set the correct state
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   useEffect(() => {
     const longestGallery = Math.max(...vehicles.map((v) => v.images.length))
@@ -172,8 +118,6 @@ export default function Vehicles () {
               className={`${styles.vehicleCard} ${
                 index % 2 === 1 ? styles.right : styles.left
               }`}
-              ref={(el) => (vehiclesRef.current[index] = el)}
-              // style={{ scrollSnapAlign: "center" }} // Ensure snap alignment
               variants={fadeInUpSlower}
               initial='initial'
               whileInView='animate'
