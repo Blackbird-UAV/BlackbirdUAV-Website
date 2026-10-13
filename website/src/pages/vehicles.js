@@ -51,7 +51,7 @@ const vehicles = [
     name: 'Apogee',
     description: {
       overview:
-        "Apogee is a quadcopter featuring our team's airframe design and software integration efforts. Apogee boasts autonomous capabilities throughout its entire flight, from take-off to landing.",
+        "Apogee is a fixed-wing aircraft featuring our team's airframe design and software integration efforts. Apogee boasts autonomous capabilities throughout its entire flight, from take-off to landing.",
       wingspan: '2.5 meters',
       MTOW: '15 kg',
       maxSpeed: '156 km/h (84.2 kt)',
