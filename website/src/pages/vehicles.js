@@ -154,7 +154,10 @@ export default function Vehicles () {
     <>
       <Head>
         <title>Blackbird UAV | Our Vehicles</title>
-        <meta name='description' content='Sponsor Us!' />
+        <meta
+          name='description'
+          content='The aircraft Blackbird UAV has designed and built, with their specs'
+        />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <Header
