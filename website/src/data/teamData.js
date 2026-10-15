@@ -362,7 +362,7 @@ const teamData = {
         description: 'Ali is a 3rd Year Computer Systems Engineering student',
         extendedDescription:
           'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
-        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
+        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/'
       },
       {
         id: 30,
@@ -376,7 +376,7 @@ const teamData = {
         description:
           'Ryan is a 3rd year Aerospace (A) Student on the Mechanical Team',
         extendedDescription:
-          'Ryan is a manager for the mechanical sub-team. His role includes component optimization and landing leg resizing. ',
+          'Ryan is a manager for the mechanical sub-team. His role includes component optimization and landing leg resizing.',
         link: 'https://www.linkedin.com/in/rwong23'
       }
       // {
@@ -522,7 +522,7 @@ const teamData = {
         description:
           'Ryan is the BBUAV Design Lead and a 4th year Aero Eng student.',
         extendedDescription:
-          'Ryan leads the Design sub-team, which is responsible for aircraft sizing, aircraft conceptual design, detail design, and collaboration with the Manufacturing sub-team. ',
+          'Ryan leads the Design sub-team, which is responsible for aircraft sizing, aircraft conceptual design, detail design, and collaboration with the Manufacturing sub-team.',
         link: 'http://www.linkedin.com/in/ryan-whalen-065257252'
       },
       {
@@ -687,8 +687,8 @@ const teamData = {
         link: 'https://www.linkedin.com/in/jonah-pasquantonio-5158b52b2/'
       },
       {
-        id: 31,
-        firstName: 'Ali Asghar ',
+        id: 32,
+        firstName: 'Ali Asghar',
         lastName: 'Bundookwalla',
         role: 'Systems',
         isPresident: false,
@@ -696,7 +696,7 @@ const teamData = {
         description: 'Ali is a 2nd Year Computer Systems Engineering student',
         extendedDescription:
           'Ali Asghar focuses on drone automation scripts and simulations of drone sequences.',
-        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/ '
+        link: 'https://www.linkedin.com/in/ali-asghar-bundookwalla/'
       }
     ],
     administrative: [
@@ -1154,7 +1154,7 @@ const teamData = {
           <p>The team received the team spirit award for recognizing sportsmanship and support for other teams.</p>
           <p>Location: Ottawa, ON</p>
           <p>A modular quadcopter was designed to detect and extinguish urban fires, as well as carry a payload up to 4.5 kg. The team sucessfully completed task one of the mission, and were a fantastic host all-weekend long for the travelling teams in Ottawa.</p>
-          <p>Read More: <a href="https://charlatan.ca/blackbird-uav/">LINK</a></p>
+          <p>Read More: <a href="https://charlatan.ca/blackbird-uav/">The Charlatan's article on Blackbird UAV</a></p>
         `,
         award: { variant: 'innovation', label: 'Team Spirit Award'},
         image: '/images/comp2026.jpg',
@@ -1187,7 +1187,7 @@ const teamData = {
           <p>Team placed 3rd overall at the national UAV competition.</p>
           <p>Location: Medicine Hat, Alberta</p>
           <p>A modular quadcopter was designed to detect and suppress wildfire hotspots. Despite major setbacks, including two motor failures and a broken Raspberry Pi, the team successfully completed the mission thanks to support from Queen’s Aerospace Design Team and UVic Aero.</p>
-          <p>Read More: <a href="https://carleton.ca/mae/2025/congrats-to-blackbird-uav-team/">LINK</a></p>
+          <p>Read More: <a href="https://carleton.ca/mae/2025/congrats-to-blackbird-uav-team/">Carleton MAE: Congrats to the Blackbird UAV team</a></p>
         `,
         award: { variant: 'bronze', label: '3rd Place', detail: 'Overall' },
         image: '/images/comp2025.jpg',
@@ -1198,7 +1198,7 @@ const teamData = {
           { firstName: 'Nick', role: 'Flight' },
           { firstName: 'Kevin', role: 'Flight' },
           { firstName: 'Jed', role: 'Operations' },
-          { firstName: 'Jivitesh', role: 'Operations ' },
+          { firstName: 'Jivitesh', role: 'Operations' },
           { firstName: 'Denise', role: 'Systems' },
           { firstName: 'Gopesh', role: 'Systems' },
           { firstName: 'Ryan', role: 'Design' },
@@ -1217,7 +1217,7 @@ const teamData = {
           <p>Ground Speed record broken with 156 km/h.</p>
           <p>Vehicle was still a quadplane, and still controlled over the internet.</p>
           <p>Location: Alma, Québec</p>
-          <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADx9pYcBep3DuqdyzH94hYcRvLehjvlYwas">LINK</a></p>
+          <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R">Carleton Engineering and Design's LinkedIn post</a></p>
         `,
         award: { variant: 'innovation', label: 'Innovation Award' },
         image: '/images/comp2024.jpg',
@@ -1250,7 +1250,7 @@ const teamData = {
           <p>First team to successfully transition flight modes in any vehicle (vertical flight to horizontal flight and back).</p>
           <p>Potential ground speed record of 120 km/h.</p>
           <p>Location: Alma, Québec</p>
-          <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">LINK</a></p>
+          <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">Carleton Engineering and Design: Team Blackbird takes top prize</a></p>
         `,
         award: { variant: 'gold', label: '1st Place', detail: 'Phase 2' },
         image: '/images/comp2023.jpg',
