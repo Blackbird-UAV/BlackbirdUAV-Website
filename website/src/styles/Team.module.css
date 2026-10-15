@@ -5,9 +5,6 @@
   align-items: center;
   justify-content: flex-start;
   padding-top: 3rem;
-
-  /* Background image */
-  /* background: linear-gradient(to bottom, #131313ad, #171717); */
   background: #171717;
 }
 
@@ -28,34 +25,12 @@
   transition: box-shadow 0.3s ease, border-radius 0.3s ease;
 }
 
-/* .searchBar {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #333;
-  color: #fff;
-}
-
-.searchBar::placeholder {
-  color: #bbb;
-} */
-
 .searchBar:hover {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
 }
 
 .searchBar:focus-within {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-}
-
-.searchBar p {
-  color: #e2e2e2;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
 }
 
 .searchBar input {
@@ -83,34 +58,39 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Search Results */
+/* Search results sit in the search box, under the input, rather than over
+   the cards: a dropdown hid the card that keyboard focus moves on to. */
 .searchResults {
-  position: absolute;
-  width: 25%;
-  min-width: 300px;
-  margin: 1rem -1rem;
-  padding: 0.5rem;
-  background-color: #27272a;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  list-style: none;
+  margin-top: 0.5rem;
 }
 
 .searchResultItem {
+  display: block;
+  width: 100%;
   padding: 0.5rem;
+  border: 0;
   background-color: #27272a;
   border-radius: 8px;
   color: #e2e2e2;
+  font: inherit;
   font-size: 1rem;
+  text-align: left;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.3s ease;
 }
 
-.searchResultItem:hover {
+.searchResultItem:hover,
+.searchResultItem:focus-visible {
   background-color: #ffffff25;
   transform: scale(1.01);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.searchResultItem:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
 }
 
 .searchResultItem:active {
@@ -118,15 +98,17 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.title {
-  font-size: 4rem;
-  font-weight: bold;
-  color: #000000;
-  text-decoration: underline;
-  text-decoration-color: #eb1d25;
-  text-underline-offset: 16px;
-  text-align: center;
-  margin: 1% 0;
+/* Read by screen readers, not shown */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .headerDesc {
@@ -146,19 +128,17 @@
   margin-bottom: 0.5rem;
 }
 
-.message {
-  font-size: 1.2rem;
-  color: #757575;
-}
-
 .subteam {
   display: flex;
   width: 90%;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 40px;
-  /* margin: 20px 0 40px 20px; */
   flex-direction: column;
+  /* A subteam's colour and the text colour that reads on it; the subteam's
+     class below overrides them */
+  --team-color: #6859d9;
+  --team-ink: #fff;
 }
 
 .subteamContent {
@@ -172,7 +152,11 @@
 .sidebar {
   width: 150px;
   padding: 20px;
-  color: white;
+  /* An <h2>, sized like the <div> it replaced */
+  font-size: inherit;
+  font-weight: inherit;
+  background-color: var(--team-color);
+  color: var(--team-ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,8 +200,79 @@
   transform-style: preserve-3d;
 }
 
-.card:hover .cardInner {
+/* The card turns over while the mouse is on it, while keyboard focus is on
+   its back (the LinkedIn link, or a bio long enough to scroll), and while
+   its button is pressed. Only devices that can hover get the hover rule: a
+   tap leaves :hover stuck on, so the button could never turn the card back.
+   Focus counts only when it is keyboard focus: a tapped link keeps focus on
+   iOS, where tapping the button doesn't take it. */
+@media (hover: hover) {
+  .card:hover .cardInner {
+    transform: rotateY(-180deg);
+  }
+}
+
+.flipped .cardInner {
   transform: rotateY(-180deg);
+}
+
+.cardInner:has(:focus-visible) {
+  transform: rotateY(-180deg);
+}
+
+/* Inset by the 1px border of the face the icon used to sit in */
+.flipButton {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+  /* Changes colour halfway through the turn, as the back comes into view */
+  transition: color 0s 0.3s;
+}
+
+.flipButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 4px #000;
+}
+
+.turnOverIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  font-size: 24px;
+  text-align: left;
+}
+
+/* Points back once pressed: pressing again turns the card back */
+.flipButton[aria-pressed='true'] svg {
+  transform: scaleX(-1);
+}
+
+/* Over the back's colour band, the icon takes the band's text colour */
+.flipped .flipButton {
+  color: var(--team-ink);
+}
+
+.card:has(.cardInner :focus-visible) .flipButton {
+  color: var(--team-ink);
+}
+
+@media (hover: hover) {
+  .card:hover .flipButton {
+    color: var(--team-ink);
+  }
 }
 
 .cardFront,
@@ -248,10 +303,6 @@
   z-index: 1;
 }
 
-.flipped .cardFront {
-  z-index: -1;
-}
-
 .cardBack {
   z-index: 2;
 }
@@ -272,7 +323,8 @@
 
 .colorTop {
   width: 100%;
-  background-color: inherit;
+  background-color: var(--team-color);
+  color: var(--team-ink);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -324,7 +376,7 @@
 .cardBack .firstName {
   font-weight: 300;
   font-size: 1.25em;
-  color: #ffffff;
+  color: inherit;
   z-index: 2;
   margin-bottom: -4%;
 }
@@ -332,7 +384,7 @@
 .cardBack .lastName {
   font-weight: 800;
   font-size: 2.5em;
-  color: #ffffff;
+  color: inherit;
   z-index: 2;
   margin-left: -1%;
   margin-bottom: -2%;
@@ -395,6 +447,11 @@
   transform: translateY(-1px);
 }
 
+.cardBack .linkButton:focus-visible {
+  outline: 2px solid #0a66c2;
+  outline-offset: 2px;
+}
+
 /* CardFront elements */
 .cardFront::before {
   content: "";
@@ -422,18 +479,6 @@
   align-items: flex-start;
   padding: 8%;
   text-align: left;
-}
-
-.cardFront .turnOverIcon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #ffffff;
-  z-index: 4;
-  width: 25px;
-  height: 25px;
 }
 
 .cardFront .presidentTag {
@@ -506,106 +551,52 @@
   z-index: 2;
 }
 
-.extendedDescription {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 10px;
+/* Subteam and role colours, keyed by the teamData subteam names and the
+   Alumni role names. White text is under 4.5:1 on the green, pink and
+   amber, so they take black. */
+.Organization,
+.Executives {
+  --team-color: #6859d9;
+  --team-ink: #fff;
 }
 
-/* Hide the front side content when the card is flipped */
-.flipped .cardFront {
-  visibility: hidden;
-}
-
-/* Team specific styles */
-.design {
-  background-color: #30b463;
-}
-
-.Member {
-  background-color: #30b463;
-}
-
-.Legacy {
-  background-color: blue;
-}
-
+.AEAC,
 .manufacturing {
-  background-color: #e01d19;
+  --team-color: #e01d19;
+  --team-ink: #fff;
+}
+
+.SAEAERO,
+.design {
+  --team-color: #30b463;
+  --team-ink: #000;
 }
 
 .systems {
-  background-color: #e94e77;
+  --team-color: #e94e77;
+  --team-ink: #000;
 }
 
-.administrative {
-  background-color: #f6b93b;
-}
-
+.administrative,
 .managers {
-  background-color: #f6b93b;
+  --team-color: #f6b93b;
+  --team-ink: #000;
 }
 
-.advisors {
-  background-color: #0000ff;
+.advisors,
+.Legacy {
+  --team-color: #0000ff;
+  --team-ink: #fff;
 }
 
-.Executives {
-  background-color: #6859d9;
+.president {
+  --team-color: #000;
+  --team-ink: #fff;
 }
 
-.Competition {
-  background-color: #121212;
-}
-
-.Organization {
-  background-color: #6859d9;
-}
-
-.AEAC {
-  background-color: #e01d19;
-}
-
-.SAEAERO {
-  background-color: #30b463;
-}
-
-.linesContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.compBox {
-  width: 75%;
-  padding: 20px;
-  text-align: center;
-}
-
-.compText {
-  font-size: 1.25rem;
-  font-style: italic;
-  color: #555;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.horizontalLine {
-  width: 75%;
-  height: 10px;
-  background-color: #333;
-  border-radius: 15px;
-}
-
-.teamsPageHeader {
-  height: 80vh !important;
-  background-size: cover !important;
-  background-position: center 25% !important;
-}
-
-.teamsPageHeader h1 {
-  font-size: 5rem !important;
-  margin-top: -5vh;
+.executive {
+  --team-color: #ffd700;
+  --team-ink: #000;
 }
 
 @media (max-width: 768px) {
@@ -636,8 +627,6 @@
     padding: 15px 0;
     font-size: 1.5rem;
     font-weight: bold;
-    color: black;
-    background-color: inherit;
     margin-bottom: 20px;
     writing-mode: horizontal-tb;
     transform: none;
@@ -645,51 +634,6 @@
 
   .sidebarText {
     font-size: 3rem;
-  }
-
-  /* Background colors for different teams */
-  .sidebar.design {
-    background-color: #30b463;
-  }
-
-  .sidebar.manufacturing {
-    background-color: #e01d19;
-  }
-
-  .sidebar.systems {
-    background-color: #e94e77;
-  }
-
-  .sidebar.administrative {
-    background-color: #f6b93b;
-  }
-
-  .sidebar.managers {
-    background-color: #f6b93b;
-  }
-
-  .sidebar.advisors {
-    background-color: #0000ff;
-  }
-
-  .sidebar.Executives {
-    background-color: #6859d9;
-  }
-
-  .sidebar.Competition {
-    background-color: #121212;
-  }
-
-  .sidebar.Organization {
-    background-color: #6859d9;
-  }
-
-  .sidebar.AEAC {
-    background-color: #e01d19;
-  }
-
-  .sidebar.SAEAERO {
-    background-color: #30b463;
   }
 
   .grid {
@@ -701,27 +645,11 @@
     width: 100%;
     margin-bottom: 20px;
   }
-
-  .teamsPageHeader {
-    height: 60vh !important;
-  }
-
-  .teamsPageHeader h1 {
-    font-size: 5rem !important;
-  }
 }
 
 @media (max-width: 480px) {
   .headerDescTitle {
     font-size: 1.5rem;
-  }
-
-  .teamsPageHeader {
-    height: 40vh !important;
-  }
-
-  .teamsPageHeader h1 {
-    font-size: 2.5rem !important;
   }
 }
 
@@ -735,127 +663,8 @@
 }
 
 .alumniItem {
-  padding: 10px;
-  border: 1px solid #444; /* Darker border */
-  border-radius: 4px;
-  background-color: #222; /* Dark background for alumni items */
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.alumniInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.alumniName {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #fff; /* White text */
-}
-
-.alumniDates {
-  font-size: 0.9rem;
-  color: #aaa; /* Darker gray text */
-  text-align: right;
-}
-
-.roleTags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
-
-.roleTag {
-  display: inline-block;
-  padding: 4px 10px;
-  font-size: 0.75em;
-  border-radius: 50px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
-
-.roleTag.president {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.roleTag.executive {
-  background-color: #ffd700;
-  color: black;
-}
-
-.roleTag.manager {
-  background-color: #ffd700;
-  color: black;
-}
-
-.roleTag.design {
-  background-color: #30b463;
-  color: white;
-}
-
-.roleTag.manufacturing {
-  background-color: #e01d19;
-  color: white;
-}
-
-.roleTag.systems {
-  background-color: #e94e77;
-  color: white;
-}
-
-.roleTag.administrative {
-  background-color: #f6b93b;
-  color: black;
-}
-
-.roleTag.managers {
-  background-color: #f6b93b;
-  color: black;
-}
-
-.roleTag.advisors {
-  background-color: #0000ff;
-  color: black;
-}
-
-.roleTag.website {
-  background-color: #007bff;
-  color: white;
-}
-
-.alumniContainer {
-  background-color: #000; /* Black background */
-  color: #fff; /* White text */
-  padding: 20px;
-  min-height: 100vh; /* Ensure it covers the full viewport height */
-}
-
-@media (max-width: 768px) {
-  .alumniItem {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .alumniDates {
-    text-align: left;
-    margin-top: 10px;
-  }
-
-  .roleTags {
-    justify-content: flex-start;
-  }
-}
-
-/* Add these styles after the existing .alumniItem styles */
-
-.alumniItem {
-  display: flex;
   align-items: center;
   gap: 20px;
   padding: 20px;
@@ -879,11 +688,44 @@
   object-fit: cover;
 }
 
-.alumniInfo {
-  flex-grow: 1;
+.alumniName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
 }
 
-/* Update media query for mobile responsiveness */
+.alumniDates {
+  font-size: 0.9rem;
+  color: #aaa;
+  text-align: right;
+}
+
+.roleTags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Coloured by the role's class, e.g. .president */
+.roleTag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border-radius: 50px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: var(--team-color);
+  color: var(--team-ink);
+}
+
+.alumniContainer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  min-height: 100vh;
+}
+
 @media (max-width: 768px) {
   .alumniItem {
     flex-direction: column;
@@ -894,7 +736,21 @@
     margin-bottom: 15px;
   }
 
-  .alumniInfo {
-    width: 100%;
+  .alumniDates {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .roleTags {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardInner,
+  .flipButton,
+  .searchResultItem,
+  .cardBack .linkButton {
+    transition: none;
   }
 }
