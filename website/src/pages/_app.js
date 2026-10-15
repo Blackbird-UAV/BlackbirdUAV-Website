@@ -3,9 +3,7 @@ import '@/styles/globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { MantineProvider } from '@mantine/core'
-import { ChakraProvider } from '@chakra-ui/react'
 import BackToTopButton from '@/components/BackToTopButton'
-import { defaultSystem } from '@chakra-ui/react/preset'
 import { Fahkwang, Fira_Sans } from 'next/font/google'
 import { MotionConfig } from 'motion/react'
 
@@ -74,18 +72,16 @@ export default function App ({ Component, pageProps }) {
           their movement (transforms) and keep only fades */}
       <MotionConfig reducedMotion='user'>
         <MantineProvider>
-          <ChakraProvider value={defaultSystem}>
-            {/* First thing a keyboard user reaches; jumps past the navbar */}
-            <a href='#main' className='skip-link'>
-              Skip to content
-            </a>
-            <Navbar />
-            <main id='main' tabIndex={-1}>
-              <Component {...pageProps} />
-            </main>
-            <Footer />
-            <GoogleAnalytics gaId='G-G90X971NWB' />
-          </ChakraProvider>
+          {/* First thing a keyboard user reaches; jumps past the navbar */}
+          <a href='#main' className='skip-link'>
+            Skip to content
+          </a>
+          <Navbar />
+          <main id='main' tabIndex={-1}>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+          <GoogleAnalytics gaId='G-G90X971NWB' />
         </MantineProvider>
       </MotionConfig>
       <BackToTopButton />

@@ -1,3 +1,87 @@
+/* The reset every page was built on. Chakra UI injected it until the sponsor
+   components moved to CSS modules; these are the parts of it the site's
+   markup relies on. Like Chakra's, it is in a cascade layer, so any
+   unlayered rule (the rest of this file, every CSS module) beats it
+   whatever its specificity. */
+@layer reset {
+  html {
+    /* Only seen where body doesn't reach, e.g. when overscrolling */
+    background: #fff;
+    line-height: 1.5;
+    tab-size: 4;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
+  }
+
+  * {
+    font: inherit;
+    /* Inter's single-storey a, where text falls back to Inter (the
+       system-font headings on /sponsor, Next's 404 page) */
+    font-feature-settings: 'cv11';
+    word-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e4e4e7;
+  }
+
+  body {
+    position: relative;
+    min-height: 100dvh;
+  }
+
+  img,
+  svg {
+    display: block;
+    vertical-align: middle;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-style: none;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  b,
+  strong {
+    font-weight: bolder;
+  }
+
+  button {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+    text-transform: none;
+  }
+
+  button,
+  input {
+    color: inherit;
+  }
+
+  ::placeholder {
+    opacity: 1;
+    color: rgb(82 82 91 / 80%);
+    user-select: none;
+  }
+
+  ::selection {
+    background: rgb(212 212 216 / 80%);
+  }
+}
+
 :root {
   --background: #f5f5f5;
   --foreground: #171717;
@@ -26,7 +110,6 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-family: var(--font-fira-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,7 +128,7 @@ body::-webkit-scrollbar-track-piece {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: var(--chakra-colors-gray-600);
+  background: #52525b;
   border-radius: 1em;
 }
 
