@@ -1,10 +1,10 @@
 import React from 'react'
-import Head from 'next/head'
 import Image from 'next/image'
 import teamData from '@/data/teamData'
 import teamStyles from '@/styles/Team.module.css'
 import styles from '@/styles/Competitions.module.css'
 import Header from '@/components/Header'
+import PageMeta from '@/components/PageMeta'
 import AwardBadge from '@/components/AwardBadge'
 
 const Competition = () => {
@@ -12,23 +12,17 @@ const Competition = () => {
 
   return (
     <>
-      <Head>
-        <title>Blackbird UAV | Competitions</title>
-        <meta
-          name='description'
-          content='Blackbird UAV competition teams and results, year by year'
-        />
-      </Head>
-      <Header
-        imagePath='/images/team4.jpg'
-        headerText='Competition Teams'
-        className={teamStyles.teamHeader}
+      <PageMeta
+        title='Blackbird UAV | Competitions'
+        description="Blackbird UAV's competition history, year by year: the awards, the write-ups and the Carleton University students on each competition team."
+        path='/Competitions'
       />
+      <Header imagePath='/images/team4.jpg' headerText='Competition Teams' />
       <div className={teamStyles.container}>
         <ol className={styles.timeline}>
           {Object.keys(years)
             .sort((a, b) => b - a)
-            .map((year, index) => {
+            .map((year) => {
               const { image, award, description, members } = years[year]
 
               return (
@@ -40,12 +34,10 @@ const Competition = () => {
                     <figure className={styles.media}>
                       <Image
                         src={image}
-                        alt={`${year} Competition Team`}
+                        alt={`The ${year} Blackbird UAV competition team`}
                         className={styles.image}
                         width={1200}
                         height={750}
-                        /* The newest year sits at the top and is the LCP image. */
-                        priority={index === 0}
                         onError={(e) => {
                           console.error(`Failed to load image for year ${year}`)
                           e.target.onerror = null // Prevent infinite loop
@@ -56,7 +48,7 @@ const Competition = () => {
                   )}
                   <div className={styles.body}>
                     <div className={styles.entryHeader}>
-                      <span className={styles.year}>{year}</span>
+                      <h2 className={styles.year}>{year}</h2>
                       {award && (
                         <AwardBadge
                           variant={award.variant}
@@ -69,7 +61,7 @@ const Competition = () => {
                       className={styles.description}
                       dangerouslySetInnerHTML={{ __html: description }}
                     />
-                    <h2 className={styles.rosterHeading}>Team</h2>
+                    <h3 className={styles.rosterHeading}>Team</h3>
                     <ul className={styles.membersList}>
                       {members.map((member, memberIndex) => (
                         <li key={memberIndex} className={styles.memberItem}>
