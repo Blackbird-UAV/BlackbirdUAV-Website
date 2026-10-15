@@ -1220,7 +1220,7 @@ const teamData = {
           <p>Read More: <a href="https://www.linkedin.com/posts/carleton-university-s-faculty-of-engineering-and-design_the-blackbird-uav-team-of-carleton-students-ugcPost-7204499293171322881-QS_R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADx9pYcBep3DuqdyzH94hYcRvLehjvlYwas">LINK</a></p>
         `,
         award: { variant: 'innovation', label: 'Innovation Award' },
-        image: '/images/comp2024.png',
+        image: '/images/comp2024.jpg',
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
           { firstName: 'Felix', lastName: 'Vice-President' },
@@ -1253,7 +1253,7 @@ const teamData = {
           <p>Read More: <a href="https://carleton.ca/engineering-design/story/team-blackbird-takes-top-prize-in-aerial-evolution-association-of-canadas-national-student-drone-competition/">LINK</a></p>
         `,
         award: { variant: 'gold', label: '1st Place', detail: 'Phase 2' },
-        image: '/images/comp2023.png',
+        image: '/images/comp2023.jpg',
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
           { firstName: 'Jed', lastName: '' },
@@ -1272,7 +1272,7 @@ const teamData = {
           <p>Team only observed.</p>
           <p>Location: Southport, Manitoba</p>
         `,
-        image: '/images/comp2022.png',
+        image: '/images/comp2022.jpg',
         members: [
           {
             firstName: 'Pier-Jean',

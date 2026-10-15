@@ -20,7 +20,7 @@ const DURATIONS = {
 
 // Shown, blurred, for a member with no `image` in teamData, and in place of
 // a headshot that fails to load.
-const PLACEHOLDER_IMAGE = '/images/TeamHeadshots/memberPlaceholder.png'
+const PLACEHOLDER_IMAGE = '/images/TeamHeadshots/memberPlaceholder.jpg'
 const PLACEHOLDER_STYLE = { filter: 'blur(4px) brightness(0.9)', scale: '1.02' }
 
 const MeetTeam = () => {
