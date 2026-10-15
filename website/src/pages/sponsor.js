@@ -1,377 +1,105 @@
-import {
-  Grid,
-  GridItem,
-  Stack,
-  Box,
-  Heading,
-  Link,
-  Image,
-  useBreakpointValue
-} from '@chakra-ui/react'
+import Image from 'next/image'
 import { motion } from 'motion/react'
+import PageMeta from '@/components/PageMeta'
 import Sidebar from '@/components/sponsorSidebar'
-import Head from 'next/head'
-import sponsors from '@/data/sponsorData'
+import { DURATIONS, easing } from '@/components/animations'
+import sponsors, { tiers } from '@/data/sponsorData'
+import styles from '@/styles/Sponsor.module.css'
 
-const DURATIONS = {
-  VeryFast: 0.2,
-  Fast: 0.4,
-  Normal: 0.6,
-  Slow: 0.8,
-  VerySlow: 1.0
-}
-
-const staggerAnimation = {
+// Each tier rises in a little after the one above it
+const tierAnimation = {
   hidden: { opacity: 0, y: 50 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: {
-      delay: i * 0.3,
-      duration: DURATIONS.Normal
-      // ease: [0.6, -0.05, 0.01, 0.99], // optional, uncomment to make it more snappy and comment to make it more flowy
-    }
+    transition: { delay: i * 0.3, duration: DURATIONS.Fast }
   })
 }
 
-export default function Sponsor () {
-  const padding = useBreakpointValue({ base: 6, md: 8, lg: 12 })
-  const marginTopSidebar = useBreakpointValue({ base: 6, sm: 6, md: 6 })
-  const marginBottom = useBreakpointValue({ base: 20, lg: 0 })
-  const marginTop = useBreakpointValue({ base: 0, lg: 20 })
-
-  // const [isButtonVisible, setIsButtonVisible] = useState(false)
-
-  const renderSponsorsByTier = (tier, sectionIndex) => {
-    const columnSettings = {
-      Partner: {
-        sm: 'repeat(1, 1fr)',
-        base: 'repeat(1, 1fr)',
-        md: 'repeat(1, 1fr)'
-      },
-      Gold: {
-        sm: 'repeat(2, 1fr)',
-        base: 'repeat(2, 1fr)',
-        md: 'repeat(2, 1fr)'
-      },
-      Silver: {
-        sm: 'repeat(2, 1fr)',
-        base: 'repeat(3, 1fr)',
-        md: 'repeat(3, 1fr)'
-      },
-      Bronze: {
-        sm: 'repeat(2, 1fr)',
-        base: 'repeat(3, 1fr)',
-        md: 'repeat(3, 1fr)'
-      },
-      Support: {
-        sm: 'repeat(2, 1fr)',
-        base: 'repeat(3, 1fr)',
-        md: 'repeat(3, 1fr)'
-      }
+// Then its logos, one after another
+const logoAnimation = (tierIndex, logoIndex) => ({
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: tierIndex * 0.3 + logoIndex * 0.08 + 0.1,
+      duration: DURATIONS.Fast,
+      ease: easing
     }
-    // const columnSettings = {
-    //   Partner: {
-    //     base: "repeat(auto-fit, minmax(240px, 1fr))",
-    //     lg: "repeat(auto-fit, minmax(220px, 1fr))", // change these md values as needed
-    //   },
-    //   Gold: {
-    //     base: "repeat(auto-fit, minmax(180px, 1fr))",
-    //     lg: "repeat(auto-fit, minmax(180px, 1fr))", // change these md values as needed
-    //   },
-    //   Silver: {
-    //     base: "repeat(auto-fit, minmax(150px, 1fr))",
-    //     lg: "repeat(auto-fit, minmax(150px, 1fr))", // change these md values as needed
-    //   },
-    //   Bronze: {
-    //     base: "repeat(auto-fit, minmax(120px, 1fr))",
-    //     lg: "repeat(auto-fit, minmax(120px, 1fr))", // change these md values as needed
-    //   },
-    //   Support: {
-    //     base: "repeat(auto-fit, minmax(90px, 1fr))",
-    //     lg: "repeat(auto-fit, minmax(90px, 1fr))", // change these md values as needed
-    //   },
-    // };
+  }
+})
 
-    return (
-      <>
-        <Grid templateColumns={columnSettings[tier]} gap={2} px={2} w='100%'>
-          {sponsors
-            .filter((s) => s.tier.toLowerCase() === tier.toLowerCase())
-            .map((sponsor, sponsorIndex) => (
+const SponsorTier = ({ tier, index }) => (
+  <div className={`${styles.tier} ${styles[tier.id]}`}>
+    <div className={styles.tierLabel}>
+      <h3 className={styles.tierName}>{tier.name}</h3>
+    </div>
+    <div className={styles.logoGrid} style={{ '--columns': tier.columns }}>
+      {sponsors
+        .filter((sponsor) => sponsor.tier === tier.id)
+        .map((sponsor, logoIndex) => (
+          <motion.div
+            key={sponsor.name}
+            initial='hidden'
+            animate='visible'
+            variants={logoAnimation(index, logoIndex)}
+          >
+            <a
+              className={styles.logoLink}
+              href={sponsor.link}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <div className={styles.logoBox}>
+                {/* The CSS sizes the logo; width and height are only what
+                    next/image requires */}
+                <Image
+                  className={styles.logo}
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  width={300}
+                  height={100}
+                />
+              </div>
+            </a>
+          </motion.div>
+        ))}
+    </div>
+  </div>
+)
+
+export default function Sponsor () {
+  return (
+    <div className={styles.page}>
+      <PageMeta
+        title='Blackbird UAV | Sponsor Us'
+        description="Sponsor or donate to Blackbird UAV, Carleton University's student UAV design team: meet our sponsors, read our sponsorship package and get in touch."
+        path='/sponsor'
+      />
+      <div className={styles.layout}>
+        <div className={styles.sidebarCell}>
+          <Sidebar />
+        </div>
+        <section className={styles.sponsorsCell} aria-labelledby='sponsors-title'>
+          <div className={styles.stack}>
+            <h2 id='sponsors-title' className={styles.title}>
+              Thank you to our generous sponsors!
+            </h2>
+            {tiers.map((tier, index) => (
               <motion.div
-                id={(function () {
-                  switch (tier.toLowerCase()) {
-                    case 'partner':
-                      return 'partnerSection'
-                    case 'gold':
-                      return 'goldSection'
-                    case 'silver':
-                      return 'silverSection'
-                    case 'bronze':
-                      return 'bronzeSection'
-                    case 'support':
-                      return 'supportSection'
-                    default:
-                      return undefined
-                  }
-                })()}
-                key={sponsor.name}
+                key={tier.id}
+                variants={tierAnimation}
                 initial='hidden'
                 animate='visible'
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      delay: sectionIndex * 0.3 + sponsorIndex * 0.08 + 0.1,
-                      duration: DURATIONS.Normal,
-                      ease: [0.6, -0.05, 0.01, 0.99]
-                    }
-                  }
-                }}
+                custom={index}
               >
-                <GridItem
-                  as={Link}
-                  target='_blank'
-                  href={sponsor.link}
-                  isExternal
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  overflow='hidden'
-                  width='100%'
-                >
-                  <Box
-                    bg='white'
-                    margin={2}
-                    height={sponsor.boxStyles?.height || '100%'}
-                    padding={sponsor.boxStyles?.padding || 2}
-                    borderRadius='md'
-                    boxShadow='md'
-                    overflow='hidden'
-                    transition='transform 0.3s ease-in-out'
-                    _hover={{
-                      transform: 'scale(1.04)',
-                      transition: '0.3s'
-                    }}
-                    display='flex'
-                    justifyContent='center'
-                    alignItems='center'
-                    width='100%'
-                  >
-                    <Image
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      objectFit={sponsor.imageStyles?.objectFit || 'contain'}
-                      height={sponsor.imageStyles?.height || '100px'} 
-                      width={sponsor.imageStyles?.width || '100%'}   
-                      minWidth='50px'
-                    />
-                  </Box>
-                </GridItem>
+                <SponsorTier tier={tier} index={index} />
               </motion.div>
             ))}
-        </Grid>
-      </>
-    )
-  }
-
-  const renderSponsorSections = (tier, sectionIndex) => {
-    const tierColors = {
-      Partner: '#d6cff0',
-      Gold: '#fddd5b',
-      Silver: '#c4c4c4',
-      Bronze: '#de975d',
-      Support: '#f0f0f0'
-    }
-
-    return (
-      <Box
-        width='100%'
-        bg={tierColors[tier]}
-        borderRadius='lg'
-        padding={5}
-        mb={2}
-        shadow='lg'
-        display='flex'
-        alignItems='center'
-        // if section is partner, add a glow on hover
-        transition='transform 0.3s ease-in-out'
-        _hover={
-          tier.toLowerCase() === 'partner'
-            ? {
-                boxShadow: '0 0 8px 4px rgba(214, 207, 240, 0.4)', // Glow effect
-                transform: 'scale(1.02)', // Slight scaling
-                transition:
-                  'box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out' // Smooth transition
-              }
-            : {
-                transform: 'scale(1.02)', // Subtle scaling for other tiers
-                transition: 'transform 0.3s ease-in-out' // Smooth transition
-              }
-        }
-      >
-        <Box
-          transform='rotate(180deg)'
-          writingMode='vertical-rl'
-          textAlign='center'
-          mr={0}
-        >
-          <Heading as='h3' size='2xl' color='black'>
-            {tier}
-          </Heading>
-        </Box>
-        {renderSponsorsByTier(tier, sectionIndex)}
-      </Box>
-    )
-  }
-
-  // const handleScrollDown = () => {
-  //   const bronzeSection = document.getElementById('bronzeSection')
-  //   if (bronzeSection) {
-  //     bronzeSection.scrollIntoView({ behavior: 'smooth' })
-  //   }
-  // }
-
-  // const toggleVisibility = () => {
-  //   const scrollThreshold = 300
-  //   const isVisible = window.scrollY < scrollThreshold
-  //   setIsButtonVisible(isVisible)
-  // }
-
-  // useEffect(() => {
-  //   const handleScroll = () => requestAnimationFrame(toggleVisibility)
-
-  //   window.addEventListener('scroll', handleScroll)
-  //   toggleVisibility()
-
-  //   return () => window.removeEventListener('scroll', handleScroll)
-  // }, [])
-
-  return (
-    <Box
-      bg='black'
-      pl={{ base: 0, lg: 5 }}
-      minHeight='100vh'
-      display='flex'
-      flexDirection='column'
-    >
-      <Head>
-        <title>Blackbird UAV | Sponsor Us</title>
-        <meta name='description' content='Sponsor Us!' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
-      <Grid
-        templateColumns={{
-          // Not plain 1fr, which can't shrink below the sidebar's min-content
-          // and made small phones scroll sideways
-          base: 'repeat(1, minmax(0, 1fr))',
-          lg: 'repeat(5, 1fr)',
-          xl: 'repeat(5, 1fr)'
-        }}
-        templateRows={{
-          sm: 'repeat(1, 0)',
-          lg: 'repeat(2, 1fr)'
-        }}
-        gap={{
-          base: 0,
-          lg: 6
-        }}
-      >
-        <GridItem
-          padding={padding}
-          mt={marginTopSidebar}
-          mb={marginBottom}
-          mx={2}
-          rowSpan={2}
-          colSpan={{ base: 1, sm: 1, md: 1, lg: 3, xl: 3 }}
-          display='flex'
-          alignContent='center'
-          as='div'
-          flexDirection='row'
-        >
-          <Sidebar />
-        </GridItem>
-        <GridItem
-          as='main'
-          padding={padding}
-          mt={marginTop}
-          mb={6}
-          mx={2}
-          rowSpan={2}
-          colSpan={{ base: 1, sm: 2, md: 2, lg: 2, xl: 2 }}
-          overflow='hidden'
-        >
-          <Stack w='100%' spacing={10}>
-            <Heading
-              as='h2'
-              size='3xl'
-              textAlign='center'
-              mb={4}
-              mt={2}
-              color='white'
-            >
-              Thank you to our generous sponsors!
-            </Heading>
-            {['Partner', 'Gold', 'Silver', 'Bronze', /*'Support'*/].map(
-              (tier, index) => (
-                <motion.div
-                  key={index}
-                  variants={staggerAnimation}
-                  initial='hidden'
-                  animate='visible'
-                  custom={index}
-                >
-                  {renderSponsorSections(tier, index)}
-                </motion.div>
-              )
-            )}
-          </Stack>
-        </GridItem>
-      </Grid>
-      {/* {isButtonVisible && (
-        <Button
-          onClick={handleScrollDown}
-          position="fixed"
-          bottom="40px"
-          left="50%"
-          transform={
-            isButtonVisible ? "translate(-50%, 0)" : "translate(-50%, 100px)"
-          }
-          transition="transform 0.4s ease-in-out, opacity 0.4s ease-in-out"
-          borderRadius="full"
-          bg="transparent"
-          border="2px solid white"
-          color="white"
-          _hover={{
-            bg: "gray.800",
-            transform: "translate(-50%, 0) scale(1.1)",
-            transition: "transform 0.3s ease-in-out",
-          }}
-          _active={{ bg: "gray.900" }}
-          size="md"
-          boxShadow="lg"
-          zIndex={999}
-        >
-          <Box as="span" transform="rotate(90deg)" fontSize="lg">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              width="24"
-              height="24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </Box>
-        </Button>
-      )} */}
-    </Box>
+          </div>
+        </section>
+      </div>
+    </div>
   )
 }
