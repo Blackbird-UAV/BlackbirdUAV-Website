@@ -546,7 +546,7 @@
   position: absolute;
   width: 50vw;
   height: auto;
-  background: url("/images/cloud.png") no-repeat;
+  background: url("/images/cloud.webp") no-repeat;
   background-size: contain;
   will-change: transform;
 }

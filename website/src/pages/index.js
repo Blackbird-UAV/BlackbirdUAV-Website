@@ -294,7 +294,7 @@ export default function Home() {
             variants={cloudLeftVariants}
           >
             <Image
-              src='/images/cloud.png'
+              src='/images/cloud.webp'
               alt='Cloud Left'
               className={styles.cloudLeft}
               style={{
@@ -310,7 +310,7 @@ export default function Home() {
             variants={cloudRightVariants}
           >
             <Image
-              src='/images/cloud2.png'
+              src='/images/cloud.webp'
               alt='Cloud Right'
               className={styles.cloudRight}
               style={{
