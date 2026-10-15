@@ -16,6 +16,13 @@ body {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -57,4 +64,29 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* Off-screen until a keyboard user tabs to it, then shown above the navbar */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid #ef1a2e;
+  outline-offset: 2px;
+}
+
+/* <main> takes focus only so the skip link can move focus past the navbar */
+#main:focus {
+  outline: none;
 }

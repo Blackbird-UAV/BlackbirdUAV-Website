@@ -1,5 +1,4 @@
 // src/pages/_app.js
-import '@mantine/carousel/styles.css'
 import '@/styles/globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -8,6 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import BackToTopButton from '@/components/BackToTopButton'
 import { defaultSystem } from '@chakra-ui/react/preset'
 import { Fahkwang, Fira_Sans } from 'next/font/google'
+import { MotionConfig } from 'motion/react'
 
 // Prevent Font Awesome icons from loading in before their CSS has (the massive icons on Join page)
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -70,14 +70,24 @@ export default function App ({ Component, pageProps }) {
           --font-fahkwang: ${fahkwang.style.fontFamily};
         }
       `}</style>
-      <MantineProvider>
-        <ChakraProvider value={defaultSystem}>
-          <Navbar />
-          <Component {...pageProps} />
-          <Footer />
-          <GoogleAnalytics gaId='G-G90X971NWB' />
-        </ChakraProvider>
-      </MantineProvider>
+      {/* With the OS's reduce-motion setting on, motion animations skip
+          their movement (transforms) and keep only fades */}
+      <MotionConfig reducedMotion='user'>
+        <MantineProvider>
+          <ChakraProvider value={defaultSystem}>
+            {/* First thing a keyboard user reaches; jumps past the navbar */}
+            <a href='#main' className='skip-link'>
+              Skip to content
+            </a>
+            <Navbar />
+            <main id='main' tabIndex={-1}>
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+            <GoogleAnalytics gaId='G-G90X971NWB' />
+          </ChakraProvider>
+        </MantineProvider>
+      </MotionConfig>
       <BackToTopButton />
     </>
   )
