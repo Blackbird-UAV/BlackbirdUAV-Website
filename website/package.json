@@ -17,20 +17,14 @@
   "dependencies": {
     "@chakra-ui/react": "^3.37.0",
     "@emotion/react": "^11.13.5",
-    "@eslint/config-array": "^0.23.5",
-    "@eslint/object-schema": "^3.0.4",
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
-    "@mantine/carousel": "^9.7.1",
     "@mantine/core": "^9.7.1",
     "@mantine/hooks": "^9.7.1",
     "@next/third-parties": "^16.3.8",
     "@tabler/icons-react": "^3.49.0",
-    "embla-carousel-react": "^8.0.0",
-    "ftp-deploy": "^2.4.7",
-    "glob": "^13.0.6",
     "motion": "^12.38.0",
     "next": "^16.3.8",
     "prop-types": "^15.8.1",
@@ -57,9 +51,6 @@
     "sharp": "$sharp",
     "basic-ftp": ">=6.2.1 <7.0.0",
     "body-parser": ">=1.20.8 <2.0.0",
-    "puppeteer-core": ">=25.9.0 <26.0.0",
-    "ftp-deploy": {
-      "minimatch": "^9.0.7"
-    }
+    "puppeteer-core": ">=25.9.0 <26.0.0"
   }
 }
