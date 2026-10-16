@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { motion } from 'motion/react'
 import sponsors, { tiers } from '@/data/sponsorData'
 import styles from '@/styles/SponsorGrid.module.css'
@@ -18,14 +17,19 @@ const SponsorItem = ({ sponsor, index }) => (
       rel='noopener noreferrer'
     >
       <div className={styles.box}>
-        {/* The CSS sizes the logo; width and height are only what
-            next/image requires. Lazy, as the grid is far below the fold. */}
-        <Image
+        {/* A plain <img>: images are unoptimized, so next/image adds nothing,
+            and its development check warns about every logo, as the CSS
+            changes its width but not its 100px height. Lazy, as the grid is
+            far below the fold. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className={styles.logo}
           src={sponsor.logo}
           alt={sponsor.name}
           width={300}
           height={100}
+          loading='lazy'
+          decoding='async'
         />
       </div>
     </a>
