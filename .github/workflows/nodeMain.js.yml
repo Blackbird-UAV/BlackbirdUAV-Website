@@ -59,13 +59,5 @@ jobs:
       # public/sitemap.xml is written by hand, so fail when it and the export
       # disagree, e.g. a new team season whose page isn't listed yet.
       - name: Check sitemap.xml lists every page
-        shell: bash
+        run: npm run check:sitemap
         working-directory: ./website
-        run: |
-          exported=$(cd out && find . -name '*.html' ! -path ./404.html | sed -e 's|^\./||' -e 's|\.html$||' -e 's|^index$||' -e 's|^|https://blackbirduav.ca/|' | sort)
-          listed=$(grep -o '<loc>[^<]*</loc>' public/sitemap.xml | sed -e 's|<loc>||' -e 's|</loc>||' | sort)
-          if [ "$exported" != "$listed" ]; then
-            echo "::error file=website/public/sitemap.xml,title=sitemap.xml is out of date::List every exported page except 404 (a new team season also goes in the Navbar's teamLinks and the /MeetTheTeam redirect in .htaccess). Lines with < are only in sitemap.xml, lines with > only in the export."
-            diff <(echo "$listed") <(echo "$exported") || true
-            exit 1
-          fi

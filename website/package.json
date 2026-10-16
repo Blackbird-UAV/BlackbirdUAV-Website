@@ -10,7 +10,8 @@
     "copy-htaccess": "node -e \"require('fs').copyFileSync('.htaccess', 'out/.htaccess')\"",
     "audit:ci": "npm audit --omit=dev --audit-level=high && node scripts/audit.mjs",
     "lint": "eslint .",
-    "test": "npm run lint && npm run build",
+    "check:sitemap": "node scripts/check-sitemap.mjs",
+    "test": "npm run lint && npm run build && npm run check:sitemap",
     "lighthouse": "lhci autorun --config=./lighthouserc.js",
     "lighthouse:live": "lhci autorun --config=./lighthouserc.js",
     "resize-images": "node scripts/resize-images.mjs"
