@@ -172,6 +172,12 @@ export default function Home () {
         event.target.matches(':focus-visible')
     )
   }
+  // A key pressed on an arrow or dot that a mouse click focused makes it
+  // :focus-visible with no new focus event, so the key press holds the
+  // rotation too
+  const handleKeyDown = (event) => {
+    if (!playButtonRef.current.contains(event.target)) setFocusInside(true)
+  }
   const handleBlur = (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
       setFocusInside(false)
@@ -378,6 +384,7 @@ export default function Home () {
           onPointerOver={handlePointerOver}
           onPointerLeave={() => setHovering(false)}
           onFocus={handleFocus}
+          onKeyDown={handleKeyDown}
           onBlur={handleBlur}
         >
           <div className={styles.carouselWrapper}>
