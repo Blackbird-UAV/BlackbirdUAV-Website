@@ -34,11 +34,6 @@
   transform: translateY(0); /* Moves into view */
 }
 
-.backToTopButton.hidden {
-  opacity: 0;
-  transform: translateY(20px); /* Moves out of view */
-}
-
 .icon {
   transform: rotate(-90deg);
 }
