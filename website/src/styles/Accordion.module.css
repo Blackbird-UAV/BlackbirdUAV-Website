@@ -12,15 +12,14 @@
 .accordionTrigger {
   width: 100%;
   padding: 18px 24px;
-  background-color: #ef1a2e;
+  /* 4.8:1 with the white text (#ef1a2e was 4.3:1) */
+  background-color: #e1192c;
   color: white;
   text-align: left;
   font-size: 16px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  cursor: pointer;
-  outline: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,28 +31,27 @@
   padding: 18px 28px;
 }
 
+/* Inset, as the accordion's rounded corners clip anything outside it */
+.accordionTrigger:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+}
+
+/* Closed answers have the hidden attribute (display: none) */
 .accordionContent {
-  padding: 0 16px;
-  background-color: #ffffff00;
+  padding: 18px 24px;
   font-size: 15px;
   font-style: italic;
   color: #333;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-8px);
   transition: opacity 0.3s ease-in-out, transform 0.5s ease-out;
 }
 
-.accordionContent.open {
-  height: auto;
-  opacity: 1;
-  padding: 18px 24px;
-  transform: translateY(0);
-}
-
-.accordionItem:last-child {
-  border-bottom: none;
+/* An answer fades and slides in as it opens */
+@starting-style {
+  .accordionContent {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 .arrow {
@@ -63,4 +61,18 @@
 
 .arrow.open {
   transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordionTrigger {
+    transition: background-color 0.3s;
+  }
+
+  .accordionContent {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .arrow {
+    transition: none;
+  }
 }
