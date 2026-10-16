@@ -17,6 +17,31 @@
   overflow: hidden;
 }
 
+/* Where Navbar.module.css always shows the navbar, the wordmark's letters
+   start below it: 4rem clears the 64-76px bar, 5.75rem the 92-110px one
+   between 769px and about 990px. The column layout (1100px and below) gets
+   the same padding underneath, so the copy stays centred where it was
+   whenever it fits, and only moves on short screens such as landscape
+   phones, where it is taller than the hero. */
+@media (max-width: 768px), (hover: none) {
+  .HomeContainer {
+    padding-block: 4rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) and (hover: none) {
+  .HomeContainer {
+    padding-block: 5.75rem;
+  }
+}
+
+/* Beside the buttons, the copy sits at the bottom of the hero */
+@media (min-width: 1101px) and (hover: none) {
+  .HomeContainer {
+    padding-bottom: 0.5rem;
+  }
+}
+
 .HomeContainer::before {
   content: "";
   position: absolute;
