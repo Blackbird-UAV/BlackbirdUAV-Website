@@ -30,13 +30,15 @@ RewriteRule ^ / [R=301,L]
 
 # /vehicles.html is /vehicles, /MeetTheTeam/2026-2027.html is
 # /MeetTheTeam/2026-2027 (the query string is kept). Only for files that
-# exist, so a miss is a plain 404. The empty REDIRECT_STATUS skips the
-# internal request for the 404 page itself, which would otherwise turn a
-# miss like /nope.html into a redirect to /404.
-RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{THE_REQUEST} ^[A-Z]+\s[^?\s]*\.html[?\s]
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+# exist, so a miss is a plain 404. Both the path and the existence check come
+# from THE_REQUEST, not from the URL being processed: for a miss like
+# /nope.html, the internal request for the 404 page (/404.html) runs these
+# rules too, and would otherwise be redirected to /404. Apache marks that
+# request with REDIRECT_STATUS, but LiteSpeed doesn't. The /+ stops
+# //vehicles.html from redirecting to //vehicles, which is another host.
+RewriteCond %{THE_REQUEST} ^[A-Z]+\s/+([^?\s]+)\.html[?\s]
+RewriteCond %{DOCUMENT_ROOT}/%1.html -f
+RewriteRule ^ /%1 [R=301,L]
 
 # /MeetTheTeam is a folder with no index page (a 403 under -Indexes), so send
 # it to the current season's roster. A temporary redirect, because the target
