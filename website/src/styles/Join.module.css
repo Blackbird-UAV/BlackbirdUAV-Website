@@ -57,7 +57,7 @@
   margin: 1rem 1rem 1rem 3rem;
 }
 
-.aboutUs .rightContent h3 {
+.aboutUs .rightContent h2 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 2.2rem;
@@ -87,7 +87,7 @@
   padding: 16px 32px;
   background-color: #5865f2;
   border-radius: 8px;
-  color: #f6f7fe;
+  color: #fff;
   text-decoration: none;
   transition: background-color 0.3s, transform 0.3s;
   font-size: 1.25rem;
@@ -148,7 +148,7 @@
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle shadow effect */
 }
 
-.backgroundContainer .leftSubteams h1 {
+.backgroundContainer .leftSubteams h2 {
   font-size: 2.2rem; /* Slightly larger and more modern */
   font-weight: 700;
   color: #fff;
@@ -191,7 +191,7 @@
   flex: 1;
   text-align: center;
   background-color: transparent;
-  color: inherit;
+  color: #222;
   border: none;
   cursor: pointer;
   padding: 12px 0;
@@ -203,6 +203,12 @@
   justify-content: center;
 }
 
+/* The team's colour is in the icon and in the selected tab's background;
+   the labels stay dark, to be readable on both */
+.tab svg {
+  color: var(--tab-color);
+}
+
 .tab:hover:not(.active) {
   background-color: #e0e0e0;
   color: #333;
@@ -211,7 +217,18 @@
 
 .active {
   background-color: var(--tab-color);
-  color: white;
+  color: #000;
+}
+
+.active svg {
+  color: inherit;
+}
+
+/* Inside the tab, as the tab bar clips anything outside it */
+.tab:focus-visible,
+.carouselContent:focus-visible {
+  outline: 3px solid #222;
+  outline-offset: -3px;
 }
 
 .carouselContent {
@@ -219,6 +236,10 @@
   display: flex;
   flex-direction: row;
   padding: 10px;
+}
+
+.carouselContent[hidden] {
+  display: none;
 }
 
 .textSection {
@@ -245,7 +266,10 @@
   background-color: #fff;
 }
 
+/* 500px wide at most, as before. The width and height attributes are the
+   photo's own size, so its box has the right shape before it loads. */
 .imageSection img {
+  width: 500px;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
@@ -286,11 +310,11 @@
     margin: 1rem;
   }
 
-  .backgroundContainer .leftSubteams h1 {
+  .backgroundContainer .leftSubteams h2 {
     font-size: 2rem; /* Slightly larger and more modern */
   }
 
-  .aboutUs .rightContent h3 {
+  .aboutUs .rightContent h2 {
     font-size: 2rem;
   }
 
@@ -326,11 +350,11 @@
 }
 
 @media (max-width: 480px) {
-  .backgroundContainer .leftSubteams h1 {
+  .backgroundContainer .leftSubteams h2 {
     font-size: 1.5rem;
   }
 
-  .aboutUs .rightContent h3 {
+  .aboutUs .rightContent h2 {
     font-size: 1.5rem;
   }
 
@@ -350,5 +374,15 @@
 
   .tagline {
     font-size: 16px;
+  }
+}
+
+/* Hover feedback without the movement */
+@media (prefers-reduced-motion: reduce) {
+  .aboutUsImage:hover,
+  .discordButton:hover,
+  .tab:hover:not(.active),
+  .imageSection img:hover {
+    transform: none;
   }
 }
