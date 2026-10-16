@@ -85,7 +85,6 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
 
 
   const handleWindowScroll = () => {
@@ -156,19 +155,6 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [handleNext])
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth <= 1050)
-    }
-
-    window.addEventListener('resize', handleResize)
-    handleResize() // Call initially to set the correct state
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
 
 
   return (
@@ -228,39 +214,23 @@ export default function Home() {
               >
                 Fly Around and Find Out
               </motion.h2>
-              {isTablet && (
-                <motion.div
-                  className={styles.mobileButtonSection}
-                  variants={fadeInUpDelayed}
-                  initial='initial'
-                  animate='animate'
-                  viewport={{ once: true, amount: 0.2 }}
-                >
-                  <Link href='/sponsor#donate' className={styles.donateButton}>
-                    Donate
-                  </Link>
-                  <Link href='/sponsor' className={styles.sponsorButton}>
-                    Sponsor Us
-                  </Link>
-                </motion.div>
-              )}
             </div>
-            {!isTablet && (
-              <motion.div
-                className={styles.buttonSection}
-                variants={fadeInUpDelayed}
-                initial='initial'
-                animate='animate'
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <Link href='/sponsor#donate' className={styles.donateButton}>
-                  Donate
-                </Link>
-                <Link href='/sponsor' className={styles.sponsorButton}>
-                  Sponsor Us
-                </Link>
-              </motion.div>
-            )}
+            {/* Beside the wordmark on desktop, under the subtitle from 1050px
+                down (Home.module.css) */}
+            <motion.div
+              className={styles.buttonSection}
+              variants={fadeInUpDelayed}
+              initial='initial'
+              animate='animate'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <Link href='/sponsor#donate' className={styles.donateButton}>
+                Donate
+              </Link>
+              <Link href='/sponsor' className={styles.sponsorButton}>
+                Sponsor Us
+              </Link>
+            </motion.div>
           </div>
           <ScrollDownIndicator />
         </div>
