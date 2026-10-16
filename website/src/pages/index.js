@@ -1,9 +1,8 @@
-// "use client";
-import Head from 'next/head'
 import Image from 'next/image'
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import PageMeta from '@/components/PageMeta'
 import ScrollDownIndicator from '@/components/ScrollDownIndicator'
 
 import Accordion from '@/components/Accordion'
@@ -81,11 +80,10 @@ const ChevronRight = (props) => (
   </svg>
 )
 
-export default function Home() {
+export default function Home () {
   const [scrollY, setScrollY] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
-
 
   const handleWindowScroll = () => {
     setScrollY(window.scrollY)
@@ -155,293 +153,267 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [handleNext])
 
-
-
   return (
-    <div>
-      <div className={styles.pageWrapper}>
-        <Head>
-          {/* <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-G90X971NWB"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-G90X971NWB');
-            `,
-            }}
-          /> */}
-          <title>Blackbird UAV</title>
-          <meta
-            name='description'
-            content="Blackbird UAV | Carleton University's UAV Design Team"
-          />
-          <meta name='viewport' content='width=device-width, initial-scale=1' />
-          <link rel='icon' href='/favicon.ico' />
-        </Head>
+    <div className={styles.pageWrapper}>
+      <PageMeta
+        title='Blackbird UAV'
+        description="Blackbird UAV is Carleton University's student UAV design team in Ottawa. We design, build and fly drones for the national AEAC Student Competition."
+        path='/'
+      />
 
-
-
-        <div className={styles.HomeContainer}>
-          <Image
-            src='/images/goliath-hero.png'
-            alt='Goliath in flight'
-            className={styles.skyGoliath}
-            width={460}
-            height={289}
-          />
-          <div className={styles.contentWrapper}>
-            <div className={styles.textSection}>
-              <motion.h1
-                className={styles.name}
-                variants={slideFromLeftDelayed}
-                initial='initial'
-                animate='animate'
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                BLACKBIRD UAV
-              </motion.h1>
-              <motion.h2
-                className={styles.subtitle}
-                variants={fadeInUpDelayed}
-                initial='initial'
-                animate='animate'
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                Fly Around and Find Out
-              </motion.h2>
-            </div>
-            {/* Beside the wordmark on desktop, under the subtitle from 1050px
-                down (Home.module.css) */}
-            <motion.div
-              className={styles.buttonSection}
+      <div className={styles.HomeContainer}>
+        <Image
+          src='/images/goliath-hero.png'
+          alt='Goliath in flight'
+          className={styles.skyGoliath}
+          width={460}
+          height={289}
+        />
+        <div className={styles.contentWrapper}>
+          <div className={styles.textSection}>
+            <motion.h1
+              className={styles.name}
+              variants={slideFromLeftDelayed}
+              initial='initial'
+              animate='animate'
+            >
+              BLACKBIRD UAV
+            </motion.h1>
+            <motion.p
+              className={styles.subtitle}
               variants={fadeInUpDelayed}
               initial='initial'
               animate='animate'
-              viewport={{ once: true, amount: 0.2 }}
             >
-              <Link href='/sponsor#donate' className={styles.donateButton}>
-                Donate
-              </Link>
-              <Link href='/sponsor' className={styles.sponsorButton}>
-                Sponsor Us
-              </Link>
-            </motion.div>
+              Fly Around and Find Out
+            </motion.p>
           </div>
-          <ScrollDownIndicator />
-        </div>
-
-        <div className={styles.wavesHome}>
-          <svg
-            data-name='Layer 1'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 1200 120'
-            preserveAspectRatio='none'
+          {/* Beside the wordmark on desktop, under the subtitle from 1050px
+              down (Home.module.css) */}
+          <motion.div
+            className={styles.buttonSection}
+            variants={fadeInUpDelayed}
+            initial='initial'
+            animate='animate'
           >
-            <path
-              d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'
-              className={styles.wavesHomeFill}
-            />
-          </svg>
+            <Link href='/sponsor#donate' className={styles.donateButton}>
+              Donate
+            </Link>
+            <Link href='/sponsor' className={styles.sponsorButton}>
+              Sponsor Us
+            </Link>
+          </motion.div>
         </div>
+        <ScrollDownIndicator />
+      </div>
 
-        <div id='firstDiv' className={styles.cloudContainer}>
-          <Image
-            src='/images/leviathan-hero.png'
-            alt='Leviathan hovering between the clouds'
-            className={styles.heroCraft}
-            width={537}
-            height={319}
-            priority
+      <div className={styles.wavesHome}>
+        <svg
+          data-name='Layer 1'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 1200 120'
+          preserveAspectRatio='none'
+          aria-hidden='true'
+        >
+          <path
+            d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'
+            className={styles.wavesHomeFill}
           />
+        </svg>
+      </div>
+
+      <div id='firstDiv' className={styles.cloudContainer}>
+        <Image
+          src='/images/leviathan-hero.png'
+          alt='Leviathan hovering between the clouds'
+          className={styles.heroCraft}
+          width={537}
+          height={319}
+          priority
+        />
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          variants={cloudLeftVariants}
+        >
+          <Image
+            src='/images/cloud.webp'
+            alt=''
+            className={styles.cloudLeft}
+            style={{
+              transform: `translateX(-${scrollY * 0.4}px)`
+            }}
+            width={500}
+            height={300}
+          />
+        </motion.div>
+        <motion.div
+          initial='hidden'
+          animate='visible'
+          variants={cloudRightVariants}
+        >
+          <Image
+            src='/images/cloud.webp'
+            alt=''
+            className={styles.cloudRight}
+            style={{
+              transform: `translateX(${scrollY * 0.4}px)`
+            }}
+            width={500}
+            height={300}
+          />
+        </motion.div>
+      </div>
+
+      <div className={styles.backgroundContainer}>
+        <div id='secondDiv' className={styles.aboutContainer}>
           <motion.div
-            initial='hidden'
-            animate='visible'
-            variants={cloudLeftVariants}
+            variants={slideFromLeft}
+            initial='initial'
+            whileInView='animate'
+            viewport={{ once: true, amount: 0.2 }}
           >
             <Image
-              src='/images/cloud.webp'
-              alt='Cloud Left'
-              className={styles.cloudLeft}
-              style={{
-                transform: `translateX(-${scrollY * 0.4}px)`
-              }}
+              src='/images/Home_AboutUs.jpg'
+              alt='Four Blackbird UAV members preparing a drone on a test stand at the airfield'
+              className={styles.aboutImage}
               width={500}
               height={300}
             />
           </motion.div>
           <motion.div
-            initial='hidden'
-            animate='visible'
-            variants={cloudRightVariants}
+            className={styles.aboutText}
+            variants={slideFromRight}
+            initial='initial'
+            whileInView='animate'
+            viewport={{ once: true, amount: 0.2 }}
           >
-            <Image
-              src='/images/cloud.webp'
-              alt='Cloud Right'
-              className={styles.cloudRight}
-              style={{
-                transform: `translateX(${scrollY * 0.4}px)`
-              }}
-              width={500}
-              height={300}
-            />
+            <h2>About Us</h2>
+            <p>
+              Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
+            </p>
+            <p>
+              BBUAV was established in 2009 as an extra-curricular program for
+              this competition but evolved to offer experience for students
+              from varied studies and background in real-world design
+              projects, operations, administration, and teamwork.
+            </p>
           </motion.div>
         </div>
 
-        <div className={styles.backgroundContainer}>
-          <div id='secondDiv' className={styles.aboutContainer}>
-            <motion.div
-              variants={slideFromLeft}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.2 }}
-            >
+        <div id='aeacContainer' className={styles.aeacContainer}>
+          <motion.div
+            className={styles.aboutText}
+            variants={slideFromLeft}
+            initial='initial'
+            whileInView='animate'
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h2>AEAC SC</h2>
+            <p>
+              The Aerial Evolution Association of Canada Student Competition
+              (AEAC SC) is a national event that challenges university and
+              college students to design, build, and operate uncrewed aerial
+              systems (UAS) for real-world applications.
+            </p>
+            <p>
+              The competition provides students with hands-on experience in
+              aerospace engineering, avionics, and mission planning, while
+              promoting innovation in the UAV industry.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={slideFromRight}
+            initial='initial'
+            whileInView='animate'
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <a href='https://www.aerialevolution.ca/annual-student-competition/'>
               <Image
-                src='/images/Home_AboutUs.jpg'
-                alt='Blackbird UAV Logo'
+                src='/images/AEACSC_logo.jpg'
+                alt='Aerial Evolution Association of Canada Student Competition'
                 className={styles.aboutImage}
                 width={500}
                 height={300}
               />
-            </motion.div>
-            <motion.div
-              className={styles.aboutText}
-              variants={slideFromRight}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <h1>About Us</h1>
-              <p>
-                Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
-              </p>
-              <p>
-                BBUAV was established in 2009 as an extra-curricular program for
-                this competition but evolved to offer experience for students
-                from varied studies and background in real-world design
-                projects, operations, administration, and teamwork.
-              </p>
-            </motion.div>
-          </div>
-
-          <div id='aeacContainer' className={styles.aeacContainer}>
-            <motion.div
-              className={styles.aboutText}
-              variants={slideFromLeft}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <h1>AEAC SC</h1>
-              <p>
-                The Aerial Evolution Association of Canada Student Competition
-                (AEAC SC) is a national event that challenges university and
-                college students to design, build, and operate uncrewed aerial
-                systems (UAS) for real-world applications.
-              </p>
-              <p>
-                The competition provides students with hands-on experience in
-                aerospace engineering, avionics, and mission planning, while
-                promoting innovation in the UAV industry.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={slideFromRight}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <a href='https://www.aerialevolution.ca/annual-student-competition/'>
-                <Image
-                  src='/images/AEACSC_logo.jpg'
-                  alt='AEAC SC Logo'
-                  className={styles.aboutImage}
-                  width={500}
-                  height={300}
-                />
-              </a>
-            </motion.div>
-          </div>
+            </a>
+          </motion.div>
         </div>
+      </div>
 
-        <div className={styles.galleryContainer}>
-          <h2 className={styles.galleryTitle}>Our UAVs</h2>
-          <p className={styles.gallerySubtitle}>
-            Discover the evolution of our UAV technology and designs over the
-            years.
-          </p>
-          <div className={styles.carouselWrapper}>
-            <button
-              className={`${styles.control} ${styles.controlLeft}`}
-              onClick={handlePrev}
+      <div className={styles.galleryContainer}>
+        <h2 className={styles.galleryTitle}>Our UAVs</h2>
+        <p className={styles.gallerySubtitle}>
+          Discover the evolution of our UAV technology and designs over the
+          years.
+        </p>
+        <div className={styles.carouselWrapper}>
+          <button
+            className={`${styles.control} ${styles.controlLeft}`}
+            onClick={handlePrev}
+          >
+            <ChevronLeft />
+          </button>
+          <div className={styles.carousel}>
+            <div
+              className={styles.slideContainer}
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: 'transform 0.5s ease-in-out'
+              }}
             >
-              <ChevronLeft />
-            </button>
-            <div className={styles.carousel}>
-              <div
-                className={styles.slideContainer}
-                style={{
-                  transform: `translateX(-${currentIndex * 100}%)`,
-                  transition: 'transform 0.5s ease-in-out'
-                }}
-              >
-                {slides.map((slide, index) => (
-                  <div
-                    key={index}
-                    className={`${styles.slide} ${index === currentIndex ? styles.active : ''
-                      }`}
-                  >
-                    <Image
-                      src={slide.image}
-                      alt={slide.name}
-                      width={500}
-                      height={300}
-                      className={styles.uavImage}
-                    />
-                    <div className={styles.gradientOverlay}>
-                      <Link href='/vehicles'>
-                        <h3 className={styles.uavName}>{slide.name}</h3>
-                      </Link>
-                      <p className={styles.uavDescription}>
-                        {slide.description}
-                      </p>
-                    </div>
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`${styles.slide} ${index === currentIndex ? styles.active : ''
+                    }`}
+                >
+                  <Image
+                    src={slide.image}
+                    alt={slide.name}
+                    width={500}
+                    height={300}
+                    className={styles.uavImage}
+                  />
+                  <div className={styles.gradientOverlay}>
+                    <Link href='/vehicles'>
+                      <h3 className={styles.uavName}>{slide.name}</h3>
+                    </Link>
+                    <p className={styles.uavDescription}>
+                      {slide.description}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-            <button
-              className={`${styles.control} ${styles.controlRight}`}
-              onClick={handleNext}
-            >
-              <ChevronRight />
-            </button>
           </div>
-          <div className={styles.dots}>
-            {slides.map((_, index) => (
-              <span
-                key={index}
-                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''
-                  }`}
-                onClick={() => handleDotClick(index)}
-              />
-            ))}
-          </div>
+          <button
+            className={`${styles.control} ${styles.controlRight}`}
+            onClick={handleNext}
+          >
+            <ChevronRight />
+          </button>
         </div>
+        <div className={styles.dots}>
+          {slides.map((_, index) => (
+            <span
+              key={index}
+              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''
+                }`}
+              onClick={() => handleDotClick(index)}
+            />
+          ))}
+        </div>
+      </div>
 
-        <div id='backgroundSection' className={styles.backgroundSection}>
-          <div id='sponsorSection' className={styles.sponsorSection}>
-            <h2>Sponsors</h2>
-            <SponsorGrid />
-          </div>
-          <div id='faqSection' className={styles.faqSection}>
-            <h2>FAQ</h2>
-            <Accordion data={faqData} />
-          </div>
+      <div id='backgroundSection' className={styles.backgroundSection}>
+        <div id='sponsorSection' className={styles.sponsorSection}>
+          <h2>Sponsors</h2>
+          <SponsorGrid />
+        </div>
+        <div id='faqSection' className={styles.faqSection}>
+          <h2>FAQ</h2>
+          <Accordion data={faqData} />
         </div>
       </div>
     </div>
