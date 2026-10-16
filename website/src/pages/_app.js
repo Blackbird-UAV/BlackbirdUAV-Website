@@ -58,6 +58,15 @@ const fahkwangItalic = Fahkwang({
   preload: false
 })
 
+// <main> takes focus only for the skip link's jump. Always focusable, a
+// click on any of its text would focus it, and the next Tab would go back
+// to the top of the page instead of on from the click.
+const focusMain = () => {
+  const main = document.getElementById('main')
+  main.setAttribute('tabindex', '-1')
+  main.addEventListener('blur', () => main.removeAttribute('tabindex'), { once: true })
+}
+
 export default function App ({ Component, pageProps }) {
   return (
     <>
@@ -73,11 +82,11 @@ export default function App ({ Component, pageProps }) {
       <MotionConfig reducedMotion='user'>
         <MantineProvider>
           {/* First thing a keyboard user reaches; jumps past the navbar */}
-          <a href='#main' className='skip-link'>
+          <a href='#main' className='skip-link' onClick={focusMain}>
             Skip to content
           </a>
           <Navbar />
-          <main id='main' tabIndex={-1}>
+          <main id='main'>
             <Component {...pageProps} />
           </main>
           <Footer />
