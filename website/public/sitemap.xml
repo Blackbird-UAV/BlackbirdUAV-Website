@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Every exported page except 404.html, at its canonical URL (the one in the
+  page's PageMeta). Add a page here when one is added to src/pages, and a
+  team season when one is added to teamData.js.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://blackbirduav.ca/</loc></url>
+  <url><loc>https://blackbirduav.ca/Competitions</loc></url>
+  <url><loc>https://blackbirduav.ca/vehicles</loc></url>
+  <url><loc>https://blackbirduav.ca/joinTheTeam</loc></url>
+  <url><loc>https://blackbirduav.ca/sponsor</loc></url>
+  <url><loc>https://blackbirduav.ca/MeetTheTeam/2026-2027</loc></url>
+  <url><loc>https://blackbirduav.ca/MeetTheTeam/2025-2026</loc></url>
+  <url><loc>https://blackbirduav.ca/MeetTheTeam/2024-2025</loc></url>
+  <url><loc>https://blackbirduav.ca/MeetTheTeam/2023-2024</loc></url>
+  <url><loc>https://blackbirduav.ca/Alumni</loc></url>
+</urlset>
