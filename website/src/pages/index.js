@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import PageMeta from '@/components/PageMeta'
@@ -16,6 +16,10 @@ import {
 
 import SponsorGrid from '@/components/sponsorGrid'
 import faqData from '@/data/faqData'
+import usePrefersReducedMotion, {
+  REDUCED_MOTION
+} from '@/components/usePrefersReducedMotion'
+import { PauseIcon, PlayIcon } from '@/components/PlayPauseIcons'
 
 const slides = [
   {
@@ -69,24 +73,6 @@ const cloudRightVariants = {
   }
 }
 
-const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
-
-function subscribeToReducedMotion (onChange) {
-  const query = window.matchMedia(REDUCED_MOTION)
-  query.addEventListener('change', onChange)
-  return () => query.removeEventListener('change', onChange)
-}
-
-// The OS's reduce-motion setting, kept up to date. False in the server HTML
-// and while hydrating, so both render the same markup.
-function usePrefersReducedMotion () {
-  return useSyncExternalStore(
-    subscribeToReducedMotion,
-    () => window.matchMedia(REDUCED_MOTION).matches,
-    () => false
-  )
-}
-
 const ChevronLeft = () => (
   <svg
     className={styles.chevron}
@@ -120,18 +106,6 @@ const ChevronRight = () => (
       strokeLinecap='round'
       strokeLinejoin='round'
     />
-  </svg>
-)
-
-const PauseIcon = () => (
-  <svg viewBox='0 0 24 24' aria-hidden='true'>
-    <path d='M7 5h3.5v14H7zM13.5 5H17v14h-3.5z' fill='currentColor' />
-  </svg>
-)
-
-const PlayIcon = () => (
-  <svg viewBox='0 0 24 24' aria-hidden='true'>
-    <path d='M8 5v14l11-7z' fill='currentColor' />
   </svg>
 )
 

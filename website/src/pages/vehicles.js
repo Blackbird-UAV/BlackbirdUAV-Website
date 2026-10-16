@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from '@/styles/Vehicles.module.css'
 import Header from '@/components/Header'
 import PageMeta from '@/components/PageMeta'
 import { fadeInUpSlower } from '@/components/animations'
+import usePrefersReducedMotion from '@/components/usePrefersReducedMotion'
+import { PauseIcon, PlayIcon } from '@/components/PlayPauseIcons'
 
 const vehicles = [
   {
@@ -124,36 +126,6 @@ const vehicles = [
 ]
 
 const PHOTO_INTERVAL = 3000
-
-const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
-
-function subscribeToReducedMotion (onChange) {
-  const query = window.matchMedia(REDUCED_MOTION)
-  query.addEventListener('change', onChange)
-  return () => query.removeEventListener('change', onChange)
-}
-
-// The OS's reduce-motion setting, kept up to date. False in the server HTML
-// and while hydrating, so both render the same markup.
-function usePrefersReducedMotion () {
-  return useSyncExternalStore(
-    subscribeToReducedMotion,
-    () => window.matchMedia(REDUCED_MOTION).matches,
-    () => false
-  )
-}
-
-const PauseIcon = () => (
-  <svg viewBox='0 0 24 24' aria-hidden='true'>
-    <path d='M7 5h3.5v14H7zM13.5 5H17v14h-3.5z' fill='currentColor' />
-  </svg>
-)
-
-const PlayIcon = () => (
-  <svg viewBox='0 0 24 24' aria-hidden='true'>
-    <path d='M8 5v14l11-7z' fill='currentColor' />
-  </svg>
-)
 
 // One aircraft's photos, which change on their own every few seconds until
 // the visitor pauses them. They don't start on their own when the OS asks
