@@ -302,6 +302,10 @@
 .uavImage {
   width: 100%;
   height: auto;
+  /* One frame for every slide: the photos aren't all 3:2 (Leviathan_2 is
+     nearly 2:1), and a shorter one left a grey band under it */
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
