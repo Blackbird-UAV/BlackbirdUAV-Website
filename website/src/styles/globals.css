@@ -176,11 +176,14 @@ a {
   border-radius: 4px;
   background: #000;
   color: #fff;
-  font-weight: 600;
   transform: translateY(-200%);
 }
 
+/* Bold only once shown: the browser fetches a font face for any text that
+   is laid out, off screen or not, and phones load no other Fira Sans 600
+   on some pages */
 .skip-link:focus {
+  font-weight: 600;
   transform: translateY(0);
   outline: 3px solid #ef1a2e;
   outline-offset: 2px;
