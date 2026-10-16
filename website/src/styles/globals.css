@@ -110,18 +110,11 @@ body {
 /* The fixed navbar and back-to-top button cover the top and bottom of the
    window. Browsers keep focused controls and #anchor targets out of this
    padding when they scroll to them; without it, a control reached with Tab
-   can stay under either one, and an anchor lands under the navbar. The
-   navbar is 64-76px tall, but 92-110px from 769px to about 990px, where its
-   links get less room and then wrap. */
+   can stay under either one, and an anchor lands under the navbar, which is
+   64px tall with the menu button and 76px with the links. */
 html {
   scroll-padding-top: 5.5rem;
   scroll-padding-bottom: 5rem;
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-  html {
-    scroll-padding-top: 7.5rem;
-  }
 }
 
 body {

@@ -36,9 +36,9 @@
   }
 }
 
-/* Phones and other touch screens can't point at the top to reveal it, so
-   there it is always shown, menu button included */
-@media (max-width: 768px), (hover: none) {
+/* Always shown with the menu button (below 1024px), and on touch screens,
+   which can't point at the top to reveal it */
+@media (max-width: 1023px), (hover: none) {
   .navbar {
     transform: translateY(0);
   }
@@ -189,30 +189,10 @@
   transform: rotate(-45deg);
 }
 
-/* Tablet - max-width: 900px */
-@media (max-width: 900px) {
-  .navbar {
-    padding: 1rem 4rem;
-  }
-
-  .logoLink {
-    width: 60px;
-  }
-
-  .linksContainer {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-    margin-top: 1rem;
-  }
-
-  .link {
-    font-size: 14px;
-  }
-}
-
-/* Mobile / small tablet - matches the 768px isMobile check in Navbar.js */
-@media (max-width: 768px) {
+/* The menu button and full-screen menu, below the width where the links
+   fit in one row beside the logo with room to spare (they wrap below
+   about 990px). Matches MOBILE_QUERY in Navbar.js. */
+@media (max-width: 1023px) {
   .navbar {
     padding: 2rem;
     justify-content: space-between;
@@ -230,6 +210,9 @@
     justify-content: center;
     z-index: 100;
     overflow: hidden;
+    /* The links get the window's whole height: the logo and menu button
+       are positioned, so padding here would only take room from them */
+    padding-block: 0;
   }
 
   .logoLink {
@@ -244,10 +227,19 @@
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+    margin-top: 1rem;
   }
 
+  /* With the Team list open the menu is taller than a phone in landscape,
+     so the links scroll inside the overlay. The padding keeps focus rings
+     and the Sponsor Us hover glow from being clipped; it is even on all
+     sides, so the centred links don't move. */
   .linksContainer.open {
     display: flex;
+    max-height: calc(100% - 1rem);
+    padding: 1rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .link {

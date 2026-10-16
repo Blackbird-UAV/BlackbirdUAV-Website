@@ -87,9 +87,10 @@
   }
 }
 
-/* Inside the full-screen mobile menu the panel stops floating and becomes
-   an inline submenu, so it reads as part of the menu instead of a popup. */
-@media (max-width: 768px) {
+/* Inside the full-screen menu (Navbar.module.css) the panel stops floating
+   and becomes an inline submenu, so it reads as part of the menu instead of
+   a popup. */
+@media (max-width: 1023px) {
   .dropdownMenu {
     position: static;
     transform: none;
