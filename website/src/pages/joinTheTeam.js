@@ -199,13 +199,6 @@ export default function Join () {
                       style={{ marginRight: '8px', width: '20px' }}
                     />
                     {tab.title}
-                    {/* <FontAwesomeIcon
-                          icon={tab.icon}
-                          style={{
-                            color: activeTab.id === tab.id ? "white" : tab.color,
-                            marginLeft: "12px",
-                          }}
-                        /> */}
                   </button>
                 ))}
               </div>
@@ -220,7 +213,6 @@ export default function Join () {
                   <Image
                     src={activeTab.image}
                     alt={`Image for ${activeTab.title}`}
-                    className={styles.image}
                     width={500}
                     height={500}
                   />
