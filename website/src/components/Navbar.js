@@ -30,6 +30,7 @@ export default function Navbar () {
   const linksRef = useRef(null)
   const teamRef = useRef(null)
   const teamButtonRef = useRef(null)
+  const teamMenuRef = useRef(null)
   // Whether the Team menu is open because the mouse is over it
   const hoverOpened = useRef(false)
 
@@ -45,7 +46,13 @@ export default function Navbar () {
         setShowNavbar(false)
       }
 
-      if (currentScrollY < lastScrollY && isDropdownOpen) {
+      // Not while one of its links has focus: hiding the list would drop
+      // the focus to <body> (ArrowUp or PageUp pressed on a team link)
+      if (
+        currentScrollY < lastScrollY &&
+        isDropdownOpen &&
+        !teamMenuRef.current.contains(document.activeElement)
+      ) {
         setIsDropdownOpen(false)
       }
 
@@ -159,13 +166,19 @@ export default function Navbar () {
   const handleTeamPointerLeave = (event) => {
     if (event.pointerType !== 'mouse' || isMobileWidth()) return
     hoverOpened.current = false
-    setIsDropdownOpen(false)
+    // A keyboard user on one of its links keeps it until they Tab or
+    // Escape out of it
+    if (!teamMenuRef.current.contains(document.activeElement)) {
+      setIsDropdownOpen(false)
+    }
   }
 
   const handleTeamClick = (event) => {
     // A mouse click usually follows the hover that just opened the menu, so
-    // it leaves it open. Enter and Space (detail 0) always toggle.
-    const keepOpen = hoverOpened.current && event.detail !== 0
+    // it leaves it open. Enter and Space (detail 0) always toggle, and a
+    // click always opens a closed menu (Escape or a scroll can close a
+    // hover-opened one while the pointer is still over Team).
+    const keepOpen = isDropdownOpen && hoverOpened.current && event.detail !== 0
     hoverOpened.current = false
     if (!keepOpen) setIsDropdownOpen(!isDropdownOpen)
   }
@@ -278,6 +291,7 @@ export default function Navbar () {
           {/* Always rendered, so the team pages are linked from every page's
               HTML; `hidden` takes the links out of view and the tab order */}
           <ul
+            ref={teamMenuRef}
             id='navbar-team-menu'
             className={dropdownStyles.dropdownMenu}
             hidden={!isDropdownOpen}
