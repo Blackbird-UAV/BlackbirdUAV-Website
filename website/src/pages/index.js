@@ -7,12 +7,7 @@ import ScrollDownIndicator from '@/components/ScrollDownIndicator'
 
 import Accordion from '@/components/Accordion'
 import { motion } from 'motion/react'
-import {
-  fadeInUpDelayed,
-  slideFromLeftDelayed,
-  slideFromLeft,
-  slideFromRight
-} from '@/components/animations'
+import { slideFromLeft, slideFromRight } from '@/components/animations'
 
 import SponsorGrid from '@/components/sponsorGrid'
 import faqData from '@/data/faqData'
@@ -200,40 +195,22 @@ export default function Home () {
           width={460}
           height={289}
         />
+        {/* The copy's entrance is in Home.module.css */}
         <div className={styles.contentWrapper}>
           <div className={styles.textSection}>
-            <motion.h1
-              className={styles.name}
-              variants={slideFromLeftDelayed}
-              initial='initial'
-              animate='animate'
-            >
-              BLACKBIRD UAV
-            </motion.h1>
-            <motion.p
-              className={styles.subtitle}
-              variants={fadeInUpDelayed}
-              initial='initial'
-              animate='animate'
-            >
-              Fly Around and Find Out
-            </motion.p>
+            <h1 className={styles.name}>BLACKBIRD UAV</h1>
+            <p className={styles.subtitle}>Fly Around and Find Out</p>
           </div>
           {/* Beside the wordmark on desktop, under the subtitle from 1050px
               down (Home.module.css) */}
-          <motion.div
-            className={styles.buttonSection}
-            variants={fadeInUpDelayed}
-            initial='initial'
-            animate='animate'
-          >
+          <div className={styles.buttonSection}>
             <Link href='/sponsor#donate' className={styles.donateButton}>
               Donate
             </Link>
             <Link href='/sponsor' className={styles.sponsorButton}>
               Sponsor Us
             </Link>
-          </motion.div>
+          </div>
         </div>
         <ScrollDownIndicator />
       </div>

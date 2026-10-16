@@ -1,4 +1,3 @@
-import { motion } from 'motion/react'
 import styles from '@/styles/Header.module.css'
 
 // Other sizes of a header photo, for the browser to choose from by screen
@@ -31,14 +30,8 @@ const Header = ({ imagePath, headerText }) => {
         className={styles.photo}
       />
       <div className={styles.overlay} />
-      <motion.h1
-        className={styles.text}
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-      >
-        {headerText}
-      </motion.h1>
+      {/* Its entrance is in Header.module.css */}
+      <h1 className={styles.text}>{headerText}</h1>
     </header>
   )
 }

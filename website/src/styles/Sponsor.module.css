@@ -191,6 +191,49 @@
   }
 }
 
+/* The entrance, from the page's first paint: beside the sidebar the tiers
+   are on screen as the page opens, and a motion animation would write its
+   starting state into the HTML, keeping them invisible until the scripts
+   had loaded and run. Each tier rises in 0.3s after the one above it, then
+   its logos one after another. --tier and --logo are their positions
+   (sponsor.js). With reduced motion they only fade in. */
+.tier {
+  animation: riseIn 0.6s ease-out backwards;
+  animation-delay: calc(var(--tier) * 0.3s);
+}
+
+.logoItem {
+  animation: logoRiseIn 0.6s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+  animation-delay: calc(var(--tier) * 0.3s + var(--logo) * 0.08s + 0.1s);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+@keyframes logoRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tier,
+  .logoItem {
+    animation-name: fadeIn;
+  }
+}
+
 .logo {
   width: 100%;
   min-width: 50px;
