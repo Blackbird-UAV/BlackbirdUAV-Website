@@ -43,6 +43,11 @@
   width: 100%;
 }
 
+/* The photo and the controls over it */
+.photo {
+  position: relative;
+}
+
 .vehicleImage {
   width: 100%;
   height: 500px;
@@ -50,17 +55,54 @@
   border-radius: 8px;
 }
 
-/* HUD Style Indicator */
+/* In the photo's top right corner, as on the home page carousel */
+.playButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+}
+
+.playButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.playButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* HUD style photo picker. Each button is a 24px target with its bar drawn
+   in the middle. */
 .indicatorContainer {
   display: flex;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  gap: 8px;
-  z-index: 3; /* Ensure it’s above the image and any overlays */
+  bottom: 0;
+  right: 6px;
+  z-index: 3; /* Above the title's gradient */
 }
 
 .indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.indicator::before {
+  content: '';
   width: 15px;
   height: 5px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -68,8 +110,27 @@
   transition: background-color 0.3s;
 }
 
-.activeIndicator {
+.indicator:hover::before {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.activeIndicator::before,
+.activeIndicator:hover::before {
   background-color: #e68787;
+}
+
+/* White inside black, so the ring shows on any photo. The picker's ring is
+   inside its button, clear of the bars next to it. */
+.playButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px #000;
+}
+
+.indicator:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 4px #000;
 }
 
 .titleOverlay {
@@ -148,8 +209,11 @@
     margin: 0;
   }
 
+  /* One shape for every photo, so the card doesn't change height each
+     time the photo changes */
   .vehicleImage {
     height: auto;
+    aspect-ratio: 3 / 2;
   }
 
   /* Title Overlay for mobile view */
@@ -160,14 +224,21 @@
     color: #e68787;
   }
 
+  .playButton {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .playButton svg {
+    width: 16px;
+    height: 16px;
+  }
+
   .indicatorContainer {
-    position: absolute;
-    bottom: 90px;
-    right: 15px;
-    z-index: 2;
-    display: flex;
-    gap: 8px;
-    flex-direction: row; /* Ensures indicators stay in a row */
+    bottom: 12px;
+    right: 11px;
   }
 
   .textBox {
