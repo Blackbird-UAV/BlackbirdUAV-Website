@@ -18,17 +18,21 @@ concurrency:
   queue: max
 
 jobs:
-  deploy:
+  # npm ci and next build run code from hundreds of npm packages, and any one
+  # of them could be compromised. So this job gets no environment and no
+  # secrets: it builds the export and hands it to the deploy job as an
+  # artifact. The FTP credentials only reach the deploy job, which runs no npm
+  # code.
+  build:
     runs-on: ubuntu-latest
-    # The FTP secrets live in this environment, which only main may deploy to,
-    # so a workflow on any other branch can't read them.
-    environment: production
     # Deploys queue behind each other, so a hung one mustn't hold the queue
     # for the 6-hour default. Real deploys take one to two minutes.
     timeout-minutes: 30
     # Only a push to main whose CI passed. The event check also stops fork
     # PRs from a branch named main, which the branches filter lets through.
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
+    outputs:
+      deploy: ${{ steps.guard.outputs.deploy }}
 
     steps:
       - name: Checkout repository
@@ -97,6 +101,76 @@ jobs:
             exit 1
           fi
 
+      # upload-artifact leaves out dotfiles unless include-hidden-files is set,
+      # and the export's .htaccess is one. The export is public anyway, so a
+      # day's retention is only for re-running the deploy job.
+      - name: Upload the export
+        if: steps.guard.outputs.deploy == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: site
+          path: ./website/out/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    needs: build
+    # The build job's guard decides: false when the run is stale.
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    # The FTP secrets live in this environment, which only main may deploy to,
+    # so a workflow on any other branch can't read them.
+    environment: production
+    # Deploys queue behind each other, so a hung one mustn't hold the queue
+    # for the 6-hour default. Real deploys take one to two minutes.
+    timeout-minutes: 30
+
+    steps:
+      # The build job checked this too, but this job can be re-run on its own
+      # ("Re-run failed jobs"), even after a newer commit has deployed, so check
+      # again just before uploading. Same outcome as the build job's guard.
+      - name: Skip unless this is still the tip of main
+        id: guard
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          tip=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
+          if [ -z "$tip" ]; then
+            echo "::error::Could not read the tip of main"
+            exit 1
+          fi
+          if [ "$tip" = "$HEAD_SHA" ]; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Deploy skipped::This run is for $HEAD_SHA, but main is now at $tip; that commit's own CI run deploys it if it passes."
+          fi
+
+      - name: Download the export
+        if: steps.guard.outputs.deploy == 'true'
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: site
+          path: ./out
+
+      # The sync below deletes from the server whatever isn't in ./out. A
+      # missing .htaccess would take away the clean URLs, the HTTPS redirect
+      # and the dotfile 403, and a missing index.html means the export landed
+      # somewhere else.
+      - name: Check the export is complete
+        if: steps.guard.outputs.deploy == 'true'
+        shell: bash
+        run: |
+          for f in index.html 404.html .htaccess; do
+            if [ ! -s "./out/$f" ]; then
+              echo "::error title=Incomplete export::out/$f is missing or empty, so nothing was deployed."
+              exit 1
+            fi
+          done
+
       - name: Upload to FTP
         if: steps.guard.outputs.deploy == 'true'
         uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
@@ -111,5 +185,5 @@ jobs:
           security: loose
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./website/out/
+          local-dir: ./out/
           server-dir: /
