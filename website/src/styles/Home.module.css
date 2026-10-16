@@ -428,6 +428,13 @@
   .skyGoliath {
     animation: none;
   }
+
+  /* Hovered elements grow without moving */
+  .sponsorButton,
+  .donateButton,
+  .aboutImage {
+    transition: none;
+  }
 }
 
 /* The phone hero stacks its copy and buttons down the middle, so the aircraft
@@ -445,13 +452,20 @@
   }
 }
 
+/* Each cloud's slide-in wrapper. Positioned, so it is the clouds'
+   containing block before, during and after the slide-in: they don't jump
+   (a layout shift) when the wrapper's transform ends. */
+.cloudLayer {
+  position: absolute;
+  inset: 0;
+}
+
+/* index.js moves them with the page's scroll (parallax) */
 .cloudLeft,
 .cloudRight {
   position: absolute;
   width: 50vw;
   height: auto;
-  background: url("/images/cloud.webp") no-repeat;
-  background-size: contain;
   will-change: transform;
 }
 

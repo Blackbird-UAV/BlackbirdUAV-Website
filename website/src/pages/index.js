@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import PageMeta from '@/components/PageMeta'
@@ -44,6 +44,26 @@ const slides = [
   }
 ]
 
+const cloudLeftVariants = {
+  hidden: { x: '-100%', opacity: 0.1 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 1, ease: 'easeOut' }
+  }
+}
+
+const cloudRightVariants = {
+  hidden: { x: '100%', opacity: 0.1 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 1, ease: 'easeOut' }
+  }
+}
+
+const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
+
 const ChevronLeft = (props) => (
   <svg
     className={styles.chevron}
@@ -81,13 +101,31 @@ const ChevronRight = (props) => (
 )
 
 export default function Home () {
-  const [scrollY, setScrollY] = useState(0)
+  const cloudLeftRef = useRef(null)
+  const cloudRightRef = useRef(null)
+
+  // The clouds part as the page scrolls. Their transforms are written
+  // straight to the DOM, so scrolling doesn't re-render the page, and
+  // browsers fire scroll events at most once a frame. With reduced motion
+  // they stay put.
+  useEffect(() => {
+    const query = window.matchMedia(REDUCED_MOTION)
+    const update = () => {
+      const offset = query.matches ? 0 : window.scrollY * 0.4
+      cloudLeftRef.current.style.transform = `translateX(${-offset}px)`
+      cloudRightRef.current.style.transform = `translateX(${offset}px)`
+    }
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    query.addEventListener('change', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      query.removeEventListener('change', update)
+    }
+  }, [])
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
-
-  const handleWindowScroll = () => {
-    setScrollY(window.scrollY)
-  }
 
   const handlePrev = useCallback(() => {
     if (isTransitioning) return
@@ -111,37 +149,12 @@ export default function Home () {
     setCurrentIndex(index)
   }
 
-  const cloudLeftVariants = {
-    hidden: { x: '-100%', opacity: 0.1 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 1, ease: 'easeOut' }
-    }
-  }
-
-  const cloudRightVariants = {
-    hidden: { x: '100%', opacity: 0.1 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 1, ease: 'easeOut' }
-    }
-  }
-
   useEffect(() => {
     const transitionEndHandler = () => setIsTransitioning(false)
     const slideContainer = document.querySelector(`.${styles.slideContainer}`)
     slideContainer.addEventListener('transitionend', transitionEndHandler)
     return () => {
       slideContainer.removeEventListener('transitionend', transitionEndHandler)
-    }
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleWindowScroll)
-    return () => {
-      window.removeEventListener('scroll', handleWindowScroll)
     }
   }, [])
 
@@ -232,35 +245,33 @@ export default function Home () {
           priority
         />
         <motion.div
+          className={styles.cloudLayer}
           initial='hidden'
           animate='visible'
           variants={cloudLeftVariants}
         >
           <Image
+            ref={cloudLeftRef}
             src='/images/cloud.webp'
             alt=''
             className={styles.cloudLeft}
-            style={{
-              transform: `translateX(-${scrollY * 0.4}px)`
-            }}
-            width={500}
-            height={300}
+            width={1440}
+            height={827}
           />
         </motion.div>
         <motion.div
+          className={styles.cloudLayer}
           initial='hidden'
           animate='visible'
           variants={cloudRightVariants}
         >
           <Image
+            ref={cloudRightRef}
             src='/images/cloud.webp'
             alt=''
             className={styles.cloudRight}
-            style={{
-              transform: `translateX(${scrollY * 0.4}px)`
-            }}
-            width={500}
-            height={300}
+            width={1440}
+            height={827}
           />
         </motion.div>
       </div>
