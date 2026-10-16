@@ -85,15 +85,12 @@
   margin-bottom: 8%;
 }
 
-/* Update the button container styles */
-.buttonSection,
-.mobileButtonSection {
+.buttonSection {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   margin: 0rem 3rem 2rem 2rem;
-  width: auto; /* Remove fixed width to allow centering */
 }
 
 /* Common button styles */
@@ -661,8 +658,6 @@
   }
 
   .buttonSection {
-    justify-content: center;
-    margin-bottom: 2rem;
     z-index: 3;
   }
 
@@ -707,9 +702,23 @@
   }
 }
 
-/* index.js moves the buttons under the subtitle at 1050px and below, so
-   the wordmark only has to fit the screen. */
+/* At 1050px and below the buttons go under the subtitle, in the subtitle's
+   italics, so the wordmark only has to fit the screen */
 @media (max-width: 1050px) {
+  .contentWrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .textSection {
+    flex: none;
+  }
+
+  .buttonSection {
+    align-self: center;
+    font-style: italic;
+  }
+
   .name {
     font-size: min(5rem, calc((100vw - 2rem) / 6.7));
   }
@@ -734,11 +743,6 @@
   .subtitle {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-  }
-
-  .buttonSection {
-    display: none;
-    /* Hide the desktop button section in mobile mode */
   }
 
   .sponsorButton,
@@ -773,8 +777,7 @@
     font-size: 2.5rem;
   }
 
-  .buttonSection,
-  .mobileButtonSection {
+  .buttonSection {
     flex-direction: column;
     gap: 1.5rem;
   }
