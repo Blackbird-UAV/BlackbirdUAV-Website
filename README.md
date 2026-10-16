@@ -171,7 +171,7 @@ npm run resize-images -- <max-width> <file-or-folder>...
 # e.g. a new year's headshots: npm run resize-images -- 555 public/images/2027Headshots
 ```
 
-Aim for about twice the width the image is shown at: 555 px is right for a headshot, 1920 px for a full-width page header. The script also removes camera and location metadata. It overwrites the files it is given (unless you pass `--out`) and re-encodes them, so run it only on new images. See the comment at the top of [`resize-images.mjs`](website/scripts/resize-images.mjs) for its options.
+Aim for about twice the width the image is shown at: 555 px is right for a headshot. A full-width page header is shown at every screen size, so save it at three widths, 1280, 1920 and 2880 px (the last with `--quality 70`), as `team4-1280.jpg`, `team4.jpg` and `team4-2880.jpg` are, and list them in `SRCSETS` in [`Header.js`](website/src/components/Header.js): each screen then downloads only the one it needs. The script also removes camera and location metadata. It overwrites the files it is given (unless you pass `--out`) and re-encodes them, so run it only on new images. See the comment at the top of [`resize-images.mjs`](website/scripts/resize-images.mjs) for its options.
 
 ---
 
