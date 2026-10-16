@@ -14,7 +14,9 @@
    bottom of the window and scrolls on its own when it doesn't fit, so the
    donate buttons can be reached on short screens such as 1366x650. The
    0.75rem added each side keeps the card's glow inside the scroll box,
-   which would otherwise clip it; the content stays 55% wide, where it was. */
+   which would otherwise clip it; the content stays 55% wide, where it was.
+   Its scrollbar matches the page's (globals.css) rather than the light
+   default one, which would sit in the middle of this dark page. */
 @media (min-width: 64rem) {
   .sidebar {
     position: fixed;
@@ -23,6 +25,8 @@
     margin-left: -0.75rem;
     padding-inline: 0.75rem;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #52525b transparent;
   }
 }
 
