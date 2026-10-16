@@ -79,7 +79,7 @@ website/
 │   ├── data/         teamData.js, sponsorData.js, faqData.js
 │   └── styles/       CSS Modules, plus globals.css
 ├── public/           images, the sponsorship package, favicon, robots.txt and sitemap.xml, published as they are
-├── scripts/          audit.mjs (the CI dependency audit) and resize-images.mjs
+├── scripts/          audit.mjs (the CI dependency audit), check-sitemap.mjs and resize-images.mjs
 └── .htaccess         the host's rewrite, cache and header rules
 ```
 
@@ -146,7 +146,7 @@ website/
 
 | Command | What it does |
 | ------- | ------------ |
-| `npm test` | Lints (`npm run lint`) and builds: CI's checks apart from the audit |
+| `npm test` | Lints (`npm run lint`), builds, and checks that `sitemap.xml` lists every exported page (`npm run check:sitemap`): CI's checks apart from the audit |
 | `npm run audit:ci` | CI's dependency audit: fails on high or critical advisories (see [`audit.mjs`](website/scripts/audit.mjs)) |
 | `npm run lighthouse` | Runs Lighthouse three times on every page in `out/` (build first; needs Chrome or Chromium; takes several minutes) and fails if a page's desktop performance score is below 90 |
 | `npm run lighthouse:live` | The same for the live site's home page |

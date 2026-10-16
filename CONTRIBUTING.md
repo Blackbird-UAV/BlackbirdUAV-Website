@@ -23,6 +23,6 @@ We welcome contributions from the community! If you'd like to contribute, please
 
 See the [README](README.md#getting-started) to set up the project. Then, from `website/`:
 
-- Run `npm test`, which lints and builds the site. CI runs the same checks, plus a dependency audit, on every pull request, and a merge into `main` deploys the site.
+- Run `npm test`, which lints and builds the site and checks that `sitemap.xml` lists every page. CI runs the same checks, plus a dependency audit, on every pull request, and a merge into `main` deploys the site.
 - Resize new images with `npm run resize-images` (see [Adding Images](README.md#adding-images)), and keep full-size originals out of `website/public`: everything in it is published.
 - Never commit secrets, API keys or credentials. To report a security issue, follow [SECURITY.md](SECURITY.md) instead of opening an issue.
