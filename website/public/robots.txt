@@ -1,0 +1,5 @@
+# Every page may be crawled. The sitemap lists them all, team seasons included.
+User-agent: *
+Allow: /
+
+Sitemap: https://blackbirduav.ca/sitemap.xml
