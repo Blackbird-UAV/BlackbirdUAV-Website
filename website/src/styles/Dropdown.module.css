@@ -26,6 +26,13 @@
   animation: dropdownIn 0.18s ease-out;
 }
 
+/* The closed list stays in the HTML, where crawlers find the team pages,
+   but out of view and the tab order. Needed because display: flex above
+   beats the browser's own [hidden] rule. */
+.dropdownMenu[hidden] {
+  display: none;
+}
+
 /* Invisible bridge over the gap between trigger and panel so the menu
    doesn't close while the pointer travels down to it. */
 .dropdownMenu::before {

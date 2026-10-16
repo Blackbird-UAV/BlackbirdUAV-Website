@@ -1,90 +1,183 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from '@/styles/Navbar.module.css'
 import dropdownStyles from '@/styles/Dropdown.module.css'
 import { IconChevronDown } from '@tabler/icons-react'
+
+// Kept by hand rather than read from teamData, which is large and would then
+// ship with every page: add a season here when its roster goes into teamData.
+const teamLinks = [
+  { link: '/MeetTheTeam/2026-2027', label: '2026-2027' },
+  { link: '/MeetTheTeam/2025-2026', label: '2025-2026' },
+  { link: '/MeetTheTeam/2024-2025', label: '2024-2025' },
+  { link: '/MeetTheTeam/2023-2024', label: '2023-2024' },
+  { link: '/Alumni', label: 'Alumni' }
+]
+
+// The breakpoint of the full-screen menu in Navbar.module.css
+const MOBILE_QUERY = '(max-width: 768px)'
+const isMobileWidth = () => window.matchMedia(MOBILE_QUERY).matches
 
 export default function Navbar () {
   const router = useRouter()
   const [showNavbar, setShowNavbar] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const navRef = useRef(null)
+  const hamburgerRef = useRef(null)
+  const linksRef = useRef(null)
+  const teamRef = useRef(null)
+  const teamButtonRef = useRef(null)
+  // Whether the Team menu is open because the mouse is over it
+  const hoverOpened = useRef(false)
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768)
+    let lastScrollY = window.scrollY
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY >= 300) {
+        setShowNavbar(true)
+      } else {
+        setShowNavbar(false)
+      }
+
+      if (currentScrollY < lastScrollY && isDropdownOpen) {
+        setIsDropdownOpen(false)
+      }
+
+      lastScrollY = currentScrollY
     }
 
-    handleResize()
-    window.addEventListener('resize', handleResize)
+    const handleMouseMove = (event) => {
+      if (window.scrollY < 300 && event.clientY < 100) {
+        setShowNavbar(true)
+      } else if (!isDropdownOpen && window.scrollY < 300) {
+        setShowNavbar(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('mousemove', handleMouseMove)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [isDropdownOpen])
 
-  const handleDropdownHover = (isEntering) => {
-    if (!isMobile) {
-      setIsDropdownOpen(isEntering)
-    }
-  }
-
+  // While the full-screen menu is open, the rest of the page is inert (out
+  // of the tab order and hidden from screen readers) and doesn't scroll, so
+  // focus starts and stays in the menu
   useEffect(() => {
-  let lastScrollY = window.scrollY
+    if (!isOpen) return
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-
-    if (currentScrollY >= 300) {
-      setShowNavbar(true)
-    } else {
-      setShowNavbar(false)
+    const inerted = []
+    for (let node = navRef.current; node !== document.body; node = node.parentElement) {
+      for (const sibling of node.parentElement.children) {
+        if (sibling !== node && !sibling.inert) {
+          sibling.inert = true
+          inerted.push(sibling)
+        }
+      }
     }
+    document.body.style.overflow = 'hidden'
+    linksRef.current.querySelector('a').focus()
 
-    if (currentScrollY < lastScrollY && isDropdownOpen) {
-      setIsDropdownOpen(false)
+    // Widening the window past the breakpoint leaves the inline links
+    const query = window.matchMedia(MOBILE_QUERY)
+    const handleChange = () => {
+      if (!query.matches) setIsOpen(false)
     }
+    query.addEventListener('change', handleChange)
 
-    lastScrollY = currentScrollY
-  }
-
-  const handleMouseMove = (event) => {
-    if (window.scrollY < 300 && event.clientY < 100) {
-      setShowNavbar(true)
-    } else if (!isDropdownOpen && window.scrollY < 300) {
-      setShowNavbar(false)
-    }
-  }
-
-  window.addEventListener('scroll', handleScroll)
-  window.addEventListener('mousemove', handleMouseMove)
-
-  return () => {
-    window.removeEventListener('scroll', handleScroll)
-    window.removeEventListener('mousemove', handleMouseMove)
-  }
-}, [isDropdownOpen])
-
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
+    return () => {
+      inerted.forEach((element) => { element.inert = false })
+      document.body.style.overflow = ''
+      query.removeEventListener('change', handleChange)
     }
   }, [isOpen])
+
+  useEffect(() => {
+    // A press on another navbar link is left to that link's click, so the
+    // full-screen menu doesn't shift under the finger before the click lands
+    const handlePointerDown = (event) => {
+      if (isDropdownOpen && !linksRef.current.contains(event.target)) {
+        setIsDropdownOpen(false)
+      }
+      if (
+        isOpen &&
+        !linksRef.current.contains(event.target) &&
+        !hamburgerRef.current.contains(event.target)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key !== 'Escape') return
+      const focusInTeam = teamRef.current.contains(document.activeElement)
+      if (isDropdownOpen && (focusInTeam || !isOpen)) {
+        setIsDropdownOpen(false)
+        if (focusInTeam) teamButtonRef.current.focus()
+      } else if (isOpen) {
+        setIsOpen(false)
+        setIsDropdownOpen(false)
+        hamburgerRef.current.focus()
+      }
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isDropdownOpen, isOpen])
 
   const handleLinkClick = () => {
     setIsOpen(false)
     setIsDropdownOpen(false)
   }
 
-  const handleDropdownClick = () => {
-    if (isMobile) {
-      setIsDropdownOpen(!isDropdownOpen)
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+    setIsDropdownOpen(false)
+  }
+
+  // Above the breakpoint the Team menu opens while a mouse is over it. A
+  // touch only clicks, and in the full-screen menu it's a plain toggle.
+  const handleTeamPointerEnter = (event) => {
+    if (event.pointerType !== 'mouse' || isMobileWidth()) return
+    if (!isDropdownOpen) hoverOpened.current = true
+    setIsDropdownOpen(true)
+  }
+
+  const handleTeamPointerLeave = (event) => {
+    if (event.pointerType !== 'mouse' || isMobileWidth()) return
+    hoverOpened.current = false
+    setIsDropdownOpen(false)
+  }
+
+  const handleTeamClick = (event) => {
+    // A mouse click usually follows the hover that just opened the menu, so
+    // it leaves it open. Enter and Space (detail 0) always toggle.
+    const keepOpen = hoverOpened.current && event.detail !== 0
+    hoverOpened.current = false
+    if (!keepOpen) setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  // Moving focus out of the floating menu closes it (a click on its padding
+  // leaves no relatedTarget and keeps it open). Inside the full-screen menu
+  // it is inline, and closing it would move the links under the focus.
+  const handleTeamBlur = (event) => {
+    const next = event.relatedTarget
+    if (!isMobileWidth() && next && !teamRef.current.contains(next)) {
+      hoverOpened.current = false
+      setIsDropdownOpen(false)
     }
   }
 
@@ -97,125 +190,76 @@ export default function Navbar () {
 
   const isTeamRoute =
     router.pathname.startsWith('/MeetTheTeam') || router.pathname === '/Alumni'
+  const currentPath = router.asPath.split(/[?#]/)[0]
 
-  const teamLinks = [
-    { link: '/MeetTheTeam/2026-2027', label: '2026-2027' },
-    { link: '/MeetTheTeam/2025-2026', label: '2025-2026' },
-    { link: '/MeetTheTeam/2024-2025', label: '2024-2025' },
-    { link: '/MeetTheTeam/2023-2024', label: '2023-2024' },
-    { link: '/Alumni', label: 'Alumni' }
-  ]
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        isDropdownOpen &&
-        !event.target.closest(`.${dropdownStyles.dropdownMenu}`) &&
-        !event.target.closest(`.${styles.linkWrapper}`)
-      ) {
-        setIsDropdownOpen(false)
-      } else if (
-        isOpen &&
-        !event.target.closest(`.${styles.linksContainer}`) &&
-        !event.target.closest(`.${styles.hamburger}`)
-      ) {
-        setIsOpen(false)
-      }
-    }
-
-    const handleKeyDown = (event) => {
-      if (event.key !== 'Escape') return
-      if (isDropdownOpen) {
-        setIsDropdownOpen(false)
-      } else if (isOpen) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isDropdownOpen, isOpen])
+  const pageLink = (href, label) => (
+    <div
+      className={`${styles.linkWrapper} ${
+        router.pathname === href ? styles.activeLink : ''
+      }`}
+    >
+      <Link
+        href={href}
+        className={styles.link}
+        aria-current={router.pathname === href ? 'page' : undefined}
+        onClick={handleLinkClick}
+      >
+        <span>{label}</span>
+      </Link>
+    </div>
+  )
 
   return (
-    <nav className={`${navbarClass}`}>
-      <Link href='/'>
-        <div className={styles.logoContainer}>
-          <Image
-            src='/logos/BirdLogo.png'
-            alt='Logo'
-            fill
-            className={`${styles.logo}`}
-            sizes='(max-width: 768px) 50px, 100px'
-            loading='lazy'
-          />
-        </div>
+    <nav ref={navRef} className={`${navbarClass}`}>
+      <Link href='/' className={styles.logoLink} onClick={handleLinkClick}>
+        <Image
+          src='/logos/BirdLogo.png'
+          alt='Blackbird UAV home'
+          fill
+          className={styles.logo}
+          loading='eager'
+        />
       </Link>
 
       <button
+        ref={hamburgerRef}
+        type='button'
         className={`${styles.hamburger} ${isOpen ? styles.open : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label='Toggle menu'
+        onClick={toggleMenu}
+        aria-label='Menu'
+        aria-expanded={isOpen}
+        aria-controls='navbar-links'
       >
-        <div />
-        <div />
-        <div />
+        <span />
+        <span />
+        <span />
       </button>
 
-      <div className={`${styles.linksContainer} ${isOpen ? styles.open : ''}`}>
-        <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === '/' ? styles.activeLink : ''
-          }`}
-        >
-          <Link href='/' className={styles.link} onClick={handleLinkClick}>
-            <span>Home</span>
-          </Link>
-        </div>
-
+      <div
+        ref={linksRef}
+        id='navbar-links'
+        className={`${styles.linksContainer} ${isOpen ? styles.open : ''}`}
+      >
+        {pageLink('/', 'Home')}
+        {pageLink('/Competitions', 'Competitions')}
+        {pageLink('/vehicles', 'Vehicles')}
 
         <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === '/Competitions' ? styles.activeLink : ''
-          }`}
-        >
-          <Link
-            href='/Competitions'
-            className={styles.link}
-            onClick={handleLinkClick}
-          >
-            <span>Competitions</span>
-          </Link>
-        </div>
-        <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === '/vehicles' ? styles.activeLink : ''
-          }`}
-        >
-          <Link
-            href='/vehicles'
-            className={styles.link}
-            onClick={handleLinkClick}
-          >
-            <span>Vehicles</span>
-          </Link>
-        </div>
-        <div
+          ref={teamRef}
           className={`${styles.linkWrapper} ${styles.dropdownWrapper} ${
             isTeamRoute ? styles.activeLink : ''
           }`}
-          onMouseEnter={() => handleDropdownHover(true)}
-          onMouseLeave={() => handleDropdownHover(false)}
+          onPointerEnter={handleTeamPointerEnter}
+          onPointerLeave={handleTeamPointerLeave}
+          onBlur={handleTeamBlur}
         >
           <button
+            ref={teamButtonRef}
             type='button'
-            onClick={handleDropdownClick}
+            onClick={handleTeamClick}
             className={`${styles.link} ${styles.dropdownTrigger}`}
-            aria-haspopup='true'
             aria-expanded={isDropdownOpen}
+            aria-controls='navbar-team-menu'
           >
             <span>
               Team
@@ -223,6 +267,7 @@ export default function Navbar () {
                 size='0.9rem'
                 stroke={1.5}
                 color='#f9fafb'
+                aria-hidden='true'
                 className={`${styles.chevron} ${
                   isDropdownOpen ? styles.chevronOpen : ''
                 }`}
@@ -230,41 +275,34 @@ export default function Navbar () {
             </span>
           </button>
 
-          {isDropdownOpen && (
-            <div className={dropdownStyles.dropdownMenu} role='menu'>
-              {teamLinks.map((item) => (
+          {/* Always rendered, so the team pages are linked from every page's
+              HTML; `hidden` takes the links out of view and the tab order */}
+          <ul
+            id='navbar-team-menu'
+            className={dropdownStyles.dropdownMenu}
+            hidden={!isDropdownOpen}
+          >
+            {teamLinks.map((item) => (
+              <li key={item.link}>
                 <Link
                   href={item.link}
-                  key={item.link}
-                  role='menuitem'
-                  aria-current={router.asPath === item.link ? 'page' : undefined}
+                  aria-current={currentPath === item.link ? 'page' : undefined}
                   className={dropdownStyles.dropdownItem}
                   onClick={handleLinkClick}
                 >
                   {item.label}
                 </Link>
-              ))}
-            </div>
-          )}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div
-          className={`${styles.linkWrapper} ${
-            router.pathname === '/joinTheTeam' ? styles.activeLink : ''
-          }`}
-        >
-          <Link
-            href='/joinTheTeam'
-            className={styles.link}
-            onClick={handleLinkClick}
-          >
-            <span>Join</span>
-          </Link>
-        </div>
+        {pageLink('/joinTheTeam', 'Join')}
         <div className={`${styles.linkWrapper} ${styles.sponsorButton}`}>
           <Link
             href='/sponsor'
             className={styles.sponsorLink}
+            aria-current={router.pathname === '/sponsor' ? 'page' : undefined}
             onClick={handleLinkClick}
           >
             Sponsor Us
