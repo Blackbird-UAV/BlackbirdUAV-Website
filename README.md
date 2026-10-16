@@ -157,7 +157,7 @@ website/
 
 - **Team members**: edit [`teamData.js`](website/src/data/teamData.js). Headshots go in a folder per year, such as `website/public/images/2026Headshots/`.
 - **A new team year**: add the year to `teamData.js` (its page is generated from it), then add it to the team links in [`Navbar.js`](website/src/components/Navbar.js) and to [`sitemap.xml`](website/public/sitemap.xml), and point the `/MeetTheTeam` redirect in [`.htaccess`](website/.htaccess) at it.
-- **Alumni and competitions**: the `Alumni` and `Competition` entries in `teamData.js`.
+- **Alumni and competitions**: the `Alumni` and `Competition` entries in `teamData.js`. A competition photo also needs its size in pixels, `imageWidth` and `imageHeight`.
 - **Sponsors**: [`sponsorData.js`](website/src/data/sponsorData.js), with the logo in `website/public/images/Sponsors/`.
 - **FAQ**: [`faqData.js`](website/src/data/faqData.js).
 - **Page titles and descriptions**: each page passes its own to [`PageMeta`](website/src/components/PageMeta.js), which writes all of its `<head>` tags. A new page should use it too, and be added to `sitemap.xml`.

@@ -1158,6 +1158,8 @@ const teamData = {
         `,
         award: { variant: 'innovation', label: 'Team Spirit Award'},
         image: '/images/comp2026.jpg',
+        imageWidth: 1400,
+        imageHeight: 1050,
         members: [
           { firstName: 'Kevin', lastName: 'Fernando', role: 'Club president' },
           { firstName: 'DJ', role: 'Flight' },
@@ -1191,6 +1193,8 @@ const teamData = {
         `,
         award: { variant: 'bronze', label: '3rd Place', detail: 'Overall' },
         image: '/images/comp2025.jpg',
+        imageWidth: 1024,
+        imageHeight: 682,
         members: [
           { firstName: 'Felix', lastName: 'Chenier', role: 'Club president' },
           { firstName: 'DJ', role: 'Flight' },
@@ -1221,6 +1225,8 @@ const teamData = {
         `,
         award: { variant: 'innovation', label: 'Innovation Award' },
         image: '/images/comp2024.jpg',
+        imageWidth: 718,
+        imageHeight: 373,
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
           { firstName: 'Felix', lastName: 'Vice-President' },
@@ -1254,6 +1260,8 @@ const teamData = {
         `,
         award: { variant: 'gold', label: '1st Place', detail: 'Phase 2' },
         image: '/images/comp2023.jpg',
+        imageWidth: 1154,
+        imageHeight: 698,
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
           { firstName: 'Jed', lastName: '' },
@@ -1273,6 +1281,8 @@ const teamData = {
           <p>Location: Southport, Manitoba</p>
         `,
         image: '/images/comp2022.jpg',
+        imageWidth: 583,
+        imageHeight: 314,
         members: [
           {
             firstName: 'Pier-Jean',

@@ -58,7 +58,9 @@
 
 /* Height stays automatic so each photo keeps its own aspect ratio — the set
    spans 1.33 to 1.92 and cropping them to a common box would cut into group
-   shots. Row height is driven by the text column anyway, so this costs nothing. */
+   shots. The <img> carries the photo's real width and height, so the box has
+   that shape before the photo loads; on one-column screens the text sits
+   below it and would otherwise jump. */
 .image {
   display: block;
   width: 100%;

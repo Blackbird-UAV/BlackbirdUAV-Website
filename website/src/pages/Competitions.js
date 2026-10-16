@@ -23,7 +23,8 @@ const Competition = () => {
           {Object.keys(years)
             .sort((a, b) => b - a)
             .map((year) => {
-              const { image, award, description, members } = years[year]
+              const { image, imageWidth, imageHeight, award, description, members } =
+                years[year]
 
               return (
                 <li
@@ -32,12 +33,15 @@ const Competition = () => {
                 >
                   {image && (
                     <figure className={styles.media}>
+                      {/* The photo's own size, so its box has the photo's
+                          shape before it loads and the text beside or
+                          below it doesn't move when it arrives */}
                       <Image
                         src={image}
                         alt={`The ${year} Blackbird UAV competition team`}
                         className={styles.image}
-                        width={1200}
-                        height={750}
+                        width={imageWidth}
+                        height={imageHeight}
                         onError={(e) => {
                           console.error(`Failed to load image for year ${year}`)
                           e.target.onerror = null // Prevent infinite loop
