@@ -2,3 +2,7 @@
 
 # local Claude Code state (per-developer settings, agent worktree checkouts)
 .claude/
+
+# operating system files, in every folder
+.DS_Store
+Thumbs.db

@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# lighthouse ci reports
+/.lighthouseci/
+
 # next.js
 /.next/
 /out/
@@ -35,5 +38,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.DS_Store
