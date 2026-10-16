@@ -11,8 +11,9 @@
   </a>
 
 
-[![Release](https://img.shields.io/badge/v1.4.9-306998?style=for-the-badge&logo=Release&label=Release&labelColor=4D4D4D)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/releases)
-[![Deploy to FTP](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml)
+[![Release](https://img.shields.io/github/v/release/Blackbird-UAV/BlackbirdUAV-Website?style=for-the-badge&label=Release&labelColor=4D4D4D&color=306998)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/releases)
+[![CI](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/nodeMain.js.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/nodeMain.js.yml)
+[![Deploy](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml/badge.svg)](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/actions/workflows/deployMain.yml)
 
 [![Website Status](https://img.shields.io/website?down_message=offline&label=Main%20Site&style=for-the-badge&up_message=online&url=https%3A%2F%2Fblackbirduav.ca)](https://blackbirduav.ca)
 
@@ -26,36 +27,61 @@
 - [Marc Vidal](https://github.com/MarcVidalCodes)
 - [Jonah Pasquantonio](https://github.com/jonahp123)
 - [Teddy Kurita](https://github.com/EdwardKurita)
+- [Jeremy Friesen](https://github.com/JeremyFriesenGitHub)
 
 ---
 
 ## Overview
 
-Welcome to the official repository for the **Blackbird UAV** website! This project represents the 2024/2025 version of the organization's website, designed to showcase our work, attract sponsors, and engage with the community. The website serves as a central hub for information about our team, projects, events, and partnerships.
+Welcome to the official repository for the **Blackbird UAV** website! Blackbird UAV is a student UAV design team at Carleton University, and the website showcases our team, our aircraft and our competition results, helps students join, and connects us with sponsors.
 
 ---
 
 ## Deployment
 
-The website is deployed to an FTP server using **FTP Deploy Action** via GitHub Actions.
+The live site is [https://blackbirduav.ca/](https://blackbirduav.ca/). There is no separate development site: run it locally instead (see [Getting Started](#getting-started)).
 
-- **Development Environment**: [https://dev.blackbirduav.ca/](https://dev.blackbirduav.ca/)
-- **Live Production Site**: [https://blackbirduav.ca/](https://blackbirduav.ca/)
+Checks and deploys run on GitHub Actions:
+
+1. **CI** ([`nodeMain.js.yml`](.github/workflows/nodeMain.js.yml)) runs on every push and pull request to `main`: `npm ci`, the dependency audit (`npm run audit:ci`), `npm run lint` and `npm run build`.
+2. **Deploy to Main** ([`deployMain.yml`](.github/workflows/deployMain.yml)) runs once CI passes on a push to `main`. One job builds the export and has no access to secrets. A separate job in the `production` environment, which holds the FTP credentials, uploads the export over FTPS. Only changed files are uploaded, and files no longer in the export are deleted from the server.
+
+The host runs Apache (LiteSpeed) and applies [`website/.htaccess`](website/.htaccess), which `npm run prod` copies into the export. It maps clean URLs such as `/vehicles` to `vehicles.html`, shows the 404 page for unknown URLs, sets caching and security headers, and redirects HTTP to HTTPS.
 
 ---
 
 ## Features
 
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
-- **Dynamic Content**: Easily updatable content for news, events, and sponsor information.
-- **Modern Tech Stack**: Built with cutting-edge tools for performance and scalability.
+- **Easily Updatable Content**: Team rosters, alumni, competitions, sponsors and the FAQ live in plain data files (see [Updating Content](#updating-content)).
+- **Static and Fast**: Every page is prerendered to HTML at build time, so the host only serves files.
+- **Accessible**: A skip link, keyboard-friendly menus, tabs and carousels, and less motion when the device asks for it.
+- **Search and Link Previews**: Every page has its own title, description and canonical URL, and link-preview tags with a photo; the site has a `robots.txt` and a `sitemap.xml`.
 
 ---
 
 ## Technologies Used
 
-- **Frontend**: [React.js](https://reactjs.org/)
-- **Deployment**: FTP, GitHub Actions
+- **Framework**: [Next.js](https://nextjs.org/) 16 (pages router) with [React](https://react.dev/) 19, built as a static export (`output: 'export'`) into `website/out`
+- **Styling**: CSS Modules, [Mantine](https://mantine.dev/) (search inputs) and [Motion](https://motion.dev/) (animations)
+- **Icons and Fonts**: Font Awesome and Tabler Icons; Fira Sans and Fahkwang through `next/font`, served from the site itself
+- **Analytics**: Google Analytics through `@next/third-parties`
+- **Hosting**: Apache (LiteSpeed), configured by `website/.htaccess`
+- **Deployment**: GitHub Actions, FTPS
+
+### Project Structure
+
+```
+website/
+├── src/
+│   ├── pages/        one file per page; MeetTheTeam/[year].js builds a page for each team year
+│   ├── components/   shared parts: Navbar, Footer, Header, PageMeta (each page's <head> tags)...
+│   ├── data/         teamData.js, sponsorData.js, faqData.js
+│   └── styles/       CSS Modules, plus globals.css
+├── public/           images, the sponsorship package, favicon, robots.txt and sitemap.xml, published as they are
+├── scripts/          audit.mjs (the CI dependency audit) and resize-images.mjs
+└── .htaccess         the host's rewrite, cache and header rules
+```
 
 ---
 
@@ -102,17 +128,56 @@ The website is deployed to an FTP server using **FTP Deploy Action** via GitHub 
 
 ### How to Build
 
-1. Run the build command (if you're using unix/linux, replace `npm run copy-htaccess-win` with `npm run copy-htaccess` in the prod script in **package.json**):
+1. Build the static site into `website/out`, with `.htaccess` copied in, exactly as the deploy does:
 
    ```bash
    npm run prod
    ```
 
+2. To preview the build, serve `out/` with any static file server, for example:
+
+   ```bash
+   npx serve@14 out
+   ```
+
+   It serves clean URLs and the 404 page like the host does, but not the other `.htaccess` rules (redirects, caching and security headers).
+
+### Checks
+
+| Command | What it does |
+| ------- | ------------ |
+| `npm test` | Lints (`npm run lint`) and builds: CI's checks apart from the audit |
+| `npm run audit:ci` | CI's dependency audit: fails on high or critical advisories (see [`audit.mjs`](website/scripts/audit.mjs)) |
+| `npm run lighthouse` | Runs Lighthouse three times on every page in `out/` (build first; needs Chrome or Chromium; takes several minutes) and fails if a page's desktop performance score is below 90 |
+| `npm run lighthouse:live` | The same for the live site's home page |
+
+---
+
+## Updating Content
+
+- **Team members**: edit [`teamData.js`](website/src/data/teamData.js). Headshots go in a folder per year, such as `website/public/images/2026Headshots/`.
+- **A new team year**: add the year to `teamData.js` (its page is generated from it), then add it to the team links in [`Navbar.js`](website/src/components/Navbar.js) and to [`sitemap.xml`](website/public/sitemap.xml), and point the `/MeetTheTeam` redirect in [`.htaccess`](website/.htaccess) at it.
+- **Alumni and competitions**: the `Alumni` and `Competition` entries in `teamData.js`.
+- **Sponsors**: [`sponsorData.js`](website/src/data/sponsorData.js), with the logo in `website/public/images/Sponsors/`.
+- **FAQ**: [`faqData.js`](website/src/data/faqData.js).
+- **Page titles and descriptions**: each page passes its own to [`PageMeta`](website/src/components/PageMeta.js), which writes all of its `<head>` tags. A new page should use it too, and be added to `sitemap.xml`.
+
+### Adding Images
+
+Everything in `website/public` is published, so resize photos before adding them, and keep full-size originals out of it. From `website/`:
+
+```bash
+npm run resize-images -- <max-width> <file-or-folder>...
+# e.g. a new year's headshots: npm run resize-images -- 555 public/images/2027Headshots
+```
+
+Aim for about twice the width the image is shown at: 555 px is right for a headshot, 1920 px for a full-width page header. The script also removes camera and location metadata. It overwrites the files it is given (unless you pass `--out`) and re-encodes them, so run it only on new images. See the comment at the top of [`resize-images.mjs`](website/scripts/resize-images.mjs) for its options.
+
 ---
 
 ## License
 
-This project is licensed under the **GNU License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **GNU General Public License v3.0**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
