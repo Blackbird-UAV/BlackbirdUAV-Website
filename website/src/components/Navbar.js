@@ -17,7 +17,7 @@ const teamLinks = [
 ]
 
 // The breakpoint of the full-screen menu in Navbar.module.css
-const MOBILE_QUERY = '(max-width: 768px)'
+const MOBILE_QUERY = '(max-width: 1023px)'
 const isMobileWidth = () => window.matchMedia(MOBILE_QUERY).matches
 
 export default function Navbar () {
