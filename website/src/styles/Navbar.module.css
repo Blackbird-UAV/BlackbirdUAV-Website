@@ -24,6 +24,26 @@
   /* Moves down when scrolled past the second div */
 }
 
+/* Keyboard focus inside the navbar brings it on screen (the home page keeps
+   it hidden until the visitor scrolls or points at the top) */
+.navbar:has(:focus-visible) {
+  transform: translateY(0);
+}
+
+@supports not selector(:has(*)) {
+  .navbar:focus-within {
+    transform: translateY(0);
+  }
+}
+
+/* Phones and other touch screens can't point at the top to reveal it, so
+   there it is always shown, menu button included */
+@media (max-width: 768px), (hover: none) {
+  .navbar {
+    transform: translateY(0);
+  }
+}
+
 .logoContainer {
   position: relative;
   height: 40px;
@@ -249,5 +269,11 @@
     display: block;
     width: 100%;
     text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar {
+    transition: none;
   }
 }
