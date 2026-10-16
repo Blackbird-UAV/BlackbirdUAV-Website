@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { motion } from 'motion/react'
 import PageMeta from '@/components/PageMeta'
 import Sidebar from '@/components/sponsorSidebar'
@@ -52,14 +51,19 @@ const SponsorTier = ({ tier, index }) => (
               rel='noopener noreferrer'
             >
               <div className={styles.logoBox}>
-                {/* The CSS sizes the logo; width and height are only what
-                    next/image requires */}
-                <Image
+                {/* A plain <img>, as in SponsorGrid: images are unoptimized,
+                    so next/image adds nothing, and its development check
+                    warns about every logo, as the CSS changes its width but
+                    not its 100px height */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   className={styles.logo}
                   src={sponsor.logo}
                   alt={sponsor.name}
                   width={300}
                   height={100}
+                  loading='lazy'
+                  decoding='async'
                 />
               </div>
             </a>
