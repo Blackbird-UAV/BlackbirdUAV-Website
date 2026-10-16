@@ -43,7 +43,8 @@ const firaSansItalic = Fira_Sans({
   display: 'swap',
   preload: false
 })
-// Only the home page hero uses Fahkwang, so none of it is preloaded.
+// Only the home page hero uses Fahkwang, so none of it is preloaded. The
+// hero's line breaks don't change when it loads (Home.module.css).
 const fahkwang = Fahkwang({
   weight: '700',
   subsets: ['latin'],

@@ -79,8 +79,28 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Until Fahkwang loads, the hero is set in a narrower fallback font, which
+   fits "BLACKBIRD UAV" on one line at more widths than Fahkwang does; left
+   to wrap by itself, the wordmark would re-wrap when Fahkwang swaps in and
+   move the copy (a layout shift). In Fahkwang it is about 9.27 times its
+   font size wide, so it fits on one line on screens from 3 x 9.27 + 1 (the
+   hero's padding) = 28.8em to 600px, from 5 x 9.27 + 1 = 47.33em to
+   1050px, and beside the buttons, at 8rem, from about 108.3em. Everywhere
+   else min-content breaks it after BLACKBIRD whatever the font. The widths
+   are in em so that they follow the rem font sizes. */
+@media (max-width: 28.8em),
+  (min-width: 601px) and (max-width: 47.33em),
+  (min-width: 1051px) and (max-width: 108.3em) {
+  .name {
+    width: min-content;
+  }
+}
+
+/* Sized to fit on one line beside the buttons, like the wordmark: it is
+   about 12.2 times its font size wide in Fahkwang. At 3rem it would put
+   "Out" on a line of its own up to 1127px, and only once Fahkwang loads. */
 .subtitle {
-  font-size: 3rem;
+  font-size: min(3rem, calc((99vw - 33rem) / 12.4));
   color: #353535;
   margin-bottom: 8%;
 }
@@ -695,8 +715,9 @@
     font-size: min(3rem, calc((100vw - 2rem) / 6.7));
   }
 
+  /* One line down to the narrowest phones too (below about 310px) */
   .subtitle {
-    font-size: 1.5rem;
+    font-size: min(1.5rem, calc((100vw - 1rem) / 12.4));
     margin-bottom: 1rem;
   }
 
