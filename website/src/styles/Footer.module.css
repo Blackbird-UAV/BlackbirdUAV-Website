@@ -38,6 +38,9 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
+  /* Lowers the icons on the row rather than padding each link, so each
+     link's box (and focus ring) is the 30px square around its icon */
+  padding-top: 25px;
 }
 
 .socialLinks a {
@@ -49,12 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
 }
-
-/* .socialLinks a:hover {
-  color: #4169e1;
-} */
 
 .linkedin:hover {
   color: #0077b5;
@@ -93,26 +91,21 @@
   line-height: 1.2;
 }
 
-.infoSection h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
 .infoSection p {
   font-size: 0.9rem;
   margin: 0.2rem 0;
   text-align: left;
 }
 
+.infoSection a:hover,
+.infoSection a:focus-visible {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .footerContent {
     flex-direction: column;
     gap: 1rem;
-  }
-
-  .footerContent > .logoSection {
-    border-right: none;
-    padding-right: 0;
   }
 
   .logoSection img {
