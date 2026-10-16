@@ -255,11 +255,11 @@ export default function Home () {
 
       <div id='firstDiv' className={styles.cloudContainer}>
         <Image
-          src='/images/leviathan-hero.png'
+          src='/images/leviathan-hero.webp'
           alt='Leviathan hovering between the clouds'
           className={styles.heroCraft}
-          width={537}
-          height={319}
+          width={625}
+          height={304}
           priority
         />
         <motion.div
