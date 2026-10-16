@@ -1,54 +1,24 @@
-import React, { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import styles from '@/styles/Header.module.css'
 
-const Header = ({ imagePath, headerText, className }) => {
-  const headerRef = useRef(null)
-  const parallaxAmplitude = 0.5
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (headerRef.current) {
-        const offset = window.scrollY
-        const windowWidth = window.innerWidth
-        let adjustedOffset
-
-        // Responsive offset adjustments
-        if (windowWidth <= 480) {
-          adjustedOffset = -40
-        } else if (windowWidth <= 768) {
-          adjustedOffset = 0
-        } else {
-          adjustedOffset = 40
-        }
-
-        headerRef.current.style.backgroundPositionY = `${
-          -adjustedOffset + offset * parallaxAmplitude
-        }px`
-        headerRef.current.style.backgroundPositionX = 'center'
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', handleScroll)
-    handleScroll() // Initial call
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
-    }
-  }, [parallaxAmplitude])
-
+// A page's title over a photo. The photo is the largest thing on screen when
+// the page opens, so it is an <img> the browser finds in the HTML and fetches
+// first, not a CSS background it only discovers once styles are applied.
+const Header = ({ imagePath, headerText }) => {
   return (
-    <header
-      ref={headerRef}
-      className={`${styles.header} ${className || ''}`}
-      style={{ backgroundImage: `url(${imagePath})` }}
-    >
+    <header className={styles.header}>
+      <Image
+        src={imagePath}
+        alt=''
+        fill
+        loading='eager'
+        fetchPriority='high'
+        className={styles.photo}
+      />
       <div className={styles.overlay} />
       <motion.h1
-        className={`${styles.text} ${styles.headerText}`} // Ensure correct class name
+        className={styles.text}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -57,12 +27,6 @@ const Header = ({ imagePath, headerText, className }) => {
       </motion.h1>
     </header>
   )
-}
-
-Header.propTypes = {
-  imagePath: PropTypes.string.isRequired,
-  headerText: PropTypes.string.isRequired,
-  className: PropTypes.string
 }
 
 export default Header
