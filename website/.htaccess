@@ -21,9 +21,13 @@ RewriteRule (^|/)\. - [F,L]
 # Redirect old sponsorship package PDF to new one
 RewriteRule ^assets/Blackbird\ UAV\ Sponsorship\ Package\ 2024-2025\.pdf$ /assets/bbuavsponsorpackage2025.pdf [R=301,L]
 
-# Rewrite clean URLs to .html files
+# Rewrite clean URLs (e.g. /vehicles) to their exported page, if there is
+# one. Without that check a miss such as /robots.txt was rewritten to
+# robots.txt.html, then robots.txt.html.html and so on, until Apache gave up
+# with a 500.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
 # Rewrite nested clean URLs (e.g. /MeetTheTeam/2024-2025) to their exported
@@ -36,6 +40,11 @@ RewriteRule ^([^/]+)/([^/]+?)/?$ $1/$2.html [L]
 
 # Serve index.html for root
 DirectoryIndex index.html
+
+# Missing pages get the site's own 404 page, with its navigation, and a 404
+# status. The page loads its scripts and styles from absolute /_next/ paths,
+# so it works at any depth (e.g. /MeetTheTeam/1999-2000).
+ErrorDocument 404 /404.html
 
 # Disable directory listing so unlinked files aren't enumerable
 Options -Indexes
