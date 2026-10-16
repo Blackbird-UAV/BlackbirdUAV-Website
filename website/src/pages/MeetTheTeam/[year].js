@@ -75,10 +75,29 @@ const MemberCard = ({ member, index }) => {
     return () => observer.disconnect()
   }, [])
 
+  // A mouse turns the card over by resting on it, which presses the button,
+  // so a click on the button turns it back while the mouse is still there,
+  // and leaving always turns it back. Touch and pen pointers are left out:
+  // they can enter a card in the same moment as they tap its button, and the
+  // tap would then undo the turn.
+  const onPointerEnter = (e) => e.pointerType === 'mouse' && setFlipped(true)
+  const onPointerLeave = (e) => e.pointerType === 'mouse' && setFlipped(false)
+
+  // On a touch screen a tap anywhere on the card turns it over and back, as
+  // the button does. A tap on the LinkedIn link just follows it. Mouse clicks
+  // are left out, so selecting text in the bio doesn't turn the card.
+  const onCardClick = (e) => {
+    if (window.matchMedia('(hover: hover)').matches) return
+    if (e.target.closest('a')) return
+    setFlipped((f) => !f)
+  }
+
   return (
     <motion.div
       id={`member-${member.id}`}
       className={flipped ? `${styles.card} ${styles.flipped}` : styles.card}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       initial='hidden'
       whileInView='visible'
       viewport={{ once: true, amount: 0.1 }}
@@ -91,20 +110,21 @@ const MemberCard = ({ member, index }) => {
         }
       }}
     >
-      {/* Hovering turns the card for mouse users; this is the way for
-          keyboard and touch, and the only one for cards with no link */}
+      {/* Turns the card over and back. It is the keyboard's way to the bio,
+          and the only one on a card with no link. It sits outside
+          .cardInner, so a tap on it isn't also a tap on the card. */}
       <button
         type='button'
         className={styles.flipButton}
         aria-label={`Show bio for ${member.firstName} ${member.lastName}`}
         aria-pressed={flipped}
-        onClick={() => setFlipped(!flipped)}
+        onClick={() => setFlipped((f) => !f)}
       >
         <span className={styles.turnOverIcon}>
           <FontAwesomeIcon icon={faAnglesRight} />
         </span>
       </button>
-      <div className={styles.cardInner}>
+      <div className={styles.cardInner} onClick={onCardClick}>
         <div className={styles.cardFront}>
           {/* The name is printed on the card, so the photo needs no alt */}
           <Image
