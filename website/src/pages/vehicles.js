@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import styles from '@/styles/Vehicles.module.css'
 import Header from '@/components/Header'
+import PageMeta from '@/components/PageMeta'
 import { fadeInUpSlower } from '@/components/animations'
 
 const vehicles = [
@@ -19,11 +19,23 @@ const vehicles = [
       communication: 'Fully LTE',
       platform: 'Bespoke Platform'
     },
-    images: [
-      '/images/Vehicles/Leviathan_1.jpg',
-      '/images/Vehicles/Leviathan_2.jpg',
-      '/images/Vehicles/Leviathan_3.jpg',
-      '/images/Vehicles/Leviathan_4.jpg'
+    photos: [
+      {
+        src: '/images/Vehicles/Leviathan_1.jpg',
+        alt: 'Leviathan standing in a grassy field, its payload bay slung below the frame'
+      },
+      {
+        src: '/images/Vehicles/Leviathan_2.jpg',
+        alt: 'Leviathan hovering in front of autumn trees'
+      },
+      {
+        src: '/images/Vehicles/Leviathan_3.jpg',
+        alt: 'Leviathan flying against an overcast sky'
+      },
+      {
+        src: '/images/Vehicles/Leviathan_4.jpg',
+        alt: 'Leviathan seen from below against a clear blue sky'
+      }
     ]
   },
   {
@@ -38,10 +50,19 @@ const vehicles = [
       communication: 'Fully LTE',
       platform: 'Bespoke Platform'
     },
-    images: [
-      '/images/Vehicles/Goliath_1.jpg',
-      '/images/Vehicles/Goliath_2.jpg',
-      '/images/Vehicles/Goliath_3.jpg'
+    photos: [
+      {
+        src: '/images/Vehicles/Goliath_1.jpg',
+        alt: 'Goliath, a black quadcopter, standing on a concrete floor'
+      },
+      {
+        src: '/images/Vehicles/Goliath_2.jpg',
+        alt: 'Goliath hovering against a grey sky'
+      },
+      {
+        src: '/images/Vehicles/Goliath_3.jpg',
+        alt: 'Goliath hovering over a field with a tube hanging below it'
+      }
     ]
   },
   {
@@ -57,10 +78,19 @@ const vehicles = [
       communication: 'Fully LTE',
       platform: 'Bespoke Platform'
     },
-    images: [
-      '/images/Vehicles/Apogee_1.jpg',
-      '/images/Vehicles/Apogee_2.jpg',
-      '/images/Vehicles/Apogee_3.jpg'
+    photos: [
+      {
+        src: '/images/Vehicles/Apogee_1.jpg',
+        alt: 'Apogee flying against a blue sky, seen from the side'
+      },
+      {
+        src: '/images/Vehicles/Apogee_2.jpg',
+        alt: 'Apogee on the grass at sunset, with eight team members standing behind it'
+      },
+      {
+        src: '/images/Vehicles/Apogee_3.jpg',
+        alt: 'Apogee on a table at the flying field, with team members around it'
+      }
     ]
   },
   {
@@ -76,36 +106,163 @@ const vehicles = [
       communication: 'Fully LTE',
       platform: 'Bespoke Platform'
     },
-    images: [
-      '/images/Vehicles/Zenith_1.jpg',
-      '/images/Vehicles/Zenith_2.jpg',
-      '/images/Vehicles/Zenith_3.jpg'
+    photos: [
+      {
+        src: '/images/Vehicles/Zenith_1.jpg',
+        alt: 'Zenith, a white VTOL plane, flying below the clouds'
+      },
+      {
+        src: '/images/Vehicles/Zenith_2.jpg',
+        alt: 'Zenith flying above a line of evergreen trees'
+      },
+      {
+        src: '/images/Vehicles/Zenith_3.jpg',
+        alt: 'Zenith low over a grass field in front of evergreen trees'
+      }
     ]
   }
 ]
 
-export default function Vehicles () {
-  const [currentIndex, setCurrentIndex] = useState(0)
+const PHOTO_INTERVAL = 3000
+
+const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
+
+function subscribeToReducedMotion (onChange) {
+  const query = window.matchMedia(REDUCED_MOTION)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
+
+// The OS's reduce-motion setting, kept up to date. False in the server HTML
+// and while hydrating, so both render the same markup.
+function usePrefersReducedMotion () {
+  return useSyncExternalStore(
+    subscribeToReducedMotion,
+    () => window.matchMedia(REDUCED_MOTION).matches,
+    () => false
+  )
+}
+
+const PauseIcon = () => (
+  <svg viewBox='0 0 24 24' aria-hidden='true'>
+    <path d='M7 5h3.5v14H7zM13.5 5H17v14h-3.5z' fill='currentColor' />
+  </svg>
+)
+
+const PlayIcon = () => (
+  <svg viewBox='0 0 24 24' aria-hidden='true'>
+    <path d='M8 5v14l11-7z' fill='currentColor' />
+  </svg>
+)
+
+// One aircraft's photos, which change on their own every few seconds until
+// the visitor pauses them. They don't start on their own when the OS asks
+// for reduced motion.
+function Gallery ({ name, photos }) {
+  const reduceMotion = usePrefersReducedMotion()
+  const [current, setCurrent] = useState(0)
+  // null until the visitor presses play/pause
+  const [playChoice, setPlayChoice] = useState(null)
+  const [hovering, setHovering] = useState(false)
+  const [focusInside, setFocusInside] = useState(false)
+  const playButtonRef = useRef(null)
+
+  const playing = playChoice ?? !reduceMotion
+  const rotating = playing && !hovering && !focusInside
 
   useEffect(() => {
-    const longestGallery = Math.max(...vehicles.map((v) => v.images.length))
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % longestGallery)
-    }, 3000)
+    if (!rotating) return
+    const timeout = setTimeout(() => {
+      setCurrent((index) => (index + 1) % photos.length)
+    }, PHOTO_INTERVAL)
+    return () => clearTimeout(timeout)
+  }, [rotating, current, photos.length])
 
-    return () => clearInterval(interval)
-  }, [])
+  // Like the WAI-ARIA carousel pattern, the photos hold still while the
+  // pointer is over them or keyboard focus is in them, but not for the
+  // play/pause button itself, so pressing play visibly starts them. Mouse
+  // clicks focus the photo buttons without :focus-visible, so they don't
+  // hold them once the pointer has left.
+  const handlePointerOver = (event) => {
+    if (event.pointerType === 'touch') return
+    setHovering(!playButtonRef.current.contains(event.target))
+  }
+  const handleFocus = (event) => {
+    setFocusInside(
+      !playButtonRef.current.contains(event.target) &&
+        event.target.matches(':focus-visible')
+    )
+  }
+  const handleBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setFocusInside(false)
+    }
+  }
+
+  const photo = photos[current]
 
   return (
+    <div
+      className={styles.carousel}
+      role='group'
+      aria-roledescription='carousel'
+      aria-label={`${name} photos`}
+      onPointerOver={handlePointerOver}
+      onPointerLeave={() => setHovering(false)}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    >
+      <div className={styles.photo}>
+        {/* Screen readers announce the new photo only when the visitor
+            changed it */}
+        <div aria-live={rotating ? 'off' : 'polite'}>
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={500}
+            height={300}
+            className={styles.vehicleImage}
+          />
+        </div>
+        <button
+          ref={playButtonRef}
+          type='button'
+          className={styles.playButton}
+          aria-label={`${playing ? 'Pause' : 'Play'} ${name} photos`}
+          onClick={() => setPlayChoice(!playing)}
+        >
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </button>
+        <div className={styles.indicatorContainer}>
+          {photos.map((p, index) => (
+            <button
+              key={p.src}
+              type='button'
+              className={`${styles.indicator} ${
+                index === current ? styles.activeIndicator : ''
+              }`}
+              aria-label={`Show ${name} photo ${index + 1} of ${photos.length}`}
+              aria-current={index === current ? 'true' : undefined}
+              onClick={() => setCurrent(index)}
+            />
+          ))}
+        </div>
+      </div>
+      <div className={styles.titleOverlay}>
+        <h2>{name}</h2>
+      </div>
+    </div>
+  )
+}
+
+export default function Vehicles () {
+  return (
     <>
-      <Head>
-        <title>Blackbird UAV | Our Vehicles</title>
-        <meta
-          name='description'
-          content='The aircraft Blackbird UAV has designed and built, with their specs'
-        />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
+      <PageMeta
+        title='Blackbird UAV | Our Vehicles'
+        description="Leviathan, Goliath, Apogee and Zenith: the aircraft Blackbird UAV, Carleton University's student UAV design team, has designed and built, with their specs."
+        path='/vehicles'
+      />
       <Header
         imagePath='/images/Vehicles/Goliath_1.jpg'
         headerText='Our Aircraft'
@@ -124,32 +281,7 @@ export default function Vehicles () {
               viewport={{ once: true, amount: 0.1 }}
             >
               <div className={styles.carouselContainer}>
-                <div className={styles.carousel}>
-                  <Image
-                    src={vehicle.images[currentIndex % vehicle.images.length]}
-                    alt={`${vehicle.name} image ${
-                      (currentIndex % vehicle.images.length) + 1
-                    }`}
-                    width={500}
-                    height={300}
-                    className={styles.vehicleImage}
-                  />
-                  <div className={styles.titleOverlay}>
-                    <h2>{vehicle.name}</h2>
-                  </div>
-                  <div className={styles.indicatorContainer}>
-                    {vehicle.images.map((_, idx) => (
-                      <div
-                        key={idx}
-                        className={`${styles.indicator} ${
-                          currentIndex % vehicle.images.length === idx
-                            ? styles.activeIndicator
-                            : ''
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <Gallery name={vehicle.name} photos={vehicle.photos} />
               </div>
 
               <div className={styles.textBox}>
