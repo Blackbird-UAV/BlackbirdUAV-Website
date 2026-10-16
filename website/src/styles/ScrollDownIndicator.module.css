@@ -36,3 +36,8 @@
     transform: translateY(-5px) rotate(45deg);
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    animation: none;
+  }
+}
