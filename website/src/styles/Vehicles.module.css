@@ -6,17 +6,6 @@
   padding-top: 5rem;
 }
 
-.title {
-  text-align: center;
-  margin-bottom: 60px;
-  color: #ffffff;
-  text-decoration: underline;
-  text-decoration-color: #eb1d25;
-  text-underline-offset: 16px;
-  font-size: 4rem;
-  font-family: var(--font-fahkwang), sans-serif;
-}
-
 /* Vehicle Card with Lighter Background */
 .vehiclesList {
   display: flex;
@@ -59,11 +48,6 @@
   height: 500px;
   object-fit: cover;
   border-radius: 8px;
-  transition: opacity 1s ease-in-out;
-}
-
-.vehicleImage.activeImage {
-  opacity: 1;
 }
 
 /* HUD Style Indicator */
@@ -111,14 +95,6 @@
   text-align: center;
 }
 
-.vehicleTitle {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #e68787;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .textBox p {
   margin-top: 20px;
   font-size: 1.2rem;
@@ -147,121 +123,15 @@
   font-size: 1.2rem;
 }
 
-.vehicleCard.visible.left {
-  opacity: 1;
-  animation: slideInLeft 0.8s forwards;
-}
-
-.vehicleCard.visible.right {
-  opacity: 1;
-  animation: slideInRight 0.8s forwards;
-}
-
 .divider {
   margin: 20px 0;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.header {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.headerBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.headerContent {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.headerText {
-  font-size: 4rem;
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.vehiclesHeader {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  overflow: hidden;
-}
-
-.vehiclesHeaderBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.vehiclesHeaderContent {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.vehiclesHeaderText {
-  font-size: 5rem;
-  margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
 @media (max-width: 1000px) {
   .container {
     padding-top: 2rem; /* Reduced padding-top for mobile view */
-  }
-
-  .title {
-    font-size: 3rem;
   }
 
   .vehicleCard {
@@ -276,10 +146,6 @@
   .textBox {
     width: 100%;
     margin: 0;
-  }
-
-  .vehicleTitle {
-    font-size: 2rem;
   }
 
   .vehicleImage {
@@ -319,57 +185,5 @@
     flex-direction: column;
     gap: 20px; /* Reduced gap for mobile view */
     padding-top: 0.5rem; /* Add padding to adjust scroll position */
-  }
-
-  .header {
-    /* height: 60vh; */
-  }
-
-  .headerBackground {
-    object-position: center;
-  }
-
-  .headerText {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    /* height: 60vh; */
-  }
-
-  .headerBackground {
-    object-position: center;
-  }
-
-  .headerText {
-    font-size: 2.5rem;
-  }
-
-  .vehiclesHeader {
-    height: 40vh;
-  }
-
-  .vehiclesHeaderText {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    height: 50vh;
-  }
-
-  .headerText {
-    font-size: 2rem;
-  }
-
-  .vehiclesHeader {
-    height: 30vh;
-  }
-
-  .vehiclesHeaderText {
-    font-size: 2rem;
   }
 }

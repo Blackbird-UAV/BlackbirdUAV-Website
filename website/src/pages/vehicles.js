@@ -116,7 +116,7 @@ export default function Vehicles () {
             <motion.div
               key={vehicle.id}
               className={`${styles.vehicleCard} ${
-                index % 2 === 1 ? styles.right : styles.left
+                index % 2 === 1 ? styles.right : ''
               }`}
               variants={fadeInUpSlower}
               initial='initial'
@@ -135,15 +135,9 @@ export default function Vehicles () {
                     className={styles.vehicleImage}
                   />
                   <div className={styles.titleOverlay}>
-                    <h2 className={styles.imageTitle}>{vehicle.name}</h2>
+                    <h2>{vehicle.name}</h2>
                   </div>
-                  <div
-                    className={`${styles.indicatorContainer} ${
-                      index % 2 === 1
-                        ? styles.indicatorLeft
-                        : styles.indicatorRight
-                    }`}
-                  >
+                  <div className={styles.indicatorContainer}>
                     {vehicle.images.map((_, idx) => (
                       <div
                         key={idx}
