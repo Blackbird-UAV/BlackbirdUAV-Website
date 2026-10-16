@@ -200,18 +200,12 @@
   transform-style: preserve-3d;
 }
 
-/* The card turns over while the mouse is on it, while keyboard focus is on
-   its back (the LinkedIn link, or a bio long enough to scroll), and while
-   its button is pressed. Only devices that can hover get the hover rule: a
-   tap leaves :hover stuck on, so the button could never turn the card back.
+/* The card turns over while its button is pressed, and while keyboard focus
+   is on its back (the LinkedIn link, or a bio long enough to scroll). A mouse
+   resting on the card presses the button (see MemberCard) rather than using
+   :hover, which a tap leaves stuck on and which the button couldn't undo.
    Focus counts only when it is keyboard focus: a tapped link keeps focus on
    iOS, where tapping the button doesn't take it. */
-@media (hover: hover) {
-  .card:hover .cardInner {
-    transform: rotateY(-180deg);
-  }
-}
-
 .flipped .cardInner {
   transform: rotateY(-180deg);
 }
@@ -255,7 +249,12 @@
   text-align: left;
 }
 
-/* Points back once pressed: pressing again turns the card back */
+/* Points back once pressed: pressing again turns the card back. It turns
+   round with the colour change, halfway through the turn. */
+.flipButton svg {
+  transition: transform 0s 0.3s;
+}
+
 .flipButton[aria-pressed='true'] svg {
   transform: scaleX(-1);
 }
@@ -267,12 +266,6 @@
 
 .card:has(.cardInner :focus-visible) .flipButton {
   color: var(--team-ink);
-}
-
-@media (hover: hover) {
-  .card:hover .flipButton {
-    color: var(--team-ink);
-  }
 }
 
 .cardFront,
@@ -749,6 +742,7 @@
 @media (prefers-reduced-motion: reduce) {
   .cardInner,
   .flipButton,
+  .flipButton svg,
   .searchResultItem,
   .cardBack .linkButton {
     transition: none;
