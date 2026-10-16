@@ -94,4 +94,27 @@ Options -Indexes
   # that would force HTTPS on every subdomain too, and dev.blackbirduav.ca
   # isn't on the certificate.
   Header always set Strict-Transport-Security "max-age=31536000"
+
+  # Caching. Everything under /_next/static is named after its content's hash
+  # or sits under the build ID, so a URL there never changes content and
+  # browsers can keep it for a year without asking again. FilesMatch sees only
+  # the file name, not its folder: this relies on the export having no other
+  # .js, .css or .woff2 files, so give any such file added to public/ a new
+  # name whenever its content changes.
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Pages (and the build's _next/data, robots.txt and sitemap.xml) change with
+  # every deploy. no-cache lets browsers keep them but makes them check first,
+  # usually a quick 304, so a deploy shows at once.
+  <FilesMatch "\.(html|json|txt|xml)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  # Images, the favicon and the sponsorship PDF keep their names when they are
+  # replaced, so browsers reuse them for a day only. Some photos end in .JPG.
+  <FilesMatch "\.(jpe?g|JPE?G|png|PNG|gif|webp|avif|svg|ico|pdf)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
 </IfModule>
