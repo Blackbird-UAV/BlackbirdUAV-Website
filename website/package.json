@@ -7,12 +7,13 @@
     "build": "npm run clean && next build",
     "prod": "npm run build && npm run copy-htaccess",
     "clean": "rimraf ./out",
-    "copy-htaccess": "cp .htaccess ./out/.htaccess",
-    "start": "next start",
+    "copy-htaccess": "node -e \"require('fs').copyFileSync('.htaccess', 'out/.htaccess')\"",
     "audit:ci": "npm audit --omit=dev --audit-level=high && node scripts/audit.mjs",
-    "lint": "eslint src",
-    "test": "eslint src",
-    "lighthouse": "lhci autorun --config=./lighthouserc.js && kill $!"
+    "lint": "eslint .",
+    "test": "npm run lint && npm run build",
+    "lighthouse": "lhci autorun --config=./lighthouserc.js",
+    "lighthouse:live": "lhci autorun --config=./lighthouserc.js",
+    "resize-images": "node scripts/resize-images.mjs"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.37.0",
