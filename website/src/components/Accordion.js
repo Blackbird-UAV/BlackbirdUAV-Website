@@ -1,39 +1,52 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import styles from '@/styles/Accordion.module.css'
 
+// One answer open at a time. Follows the WAI-ARIA accordion pattern: each
+// question is a button in a heading that says whether its answer is
+// expanded, and closed answers are hidden from everyone, screen readers
+// included.
 const Accordion = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(null)
-
-  const toggleItem = (index) => {
-    setActiveIndex(activeIndex === index ? null : index)
-  }
+  const id = useId()
 
   return (
     <div className={styles.accordion}>
-      {data.map((item, index) => (
-        <div key={index} className={styles.accordionItem}>
-          <button
-            className={styles.accordionTrigger}
-            onClick={() => toggleItem(index)}
-          >
-            {item.question}
-            <span
-              className={`${styles.arrow} ${
-                activeIndex === index ? styles.open : ''
-              }`}
+      {data.map((item, index) => {
+        const open = activeIndex === index
+        const buttonId = `${id}-question-${index}`
+        const panelId = `${id}-answer-${index}`
+        return (
+          <div key={item.question}>
+            <h3>
+              <button
+                type='button'
+                id={buttonId}
+                className={styles.accordionTrigger}
+                aria-expanded={open}
+                aria-controls={panelId}
+                onClick={() => setActiveIndex(open ? null : index)}
+              >
+                {item.question}
+                <span
+                  className={`${styles.arrow} ${open ? styles.open : ''}`}
+                  aria-hidden='true'
+                >
+                  &#9660;
+                </span>
+              </button>
+            </h3>
+            <div
+              id={panelId}
+              role='region'
+              aria-labelledby={buttonId}
+              className={styles.accordionContent}
+              hidden={!open}
             >
-              &#9660;
-            </span>
-          </button>
-          <div
-            className={`${styles.accordionContent} ${
-              activeIndex === index ? styles.open : ''
-            }`}
-          >
-            {item.answer}
+              {item.answer}
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
