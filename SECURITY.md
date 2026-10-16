@@ -2,13 +2,7 @@
 
 ## Supported Versions
 
-The following versions of BlackbirdUAV-Website are currently being supported with security updates:
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.4.x   | :white_check_mark: |
-| 1.3.x   | :white_check_mark: |
-| < 1.3   | :x:                |
+Only the live site at [https://blackbirduav.ca](https://blackbirduav.ca), built from the `main` branch, is supported. There are no older versions to patch: a fix is merged into `main`, which deploys it to the live site.
 
 ## Reporting a Vulnerability
 
@@ -17,7 +11,7 @@ We take security vulnerabilities seriously. If you discover a security issue, pl
 ### How to Report
 
 1. **Do NOT open a public issue** for security vulnerabilities
-2. Email us directly at **contact@blackbirduav.ca** with:
+2. Report it privately, either through GitHub's [private vulnerability reporting](https://github.com/Blackbird-UAV/BlackbirdUAV-Website/security/advisories/new) or by email to **contact@blackbirduav.ca**, with:
    - A description of the vulnerability
    - Steps to reproduce the issue
    - Potential impact of the vulnerability
@@ -32,7 +26,7 @@ We take security vulnerabilities seriously. If you discover a security issue, pl
 ### After Reporting
 
 - If the vulnerability is **accepted**, we will:
-  - Work on a fix and release a security update
+  - Work on a fix and deploy it to the live site
   - Credit you in the release notes (unless you prefer to remain anonymous)
   - Notify you when the fix is deployed
 
