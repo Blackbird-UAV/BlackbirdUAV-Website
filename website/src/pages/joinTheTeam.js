@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import styles from '@/styles/Join.module.css'
@@ -11,8 +10,9 @@ import {
   faClipboard
 } from '@fortawesome/free-solid-svg-icons'
 import { faDiscord } from '@fortawesome/free-brands-svg-icons'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Header from '@/components/Header'
+import PageMeta from '@/components/PageMeta'
 import { slideFromLeft, slideFromRight } from '@/components/animations'
 
 const tabs = [
@@ -23,7 +23,12 @@ const tabs = [
       'Powering innovation – where circuitry meets the sky.',
     content:
       "Electrical is the powerhouse behind our UAVs. From helping with software design to integrating complex electrical systems, this team ensures that every UAV flies with precision and control. You’ll work with cutting-edge technologies, including flight control systems, sensors, and communications equipment. You’ll be at the heart of UAV technology, pushing the limits of innovation with every flight.",
-    image: '/images/Join/Join_Design.jpg',
+    image: {
+      src: '/images/Join/Join_Design.jpg',
+      width: 673,
+      height: 436,
+      alt: 'Team members at laptops around a workshop table covered in cables and parts'
+    },
     icon: faBolt,
     color: '#7ed957'
   },
@@ -34,7 +39,12 @@ const tabs = [
       'Building the backbone of innovation – strong, reliable, and ready for takeoff.',
     content:
       "The Mechanical Team is where ideas take flight — transforming concepts into high-performance UAVs that balance cutting-edge technology, precision engineering, and sleek design.   Here, you’ll gain hands-on experience assembling and fine-tuning components, working with advanced fabrication techniques such as 3D printing and composite materials to ensure every part is built for peak performance. Join us to develop real-world skills in fabrication and engineering — and leave your mark on the future of flight.",
-    image: '/images/Join/Join_Manufacturing.jpg',
+    image: {
+      src: '/images/Join/Join_Manufacturing.jpg',
+      width: 1500,
+      height: 1000,
+      alt: 'Team members in safety vests working on an aircraft on a table at the airfield'
+    },
     icon: faPlane,
     color: '#ff3131'
   },
@@ -45,7 +55,12 @@ const tabs = [
       'Coding the skies – developing intelligent systems for autonomous flight.',
     content:
       "The Software team is at the forefront of our UAV's intelligence and autonomy. As a member of this team, you'll dive into programming flight control systems, developing algorithms for navigation, and working with electrical components that make operating our UAVs seamless. If you're passionate about coding and eager to see your software take to the skies, this is the perfect team for you!",
-    image: '/images/Join/Join_Systems.jpg',
+    image: {
+      src: '/images/Join/Join_Systems.jpg',
+      width: 1500,
+      height: 1000,
+      alt: "A team member wiring the electronics under an aircraft's wing in a hangar"
+    },
     icon: faComputer,
     color: '#ff914d'
   },
@@ -56,7 +71,12 @@ const tabs = [
       'The heart of the operation – keeping everything running like clockwork.',
     content:
       "The Administration team is crucial to the success of Blackbird UAV. You’ll manage schedules, resources, and communication, ensuring that everything stays on track throughout the season. This is a great opportunity for leaders who are organized and passionate about project management. You'll be the glue that keeps the team together and running efficiently, coordinating tasks and ensuring deadlines are met so that every team can do its best work.",
-    image: '/images/Join/Join_Administration.jpg',
+    image: {
+      src: '/images/Join/Join_Administration.jpg',
+      width: 1500,
+      height: 1000,
+      alt: 'Two team members reading through a binder outdoors beside a camera tripod'
+    },
     icon: faUsers,
     color: '#f6b93b'
   },
@@ -67,25 +87,50 @@ const tabs = [
       'Flying high with precision – ensuring every mission is executed to perfection.',
     content:
       "The Operations team is responsible for making sure every UAV flight is executed flawlessly. You’ll be directly involved in mission planning, safety protocols, and flight coordination. Whether it’s navigating through challenging conditions or managing team logistics, the Operations team is integral to making each mission a success. If you're detail-oriented, love a challenge, and enjoy the thrill of real-time problem solving, this is the team for you!",
-    image: '/images/Join/Join_Operations.jpg',
+    image: {
+      src: '/images/Join/Join_Operations.jpg',
+      width: 1500,
+      height: 1000,
+      alt: 'Team members at laptops in a tent at the flying field, one of them on the phone'
+    },
     icon: faClipboard,
     color: '#5ce1e6'
   }
 ]
 
+// Ids for each subteam's tab and panel, e.g. electrical-tab
+const tabId = (tab) => `${tab.title.toLowerCase()}-tab`
+const panelId = (tab) => `${tab.title.toLowerCase()}-panel`
+
 export default function Join () {
-  const [activeTab, setActiveTab] = useState(tabs[0])
+  const [activeId, setActiveId] = useState(tabs[0].id)
+  const tabRefs = useRef([])
+
+  // The tabs are one Tab stop; the arrow keys (either pair, as the tabs
+  // stack on phones), Home and End move between them and show that panel
+  const handleTabKeyDown = (event, index) => {
+    const last = tabs.length - 1
+    const next = {
+      ArrowRight: index === last ? 0 : index + 1,
+      ArrowDown: index === last ? 0 : index + 1,
+      ArrowLeft: index === 0 ? last : index - 1,
+      ArrowUp: index === 0 ? last : index - 1,
+      Home: 0,
+      End: last
+    }[event.key]
+    if (next === undefined) return
+    event.preventDefault()
+    setActiveId(tabs[next].id)
+    tabRefs.current[next].focus()
+  }
 
   return (
     <>
-      <Head>
-        <title>Blackbird UAV | Join the Team</title>
-        <meta
-          name='description'
-          content='Join Black Bird UAV - Be a part of a cutting-edge UAV community'
-        />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
+      <PageMeta
+        title='Blackbird UAV | Join the Team'
+        description="Join Blackbird UAV, Carleton University's student UAV design team. Meet our electrical, mechanical, software, administration and operations subteams."
+        path='/joinTheTeam'
+      />
       <Header imagePath='/images/JoinUsMedia.jpg' headerText='Join the Team' />
 
       <div className={styles.pageWrapper}>
@@ -101,7 +146,7 @@ export default function Join () {
             >
               <Image
                 src='/images/JoinUsMedia.jpg'
-                alt='Join Us'
+                alt='Team members in safety vests walking across an airfield, carrying aircraft'
                 className={styles.aboutUsImage}
                 width={600}
                 height={500}
@@ -114,7 +159,7 @@ export default function Join () {
               whileInView='animate'
               viewport={{ once: true, amount: 0.2 }}
             >
-              <h3>Join Us Today!</h3>
+              <h2>Join Us Today!</h2>
               <p>
                 Be part of a team that is at the forefront of UAV technology.
                 Collaborate, innovate, and soar to new heights with us.
@@ -139,6 +184,7 @@ export default function Join () {
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 1200 120'
             preserveAspectRatio='none'
+            aria-hidden='true'
           >
             <path
               d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z'
@@ -166,7 +212,7 @@ export default function Join () {
             whileInView='animate'
             viewport={{ once: true, amount: 0.2 }}
           >
-            <h1>Introducing Our Subteams</h1>
+            <h2 id='subteams-heading'>Introducing Our Subteams</h2>
             <p className={styles.subteamsDescription}>
               Explore the teams that make Blackbird UAV soar. Each subteam plays
               a vital role in our success, from design to operations.
@@ -180,44 +226,66 @@ export default function Join () {
             viewport={{ once: true, amount: 0.2 }}
           >
             <div className={styles.subteamSection}>
-              {/* Subteams: Clickable Tabs */}
-              <div className={styles.tabs}>
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    className={`${styles.tab} ${
-                      activeTab.id === tab.id ? styles.active : ''
-                    }`}
-                    style={{
-                      '--tab-color': tab.color,
-                      color: activeTab.id === tab.id ? 'white' : tab.color
-                    }}
-                    onClick={() => setActiveTab(tab)}
-                  >
-                    <FontAwesomeIcon
-                      icon={tab.icon}
-                      style={{ marginRight: '8px', width: '20px' }}
-                    />
-                    {tab.title}
-                  </button>
-                ))}
+              <div
+                className={styles.tabs}
+                role='tablist'
+                aria-labelledby='subteams-heading'
+              >
+                {tabs.map((tab, index) => {
+                  const selected = tab.id === activeId
+                  return (
+                    <button
+                      key={tab.id}
+                      ref={(element) => {
+                        tabRefs.current[index] = element
+                      }}
+                      type='button'
+                      role='tab'
+                      id={tabId(tab)}
+                      aria-selected={selected}
+                      aria-controls={panelId(tab)}
+                      tabIndex={selected ? 0 : -1}
+                      className={`${styles.tab} ${selected ? styles.active : ''}`}
+                      style={{ '--tab-color': tab.color }}
+                      onClick={() => setActiveId(tab.id)}
+                      onKeyDown={(event) => handleTabKeyDown(event, index)}
+                    >
+                      <FontAwesomeIcon
+                        icon={tab.icon}
+                        style={{ marginRight: '8px', width: '20px' }}
+                      />
+                      {tab.title}
+                    </button>
+                  )
+                })}
               </div>
 
-              {/* Subteams: Content Carousel */}
-              <div className={styles.carouselContent}>
-                <div className={styles.textSection}>
-                  <div className={styles.tagline}>{activeTab.tagline}</div>
-                  {activeTab.content}
+              {/* Every panel is in the page, so its text is too; only the
+                  selected one shows */}
+              {tabs.map((tab) => (
+                <div
+                  key={tab.id}
+                  id={panelId(tab)}
+                  role='tabpanel'
+                  aria-labelledby={tabId(tab)}
+                  tabIndex={0}
+                  hidden={tab.id !== activeId}
+                  className={styles.carouselContent}
+                >
+                  <div className={styles.textSection}>
+                    <p className={styles.tagline}>{tab.tagline}</p>
+                    <p>{tab.content}</p>
+                  </div>
+                  <div className={styles.imageSection}>
+                    <Image
+                      src={tab.image.src}
+                      alt={tab.image.alt}
+                      width={tab.image.width}
+                      height={tab.image.height}
+                    />
+                  </div>
                 </div>
-                <div className={styles.imageSection}>
-                  <Image
-                    src={activeTab.image}
-                    alt={`Image for ${activeTab.title}`}
-                    width={500}
-                    height={500}
-                  />
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
