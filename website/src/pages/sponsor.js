@@ -1,36 +1,15 @@
-import { motion } from 'motion/react'
 import PageMeta from '@/components/PageMeta'
 import Sidebar from '@/components/sponsorSidebar'
-import { DURATIONS, easing } from '@/components/animations'
 import sponsors, { tiers } from '@/data/sponsorData'
 import styles from '@/styles/Sponsor.module.css'
 
-// Each tier rises in a little after the one above it
-const tierAnimation = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.3, duration: DURATIONS.Fast }
-  })
-}
-
-// Then its logos, one after another
-const logoAnimation = (tierIndex, logoIndex) => ({
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: tierIndex * 0.3 + logoIndex * 0.08 + 0.1,
-      duration: DURATIONS.Fast,
-      ease: easing
-    }
-  }
-})
-
+// --tier and --logo time each tier's entrance and its logos'
+// (Sponsor.module.css)
 const SponsorTier = ({ tier, index }) => (
-  <div className={`${styles.tier} ${styles[tier.id]}`}>
+  <div
+    className={`${styles.tier} ${styles[tier.id]}`}
+    style={{ '--tier': index }}
+  >
     <div className={styles.tierLabel}>
       <h3 className={styles.tierName}>{tier.name}</h3>
     </div>
@@ -38,11 +17,10 @@ const SponsorTier = ({ tier, index }) => (
       {sponsors
         .filter((sponsor) => sponsor.tier === tier.id)
         .map((sponsor, logoIndex) => (
-          <motion.div
+          <div
             key={sponsor.name}
-            initial='hidden'
-            animate='visible'
-            variants={logoAnimation(index, logoIndex)}
+            className={styles.logoItem}
+            style={{ '--logo': logoIndex }}
           >
             <a
               className={styles.logoLink}
@@ -67,7 +45,7 @@ const SponsorTier = ({ tier, index }) => (
                 />
               </div>
             </a>
-          </motion.div>
+          </div>
         ))}
     </div>
   </div>
@@ -91,15 +69,7 @@ export default function Sponsor () {
               Thank you to our generous sponsors!
             </h2>
             {tiers.map((tier, index) => (
-              <motion.div
-                key={tier.id}
-                variants={tierAnimation}
-                initial='hidden'
-                animate='visible'
-                custom={index}
-              >
-                <SponsorTier tier={tier} index={index} />
-              </motion.div>
+              <SponsorTier key={tier.id} tier={tier} index={index} />
             ))}
           </div>
         </section>

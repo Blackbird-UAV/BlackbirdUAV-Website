@@ -309,3 +309,95 @@
     margin-left: 1rem;
   }
 }
+
+/* The entrance, from the page's first paint. A motion animation would
+   write its starting state into the HTML, keeping the sidebar invisible
+   until the scripts had loaded and run, and for good if they failed. The
+   sidebar fades in without moving, so /sponsor#donate stays where the
+   browser scrolled it instead of rising under the navbar, while its text
+   and photo rise into place and its buttons swell a little as they fade
+   in, one after another in page order. With reduced motion they only fade
+   in. */
+.sidebar {
+  animation: fadeIn 0.6s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+.title,
+.subtitle,
+.introText,
+.photoWrap,
+.donateText,
+.note {
+  animation: riseIn 0.8s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+.button {
+  animation: swellIn 1.8s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+.subtitle {
+  animation-delay: 0.1s;
+}
+
+.introText {
+  animation-delay: 0.2s;
+}
+
+.packageButton {
+  animation-delay: 0.3s;
+}
+
+.photoWrap {
+  animation-delay: 0.4s;
+}
+
+.donateText {
+  animation-delay: 0.5s;
+}
+
+.contactButton {
+  animation-delay: 0.6s;
+}
+
+.donateButton {
+  animation-delay: 0.7s;
+}
+
+.note {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+}
+
+@keyframes swellIn {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .subtitle,
+  .introText,
+  .photoWrap,
+  .donateText,
+  .note,
+  .button {
+    animation-name: fadeIn;
+  }
+}

@@ -113,6 +113,47 @@
   margin: 0rem 3rem 2rem 2rem;
 }
 
+/* The copy comes in from the page's first paint. A motion animation would
+   write its starting state into the HTML, keeping the copy invisible until
+   the scripts had loaded and run, and for good if they failed. With reduced
+   motion it only fades in. */
+.name {
+  animation: slideIn 0.8s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+.subtitle,
+.buttonSection {
+  animation: riseIn 1.2s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name,
+  .subtitle,
+  .buttonSection {
+    animation-name: fadeIn;
+  }
+}
+
 /* Common button styles */
 .sponsorButton,
 .donateButton {

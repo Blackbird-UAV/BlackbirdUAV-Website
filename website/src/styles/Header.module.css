@@ -32,6 +32,30 @@
   font-family: var(--font-fira-sans), sans-serif;
   font-weight: 400;
   font-style: normal;
+  /* Rises in from the page's first paint. A motion animation would write
+     its starting state into the HTML, keeping the title invisible until the
+     scripts had loaded and run, and for good if they failed. With reduced
+     motion it only fades in. */
+  animation: riseIn 0.5s ease-out backwards;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text {
+    animation-name: fadeIn;
+  }
 }
 
 @media (max-width: 768px) {
