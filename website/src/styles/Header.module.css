@@ -1,11 +1,13 @@
 .header {
   position: relative;
-  /* min-height: 300px; */
-  height: 55vh !important;
+  height: 55vh;
   width: 100%;
-  background-size: cover !important; /* Ensures the image covers the container */
-  background-repeat: no-repeat; /* Prevents tiling */
-  background-position: center 40% !important;
+}
+
+/* Fills the header like background-size: cover, a little above centre */
+.photo {
+  object-fit: cover;
+  object-position: center 40%;
 }
 
 .overlay {
@@ -30,7 +32,7 @@
 
 @media (max-width: 768px) {
   .header {
-    height: 35vh !important;
+    height: 35vh;
   }
 
   .header h1 {
@@ -40,7 +42,7 @@
 
 @media (max-width: 480px) {
   .header {
-    height: 30vh !important;
+    height: 30vh;
   }
 
   .header h1 {
