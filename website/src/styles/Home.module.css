@@ -226,6 +226,12 @@
   text-align: center;
 }
 
+/* The slides, arrows, play/pause button and dots */
+.carouselRegion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .carousel {
   display: flex;
   align-items: center;
@@ -284,38 +290,58 @@
 
 .control {
   background: none;
-  /* Remove background */
-  color: white;
-  /* Set text color to white */
   border: none;
+  border-radius: 8px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   z-index: 10;
   /* Ensure the control buttons are above the carousel */
-  font-size: 2rem;
-  transition: color 0.3s;
-}
-
-.control:hover {
-  color: #e68787;
-  /* Change color on hover */
 }
 
 .controlLeft {
   position: absolute;
-  left: -60px;
-  /* Position outside the carousel */
+  left: 10px;
 }
 
 .controlRight {
   position: absolute;
-  right: -60px;
-  /* Position outside the carousel */
+  right: 10px;
 }
 
-.control:disabled {
-  background: rgba(0, 0, 0, 0.3);
-  cursor: not-allowed;
+/* First in the tab order, over the photo's top right corner, which the slide
+   name and description stay clear of at every width */
+.playButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.playButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.playButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* White inside black, so the ring shows on any photo */
+.control:focus-visible,
+.playButton:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px #000;
 }
 
 .gradientOverlay {
@@ -332,14 +358,6 @@
   font-size: 1rem;
   color: #fff;
   margin-top: 0.5rem;
-}
-
-.control:first-of-type {
-  left: 10px;
-}
-
-.control:last-of-type {
-  right: 10px;
 }
 
 .dots {
@@ -359,6 +377,11 @@
 
 .dot.activeDot {
   background-color: #333;
+}
+
+.dot:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 2px;
 }
 
 .cloudContainer {
@@ -429,7 +452,8 @@
     animation: none;
   }
 
-  /* Hovered elements grow without moving */
+  /* Slides change and hovered elements grow without moving */
+  .slideContainer,
   .sponsorButton,
   .donateButton,
   .aboutImage {
@@ -631,6 +655,18 @@
   .chevron {
     width: 30px;
     height: 30px;
+  }
+
+  .playButton {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .playButton svg {
+    width: 16px;
+    height: 16px;
   }
 
   .name {

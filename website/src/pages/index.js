@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import PageMeta from '@/components/PageMeta'
@@ -21,28 +21,35 @@ const slides = [
   {
     name: 'Leviathan',
     image: '/images/Vehicles/Leviathan_2.jpg',
+    alt: 'Leviathan, a quadcopter, flying in front of autumn trees',
     description:
       'Endurance-focused platform with a fully modular payload bay and a fully LTE command link, flying 30 minutes at its 15 kg maximum take-off weight.'
   },
   {
     name: 'Goliath',
     image: '/images/Vehicles/Goliath_1.jpg',
+    alt: 'Goliath, a quadcopter, standing on its landing legs in front of a concrete wall',
     description:
       "Designed to autonomously detect multiple hotspots within a very large zone and to autonomously pick up water from a reservoir and dispense it on the hotspots."
   },
   {
     name: 'Apogee',
     image: '/images/Vehicles/Apogee_1.jpg',
+    alt: 'Apogee, a VTOL quadplane, flying against a blue sky',
     description:
       "Blackbird UAV's drone that features autonomous capabilities from take-off to landing and a modular payload compartment."
   },
   {
     name: 'Zenith',
     image: '/images/Vehicles/Zenith_1.jpg',
+    alt: 'Zenith, a white VTOL quadplane, flying below the clouds',
     description:
       'Designed for endurance with advanced navigation systems and enhanced flight stability, ideal for long-range missions.'
   }
 ]
+
+// Each slide stays 3s after its 0.5s slide-in
+const SLIDE_INTERVAL = 3500
 
 const cloudLeftVariants = {
   hidden: { x: '-100%', opacity: 0.1 },
@@ -64,13 +71,29 @@ const cloudRightVariants = {
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
 
-const ChevronLeft = (props) => (
+function subscribeToReducedMotion (onChange) {
+  const query = window.matchMedia(REDUCED_MOTION)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
+
+// The OS's reduce-motion setting, kept up to date. False in the server HTML
+// and while hydrating, so both render the same markup.
+function usePrefersReducedMotion () {
+  return useSyncExternalStore(
+    subscribeToReducedMotion,
+    () => window.matchMedia(REDUCED_MOTION).matches,
+    () => false
+  )
+}
+
+const ChevronLeft = () => (
   <svg
     className={styles.chevron}
     viewBox='0 0 24 24'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
-    {...props}
+    aria-hidden='true'
   >
     <path
       d='M15 6L9 12L15 18'
@@ -82,13 +105,13 @@ const ChevronLeft = (props) => (
   </svg>
 )
 
-const ChevronRight = (props) => (
+const ChevronRight = () => (
   <svg
     className={styles.chevron}
     viewBox='0 0 24 24'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
-    {...props}
+    aria-hidden='true'
   >
     <path
       d='M9 6L15 12L9 18'
@@ -97,6 +120,18 @@ const ChevronRight = (props) => (
       strokeLinecap='round'
       strokeLinejoin='round'
     />
+  </svg>
+)
+
+const PauseIcon = () => (
+  <svg viewBox='0 0 24 24' aria-hidden='true'>
+    <path d='M7 5h3.5v14H7zM13.5 5H17v14h-3.5z' fill='currentColor' />
+  </svg>
+)
+
+const PlayIcon = () => (
+  <svg viewBox='0 0 24 24' aria-hidden='true'>
+    <path d='M8 5v14l11-7z' fill='currentColor' />
   </svg>
 )
 
@@ -124,47 +159,50 @@ export default function Home () {
     }
   }, [])
 
+  const reduceMotion = usePrefersReducedMotion()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  // null until the visitor presses play/pause; until then the slides only
+  // rotate on their own when the OS doesn't ask for reduced motion
+  const [playChoice, setPlayChoice] = useState(null)
+  const [hovering, setHovering] = useState(false)
+  const [focusInside, setFocusInside] = useState(false)
+  const playButtonRef = useRef(null)
 
-  const handlePrev = useCallback(() => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-    )
-  }, [isTransitioning])
+  const playing = playChoice ?? !reduceMotion
+  const rotating = playing && !hovering && !focusInside
 
-  const handleNext = useCallback(() => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-    )
-  }, [isTransitioning])
+  useEffect(() => {
+    if (!rotating) return
+    const timeout = setTimeout(() => {
+      setCurrentIndex((index) => (index + 1) % slides.length)
+    }, SLIDE_INTERVAL)
+    return () => clearTimeout(timeout)
+  }, [rotating, currentIndex])
 
-  const handleDotClick = (index) => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex(index)
+  const showSlide = (index) => {
+    setCurrentIndex((index + slides.length) % slides.length)
   }
 
-  useEffect(() => {
-    const transitionEndHandler = () => setIsTransitioning(false)
-    const slideContainer = document.querySelector(`.${styles.slideContainer}`)
-    slideContainer.addEventListener('transitionend', transitionEndHandler)
-    return () => {
-      slideContainer.removeEventListener('transitionend', transitionEndHandler)
+  // Like the WAI-ARIA carousel pattern, rotation holds while the pointer is
+  // over the carousel or keyboard focus is in it, but not for the play/pause
+  // button itself, so pressing play visibly resumes it. Mouse clicks focus
+  // the arrows without :focus-visible, so they don't hold it once the pointer
+  // has left.
+  const handlePointerOver = (event) => {
+    if (event.pointerType === 'touch') return
+    setHovering(!playButtonRef.current.contains(event.target))
+  }
+  const handleFocus = (event) => {
+    setFocusInside(
+      !playButtonRef.current.contains(event.target) &&
+        event.target.matches(':focus-visible')
+    )
+  }
+  const handleBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setFocusInside(false)
     }
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext()
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [handleNext])
+  }
 
   return (
     <div className={styles.pageWrapper}>
@@ -353,67 +391,98 @@ export default function Home () {
       </div>
 
       <div className={styles.galleryContainer}>
-        <h2 className={styles.galleryTitle}>Our UAVs</h2>
+        <h2 id='our-uavs' className={styles.galleryTitle}>Our UAVs</h2>
         <p className={styles.gallerySubtitle}>
           Discover the evolution of our UAV technology and designs over the
           years.
         </p>
-        <div className={styles.carouselWrapper}>
-          <button
-            className={`${styles.control} ${styles.controlLeft}`}
-            onClick={handlePrev}
-          >
-            <ChevronLeft />
-          </button>
-          <div className={styles.carousel}>
-            <div
-              className={styles.slideContainer}
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-                transition: 'transform 0.5s ease-in-out'
-              }}
+        <div
+          className={styles.carouselRegion}
+          role='region'
+          aria-roledescription='carousel'
+          aria-labelledby='our-uavs'
+          onPointerOver={handlePointerOver}
+          onPointerLeave={() => setHovering(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        >
+          <div className={styles.carouselWrapper}>
+            <button
+              ref={playButtonRef}
+              type='button'
+              className={styles.playButton}
+              aria-label={playing ? 'Pause slide show' : 'Play slide show'}
+              onClick={() => setPlayChoice(!playing)}
             >
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`${styles.slide} ${index === currentIndex ? styles.active : ''
-                    }`}
-                >
-                  <Image
-                    src={slide.image}
-                    alt={slide.name}
-                    width={500}
-                    height={300}
-                    className={styles.uavImage}
-                  />
-                  <div className={styles.gradientOverlay}>
-                    <Link href='/vehicles'>
-                      <h3 className={styles.uavName}>{slide.name}</h3>
-                    </Link>
-                    <p className={styles.uavDescription}>
-                      {slide.description}
-                    </p>
+              {playing ? <PauseIcon /> : <PlayIcon />}
+            </button>
+            <button
+              type='button'
+              className={`${styles.control} ${styles.controlLeft}`}
+              aria-label='Previous aircraft'
+              onClick={() => showSlide(currentIndex - 1)}
+            >
+              <ChevronLeft />
+            </button>
+            {/* Screen readers announce the new slide only when the visitor
+                changed it. The slides out of view are inert: they can't take
+                focus (which scrolled the carousel to a blank slide) and
+                screen readers skip them. */}
+            <div className={styles.carousel}>
+              <div
+                className={styles.slideContainer}
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                aria-live={rotating ? 'off' : 'polite'}
+              >
+                {slides.map((slide, index) => (
+                  <div
+                    key={slide.name}
+                    className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`}
+                    role='group'
+                    aria-roledescription='slide'
+                    aria-label={`${index + 1} of ${slides.length}`}
+                    inert={index !== currentIndex}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.alt}
+                      width={500}
+                      height={300}
+                      className={styles.uavImage}
+                    />
+                    <div className={styles.gradientOverlay}>
+                      <Link href='/vehicles'>
+                        <h3 className={styles.uavName}>{slide.name}</h3>
+                      </Link>
+                      <p className={styles.uavDescription}>
+                        {slide.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            <button
+              type='button'
+              className={`${styles.control} ${styles.controlRight}`}
+              aria-label='Next aircraft'
+              onClick={() => showSlide(currentIndex + 1)}
+            >
+              <ChevronRight />
+            </button>
           </div>
-          <button
-            className={`${styles.control} ${styles.controlRight}`}
-            onClick={handleNext}
-          >
-            <ChevronRight />
-          </button>
-        </div>
-        <div className={styles.dots}>
-          {slides.map((_, index) => (
-            <span
-              key={index}
-              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''
-                }`}
-              onClick={() => handleDotClick(index)}
-            />
-          ))}
+          <div className={styles.dots}>
+            {slides.map((slide, index) => (
+              <button
+                key={slide.name}
+                type='button'
+                className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
+                aria-label={`Show ${slide.name}`}
+                aria-current={index === currentIndex ? 'true' : undefined}
+                onClick={() => showSlide(index)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
