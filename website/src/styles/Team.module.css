@@ -192,6 +192,38 @@
   justify-content: center;
 }
 
+/* The first row of the page's first subteam rises in from the page's first
+   paint, one card 0.1s after another (--card is a card's place in the row,
+   from [year].js). A motion animation would write its starting state into
+   the HTML, keeping the cards invisible until the scripts had loaded and
+   run, and for good if they failed. The other cards rise in the same way as
+   they scroll into view (motion). The card moves, not .cardInner, so the
+   entrance leaves the turn-over alone. With reduced motion they only fade
+   in. */
+.firstRow {
+  animation: riseIn 0.6s ease-out backwards;
+  animation-delay: calc(var(--card) * 0.1s);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firstRow {
+    animation-name: fadeIn;
+  }
+}
+
 .cardInner {
   position: relative;
   width: 100%;

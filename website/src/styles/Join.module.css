@@ -1,10 +1,11 @@
 .pageWrapper {
   background-color: #2e2e2e;
-  /* The slideFromRight blocks sit 100px right of their place until they
-     come into view. Poking past the screen's right edge, they'd let the
-     page scroll sideways and, on phones, stretch the fixed navbar with it,
-     pushing the menu button off-screen, so clip them at the edge. Unlike
-     hidden, clip doesn't make this a scroll container. */
+  /* The blocks that slide in from the right (the intro's text, and the
+     subteam tabs as they come into view) start 100px right of their place.
+     Poking past the screen's right edge, they'd let the page scroll
+     sideways and, on phones, stretch the fixed navbar with it, pushing the
+     menu button off-screen, so clip them at the edge. Unlike hidden, clip
+     doesn't make this a scroll container. */
   overflow-x: clip;
 }
 
@@ -55,6 +56,47 @@
 .aboutUs .rightContent {
   flex: 1;
   margin: 1rem 1rem 1rem 3rem;
+}
+
+/* The intro comes in from the page's first paint, the photo from the left
+   and the text from the right. A motion animation would write its starting
+   state into the HTML, keeping the intro invisible until the scripts had
+   loaded and run, and for good if they failed. The subteams below slide in
+   the same way as they scroll into view (motion, in joinTheTeam.js). With
+   reduced motion they only fade in. */
+.leftContent {
+  animation: slideInLeft 0.8s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+.rightContent {
+  animation: slideInRight 0.8s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leftContent,
+  .rightContent {
+    animation-name: fadeIn;
+  }
 }
 
 .aboutUs .rightContent h2 {

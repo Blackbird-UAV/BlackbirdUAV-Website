@@ -58,7 +58,7 @@ const Name = ({ member }) => (
   </>
 )
 
-const MemberCard = ({ member, index }) => {
+const MemberCard = ({ member, index, firstRow }) => {
   const [flipped, setFlipped] = useState(false)
   const bioRef = useRef(null)
   const [bioScrolls, setBioScrolls] = useState(false)
@@ -92,23 +92,36 @@ const MemberCard = ({ member, index }) => {
     setFlipped((f) => !f)
   }
 
+  // The first row of the page's first subteam is on its first screen, so
+  // those cards' entrance is in Team.module.css and runs from the page's
+  // first paint, each card 0.1s after the one before it (--card is its
+  // place in the row). The other cards rise in as they scroll into view.
+  const Card = firstRow ? 'div' : motion.div
+  const entrance = firstRow
+    ? { style: { '--card': index } }
+    : {
+        initial: 'hidden',
+        whileInView: 'visible',
+        viewport: { once: true, amount: 0.1 },
+        variants: {
+          hidden: { opacity: 0, y: 20 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { delay: (index % 4) * 0.1, duration: 0.6 }
+          }
+        }
+      }
+
   return (
-    <motion.div
+    <Card
       id={`member-${member.id}`}
-      className={flipped ? `${styles.card} ${styles.flipped}` : styles.card}
+      className={[styles.card, flipped && styles.flipped, firstRow && styles.firstRow]
+        .filter(Boolean)
+        .join(' ')}
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.1 }}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { delay: (index % 4) * 0.1, duration: 0.6 }
-        }
-      }}
+      {...entrance}
     >
       {/* Turns the card over and back. It is the keyboard's way to the bio,
           and the only one on a card with no link. It sits outside
@@ -168,7 +181,7 @@ const MemberCard = ({ member, index }) => {
           )}
         </div>
       </div>
-    </motion.div>
+    </Card>
   )
 }
 
@@ -283,7 +296,7 @@ const MeetTeam = ({ year }) => {
           {team.description && <div>{team.description}</div>}
         </div>
         {year === LATEST_YEAR && <MemberSearch team={team} />}
-        {subteamsOf(team).map((subteam) => (
+        {subteamsOf(team).map((subteam, subteamIndex) => (
           <div
             className={`${styles.subteam} ${styles[subteam.replace(/\s+/g, '')] || ''}`}
             key={subteam}
@@ -297,8 +310,16 @@ const MeetTeam = ({ year }) => {
               <div className={styles.grid}>
                 {[...team[subteam]]
                   .sort((a, b) => rank(b) - rank(a))
+                  // A row holds 4 cards at most. Where it holds fewer, the
+                  // rest of the first 4 make their entrance as the page
+                  // opens, not as they scroll into view.
                   .map((member, index) => (
-                    <MemberCard key={member.id} member={member} index={index} />
+                    <MemberCard
+                      key={member.id}
+                      member={member}
+                      index={index}
+                      firstRow={subteamIndex === 0 && index < 4}
+                    />
                   ))}
               </div>
             </div>

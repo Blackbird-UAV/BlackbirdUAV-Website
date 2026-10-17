@@ -135,15 +135,10 @@ export default function Join () {
 
       <div className={styles.pageWrapper}>
         <div className={styles.contentContainer}>
-          {/* About us box */}
+          {/* About us box. It is on the first screen, so its entrance is in
+              Join.module.css and runs from the page's first paint. */}
           <div className={styles.aboutUs}>
-            <motion.div
-              className={styles.leftContent}
-              variants={slideFromLeft}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <div className={styles.leftContent}>
               <Image
                 src='/images/JoinUsMedia.jpg'
                 alt='Team members in safety vests walking across an airfield, carrying aircraft'
@@ -151,14 +146,8 @@ export default function Join () {
                 width={600}
                 height={500}
               />
-            </motion.div>
-            <motion.div
-              className={styles.rightContent}
-              variants={slideFromRight}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            </div>
+            <div className={styles.rightContent}>
               <h2>Join Us Today!</h2>
               <p>
                 Be part of a team that is at the forefront of UAV technology.
@@ -174,7 +163,7 @@ export default function Join () {
                 <FontAwesomeIcon icon={faDiscord} width={24} height={24} />
                 <span>Discord Server</span>
               </a>
-            </motion.div>
+            </div>
           </div>
         </div>
 
