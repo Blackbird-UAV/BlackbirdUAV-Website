@@ -731,8 +731,9 @@
 }
 
 @media (max-width: 600px) {
-  /* 4rem is 80px here (:root is 20px), too wide for the section's content
-     box, and overflow-wrap: break-word split "Sponsors" mid-word. */
+  /* At 4rem (64px) "Sponsors" is about 273px wide: wider than the
+     section's content box on screens under 338px, where overflow-wrap:
+     break-word would split it mid-word. */
   .sponsorSection h2 {
     font-size: 2.5rem;
   }
