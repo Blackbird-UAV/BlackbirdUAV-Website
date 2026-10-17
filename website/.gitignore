@@ -9,8 +9,9 @@
 # testing
 /coverage
 
-# lighthouse ci reports
+# lighthouse ci results and reports
 /.lighthouseci/
+/lighthouse-reports/
 
 # next.js
 /.next/

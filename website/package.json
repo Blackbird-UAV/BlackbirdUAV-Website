@@ -12,8 +12,8 @@
     "lint": "eslint .",
     "check:sitemap": "node scripts/check-sitemap.mjs",
     "test": "npm run lint && npm run build && npm run check:sitemap",
-    "lighthouse": "lhci autorun --config=./lighthouserc.js",
-    "lighthouse:live": "lhci autorun --config=./lighthouserc.js",
+    "lighthouse": "lhci collect --config=./lighthouserc.js && lhci upload --config=./lighthouserc.js && node scripts/lighthouse-summary.mjs && lhci assert --config=./lighthouserc.js",
+    "lighthouse:live": "lhci collect --config=./lighthouserc.js && lhci upload --config=./lighthouserc.js && node scripts/lighthouse-summary.mjs && lhci assert --config=./lighthouserc.js",
     "resize-images": "node scripts/resize-images.mjs"
   },
   "dependencies": {
