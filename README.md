@@ -44,7 +44,8 @@ The live site is [https://blackbirduav.ca/](https://blackbirduav.ca/). There is 
 Checks and deploys run on GitHub Actions:
 
 1. **CI** ([`nodeMain.js.yml`](.github/workflows/nodeMain.js.yml)) runs on every push and pull request to `main`: `npm ci`, the dependency audit (`npm run audit:ci`), `npm run lint` and `npm run build`.
-2. **Deploy to Main** ([`deployMain.yml`](.github/workflows/deployMain.yml)) runs once CI passes on a push to `main`. One job builds the export and has no access to secrets. A separate job in the `production` environment, which holds the FTP credentials, uploads the export over FTPS. Only changed files are uploaded, and files no longer in the export are deleted from the server.
+2. **Lighthouse** ([`lighthouse.yml`](.github/workflows/lighthouse.yml)) runs on every pull request to `main`. It builds the site and runs Lighthouse three times on each main page, loading it as a mid-range phone on slow 4G would. The run's summary page lists each page's performance, accessibility, best practices and SEO scores, load times and weight, and its `lighthouse-reports` artifact holds the full reports. It fails if a page gets noticeably slower or heavier than the budgets in [`lighthouserc.js`](website/lighthouserc.js) allow, and it has no part in deploys. `npm run lighthouse` runs the same check locally.
+3. **Deploy to Main** ([`deployMain.yml`](.github/workflows/deployMain.yml)) runs once CI passes on a push to `main`. One job builds the export and has no access to secrets. A separate job in the `production` environment, which holds the FTP credentials, uploads the export over FTPS. Only changed files are uploaded, and files no longer in the export are deleted from the server.
 
 The host runs Apache (LiteSpeed) and applies [`website/.htaccess`](website/.htaccess), which `npm run prod` copies into the export. It maps clean URLs such as `/vehicles` to `vehicles.html`, shows the 404 page for unknown URLs, sets caching and security headers, and redirects HTTP to HTTPS and `www.blackbirduav.ca` to `blackbirduav.ca`.
 
@@ -79,7 +80,7 @@ website/
 │   ├── data/         teamData.js, sponsorData.js, faqData.js
 │   └── styles/       CSS Modules, plus globals.css
 ├── public/           images, the sponsorship package, favicon, robots.txt and sitemap.xml, published as they are
-├── scripts/          audit.mjs (the CI dependency audit), check-sitemap.mjs and resize-images.mjs
+├── scripts/          audit.mjs (the CI dependency audit), check-sitemap.mjs, lighthouse-summary.mjs (the Lighthouse scores table) and resize-images.mjs
 └── .htaccess         the host's rewrite, cache and header rules
 ```
 
@@ -148,8 +149,8 @@ website/
 | ------- | ------------ |
 | `npm test` | Lints (`npm run lint`), builds, and checks that `sitemap.xml` lists every exported page (`npm run check:sitemap`): CI's checks apart from the audit |
 | `npm run audit:ci` | CI's dependency audit: fails on high or critical advisories (see [`audit.mjs`](website/scripts/audit.mjs)) |
-| `npm run lighthouse` | Runs Lighthouse three times on every page in `out/` (build first; needs Chrome or Chromium; takes several minutes) and fails if a page's desktop performance score is below 90 |
-| `npm run lighthouse:live` | The same for the live site's home page |
+| `npm run lighthouse` | The pull requests' Lighthouse check: runs Lighthouse three times on each main page in `out/` (build first; needs Chrome or Chromium, set `CHROME_PATH` if it isn't found; takes about five minutes), prints the scores, writes the reports to `lighthouse-reports/`, and fails if a page goes over a budget in [`lighthouserc.js`](website/lighthouserc.js) |
+| `npm run lighthouse:live` | The same for the same pages on the live site |
 
 ---
 

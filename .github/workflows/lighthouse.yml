@@ -1,0 +1,80 @@
+name: Lighthouse
+permissions:
+  contents: read
+
+# Scores the main pages of a pull request's build for speed and
+# accessibility, and fails when a page gets noticeably slower or heavier. It
+# needs no secrets and only reads the repository; deploys follow "Node.js CI
+# Main" alone, so this check never triggers or holds one up.
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Only a pull request's newest commit needs scores, so a new push cancels
+# the run for the one before it.
+concurrency:
+  group: lighthouse-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    # Lighthouse runs 3 times on each of 7 pages, about 5 minutes in all. A
+    # hung Chrome mustn't hold the runner for the 6-hour default.
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: ./website
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+          cache: "npm"
+          cache-dependency-path: "./website/package-lock.json"
+
+      # Lighthouse CI (@lhci/cli) is one of the website's dev dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the site
+        run: npm run build
+
+      # npm run lighthouse's steps, one at a time: the npm script stops at
+      # the first that fails, and the ones after this can still run when it
+      # fails part way. This one serves out/ and runs Lighthouse on the pages
+      # listed in lighthouserc.js, using the Chrome the runner comes with.
+      - name: Run Lighthouse
+        id: collect
+        run: node_modules/.bin/lhci collect --config=./lighthouserc.js
+
+      # These three steps also run when Lighthouse failed part way, to show
+      # what it got.
+      - name: Write the reports
+        if: ${{ !cancelled() && steps.collect.outcome != 'skipped' }}
+        run: node_modules/.bin/lhci upload --config=./lighthouserc.js
+
+      - name: Add the scores to the run's summary page
+        if: ${{ !cancelled() }}
+        run: node scripts/lighthouse-summary.mjs
+
+      # The reports only go to this run's artifact, kept long enough to
+      # review a pull request, never to a public report server, and nothing
+      # is posted on the pull request.
+      - name: Upload the reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: lighthouse-reports
+          path: ./website/lighthouse-reports/
+          retention-days: 14
+
+      # Fails the check when a page goes over a budget in lighthouserc.js,
+      # naming the page, the budget and the value.
+      - name: Check the budgets
+        run: node_modules/.bin/lhci assert --config=./lighthouserc.js
