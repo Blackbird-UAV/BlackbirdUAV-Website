@@ -115,6 +115,12 @@ export default function Navbar () {
       if (isDropdownOpen && !linksRef.current.contains(event.target)) {
         setIsDropdownOpen(false)
       }
+    }
+
+    // The full-screen menu closes on a tap or click outside its links, not
+    // on pointerdown: a swipe to scroll the menu on a short screen starts
+    // with a pointerdown too, but ends without a click
+    const handleClick = (event) => {
       if (
         isOpen &&
         !linksRef.current.contains(event.target) &&
@@ -138,12 +144,25 @@ export default function Navbar () {
     }
 
     document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('click', handleClick)
     document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('click', handleClick)
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [isDropdownOpen, isOpen])
+
+  // Browser Back and Forward change the page without a click on the menu's
+  // links, so close the menus whenever the page changes
+  useEffect(() => {
+    const closeMenus = () => {
+      setIsOpen(false)
+      setIsDropdownOpen(false)
+    }
+    router.events.on('routeChangeStart', closeMenus)
+    return () => router.events.off('routeChangeStart', closeMenus)
+  }, [router.events])
 
   const handleLinkClick = () => {
     setIsOpen(false)

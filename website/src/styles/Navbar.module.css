@@ -231,13 +231,15 @@
   }
 
   /* With the Team list open the menu is taller than a phone in landscape,
-     so the links scroll inside the overlay. The padding keeps focus rings
-     and the Sponsor Us hover glow from being clipped; it is even on all
-     sides, so the centred links don't move. */
+     so the links scroll inside the overlay. The box spans the overlay's
+     width, so a swipe anywhere scrolls it; the links stay centred in it.
+     The padding keeps focus rings and the Sponsor Us hover glow from being
+     clipped; it is even top and bottom, so the centred links don't move. */
   .linksContainer.open {
     display: flex;
+    align-self: stretch;
     max-height: calc(100% - 1rem);
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -259,10 +261,36 @@
     padding: 10px 20px;
   }
 
+  /* As wide as the Team list, not the whole scroll box */
   .dropdownWrapper {
     display: block;
-    width: 100%;
     text-align: center;
+  }
+}
+
+/* Without JavaScript the menu button can't open the menu, so below the
+   breakpoint the links stay in the bar, wrapped and clear of the logo, and
+   the bar, taller now, sits in the page instead of over its top */
+@media (max-width: 1023px) and (scripting: none) {
+  .navbar {
+    position: relative;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .linksContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 0.25rem 1rem;
+    margin: 0 0 0 100px;
+  }
+
+  .link,
+  .sponsorButton {
+    font-size: 16px;
   }
 }
 
