@@ -240,6 +240,7 @@ function VehicleCard ({ index, children }) {
   }
   return (
     <motion.div
+      data-entrance
       className={`${styles.vehicleCard} ${
         index % 2 === 1 ? styles.right : ''
       }`}
