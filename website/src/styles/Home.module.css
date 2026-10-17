@@ -87,10 +87,12 @@
    hero's padding) = 28.8em to 600px, from 5 x 9.27 + 1 = 47.33em to
    1050px, and beside the buttons, at 8rem, from about 108.3em. Everywhere
    else min-content breaks it after BLACKBIRD whatever the font. The widths
-   are in em so that they follow the rem font sizes. */
-@media (max-width: 28.8em),
-  (min-width: 601px) and (max-width: 47.33em),
-  (min-width: 1051px) and (max-width: 108.3em) {
+   are in em so that they follow the rem font sizes, and include 0.4em for
+   the page scrollbar (globals.css), which media queries count but the
+   hero doesn't get. */
+@media (max-width: 29.2em),
+  (min-width: 601px) and (max-width: 47.73em),
+  (min-width: 1051px) and (max-width: 108.7em) {
   .name {
     width: min-content;
   }
