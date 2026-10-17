@@ -4,11 +4,17 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
+# Each entry has a cooldown: Dependabot proposes a release only once it is 5
+# days old (GitHub's default is 3), so a hijacked version is likelier to be
+# found and pulled from the registry before it reaches a PR here. It doesn't
+# delay security updates.
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/website/" # Location of package manifests
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 5
     # One PR per set of packages that move together. Separate PRs for react
     # or @mantine/* packages each fail CI (#278, #286, #287, #288).
     groups:
@@ -22,3 +28,5 @@ updates:
     directory: "/" # Dependabot reads .github/workflows from the repository root
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 5
