@@ -46,7 +46,7 @@ Checks and deploys run on GitHub Actions:
 1. **CI** ([`nodeMain.js.yml`](.github/workflows/nodeMain.js.yml)) runs on every push and pull request to `main`: `npm ci`, the dependency audit (`npm run audit:ci`), `npm run lint` and `npm run build`.
 2. **Deploy to Main** ([`deployMain.yml`](.github/workflows/deployMain.yml)) runs once CI passes on a push to `main`. One job builds the export and has no access to secrets. A separate job in the `production` environment, which holds the FTP credentials, uploads the export over FTPS. Only changed files are uploaded, and files no longer in the export are deleted from the server.
 
-The host runs Apache (LiteSpeed) and applies [`website/.htaccess`](website/.htaccess), which `npm run prod` copies into the export. It maps clean URLs such as `/vehicles` to `vehicles.html`, shows the 404 page for unknown URLs, sets caching and security headers, and redirects HTTP to HTTPS.
+The host runs Apache (LiteSpeed) and applies [`website/.htaccess`](website/.htaccess), which `npm run prod` copies into the export. It maps clean URLs such as `/vehicles` to `vehicles.html`, shows the 404 page for unknown URLs, sets caching and security headers, and redirects HTTP to HTTPS and `www.blackbirduav.ca` to `blackbirduav.ca`.
 
 ---
 
