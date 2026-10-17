@@ -4,6 +4,7 @@ import styles from '@/styles/SponsorGrid.module.css'
 
 const SponsorItem = ({ sponsor, index }) => (
   <motion.div
+    data-entrance
     className={styles.item}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}

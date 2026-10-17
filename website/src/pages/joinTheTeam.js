@@ -195,6 +195,7 @@ export default function Join () {
         {/* Subteams */}
         <div className={styles.backgroundContainer}>
           <motion.div
+            data-entrance
             className={styles.leftSubteams}
             variants={slideFromLeft}
             initial='initial'
@@ -208,6 +209,7 @@ export default function Join () {
             </p>
           </motion.div>
           <motion.div
+            data-entrance
             className={styles.rightSubteams}
             variants={slideFromRight}
             initial='initial'

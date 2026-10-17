@@ -240,6 +240,7 @@ export default function Home () {
           priority
         />
         <motion.div
+          data-entrance
           className={styles.cloudLayer}
           initial='hidden'
           animate='visible'
@@ -255,6 +256,7 @@ export default function Home () {
           />
         </motion.div>
         <motion.div
+          data-entrance
           className={styles.cloudLayer}
           initial='hidden'
           animate='visible'
@@ -274,6 +276,7 @@ export default function Home () {
       <div className={styles.backgroundContainer}>
         <div id='secondDiv' className={styles.aboutContainer}>
           <motion.div
+            data-entrance
             variants={slideFromLeft}
             initial='initial'
             whileInView='animate'
@@ -288,6 +291,7 @@ export default function Home () {
             />
           </motion.div>
           <motion.div
+            data-entrance
             className={styles.aboutText}
             variants={slideFromRight}
             initial='initial'
@@ -309,6 +313,7 @@ export default function Home () {
 
         <div id='aeacContainer' className={styles.aeacContainer}>
           <motion.div
+            data-entrance
             className={styles.aboutText}
             variants={slideFromLeft}
             initial='initial'
@@ -329,6 +334,7 @@ export default function Home () {
             </p>
           </motion.div>
           <motion.div
+            data-entrance
             variants={slideFromRight}
             initial='initial'
             whileInView='animate'

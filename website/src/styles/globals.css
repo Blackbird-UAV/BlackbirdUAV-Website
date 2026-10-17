@@ -182,6 +182,19 @@ a {
   outline-offset: 2px;
 }
 
+/* motion writes the starting state of the entrances it runs, as an element
+   scrolls into view (or, for the home page's clouds, as the page opens),
+   into the HTML as an inline style: invisible, or moved aside. Those
+   elements are marked data-entrance. Without JavaScript nothing would ever
+   bring them in, so they show in place; !important beats the inline
+   style. */
+@media (scripting: none) {
+  [data-entrance] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* <main> takes focus only so the skip link can move focus past the navbar */
 #main:focus {
   outline: none;
