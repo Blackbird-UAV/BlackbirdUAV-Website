@@ -30,6 +30,34 @@
   flex-direction: row-reverse;
 }
 
+/* The first card rises in from the page's first paint. A motion animation
+   would write its starting state into the HTML, keeping the card invisible
+   until the scripts had loaded and run, and for good if they failed. The
+   cards below it rise in the same way as they scroll into view (motion, in
+   vehicles.js). With reduced motion it only fades in. */
+.firstCard {
+  animation: riseIn 1.2s cubic-bezier(0.6, -0.05, 0.01, 0.99) backwards;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firstCard {
+    animation-name: fadeIn;
+  }
+}
+
 /* Carousel Container Wrapper */
 .carouselContainer {
   display: flex;

@@ -5,8 +5,11 @@ const DURATIONS = {
   Slow: 1.2,
   VerySlow: 1.8
 }
-// The home hero's and the sponsor page's entrances, which are CSS, use the
-// same curve
+// Some of the entrances on the first screen, which are CSS, use the same
+// curve: the home hero, the /sponsor sidebar and logos, the first aircraft
+// on /vehicles and the intro on /joinTheTeam. The others there (the page
+// titles, the /sponsor tiers and the first row of Meet the Team cards) ease
+// out.
 const easing = [0.6, -0.05, 0.01, 0.99]
 
 const fadeInUpSlower = {

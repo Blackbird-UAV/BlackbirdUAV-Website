@@ -227,6 +227,32 @@ function Gallery ({ name, photos }) {
   )
 }
 
+// The first card is on the first screen, so its entrance is in
+// Vehicles.module.css and runs from the page's first paint. The others rise
+// in as they scroll into view.
+function VehicleCard ({ index, children }) {
+  if (index === 0) {
+    return (
+      <div className={`${styles.vehicleCard} ${styles.firstCard}`}>
+        {children}
+      </div>
+    )
+  }
+  return (
+    <motion.div
+      className={`${styles.vehicleCard} ${
+        index % 2 === 1 ? styles.right : ''
+      }`}
+      variants={fadeInUpSlower}
+      initial='initial'
+      whileInView='animate'
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 export default function Vehicles () {
   return (
     <>
@@ -242,16 +268,7 @@ export default function Vehicles () {
       <div className={styles.container}>
         <div className={styles.vehiclesList}>
           {vehicles.map((vehicle, index) => (
-            <motion.div
-              key={vehicle.id}
-              className={`${styles.vehicleCard} ${
-                index % 2 === 1 ? styles.right : ''
-              }`}
-              variants={fadeInUpSlower}
-              initial='initial'
-              whileInView='animate'
-              viewport={{ once: true, amount: 0.1 }}
-            >
+            <VehicleCard key={vehicle.id} index={index}>
               <div className={styles.carouselContainer}>
                 <Gallery name={vehicle.name} photos={vehicle.photos} />
               </div>
@@ -292,7 +309,7 @@ export default function Vehicles () {
                   </li>
                 </ul>
               </div>
-            </motion.div>
+            </VehicleCard>
           ))}
         </div>
       </div>
