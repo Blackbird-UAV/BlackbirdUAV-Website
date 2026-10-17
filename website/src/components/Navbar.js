@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import styles from '@/styles/Navbar.module.css'
 import dropdownStyles from '@/styles/Dropdown.module.css'
 import { IconChevronDown } from '@tabler/icons-react'
@@ -107,6 +107,32 @@ export default function Navbar () {
       query.removeEventListener('change', handleChange)
     }
   }, [isOpen])
+
+  // On narrow screens the links, when they scroll, would pass under the
+  // logo and the menu button, so then their box starts below the two
+  // (.scrolls in Navbar.module.css); menus that fit stay centred on the
+  // window as before. Whether they scroll is measured without .scrolls,
+  // which changes the box's height, before the menu or the Team list is
+  // painted, and again whenever the window changes size. React never
+  // renders the class, so it leaves it alone.
+  useLayoutEffect(() => {
+    if (!isOpen) return
+    const links = linksRef.current
+    const measure = () => {
+      links.classList.remove(styles.scrolls)
+      links.classList.toggle(
+        styles.scrolls,
+        links.scrollHeight > links.clientHeight
+      )
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(navRef.current)
+    return () => {
+      observer.disconnect()
+      links.classList.remove(styles.scrolls)
+    }
+  }, [isOpen, isDropdownOpen])
 
   useEffect(() => {
     // A press on another navbar link is left to that link's click, so the

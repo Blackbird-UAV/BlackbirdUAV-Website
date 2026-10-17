@@ -234,12 +234,15 @@
      so the links scroll inside the overlay. The box spans the overlay's
      width, so a swipe anywhere scrolls it; the links stay centred in it.
      The padding keeps focus rings and the Sponsor Us hover glow from being
-     clipped; it is even top and bottom, so the centred links don't move. */
+     clipped; it is even top and bottom, so the centred links don't move.
+     The scroll padding keeps it when Tab scrolls a link into view, which
+     would otherwise bring it right to the edge. */
   .linksContainer.open {
     display: flex;
     align-self: stretch;
     max-height: calc(100% - 1rem);
     padding: 0.5rem 1rem;
+    scroll-padding-block: 0.5rem;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -265,6 +268,18 @@
   .dropdownWrapper {
     display: block;
     text-align: center;
+  }
+}
+
+/* Below about 450px the links reach across under the logo (the Team list
+   is 15rem wide), and on the narrowest screens under the menu button too.
+   Up to 480px, to leave a margin, while they scroll (Navbar.js) their box
+   starts below the logo (1rem + 40px) and the button instead of at the top
+   of the window, so they don't pass under either, and shrinks to fit the
+   window below them. */
+@media (max-width: 480px) {
+  .linksContainer.open.scrolls {
+    margin-top: 3.5rem;
   }
 }
 
