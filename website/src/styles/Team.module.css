@@ -577,8 +577,9 @@
 }
 
 /* Subteam and role colours, keyed by the teamData subteam names and the
-   Alumni role names. White text is under 4.5:1 on the green, pink and
-   amber, so they take black. */
+   Alumni role names. The green is dark enough for white text (5.1:1).
+   White is under 4.5:1 on the pink, the amber and the gold, so they take
+   black. */
 .Organization,
 .Executives {
   --team-color: #6859d9;
@@ -593,8 +594,8 @@
 
 .SAEAERO,
 .design {
-  --team-color: #30b463;
-  --team-ink: #000;
+  --team-color: #217d44;
+  --team-ink: #fff;
 }
 
 .systems {
