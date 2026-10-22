@@ -28,9 +28,10 @@ jobs:
     # Deploys queue behind each other, so a hung one mustn't hold the queue
     # for the 6-hour default. Real deploys take one to two minutes.
     timeout-minutes: 30
-    # Only a push to main whose CI passed. The event check also stops fork
-    # PRs from a branch named main, which the branches filter lets through.
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
+    # Only a push to main, or a manual run of CI on main (which takes write
+    # access), whose CI passed. The event check also stops fork PRs from a
+    # branch named main, which the branches filter lets through.
+    if: ${{ github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.event == 'push' || github.event.workflow_run.event == 'workflow_dispatch') }}
     outputs:
       deploy: ${{ steps.guard.outputs.deploy }}
 
