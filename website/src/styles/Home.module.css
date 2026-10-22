@@ -451,22 +451,34 @@
   margin-top: 1rem;
 }
 
+/* Each dot is a 24px button, the least a finger can hit reliably (WCAG
+   2.5.8); the 10px dot it shows is drawn inside it, as on the Vehicles
+   page. */
 .dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: '';
   width: 10px;
   height: 10px;
   background-color: #ccc;
   border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
 }
 
-.dot.activeDot {
+.dot.activeDot::before {
   background-color: #333;
 }
 
 .dot:focus-visible {
   outline: 2px solid #333;
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .cloudContainer {
