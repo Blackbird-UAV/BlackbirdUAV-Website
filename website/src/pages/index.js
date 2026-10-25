@@ -183,7 +183,7 @@ export default function Home () {
     <div className={styles.pageWrapper}>
       <PageMeta
         title='Blackbird UAV'
-        description="Blackbird UAV is Carleton University's student UAV design team in Ottawa. We design, build and fly drones for the national AEAC Student Competition."
+        description="Blackbird UAV is Carleton University's student UAV design team in Ottawa. We design, build and fly drones for the AEAC Student Competition and SAE Aero Design."
         path='/'
       />
 
@@ -300,13 +300,19 @@ export default function Home () {
           >
             <h2>About Us</h2>
             <p>
-              Blackbird UAV (BBUAV) is a student organization participating annually in a national drone design competition. The club aims to design, build and operate aircrafts while providing students with a practical hands-on experience in the design, manufacturing, and software integration components of such an undertaking.
+              Blackbird is a student-led design team that focuses on designing,
+              building and operating UAV drones for the Aerial Evolution
+              Association of Canada Student Competition (AEAC SC) as well as
+              the Society of Automotive Engineers (SAE) competition.
             </p>
             <p>
-              BBUAV was established in 2009 as an extra-curricular program for
-              this competition but evolved to offer experience for students
-              from varied studies and background in real-world design
-              projects, operations, administration, and teamwork.
+              While we aim to succeed in these competitions, we are passionate
+              about creating opportunities for students to develop and refine
+              their talents before getting into the industry. The team at
+              Blackbird believes that being part of a design team is one of
+              the best experiences to have prior to entering the workforce,
+              and we would like as many people as possible to have that
+              opportunity.
             </p>
           </motion.div>
         </div>
