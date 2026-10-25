@@ -50,7 +50,8 @@
     "@babel/core": ">=7.29.6 <8.0.0",
     "sharp": "$sharp",
     "basic-ftp": ">=6.2.1 <7.0.0",
-    "body-parser": ">=1.20.8 <2.0.0",
-    "puppeteer-core": ">=25.9.0 <26.0.0"
+    "body-parser": ">=1.20.9 <2.0.0",
+    "puppeteer-core": ">=25.16.0 <26.0.0",
+    "zod": ">=4.6.6 <5.0.0"
   }
 }

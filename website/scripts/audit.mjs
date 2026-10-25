@@ -6,15 +6,9 @@
 // reason; delete it as soon as a fix ships.
 import { execSync } from 'node:child_process'
 
-const ALLOWLIST = new Map([
-  // No patched braces release exists. It only reaches us via eslint-config-next's
-  // lint tooling (@next/eslint-plugin-next -> fast-glob -> micromatch -> braces),
-  // which only ever expands globs from our own config. Dev-only, which the
-  // production audit enforces: if braces reached a production dependency, that
-  // audit would fail. Remove this once braces ships a fix or
-  // @next/eslint-plugin-next drops fast-glob.
-  ['GHSA-vfj7-8cjw-p6xm', 'braces has no fix; dev-only lint tooling fed our own globs']
-])
+// Each entry is [advisory id, reason], e.g.
+// ['GHSA-xxxx-xxxx-xxxx', 'no fixed release yet; dev-only lint tooling']
+const ALLOWLIST = new Map([])
 
 const ci = Boolean(process.env.GITHUB_ACTIONS)
 // Workflow command messages must escape %, CR and LF.
