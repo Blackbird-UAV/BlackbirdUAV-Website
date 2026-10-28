@@ -218,7 +218,7 @@ const teamData = {
         isExecutive: true,
         image: '/images/2025Headshots/Sam.jpg',
         description:
-          'Sam is a Mechanical Subteam Lead in his 4th-year of Aerospace Engineering',
+          'Sam is a Mechanical Subteam Lead in his 4th year of Aerospace Engineering',
         extendedDescription:
           'As Mechanical Lead, Sam\'s responsibilities include conceptual design, CAD, structures and sizing, and vehicle performance. He optimizes systems integration and manages a 20+ member subteam.',
         link: 'https://www.linkedin.com/in/samueldavidhowell/'
@@ -315,7 +315,7 @@ const teamData = {
         isExecutive: true,
         image: '/images/2025Headshots/Denise.jpg',
         description:
-          'Aerospace Electronics and System student passionate about systems integration.',
+          'Aerospace Electronics and Systems student passionate about systems integration.',
         extendedDescription:
           'Denise leads the electrical team through projects of all scales that advance the competition vehicle’s capabilities, drawing on his experience in UAV systems and electrical design.',
         link: 'https://www.linkedin.com/in/denisetablac/'
@@ -445,7 +445,7 @@ const teamData = {
         isPresident: false,
         isExecutive: false,
         image: '/images/2025Headshots/Karl.jpg',
-        description: 'Master student specializing in gas turbine aerodynamics.',
+        description: "Master's student specializing in gas turbine aerodynamics.",
         extendedDescription:
           'Karl is an advisor for manufacturing and structures. He brings practical hands-on experience in composites and different manufacturing methods, focusing on continuous improvement through learning and experience.',
         link: 'https://www.linkedin.com/in/karlkurniawan/'
@@ -461,14 +461,14 @@ const teamData = {
         description:
           'Manufacturing and CAD advisor with industry expertise.',
         extendedDescription:
-          "As a 7th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
+          "As a 7th year Master's student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
         link: 'https://www.linkedin.com/in/nicholas-mucci-164b49185'
       }
     ]
   },
   '2024-2025': {
     description:
-      'This is the Blackbird UAV team for the 2024-2025 year. This team worked together throughout the course of the year on a new drone that fullfilled competition goals: Goliath. Goliath was built in a quadcopter configuration with a fully modular payload and is BBUAV\'s most recent drone. It also included First Person View cameras to give better precision for the pilots and won 3rd prize at AEAC.',
+      'This is the Blackbird UAV team for the 2024-2025 year. This team worked together throughout the course of the year on a new drone that fulfilled competition goals: Goliath. Goliath was built in a quadcopter configuration with a fully modular payload and is BBUAV\'s most recent drone. It also included First Person View cameras to give better precision for the pilots and won 3rd prize at AEAC.',
     Executives: [
       {
         id: 1,
@@ -480,7 +480,7 @@ const teamData = {
         image: '/images/TeamHeadshots/Felix.JPG',
         description: 'Club President since 2024',
         extendedDescription:
-          'Felix joined BBUAV in 2022 and became president in 2024. He oversees club activities and management to reach the clubs goals at Carleton and at competitions.',
+          'Felix joined BBUAV in 2022 and became president in 2024. He oversees club activities and management to reach the club\'s goals at Carleton and at competitions.',
         link: 'https://www.linkedin.com/in/fa-chenier/?locale=fr_FR'
       },
       {
@@ -535,7 +535,7 @@ const teamData = {
         image: '/images/TeamHeadshots/Jedidiah.JPG',
         description: 'Jedidiah is a 2nd year graduate student.',
         extendedDescription:
-          'Jed is a part of executive team. Having been a member since 2020, Jed has worked on a variety of projects. He is currently in charge of vehicle propulsion and stability.',
+          'Jed is part of the executive team. Having been a member since 2020, Jed has worked on a variety of projects. He is currently in charge of vehicle propulsion and stability.',
         link: 'http://www.linkedin.com/in/jedidiahnevo'
       },
       {
@@ -546,7 +546,7 @@ const teamData = {
         isPresident: false,
         isExecutive: true,
         image: '/images/TeamHeadshots/Karl.JPG',
-        description: 'Master student specializing in gas turbine aerodynamics.',
+        description: "Master's student specializing in gas turbine aerodynamics.",
         extendedDescription:
           'Karl is the Co-lead for manufacturing and structures sub team for the 2nd year. He brings practical hands-on experience in composites and different manufacturing methods, focusing on continuous improvement through learning and experience.',
         link: 'https://www.linkedin.com/in/karlkurniawan/?originalSubdomain=ca'
@@ -562,7 +562,7 @@ const teamData = {
         description:
           'Lead CAD designer and manufacturing co-lead with industry expertise.',
         extendedDescription:
-          "As a 6th year Masters student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
+          "As a 6th year Master's student specializing in Advanced Dynamics, Nick brings extensive drone industry experience to BBUAV. His expert knowledge of CAD/SolidWorks drives innovation in the team's design and manufacturing processes.",
         link: 'https://www.linkedin.com/in/nicholas-mucci-164b49185'
       }
     ],
@@ -578,7 +578,7 @@ const teamData = {
         description:
           'First year computer systems engineer. A member since 2024.',
         extendedDescription:
-          'Gopesh works on integrating sensors to enable drones to operate fully autonomously. Additionly, he develops and implements machine learning algorithms to enhance drone functionality for various tasks.'
+          'Gopesh works on integrating sensors to enable drones to operate fully autonomously. Additionally, he develops and implements machine learning algorithms to enhance drone functionality for various tasks.'
       },
       {
         id: 7,
@@ -605,7 +605,7 @@ const teamData = {
         description:
           'Aerospace student passionate about innovation and technology.',
         extendedDescription:
-          'Contributed to Black bird UAV by designing and optimizing flight systems. Focused on improving performance and reliability, integrating components to ensure seamless operations.',
+          'Contributed to Blackbird UAV by designing and optimizing flight systems. Focused on improving performance and reliability, integrating components to ensure seamless operations.',
         link: 'http://www.linkedin.com/in/denisetablac'
       },
       {
@@ -826,7 +826,7 @@ const teamData = {
         description:
           'Owen is an active member of the landing gear design sub-team.',
         extendedDescription:
-          "A Blackbird UAV member since 2023, Owen actively contributes to UAV design and performance by creating CAD models, collaborating on innovating solutions and supporting the team's efforts to maximize success.",
+          "A Blackbird UAV member since 2023, Owen actively contributes to UAV design and performance by creating CAD models, collaborating on innovative solutions and supporting the team's efforts to maximize success.",
         link: 'https://www.linkedin.com/in/owen-mckechnie-97a526293'
       },
       {
@@ -981,7 +981,7 @@ const teamData = {
         image: '/images/TeamHeadshots/Meyiwa.JPG',
         description: 'Meyiwa develops autonomous solutions for UAV navigation.',
         extendedDescription:
-          'Meyiwa, a fourth-year Software Engineering major contributes his ability in software development towards developing autonomous solutions for UAV navigation. He closely collaborates with team members to further the efficiency and functionality of the club’s software projects.',
+          'Meyiwa, a fourth-year Software Engineering major, contributes his ability in software development towards developing autonomous solutions for UAV navigation. He closely collaborates with team members to further the efficiency and functionality of the club’s software projects.',
         link: 'https://www.linkedin.com/in/meyiwatemile'
       },
       {
@@ -1047,7 +1047,7 @@ const teamData = {
         image: '/images/TeamHeadshots/Lidya.JPG',
         description: 'Lidya works on graphics and design for the club.',
         extendedDescription:
-          'Lidya is her last year of Aerospace Engineering Stream B. Currently she is working on graphics and design for the club.',
+          'Lidya is in her last year of Aerospace Engineering Stream B. Currently she is working on graphics and design for the club.',
         link: 'https://www.linkedin.com/in/lidyasobhano'
       },
       {
@@ -1151,9 +1151,9 @@ const teamData = {
       2026: {
         description: `
           <p>Blackbird's 2nd Quadcopter built from scratch.</p>
-          <p>The team received the team spirit award for recognizing sportsmanship and support for other teams.</p>
+          <p>The team received the Team Spirit Award, which recognizes sportsmanship and support for other teams.</p>
           <p>Location: Ottawa, ON</p>
-          <p>A modular quadcopter was designed to detect and extinguish urban fires, as well as carry a payload up to 4.5 kg. The team sucessfully completed task one of the mission, and were a fantastic host all-weekend long for the travelling teams in Ottawa.</p>
+          <p>A modular quadcopter was designed to detect and extinguish urban fires, as well as carry a payload up to 4.5 kg. The team successfully completed task one of the mission, and was a fantastic host all weekend long for the travelling teams in Ottawa.</p>
           <p>Read More: <a href="https://charlatan.ca/blackbird-uav/">The Charlatan's article on Blackbird UAV</a></p>
         `,
         award: { variant: 'innovation', label: 'Team Spirit Award'},
