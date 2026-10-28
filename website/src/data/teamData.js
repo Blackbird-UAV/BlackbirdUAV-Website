@@ -6,7 +6,7 @@ const teamData = {
       {
         id: 12,
         firstName: 'Samuel',
-        lastName: 'David Howell',
+        lastName: 'Howell',
         role: 'President',
         isPresident: true,
         isExecutive: false,
@@ -59,15 +59,15 @@ const teamData = {
     AEAC: [
       {
         id: 16,
-        firstName: 'Daniel',
-        lastName: 'John Van Nice',
+        firstName: 'DJ',
+        lastName: 'Van Nice',
         role: 'Mechanical Lead',
         isPresident: false,
         isExecutive: true,
         image: '/images/2026Headshots/DJ.jpg',
-        description: 'Daniel leads the Mechanical team for AEAC',
+        description: 'DJ leads the Mechanical team for AEAC',
         extendedDescription:
-          'Daniel leads the mechanical design and manufacturing team for AEAC competition projects.',
+          'DJ leads the mechanical design and manufacturing team for AEAC competition projects.',
         link: 'https://www.linkedin.com/in/daniel-van-nice-28298a256/'
       },
       {
@@ -111,15 +111,15 @@ const teamData = {
       },
       {
         id: 20,
-        firstName: 'James',
-        lastName: 'Walter Esterak',
+        firstName: 'JW',
+        lastName: 'Esterak',
         role: 'Electrical Lead',
         isPresident: false,
         isExecutive: true,
         image: '/images/2026Headshots/JW.jpg',
-        description: 'James co-leads the Electrical team for AEAC',
+        description: 'JW co-leads the Electrical team for AEAC',
         extendedDescription:
-          'James co-leads the electrical systems and integration team for AEAC competition projects.',
+          'JW co-leads the electrical systems and integration team for AEAC competition projects.',
         link: 'https://www.linkedin.com/in/james-w-esterak-530193211/'
       },
       {
@@ -473,20 +473,20 @@ const teamData = {
       {
         id: 1,
         firstName: 'Félix-Antoine',
-        lastName: 'Chenier',
+        lastName: 'Chénier',
         role: 'President / Administration',
         isPresident: true,
         isExecutive: false,
         image: '/images/TeamHeadshots/Felix.JPG',
         description: 'Club President since 2024',
         extendedDescription:
-          'Felix joined BBUAV in 2022 and became president in 2024. He oversees club activities and management to reach the club\'s goals at Carleton and at competitions.',
+          'Félix joined BBUAV in 2022 and became president in 2024. He oversees club activities and management to reach the club\'s goals at Carleton and at competitions.',
         link: 'https://www.linkedin.com/in/fa-chenier/?locale=fr_FR'
       },
       {
         id: 2,
         firstName: 'DJ',
-        lastName: 'Van-Nice',
+        lastName: 'Van Nice',
         role: 'Vice-President / Systems',
         isPresident: false,
         isExecutive: true,
@@ -500,7 +500,7 @@ const teamData = {
       {
         id: 3,
         firstName: 'Duaa',
-        lastName: 'J.Israr',
+        lastName: 'Israr',
         role: 'Administrative',
         isPresident: false,
         isExecutive: true,
@@ -925,9 +925,9 @@ const teamData = {
         joined: '2021',
         left: '2024',
         image: '/images/TeamHeadshots/Felix.JPG',
-        description: 'Felix is the Vice-President of Blackbird UAV.',
+        description: 'Félix is the Vice-President of Blackbird UAV.',
         extendedDescription:
-          'Felix joined Blackbird UAV in 2021 and is now Vice-President. Studying civil engineering, he introduced project management systems and led the team’s first custom vehicle project. He plans to stay with Blackbird until graduation to ensure a strong future for the team.',
+          'Félix joined Blackbird UAV in 2021 and is now Vice-President. Studying civil engineering, he introduced project management systems and led the team’s first custom vehicle project. He plans to stay with Blackbird until graduation to ensure a strong future for the team.',
         link: 'https://www.linkedin.com/in/felixchenier'
       },
       {
@@ -1053,7 +1053,7 @@ const teamData = {
       {
         id: 12,
         firstName: 'Duaa',
-        lastName: 'J. Israr',
+        lastName: 'Israr',
         role: 'Aerospace Engineering / Social Media',
         joined: '2023',
         left: '2024',
@@ -1169,7 +1169,7 @@ const teamData = {
           { firstName: 'Jivitesh', role: 'Operations' },
           { firstName: 'Parsa', role: 'Operations' },
           { firstName: 'Eleena', role: 'Operations' },
-          { firstName: 'J.W.', role: 'Electrical' },
+          { firstName: 'JW', role: 'Electrical' },
           { firstName: 'Felipe', role: 'Software' },
           { firstName: 'Ryan', role: 'Mechanical' },
           { firstName: 'Lucas', role: 'Mechanical' },
@@ -1196,7 +1196,7 @@ const teamData = {
         imageWidth: 1024,
         imageHeight: 682,
         members: [
-          { firstName: 'Felix', lastName: 'Chenier', role: 'Club president' },
+          { firstName: 'Félix-Antoine', lastName: 'Chénier', role: 'Club president' },
           { firstName: 'DJ', role: 'Flight' },
           { firstName: 'Karl', role: 'Flight' },
           { firstName: 'Nick', role: 'Flight' },
@@ -1229,7 +1229,7 @@ const teamData = {
         imageHeight: 373,
         members: [
           { firstName: 'PJ', lastName: 'Parisien', role: 'Club president' },
-          { firstName: 'Felix', lastName: 'Vice-President' },
+          { firstName: 'Félix', lastName: '', role: 'Vice-President' },
           { firstName: 'Jed', lastName: '' },
           { firstName: 'Meyiwa', lastName: '' },
           { firstName: 'DJ', lastName: '' },
@@ -1267,7 +1267,7 @@ const teamData = {
           { firstName: 'Jed', lastName: '' },
           { firstName: 'Meyiwa', lastName: '' },
           { firstName: 'Imad', lastName: '', role: 'Executive' },
-          { firstName: 'Felix', lastName: '' },
+          { firstName: 'Félix', lastName: '' },
           { firstName: 'Ben', lastName: '' },
           { firstName: 'DJ', lastName: '' },
           { firstName: 'Jacob', lastName: '' },
@@ -1292,7 +1292,7 @@ const teamData = {
           { firstName: 'Jed', lastName: '' },
           { firstName: 'Meyiwa', lastName: '' },
           { firstName: 'Imad', lastName: '' },
-          { firstName: 'Felix', lastName: '' },
+          { firstName: 'Félix', lastName: '' },
           { firstName: 'Ben', lastName: '' }
         ]
       }
