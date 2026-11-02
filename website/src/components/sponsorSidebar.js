@@ -45,13 +45,13 @@ const SponsorSidebar = () => (
               <div className={styles.packageButtonWrap}>
                 <motion.a
                   className={`${styles.button} ${styles.red} ${styles.packageButton}`}
-                  href='/assets/bbuavsponsorpackage2025.pdf'
+                  href='/assets/bbuavsponsorpackage2026.pdf'
                   target='_blank'
                   rel='noopener noreferrer'
                   whileHover={redHover}
                   whileTap={tap}
                 >
-                  Sponsorship Package{' '}
+                  Sponsorship Package (PDF, 6&nbsp;MB){' '}
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                 </motion.a>
               </div>
