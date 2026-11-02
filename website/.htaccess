@@ -28,8 +28,10 @@ RewriteRule ^ https://blackbirduav.ca%{REQUEST_URI} [R=301,L]
 # lists every deployed file with its hash
 RewriteRule (^|/)\. - [F,L]
 
-# Redirect old sponsorship package PDF to new one
-RewriteRule ^assets/Blackbird\ UAV\ Sponsorship\ Package\ 2024-2025\.pdf$ /assets/bbuavsponsorpackage2025.pdf [R=301,L]
+# Old sponsorship package URLs (still in emails and old posts) go to the
+# current package, straight there, so an old link costs one redirect.
+RewriteRule ^assets/Blackbird\ UAV\ Sponsorship\ Package\ 2024-2025\.pdf$ /assets/bbuavsponsorpackage2026.pdf [R=301,L]
+RewriteRule ^assets/bbuavsponsorpackage2025\.pdf$ /assets/bbuavsponsorpackage2026.pdf [R=301,L]
 
 # One URL per page, the one in each page's canonical tag. THE_REQUEST is the
 # request line as the browser sent it, so these two only see what was asked
