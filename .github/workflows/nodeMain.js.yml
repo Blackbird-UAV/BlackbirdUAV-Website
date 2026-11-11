@@ -7,9 +7,9 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-  # Run by hand on main when GitHub drops the push event for a merge (it did
-  # on 2026-10-22, and nothing ran): Deploy to Main follows this run as it
-  # would a push's.
+  # Run by hand on main when GitHub is slow to deliver the push event for a
+  # merge, or drops it (on 2026-10-22 CI for a merge only started 50 minutes
+  # late): Deploy to Main follows this run as it would a push's.
   workflow_dispatch:
 
 jobs:
