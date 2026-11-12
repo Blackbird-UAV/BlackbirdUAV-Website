@@ -188,13 +188,25 @@ export default function Home () {
       />
 
       <div className={styles.HomeContainer}>
-        <Image
-          src='/images/goliath-hero.png'
-          alt='Goliath in flight'
-          className={styles.skyGoliath}
-          width={460}
-          height={289}
-        />
+        {/* The open sky above the copy, where the two aircraft fly. It takes
+            whatever height the copy leaves, so they never reach the text. */}
+        <div className={styles.sky}>
+          <Image
+            src='/images/leviathan-hero.webp'
+            alt='Leviathan in flight'
+            className={styles.heroCraft}
+            width={625}
+            height={304}
+            priority
+          />
+          <Image
+            src='/images/goliath-hero.png'
+            alt='Goliath in flight'
+            className={styles.skyGoliath}
+            width={460}
+            height={289}
+          />
+        </div>
         {/* The copy's entrance is in Home.module.css */}
         <div className={styles.contentWrapper}>
           <div className={styles.textSection}>
@@ -231,14 +243,6 @@ export default function Home () {
       </div>
 
       <div id='firstDiv' className={styles.cloudContainer}>
-        <Image
-          src='/images/leviathan-hero.webp'
-          alt='Leviathan hovering between the clouds'
-          className={styles.heroCraft}
-          width={625}
-          height={304}
-          priority
-        />
         <motion.div
           data-entrance
           className={styles.cloudLayer}
