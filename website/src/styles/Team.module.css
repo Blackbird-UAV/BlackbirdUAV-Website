@@ -130,7 +130,10 @@
 
 .subteam {
   display: flex;
-  width: 90%;
+  /* 24px clear of each side of the page. The band and the cards beside it
+     need 1230px for four 250px columns of cards, which this leaves from
+     1280px wide, where 90% didn't until 1367px. */
+  width: calc(100% - 3rem);
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 40px;
@@ -177,6 +180,10 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   flex-grow: 1;
+  /* Beside the band, the grid's automatic minimum width was the width it
+     asks for, so it couldn't shrink to fit: it hung past the right edge of
+     the page from 769px to about 900px, and the band past the left */
+  min-width: 0;
   margin-left: 20px;
   justify-content: center;
 }
@@ -616,7 +623,7 @@
    Alumni role names. The green is dark enough for white text (5.1:1).
    White is under 4.5:1 on the pink, the amber and the gold, so they take
    black. */
-.Organization,
+.Org,
 .Executives {
   --team-color: #6859d9;
   --team-ink: #fff;
