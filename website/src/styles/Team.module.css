@@ -478,15 +478,22 @@
 }
 
 /* CardFront elements */
+
+/* Shades the top corner under the turn-over icon, at least 50% black
+   behind it: 3:1 or better for the white icon on any photo. On the front
+   face, so it turns away with it. */
 .cardFront::before {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-  border-radius: inherit;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.5) 40px,
+    rgba(0, 0, 0, 0.25) 68px,
+    rgba(0, 0, 0, 0.08) 96px,
+    rgba(0, 0, 0, 0) 124px
+  );
   pointer-events: none;
   z-index: 1;
 }
@@ -502,8 +509,37 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 8%;
   text-align: left;
+}
+
+/* The white text's scrim is as tall as the text, so longer descriptions
+   and role tags stay on it, and fades out over the 4rem above it. Behind
+   every line it is at least 62% black: 4.5:1 or better for white text even
+   on a white background. */
+.frontText {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4rem 8% 8%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.62) calc(100% - 4rem),
+    rgba(0, 0, 0, 0.3) calc(100% - 2.25rem),
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* A soft edge for the white text. The role tags have their own
+   backgrounds, and the Manager tag's black label would only blur. */
+.cardFront .firstName,
+.cardFront .lastName,
+.cardFront .description {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cardFront .presidentTag {
@@ -543,7 +579,7 @@
 }
 
 .cardFront .firstName {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.25em;
   color: #ffffff;
   z-index: 2;
@@ -568,7 +604,7 @@
 }
 
 .cardFront .description {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.9rem;
   color: #ffffff;
   overflow: hidden;
