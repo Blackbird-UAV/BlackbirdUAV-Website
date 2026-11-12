@@ -18,6 +18,19 @@ const teamData = {
       },
       {
         id: 13,
+        firstName: 'Viveca',
+        lastName: 'Matida-Torrico',
+        role: 'Administrative Lead',
+        isPresident: false,
+        isExecutive: true,
+        image: '/images/2026Headshots/Viveca.jpg',
+        description: 'Viveca leads administrative operations',
+        extendedDescription:
+          'Viveca oversees administrative functions, communications, and organizational coordination.',
+        link: '#'
+      },
+      {
+        id: 14,
         firstName: 'Cassandra',
         lastName: 'Young',
         role: 'Finance',
@@ -30,7 +43,7 @@ const teamData = {
         link: '#'
       },
       {
-        id: 14,
+        id: 15,
         firstName: 'Amani',
         lastName: 'Kaur Bhullar',
         role: 'External',
@@ -40,19 +53,6 @@ const teamData = {
         description: 'Amani manages external relations and partnerships',
         extendedDescription:
           'Amani handles external partnerships, sponsorships, and public relations for Blackbird UAV.',
-        link: '#'
-      },
-      {
-        id: 15,
-        firstName: 'Viveca',
-        lastName: 'Matida-Torrico',
-        role: 'Administrative Lead',
-        isPresident: false,
-        isExecutive: true,
-        image: '/images/2026Headshots/Viveca.jpg',
-        description: 'Viveca leads administrative operations',
-        extendedDescription:
-          'Viveca oversees administrative functions, communications, and organizational coordination.',
         link: '#'
       }
     ],
