@@ -2,7 +2,9 @@ const teamData = {
   '2026-2027': {
     description:
       'This is the Blackbird UAV team for the 2026-2027 year.',
-    Organization: [
+    // The subteam's name is its band's label on the page. Short, like AEAC
+    // and SAE AERO: "Organization" filled its band when the four fit in a row.
+    Org: [
       {
         id: 12,
         firstName: 'Samuel',
