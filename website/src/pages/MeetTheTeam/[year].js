@@ -153,9 +153,11 @@ const MemberCard = ({ member, index, firstRow }) => {
               Object.assign(e.target.style, PLACEHOLDER_STYLE)
             }}
           />
+          <div className={styles.frontTags}>
+            <RoleTags member={member} />
+          </div>
           {/* On a dark scrim (Team.module.css), so it reads on any photo */}
           <div className={styles.frontText}>
-            <RoleTags member={member} />
             <Name member={member} />
             <Text className={styles.description}>{member.description}</Text>
           </div>
