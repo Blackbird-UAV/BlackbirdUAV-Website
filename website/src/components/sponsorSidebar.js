@@ -8,22 +8,12 @@ import {
   faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
 
-const redHover = {
-  scale: 1.05,
-  backgroundColor: '#e91c23',
-  boxShadow: '0 0px 15px rgba(233, 28, 35, 0.5)',
-  filter: 'brightness(1.2)'
-}
-const blueHover = {
-  scale: 1.05,
-  backgroundColor: '#4169e1',
-  boxShadow: '0 0px 15px rgba(65, 105, 225, 0.5)',
-  filter: 'brightness(1.2)'
-}
+// motion only scales the buttons, on hover and press. The rest of their
+// hover look is CSS; SponsorSidebar.module.css says why.
+const hover = { scale: 1.05 }
 const tap = { scale: 0.95 }
 
-// Its entrance is in SponsorSidebar.module.css. motion only animates the
-// buttons' hover and press.
+// Its entrance is in SponsorSidebar.module.css
 const SponsorSidebar = () => (
   <div className={styles.sidebar}>
     <div className={styles.container}>
@@ -48,7 +38,7 @@ const SponsorSidebar = () => (
                   href='/assets/bbuavsponsorpackage2026.pdf'
                   target='_blank'
                   rel='noopener noreferrer'
-                  whileHover={redHover}
+                  whileHover={hover}
                   whileTap={tap}
                 >
                   Sponsorship Package (PDF, 6&nbsp;MB){' '}
@@ -80,7 +70,7 @@ const SponsorSidebar = () => (
               <motion.a
                 className={`${styles.button} ${styles.red} ${styles.contactButton}`}
                 href='mailto:sponsor@blackbirduav.ca?subject=Blackbird%20UAV%20Sponsorship'
-                whileHover={redHover}
+                whileHover={hover}
                 whileTap={tap}
               >
                 Send us an email <FontAwesomeIcon icon={faEnvelope} />
@@ -90,7 +80,7 @@ const SponsorSidebar = () => (
                 href='https://futurefunder.carleton.ca/giving-fund/blackbird-uav-national-design-competition/'
                 target='_blank'
                 rel='noopener noreferrer'
-                whileHover={blueHover}
+                whileHover={hover}
                 whileTap={tap}
               >
                 Donate <FontAwesomeIcon icon={faDonate} />
