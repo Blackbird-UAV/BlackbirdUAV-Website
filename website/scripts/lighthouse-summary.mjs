@@ -53,8 +53,9 @@ function readJson (file) {
 
 function loadRuns () {
   if (!fs.existsSync(RESULTS)) return []
+  // lhr-<time>.json from LHCI 0.15, lhr-<time>-<n>.json from 0.16 on
   return fs.readdirSync(RESULTS)
-    .filter((file) => /^lhr-\d+\.json$/.test(file))
+    .filter((file) => /^lhr-\d+(-\d+)?\.json$/.test(file))
     .map((file) => readJson(path.join(RESULTS, file)))
     .filter((lhr) => lhr?.requestedUrl && lhr.categories && lhr.audits)
 }
