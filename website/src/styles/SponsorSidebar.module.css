@@ -196,15 +196,13 @@
   }
 }
 
-/* Pill buttons. The glow and brightness on hover are these :hover rules,
-   before the page is interactive and after. Once it is, motion animates
-   the scale on hover and press (whileHover and whileTap in
-   sponsorSidebar.js); the :hover scale covers the time before. Leave the
-   rest to CSS: when a hover ends, motion returns a value to what it read
-   off the page at the first hover, when :hover may already have applied
-   (at once, with reduced motion), and keeps the result as an inline style.
-   The buttons used to stay brighter after a hover that way. motion takes
-   the resting scale as 1 without reading it, so the shared scale is safe. */
+/* Pill buttons. Their hover and press are plain CSS: the scale, glow and
+   brightness on hover, and the shrink on press. That works before the page
+   is interactive and leaves nothing behind afterwards. Don't animate them
+   with motion again: it returns a value to what it read off the page at
+   the first hover, when :hover may already apply, and keeps the result as
+   an inline style. That once left the buttons brighter after a hover, with
+   their focus ring covered. */
 .button {
   position: relative;
   display: inline-flex;
@@ -273,6 +271,11 @@
     background-color: #4169e1;
     box-shadow: 0 0 15px rgb(65 105 225 / 50%);
   }
+}
+
+/* Pressed, by mouse or touch. After the hover rules, so it wins over them. */
+.button:active {
+  transform: scale(0.95);
 }
 
 @media (prefers-reduced-motion: reduce) {

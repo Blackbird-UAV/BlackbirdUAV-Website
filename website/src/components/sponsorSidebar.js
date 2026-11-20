@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { motion } from 'motion/react'
 import styles from '@/styles/SponsorSidebar.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -8,12 +7,8 @@ import {
   faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
 
-// motion only scales the buttons, on hover and press. The rest of their
-// hover look is CSS; SponsorSidebar.module.css says why.
-const hover = { scale: 1.05 }
-const tap = { scale: 0.95 }
-
-// Its entrance is in SponsorSidebar.module.css
+// Its entrance, and the buttons' hover and press, are in
+// SponsorSidebar.module.css
 const SponsorSidebar = () => (
   <div className={styles.sidebar}>
     <div className={styles.container}>
@@ -33,17 +28,15 @@ const SponsorSidebar = () => (
                 information, please read our sponsorship package.
               </p>
               <div className={styles.packageButtonWrap}>
-                <motion.a
+                <a
                   className={`${styles.button} ${styles.red} ${styles.packageButton}`}
                   href='/assets/bbuavsponsorpackage2026.pdf'
                   target='_blank'
                   rel='noopener noreferrer'
-                  whileHover={hover}
-                  whileTap={tap}
                 >
                   Sponsorship Package (PDF, 6&nbsp;MB){' '}
                   <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                </motion.a>
+                </a>
               </div>
             </div>
             <div className={styles.photoWrap}>
@@ -67,24 +60,20 @@ const SponsorSidebar = () => (
               to start the sponsorship process and learn about next steps.
             </p>
             <div className={styles.donateButtons}>
-              <motion.a
+              <a
                 className={`${styles.button} ${styles.red} ${styles.contactButton}`}
                 href='mailto:sponsor@blackbirduav.ca?subject=Blackbird%20UAV%20Sponsorship'
-                whileHover={hover}
-                whileTap={tap}
               >
                 Send us an email <FontAwesomeIcon icon={faEnvelope} />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 className={`${styles.button} ${styles.blue} ${styles.contactButton} ${styles.donateButton}`}
                 href='https://futurefunder.carleton.ca/giving-fund/blackbird-uav-national-design-competition/'
                 target='_blank'
                 rel='noopener noreferrer'
-                whileHover={hover}
-                whileTap={tap}
               >
                 Donate <FontAwesomeIcon icon={faDonate} />
-              </motion.a>
+              </a>
             </div>
             <p className={styles.note}>
               * Note: Unlike sponsorships, donations do not provide corporate
