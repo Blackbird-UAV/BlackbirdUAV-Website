@@ -32,7 +32,7 @@
     "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.16.0",
+    "@lhci/cli": "^0.16.1",
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "eslint": "^10.15.0",
