@@ -21,7 +21,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
-    "@mantine/core": "^9.8.0",
+    "@mantine/core": "^9.8.1",
     "@mantine/hooks": "^9.7.1",
     "@next/third-parties": "^16.4.6",
     "@tabler/icons-react": "^3.52.0",
