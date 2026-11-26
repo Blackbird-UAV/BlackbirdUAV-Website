@@ -2,7 +2,8 @@
 <!--
   Every exported page except 404.html, at its canonical URL (the one in the
   page's PageMeta). Add a page here when one is added to src/pages, and a
-  team season when one is added to teamData.js.
+  team season when one is added to teamData.js. The build gives each page a
+  lastmod in the published copy (scripts/date-sitemap.mjs).
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://blackbirduav.ca/</loc></url>

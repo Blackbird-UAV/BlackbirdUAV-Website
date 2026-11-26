@@ -23,6 +23,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          # The whole history, so the build can date each page in the sitemap
+          # (website/scripts/date-sitemap.mjs), but no old file contents:
+          # git fetches the few it needs when asked
+          fetch-depth: 0
+          filter: blob:none
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v7
@@ -61,7 +67,8 @@ jobs:
         working-directory: ./website
 
       # public/sitemap.xml is written by hand, so fail when it and the export
-      # disagree, e.g. a new team season whose page isn't listed yet.
+      # disagree, e.g. a new team season whose page isn't listed yet, or when
+      # the build couldn't date every page.
       - name: Check sitemap.xml lists every page
         run: npm run check:sitemap
         working-directory: ./website

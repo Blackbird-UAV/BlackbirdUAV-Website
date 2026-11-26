@@ -41,6 +41,11 @@ jobs:
         with:
           # The commit CI validated (the default is main's tip at trigger time).
           ref: ${{ github.event.workflow_run.head_sha }}
+          # The whole history, so the build can date each page in the sitemap
+          # (website/scripts/date-sitemap.mjs), but no old file contents:
+          # git fetches the few it needs when asked
+          fetch-depth: 0
+          filter: blob:none
 
       # Runs can finish out of order, and re-running an old CI run triggers
       # one too: deploy only main's current tip, so a stale run can't roll
