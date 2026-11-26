@@ -57,7 +57,7 @@ The host runs Apache (LiteSpeed) and applies [`website/.htaccess`](website/.htac
 - **Easily Updatable Content**: Team rosters, alumni, competitions, sponsors and the FAQ live in plain data files (see [Updating Content](#updating-content)).
 - **Static and Fast**: Every page is prerendered to HTML at build time, so the host only serves files.
 - **Accessible**: A skip link, keyboard-friendly menus, tabs and carousels, and less motion when the device asks for it.
-- **Search and Link Previews**: Every page has its own title, description and canonical URL, and link-preview tags with a photo; the site has a `robots.txt` and a `sitemap.xml`.
+- **Search and Link Previews**: Every page has its own title, description and canonical URL, and link-preview tags with a photo; the site has a `robots.txt` and a `sitemap.xml`, which the build dates with when each page's content last changed.
 
 ---
 
@@ -80,7 +80,7 @@ website/
 │   ├── data/         teamData.js, sponsorData.js, faqData.js
 │   └── styles/       CSS Modules, plus globals.css
 ├── public/           images, the sponsorship package, favicon, robots.txt and sitemap.xml, published as they are
-├── scripts/          audit.mjs (the CI dependency audit), check-sitemap.mjs, lighthouse-summary.mjs (the Lighthouse scores table) and resize-images.mjs
+├── scripts/          audit.mjs (the CI dependency audit), check-sitemap.mjs, date-sitemap.mjs (the sitemap's dates, from git), lighthouse-summary.mjs (the Lighthouse scores table) and resize-images.mjs
 └── .htaccess         the host's rewrite, cache and header rules
 ```
 
@@ -147,7 +147,7 @@ website/
 
 | Command | What it does |
 | ------- | ------------ |
-| `npm test` | Lints (`npm run lint`), builds, and checks that `sitemap.xml` lists every exported page (`npm run check:sitemap`): CI's checks apart from the audit |
+| `npm test` | Lints (`npm run lint`), builds, and checks that `sitemap.xml` lists and dates every exported page (`npm run check:sitemap`): CI's checks apart from the audit |
 | `npm run audit:ci` | CI's dependency audit: fails on high or critical advisories (see [`audit.mjs`](website/scripts/audit.mjs)) |
 | `npm run lighthouse` | The pull requests' Lighthouse check: runs Lighthouse three times on each main page in `out/` (build first; needs Chrome or Chromium, set `CHROME_PATH` if it isn't found; takes about five minutes), prints the scores, writes the reports to `lighthouse-reports/`, and fails if a page goes over a budget in [`lighthouserc.js`](website/lighthouserc.js) |
 | `npm run lighthouse:live` | The same for the same pages on the live site |

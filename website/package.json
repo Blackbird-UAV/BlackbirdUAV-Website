@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "npm run clean && next build",
+    "build": "npm run clean && next build && node scripts/date-sitemap.mjs",
     "prod": "npm run build && npm run copy-htaccess",
     "clean": "rimraf ./out",
     "copy-htaccess": "node -e \"require('fs').copyFileSync('.htaccess', 'out/.htaccess')\"",
